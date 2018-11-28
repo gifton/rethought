@@ -26,7 +26,7 @@ struct ScreenSize {
     static let SCREEN_MAX_LENGTH = max(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
     static let SCREEN_MIN_LENGTH = min(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
     static let SCALE = UIScreen.main.scale
-    
+    static let FRAME = UIScreen.main.bounds
 }
 
 struct App {
@@ -52,5 +52,6 @@ extension UIColor {
     static let mainRed = UIColor(hex: "E91E63")
     static let accentGray = UIColor(hex: "DDDEE1")
     static let brightGreen = UIColor(hex: "51DF9F")
-    
+    static let blueSmoke = UIColor(hex: "DDDDE6")
+    static let backgroundAccentGray = UIColor(hex: "DEDEDE")
 }

@@ -7,24 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D7026FBE21ACD40400D936B6 /* LinkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7026FBD21ACD40400D936B6 /* LinkCell.xib */; };
+		D7026FC021ACD43B00D936B6 /* DashCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7026FBF21ACD43B00D936B6 /* DashCell.swift */; };
 		D7048FA221AA1BD300C76DB2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7048FA121AA1BD300C76DB2 /* Constants.swift */; };
 		D7048FA421AA1C0400C76DB2 /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7048FA321AA1C0400C76DB2 /* Styling.swift */; };
-		D7048FA721AA1C6400C76DB2 /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7048FA621AA1C6400C76DB2 /* DashboardController.swift */; };
-		D7048FA921AA1C9900C76DB2 /* DashboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7048FA821AA1C9900C76DB2 /* DashboardCell.swift */; };
+		D7048FA721AA1C6400C76DB2 /* MasterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7048FA621AA1C6400C76DB2 /* MasterController.swift */; };
+		D7048FA921AA1C9900C76DB2 /* MasterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7048FA821AA1C9900C76DB2 /* MasterCell.swift */; };
 		D75F866E21A60CE100F6E008 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F866D21A60CE100F6E008 /* AppDelegate.swift */; };
-		D75F867021A60CE100F6E008 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F866F21A60CE100F6E008 /* DashboardView.swift */; };
+		D75F867021A60CE100F6E008 /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F866F21A60CE100F6E008 /* MasterView.swift */; };
 		D75F867521A60CE200F6E008 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D75F867421A60CE200F6E008 /* Assets.xcassets */; };
 		D75F867821A60CE200F6E008 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D75F867621A60CE200F6E008 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D7026FBD21ACD40400D936B6 /* LinkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LinkCell.xib; sourceTree = "<group>"; };
+		D7026FBF21ACD43B00D936B6 /* DashCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashCell.swift; sourceTree = "<group>"; };
 		D7048FA121AA1BD300C76DB2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D7048FA321AA1C0400C76DB2 /* Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styling.swift; sourceTree = "<group>"; };
-		D7048FA621AA1C6400C76DB2 /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
-		D7048FA821AA1C9900C76DB2 /* DashboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCell.swift; sourceTree = "<group>"; };
+		D7048FA621AA1C6400C76DB2 /* MasterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterController.swift; sourceTree = "<group>"; };
+		D7048FA821AA1C9900C76DB2 /* MasterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterCell.swift; sourceTree = "<group>"; };
 		D75F866A21A60CE100F6E008 /* Rethought.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rethought.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D75F866D21A60CE100F6E008 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D75F866F21A60CE100F6E008 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		D75F866F21A60CE100F6E008 /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
 		D75F867421A60CE200F6E008 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D75F867721A60CE200F6E008 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D75F867921A60CE200F6E008 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -44,8 +48,9 @@
 		D7048FA521AA1C5500C76DB2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D75F866F21A60CE100F6E008 /* DashboardView.swift */,
-				D7048FA821AA1C9900C76DB2 /* DashboardCell.swift */,
+				D75F866F21A60CE100F6E008 /* MasterView.swift */,
+				D7048FA821AA1C9900C76DB2 /* MasterCell.swift */,
+				D7026FBF21ACD43B00D936B6 /* DashCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -69,6 +74,7 @@
 		D75F866C21A60CE100F6E008 /* Rethought */ = {
 			isa = PBXGroup;
 			children = (
+				D7048FA621AA1C6400C76DB2 /* MasterController.swift */,
 				D7048FA521AA1C5500C76DB2 /* View */,
 				D75F868021A60E3200F6E008 /* Helpers */,
 				D75F867F21A60D5900F6E008 /* extension */,
@@ -76,7 +82,7 @@
 				D75F867421A60CE200F6E008 /* Assets.xcassets */,
 				D75F867621A60CE200F6E008 /* LaunchScreen.storyboard */,
 				D75F867921A60CE200F6E008 /* Info.plist */,
-				D7048FA621AA1C6400C76DB2 /* DashboardController.swift */,
+				D7026FBD21ACD40400D936B6 /* LinkCell.xib */,
 			);
 			path = Rethought;
 			sourceTree = "<group>";
@@ -155,6 +161,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7026FBE21ACD40400D936B6 /* LinkCell.xib in Resources */,
 				D75F867821A60CE200F6E008 /* LaunchScreen.storyboard in Resources */,
 				D75F867521A60CE200F6E008 /* Assets.xcassets in Resources */,
 			);
@@ -167,11 +174,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D75F867021A60CE100F6E008 /* DashboardView.swift in Sources */,
+				D75F867021A60CE100F6E008 /* MasterView.swift in Sources */,
 				D7048FA421AA1C0400C76DB2 /* Styling.swift in Sources */,
-				D7048FA721AA1C6400C76DB2 /* DashboardController.swift in Sources */,
+				D7048FA721AA1C6400C76DB2 /* MasterController.swift in Sources */,
 				D75F866E21A60CE100F6E008 /* AppDelegate.swift in Sources */,
-				D7048FA921AA1C9900C76DB2 /* DashboardCell.swift in Sources */,
+				D7048FA921AA1C9900C76DB2 /* MasterCell.swift in Sources */,
+				D7026FC021ACD43B00D936B6 /* DashCell.swift in Sources */,
 				D7048FA221AA1BD300C76DB2 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,6 +321,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JL7TCK5Y58;
 				INFOPLIST_FILE = Rethought/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -331,6 +340,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JL7TCK5Y58;
 				INFOPLIST_FILE = Rethought/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

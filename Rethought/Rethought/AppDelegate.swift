@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        let rootVC = DashboardController()
+        let rootVC = MasterController()
         let nav = UINavigationController(rootViewController: rootVC)
         nav.isNavigationBarHidden = true
         window?.rootViewController = nav
