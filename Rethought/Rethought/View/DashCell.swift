@@ -12,7 +12,6 @@ import UIKit
 class DashCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .red
     }
     
     required init?(coder aDecoder: NSCoder) {

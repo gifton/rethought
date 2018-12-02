@@ -28,18 +28,21 @@ extension MasterView: UICollectionViewDataSource, UICollectionViewDelegate {
         return CGSize(width: ScreenSize.SCREEN_WIDTH, height: ScreenSize.SCREEN_HEIGHT - 200)
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: MasterCell.identifier, for: indexPath) as! MasterCell
-//        switch indexPath.row {
-//        case 0:
-//            cell.backgroundColor = .mainRed
-//        case 1:
-//            cell.backgroundColor = .blueSmoke
-//        case 2:
-//            cell.backgroundColor = .brightGreen
-//        default:
-//            cell.backgroundColor = .black
-//        }
-        return cell
+        
+        switch indexPath.row {
+        case 0:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DashCell.identifier, for: indexPath) as! DashCell
+            return cell
+        case 1:
+           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MasterCell.identifier, for: indexPath) as! MasterCell
+            return cell
+        case 2:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MasterCell.identifier, for: indexPath) as! MasterCell
+            return cell
+        default:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MasterCell.identifier, for: indexPath) as! MasterCell
+            return cell
+        }
     }
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         targetContentOffset.pointee = scrollView.contentOffset
