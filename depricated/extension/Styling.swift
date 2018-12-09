@@ -304,3 +304,11 @@ extension UIButton {
         self.isEnabled = true
     }
 }
+
+//drop this in a viewDidLoad() to list all available fonts
+//for family: String in UIFont.familyNames {
+//    print(family)
+//    for names: String in UIFont.fontNames(forFamilyName: family) {
+//        print("== \(names)")
+//    }
+//}

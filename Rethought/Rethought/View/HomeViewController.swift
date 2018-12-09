@@ -12,7 +12,8 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view = HomeView(frame: ScreenSize.FRAME)
+        let homeView = HomeView()
+        view = homeView
         // Do any additional setup after loading the view, typically from a nib.
     }
 
