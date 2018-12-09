@@ -20,13 +20,20 @@ enum fontSize: CGFloat {
     case xXXXLarge = 32.0
 }
 
-struct ScreenSize {
+struct ViewSize {
     static let SCREEN_WIDTH = UIScreen.main.bounds.size.width
     static let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
-    static let SCREEN_MAX_LENGTH = max(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
-    static let SCREEN_MIN_LENGTH = min(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
+    static let SCREEN_MAX_LENGTH = max(ViewSize.SCREEN_WIDTH, ViewSize.SCREEN_HEIGHT)
+    static let SCREEN_MIN_LENGTH = min(ViewSize.SCREEN_WIDTH, ViewSize.SCREEN_HEIGHT)
     static let SCALE = UIScreen.main.scale
     static let FRAME = UIScreen.main.bounds
+    
+    static let reccomendedView = CGSize(width: 350, height: 156)
+    static let reccomendedCell = CGSize(width: 325, height: 80)
+    static let largeButton = CGSize(width: 350, height: 56)
+    static let thoughtCellSmall = CGSize(width: 82, height: 76)
+    static let thoughtIconSmall = CGSize(width: 56, height: 56)
+    static let minimumEntryPreviewSize = CGSize(width: 350, height: 103)
 }
 
 struct App {
