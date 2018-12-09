@@ -17,3 +17,8 @@ struct RedditLink: Recore {
     var www: String?
     var subReddit: String?
 }
+
+
+
+
+
