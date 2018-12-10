@@ -11,22 +11,24 @@ import UIKit
 
 class HomeView: UIView {
     
+    //homeview needs thoughts object to display most current Thoughts, and recent entries
     public var thoughts: [Thought]?
-    public var profileDelegate: ProfileProtocol?
+    public var delegate: DashboardDelegate?
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor(hex: "FAFBFF")
-        buildOutline()
+        
     }
     convenience init(_ thoughts: [Thought], frame: CGRect) {
         self.init(frame: frame)
         self.thoughts = thoughts
+        //call setView in conveniance init, because conveniance init includes the neccesary components
+        setView()
     }
-    
+    //MARK: All objects in homeView
     let newView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: ViewSize.SCREEN_HEIGHT - 100, width: ViewSize.SCREEN_WIDTH, height: 100))
         view.backgroundColor = UIColor(hex: "F7D351")
-        //        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -40,6 +42,11 @@ class HomeView: UIView {
         lbl.layer.cornerRadius = 5
         lbl.clipsToBounds = true
         return lbl
+    }()
+    let viewAllThoughts: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("View All", for: .normal)
+        return btn
     }()
     let profileButton: UIButton = {
         let btn = UIButton(frame: CGRect(x: ViewSize.SCREEN_WIDTH - 80, y: 57, width: 60, height: 20))
@@ -102,7 +109,13 @@ class HomeView: UIView {
     }
     
     
-    func buildOutline() {
+    func setView() {
+        
+        if thoughts != nil {
+            print("thoughts are now active!")
+        } else {
+            print("awww okay")
+        }
         
         addSubview(thoughtLabel)
         addSubview(profileButton)
@@ -137,9 +150,23 @@ class HomeView: UIView {
         recentThoughtsCollectionView.delegate = self
         recentThoughtsCollectionView.dataSource = self
     }
-    
+}
+
+extension HomeView {
     @objc func userPressedProfile() {
         print("we made it to this objc func!")
-        profileDelegate?.userDidPressProfile()
+        delegate?.userDidTapProfileButton()
+    }
+    @objc func userPressedViewAllThoughts() {
+        print("we made it to this objc func!")
+        delegate?.userDidTapProfileButton()
+    }
+    @objc func userPressedNewThought() {
+        print("we made it to this objc func!")
+        delegate?.userDidTapProfileButton()
+    }
+    @objc func userPressedViewAllEntries() {
+        print("we made it to this objc func!")
+        delegate?.userDidTapProfileButton()
     }
 }

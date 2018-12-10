@@ -9,12 +9,13 @@ class HomeViewController: UIViewController {
         
         return vm
     }()
+    var homeView: HomeView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let homeView = HomeView(viewModel.thoughtList, frame: .zero)
-        homeView.profileDelegate = self
+        homeView.delegate = self
         view = homeView
         view.reloadInputViews()
         self.navigationController?.isNavigationBarHidden = true
@@ -46,9 +47,20 @@ extension HomeView: UICollectionViewDelegate {
     }
 }
 
-extension HomeViewController: ProfileProtocol {
-    func userDidPressProfile() {
-        print("and here to the profileProtocol!")
+extension HomeViewController: DashboardDelegate {
+    func userDidTapProfileButton() {
+        self.navigationController?.pushViewController(ProfileViewController(), animated: true)
+    }
+    
+    func userDidTapViewAllThoughts() {
+        self.navigationController?.pushViewController(ProfileViewController(), animated: true)
+    }
+    
+    func userDidTapViewAllEntries() {
+        self.navigationController?.pushViewController(ProfileViewController(), animated: true)
+    }
+    
+    func userDidTapNewThought() {
         self.navigationController?.pushViewController(ProfileViewController(), animated: true)
     }
 }

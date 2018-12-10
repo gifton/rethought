@@ -26,7 +26,7 @@ extension HomeViewController {
         var dummyThoughts = [Thought]()
         
         for (_, count) in (0...thoughtAmount).enumerated() {
-            let dummyThought = Thought(title: "Test Thought \(count)", description: "This is where you put ideas for apps, if the idea gets to large, create a seperate thought", icon: Thought.Icon.no, date: Date(timeIntervalSinceNow: TimeInterval.init(exactly: 100)!), entries: getEntries())
+            let dummyThought = Thought(title: "Thought \(count)", description: "This is where you put ideas for apps, if the idea gets to large, create a seperate thought", icon: Thought.Icon.no, date: Date(timeIntervalSinceNow: TimeInterval.init(exactly: 100)!), entries: getEntries())
             
             dummyThoughts.append(dummyThought)
         }

@@ -21,8 +21,8 @@ public class Thought: ThoughtDelegate {
         }
     }
     public func remove(entry: Entry) {
-        if let i = entries.index(where: { $0.id == entry.id }) {
-            entries.remove(at: i)
+        if let mark = entries.index(where: { $0.id == entry.id }) {
+            entries.remove(at: mark)
         } else {
             return
         }

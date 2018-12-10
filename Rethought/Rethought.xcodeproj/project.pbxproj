@@ -28,13 +28,16 @@
 		D75B88FA21BC98C70023784F /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D75B88F221BC98C60023784F /* Lato-Light.ttf */; };
 		D75B88FB21BC98C70023784F /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D75B88F321BC98C70023784F /* Lato-LightItalic.ttf */; };
 		D75B88FF21BDC2C60023784F /* RecentThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B88FE21BDC2C60023784F /* RecentThoughtCell.swift */; };
-		D75B890121BDCBB30023784F /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B890021BDCBB30023784F /* TableCell.swift */; };
+		D75B890121BDCBB30023784F /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B890021BDCBB30023784F /* CellType.swift */; };
 		D75B890621BDFAC50023784F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D75B890521BDFAC50023784F /* Default-568h@2x.png */; };
 		D75B890821BDFB8D0023784F /* ReccomendedThoughtsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B890721BDFB8D0023784F /* ReccomendedThoughtsViewModel.swift */; };
 		D75B890A21BDFE780023784F /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B890921BDFE780023784F /* DummyData.swift */; };
 		D75B890C21BE18740023784F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B890B21BE18740023784F /* User.swift */; };
 		D75B890E21BE191C0023784F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B890D21BE191C0023784F /* ProfileView.swift */; };
 		D75B891021BE192E0023784F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B890F21BE192E0023784F /* ProfileViewController.swift */; };
+		D75B891221BEDD0E0023784F /* DashboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B891121BEDD0E0023784F /* DashboardDelegate.swift */; };
+		D75B891421BF12530023784F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B891321BF12530023784F /* HomeViewModel.swift */; };
+		D75B891621BF12920023784F /* ReccomendedThoughts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B891521BF12920023784F /* ReccomendedThoughts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,13 +64,16 @@
 		D75B88F221BC98C60023784F /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		D75B88F321BC98C70023784F /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
 		D75B88FE21BDC2C60023784F /* RecentThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentThoughtCell.swift; sourceTree = "<group>"; };
-		D75B890021BDCBB30023784F /* TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
+		D75B890021BDCBB30023784F /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
 		D75B890521BDFAC50023784F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D75B890721BDFB8D0023784F /* ReccomendedThoughtsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReccomendedThoughtsViewModel.swift; sourceTree = "<group>"; };
 		D75B890921BDFE780023784F /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		D75B890B21BE18740023784F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D75B890D21BE191C0023784F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		D75B890F21BE192E0023784F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D75B891121BEDD0E0023784F /* DashboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardDelegate.swift; sourceTree = "<group>"; };
+		D75B891321BF12530023784F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		D75B891521BF12920023784F /* ReccomendedThoughts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReccomendedThoughts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,8 +134,10 @@
 				D75B88B821BB70C00023784F /* AppDelegate.swift */,
 				D75B88DF21BC54B20023784F /* Entry.swift */,
 				D75B88E421BC56AB0023784F /* Thoughts.swift */,
-				D75B890021BDCBB30023784F /* TableCell.swift */,
+				D75B890021BDCBB30023784F /* CellType.swift */,
 				D75B890B21BE18740023784F /* User.swift */,
+				D75B891121BEDD0E0023784F /* DashboardDelegate.swift */,
+				D75B891521BF12920023784F /* ReccomendedThoughts.swift */,
 			);
 			path = "Model-Core";
 			sourceTree = "<group>";
@@ -140,6 +148,7 @@
 				D75B88E221BC567A0023784F /* ThoughtViewModel.swift */,
 				D75B890721BDFB8D0023784F /* ReccomendedThoughtsViewModel.swift */,
 				D75B890921BDFE780023784F /* DummyData.swift */,
+				D75B891321BF12530023784F /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -277,19 +286,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D75B891421BF12530023784F /* HomeViewModel.swift in Sources */,
 				D75B88E021BC54B20023784F /* Entry.swift in Sources */,
 				D75B890821BDFB8D0023784F /* ReccomendedThoughtsViewModel.swift in Sources */,
 				D75B88E321BC567A0023784F /* ThoughtViewModel.swift in Sources */,
+				D75B891221BEDD0E0023784F /* DashboardDelegate.swift in Sources */,
 				D75B88D121BC507B0023784F /* Styling.swift in Sources */,
 				D75B88FF21BDC2C60023784F /* RecentThoughtCell.swift in Sources */,
 				D75B88E921BC92190023784F /* HomeView.swift in Sources */,
 				D75B88BB21BB70C00023784F /* HomeViewController.swift in Sources */,
 				D75B891021BE192E0023784F /* ProfileViewController.swift in Sources */,
-				D75B890121BDCBB30023784F /* TableCell.swift in Sources */,
+				D75B890121BDCBB30023784F /* CellType.swift in Sources */,
 				D75B890E21BE191C0023784F /* ProfileView.swift in Sources */,
 				D75B890C21BE18740023784F /* User.swift in Sources */,
 				D75B88B921BB70C00023784F /* AppDelegate.swift in Sources */,
 				D75B88E521BC56AB0023784F /* Thoughts.swift in Sources */,
+				D75B891621BF12920023784F /* ReccomendedThoughts.swift in Sources */,
 				D75B890A21BDFE780023784F /* DummyData.swift in Sources */,
 				D75B88D321BC51250023784F /* UIImage.swift in Sources */,
 				D75B88C121BB70C00023784F /* rethought.xcdatamodeld in Sources */,

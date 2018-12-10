@@ -21,7 +21,8 @@ class RecentThoughtCell: UICollectionViewCell {
         lbl.font = UIFont(name: "Lato-Light", size: 10)
         lbl.textColor = .darkText
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.contentMode = .center
+        lbl.textAlignment = .center
+        lbl.adjustsFontSizeToFitWidth = true
         
         return lbl
     }()
