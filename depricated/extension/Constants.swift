@@ -57,10 +57,13 @@ extension UIColor {
     static let titleLightGray = UIColor(hex: 868686)
     static let titleDarkGray = UIColor(hex: 444444)
     static let mainRed = UIColor(hex: "E91E63")
+    static let mainBlue = UIColor(hex: "55AFF8")
     static let accentGray = UIColor(hex: "DDDEE1")
     static let brightGreen = UIColor(hex: "51DF9F")
     static let blueSmoke = UIColor(hex: "DDDDE6")
     static let backgroundAccentGray = UIColor(hex: "DEDEDE")
+    
+    static let darkText = UIColor(hex: "333333")
 }
 
 public func randomString(length: Int) -> String {

@@ -20,8 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         let rootVC = HomeViewController()
-        
-        window?.rootViewController = rootVC
+        let nav = UINavigationController(rootViewController: rootVC)
+        nav.isNavigationBarHidden = true
+        window?.rootViewController = nav
         
         // Override point for customization after application launch.
         return true

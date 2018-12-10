@@ -86,4 +86,5 @@ public class Thought: ThoughtDelegate {
 public protocol ThoughtDelegate {
     func remove(entry: Entry)
     func addNew(entry: Entry)
+    
 }

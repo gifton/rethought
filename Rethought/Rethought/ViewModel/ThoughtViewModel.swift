@@ -10,21 +10,18 @@ import Foundation
 import UIKit
 
 public class ThoughtViewModel {
-    private let thought: Thought
+    private let thoughts: [Thought]
     
-    public init(_ thought: Thought) {
-        self.thought = thought
+    public init(_ thoughts: [Thought]) {
+        self.thoughts = thoughts
     }
     
-    public var title: String {
-        return thought.title
+    public var thoughtList: [Thought] {
+        return thoughts
     }
     
-    public var entryCount: Int {
-        return thought.entries.count
-    }
-    public var entries: [Entry] {
-        return thought.entries
+    public func getEntriesfor(_ thought: Int) -> [Entry] {
+        return thoughts[thought].entries
     }
     
 }

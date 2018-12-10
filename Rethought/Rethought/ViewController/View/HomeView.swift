@@ -10,27 +10,26 @@ import Foundation
 import UIKit
 
 class HomeView: UIView {
+    
+    public var thoughts: [Thought]?
+    public var profileDelegate: ProfileProtocol?
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor(hex: "FAFBFF")
         buildOutline()
     }
-    
-    let scrollView: UIScrollView = {
-        let sv = UIScrollView()
-        sv.backgroundColor = UIColor(hex: "FAFBFF")
-        sv.translatesAutoresizingMaskIntoConstraints = false
-        sv.contentSize.height = 900
-        
-        return sv
-    }()
+    convenience init(_ thoughts: [Thought], frame: CGRect) {
+        self.init(frame: frame)
+        self.thoughts = thoughts
+    }
     
     let newView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: ViewSize.SCREEN_HEIGHT - 100, width: ViewSize.SCREEN_WIDTH, height: 100))
         view.backgroundColor = UIColor(hex: "F7D351")
-//        view.translatesAutoresizingMaskIntoConstraints = false
+        //        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
     let thoughtLabel: UILabel = {
         let lbl = UILabel(frame: CGRect(x: 15, y: 50, width: 100, height: 30))
         lbl.text = "Re:Thought"
@@ -42,13 +41,6 @@ class HomeView: UIView {
         lbl.clipsToBounds = true
         return lbl
     }()
-    let continuedThoughtLabel: UILabel = {
-        let lbl = UILabel(frame: CGRect(x: 15, y: 10, width: ViewSize.SCREEN_WIDTH - 150, height: 30))
-        lbl.text = "🚂 CONTINUE THE THOUGHT"
-        lbl.font = UIFont(name: "Lato-Bold", size: 12)
-        lbl.textColor = UIColor(hex: "BFC0C3")
-        return lbl
-    }()
     let profileButton: UIButton = {
         let btn = UIButton(frame: CGRect(x: ViewSize.SCREEN_WIDTH - 80, y: 57, width: 60, height: 20))
         btn.setTitle("Profile", for: .normal)
@@ -56,18 +48,38 @@ class HomeView: UIView {
         
         return btn
     }()
-    let currentThoughtsView: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 50, width: ViewSize.SCREEN_WIDTH, height: 100))
-        view.backgroundColor = .accentGray
+    let scrollView: UIScrollView = {
+        let sv = UIScrollView()
+        sv.backgroundColor = UIColor(hex: "FAFBFF")
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        sv.contentSize.height = 770
         
-        return view
+        return sv
+    }()
+    
+    let reccomendedThoughtLabel: UILabel = {
+        let lbl = UILabel(frame: CGRect(x: 15, y: 10, width: ViewSize.SCREEN_WIDTH - 150, height: 30))
+        lbl.text = "🚂 CONTINUE THE THOUGHT"
+        lbl.font = UIFont(name: "Lato-Bold", size: 12)
+        lbl.textColor = UIColor(hex: "BFC0C3")
+        return lbl
+    }()
+    let recentThoughtsCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = ViewSize.thoughtCellSmall
+        let cv = UICollectionView(frame: CGRect(x: 0, y: 50, width: ViewSize.SCREEN_WIDTH, height: 100), collectionViewLayout: layout)
+        cv.backgroundColor = .white
+        cv.showsHorizontalScrollIndicator = false
+        
+        return cv
     }()
     let newThoughtButton: UIButton = {
         let btn = UIButton(frame: CGRect(x: 15, y: 180, width: ViewSize.SCREEN_WIDTH - 30, height: 55))
         let attribute = [ NSAttributedString.Key.font: UIFont(name: "Lato-Regular", size: 20),  NSAttributedString.Key.foregroundColor: UIColor.white]
         let myAttrString = NSAttributedString(string: "Create new Thought", attributes: attribute as [NSAttributedString.Key : Any])
         btn.setAttributedTitle(myAttrString, for: .normal)
-        btn.backgroundColor = UIColor(hex: "5DCBA5")
+        btn.backgroundColor = UIColor(hex: "2ECD95")
         btn.layer.cornerRadius = 4
         return btn
     }()
@@ -89,7 +101,9 @@ class HomeView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     func buildOutline() {
+        
         addSubview(thoughtLabel)
         addSubview(profileButton)
         addSubview(scrollView)
@@ -97,8 +111,8 @@ class HomeView: UIView {
         scrollView.frame.origin = CGPoint(x: 0, y: 100)
         scrollView.setAnchor(top: thoughtLabel.bottomAnchor, leading: leadingAnchor, bottom: newView.topAnchor, trailing: trailingAnchor, paddingTop: 25, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
         
-        scrollView.addSubview(continuedThoughtLabel)
-        scrollView.addSubview(currentThoughtsView)
+        scrollView.addSubview(reccomendedThoughtLabel)
+        scrollView.addSubview(recentThoughtsCollectionView)
         scrollView.addSubview(newThoughtButton)
         scrollView.addSubview(recentEntriesView)
         scrollView.addSubview(reccomendedThought)
@@ -112,28 +126,20 @@ class HomeView: UIView {
             reccomendedThought.topAnchor.constraint(equalTo: recentEntriesView.bottomAnchor, constant: 10),
             reccomendedThought.centerXAnchor.constraint(equalTo: centerXAnchor),
         ])
+        recentThoughtsCollectionView.reloadData()
+        setupCollectionView()
+        
+        profileButton.addTarget(self, action: #selector(userPressedProfile), for: .touchUpInside)
     }
     
-    func buildStaticObjects() {
-        addSubview(newView)
-        addSubview(scrollView)
-        addSubview(thoughtLabel)
-        addSubview(continuedThoughtLabel)
-        addSubview(profileButton)
-        addSubview(currentThoughtsView)
-        addSubview(newThoughtButton)
-        addSubview(recentEntriesView)
-        addSubview(reccomendedThought)
-        newView.setHeightWidth(width: ViewSize.SCREEN_WIDTH, height: 100)
-        
-        NSLayoutConstraint.activate([
-            newView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
-            newView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            recentEntriesView.topAnchor.constraint(equalTo: newThoughtButton.bottomAnchor, constant: 25),
-            recentEntriesView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-            reccomendedThought.topAnchor.constraint(equalTo: recentEntriesView.bottomAnchor, constant: 25),
-            reccomendedThought.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0),
-        ])
-        
+    func setupCollectionView() {
+        recentThoughtsCollectionView.register(RecentThoughtCell.self, forCellWithReuseIdentifier: RecentThoughtCell.identifier)
+        recentThoughtsCollectionView.delegate = self
+        recentThoughtsCollectionView.dataSource = self
+    }
+    
+    @objc func userPressedProfile() {
+        print("we made it to this objc func!")
+        profileDelegate?.userDidPressProfile()
     }
 }
