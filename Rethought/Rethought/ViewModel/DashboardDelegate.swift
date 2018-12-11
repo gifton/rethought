@@ -14,4 +14,5 @@ protocol DashboardDelegate {
     func userDidTapViewAllThoughts()
     func userDidTapViewAllEntries()
     func userDidTapNewThought()
+    func userDidTapThought(_ thought: Thought)
 }

@@ -5,7 +5,7 @@ class HomeViewController: UIViewController {
 
     var Thoughts: [Thought]?
     lazy var viewModel: ThoughtViewModel = {
-        let vm = ThoughtViewModel(getDummyData(5, entryAmount: 6))
+        let vm = ThoughtViewModel(getDummyDataForReccomededThoughts(5, entryAmount: 5))
         
         return vm
     }()
@@ -38,12 +38,13 @@ extension HomeView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = recentThoughtsCollectionView.dequeueReusableCell(withReuseIdentifier: RecentThoughtCell.identifier, for: indexPath) as! RecentThoughtCell
         cell.title.text = thoughts?[indexPath.row].title
+        cell.emoji.text = thoughts?[indexPath.row].icon
         return cell
     }    
 }
 extension HomeView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print (indexPath.row)
+        delegate?.userDidTapThought((thoughts?[indexPath.row])!)
     }
 }
 
@@ -61,6 +62,13 @@ extension HomeViewController: DashboardDelegate {
     }
     
     func userDidTapNewThought() {
-        self.navigationController?.pushViewController(ProfileViewController(), animated: true)
+        self.navigationController?.pushViewController(NewThoughtController(), animated: true)
+    }
+    
+    func userDidTapThought(_ thought: Thought) {
+        let controller = ThoughtDetailController()
+        controller.thought = thought
+        self.navigationController?.pushViewController(controller, animated: true)
+        
     }
 }

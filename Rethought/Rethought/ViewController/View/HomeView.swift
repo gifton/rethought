@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+
 class HomeView: UIView {
     
     //homeview needs thoughts object to display most current Thoughts, and recent entries
@@ -143,6 +144,7 @@ class HomeView: UIView {
         setupCollectionView()
         
         profileButton.addTarget(self, action: #selector(userPressedProfile), for: .touchUpInside)
+        newThoughtButton.addTarget(self, action: #selector(userPressedNewThought), for: .touchUpInside)
     }
     
     func setupCollectionView() {
@@ -163,7 +165,7 @@ extension HomeView {
     }
     @objc func userPressedNewThought() {
         print("we made it to this objc func!")
-        delegate?.userDidTapProfileButton()
+        delegate?.userDidTapNewThought()
     }
     @objc func userPressedViewAllEntries() {
         print("we made it to this objc func!")

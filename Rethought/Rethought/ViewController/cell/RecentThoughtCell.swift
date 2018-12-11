@@ -26,15 +26,24 @@ class RecentThoughtCell: UICollectionViewCell {
         
         return lbl
     }()
+    let icon: UIView = {
+        let iv = UIView()
+        iv.backgroundColor = UIColor(hex: "FBF6EB")
+        iv.layer.cornerRadius = 4
+        
+        return iv
+    }()
+    
+    var emoji: UILabel = {
+        let lbl = UILabel()
+        lbl.backgroundColor = .clear
+        lbl.font = .boldSystemFont(ofSize: 35)
+        lbl.text = "⚽️"
+        return lbl
+    }()
     
     private func setupCell() {
-        let icon: UIView = {
-            let iv = UIView()
-            iv.backgroundColor = UIColor(hex: "FBF6EB")
-            iv.layer.cornerRadius = 4
-            
-            return iv
-        }()
+        
         
         self.contentView.addSubview(icon)
         self.contentView.addSubview(title)
@@ -43,6 +52,11 @@ class RecentThoughtCell: UICollectionViewCell {
         icon.center.y -= 25
         
         title.setAnchor(top: icon.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 2, paddingLeading: 2, paddingBottom: 2, paddingTrailing: 2)
+        icon.addSubview(emoji)
+        emoji.frame = icon.frame
+        emoji.center.y += 2
+        emoji.center.x -= 4
+        
         
     }
     

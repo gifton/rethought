@@ -9,15 +9,15 @@
 import Foundation
 import UIKit
 
-struct ReccomendedThoughtCell {
-    let cellType: ScrollViewCellType
-    let icons: [String]
-    let lastEntryDate: [String]
+struct ReccomendedThoughtCellViewModel {
+    var icons: [String] = []
+    var lastEntryDate: [String] = []
+    var id: [String] = []
     
     init(_ cellType: ScrollViewCellType, thoughts: [Thought]) {
-        self.cellType = cellType
         for thought in thoughts {
-            lastEntryDate.append(thought.lastEdited)
+            self.id.append(thought.ID)
         }
+        
     }
 }
