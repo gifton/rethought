@@ -4,9 +4,9 @@ import UIKit
 class HomeViewController: UIViewController {
 
     var Thoughts: [Thought]?
-    lazy var viewModel: ThoughtViewModel = {
-        let vm = ThoughtViewModel(getDummyDataForReccomededThoughts(5, entryAmount: 5))
-        
+    lazy var viewModel: HomeViewModel = {
+        let vm = HomeViewModel(thoughts: self.getDummyDataForReccomededThoughts(8, entryAmount: 8))
+        vm.viewDelegate = self
         return vm
     }()
     var homeView: HomeView!
@@ -14,17 +14,17 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let homeView = HomeView(viewModel.thoughtList, frame: .zero)
+        homeView = HomeView(viewModel.getRecent(), viewModel.getReccomended(), thoughtCount: viewModel.thoughts.count, frame: .zero)
         homeView.delegate = self
         view = homeView
-        view.reloadInputViews()
+        homeView.dataIsLoaded()
         self.navigationController?.isNavigationBarHidden = true
     }
 }
 
 extension HomeView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let thoughtCount = self.thoughts?.count {
+        if let thoughtCount = self.recentThoughts?.count {
             return thoughtCount
         } else {
             return 10
@@ -37,18 +37,23 @@ extension HomeView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = recentThoughtsCollectionView.dequeueReusableCell(withReuseIdentifier: RecentThoughtCell.identifier, for: indexPath) as! RecentThoughtCell
-        cell.title.text = thoughts?[indexPath.row].title
-        cell.emoji.text = thoughts?[indexPath.row].icon
+        cell.title.text = recentThoughts?[indexPath.row].lastEdited
+        cell.emoji.text = recentThoughts?[indexPath.row].icon
         return cell
     }    
 }
 extension HomeView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.userDidTapThought((thoughts?[indexPath.row])!)
+        delegate?.userDidTapThought((recentThoughts?[indexPath.row].thoughtID)!)
     }
 }
 
-extension HomeViewController: DashboardDelegate {
+extension HomeViewController: HomeViewControllerDelegate {
+    func dataIsLoaded() {
+        self.homeView.reloadInputViews()
+        self.homeView.dataIsLoaded()
+    }
+    
     func userDidTapProfileButton() {
         self.navigationController?.pushViewController(ProfileViewController(), animated: true)
     }
@@ -65,9 +70,10 @@ extension HomeViewController: DashboardDelegate {
         self.navigationController?.pushViewController(NewThoughtController(), animated: true)
     }
     
-    func userDidTapThought(_ thought: Thought) {
+    func userDidTapThought(_ thoughtID: String) {
         let controller = ThoughtDetailController()
-        controller.thought = thought
+        guard let thoughts = self.Thoughts else { return }
+        controller.thought = thoughts.filter{ $0.ID == thoughtID }.first!
         self.navigationController?.pushViewController(controller, animated: true)
         
     }

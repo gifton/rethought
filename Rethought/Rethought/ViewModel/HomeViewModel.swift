@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class HomeViewModel: HomeViewModelDelegate {
-    var viewDelegate: HomeViewDelegate?
+    var viewDelegate: HomeViewControllerDelegate?
     func createNew(_ thought: Thought) {
         print ("created new thought from: \(thought)")
     }
@@ -49,14 +49,3 @@ extension HomeViewModel {
 }
 
 
-protocol HomeViewModelDelegate {
-    func createNew(_ thought: Thought)
-    func destroy(_ thoughtID: Thought)
-    func update(_ thought: Thought)
-    func getReccomended() -> ThoughtPreviewLarge
-    func getRecent() -> [ThoughtPreviewSmall]
-}
-
-protocol HomeViewDelegate {
-    func dataIsLoaded()
-}

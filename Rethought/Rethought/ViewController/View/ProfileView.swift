@@ -13,6 +13,7 @@ class ProfileView: UIView {
     var firstName: String?
     var lastName: String?
     open var delegate: HomeDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor(hex: "FAFBFF")

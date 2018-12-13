@@ -14,18 +14,21 @@ class HomeView: UIView {
     
     //homeview needs thoughts object to display most current Thoughts, and recent entries
     public var thoughts: [Thought]?
-    public var delegate: DashboardDelegate?
-    var viewModel: HomeViewModel?
+    public var thoughtCount: Int?
+    public var delegate: HomeViewControllerDelegate?
+    public var reccomendedThought: ThoughtPreviewLarge?
+    public var recentThoughts: [ThoughtPreviewSmall]?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor(hex: "FAFBFF")
         
     }
-    convenience init(_ thoughts: [Thought], frame: CGRect) {
+    convenience init(_ recentThoughts: [ThoughtPreviewSmall], _ reccomendedThought: ThoughtPreviewLarge, thoughtCount: Int, frame: CGRect) {
         self.init(frame: frame)
-        self.thoughts = thoughts
-        self.viewModel = HomeViewModel(thoughts: self.thoughts!)
-        viewModel?.viewDelegate = self
+        self.thoughtCount = thoughtCount
+        self.recentThoughts = recentThoughts
+        self.reccomendedThought = reccomendedThought
         //call setView in conveniance init, because conveniance init includes the neccesary components
         setView()
     }
@@ -101,7 +104,7 @@ class HomeView: UIView {
         
         return view
     }()
-    let reccomendedThought: UIView = {
+    let reccomendedThoughtView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(hex: "55AFF8")
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -132,16 +135,16 @@ class HomeView: UIView {
         scrollView.addSubview(recentThoughtsCollectionView)
         scrollView.addSubview(newThoughtButton)
         scrollView.addSubview(recentEntriesView)
-        scrollView.addSubview(reccomendedThought)
+        scrollView.addSubview(reccomendedThoughtView)
         
         recentEntriesView.setHeightWidth(width: ViewSize.SCREEN_WIDTH - 30, height: 300)
-        reccomendedThought.setHeightWidth(width: 350, height: 160)
+        reccomendedThoughtView.setHeightWidth(width: 350, height: 160)
         
         NSLayoutConstraint.activate([
             recentEntriesView.topAnchor.constraint(equalTo: newThoughtButton.bottomAnchor, constant: 25),
             recentEntriesView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            reccomendedThought.topAnchor.constraint(equalTo: recentEntriesView.bottomAnchor, constant: 10),
-            reccomendedThought.centerXAnchor.constraint(equalTo: centerXAnchor),
+            reccomendedThoughtView.topAnchor.constraint(equalTo: recentEntriesView.bottomAnchor, constant: 10),
+            reccomendedThoughtView.centerXAnchor.constraint(equalTo: centerXAnchor),
         ])
         recentThoughtsCollectionView.reloadData()
         setupCollectionView()
@@ -157,8 +160,8 @@ class HomeView: UIView {
     }
 }
 
-extension HomeView: HomeViewDelegate {
-    func dataIsLoaded() {
+extension HomeView {
+    public func dataIsLoaded() {
         self.updateViews()
     }
     private func updateViews() {
