@@ -15,6 +15,7 @@ class HomeView: UIView {
     //homeview needs thoughts object to display most current Thoughts, and recent entries
     public var thoughts: [Thought]?
     public var delegate: DashboardDelegate?
+    var viewModel: HomeViewModel?
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor(hex: "FAFBFF")
@@ -23,6 +24,8 @@ class HomeView: UIView {
     convenience init(_ thoughts: [Thought], frame: CGRect) {
         self.init(frame: frame)
         self.thoughts = thoughts
+        self.viewModel = HomeViewModel(thoughts: self.thoughts!)
+        viewModel?.viewDelegate = self
         //call setView in conveniance init, because conveniance init includes the neccesary components
         setView()
     }
@@ -154,6 +157,16 @@ class HomeView: UIView {
     }
 }
 
+extension HomeView: HomeViewDelegate {
+    func dataIsLoaded() {
+        self.updateViews()
+    }
+    private func updateViews() {
+        self.reloadInputViews()
+        self.recentThoughtsCollectionView.reloadData()
+    }
+}
+
 extension HomeView {
     @objc func userPressedProfile() {
         print("we made it to this objc func!")
@@ -171,4 +184,5 @@ extension HomeView {
         print("we made it to this objc func!")
         delegate?.userDidTapProfileButton()
     }
+    
 }

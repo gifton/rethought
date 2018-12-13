@@ -32,6 +32,7 @@ extension HomeViewModel {
         let thoughtPreview: ThoughtPreviewLarge = {
             guard let thought: Thought = self.thoughts.last else { return ThoughtPreviewLarge.init() }
             let tp = ThoughtPreviewLarge(icon: thought.icon, createdAt: "\(thought.date)", relatedThought: thought.ID, entryCount: thought.entryCount, title: thought.title)
+            self.viewDelegate?.dataIsLoaded()
             return tp
         }()
         return thoughtPreview
@@ -42,6 +43,7 @@ extension HomeViewModel {
             let preview = ThoughtPreviewSmall(icon: thought.icon, lastEdited: "\(thought.lastEdited)", relatedThought: thought.ID)
             previews.append(preview)
         }
+        self.viewDelegate?.dataIsLoaded()
         return previews
     }
 }
