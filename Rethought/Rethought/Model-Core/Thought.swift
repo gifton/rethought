@@ -34,19 +34,13 @@ public class Thought: ThoughtDelegate {
         self.init(title: "nil", description: "nil", icon: "nil", date: Date.init())
     }
     
-
-    //  change later to include fontawesomekit icons
-    public enum Icon {
-        case yes
-        case no
-    }
     //  all thought objects
     public var title: String
     public var description: String
     public var icon: String
     public var entries: [Entry] = []
     public var date: Date
-    public var lastEdited: Date?
+    public var lastEdited: Date
     public var entryCount: [String:Int] = ["links": 0, "text": 0, "media":0]
     public var ID: String = randomString(length: 12)
     
@@ -57,6 +51,7 @@ public class Thought: ThoughtDelegate {
         self.icon = icon
         self.date = date
         self.ID = randomString(length: 12)
+        self.lastEdited = Date.init()
     }
     //  thoughts dont HAVE top have entries from the start, so if they do, use this function to set its entries
     public convenience init(title: String, description: String, icon: String, date: Date, entries: [Entry]) {
@@ -69,7 +64,9 @@ public class Thought: ThoughtDelegate {
     //  and when new thought is made that comes with a list of thoughts
     private func updateLastEdited() {
         let lastEntry = self.entries.last
-        self.lastEdited = lastEntry?.date
+        guard let lastDate: Date? = lastEntry?.date else { return }
+        self.lastEdited = lastDate ?? Date.init()
+        
         var linkCount: Int = 0
         var textCount: Int = 0
         var mediaCount: Int = 0

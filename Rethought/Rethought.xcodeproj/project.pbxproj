@@ -41,6 +41,8 @@
 		D75B891821BF1F5A0023784F /* ThoughtDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B891721BF1F5A0023784F /* ThoughtDetailController.swift */; };
 		D75B891A21BF47EA0023784F /* NewThoughtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B891921BF47EA0023784F /* NewThoughtView.swift */; };
 		D75B891C21BF4A380023784F /* NewThoughtController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B891B21BF4A380023784F /* NewThoughtController.swift */; };
+		D75B891E21C07D910023784F /* ThoughtPreviewSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B891D21C07D910023784F /* ThoughtPreviewSmall.swift */; };
+		D75B892021C08A980023784F /* ThoughtPreviewLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B891F21C08A980023784F /* ThoughtPreviewLarge.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +83,8 @@
 		D75B891721BF1F5A0023784F /* ThoughtDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailController.swift; sourceTree = "<group>"; };
 		D75B891921BF47EA0023784F /* NewThoughtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewThoughtView.swift; sourceTree = "<group>"; };
 		D75B891B21BF4A380023784F /* NewThoughtController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewThoughtController.swift; sourceTree = "<group>"; };
+		D75B891D21C07D910023784F /* ThoughtPreviewSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtPreviewSmall.swift; sourceTree = "<group>"; };
+		D75B891F21C08A980023784F /* ThoughtPreviewLarge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtPreviewLarge.swift; sourceTree = "<group>"; };
 		DC8A793DE6461EFAC213268E /* Pods-rethought.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rethought.release.xcconfig"; path = "Pods/Target Support Files/Pods-rethought/Pods-rethought.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,6 +168,8 @@
 				D75B88E421BC56AB0023784F /* Thought.swift */,
 				D75B890021BDCBB30023784F /* CellType.swift */,
 				D75B890B21BE18740023784F /* User.swift */,
+				D75B891D21C07D910023784F /* ThoughtPreviewSmall.swift */,
+				D75B891F21C08A980023784F /* ThoughtPreviewLarge.swift */,
 			);
 			path = "Model-Core";
 			sourceTree = "<group>";
@@ -371,6 +377,7 @@
 				D75B88E021BC54B20023784F /* Entry.swift in Sources */,
 				D75B88E321BC567A0023784F /* ThoughtViewModel.swift in Sources */,
 				D75B891221BEDD0E0023784F /* DashboardDelegate.swift in Sources */,
+				D75B892021C08A980023784F /* ThoughtPreviewLarge.swift in Sources */,
 				D75B88D121BC507B0023784F /* Styling.swift in Sources */,
 				D75B88FF21BDC2C60023784F /* RecentThoughtCell.swift in Sources */,
 				D75B891C21BF4A380023784F /* NewThoughtController.swift in Sources */,
@@ -389,6 +396,7 @@
 				D75B891821BF1F5A0023784F /* ThoughtDetailController.swift in Sources */,
 				D75B891A21BF47EA0023784F /* NewThoughtView.swift in Sources */,
 				D75B88D021BC507B0023784F /* Constants.swift in Sources */,
+				D75B891E21C07D910023784F /* ThoughtPreviewSmall.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

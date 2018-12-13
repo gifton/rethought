@@ -64,6 +64,7 @@ extension UIColor {
     static let backgroundAccentGray = UIColor(hex: "DEDEDE")
     
     static let darkText = UIColor(hex: "333333")
+    static let iconBackground = UIColor(hex: "FBF6EB")
 }
 
 public func randomString(length: Int) -> String {

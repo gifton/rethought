@@ -35,6 +35,7 @@ public class Entry {
     public var linkImage: UIImage?
     public var linkTitle: String?
     
+    //minimum
     init(type: EntryType, thoughtID: String, description: String, date: Date, icon: String) {
         self.type = type
         self.thoughtID = thoughtID
@@ -43,12 +44,15 @@ public class Entry {
         self.date = date
         self.icon = icon
     }
+    
+    //image type
     convenience init(type: EntryType, thoughtID: String, description: String, date: Date, icon: String, images: [UIImage]) {
         self.init(type: type, thoughtID: thoughtID, description: description, date: date, icon: icon)
         for image in images {
             self.images.append(image)
         }
     }
+    //link type
     convenience init(type: EntryType, thoughtID: String, description: String, date: Date, icon: String, link: String, linkImage: UIImage, linkTitle: String) {
         self.init(type: type, thoughtID: thoughtID, description: description, date: date, icon: icon)
         self.linkImage = linkImage
@@ -56,8 +60,19 @@ public class Entry {
         self.linkTitle = linkTitle
         self.thoughtID = thoughtID
     }
+    //string type
     convenience init(type: EntryType, thoughtID: String, description: String, date: Date, icon: String, title: String) {
         self.init(type: type, thoughtID: thoughtID, description: description, date: date, icon: icon)
         self.title = title
+    }
+    
+}
+
+extension Entry {
+    public func sendNewTHoughtToDB() {
+        print ("sent \(self) to DB")
+    }
+    public func removeThoughtFromDB() {
+        print ("removed thought: \(String(describing: self.title)) from db")
     }
 }
