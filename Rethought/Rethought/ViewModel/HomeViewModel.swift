@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class HomeViewModel: HomeViewModelDelegate {
+    
     var viewDelegate: HomeViewControllerDelegate?
     func createNew(_ thought: Thought) {
         print ("created new thought from: \(thought)")
@@ -28,7 +29,7 @@ class HomeViewModel: HomeViewModelDelegate {
 }
 
 extension HomeViewModel {
-    func getReccomended() -> ThoughtPreviewLarge {
+    func getReccomendedThought() -> ThoughtPreviewLarge {
         let thoughtPreview: ThoughtPreviewLarge = {
             guard let thought: Thought = self.thoughts.last else { return ThoughtPreviewLarge.init() }
             let tp = ThoughtPreviewLarge(icon: thought.icon, createdAt: "\(thought.date)", relatedThought: thought.ID, entryCount: thought.entryCount, title: thought.title)
@@ -37,7 +38,7 @@ extension HomeViewModel {
         }()
         return thoughtPreview
     }
-    func getRecent() -> [ThoughtPreviewSmall] {
+    func getRecentThoughts() -> [ThoughtPreviewSmall] {
         var previews: [ThoughtPreviewSmall] = []
         for thought in self.thoughts {
             let preview = ThoughtPreviewSmall(icon: thought.icon, lastEdited: "\(thought.lastEdited)", relatedThought: thought.ID)
@@ -45,6 +46,17 @@ extension HomeViewModel {
         }
         self.viewDelegate?.dataIsLoaded()
         return previews
+    }
+    func getRecentEntries() -> [EntryPreview] {
+        var recentEntries = [EntryPreview]()
+        for thought in self.thoughts {
+            let entryPrev = EntryPreview(entry: thought.entries.first!)
+            recentEntries.append(entryPrev)
+        }
+        return recentEntries
+    }
+    func retrieve(_ thoughtID: String) -> Thought {
+        return thoughts.filter{ $0.ID == thoughtID }.first!
     }
 }
 

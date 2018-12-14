@@ -3,7 +3,6 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
-    var Thoughts: [Thought]?
     lazy var viewModel: HomeViewModel = {
         let vm = HomeViewModel(thoughts: self.getDummyDataForReccomededThoughts(8, entryAmount: 8))
         vm.viewDelegate = self
@@ -14,7 +13,12 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        homeView = HomeView(viewModel.getRecent(), viewModel.getReccomended(), thoughtCount: viewModel.thoughts.count, frame: .zero)
+        homeView = HomeView(viewModel.getRecentThoughts(),
+                            viewModel.getReccomendedThought(),
+                            viewModel.getRecentEntries(),
+                            thoughtCount: viewModel.thoughts.count,
+                            frame: .zero)
+        
         homeView.delegate = self
         view = homeView
         homeView.dataIsLoaded()
@@ -47,11 +51,9 @@ extension HomeView: UICollectionViewDelegate {
         delegate?.userDidTapThought((recentThoughts?[indexPath.row].thoughtID)!)
     }
 }
-
 extension HomeViewController: HomeViewControllerDelegate {
     func dataIsLoaded() {
-        self.homeView.reloadInputViews()
-        self.homeView.dataIsLoaded()
+        self.homeView?.dataIsLoaded()
     }
     
     func userDidTapProfileButton() {
@@ -72,8 +74,8 @@ extension HomeViewController: HomeViewControllerDelegate {
     
     func userDidTapThought(_ thoughtID: String) {
         let controller = ThoughtDetailController()
-        guard let thoughts = self.Thoughts else { return }
-        controller.thought = thoughts.filter{ $0.ID == thoughtID }.first!
+        controller.thought = viewModel.retrieve(thoughtID)
+        
         self.navigationController?.pushViewController(controller, animated: true)
         
     }

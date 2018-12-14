@@ -18,19 +18,25 @@ class HomeView: UIView {
     public var delegate: HomeViewControllerDelegate?
     public var reccomendedThought: ThoughtPreviewLarge?
     public var recentThoughts: [ThoughtPreviewSmall]?
+    public var recentEntries: [EntryPreview]?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor(hex: "FAFBFF")
         
     }
-    convenience init(_ recentThoughts: [ThoughtPreviewSmall], _ reccomendedThought: ThoughtPreviewLarge, thoughtCount: Int, frame: CGRect) {
+    convenience init(_ recentThoughts: [ThoughtPreviewSmall],
+                     _ reccomendedThought: ThoughtPreviewLarge,
+                     _ recentEntries: [EntryPreview],
+                     thoughtCount: Int, frame: CGRect) {
         self.init(frame: frame)
         self.thoughtCount = thoughtCount
         self.recentThoughts = recentThoughts
         self.reccomendedThought = reccomendedThought
+        self.recentEntries = recentEntries
         //call setView in conveniance init, because conveniance init includes the neccesary components
         setView()
+        
     }
     //MARK: All objects in homeView
     let newView: UIView = {
@@ -50,7 +56,15 @@ class HomeView: UIView {
         lbl.clipsToBounds = true
         return lbl
     }()
-    let viewAllThoughts: UIButton = {
+    let viewAllThoughtsButton: UIButton = {
+        let btn = UIButton()
+        let attribute = [ NSAttributedString.Key.font: UIFont(name: "Lato-Light", size: 14),  NSAttributedString.Key.foregroundColor: UIColor.darkGray]
+        let myAttrString = NSAttributedString(string: "View all", attributes: attribute as [NSAttributedString.Key : Any])
+        btn.setAttributedTitle(myAttrString, for: .normal)
+        btn.setTitleColor(.darkGray, for: .normal)
+        return btn
+    }()
+    let viewAllEntriesButton: UIButton = {
         let btn = UIButton()
         btn.setTitle("View All", for: .normal)
         return btn
@@ -66,7 +80,6 @@ class HomeView: UIView {
         let sv = UIScrollView()
         sv.backgroundColor = UIColor(hex: "FAFBFF")
         sv.translatesAutoresizingMaskIntoConstraints = false
-        sv.contentSize.height = 770
         
         return sv
     }()
@@ -78,7 +91,7 @@ class HomeView: UIView {
         lbl.textColor = UIColor(hex: "BFC0C3")
         return lbl
     }()
-    let recentThoughtsCollectionView: UICollectionView = {
+    var recentThoughtsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = ViewSize.thoughtCellSmall
@@ -117,46 +130,62 @@ class HomeView: UIView {
     
     
     func setView() {
-        
-        if thoughts != nil {
-            print("thoughts are now active!")
-        } else {
-            print("awww okay")
-        }
-        
         addSubview(thoughtLabel)
         addSubview(profileButton)
         addSubview(scrollView)
         addSubview(newView)
+        
+        setupScrollViews()
+        recentThoughtsCollectionView.reloadData()
+        
+        profileButton.addTarget(self, action: #selector(userPressedProfile), for: .touchUpInside)
+        newThoughtButton.addTarget(self, action: #selector(userPressedNewThought), for: .touchUpInside)
+        addRecentEntries()
+    }
+    
+    func setupScrollViews() {
+        
+        scrollView.contentSize.height = calculateScrollViewHeight()
+        recentThoughtsCollectionView.register(RecentThoughtCell.self, forCellWithReuseIdentifier: RecentThoughtCell.identifier)
+        recentThoughtsCollectionView.delegate = self
+        recentThoughtsCollectionView.dataSource = self
+        
         scrollView.frame.origin = CGPoint(x: 0, y: 100)
         scrollView.setAnchor(top: thoughtLabel.bottomAnchor, leading: leadingAnchor, bottom: newView.topAnchor, trailing: trailingAnchor, paddingTop: 25, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
         
         scrollView.addSubview(reccomendedThoughtLabel)
         scrollView.addSubview(recentThoughtsCollectionView)
         scrollView.addSubview(newThoughtButton)
-        scrollView.addSubview(recentEntriesView)
-        scrollView.addSubview(reccomendedThoughtView)
+        scrollView.addSubview(viewAllThoughtsButton)
         
-        recentEntriesView.setHeightWidth(width: ViewSize.SCREEN_WIDTH - 30, height: 300)
-        reccomendedThoughtView.setHeightWidth(width: 350, height: 160)
+        viewAllThoughtsButton.frame = CGRect(x: ViewSize.SCREEN_WIDTH - 100, y: 10, width: 80, height: 30)
         
-        NSLayoutConstraint.activate([
-            recentEntriesView.topAnchor.constraint(equalTo: newThoughtButton.bottomAnchor, constant: 25),
-            recentEntriesView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            reccomendedThoughtView.topAnchor.constraint(equalTo: recentEntriesView.bottomAnchor, constant: 10),
-            reccomendedThoughtView.centerXAnchor.constraint(equalTo: centerXAnchor),
-        ])
-        recentThoughtsCollectionView.reloadData()
-        setupCollectionView()
-        
-        profileButton.addTarget(self, action: #selector(userPressedProfile), for: .touchUpInside)
-        newThoughtButton.addTarget(self, action: #selector(userPressedNewThought), for: .touchUpInside)
     }
     
-    func setupCollectionView() {
-        recentThoughtsCollectionView.register(RecentThoughtCell.self, forCellWithReuseIdentifier: RecentThoughtCell.identifier)
-        recentThoughtsCollectionView.delegate = self
-        recentThoughtsCollectionView.dataSource = self
+    func addRecentEntries() {
+        var origin = CGPoint(x: 12, y: 250)
+        
+        for (count, entry) in recentEntries!.enumerated() {
+            print ("for thought: \(entry.type)")
+            switch entry.type {
+            case .image:
+                let newEntry = EntryImageView(entry.title, entry.images.first!, "\(count) days", frame: CGRect(x: origin.x, y: origin.y, width: ViewSize.minimumEntryPreviewSize.width, height: ViewSize.minimumEntryPreviewSize.height))
+                scrollView.addSubview(newEntry)
+                origin.y += 150
+            case .text:
+                let newEntry = EntryTextView(entry.title,
+                                             entry.description ?? "Details not available",
+                                             "\(count) days", frame: CGRect(x: origin.x, y: origin.y, width: ViewSize.minimumEntryPreviewSize.width, height: ViewSize.minimumEntryPreviewSize.height))
+                scrollView.addSubview(newEntry)
+                origin.y += ViewSize.minimumEntryPreviewSize.height + 10
+            case .link:
+                let newEntry = EntryTextView(entry.title,
+                                             entry.description ?? "Details not available",
+                                             "\(count) days", frame: CGRect(x: origin.x, y: origin.y, width: ViewSize.minimumEntryPreviewSize.width, height: ViewSize.minimumEntryPreviewSize.height))
+                scrollView.addSubview(newEntry)
+                origin.y += ViewSize.minimumEntryPreviewSize.height + 10
+            }
+        }
     }
 }
 
@@ -167,6 +196,23 @@ extension HomeView {
     private func updateViews() {
         self.reloadInputViews()
         self.recentThoughtsCollectionView.reloadData()
+    }
+    private func calculateScrollViewHeight() -> CGFloat {
+        var height: CGFloat = 400
+        if self.recentEntries?.count ?? 0 > 0 {
+            for entry in recentEntries! {
+                switch entry.type {
+                case .image:
+                    height += 140
+                case .text:
+                    height += 100
+                case .link:
+                    height += 70
+                }
+            }
+        }
+        print(height)
+        return height
     }
 }
 

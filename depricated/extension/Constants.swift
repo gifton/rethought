@@ -33,7 +33,7 @@ struct ViewSize {
     static let largeButton = CGSize(width: 350, height: 56)
     static let thoughtCellSmall = CGSize(width: 82, height: 76)
     static let thoughtIconSmall = CGSize(width: 56, height: 56)
-    static let minimumEntryPreviewSize = CGSize(width: 350, height: 103)
+    static let minimumEntryPreviewSize = CGSize(width: 350, height: 120)
 }
 
 struct App {

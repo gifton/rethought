@@ -9,13 +9,7 @@
 import Foundation
 import UIKit
 
-//protocol HomeViewDelegate {
-//    func userDidTapProfileButton()
-//    func userDidTapViewAllThoughts()
-//    func userDidTapViewAllEntries()
-//    func userDidTapNewThought()
-//    func userDidTapThought(_ thought: Thought)
-//}
+
 
 protocol HomeViewControllerDelegate {
     func dataIsLoaded()
@@ -30,7 +24,7 @@ protocol HomeViewModelDelegate {
     func createNew(_ thought: Thought)
     func destroy(_ thoughtID: Thought)
     func update(_ thought: Thought)
-    func getReccomended() -> ThoughtPreviewLarge
-    func getRecent() -> [ThoughtPreviewSmall]
+    func getReccomendedThought() -> ThoughtPreviewLarge
+    func getRecentThoughts() -> [ThoughtPreviewSmall]
 }
 
