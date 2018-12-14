@@ -292,6 +292,14 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return image!
     }
+    func calculateImageHeight(desiredWidth: Int = 350) -> CGSize {
+        let desiredWidth = desiredWidth
+        let currentHeight: Int = Int(self.size.height)
+        let currentWidth: Int = Int(self.size.width)
+        let newHeight = (desiredWidth * currentHeight) / currentWidth
+        
+        return CGSize(width: desiredWidth, height: newHeight)
+    }
 }
 
 extension UIButton {

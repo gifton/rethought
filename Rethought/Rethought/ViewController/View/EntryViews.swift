@@ -20,6 +20,7 @@ class EntryImageView: UIView {
         self.init(frame: frame)
         self.title.text = title
         self.date.text = date
+        self.entryImage.image = image
     }
     
     var title: UILabel = {
@@ -31,8 +32,11 @@ class EntryImageView: UIView {
     var entryImage: UIImageView = {
        let img = UIImageView()
         img.contentMode = .scaleAspectFit
+        img.layer.masksToBounds = true
         img.image = UIImage.random(size: CGSize(width: 350, height: 125))
         img.translatesAutoresizingMaskIntoConstraints = false
+        img.layer.cornerRadius = 5
+        img.layer.masksToBounds = true
         return img
     }()
     var date: UILabel = {
@@ -45,8 +49,7 @@ class EntryImageView: UIView {
     func layoutCell() {
         addSubview(title)
         addSubview(entryImage)
-        entryImage.layer.borderColor = UIColor.darkGray.cgColor
-        entryImage.layer.borderWidth = 2
+        
         entryImage.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         entryImage.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 5).isActive = true
         entryImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
@@ -74,13 +77,13 @@ class EntryTextView: UIView {
     }
     
     var title: UILabel = {
-        let lbl = UILabel(frame: CGRect(x: 10, y: 10, width: 330, height: 20))
+        let lbl = UILabel(frame: CGRect(x: 10, y: 20, width: 330, height: 20))
         lbl.font = UIFont(name: "Lato-Bold", size: 16)
         
         return lbl
     }()
     var entryText: UILabel = {
-        let lbl = UILabel(frame: CGRect(x: 0, y: 22, width: 350, height: 98))
+        let lbl = UILabel(frame: CGRect(x: 10, y: 42, width: 340, height: 75))
         lbl.numberOfLines = 5
         lbl.font = UIFont(name: "Lato", size: 12)
         
@@ -88,7 +91,8 @@ class EntryTextView: UIView {
     }()
     var date: UILabel = {
         let lbl = UILabel(frame: CGRect(x: 300, y: 100, width: 50, height: 20))
-        lbl.font = UIFont(name: "Lato-Regular", size: 13)
+        lbl.font = UIFont(name: "Lato-Black", size: 13)
+        lbl.text = "2 days"
         
         return lbl
     }()
@@ -96,6 +100,7 @@ class EntryTextView: UIView {
     func layoutCell() {
         addSubview(title)
         addSubview(entryText)
+        addSubview(date)
     }
     
     

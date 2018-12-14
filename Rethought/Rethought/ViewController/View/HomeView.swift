@@ -39,12 +39,18 @@ class HomeView: UIView {
         
     }
     //MARK: All objects in homeView
+    let profileButton: UIButton = {
+        let btn = UIButton(frame: CGRect(x: ViewSize.SCREEN_WIDTH - 80, y: 57, width: 60, height: 20))
+        btn.setTitle("Profile", for: .normal)
+        btn.setTitleColor(UIColor(hex: "E91E63"), for: .normal)
+        
+        return btn
+    }()
     let newView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: ViewSize.SCREEN_HEIGHT - 100, width: ViewSize.SCREEN_WIDTH, height: 100))
         view.backgroundColor = UIColor(hex: "F7D351")
         return view
     }()
-    
     let thoughtLabel: UILabel = {
         let lbl = UILabel(frame: CGRect(x: 15, y: 50, width: 100, height: 30))
         lbl.text = "Re:Thought"
@@ -56,40 +62,30 @@ class HomeView: UIView {
         lbl.clipsToBounds = true
         return lbl
     }()
-    let viewAllThoughtsButton: UIButton = {
-        let btn = UIButton()
-        let attribute = [ NSAttributedString.Key.font: UIFont(name: "Lato-Light", size: 14),  NSAttributedString.Key.foregroundColor: UIColor.darkGray]
-        let myAttrString = NSAttributedString(string: "View all", attributes: attribute as [NSAttributedString.Key : Any])
-        btn.setAttributedTitle(myAttrString, for: .normal)
-        btn.setTitleColor(.darkGray, for: .normal)
-        return btn
-    }()
-    let viewAllEntriesButton: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("View All", for: .normal)
-        return btn
-    }()
-    let profileButton: UIButton = {
-        let btn = UIButton(frame: CGRect(x: ViewSize.SCREEN_WIDTH - 80, y: 57, width: 60, height: 20))
-        btn.setTitle("Profile", for: .normal)
-        btn.setTitleColor(UIColor(hex: "E91E63"), for: .normal)
-        
-        return btn
-    }()
+    
     let scrollView: UIScrollView = {
         let sv = UIScrollView()
         sv.backgroundColor = UIColor(hex: "FAFBFF")
         sv.translatesAutoresizingMaskIntoConstraints = false
+        sv.layer.borderWidth = 5
+        sv.layer.borderColor = UIColor.red.cgColor
         
         return sv
     }()
-    
     let reccomendedThoughtLabel: UILabel = {
         let lbl = UILabel(frame: CGRect(x: 15, y: 10, width: ViewSize.SCREEN_WIDTH - 150, height: 30))
         lbl.text = "🚂 CONTINUE THE THOUGHT"
         lbl.font = UIFont(name: "Lato-Bold", size: 12)
         lbl.textColor = UIColor(hex: "BFC0C3")
         return lbl
+    }()
+    let viewAllThoughtsButton: UIButton = {
+        let btn = UIButton(frame: CGRect(x: ViewSize.SCREEN_WIDTH - 100, y: 10, width: 80, height: 30))
+        let attribute = [ NSAttributedString.Key.font: UIFont(name: "Lato-Light", size: 14),  NSAttributedString.Key.foregroundColor: UIColor.darkGray]
+        let myAttrString = NSAttributedString(string: "View all", attributes: attribute as [NSAttributedString.Key : Any])
+        btn.setAttributedTitle(myAttrString, for: .normal)
+        btn.setTitleColor(.darkGray, for: .normal)
+        return btn
     }()
     var recentThoughtsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -101,8 +97,9 @@ class HomeView: UIView {
         
         return cv
     }()
+    
     let newThoughtButton: UIButton = {
-        let btn = UIButton(frame: CGRect(x: 15, y: 180, width: ViewSize.SCREEN_WIDTH - 30, height: 55))
+        let btn = UIButton(frame: CGRect(x: 15, y: 140, width: ViewSize.SCREEN_WIDTH - 30, height: 55))
         let attribute = [ NSAttributedString.Key.font: UIFont(name: "Lato-Regular", size: 20),  NSAttributedString.Key.foregroundColor: UIColor.white]
         let myAttrString = NSAttributedString(string: "Create new Thought", attributes: attribute as [NSAttributedString.Key : Any])
         btn.setAttributedTitle(myAttrString, for: .normal)
@@ -110,12 +107,13 @@ class HomeView: UIView {
         btn.layer.cornerRadius = 4
         return btn
     }()
-    let recentEntriesView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .blueSmoke
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
+    let recentEntriesLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.text = "🎯 RECENT ENTRIES"
+        lbl.font = UIFont(name: "Lato-Bold", size: 16)
+        lbl.textColor = UIColor(hex: "BFC0C3")
+        return lbl
     }()
     let reccomendedThoughtView: UIView = {
         let view = UIView()
@@ -157,33 +155,41 @@ class HomeView: UIView {
         scrollView.addSubview(recentThoughtsCollectionView)
         scrollView.addSubview(newThoughtButton)
         scrollView.addSubview(viewAllThoughtsButton)
+        scrollView.addSubview(recentEntriesLabel)
+        scrollView.addSubview(reccomendedThoughtView)
         
-        viewAllThoughtsButton.frame = CGRect(x: ViewSize.SCREEN_WIDTH - 100, y: 10, width: 80, height: 30)
+        recentEntriesLabel.topAnchor.constraint(equalTo: newThoughtButton.bottomAnchor, constant: 15).isActive = true
+        recentEntriesLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
         
+        reccomendedThoughtView.bottomAnchor.constraint(equalTo: newView.topAnchor, constant: -5).isActive = true
+        reccomendedThoughtView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        reccomendedThoughtView.setHeightWidth(width: 350, height: 156)
     }
     
     func addRecentEntries() {
         var origin = CGPoint(x: 12, y: 250)
         
         for (count, entry) in recentEntries!.enumerated() {
-            print ("for thought: \(entry.type)")
+            //depending on the type, produce a view that translates
             switch entry.type {
             case .image:
+                //display first image in entry
+                //consider doing a collage of images if > 1 in future?
                 let newEntry = EntryImageView(entry.title, entry.images.first!, "\(count) days", frame: CGRect(x: origin.x, y: origin.y, width: ViewSize.minimumEntryPreviewSize.width, height: ViewSize.minimumEntryPreviewSize.height))
                 scrollView.addSubview(newEntry)
-                origin.y += 150
+                origin.y += (entry.images.first?.size.height)! + 35
             case .text:
                 let newEntry = EntryTextView(entry.title,
                                              entry.description ?? "Details not available",
                                              "\(count) days", frame: CGRect(x: origin.x, y: origin.y, width: ViewSize.minimumEntryPreviewSize.width, height: ViewSize.minimumEntryPreviewSize.height))
                 scrollView.addSubview(newEntry)
-                origin.y += ViewSize.minimumEntryPreviewSize.height + 10
+                origin.y += ViewSize.minimumEntryPreviewSize.height + 20
             case .link:
                 let newEntry = EntryTextView(entry.title,
                                              entry.description ?? "Details not available",
                                              "\(count) days", frame: CGRect(x: origin.x, y: origin.y, width: ViewSize.minimumEntryPreviewSize.width, height: ViewSize.minimumEntryPreviewSize.height))
                 scrollView.addSubview(newEntry)
-                origin.y += ViewSize.minimumEntryPreviewSize.height + 10
+                origin.y += ViewSize.minimumEntryPreviewSize.height + 20
             }
         }
     }
@@ -196,22 +202,24 @@ extension HomeView {
     private func updateViews() {
         self.reloadInputViews()
         self.recentThoughtsCollectionView.reloadData()
+        
     }
     private func calculateScrollViewHeight() -> CGFloat {
-        var height: CGFloat = 400
+        var height: CGFloat = 600
         if self.recentEntries?.count ?? 0 > 0 {
             for entry in recentEntries! {
                 switch entry.type {
                 case .image:
-                    height += 140
+                    height += ((entry.images.first?.size.height)!)
                 case .text:
-                    height += 100
+                    height += 120
                 case .link:
                     height += 70
                 }
             }
         }
-        print(height)
+        print("---------", height)
+        height += 50
         return height
     }
 }

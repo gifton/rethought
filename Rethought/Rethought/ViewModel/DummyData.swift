@@ -17,7 +17,13 @@ extension HomeViewController {
         let string2 = "This is where you put ideas for apps, if the idea gets to large, create a seperate thought"
         var dummyThoughts = [Thought]()
         var dummyIcons = ["😂", "⚽️", "♥️", "🙅‍♂️", "🎄", "✊🏾", "🍤", "🍔", "🥪", "💻"]
-        var images: [UIImage] = [UIImage(named: "testImage1")!, UIImage(named: "testImage2")!]
+        var rawImages: [UIImage] = [UIImage(named: "testImage1")!, UIImage(named: "testImage3")!, UIImage(named: "testImage4")!, UIImage(named: "testImage2")!]
+        var resizedImages = [UIImage]()
+        for img in rawImages {
+            let size: CGSize = img.calculateImageHeight()
+            let newImg = img.resizeImageWith(newSize: size)
+            resizedImages.append(newImg)
+        }
         func getEntries(_ forThought: String, num: Int = Int.random(in: 0 ..< 10)) -> [Entry] {
             var entries = [Entry]()
             for _ in (0...entryAmount) {
@@ -26,7 +32,7 @@ extension HomeViewController {
                     entries.append(entry)
                     
                 } else {
-                    let entry = Entry(type: .image, thoughtID: forThought, description: string1, date: Date(timeIntervalSinceNow: TimeInterval.init(exactly: 1000)!), icon: "🚫", images: images)
+                    let entry = Entry(type: .image, thoughtID: forThought, description: string1, date: Date(timeIntervalSinceNow: TimeInterval.init(exactly: 1000)!), icon: "🚫", images: resizedImages)
                     entries.append(entry)
                 }
                 
