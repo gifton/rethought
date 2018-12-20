@@ -31,7 +31,7 @@ class HomeViewModel: HomeViewModelDelegate {
 extension HomeViewModel {
     func getReccomendedThought() -> ThoughtPreviewLarge {
         let thoughtPreview: ThoughtPreviewLarge = {
-            guard let thought: Thought = self.thoughts.last else { return ThoughtPreviewLarge.init() }
+            guard let thought: Thought = self.thoughts.first else { return ThoughtPreviewLarge.init() }
             let tp = ThoughtPreviewLarge(icon: thought.icon, createdAt: "\(thought.date)", relatedThought: thought.ID, entryCount: thought.entryCount, title: thought.title)
             self.viewDelegate?.dataIsLoaded()
             return tp
@@ -41,7 +41,7 @@ extension HomeViewModel {
     func getRecentThoughts() -> [ThoughtPreviewSmall] {
         var previews: [ThoughtPreviewSmall] = []
         for thought in self.thoughts {
-            let preview = ThoughtPreviewSmall(icon: thought.icon, lastEdited: "\(thought.lastEdited)", relatedThought: thought.ID)
+            let preview = ThoughtPreviewSmall(icon: thought.icon, lastEdited: "\(thought.lastEdited)", relatedThought: thought.ID, itemCount: thought.entries.count)
             previews.append(preview)
         }
         self.viewDelegate?.dataIsLoaded()
@@ -56,8 +56,9 @@ extension HomeViewModel {
         return recentEntries
     }
     func retrieve(_ thoughtID: String) -> Thought {
-        return thoughts.filter{ $0.ID == thoughtID }.first!
+        return thoughts.filter{ $0.ID == thoughtID }.first ?? Thought.init()
+    }
+    func getThoughtName(_ thoughtID: String) -> String {
+        return thoughts.filter{ $0.ID == thoughtID}.first!.title
     }
 }
-
-

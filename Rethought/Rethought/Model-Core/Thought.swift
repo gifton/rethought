@@ -30,7 +30,7 @@ public class Thought: ThoughtDelegate {
         updateLastEdited()
     }
     
-    convenience init(_ empty: String = "empty") {
+    convenience init() {
         self.init(title: "nil", description: "nil", icon: "nil", date: Date.init())
     }
     

@@ -64,6 +64,10 @@ class RecentThoughtCell: UICollectionViewCell {
         self.title.text = nil
     }
     
+    override func prepareForInterfaceBuilder() {
+        self.title.text = nil
+    }
+    
     
     public static var identifier: String {
         return "RecentThoughtCell"

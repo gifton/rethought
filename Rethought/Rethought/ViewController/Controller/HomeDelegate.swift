@@ -18,6 +18,8 @@ protocol HomeViewControllerDelegate {
     func userDidTapViewAllEntries()
     func userDidTapNewThought()
     func userDidTapThought(_ thoughtID: String)
+    func userDidTapQuickAddIcon()
+    func userBeganQuickAdd()
 }
 
 protocol HomeViewModelDelegate {

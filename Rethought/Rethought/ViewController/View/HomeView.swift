@@ -28,8 +28,10 @@ class HomeView: UIView {
     convenience init(_ recentThoughts: [ThoughtPreviewSmall],
                      _ reccomendedThought: ThoughtPreviewLarge,
                      _ recentEntries: [EntryPreview],
+                     delegate: HomeViewControllerDelegate,
                      thoughtCount: Int, frame: CGRect) {
         self.init(frame: frame)
+        self.delegate = delegate
         self.thoughtCount = thoughtCount
         self.recentThoughts = recentThoughts
         self.reccomendedThought = reccomendedThought
@@ -46,11 +48,8 @@ class HomeView: UIView {
         
         return btn
     }()
-    let newView: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: ViewSize.SCREEN_HEIGHT - 100, width: ViewSize.SCREEN_WIDTH, height: 100))
-        view.backgroundColor = UIColor(hex: "F7D351")
-        return view
-    }()
+    let quickAddView = QuickAddView(frame: CGRect(x: 0, y: ViewSize.SCREEN_HEIGHT - 100, width: ViewSize.SCREEN_WIDTH, height: 100))
+
     let thoughtLabel: UILabel = {
         let lbl = UILabel(frame: CGRect(x: 15, y: 50, width: 100, height: 30))
         lbl.text = "Re:Thought"
@@ -67,15 +66,13 @@ class HomeView: UIView {
         let sv = UIScrollView()
         sv.backgroundColor = UIColor(hex: "FAFBFF")
         sv.translatesAutoresizingMaskIntoConstraints = false
-        sv.layer.borderWidth = 5
-        sv.layer.borderColor = UIColor.red.cgColor
         
         return sv
     }()
     let reccomendedThoughtLabel: UILabel = {
-        let lbl = UILabel(frame: CGRect(x: 15, y: 10, width: ViewSize.SCREEN_WIDTH - 150, height: 30))
+        let lbl = UILabel(frame: CGRect(x: 15, y: 0, width: ViewSize.SCREEN_WIDTH - 150, height: 30))
         lbl.text = "🚂 CONTINUE THE THOUGHT"
-        lbl.font = UIFont(name: "Lato-Bold", size: 12)
+        lbl.font = UIFont(name: "Lato-Bold", size: 16)
         lbl.textColor = UIColor(hex: "BFC0C3")
         return lbl
     }()
@@ -91,7 +88,7 @@ class HomeView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = ViewSize.thoughtCellSmall
-        let cv = UICollectionView(frame: CGRect(x: 0, y: 50, width: ViewSize.SCREEN_WIDTH, height: 100), collectionViewLayout: layout)
+        let cv = UICollectionView(frame: CGRect(x: 0, y: 20, width: ViewSize.SCREEN_WIDTH, height: 100), collectionViewLayout: layout)
         cv.backgroundColor = .white
         cv.showsHorizontalScrollIndicator = false
         
@@ -99,7 +96,7 @@ class HomeView: UIView {
     }()
     
     let newThoughtButton: UIButton = {
-        let btn = UIButton(frame: CGRect(x: 15, y: 140, width: ViewSize.SCREEN_WIDTH - 30, height: 55))
+        let btn = UIButton(frame: CGRect(x: 15, y: 148, width: ViewSize.SCREEN_WIDTH - 30, height: 55))
         let attribute = [ NSAttributedString.Key.font: UIFont(name: "Lato-Regular", size: 20),  NSAttributedString.Key.foregroundColor: UIColor.white]
         let myAttrString = NSAttributedString(string: "Create new Thought", attributes: attribute as [NSAttributedString.Key : Any])
         btn.setAttributedTitle(myAttrString, for: .normal)
@@ -118,7 +115,7 @@ class HomeView: UIView {
     let reccomendedThoughtView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(hex: "55AFF8")
-        view.translatesAutoresizingMaskIntoConstraints = false
+        
         return view
     }()
     
@@ -131,7 +128,8 @@ class HomeView: UIView {
         addSubview(thoughtLabel)
         addSubview(profileButton)
         addSubview(scrollView)
-        addSubview(newView)
+        addSubview(quickAddView)
+        
         
         setupScrollViews()
         recentThoughtsCollectionView.reloadData()
@@ -144,12 +142,12 @@ class HomeView: UIView {
     func setupScrollViews() {
         
         scrollView.contentSize.height = calculateScrollViewHeight()
-        recentThoughtsCollectionView.register(RecentThoughtCell.self, forCellWithReuseIdentifier: RecentThoughtCell.identifier)
+        recentThoughtsCollectionView.register(MicroThoughtCell.self, forCellWithReuseIdentifier: MicroThoughtCell.identifier)
         recentThoughtsCollectionView.delegate = self
         recentThoughtsCollectionView.dataSource = self
         
         scrollView.frame.origin = CGPoint(x: 0, y: 100)
-        scrollView.setAnchor(top: thoughtLabel.bottomAnchor, leading: leadingAnchor, bottom: newView.topAnchor, trailing: trailingAnchor, paddingTop: 25, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
+        scrollView.setAnchor(top: thoughtLabel.bottomAnchor, leading: leadingAnchor, bottom: quickAddView.topAnchor, trailing: trailingAnchor, paddingTop: 25, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
         
         scrollView.addSubview(reccomendedThoughtLabel)
         scrollView.addSubview(recentThoughtsCollectionView)
@@ -161,35 +159,38 @@ class HomeView: UIView {
         recentEntriesLabel.topAnchor.constraint(equalTo: newThoughtButton.bottomAnchor, constant: 15).isActive = true
         recentEntriesLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
         
-        reccomendedThoughtView.bottomAnchor.constraint(equalTo: newView.topAnchor, constant: -5).isActive = true
-        reccomendedThoughtView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        reccomendedThoughtView.setHeightWidth(width: 350, height: 156)
+        reccomendedThoughtView.frame = CGRect(x: 15, y: self.calculateScrollViewHeight() - 165, width: ViewSize.SCREEN_WIDTH - 30, height: 156)
+        
     }
     
     func addRecentEntries() {
         var origin = CGPoint(x: 12, y: 250)
         
         for (count, entry) in recentEntries!.enumerated() {
+            let newFrame = CGRect(x: origin.x, y: origin.y, width: ViewSize.minimumEntryPreviewSize.width, height: ViewSize.minimumEntryPreviewSize.height)
             //depending on the type, produce a view that translates
             switch entry.type {
             case .image:
                 //display first image in entry
                 //consider doing a collage of images if > 1 in future?
-                let newEntry = EntryImageView(entry.title, entry.images.first!, "\(count) days", frame: CGRect(x: origin.x, y: origin.y, width: ViewSize.minimumEntryPreviewSize.width, height: ViewSize.minimumEntryPreviewSize.height))
+                let newEntry = EntryImageView(entry, frame: newFrame, delegate: self.delegate)
                 scrollView.addSubview(newEntry)
                 origin.y += (entry.images.first?.size.height)! + 35
+                
             case .text:
                 let newEntry = EntryTextView(entry.title,
                                              entry.description ?? "Details not available",
-                                             "\(count) days", frame: CGRect(x: origin.x, y: origin.y, width: ViewSize.minimumEntryPreviewSize.width, height: ViewSize.minimumEntryPreviewSize.height))
+                                             "\(count) days", frame: newFrame)
                 scrollView.addSubview(newEntry)
-                origin.y += ViewSize.minimumEntryPreviewSize.height + 20
+                origin.y += ViewSize.minimumEntryPreviewSize.height + 10
+                
             case .link:
                 let newEntry = EntryTextView(entry.title,
                                              entry.description ?? "Details not available",
-                                             "\(count) days", frame: CGRect(x: origin.x, y: origin.y, width: ViewSize.minimumEntryPreviewSize.width, height: ViewSize.minimumEntryPreviewSize.height))
+                                             "\(count) days", frame: newFrame)
                 scrollView.addSubview(newEntry)
                 origin.y += ViewSize.minimumEntryPreviewSize.height + 20
+                
             }
         }
     }
@@ -240,6 +241,9 @@ extension HomeView {
     @objc func userPressedViewAllEntries() {
         print("we made it to this objc func!")
         delegate?.userDidTapProfileButton()
+    }
+    @objc func userPressedOnEntry(_ id: String?) {
+        print ("this actually worked lmao")
     }
     
 }

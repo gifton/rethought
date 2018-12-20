@@ -44,6 +44,8 @@
 		D75B892221C2D7D70023784F /* EntryPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B892121C2D7D70023784F /* EntryPreview.swift */; };
 		D75B892421C2FE750023784F /* EntryPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B892321C2FE750023784F /* EntryPreviewCell.swift */; };
 		D75B892621C339CF0023784F /* EntryViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B892521C339CF0023784F /* EntryViews.swift */; };
+		D75B892821C48A7A0023784F /* QuickAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B892721C48A7A0023784F /* QuickAddView.swift */; };
+		D79B1EF821CC09FC00E951D3 /* MicroThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B1EF721CC09FC00E951D3 /* MicroThoughtCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +89,8 @@
 		D75B892121C2D7D70023784F /* EntryPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPreview.swift; sourceTree = "<group>"; };
 		D75B892321C2FE750023784F /* EntryPreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPreviewCell.swift; sourceTree = "<group>"; };
 		D75B892521C339CF0023784F /* EntryViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViews.swift; sourceTree = "<group>"; };
+		D75B892721C48A7A0023784F /* QuickAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAddView.swift; sourceTree = "<group>"; };
+		D79B1EF721CC09FC00E951D3 /* MicroThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroThoughtCell.swift; sourceTree = "<group>"; };
 		DC8A793DE6461EFAC213268E /* Pods-rethought.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rethought.release.xcconfig"; path = "Pods/Target Support Files/Pods-rethought/Pods-rethought.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -233,6 +237,7 @@
 				D75B890D21BE191C0023784F /* ProfileView.swift */,
 				D75B891921BF47EA0023784F /* NewThoughtView.swift */,
 				D75B892521C339CF0023784F /* EntryViews.swift */,
+				D75B892721C48A7A0023784F /* QuickAddView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -242,6 +247,7 @@
 			children = (
 				D75B88FE21BDC2C60023784F /* RecentThoughtCell.swift */,
 				D75B892321C2FE750023784F /* EntryPreviewCell.swift */,
+				D79B1EF721CC09FC00E951D3 /* MicroThoughtCell.swift */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -355,6 +361,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-rethought/Pods-rethought-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/NextGrowingTextView/NextGrowingTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/Smile/Smile.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -362,6 +369,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NextGrowingTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Smile.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,9 +403,11 @@
 				D75B892221C2D7D70023784F /* EntryPreview.swift in Sources */,
 				D75B88E521BC56AB0023784F /* Thought.swift in Sources */,
 				D75B890A21BDFE780023784F /* DummyData.swift in Sources */,
+				D79B1EF821CC09FC00E951D3 /* MicroThoughtCell.swift in Sources */,
 				D75B88D321BC51250023784F /* UIImage.swift in Sources */,
 				D75B88C121BB70C00023784F /* rethought.xcdatamodeld in Sources */,
 				D75B891821BF1F5A0023784F /* ThoughtDetailController.swift in Sources */,
+				D75B892821C48A7A0023784F /* QuickAddView.swift in Sources */,
 				D75B891A21BF47EA0023784F /* NewThoughtView.swift in Sources */,
 				D75B88D021BC507B0023784F /* Constants.swift in Sources */,
 				D75B891E21C07D910023784F /* ThoughtPreviewSmall.swift in Sources */,

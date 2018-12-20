@@ -31,7 +31,7 @@ struct ViewSize {
     static let reccomendedView = CGSize(width: 350, height: 156)
     static let reccomendedCell = CGSize(width: 325, height: 80)
     static let largeButton = CGSize(width: 350, height: 56)
-    static let thoughtCellSmall = CGSize(width: 82, height: 76)
+    static let thoughtCellSmall = CGSize(width: 100, height: 50)
     static let thoughtIconSmall = CGSize(width: 56, height: 56)
     static let minimumEntryPreviewSize = CGSize(width: 350, height: 120)
 }

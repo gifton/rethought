@@ -13,14 +13,16 @@ class ThoughtPreviewSmall {
     let icon: String
     let lastEdited: String
     var color: UIColor = .iconBackground
+    let itemCount: String
     let thoughtID: String
     
-    init(icon: String, lastEdited: String, color: UIColor = .iconBackground, relatedThought: String) {
+    init(icon: String, lastEdited: String, color: UIColor = .iconBackground, relatedThought: String, itemCount: Int) {
         self.icon = icon
         self.lastEdited = lastEdited
         self.thoughtID = relatedThought
         if color != .iconBackground {
             self.color = color
         }
+        self.itemCount = "\(itemCount) items"
     }
 }

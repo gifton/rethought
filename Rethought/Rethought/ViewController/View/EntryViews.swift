@@ -16,11 +16,16 @@ class EntryImageView: UIView {
         layoutCell()
     }
     
-    convenience init(_ title: String, _ image: UIImage, _ date: String, frame: CGRect) {
+    var delegate: HomeViewControllerDelegate?
+    var thoughtID: String?
+    
+    convenience init(_ entry: EntryPreview, frame: CGRect, delegate: HomeViewControllerDelegate?) {
         self.init(frame: frame)
-        self.title.text = title
-        self.date.text = date
-        self.entryImage.image = image
+        self.title.text = entry.title
+        self.date.text = "\(entry.date)"
+        self.entryImage.image = entry.images.first
+        self.delegate = delegate
+        self.thoughtID = entry.ThoughtID
     }
     
     var title: UILabel = {
@@ -33,9 +38,8 @@ class EntryImageView: UIView {
        let img = UIImageView()
         img.contentMode = .scaleAspectFit
         img.layer.masksToBounds = true
-        img.image = UIImage.random(size: CGSize(width: 350, height: 125))
         img.translatesAutoresizingMaskIntoConstraints = false
-        img.layer.cornerRadius = 5
+        img.layer.cornerRadius = 2
         img.layer.masksToBounds = true
         return img
     }()
@@ -47,17 +51,30 @@ class EntryImageView: UIView {
     }()
     
     func layoutCell() {
+        let gesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                                     action: #selector(userDidPressEntry(_:)))
+        gesture.numberOfTapsRequired = 1
+        gesture.numberOfTouchesRequired = 1
+        self.isUserInteractionEnabled = true
+        self.addGestureRecognizer(gesture)
+        
         addSubview(title)
         addSubview(entryImage)
         
-        entryImage.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        entryImage.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 5).isActive = true
-        entryImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            entryImage.leadingAnchor.constraint(equalTo: leadingAnchor),
+            entryImage.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 5),
+            entryImage.trailingAnchor.constraint(equalTo: trailingAnchor),
+        ])
     }
     
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    @objc func userDidPressEntry(_ sender: UITapGestureRecognizer) {
+        print (sender)
+        self.delegate?.userDidTapThought(self.thoughtID!)
     }
     
 }
@@ -77,7 +94,7 @@ class EntryTextView: UIView {
     }
     
     var title: UILabel = {
-        let lbl = UILabel(frame: CGRect(x: 10, y: 20, width: 330, height: 20))
+        let lbl = UILabel(frame: CGRect(x: 10, y: 37.5 , width: 330, height: 20))
         lbl.font = UIFont(name: "Lato-Bold", size: 16)
         
         return lbl
@@ -102,7 +119,6 @@ class EntryTextView: UIView {
         addSubview(entryText)
         addSubview(date)
     }
-    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -16,6 +16,7 @@ class HomeViewController: UIViewController {
         homeView = HomeView(viewModel.getRecentThoughts(),
                             viewModel.getReccomendedThought(),
                             viewModel.getRecentEntries(),
+                            delegate: self,
                             thoughtCount: viewModel.thoughts.count,
                             frame: .zero)
         
@@ -40,9 +41,8 @@ extension HomeView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = recentThoughtsCollectionView.dequeueReusableCell(withReuseIdentifier: RecentThoughtCell.identifier, for: indexPath) as! RecentThoughtCell
-        cell.title.text = recentThoughts?[indexPath.row].lastEdited
-        cell.emoji.text = recentThoughts?[indexPath.row].icon
+        let cell = recentThoughtsCollectionView.dequeueReusableCell(withReuseIdentifier: MicroThoughtCell.identifier, for: indexPath) as! MicroThoughtCell
+        cell.configureCell(self.recentThoughts![indexPath.row])
         return cell
     }    
 }
@@ -52,6 +52,14 @@ extension HomeView: UICollectionViewDelegate {
     }
 }
 extension HomeViewController: HomeViewControllerDelegate {
+    func userDidTapQuickAddIcon() {
+        print ("user wants to look at the icons!")
+    }
+    
+    func userBeganQuickAdd() {
+        print ("user began quickAdd!")
+    }
+    
     func dataIsLoaded() {
         self.homeView?.dataIsLoaded()
     }
@@ -79,4 +87,5 @@ extension HomeViewController: HomeViewControllerDelegate {
         self.navigationController?.pushViewController(controller, animated: true)
         
     }
+    
 }
