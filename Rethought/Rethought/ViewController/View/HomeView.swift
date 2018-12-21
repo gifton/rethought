@@ -81,30 +81,22 @@ class HomeView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = ViewSize.thoughtCellSmall
-        let cv = UICollectionView(frame: CGRect(x: 0, y: 110, width: ViewSize.SCREEN_WIDTH, height: 50), collectionViewLayout: layout)
+        let cv = UICollectionView(frame: CGRect(x: 0, y: 130, width: ViewSize.SCREEN_WIDTH, height: 50), collectionViewLayout: layout)
         cv.backgroundColor = .white
         cv.showsHorizontalScrollIndicator = false
         
         return cv
     }()
     var recentEntryTable: UITableView = {
-        let tv = UITableView(frame: CGRect(x: 0, y: 180, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - 200))
+        let tv = UITableView(frame: CGRect(x: 0, y: 416, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - 396))
+        tv.allowsSelection = false
+        tv.separatorStyle = .none
         
         return tv
     }()
     
-    let newThoughtButton: UIButton = {
-        let btn = UIButton(frame: CGRect(x: 15, y: 148, width: ViewSize.SCREEN_WIDTH - 30, height: 55))
-        let attribute = [ NSAttributedString.Key.font: UIFont(name: "Lato-Regular", size: 20),  NSAttributedString.Key.foregroundColor: UIColor.white]
-        let myAttrString = NSAttributedString(string: "Create new Thought", attributes: attribute as [NSAttributedString.Key : Any])
-        btn.setAttributedTitle(myAttrString, for: .normal)
-        btn.backgroundColor = UIColor(hex: "2ECD95")
-        btn.layer.cornerRadius = 4
-        
-        return btn
-    }()
     let recentEntriesLabel: UILabel = {
-        let lbl = UILabel()
+        let lbl = UILabel(frame: CGRect(x: 15, y: 195, width: 180, height: 20))
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.text = "🎯 RECENT ENTRIES"
         lbl.font = UIFont(name: "Lato-Bold", size: 16)
@@ -130,12 +122,12 @@ class HomeView: UIView {
         addSubview(reccomendedThoughtLabel)
         addSubview(recentThoughtsCollectionView)
         addSubview(recentEntryTable)
+        addSubview(recentEntriesLabel)
         
         setupTables()
         recentThoughtsCollectionView.reloadData()
         
         profileButton.addTarget(self, action: #selector(userPressedProfile), for: .touchUpInside)
-        newThoughtButton.addTarget(self, action: #selector(userPressedNewThought), for: .touchUpInside)
     }
     
     func setupTables() {
@@ -143,42 +135,11 @@ class HomeView: UIView {
         recentThoughtsCollectionView.delegate = self
         recentThoughtsCollectionView.dataSource = self
         
-        recentEntryTable.register(EntryPreviewCell.self, forCellReuseIdentifier: EntryPreviewCell.identifier)
+        recentEntryTable.register(TextEntryCell.self, forCellReuseIdentifier: TextEntryCell.identifier)
+        recentEntryTable.register(ImageEntryCell.self, forCellReuseIdentifier: ImageEntryCell.identifier)
         recentEntryTable.delegate = self
         recentEntryTable.dataSource = self
     }
-//
-//    func addRecentEntries() {
-//        var origin = CGPoint(x: 12, y: 250)
-//
-//        for (count, entry) in recentEntries!.enumerated() {
-//            let newFrame = CGRect(x: origin.x, y: origin.y, width: ViewSize.minimumEntryPreviewSize.width, height: ViewSize.minimumEntryPreviewSize.height)
-//            //depending on the type, produce a view that translates
-//            switch entry.type {
-//            case .image:
-//                //display first image in entry
-//                //consider doing a collage of images if > 1 in future?
-//                let newEntry = EntryImageView(entry, frame: newFrame, delegate: self.delegate)
-//                scrollView.addSubview(newEntry)
-//                origin.y += (entry.images.first?.size.height)! + 35
-//
-//            case .text:
-//                let newEntry = EntryTextView(entry.title,
-//                                             entry.description ?? "Details not available",
-//                                             "\(count) days", frame: newFrame)
-//                scrollView.addSubview(newEntry)
-//                origin.y += ViewSize.minimumEntryPreviewSize.height + 10
-//
-//            case .link:
-//                let newEntry = EntryTextView(entry.title,
-//                                             entry.description ?? "Details not available",
-//                                             "\(count) days", frame: newFrame)
-//                scrollView.addSubview(newEntry)
-//                origin.y += ViewSize.minimumEntryPreviewSize.height + 20
-//
-//            }
-//        }
-//    }
 }
 
 extension HomeView {
@@ -189,24 +150,6 @@ extension HomeView {
         self.reloadInputViews()
         self.recentThoughtsCollectionView.reloadData()
         
-    }
-    private func calculateScrollViewHeight() -> CGFloat {
-        var height: CGFloat = 600
-        if self.recentEntries?.count ?? 0 > 0 {
-            for entry in recentEntries! {
-                switch entry.type {
-                case .image:
-                    height += ((entry.images.first?.size.height)!)
-                case .text:
-                    height += 120
-                case .link:
-                    height += 70
-                }
-            }
-        }
-        print("---------", height)
-        height += 50
-        return height
     }
 }
 

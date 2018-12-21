@@ -91,18 +91,41 @@ extension HomeViewController: HomeViewControllerDelegate {
 }
 
 extension HomeView: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let img = self.recentEntries![indexPath.row].images.first {
+            return img.size.height
+        } else {
+            return 101
+        }
+    }
 }
 
 extension HomeView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if let count = self.recentEntries?.count {
+            return count
+        } else {
+            return 5
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = recentEntryTable.dequeueReusableCell(withIdentifier: EntryPreviewCell.identifier, for: indexPath) as! EntryPreviewCell
+        let entry = self.recentEntries![indexPath.row]
+        switch entry.type {
+        case .image:
+            let cell = recentEntryTable.dequeueReusableCell(withIdentifier: ImageEntryCell.identifier, for: indexPath) as! ImageEntryCell
+            
+            cell.giveContext(entry)
+            
+            return cell
+        default:
+            let cell = recentEntryTable.dequeueReusableCell(withIdentifier: TextEntryCell.identifier, for: indexPath) as! TextEntryCell
+            
+            cell.giveContext(entry)
+            
+            return cell
+        }
         
-        return cell
     }
     
     

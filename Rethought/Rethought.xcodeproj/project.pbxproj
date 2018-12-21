@@ -46,6 +46,8 @@
 		D75B892621C339CF0023784F /* EntryViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B892521C339CF0023784F /* EntryViews.swift */; };
 		D75B892821C48A7A0023784F /* QuickAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B892721C48A7A0023784F /* QuickAddView.swift */; };
 		D79B1EF821CC09FC00E951D3 /* MicroThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B1EF721CC09FC00E951D3 /* MicroThoughtCell.swift */; };
+		D79B1EFA21CC6B0000E951D3 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B1EF921CC6B0000E951D3 /* UIFont.swift */; };
+		D79B1EFC21CC748B00E951D3 /* RecommendedThoughtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B1EFB21CC748B00E951D3 /* RecommendedThoughtView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +93,8 @@
 		D75B892521C339CF0023784F /* EntryViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViews.swift; sourceTree = "<group>"; };
 		D75B892721C48A7A0023784F /* QuickAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAddView.swift; sourceTree = "<group>"; };
 		D79B1EF721CC09FC00E951D3 /* MicroThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroThoughtCell.swift; sourceTree = "<group>"; };
+		D79B1EF921CC6B0000E951D3 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		D79B1EFB21CC748B00E951D3 /* RecommendedThoughtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedThoughtView.swift; sourceTree = "<group>"; };
 		DC8A793DE6461EFAC213268E /* Pods-rethought.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rethought.release.xcconfig"; path = "Pods/Target Support Files/Pods-rethought/Pods-rethought.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,6 +165,7 @@
 				D75B88CE21BC507B0023784F /* Constants.swift */,
 				D75B88CF21BC507B0023784F /* Styling.swift */,
 				D75B88D221BC51250023784F /* UIImage.swift */,
+				D79B1EF921CC6B0000E951D3 /* UIFont.swift */,
 			);
 			name = extension;
 			path = ../../depricated/extension;
@@ -238,6 +243,7 @@
 				D75B891921BF47EA0023784F /* NewThoughtView.swift */,
 				D75B892521C339CF0023784F /* EntryViews.swift */,
 				D75B892721C48A7A0023784F /* QuickAddView.swift */,
+				D79B1EFB21CC748B00E951D3 /* RecommendedThoughtView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -408,7 +414,9 @@
 				D75B88C121BB70C00023784F /* rethought.xcdatamodeld in Sources */,
 				D75B891821BF1F5A0023784F /* ThoughtDetailController.swift in Sources */,
 				D75B892821C48A7A0023784F /* QuickAddView.swift in Sources */,
+				D79B1EFA21CC6B0000E951D3 /* UIFont.swift in Sources */,
 				D75B891A21BF47EA0023784F /* NewThoughtView.swift in Sources */,
+				D79B1EFC21CC748B00E951D3 /* RecommendedThoughtView.swift in Sources */,
 				D75B88D021BC507B0023784F /* Constants.swift in Sources */,
 				D75B891E21C07D910023784F /* ThoughtPreviewSmall.swift in Sources */,
 			);
