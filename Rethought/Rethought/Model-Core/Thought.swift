@@ -41,7 +41,7 @@ public class Thought: ThoughtDelegate {
     public var entries: [Entry] = []
     public var date: Date
     public var lastEdited: Date
-    public var entryCount: [String:Int] = ["links": 0, "text": 0, "media":0]
+    public var entryCount: [String:Int] = ["links": 0, "entries": 0, "media":0]
     public var ID: String = randomString(length: 12)
     
     //  minimum req's to build new thought

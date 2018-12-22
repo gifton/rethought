@@ -50,16 +50,11 @@ class HomeView: UIView {
     }()
     let quickAddView = QuickAddView(frame: CGRect(x: 0, y: ViewSize.SCREEN_HEIGHT - 100, width: ViewSize.SCREEN_WIDTH, height: 100))
 
-    let thoughtLabel: UILabel = {
-        let lbl = UILabel(frame: CGRect(x: 15, y: 50, width: 100, height: 30))
-        lbl.text = "Re:Thought"
-        lbl.font = UIFont(name: "Lato-Bold", size: 13)
-        lbl.textColor = .white
-        lbl.backgroundColor = UIColor(hex: "7E86B7")
-        lbl.textAlignment = .center
-        lbl.layer.cornerRadius = 5
-        lbl.clipsToBounds = true
-        return lbl
+    let thoughtLabel: UIImageView = {
+        let img = UIImageView(frame: CGRect(x: 15, y: 50, width: 100, height: 30))
+        img.image = #imageLiteral(resourceName: "Logo")
+        
+        return img
     }()
 
     let reccomendedThoughtLabel: UILabel = {
@@ -77,6 +72,15 @@ class HomeView: UIView {
         btn.setTitleColor(.darkGray, for: .normal)
         return btn
     }()
+    let viewAllEntriesButton: UIButton = {
+        let btn = UIButton(frame: CGRect(x: ViewSize.SCREEN_WIDTH - 120, y: 380, width: 180, height: 20))
+        let attribute = [ NSAttributedString.Key.font: UIFont(name: "Lato-Light", size: 14),  NSAttributedString.Key.foregroundColor: UIColor.darkGray]
+        let myAttrString = NSAttributedString(string: "View all", attributes: attribute as [NSAttributedString.Key : Any])
+        btn.setAttributedTitle(myAttrString, for: .normal)
+        btn.setTitleColor(.darkGray, for: .normal)
+        return btn
+    }()
+    
     var recentThoughtsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -96,19 +100,14 @@ class HomeView: UIView {
     }()
     
     let recentEntriesLabel: UILabel = {
-        let lbl = UILabel(frame: CGRect(x: 15, y: 195, width: 180, height: 20))
+        let lbl = UILabel(frame: CGRect(x: 15, y: 380, width: 180, height: 20))
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.text = "🎯 RECENT ENTRIES"
         lbl.font = UIFont(name: "Lato-Bold", size: 16)
         lbl.textColor = UIColor(hex: "BFC0C3")
         return lbl
     }()
-    let reccomendedThoughtView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(hex: "55AFF8")
-        
-        return view
-    }()
+    var recommendedThoughtView: RecommendedThoughtView?
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -116,6 +115,7 @@ class HomeView: UIView {
     
     
     func setView() {
+        recommendedThoughtView = RecommendedThoughtView(thought: self.reccomendedThought!, frame: CGRect(x: 7, y: 100, width: ViewSize.SCREEN_WIDTH - 25, height: 156))
         addSubview(thoughtLabel)
         addSubview(profileButton)
         addSubview(quickAddView)
@@ -123,6 +123,9 @@ class HomeView: UIView {
         addSubview(recentThoughtsCollectionView)
         addSubview(recentEntryTable)
         addSubview(recentEntriesLabel)
+        addSubview(viewAllEntriesButton)
+        addSubview(recommendedThoughtView!)
+        addSubview(quickAddView)
         
         setupTables()
         recentThoughtsCollectionView.reloadData()

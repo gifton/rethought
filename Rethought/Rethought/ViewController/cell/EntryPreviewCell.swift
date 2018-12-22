@@ -9,33 +9,37 @@
 import Foundation
 import UIKit
 
-
+//theres 2 types of cells right now: Text, and image.
 class TextEntryCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        styleCell()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+        
     }
+    //all object init's
+    private var title           = UILabel(frame: CGRect(x: 5, y: 0, width: ViewSize.SCREEN_WIDTH - 20, height: 20))
+    private var body            = UILabel(frame: CGRect(x: 5, y: 15, width: ViewSize.SCREEN_WIDTH - 20, height: 60))
+    private var parentThought   = UILabel(frame: CGRect(x: 5, y: 70, width: 100, height: 20))
+    private var date            = UILabel(frame: CGRect(x: ViewSize.SCREEN_WIDTH - 100, y: 75, width: 100, height: 10))
     
-    private var title           = UILabel(frame: CGRect(x: 5, y: 10, width: ViewSize.SCREEN_WIDTH - 20, height: 20))
-    private var body            = UILabel(frame: CGRect(x: 5, y: 25, width: ViewSize.SCREEN_WIDTH - 20, height: 60))
-    private var parentThought   = UILabel(frame: CGRect(x: 5, y: 80, width: 100, height: 20))
-    private var date            = UILabel(frame: CGRect(x: ViewSize.SCREEN_WIDTH - 100, y: 80, width: 100, height: 10))
-    
+    //cellIdentifier
     public static var identifier: String {
         return "TextEntryPreview"
     }
     
+    // "give context" is called during the cewllForRow: function in delegate
     public func giveContext(_ content: EntryPreview) {
         self.title.text = content.title
         self.date.text = String(describing: content.date)
         self.body.text = content.description
         self.body.numberOfLines = 5
         self.parentThought.text = content.ThoughtID
-        styleCell()
+        
     }
     
     private func styleCell() {
