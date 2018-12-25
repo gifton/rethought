@@ -34,6 +34,7 @@ struct ViewSize {
     static let thoughtCellSmall = CGSize(width: 100, height: 50)
     static let thoughtIconSmall = CGSize(width: 56, height: 56)
     static let minimumEntryPreviewSize = CGSize(width: 350, height: 120)
+    let largeTile = CGRect(origin: CGPoint(x: 12.5, y: 10), size: CGSize(width: (UIScreen.main.bounds.width - 25), height: 156))
 }
 
 struct App {

@@ -40,6 +40,7 @@ class HomeView: UIView {
         setView()
         
     }
+    
     //MARK: All objects in homeView
     let profileButton: UIButton = {
         let btn = UIButton(frame: CGRect(x: ViewSize.SCREEN_WIDTH - 80, y: 57, width: 60, height: 20))
@@ -92,7 +93,7 @@ class HomeView: UIView {
         return cv
     }()
     var recentEntryTable: UITableView = {
-        let tv = UITableView(frame: CGRect(x: 0, y: 416, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - 396))
+        let tv = UITableView(frame: CGRect(x: 0, y: 185, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - 200))
         tv.allowsSelection = false
         tv.separatorStyle = .none
         
@@ -107,7 +108,6 @@ class HomeView: UIView {
         lbl.textColor = UIColor(hex: "BFC0C3")
         return lbl
     }()
-    var recommendedThoughtView: RecommendedThoughtView?
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -115,16 +115,12 @@ class HomeView: UIView {
     
     
     func setView() {
-        recommendedThoughtView = RecommendedThoughtView(thought: self.reccomendedThought!, frame: CGRect(x: 7, y: 100, width: ViewSize.SCREEN_WIDTH - 25, height: 156))
         addSubview(thoughtLabel)
         addSubview(profileButton)
         addSubview(quickAddView)
         addSubview(reccomendedThoughtLabel)
         addSubview(recentThoughtsCollectionView)
         addSubview(recentEntryTable)
-        addSubview(recentEntriesLabel)
-        addSubview(viewAllEntriesButton)
-        addSubview(recommendedThoughtView!)
         addSubview(quickAddView)
         
         setupTables()
@@ -140,6 +136,7 @@ class HomeView: UIView {
         
         recentEntryTable.register(TextEntryCell.self, forCellReuseIdentifier: TextEntryCell.identifier)
         recentEntryTable.register(ImageEntryCell.self, forCellReuseIdentifier: ImageEntryCell.identifier)
+        recentEntryTable.register(RecommendedThoughtCell.self, forCellReuseIdentifier: RecommendedThoughtCell.identifier)
         recentEntryTable.delegate = self
         recentEntryTable.dataSource = self
     }

@@ -61,7 +61,7 @@ class TextEntryCell: UITableViewCell {
 }
 
 
-
+//image cell
 class ImageEntryCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -74,7 +74,7 @@ class ImageEntryCell: UITableViewCell {
     private var mainImage       = UIImageView()
     private var parentThought   = UILabel(frame: CGRect(x: 5, y: 80, width: 100, height: 20))
     private var date            = UILabel(frame: CGRect(x: 5, y: 90, width: 100, height: 10))
-    private var imageCount      = UILabel(frame: CGRect(x: 15, y: 15, width: 85, height: 40))
+    private var imageCount      = UILabel(frame: CGRect(x: 15, y: 15, width: 65, height: 25))
     
     public static var identifier: String {
         return "ImageEntryPreview"
@@ -84,8 +84,7 @@ class ImageEntryCell: UITableViewCell {
         self.date.text = String(describing: content.date)
         self.mainImage.image = content.images.first
         self.parentThought.text = content.ThoughtID
-        self.imageCount.blurBackground(type: .light, cornerRadius: 5)
-        self.imageCount.text = String(describing: content.imageCount!)
+        self.imageCount.text = String(describing: content.imageCount!) + " images"
         let height = mainImage.image?.size.height
         self.mainImage.frame = CGRect(x: 0, y: 0, width: ViewSize.SCREEN_WIDTH, height: height! - 20)
         styleCell()
@@ -97,12 +96,18 @@ class ImageEntryCell: UITableViewCell {
         addSubview(date)
         addSubview(imageCount)
         
-        imageCount.font = UIFont.reBody(ofSize: 15)
         parentThought.font = UIFont.reBodyLight(ofSize: 12)
         date.font = UIFont.reBodyLight(ofSize: 12)
         
         imageCount.textColor = .black
         parentThought.textColor = .darkGray
         date.textColor = .darkGray
+        
+        imageCount.backgroundColor = .white
+        imageCount.layer.cornerRadius = 5
+        imageCount.textAlignment = .center
+        imageCount.font = UIFont.reBody(ofSize: 15)
+        imageCount.layer.opacity = 0.9
+        imageCount.layer.masksToBounds = true
     }
 }

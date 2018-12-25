@@ -92,10 +92,16 @@ extension HomeViewController: HomeViewControllerDelegate {
 
 extension HomeView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if let img = self.recentEntries![indexPath.row].images.first {
-            return img.size.height
+        if indexPath.row == 0 {
+            return 185
         } else {
-            return 101
+            // -1 to adjust for adding one row on top for the tableView
+            let row = indexPath.row - 1
+            if let img = self.recentEntries![row].images.first {
+                return img.size.height
+            } else {
+                return 101
+            }
         }
     }
 }
@@ -103,30 +109,35 @@ extension HomeView: UITableViewDelegate {
 extension HomeView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = self.recentEntries?.count {
-            return count
+            //add one for recommendedThoughtCell at index == 0
+            return count + 1
         } else {
             return 5
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let entry = self.recentEntries![indexPath.row]
-        switch entry.type {
-        case .image:
-            let cell = recentEntryTable.dequeueReusableCell(withIdentifier: ImageEntryCell.identifier, for: indexPath) as! ImageEntryCell
-            
-            cell.giveContext(entry)
-            
+        if indexPath.row == 0 {
+            let cell = recentEntryTable.dequeueReusableCell(withIdentifier: RecommendedThoughtCell.identifier, for: indexPath) as! RecommendedThoughtCell
+            cell.giveContext(reccomendedThought!)
             return cell
-        default:
-            let cell = recentEntryTable.dequeueReusableCell(withIdentifier: TextEntryCell.identifier, for: indexPath) as! TextEntryCell
-            
-            cell.giveContext(entry)
-            
-            return cell
+        } else {
+            let row = indexPath.row - 1
+            let entry = self.recentEntries![row]
+            switch entry.type {
+            case .image:
+                let cell = recentEntryTable.dequeueReusableCell(withIdentifier: ImageEntryCell.identifier, for: indexPath) as! ImageEntryCell
+                
+                cell.giveContext(entry)
+                
+                return cell
+            default:
+                let cell = recentEntryTable.dequeueReusableCell(withIdentifier: TextEntryCell.identifier, for: indexPath) as! TextEntryCell
+                
+                cell.giveContext(entry)
+                
+                return cell
+            }
         }
-        
     }
-    
-    
 }
