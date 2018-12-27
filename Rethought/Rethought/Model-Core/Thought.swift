@@ -30,6 +30,13 @@ public class Thought: ThoughtDelegate {
         updateLastEdited()
     }
     
+    public func update(thought: Thought) {
+        self.title = thought.title
+        self.description = thought.description
+        self.icon = thought.icon
+        self.updateLastEdited()
+    }
+    
     convenience init() {
         self.init(title: "nil", description: "nil", icon: "nil", date: Date.init())
     }

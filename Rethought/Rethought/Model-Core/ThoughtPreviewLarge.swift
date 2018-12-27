@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+//model for thought previews in dashboard (tableView cellForIndexPath: 0)
 class ThoughtPreviewLarge {
     let icon: String
     let createdAt: String

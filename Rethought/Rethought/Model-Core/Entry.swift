@@ -69,10 +69,14 @@ public class Entry {
 }
 
 extension Entry {
-    public func sendNewTHoughtToDB() {
+    public func sendNewThoughtToDB() {
         print ("sent \(self) to DB")
     }
     public func removeThoughtFromDB() {
         print ("removed thought: \(String(describing: self.title)) from db")
+    }
+    
+    public func updateThought(thoughtID: String, payload: Thought) {
+        print (thoughtID, "Updated!")
     }
 }

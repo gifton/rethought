@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class ThoughtDetailController: UIViewController{
-    fileprivate var detailThought: Thought = Thought()
+    fileprivate var detailThought: Thought?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(hex: "55AFF8")
@@ -43,7 +43,7 @@ class ThoughtDetailController: UIViewController{
 extension ThoughtDetailController: DetailThoughtDelegate {
     var thought: Thought {
         get {
-            return detailThought 
+            return detailThought ?? Thought()
         }
         set {
             self.detailThought = newValue

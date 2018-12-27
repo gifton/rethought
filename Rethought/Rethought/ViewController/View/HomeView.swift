@@ -37,6 +37,7 @@ class HomeView: UIView {
         self.reccomendedThought = reccomendedThought
         self.recentEntries = recentEntries
         //call setView in conveniance init, because conveniance init includes the neccesary components
+        //other wise runtime error may occur because of delayed reciept of data, or missing data
         setView()
         
     }

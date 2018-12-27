@@ -28,7 +28,6 @@
 		D75B88FA21BC98C70023784F /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D75B88F221BC98C60023784F /* Lato-Light.ttf */; };
 		D75B88FB21BC98C70023784F /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D75B88F321BC98C70023784F /* Lato-LightItalic.ttf */; };
 		D75B88FF21BDC2C60023784F /* RecentThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B88FE21BDC2C60023784F /* RecentThoughtCell.swift */; };
-		D75B890121BDCBB30023784F /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B890021BDCBB30023784F /* CellType.swift */; };
 		D75B890621BDFAC50023784F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D75B890521BDFAC50023784F /* Default-568h@2x.png */; };
 		D75B890A21BDFE780023784F /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B890921BDFE780023784F /* DummyData.swift */; };
 		D75B890C21BE18740023784F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B890B21BE18740023784F /* User.swift */; };
@@ -49,6 +48,7 @@
 		D79B1EF821CC09FC00E951D3 /* MicroThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B1EF721CC09FC00E951D3 /* MicroThoughtCell.swift */; };
 		D79B1EFA21CC6B0000E951D3 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B1EF921CC6B0000E951D3 /* UIFont.swift */; };
 		D79B1EFC21CC748B00E951D3 /* RecommendedThoughtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B1EFB21CC748B00E951D3 /* RecommendedThoughtView.swift */; };
+		D7FFA1C721D4703C001C3B72 /* ThoughtDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1C621D4703C001C3B72 /* ThoughtDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,7 +76,6 @@
 		D75B88F221BC98C60023784F /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		D75B88F321BC98C70023784F /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
 		D75B88FE21BDC2C60023784F /* RecentThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentThoughtCell.swift; sourceTree = "<group>"; };
-		D75B890021BDCBB30023784F /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
 		D75B890521BDFAC50023784F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D75B890921BDFE780023784F /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		D75B890B21BE18740023784F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -97,6 +96,7 @@
 		D79B1EF721CC09FC00E951D3 /* MicroThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroThoughtCell.swift; sourceTree = "<group>"; };
 		D79B1EF921CC6B0000E951D3 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		D79B1EFB21CC748B00E951D3 /* RecommendedThoughtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedThoughtView.swift; sourceTree = "<group>"; };
+		D7FFA1C621D4703C001C3B72 /* ThoughtDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailView.swift; sourceTree = "<group>"; };
 		DC8A793DE6461EFAC213268E /* Pods-rethought.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rethought.release.xcconfig"; path = "Pods/Target Support Files/Pods-rethought/Pods-rethought.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,7 +179,6 @@
 				D75B88B821BB70C00023784F /* AppDelegate.swift */,
 				D75B88DF21BC54B20023784F /* Entry.swift */,
 				D75B88E421BC56AB0023784F /* Thought.swift */,
-				D75B890021BDCBB30023784F /* CellType.swift */,
 				D75B890B21BE18740023784F /* User.swift */,
 				D75B891D21C07D910023784F /* ThoughtPreviewSmall.swift */,
 				D75B891F21C08A980023784F /* ThoughtPreviewLarge.swift */,
@@ -246,6 +245,7 @@
 				D75B892521C339CF0023784F /* EntryViews.swift */,
 				D75B892721C48A7A0023784F /* QuickAddView.swift */,
 				D79B1EFB21CC748B00E951D3 /* RecommendedThoughtView.swift */,
+				D7FFA1C621D4703C001C3B72 /* ThoughtDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -400,13 +400,13 @@
 				D75B892621C339CF0023784F /* EntryViews.swift in Sources */,
 				D75B892021C08A980023784F /* ThoughtPreviewLarge.swift in Sources */,
 				D75B88D121BC507B0023784F /* Styling.swift in Sources */,
+				D7FFA1C721D4703C001C3B72 /* ThoughtDetailView.swift in Sources */,
 				D75B892421C2FE750023784F /* EntryPreviewCell.swift in Sources */,
 				D75B88FF21BDC2C60023784F /* RecentThoughtCell.swift in Sources */,
 				D75B891C21BF4A380023784F /* NewThoughtController.swift in Sources */,
 				D75B88E921BC92190023784F /* HomeView.swift in Sources */,
 				D75B88BB21BB70C00023784F /* HomeViewController.swift in Sources */,
 				D75B891021BE192E0023784F /* ProfileViewController.swift in Sources */,
-				D75B890121BDCBB30023784F /* CellType.swift in Sources */,
 				D75B890E21BE191C0023784F /* ProfileView.swift in Sources */,
 				D75B890C21BE18740023784F /* User.swift in Sources */,
 				D75B88B921BB70C00023784F /* AppDelegate.swift in Sources */,

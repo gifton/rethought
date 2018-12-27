@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+//model for entry previews in dashboard (tableView cells (indexPath.row > 0))
 struct EntryPreview {
     //standard objects
     let ThoughtID: String
@@ -23,6 +24,7 @@ struct EntryPreview {
     init(entry: Entry) {
         self.ThoughtID = entry.thoughtID
         self.date = entry.date
+        //depending on entry type, initiate proper variables
         switch entry.type {
         case .image:
             self.title = entry.description

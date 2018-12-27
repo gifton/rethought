@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+//model for thought previews in dashboard (collectionview cells)
 class ThoughtPreviewSmall {
     let icon: String
     let lastEdited: String

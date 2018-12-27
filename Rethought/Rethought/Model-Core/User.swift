@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+//user struct
 class User {
     var name: String
     var email: String
