@@ -13,10 +13,22 @@ import UIKit
 class ThoughtDetailView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .white
+        setupCell()
+        styleCell()
+        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
+        edgePan.edges = .left
+        
+        addGestureRecognizer(edgePan)
     }
     
-    convenience init(frame: CGRect, thought: Thought) {
+    convenience init(frame: CGRect, thought: Thought, delegate: DetailThoughtDelegate) {
         self.init(frame: frame)
+        self.title = thought.title
+        self.icon = thought.icon
+        self.entries = thought.entries
+        self.delegate = delegate
+        addContext()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,9 +46,12 @@ class ThoughtDetailView: UIView {
         lbl.frame.origin = CGPoint(x: 20, y: ViewSize.SCREEN_HEIGHT * 0.334)
         return lbl
     }()
+    //content recieved from thought
     private var title: String?
     private var icon: String?
-    private var 
+    private var entries: [Entry]?
+    //delegate for returning home, moving to new thought, editing etc
+    public var delegate: DetailThoughtDelegate?
     
     private let entryTV: UITableView = {
         let tv = UITableView(frame: CGRect(x: 0, y: ViewSize.SCREEN_HEIGHT * 0.369, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - (ViewSize.SCREEN_HEIGHT * 0.369)), style: UITableView.Style.plain)
@@ -54,11 +69,16 @@ extension ThoughtDetailView {
         addSubview(deleteButton)
         addSubview(titleLabel)
     }
-    
     func styleCell() {
         
     }
     func addContext() {
         
+    }
+    @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+        if recognizer.state == .recognized {
+            print("Screen edge swiped!")
+            delegate?.returnHome()
+        }
     }
 }
