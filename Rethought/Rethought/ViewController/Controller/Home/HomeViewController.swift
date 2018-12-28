@@ -48,7 +48,8 @@ extension HomeView: UICollectionViewDataSource {
 }
 extension HomeView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.userDidTapThought((recentThoughts?[indexPath.row].thoughtID)!)
+        let content = recentThoughts![indexPath.row].thoughtID
+        delegate?.userDidTapThought(content)
     }
 }
 extension HomeViewController: HomeViewControllerDelegate {
@@ -69,7 +70,8 @@ extension HomeViewController: HomeViewControllerDelegate {
     }
     
     func userDidTapViewAllThoughts() {
-        self.navigationController?.pushViewController(ProfileViewController(), animated: true)
+        let view = ThoughtFeedController()
+        self.navigationController?.pushViewController(view, animated: true)
     }
     
     func userDidTapViewAllEntries() {
@@ -104,6 +106,10 @@ extension HomeView: UITableViewDelegate {
             }
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
 }
 
 extension HomeView: UITableViewDataSource {
@@ -119,7 +125,7 @@ extension HomeView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = recentEntryTable.dequeueReusableCell(withIdentifier: RecommendedThoughtCell.identifier, for: indexPath) as! RecommendedThoughtCell
-            cell.giveContext(reccomendedThought!)
+            cell.giveContext(with: reccomendedThought!)
             return cell
         } else {
             let row = indexPath.row - 1
@@ -128,13 +134,13 @@ extension HomeView: UITableViewDataSource {
             case .image:
                 let cell = recentEntryTable.dequeueReusableCell(withIdentifier: ImageEntryCell.identifier, for: indexPath) as! ImageEntryCell
                 
-                cell.giveContext(entry)
+                cell.giveContext(with: entry)
                 
                 return cell
             default:
                 let cell = recentEntryTable.dequeueReusableCell(withIdentifier: TextEntryCell.identifier, for: indexPath) as! TextEntryCell
                 
-                cell.giveContext(entry)
+                cell.giveContext(with: entry)
                 
                 return cell
             }

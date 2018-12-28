@@ -55,7 +55,6 @@ class HomeView: UIView {
     let thoughtLabel: UIImageView = {
         let img = UIImageView(frame: CGRect(x: 15, y: 50, width: 100, height: 30))
         img.image = #imageLiteral(resourceName: "Logo")
-        
         return img
     }()
 
@@ -67,7 +66,7 @@ class HomeView: UIView {
         return lbl
     }()
     let viewAllThoughtsButton: UIButton = {
-        let btn = UIButton(frame: CGRect(x: ViewSize.SCREEN_WIDTH - 100, y: 10, width: 80, height: 30))
+        let btn = UIButton(frame: CGRect(x: ViewSize.SCREEN_WIDTH - 95, y: 87, width: 80, height: 30))
         let attribute = [ NSAttributedString.Key.font: UIFont(name: "Lato-Light", size: 14),  NSAttributedString.Key.foregroundColor: UIColor.darkGray]
         let myAttrString = NSAttributedString(string: "View all", attributes: attribute as [NSAttributedString.Key : Any])
         btn.setAttributedTitle(myAttrString, for: .normal)
@@ -75,7 +74,7 @@ class HomeView: UIView {
         return btn
     }()
     let viewAllEntriesButton: UIButton = {
-        let btn = UIButton(frame: CGRect(x: ViewSize.SCREEN_WIDTH - 120, y: 380, width: 180, height: 20))
+        let btn = UIButton(frame: CGRect(x: ViewSize.SCREEN_WIDTH - 120, y: 180, width: 180, height: 20))
         let attribute = [ NSAttributedString.Key.font: UIFont(name: "Lato-Light", size: 14),  NSAttributedString.Key.foregroundColor: UIColor.darkGray]
         let myAttrString = NSAttributedString(string: "View all", attributes: attribute as [NSAttributedString.Key : Any])
         btn.setAttributedTitle(myAttrString, for: .normal)
@@ -94,9 +93,10 @@ class HomeView: UIView {
         return cv
     }()
     var recentEntryTable: UITableView = {
-        let tv = UITableView(frame: CGRect(x: 0, y: 185, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - 200))
+        let tv = UITableView(frame: CGRect(x: 0, y: 185, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - 285))
         tv.allowsSelection = false
         tv.separatorStyle = .none
+        tv.showsVerticalScrollIndicator = false
         
         return tv
     }()
@@ -123,11 +123,13 @@ class HomeView: UIView {
         addSubview(recentThoughtsCollectionView)
         addSubview(recentEntryTable)
         addSubview(quickAddView)
+        addSubview(viewAllThoughtsButton)
         
         setupTables()
         recentThoughtsCollectionView.reloadData()
         
         profileButton.addTarget(self, action: #selector(userPressedProfile), for: .touchUpInside)
+        viewAllThoughtsButton.addTarget(self, action: #selector(userPressedViewAllThoughts), for: .touchUpInside)
     }
     
     func setupTables() {

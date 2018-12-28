@@ -40,7 +40,8 @@ extension QuickAddView: UITextViewDelegate {
         recentThought.layer.cornerRadius = 2
     }
     fileprivate func setupView() {
-        self.backgroundColor = UIColor(hex: "E0E1E9")
+        self.backgroundColor = UIColor(hex: "161616")
+        
         textView.delegate = self
         
         addSubview(textView)

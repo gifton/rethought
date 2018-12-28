@@ -49,6 +49,14 @@
 		D79B1EFA21CC6B0000E951D3 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B1EF921CC6B0000E951D3 /* UIFont.swift */; };
 		D79B1EFC21CC748B00E951D3 /* RecommendedThoughtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B1EFB21CC748B00E951D3 /* RecommendedThoughtView.swift */; };
 		D7FFA1C721D4703C001C3B72 /* ThoughtDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1C621D4703C001C3B72 /* ThoughtDetailView.swift */; };
+		D7FFA1C921D4C050001C3B72 /* ThoughtDetailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1C821D4C050001C3B72 /* ThoughtDetailDelegate.swift */; };
+		D7FFA1CB21D639A3001C3B72 /* EntryDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1CA21D639A3001C3B72 /* EntryDetailController.swift */; };
+		D7FFA1CD21D6B875001C3B72 /* ThoughtFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1CC21D6B875001C3B72 /* ThoughtFeedController.swift */; };
+		D7FFA1D121D6B9DD001C3B72 /* ThoughtFeedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1D021D6B9DD001C3B72 /* ThoughtFeedDelegate.swift */; };
+		D7FFA1D321D6BB6E001C3B72 /* ThoughtFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1D221D6BB6E001C3B72 /* ThoughtFeedViewModel.swift */; };
+		D7FFA1D521D6BCD8001C3B72 /* HomeViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1D421D6BCD8001C3B72 /* HomeViewModelDelegate.swift */; };
+		D7FFA1D721D6BD55001C3B72 /* ThoughtFeedModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1D621D6BD55001C3B72 /* ThoughtFeedModelDelegate.swift */; };
+		D7FFA1D921D6CB04001C3B72 /* ThoughtComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1D821D6CB04001C3B72 /* ThoughtComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +105,14 @@
 		D79B1EF921CC6B0000E951D3 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		D79B1EFB21CC748B00E951D3 /* RecommendedThoughtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedThoughtView.swift; sourceTree = "<group>"; };
 		D7FFA1C621D4703C001C3B72 /* ThoughtDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailView.swift; sourceTree = "<group>"; };
+		D7FFA1C821D4C050001C3B72 /* ThoughtDetailDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailDelegate.swift; sourceTree = "<group>"; };
+		D7FFA1CA21D639A3001C3B72 /* EntryDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailController.swift; sourceTree = "<group>"; };
+		D7FFA1CC21D6B875001C3B72 /* ThoughtFeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtFeedController.swift; sourceTree = "<group>"; };
+		D7FFA1D021D6B9DD001C3B72 /* ThoughtFeedDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtFeedDelegate.swift; sourceTree = "<group>"; };
+		D7FFA1D221D6BB6E001C3B72 /* ThoughtFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtFeedViewModel.swift; sourceTree = "<group>"; };
+		D7FFA1D421D6BCD8001C3B72 /* HomeViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelDelegate.swift; sourceTree = "<group>"; };
+		D7FFA1D621D6BD55001C3B72 /* ThoughtFeedModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtFeedModelDelegate.swift; sourceTree = "<group>"; };
+		D7FFA1D821D6CB04001C3B72 /* ThoughtComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtComponent.swift; sourceTree = "<group>"; };
 		DC8A793DE6461EFAC213268E /* Pods-rethought.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rethought.release.xcconfig"; path = "Pods/Target Support Files/Pods-rethought/Pods-rethought.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,6 +195,7 @@
 				D75B88B821BB70C00023784F /* AppDelegate.swift */,
 				D75B88DF21BC54B20023784F /* Entry.swift */,
 				D75B88E421BC56AB0023784F /* Thought.swift */,
+				D7FFA1D821D6CB04001C3B72 /* ThoughtComponent.swift */,
 				D75B890B21BE18740023784F /* User.swift */,
 				D75B891D21C07D910023784F /* ThoughtPreviewSmall.swift */,
 				D75B891F21C08A980023784F /* ThoughtPreviewLarge.swift */,
@@ -192,6 +209,9 @@
 			children = (
 				D75B890921BDFE780023784F /* DummyData.swift */,
 				D75B891321BF12530023784F /* HomeViewModel.swift */,
+				D7FFA1D221D6BB6E001C3B72 /* ThoughtFeedViewModel.swift */,
+				D7FFA1D621D6BD55001C3B72 /* ThoughtFeedModelDelegate.swift */,
+				D7FFA1D421D6BCD8001C3B72 /* HomeViewModelDelegate.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -227,11 +247,10 @@
 		D75B890221BDFA6C0023784F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D75B891121BEDD0E0023784F /* HomeDelegate.swift */,
-				D75B88BA21BB70C00023784F /* HomeViewController.swift */,
+				D7FFA1CE21D6B93E001C3B72 /* Home */,
 				D75B890F21BE192E0023784F /* ProfileViewController.swift */,
-				D75B891721BF1F5A0023784F /* ThoughtDetailController.swift */,
-				D75B891B21BF4A380023784F /* NewThoughtController.swift */,
+				D7FFA1CF21D6B958001C3B72 /* Thought */,
+				D7FFA1CA21D639A3001C3B72 /* EntryDetailController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -259,6 +278,27 @@
 				D79237ED21D0360C00BEAE0A /* RecommendedThoughtCell.swift */,
 			);
 			path = cell;
+			sourceTree = "<group>";
+		};
+		D7FFA1CE21D6B93E001C3B72 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D75B891121BEDD0E0023784F /* HomeDelegate.swift */,
+				D75B88BA21BB70C00023784F /* HomeViewController.swift */,
+				D75B891B21BF4A380023784F /* NewThoughtController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		D7FFA1CF21D6B958001C3B72 /* Thought */ = {
+			isa = PBXGroup;
+			children = (
+				D75B891721BF1F5A0023784F /* ThoughtDetailController.swift */,
+				D7FFA1C821D4C050001C3B72 /* ThoughtDetailDelegate.swift */,
+				D7FFA1CC21D6B875001C3B72 /* ThoughtFeedController.swift */,
+				D7FFA1D021D6B9DD001C3B72 /* ThoughtFeedDelegate.swift */,
+			);
+			path = Thought;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -399,14 +439,18 @@
 				D75B891221BEDD0E0023784F /* HomeDelegate.swift in Sources */,
 				D75B892621C339CF0023784F /* EntryViews.swift in Sources */,
 				D75B892021C08A980023784F /* ThoughtPreviewLarge.swift in Sources */,
+				D7FFA1D121D6B9DD001C3B72 /* ThoughtFeedDelegate.swift in Sources */,
 				D75B88D121BC507B0023784F /* Styling.swift in Sources */,
 				D7FFA1C721D4703C001C3B72 /* ThoughtDetailView.swift in Sources */,
+				D7FFA1CD21D6B875001C3B72 /* ThoughtFeedController.swift in Sources */,
 				D75B892421C2FE750023784F /* EntryPreviewCell.swift in Sources */,
 				D75B88FF21BDC2C60023784F /* RecentThoughtCell.swift in Sources */,
 				D75B891C21BF4A380023784F /* NewThoughtController.swift in Sources */,
 				D75B88E921BC92190023784F /* HomeView.swift in Sources */,
+				D7FFA1D521D6BCD8001C3B72 /* HomeViewModelDelegate.swift in Sources */,
 				D75B88BB21BB70C00023784F /* HomeViewController.swift in Sources */,
 				D75B891021BE192E0023784F /* ProfileViewController.swift in Sources */,
+				D7FFA1D921D6CB04001C3B72 /* ThoughtComponent.swift in Sources */,
 				D75B890E21BE191C0023784F /* ProfileView.swift in Sources */,
 				D75B890C21BE18740023784F /* User.swift in Sources */,
 				D75B88B921BB70C00023784F /* AppDelegate.swift in Sources */,
@@ -414,6 +458,7 @@
 				D75B88E521BC56AB0023784F /* Thought.swift in Sources */,
 				D75B890A21BDFE780023784F /* DummyData.swift in Sources */,
 				D79B1EF821CC09FC00E951D3 /* MicroThoughtCell.swift in Sources */,
+				D7FFA1C921D4C050001C3B72 /* ThoughtDetailDelegate.swift in Sources */,
 				D75B88D321BC51250023784F /* UIImage.swift in Sources */,
 				D75B88C121BB70C00023784F /* rethought.xcdatamodeld in Sources */,
 				D75B891821BF1F5A0023784F /* ThoughtDetailController.swift in Sources */,
@@ -422,7 +467,10 @@
 				D75B891A21BF47EA0023784F /* NewThoughtView.swift in Sources */,
 				D79B1EFC21CC748B00E951D3 /* RecommendedThoughtView.swift in Sources */,
 				D75B88D021BC507B0023784F /* Constants.swift in Sources */,
+				D7FFA1D721D6BD55001C3B72 /* ThoughtFeedModelDelegate.swift in Sources */,
 				D75B891E21C07D910023784F /* ThoughtPreviewSmall.swift in Sources */,
+				D7FFA1CB21D639A3001C3B72 /* EntryDetailController.swift in Sources */,
+				D7FFA1D321D6BB6E001C3B72 /* ThoughtFeedViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

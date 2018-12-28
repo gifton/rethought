@@ -33,13 +33,20 @@ class TextEntryCell: UITableViewCell {
     }
     
     // "give context" is called during the cewllForRow: function in delegate
-    public func giveContext(_ content: EntryPreview) {
-        self.title.text = content.title
-        self.date.text = String(describing: content.date)
-        self.body.text = content.description
+    public func giveContext(with preview: EntryPreview) {
+        self.title.text = preview.title
+        self.date.text = String(describing: preview.date)
+        self.body.text = preview.description
         self.body.numberOfLines = 5
-        self.parentThought.text = content.ThoughtID
+        self.parentThought.text = preview.ThoughtID
         
+    }
+    public func giveContext(with entry: Entry) {
+        self.title.text = entry.title
+        self.date.text = String(describing: entry.date)
+        self.body.text = entry.description
+        self.body.numberOfLines = 5
+        self.parentThought.text = entry.thoughtID
     }
     
     private func styleCell() {
@@ -72,42 +79,63 @@ class ImageEntryCell: UITableViewCell {
     }
     
     private var mainImage       = UIImageView()
-    private var parentThought   = UILabel(frame: CGRect(x: 5, y: 80, width: 100, height: 20))
-    private var date            = UILabel(frame: CGRect(x: 5, y: 90, width: 100, height: 10))
+    private var parentThought   = UILabel()
+    private var date            = UILabel()
     private var imageCount      = UILabel(frame: CGRect(x: 15, y: 15, width: 65, height: 25))
     
     public static var identifier: String {
         return "ImageEntryPreview"
     }
     
-    public func giveContext(_ content: EntryPreview) {
-        self.date.text = String(describing: content.date)
-        self.mainImage.image = content.images.first
-        self.parentThought.text = content.ThoughtID
-        self.imageCount.text = String(describing: content.imageCount!) + " images"
-        let height = mainImage.image?.size.height
-        self.mainImage.frame = CGRect(x: 0, y: 0, width: ViewSize.SCREEN_WIDTH, height: height! - 20)
-        styleCell()
+    public func giveContext(with preview: EntryPreview) {
+        self.date.text = String(describing: preview.date)
+        self.mainImage.image = preview.images.first
+        self.parentThought.text = preview.ThoughtID
+        self.imageCount.text = String(describing: preview.imageCount!) + " images"
+        guard let height = mainImage.image?.size.height else { return }
+        self.mainImage.frame = CGRect(x: 0, y: 0, width: ViewSize.SCREEN_WIDTH, height: height - 20)
+        buildCell()
+        styleCell(mainImage.frame)
+    }
+    public func giveContext(with entry: Entry) {
+        self.date.text = String(describing: entry.date)
+        self.mainImage.image = entry.images.first
+        self.parentThought.text = entry.thoughtID
+        self.imageCount.text = String(describing: entry.images.count) + " images"
+        guard let height = mainImage.image?.size.height else { return }
+        self.mainImage.frame = CGRect(x: 0, y: 0, width: ViewSize.SCREEN_WIDTH, height: height - 20)
+        buildCell()
+        styleCell(mainImage.frame)
     }
     
-    private func styleCell() {
+    private func buildCell() {
+        let items = [mainImage, parentThought, date, imageCount]
+        for item in items {
+            addSubview(item)
+        }
+        
+    }
+    
+    private func styleCell(_ size: CGRect) {
+        let labels = [parentThought, date, imageCount]
         addSubview(mainImage)
-        addSubview(parentThought)
-        addSubview(date)
-        addSubview(imageCount)
-        
-        parentThought.font = UIFont.reBodyLight(ofSize: 12)
-        date.font = UIFont.reBodyLight(ofSize: 12)
-        
-        imageCount.textColor = .black
-        parentThought.textColor = .darkGray
-        date.textColor = .darkGray
-        
-        imageCount.backgroundColor = .white
-        imageCount.layer.cornerRadius = 5
-        imageCount.textAlignment = .center
-        imageCount.font = UIFont.reBody(ofSize: 15)
-        imageCount.layer.opacity = 0.9
-        imageCount.layer.masksToBounds = true
+        for label in labels {
+            addSubview(label)
+            if label == imageCount {
+                label.font = UIFont.reBody(ofSize: 15)
+                label.textColor = .black
+            } else {
+                label.font = UIFont.reBodyLight(ofSize: 12)
+                label.textColor = .darkGray
+            }
+            label.backgroundColor = .white
+            label.layer.cornerRadius = 5
+            label.textAlignment = .center
+            
+            label.layer.opacity = 0.9
+            label.layer.masksToBounds = true
+        }
+        parentThought.frame = CGRect(x: 15, y: size.height - 40, width: 150, height: 25)
+        date.frame = CGRect(x: size.width - 100, y: size.height - 40, width: 100, height: 25)
     }
 }

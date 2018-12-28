@@ -92,7 +92,7 @@ class RecommendedThoughtCell: UITableViewCell {
         welcomeTitle.layer.shadowOffset = CGSize(width: 4, height: 4)
         welcomeTitle.layer.masksToBounds = false
         
-        iconWrapper.frame = CGRect(x: 10, y: 7, width: 56, height: 56)
+        iconWrapper.frame = CGRect(x: 7, y: 7, width: 56, height: 56)
         iconWrapper.backgroundColor = .white
         iconWrapper.layer.cornerRadius = 5
         
@@ -122,13 +122,13 @@ class RecommendedThoughtCell: UITableViewCell {
     public static var identifier: String { return "RecommendedThoughtExpandedCell" }
     
     //func called in cellForRowAt: to add in info explicitely
-    public func giveContext(_ context: ThoughtPreviewLarge) {
-        self.titleText = context.title
-        self.icon = context.icon
-        self.linkCount = context.entryCount["links"]
-        self.entryCount = context.entryCount["entries"]
-        self.mediaCount = context.entryCount["media"]
-        self.dayCount = 6
+    public func giveContext(with preview: ThoughtPreviewLarge) {
+        self.titleText = preview.title
+        self.icon = preview.icon
+        self.linkCount = preview.entryCount["links"]
+        self.entryCount = preview.entryCount["entries"]
+        self.mediaCount = preview.entryCount["media"]
+        self.dayCount = 4
         recievedContext()
     }
     
@@ -147,6 +147,6 @@ class RecommendedThoughtCell: UITableViewCell {
         self.linkLabel.text = String(describing: linkCount) + " Links"
         self.entryLabel.text = String(describing: entryCount) + " Entries"
         self.mediaLabel.text = String(describing: mediaCount) + " media"
-        self.dayCountLabel.text = String(describing: dayCount) + "Days"
+        self.dayCountLabel.text = String(describing: dayCount) + " Days"
     }
 }

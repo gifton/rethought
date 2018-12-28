@@ -65,6 +65,10 @@ public class Entry {
         self.init(type: type, thoughtID: thoughtID, description: description, date: date, icon: icon)
         self.title = title
     }
+    //empty entry
+    convenience init(title: String?) {
+        self.init(type: .text, thoughtID: "nil", description: "not available", date: Date(timeIntervalSinceNow: TimeInterval.init(exactly: 1000)!), icon: "🚫")
+    }
     
 }
 
