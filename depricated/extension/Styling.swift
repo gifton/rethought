@@ -313,6 +313,15 @@ extension UIButton {
     }
 }
 
+extension UIView {
+    public func addLogoShadow() {
+        self.layer.shadowColor = UIColor(hex: "161616", alpha: 0.8).cgColor
+        self.layer.shadowOpacity = 1
+        self.layer.shadowOffset = CGSize(width: 4, height: 4)
+        self.layer.shadowRadius = 20
+    }
+}
+
 //drop this in a viewDidLoad() to list all available fonts
 //for family: String in UIFont.familyNames {
 //    print(family)

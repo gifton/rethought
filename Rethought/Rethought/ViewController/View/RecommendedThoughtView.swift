@@ -31,7 +31,7 @@ class RecommendedThoughtView: UIView {
     var welcomeTitle: UILabel = {
         let lbl = UILabel()
         lbl.text = "Recommended Thought"
-        lbl.font = .retitle(ofSize: 20)
+        lbl.font = .reTitle(ofSize: 20)
         lbl.textColor = .white
         
         return lbl
@@ -79,7 +79,7 @@ class RecommendedThoughtView: UIView {
         thoughtCell.blurBackground(type: .extraLight, cornerRadius: 8)
         
         //141 is 76 (padding left for icon) + 65 (padding for date icon)
-        titleLabel.font = UIFont.retitle(ofSize: 16)
+        titleLabel.font = UIFont.reTitle(ofSize: 16)
         titleLabel.frame = CGRect(x: 76, y: 7, width: thoughtCell.frame.width - 141, height: 25)
         
         iconWrapper.frame = CGRect(x: 10, y: 7, width: 56, height: 56)
@@ -88,7 +88,7 @@ class RecommendedThoughtView: UIView {
         
         iconLabel.frame = iconWrapper.bounds
         iconLabel.textAlignment = .center
-        iconLabel.font = UIFont.retitle(ofSize: 30)
+        iconLabel.font = UIFont.reTitle(ofSize: 30)
         
         let lbls = [linkLabel, mediaLabel, dayCountLabel, entryLabel]
         
@@ -96,7 +96,7 @@ class RecommendedThoughtView: UIView {
             lbl.font = .reBody(ofSize: 12)
             lbl.textColor = .white
         }
-        self.titleLabel.font = .retitle(ofSize: 16)
+        self.titleLabel.font = .reTitle(ofSize: 16)
         self.titleLabel.textColor = .white
     }
     

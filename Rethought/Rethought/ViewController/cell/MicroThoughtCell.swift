@@ -27,8 +27,8 @@ class MicroThoughtCell: UICollectionViewCell {
         addSubview(itemCountLabel)
         
         icon.font = UIFont.boldSystemFont(ofSize: 20)
-        daysSinceLabel.font = UIFont(name: "Lato", size: 12)
-        itemCountLabel.font = UIFont(name: "Lato-Bold", size: 12)
+        daysSinceLabel.font = .reBodyLight(ofSize: 12)
+        itemCountLabel.font = .reBody(ofSize: 12)
     }
     
     public func configureCell(_ thought: ThoughtPreviewSmall) {

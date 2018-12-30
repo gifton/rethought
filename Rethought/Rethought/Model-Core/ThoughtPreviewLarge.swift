@@ -13,23 +13,23 @@ import UIKit
 class ThoughtPreviewLarge {
     let icon: String
     let createdAt: String
-    var color: UIColor = .iconBackground
+    var color: UIColor = .tileBackground
     let entryCount: [String: Int]
     let thoughtID: String
     let title: String
     
-    init(icon: String, createdAt: String, color: UIColor = .iconBackground, relatedThought: String, entryCount: [String: Int], title: String) {
+    init(icon: String, createdAt: String, color: UIColor = .tileBackground, thoughtID: String, entryCount: [String: Int], title: String) {
         self.icon = icon
         self.createdAt = createdAt
-        self.thoughtID = relatedThought
+        self.thoughtID = thoughtID
         self.entryCount = entryCount
         self.title = title
-        if color != .iconBackground {
+        if color != .tileBackground {
             self.color = color
         }
     }
     convenience init(_ empty: Bool? = true) {
-        self.init(icon: "", createdAt: "", relatedThought: "", entryCount: ["String" : 0], title: "")
+        self.init(icon: "", createdAt: "", thoughtID: "", entryCount: ["String" : 0], title: "")
         if empty == true {
             print ("new thoughtPreviewLarge made empty")
         }

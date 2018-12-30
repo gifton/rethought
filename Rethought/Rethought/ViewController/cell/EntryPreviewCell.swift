@@ -55,7 +55,7 @@ class TextEntryCell: UITableViewCell {
         addSubview(parentThought)
         addSubview(date)
         
-        title.font = UIFont.retitle(ofSize: 15)
+        title.font = UIFont.reTitle(ofSize: 15)
         body.font = UIFont.reBody(ofSize: 15)
         parentThought.font = UIFont.reBodyLight(ofSize: 12)
         date.font = UIFont.reBodyLight(ofSize: 12)

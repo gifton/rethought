@@ -12,5 +12,5 @@ import UIKit
 protocol ThoughtFeedDelegate {
     func userTapped(on thought: Thought)
     func returnHome()
-    var thoughtPreviews: ThoughtPreviewLarge { get set }
+    var thoughts: [Thought] { get set }
 }

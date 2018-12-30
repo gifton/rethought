@@ -71,6 +71,7 @@ extension HomeViewController: HomeViewControllerDelegate {
     
     func userDidTapViewAllThoughts() {
         let view = ThoughtFeedController()
+        view.thoughts = self.viewModel.thoughts
         self.navigationController?.pushViewController(view, animated: true)
     }
     
@@ -88,6 +89,10 @@ extension HomeViewController: HomeViewControllerDelegate {
         
         self.navigationController?.pushViewController(controller, animated: true)
         
+    }
+    func userDidTapOnEntry(_ entry: Entry) {
+        
+        self.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
     }
     
 }
@@ -108,7 +113,8 @@ extension HomeView: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        let thought = thoughts![indexPath.row]
+        delegate?.userDidTapOnEntry(thought.entries.first!)
     }
 }
 

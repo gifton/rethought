@@ -55,6 +55,7 @@ class HomeView: UIView {
     let thoughtLabel: UIImageView = {
         let img = UIImageView(frame: CGRect(x: 15, y: 50, width: 100, height: 30))
         img.image = #imageLiteral(resourceName: "Logo")
+        
         return img
     }()
 
@@ -163,7 +164,7 @@ extension HomeView {
     }
     @objc func userPressedViewAllThoughts() {
         print("we made it to this objc func!")
-        delegate?.userDidTapProfileButton()
+        delegate?.userDidTapViewAllThoughts()
     }
     @objc func userPressedNewThought() {
         print("we made it to this objc func!")

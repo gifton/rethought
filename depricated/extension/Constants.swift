@@ -34,7 +34,9 @@ struct ViewSize {
     static let thoughtCellSmall = CGSize(width: 100, height: 50)
     static let thoughtIconSmall = CGSize(width: 56, height: 56)
     static let minimumEntryPreviewSize = CGSize(width: 350, height: 120)
-    let largeTile = CGRect(origin: CGPoint(x: 12.5, y: 10), size: CGSize(width: (UIScreen.main.bounds.width - 25), height: 156))
+    let largeCell = CGRect(origin: CGPoint(x: 12.5, y: 10), size: CGSize(width: (UIScreen.main.bounds.width - 25), height: 156))
+    static let thoughtTileSize = CGSize(width: 150, height: 150)
+    
 }
 
 struct App {
@@ -65,7 +67,7 @@ extension UIColor {
     static let backgroundAccentGray = UIColor(hex: "DEDEDE")
     
     static let darkText = UIColor(hex: "333333")
-    static let iconBackground = UIColor(hex: "FBF6EB")
+    static let tileBackground = UIColor(hex: "FBF6EB")
 }
 
 public func randomString(length: Int) -> String {

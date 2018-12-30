@@ -31,7 +31,7 @@ class QuickAddView: UIView {
 
 extension QuickAddView: UITextViewDelegate {
     fileprivate func styleView() {
-        textView.backgroundColor = .white
+        textView.backgroundColor = UIColor(hex: "F5F5F9")
         textView.layer.cornerRadius = 5
         textView.text = "Whats on your mind?"
         textView.textColor = .lightGray
@@ -40,7 +40,7 @@ extension QuickAddView: UITextViewDelegate {
         recentThought.layer.cornerRadius = 2
     }
     fileprivate func setupView() {
-        self.backgroundColor = UIColor(hex: "161616")
+        self.backgroundColor = UIColor(hex: "E7E7E8")
         
         textView.delegate = self
         

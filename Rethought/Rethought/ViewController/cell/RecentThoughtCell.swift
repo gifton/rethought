@@ -18,7 +18,7 @@ class RecentThoughtCell: UICollectionViewCell {
     var title: UILabel = {
         let lbl = UILabel()
         lbl.text = "add new"
-        lbl.font = UIFont(name: "Lato-Light", size: 10)
+        lbl.font = .reBodyLight(ofSize: 10)
         lbl.textColor = .darkText
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.textAlignment = .center

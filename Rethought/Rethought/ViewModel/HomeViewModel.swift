@@ -32,7 +32,7 @@ extension HomeViewModel {
     func getReccomendedThought() -> ThoughtPreviewLarge {
         let thoughtPreview: ThoughtPreviewLarge = {
             guard let thought: Thought = self.thoughts.last else { return ThoughtPreviewLarge.init() }
-            let tp = ThoughtPreviewLarge(icon: thought.icon, createdAt: "\(thought.date)", relatedThought: thought.ID, entryCount: thought.entryCount, title: thought.title)
+            let tp = ThoughtPreviewLarge(icon: thought.icon, createdAt: "\(thought.date)", thoughtID: thought.ID, entryCount: thought.entryCount, title: thought.title)
             self.viewDelegate?.dataIsLoaded()
             return tp
         }()

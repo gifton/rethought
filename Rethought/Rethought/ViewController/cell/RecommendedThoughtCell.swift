@@ -28,14 +28,14 @@ class RecommendedThoughtCell: UITableViewCell {
     var welcomeTitle: UILabel = {
         let lbl = UILabel(frame: CGRect(x: 20, y: 12, width: 300, height: 25))
         lbl.text = "Recommended Thought"
-        lbl.font = .retitle(ofSize: 20)
+        lbl.font = .reTitle(ofSize: 20)
         lbl.textColor = .white
         
         return lbl
     }()
     private let cell: UIImageView = {
         let size = ViewSize()
-        let iv = UIImageView(frame: size.largeTile)
+        let iv = UIImageView(frame: size.largeCell)
         iv.image = #imageLiteral(resourceName: "ReccomendedThought")
         iv.layer.cornerRadius = 10
         return iv
@@ -98,7 +98,7 @@ class RecommendedThoughtCell: UITableViewCell {
         
         iconLabel.frame = iconWrapper.frame
         iconLabel.textAlignment = .center
-        iconLabel.font = UIFont.retitle(ofSize: 30)
+        iconLabel.font = UIFont.reTitle(ofSize: 30)
         
         titleLabel.frame = CGRect(x: 76, y: 7, width: 250, height: 30)
         
@@ -108,7 +108,7 @@ class RecommendedThoughtCell: UITableViewCell {
             lbl.font = .reBody(ofSize: 12)
             lbl.textColor = .white
         }
-        self.titleLabel.font = .retitle(ofSize: 16)
+        self.titleLabel.font = .reTitle(ofSize: 16)
         self.titleLabel.textColor = .white
         
         dayCountLabel.frame = CGRect(x: (thoughtCell.frame.width - 100), y: 12, width: 100, height: 25)

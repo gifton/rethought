@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UIFont {
-    static func retitle(ofSize fontSize: CGFloat) -> UIFont {
+    static func reTitle(ofSize fontSize: CGFloat) -> UIFont {
         return UIFont(name: "Lato-Bold", size: fontSize)!
     }
     static func reBody(ofSize fontSize: CGFloat) -> UIFont {

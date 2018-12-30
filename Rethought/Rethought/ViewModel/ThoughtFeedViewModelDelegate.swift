@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol ThoughtFeedModelDelegate {
+protocol ThoughtFeedViewModelDelegate {
     func createNew(_ thought: Thought)
     func destroy(_ thoughtID: Thought)
     func update(_ data: Any, component: ThoughtComponent, id: String)
