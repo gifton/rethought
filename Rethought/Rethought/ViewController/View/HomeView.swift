@@ -95,7 +95,7 @@ class HomeView: UIView {
     }()
     var recentEntryTable: UITableView = {
         let tv = UITableView(frame: CGRect(x: 0, y: 185, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - 285))
-        tv.allowsSelection = false
+        tv.allowsSelection = true
         tv.separatorStyle = .none
         tv.showsVerticalScrollIndicator = false
         

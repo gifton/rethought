@@ -17,10 +17,13 @@ class ThoughtDetailController: UIViewController{
     }
 }
 
-extension ThoughtDetailController: DetailThoughtDelegate {
+extension ThoughtDetailController: BackDelegate {
     func returnHome() {
         self.navigationController?.popViewController(animated: true)
     }
+}
+
+extension ThoughtDetailController: DetailThoughtDelegate {
     
     var thought: Thought {
         get {
@@ -34,12 +37,19 @@ extension ThoughtDetailController: DetailThoughtDelegate {
         }
     }
     
+    func userTapped(on entryID: String) {
+        let entries = self.thought.entries
+        let entry = entries.filter{ $0.id == entryID }.first ?? Entry.init(title: "Not available")
+        let vc = EntryDetailController()
+        vc.entry = entry
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
 }
 
 extension ThoughtDetailView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        delegate?.userTapped(on: self.entries![indexPath.row].id)
     }
 }
 

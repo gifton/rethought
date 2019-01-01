@@ -23,8 +23,13 @@ class HomeViewModel: HomeViewModelDelegate {
     }
     var thoughts: [Thought]
     
+    var entries: [Entry] = []
+    
     init(thoughts: [Thought]) {
         self.thoughts = thoughts
+        for thought in thoughts {
+            for entry in thought.entries{self.entries.append(entry)}
+        }
     }
 }
 
@@ -49,14 +54,20 @@ extension HomeViewModel {
     }
     func getRecentEntries() -> [EntryPreview] {
         var recentEntries = [EntryPreview]()
-        for thought in self.thoughts {
-            let entryPrev = EntryPreview(entry: thought.entries.last!)
+        for (count, entry) in self.entries.enumerated() {
+            if count == 25 {
+                break
+            }
+            let entryPrev = EntryPreview(entry: entry)
             recentEntries.append(entryPrev)
         }
         return recentEntries
     }
-    func retrieve(_ thoughtID: String) -> Thought {
+    func retrieve(thought thoughtID: String) -> Thought {
         return thoughts.filter{ $0.ID == thoughtID }.first ?? Thought.init()
+    }
+    func retrieve(entry entryID: String) -> Entry {
+        return entries.filter{ $0.id == entryID }.first ?? Entry.init(title: "Not available")
     }
     func getThoughtName(_ thoughtID: String) -> String {
         return thoughts.filter{ $0.ID == thoughtID}.first!.title

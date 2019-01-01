@@ -12,4 +12,5 @@ import UIKit
 protocol DetailThoughtDelegate {
     var thought: Thought { get set }
     func returnHome()
+    func userTapped(on entryID: String)
 }

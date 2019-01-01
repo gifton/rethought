@@ -12,6 +12,7 @@ import UIKit
 //model for entry previews in dashboard (tableView cells (indexPath.row > 0))
 struct EntryPreview {
     //standard objects
+    let id: String
     let ThoughtID: String
     let date: Date
     var images: [UIImage] = []
@@ -40,6 +41,7 @@ struct EntryPreview {
             self.images.append(entry.linkImage!)
             self.type = .link
         }
+        self.id = entry.id
     }
     var imageCount: Int? {
         return self.images.count

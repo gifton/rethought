@@ -21,30 +21,39 @@ class EntryDetailView: UIView {
         addGestureRecognizer(edgePan)
     }
     
-    convenience init(frame: CGRect, entry: Entry, delegate: EntryDetailDelegate) {
+    convenience init(frame: CGRect, entry: Entry, delegate: BackDelegate) {
         self.init(frame: frame)
         self.title    = entry.title
         self.icon     = entry.icon
+        self.images = entry.images
+        self.entryDescription = entry.description
+        self.link = entry.link
+        self.linkImage = entry.linkImage
         self.delegate = delegate
-        addContext()
         setupView()
+        
+        setupView(for: entry.type)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     //init all objects
-    private let topView                     = UIView(frame: CGRect(x: 0, y: 0, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT * 0.217))
+    private let topView                     = UIView(frame: CGRect(x: 0, y: 0, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT * 0.117))
     private let deleteButton                = UIButton()
     private var iconLabel                   = UILabel()
     private let logo                        = UIImageView(image: #imageLiteral(resourceName: "Logo_with_bg"))
     
-    //content recieved from thought
-    private var title:   String?
-    private var icon:    String?
-    public var entries:  [Entry]?
+    //content recieved from entry
+    private var title:            String?
+    private var icon:             String?
+    private var images:           [UIImage]?
+    private var linkTitle:        String?
+    private var entryDescription: String?
+    private var linkImage:        UIImage?
+    private var link:             String?
     //delegate for returning home, moving to new thought, editing etc
-    public var delegate: EntryDetailDelegate?
+    public var delegate: BackDelegate?
     var content = Entry(title: "Giftons title")
 }
 
@@ -57,6 +66,7 @@ extension EntryDetailView {
         let spacingConstant: CGFloat = 70.0
         
         iconLabel.frame.size = CGSize(width: 30, height: 35)
+        iconLabel.text = self.icon!
         deleteButton.frame.size = CGSize(width: 30, height: 35)
         
         for innerView in views {
@@ -73,13 +83,31 @@ extension EntryDetailView {
         
         deleteButton.setImage(#imageLiteral(resourceName: "Trash"), for: .normal)
     }
-    func addContext() {
-        self.iconLabel.text = self.icon
-    }
     @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         if recognizer.state == .recognized {
             print("Screen edge swiped!")
             delegate?.returnHome()
         }
+    }
+    
+    private func setupView(for type: Entry.EntryType) {
+        switch type {
+        case .link:
+            addLink()
+        case .image:
+            addImages()
+        default:
+            addText()
+        }
+    }
+    
+    func addLink() {
+        print("its a link!")
+    }
+    func addText() {
+        print("its text!")
+    }
+    func addImages() {
+        print("they're images!")
     }
 }

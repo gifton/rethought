@@ -14,9 +14,14 @@ class EntryDetailController: UIViewController {
         super.viewDidLoad()
     }
     private var content: Entry?
-    
 }
 
+extension EntryDetailController: BackDelegate {
+    func returnHome() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+}
 extension EntryDetailController: EntryDetailDelegate {
     var entry: Entry {
         get {
@@ -28,10 +33,4 @@ extension EntryDetailController: EntryDetailDelegate {
             self.view = newView
         }
     }
-    
-    func returnHome() {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    
 }

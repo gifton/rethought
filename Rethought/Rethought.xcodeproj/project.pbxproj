@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9B8B8A63BCEA02BD8A429957 /* Pods_rethought.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36BE63D35A2A902760780123 /* Pods_rethought.framework */; };
+		D702B21121DBFECA003DCA83 /* BackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D702B21021DBFECA003DCA83 /* BackDelegate.swift */; };
+		D702B21421DC06F1003DCA83 /* rethoughtModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D702B21221DC06F1003DCA83 /* rethoughtModel.xcdatamodeld */; };
 		D75B88B921BB70C00023784F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B88B821BB70C00023784F /* AppDelegate.swift */; };
 		D75B88BB21BB70C00023784F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B88BA21BB70C00023784F /* HomeViewController.swift */; };
 		D75B88C121BB70C00023784F /* rethought.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D75B88BF21BB70C00023784F /* rethought.xcdatamodeld */; };
@@ -66,6 +68,8 @@
 /* Begin PBXFileReference section */
 		36BE63D35A2A902760780123 /* Pods_rethought.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rethought.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7EA374B2D93AE93DEA7C328 /* Pods-rethought.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rethought.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rethought/Pods-rethought.debug.xcconfig"; sourceTree = "<group>"; };
+		D702B21021DBFECA003DCA83 /* BackDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackDelegate.swift; sourceTree = "<group>"; };
+		D702B21321DC06F1003DCA83 /* rethought.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = rethought.xcdatamodel; sourceTree = "<group>"; };
 		D75B88B521BB70C00023784F /* rethought.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rethought.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D75B88B821BB70C00023784F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D75B88BA21BB70C00023784F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -201,13 +205,14 @@
 			isa = PBXGroup;
 			children = (
 				D75B88B821BB70C00023784F /* AppDelegate.swift */,
-				D75B88DF21BC54B20023784F /* Entry.swift */,
 				D75B88E421BC56AB0023784F /* Thought.swift */,
+				D75B88DF21BC54B20023784F /* Entry.swift */,
+				D75B892121C2D7D70023784F /* EntryPreview.swift */,
 				D7FFA1D821D6CB04001C3B72 /* ThoughtComponent.swift */,
 				D75B890B21BE18740023784F /* User.swift */,
 				D75B891D21C07D910023784F /* ThoughtPreviewSmall.swift */,
 				D75B891F21C08A980023784F /* ThoughtPreviewLarge.swift */,
-				D75B892121C2D7D70023784F /* EntryPreview.swift */,
+				D702B21221DC06F1003DCA83 /* rethoughtModel.xcdatamodeld */,
 			);
 			path = "Model-Core";
 			sourceTree = "<group>";
@@ -259,6 +264,7 @@
 				D7FFA1CF21D6B958001C3B72 /* Thought */,
 				D7FFA1E021D716C9001C3B72 /* Entry */,
 				D75B890F21BE192E0023784F /* ProfileViewController.swift */,
+				D702B21021DBFECA003DCA83 /* BackDelegate.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -473,8 +479,10 @@
 				D79237EE21D0360C00BEAE0A /* RecommendedThoughtCell.swift in Sources */,
 				D75B88E021BC54B20023784F /* Entry.swift in Sources */,
 				D75B891221BEDD0E0023784F /* HomeDelegate.swift in Sources */,
+				D702B21421DC06F1003DCA83 /* rethoughtModel.xcdatamodeld in Sources */,
 				D75B892621C339CF0023784F /* EntryViews.swift in Sources */,
 				D75B892021C08A980023784F /* ThoughtPreviewLarge.swift in Sources */,
+				D702B21121DBFECA003DCA83 /* BackDelegate.swift in Sources */,
 				D7FFA1DB21D6F496001C3B72 /* ThoughtFeedView.swift in Sources */,
 				D7FFA1D121D6B9DD001C3B72 /* ThoughtFeedDelegate.swift in Sources */,
 				D75B88D121BC507B0023784F /* Styling.swift in Sources */,
@@ -706,6 +714,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		D702B21221DC06F1003DCA83 /* rethoughtModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D702B21321DC06F1003DCA83 /* rethought.xcdatamodel */,
+			);
+			currentVersion = D702B21321DC06F1003DCA83 /* rethought.xcdatamodel */;
+			path = rethoughtModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		D75B88BF21BB70C00023784F /* rethought.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

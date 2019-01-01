@@ -53,6 +53,13 @@ extension HomeView: UICollectionViewDelegate {
     }
 }
 extension HomeViewController: HomeViewControllerDelegate {
+    func userDidTapOnEntry(_ entryID: String) {
+        let vc = EntryDetailController()
+        let entry = viewModel.retrieve(entry: entryID)
+        vc.entry = entry
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func userDidTapQuickAddIcon() {
         print ("user wants to look at the icons!")
     }
@@ -85,14 +92,10 @@ extension HomeViewController: HomeViewControllerDelegate {
     
     func userDidTapThought(_ thoughtID: String) {
         let controller = ThoughtDetailController()
-        controller.thought = viewModel.retrieve(thoughtID)
+        controller.thought = viewModel.retrieve(thought: thoughtID)
         
         self.navigationController?.pushViewController(controller, animated: true)
         
-    }
-    func userDidTapOnEntry(_ entry: Entry) {
-        
-        self.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
     }
     
 }
@@ -113,8 +116,16 @@ extension HomeView: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let thought = thoughts![indexPath.row]
-        delegate?.userDidTapOnEntry(thought.entries.first!)
+        // -1 to adjust for adding one row on top for the tableView
+        switch indexPath.row {
+        case 0:
+            self.delegate?.userDidTapThought(reccomendedThought!.thoughtID)
+        default:
+            let row = indexPath.row - 1
+            let entry = self.recentEntries![row]
+            self.delegate?.userDidTapOnEntry(entry.id)
+        }
+        
     }
 }
 

@@ -10,5 +10,4 @@ import Foundation
 
 protocol EntryDetailDelegate {
     var entry: Entry { get set }
-    func returnHome()
 }

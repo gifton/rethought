@@ -20,7 +20,7 @@ protocol HomeViewControllerDelegate {
     func userDidTapThought(_ thoughtID: String)
     func userDidTapQuickAddIcon()
     func userBeganQuickAdd()
-    func userDidTapOnEntry(_ entry: Entry)
+    func userDidTapOnEntry(_ entryID: String)
 }
 
 
