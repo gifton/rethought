@@ -46,7 +46,7 @@ extension HomeViewModel {
     func getRecentThoughts() -> [ThoughtPreviewSmall] {
         var previews: [ThoughtPreviewSmall] = []
         for thought in self.thoughts {
-            let preview = ThoughtPreviewSmall(icon: thought.icon, lastEdited: "\(thought.lastEdited)", relatedThought: thought.ID, itemCount: thought.entries.count)
+            let preview = ThoughtPreviewSmall(icon: thought.icon, lastEdited: thought.lastEdited, relatedThought: thought.ID, itemCount: thought.entries.count)
             previews.append(preview)
         }
         self.viewDelegate?.dataIsLoaded()
@@ -70,6 +70,13 @@ extension HomeViewModel {
         return entries.filter{ $0.id == entryID }.first ?? Entry.init(title: "Not available")
     }
     func getThoughtName(_ thoughtID: String) -> String {
-        return thoughts.filter{ $0.ID == thoughtID}.first!.title
+        let filteredThoughts = thoughts.filter{ $0.ID == thoughtID}
+        if filteredThoughts.isEmpty {
+            return "NOT AVAILABLE"
+        } else {
+            let output = filteredThoughts.first!
+            return output.title
+        }
+        
     }
 }

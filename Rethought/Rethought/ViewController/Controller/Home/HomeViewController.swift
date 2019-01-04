@@ -50,6 +50,7 @@ extension HomeView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let content = recentThoughts![indexPath.row].thoughtID
         delegate?.userDidTapThought(content)
+        collectionView.cellForItem(at: indexPath)?.isSelected = false
     }
 }
 extension HomeViewController: HomeViewControllerDelegate {
@@ -95,7 +96,6 @@ extension HomeViewController: HomeViewControllerDelegate {
         controller.thought = viewModel.retrieve(thought: thoughtID)
         
         self.navigationController?.pushViewController(controller, animated: true)
-        
     }
     
 }
@@ -119,13 +119,14 @@ extension HomeView: UITableViewDelegate {
         // -1 to adjust for adding one row on top for the tableView
         switch indexPath.row {
         case 0:
+            tableView.cellForRow(at: indexPath)?.isSelected = false
             self.delegate?.userDidTapThought(reccomendedThought!.thoughtID)
         default:
             let row = indexPath.row - 1
             let entry = self.recentEntries![row]
             self.delegate?.userDidTapOnEntry(entry.id)
         }
-        
+        tableView.cellForRow(at: indexPath)?.isSelected = false
     }
 }
 

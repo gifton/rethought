@@ -5,37 +5,27 @@ import UIKit
 import Smile
 
 //thought is parent object holding all entries
-public class Thought: ThoughtDelegate {
+public class Thought {
     
-    public func addNew(entry: Entry) {
-        self.entries.append(entry)
-        switch entry.type {
-        case .link:
-            guard var count: Int = entryCount["links"] else { return }
-            count += 1
-        case .text:
-            guard var count: Int = entryCount["text"] else { return }
-            count += 1
-        default:
-            guard var count: Int = entryCount["media"] else { return }
-            count += 1
-        }
-    }
-    public func remove(entry: Entry) {
-        if let mark = entries.index(where: { $0.id == entry.id }) {
-            entries.remove(at: mark)
-        } else {
-            return
-        }
-        updateLastEdited()
-    }
-    
-    public func update(thought: Thought) {
-        self.title = thought.title
-        self.description = thought.description
-        self.icon = thought.icon
-        self.updateLastEdited()
-    }
+//    public func addNew(entry: Entry) {
+//        self.entries.append(entry)
+//        self.updateLastEdited()
+//    }
+//    public func remove(entry: Entry) {
+//        if let mark = entries.index(where: { $0.id == entry.id }) {
+//            entries.remove(at: mark)
+//        } else {
+//            return
+//        }
+//        updateLastEdited()
+//    }
+//
+//    public func update(thought: Thought) {
+//        self.title = thought.title
+//        self.description = thought.description
+//        self.icon = thought.icon
+//        self.updateLastEdited()
+//    }
     
     convenience init() {
         self.init(title: "nil", description: "nil", icon: "nil", date: Date.init())
@@ -60,7 +50,7 @@ public class Thought: ThoughtDelegate {
         self.ID = randomString(length: 12)
         self.lastEdited = Date.init()
     }
-    //  thoughts dont HAVE top have entries from the start, so if they do, use this function to set its entries
+    //  thoughts dont have to have entries from the start, so if they do, use this function to set its entries
     public convenience init(title: String, description: String, icon: String, date: Date, entries: [Entry]) {
         self.init(title: title, description: description, icon: icon, date: date)
         self.entries = entries
@@ -92,10 +82,4 @@ public class Thought: ThoughtDelegate {
         entryCount["tex"] = textCount
         entryCount["media"] = mediaCount
     }
-}
-
-public protocol ThoughtDelegate {
-    func remove(entry: Entry)
-    func addNew(entry: Entry)
-    
 }

@@ -1,5 +1,5 @@
 //
-//  ThoughtPreviewLarge.swift
+//  ThoughtPreviewSmall.swift
 //  rethought
 //
 //  Created by Dev on 12/11/18.
@@ -8,6 +8,26 @@
 
 import Foundation
 import UIKit
+
+//model for thought previews in dashboard (collectionview cells)
+class ThoughtPreviewSmall {
+    let icon: String
+    let lastEdited: Date
+    var color: UIColor = .tileBackground
+    let itemCount: String
+    let thoughtID: String
+    
+    init(icon: String, lastEdited: Date, color: UIColor = .tileBackground, relatedThought: String, itemCount: Int) {
+        self.icon = icon
+        self.lastEdited = lastEdited
+        self.thoughtID = relatedThought
+        if color != .tileBackground {
+            self.color = color
+        }
+        self.itemCount = "\(itemCount) items"
+    }
+}
+
 
 //model for thought previews in dashboard (tableView cellForIndexPath: 0)
 class ThoughtPreviewLarge {

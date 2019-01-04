@@ -35,7 +35,8 @@ extension ThoughtFeedController: ThoughtFeedDelegate {
     
     public var thoughts: [Thought] {
         get {
-            return (self.viewModel?.thoughts)!
+            guard let vm = self.viewModel else { return [Thought()]}
+            return (vm.allThoughts)
         }
         set {
             viewModel = ThoughtFeedViewModel(thoughts: newValue)
@@ -56,7 +57,7 @@ extension ThoughtFeedController: UICollectionViewDelegate {
         print (viewModel?.getThoughtName(thoughts[indexPath.row].ID) as Any)
         let vc = ThoughtDetailController()
         guard let viewModel = self.viewModel else { return }
-        vc.thought = viewModel.thoughts[indexPath.row]
+        vc.thought = viewModel.allThoughts[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -65,12 +66,13 @@ extension ThoughtFeedController: UICollectionViewDataSource {
         return thoughts.count
     }
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThoughtFeedCellTile.identifier, for: indexPath) as! ThoughtFeedCellTile
         cell.backgroundColor = UIColor(hex: "F5F5F9")
-        cell.giveContext(with: (viewModel?.retrieveThoughtPreview(thoughts[indexPath.row].ID))!)
+        guard let vm = self.viewModel else { return cell }
+        let id = self.thoughts[indexPath.row].ID
+        cell.giveContext(with: (vm.retrieveThoughtPreview(id)))
+        
         return cell
     }
     

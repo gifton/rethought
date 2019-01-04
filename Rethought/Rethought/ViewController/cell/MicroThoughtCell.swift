@@ -31,9 +31,18 @@ class MicroThoughtCell: UICollectionViewCell {
         itemCountLabel.font = .reBody(ofSize: 12)
     }
     
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .none
+        formatter.timeStyle = .short
+        formatter.doesRelativeDateFormatting = true
+        formatter.formattingContext = .standalone
+        return formatter
+    }()
+    
     public func configureCell(_ thought: ThoughtPreviewSmall) {
         self.icon.text = thought.icon
-        self.daysSinceLabel.text = thought.lastEdited
+        self.daysSinceLabel.text = dateFormatter.string(from: thought.lastEdited)
         self.itemCountLabel.text = thought.itemCount
     }
     

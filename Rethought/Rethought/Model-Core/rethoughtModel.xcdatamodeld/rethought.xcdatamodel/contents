@@ -3,7 +3,7 @@
     <entity name="ModelEntry" representedClassName="ModelEntry" syncable="YES" codeGenerationType="class">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="entryDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="entryImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="entryImage" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="entryLink" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="entryTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>

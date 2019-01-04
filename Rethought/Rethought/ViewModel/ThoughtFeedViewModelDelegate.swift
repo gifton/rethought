@@ -10,11 +10,7 @@ import Foundation
 import UIKit
 
 protocol ThoughtFeedViewModelDelegate {
-    func createNew(_ thought: Thought)
-    func destroy(_ thoughtID: Thought)
-    func update(_ data: Any, component: ThoughtComponent, id: String)
-    func getEntries(for thoughtID: String) -> [Entry]
-    func getSimilarThoughts(for thoughtID: String) -> [ThoughtPreviewSmall]
+    init(thoughts: [Thought])
 }
 
 
