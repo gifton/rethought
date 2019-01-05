@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+protocol NewThoughtDelegate {
+    var reccomendedThought: String { get set }
+    
+}

@@ -12,7 +12,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         homeView = HomeView(viewModel.getRecentThoughts(),
                             viewModel.getReccomendedThought(),
                             viewModel.getRecentEntries(),
@@ -24,6 +23,12 @@ class HomeViewController: UIViewController {
         view = homeView
         homeView.dataIsLoaded()
         self.navigationController?.isNavigationBarHidden = true
+        let vc = NewThoughtController()
+        vc.setView(delegate: self, icon: self.viewModel.getReccomendedThought().icon)
+        self.addChild(vc)
+        self.view.addSubview(vc.view)
+        
+        vc.didMove(toParent: self)
     }
 }
 
@@ -54,6 +59,10 @@ extension HomeView: UICollectionViewDelegate {
     }
 }
 extension HomeViewController: HomeViewControllerDelegate {
+    func userDidStartNewThought() {
+        self.view.backgroundColor = .mainBlue
+    }
+    
     func userDidTapOnEntry(_ entryID: String) {
         let vc = EntryDetailController()
         let entry = viewModel.retrieve(entry: entryID)

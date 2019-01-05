@@ -320,6 +320,17 @@ extension UIView {
         self.layer.shadowOffset = CGSize(width: 4, height: 4)
         self.layer.shadowRadius = 20
     }
+    
+    func setGradientBackground(colorTop: UIColor, colorBottom: UIColor) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorBottom.cgColor, colorTop.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradientLayer.locations = [0, 1]
+        gradientLayer.frame = bounds
+        
+        layer.insertSublayer(gradientLayer, at: 0)
+    }
 }
 
 //drop this in a viewDidLoad() to list all available fonts

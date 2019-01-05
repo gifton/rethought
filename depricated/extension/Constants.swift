@@ -11,6 +11,7 @@ import UIKit
 
 //font size
 enum fontSize: CGFloat {
+    case xSmall = 10.0
     case small = 12.0
     case medium = 14.0
     case large = 16.0
