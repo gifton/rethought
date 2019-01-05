@@ -21,6 +21,7 @@ protocol HomeViewControllerDelegate {
     func userDidTapQuickAddIcon()
     func userBeganQuickAdd()
     func userDidTapOnEntry(_ entryID: String)
+    func userDidStartNewThought()
 }
 
 

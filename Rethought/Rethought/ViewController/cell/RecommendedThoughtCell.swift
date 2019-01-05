@@ -25,7 +25,7 @@ class RecommendedThoughtCell: UITableViewCell {
     var backgroundImage         = UIImageView()
     private var thoughtCell     = UIView()
     
-    var welcomeTitle: UILabel = {
+    private var welcomeTitle: UILabel = {
         let lbl = UILabel(frame: CGRect(x: 20, y: 12, width: 300, height: 25))
         lbl.text = "Recommended Thought"
         lbl.font = .reTitle(ofSize: 20)

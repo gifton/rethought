@@ -50,7 +50,7 @@ class HomeView: UIView {
         
         return btn
     }()
-    let quickAddView = QuickAddView(frame: CGRect(x: 0, y: ViewSize.SCREEN_HEIGHT - 100, width: ViewSize.SCREEN_WIDTH, height: 100))
+    
 
     let thoughtLabel: UIImageView = {
         let img = UIImageView(frame: CGRect(x: 15, y: 50, width: 100, height: 30))
@@ -119,11 +119,9 @@ class HomeView: UIView {
     func setView() {
         addSubview(thoughtLabel)
         addSubview(profileButton)
-        addSubview(quickAddView)
         addSubview(reccomendedThoughtLabel)
         addSubview(recentThoughtsCollectionView)
         addSubview(recentEntryTable)
-        addSubview(quickAddView)
         addSubview(viewAllThoughtsButton)
         
         setupTables()
@@ -165,10 +163,6 @@ extension HomeView {
     @objc func userPressedViewAllThoughts() {
         print("we made it to this objc func!")
         delegate?.userDidTapViewAllThoughts()
-    }
-    @objc func userPressedNewThought() {
-        print("we made it to this objc func!")
-        delegate?.userDidTapNewThought()
     }
     @objc func userPressedViewAllEntries() {
         print("we made it to this objc func!")
