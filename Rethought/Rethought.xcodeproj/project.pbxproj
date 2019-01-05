@@ -240,7 +240,6 @@
 				D7FFA1CF21D6B958001C3B72 /* Thought */,
 				D7FFA1E021D716C9001C3B72 /* Entry */,
 				D75B890221BDFA6C0023784F /* Controller */,
-				D75B890321BDFA720023784F /* View */,
 				D75B890421BDFA790023784F /* cell */,
 			);
 			path = ViewController;
@@ -267,21 +266,12 @@
 		D75B890221BDFA6C0023784F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D79B1EFB21CC748B00E951D3 /* RecommendedThoughtView.swift */,
 				D75B890D21BE191C0023784F /* ProfileView.swift */,
 				D75B890F21BE192E0023784F /* ProfileViewController.swift */,
 				D702B21021DBFECA003DCA83 /* BackDelegate.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		D75B890321BDFA720023784F /* View */ = {
-			isa = PBXGroup;
-			children = (
-				D79B1EFB21CC748B00E951D3 /* RecommendedThoughtView.swift */,
-				D7FFA1C621D4703C001C3B72 /* ThoughtDetailView.swift */,
-				D7FFA1E321D717AD001C3B72 /* EntryDetailView.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		D75B890421BDFA790023784F /* cell */ = {
@@ -319,6 +309,7 @@
 			children = (
 				D75B891721BF1F5A0023784F /* ThoughtDetailController.swift */,
 				D7FFA1C821D4C050001C3B72 /* ThoughtDetailDelegate.swift */,
+				D7FFA1C621D4703C001C3B72 /* ThoughtDetailView.swift */,
 			);
 			path = detail;
 			sourceTree = "<group>";
@@ -338,6 +329,7 @@
 			children = (
 				D7FFA1CA21D639A3001C3B72 /* EntryDetailController.swift */,
 				D7FFA1E121D716D7001C3B72 /* EntryDetailDelegate.swift */,
+				D7FFA1E321D717AD001C3B72 /* EntryDetailView.swift */,
 			);
 			path = Entry;
 			sourceTree = "<group>";

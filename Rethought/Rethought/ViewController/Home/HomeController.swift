@@ -9,7 +9,7 @@ class HomeViewController: UIViewController {
         return vm
     }()
     var homeView: HomeView!
-    
+    var newThoughtController: NewThoughtController?
     override func viewDidLoad() {
         super.viewDidLoad()
         homeView = HomeView(viewModel.getRecentThoughts(),
@@ -23,12 +23,13 @@ class HomeViewController: UIViewController {
         view = homeView
         homeView.dataIsLoaded()
         self.navigationController?.isNavigationBarHidden = true
-        let vc = NewThoughtController()
-        vc.setView(delegate: self, icon: self.viewModel.getReccomendedThought().icon)
-        self.addChild(vc)
-        self.view.addSubview(vc.view)
+        self.newThoughtController = NewThoughtController()
+        guard let newThoughtController = newThoughtController else { return }
+        self.newThoughtController!.setView(delegate: self, icon: self.viewModel.getReccomendedThought().icon)
+        self.addChild(newThoughtController)
+        self.view.addSubview(newThoughtController.view)
         
-        vc.didMove(toParent: self)
+        newThoughtController.didMove(toParent: self)
     }
 }
 
@@ -75,7 +76,18 @@ extension HomeViewController: HomeViewControllerDelegate {
     }
     
     func userBeganQuickAdd() {
-        print ("user began quickAdd!")
+        UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 1.15, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            let center = self.newThoughtController!.nView!
+            if center.frame.origin.y == ViewSize.SCREEN_HEIGHT - 100 {
+                center.frame.origin.y -= 575
+                self.homeView.shrink()
+            } else {
+                center.frame.origin.y += 575
+            }
+        }) { _ in
+            let view = self.newThoughtController!.nView!
+            view.isOpen()
+        }
     }
     
     func dataIsLoaded() {

@@ -21,9 +21,11 @@ class NewThoughtController: UIViewController {
         
     }
     public func setView(delegate: HomeViewControllerDelegate, icon: String) {
-        let frame = CGRect(x: 0, y: ViewSize.SCREEN_HEIGHT - 103, width: ViewSize.SCREEN_WIDTH, height: 103)
+        let frame = CGRect(x: 0, y: ViewSize.SCREEN_HEIGHT - 100, width: ViewSize.SCREEN_WIDTH, height: 675)
         self.nView = NewThoughtView(frame: frame, delegate: delegate, icon: ThoughtIcon(icon))
         self.view = nView!
         nView?.setRecentThought()
     }
+    
+    
 }

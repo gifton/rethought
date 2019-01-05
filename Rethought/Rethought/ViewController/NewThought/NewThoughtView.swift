@@ -12,80 +12,117 @@ class NewThoughtView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         print("this is the frame from our init \(self.frame)")
+//        self.setGradientBackground(colorTop: UIColor(hex: "6271FC"), colorBottom: UIColor(hex: "384CBC"))
+        self.backgroundColor = UIColor(hex: "384CBC")
     }
-    
     convenience init(frame: CGRect, delegate: HomeViewControllerDelegate, icon: ThoughtIcon) {
         self.init(frame: frame)
         self.delegate = delegate
         self.currentThoughtIcon = icon
-        setupView()
+        setupClosedView()
     }
-    
+    enum NewThoughtViewState {
+        case open
+        case closed
+    }
+    public var state: NewThoughtViewState = .closed
     public var delegate: HomeViewControllerDelegate?
     public var currentThoughtIcon: ThoughtIcon?
-    
+    public var thoughtButton = UIButton(frame: CGRect(x: 50, y: 25, width: ViewSize.SCREEN_WIDTH - 70, height: 30))
+    public var recentThought = UIButton(frame: CGRect(x: 10, y: 25, width: 30, height: 30))
+    let newThoughtTitleTextView = UITextView(frame: CGRect(x: 10, y: 100, width: ViewSize.SCREEN_WIDTH - 20, height: 300))
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    let textView = UITextView(frame: CGRect(x: 50, y: 25, width: ViewSize.SCREEN_WIDTH - 70, height: 30))
-    let thoughtButton = UIButton(frame: CGRect(x: 50, y: 25, width: ViewSize.SCREEN_WIDTH - 70, height: 30))
-    let recentThought = UIButton(frame: CGRect(x: 10, y: 25, width: 30, height: 30))
-    
-    func setRecentThought() {
-        self.recentThought.setTitle(self.currentThoughtIcon?.icon ?? ThoughtIcon(nil).icon, for: .normal)
     }
 }
 
 extension NewThoughtView: UITextViewDelegate {
-    func styleView() {
-        let attribute = [ NSAttributedString.Key.font: UIFont(name: "Lato-Light", size: 14),  NSAttributedString.Key.foregroundColor: UIColor.darkGray]
+    func styleClosedView() {
+        let attribute = [ NSAttributedString.Key.font: UIFont(name: "Lato-Light", size: 14)]
         let myAttrString = NSAttributedString(string: "Whats on your mind?", attributes: attribute as [NSAttributedString.Key : Any])
-        thoughtButton.backgroundColor = .white
+        thoughtButton.backgroundColor = UIColor.white.withAlphaComponent(0.4)
         thoughtButton.layer.cornerRadius = 5
         thoughtButton.setAttributedTitle(myAttrString, for: .normal)
         
         recentThought.backgroundColor = UIColor.white.withAlphaComponent(0.4)
         recentThought.layer.cornerRadius = 4
+        
     }
-    fileprivate func setupView() {
-        self.setGradientBackground(colorTop: UIColor(hex: "6271FC"), colorBottom: UIColor(hex: "F3A9FF"))
-        recentThought.addTarget(self, action: #selector(userDIdStartNewThought(_:)), for: .touchUpInside)
-//        thoughtButton.delegate = self
+    fileprivate func setupClosedView() {
         
-        addSubview(thoughtButton)
-        addSubview(recentThought)
-        
-//        recentThought.addTarget(self, action: #selector(userDidTapIcon(_:)), for: .touchUpInside)
-        
-        styleView()
     }
     
-//    func textViewDidBeginEditing(_ textView: UITextView) {
-//        if textView.textColor == UIColor.lightGray {
-//            textView.text = nil
-//            textView.textColor = UIColor.black
-//        }
-//        self.frame.size.height += 300
-//        self.frame.origin.y -= 300
-//
-//        userDidTapTextView()
-//    }
+    func setRecentThought() {
+        self.recentThought.setTitle(self.currentThoughtIcon?.icon ?? ThoughtIcon(nil).icon, for: .normal)
+    }
+    
+    func setup() {
+        switch self.state {
+        case .open:
+            addSubview(newThoughtTitleTextView)
+            
+            styleOpenView()
+        default:
+            if 
+            addSubview(thoughtButton)
+            addSubview(recentThought)
+            
+            thoughtButton.addTarget(self, action: #selector(userDidStartNewThought(_:)), for: .touchUpInside)
+            recentThought.addTarget(self, action: #selector(userDidTapIcon(_:)), for: .touchUpInside)
+            styleClosedView()
+        }
+    }
+    
     @objc
-    func userDIdStartNewThought(_ sender: Any) {
-        guard var btnclr = self.thoughtButton.backgroundColor else { return }
-        if btnclr == .mainRed {
-            btnclr = .white
+    func userDidStartNewThought(_ sender: UIButton) {
+        if thoughtButton.backgroundColor == .white {
+            thoughtButton.backgroundColor = UIColor.white.withAlphaComponent(0.4)
+            thoughtButton.setTitleColor(.black, for: .normal)
         } else {
-            btnclr = .mainRed
+            thoughtButton.backgroundColor = .white
+            thoughtButton.setTitleColor(.white, for: .normal)
         }
         print("oh fuck")
+        delegate?.userBeganQuickAdd()
     }
-//    @objc
-//    func userDidTapIcon(_ sender: Any) {
-//        print ("user tapped icon in child view")
-//        guard let delegate = delegate else { return }
-//        print (delegate)
-//        delegate.userDidTapQuickAddIcon()
-//    }
+    @objc
+    func userDidTapIcon(_ sender: Any) {
+        print ("user tapped icon in child view")
+        guard let delegate = delegate else { return }
+        print (delegate)
+        delegate.userDidTapQuickAddIcon()
+    }
+    
+    func styleOpenView() {
+        newThoughtTitleTextView.backgroundColor = .white
+        newThoughtTitleTextView.font = .reBody(ofSize: fontSize.small.rawValue)
+        newThoughtTitleTextView.layer.cornerRadius = 4
+        
+        thoughtButton.center.y += 35
+        recentThought.center.y += 35
+
+    }
+    
+    func setupOpenView() {
+        
+        
+    }
+    
+}
+
+extension NewThoughtView {
+    public func isOpen() {
+        print("you made it here hoss")
+        self.backgroundColor = UIColor(hex: "E7E7E8")
+        let attribute = [ NSAttributedString.Key.font: UIFont(name: "Lato-Light", size: 14)]
+        let myAttrString = NSAttributedString(string: "New Thought", attributes: attribute as [NSAttributedString.Key : Any])
+        thoughtButton.setAttributedTitle(myAttrString, for: .normal)
+        thoughtButton.backgroundColor = .white
+        
+        setupOpenView()
+    }
+    
+    public func isClosed() {
+        setupClosedView()
+    }
 }

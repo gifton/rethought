@@ -20,9 +20,12 @@ class HomeView: UIView {
     public var recentThoughts: [ThoughtPreviewSmall]?
     public var recentEntries: [EntryPreview]?
     
+    private var currentFrame: CGRect!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor(hex: "FAFBFF")
+        self.currentFrame = frame
         
     }
     convenience init(_ recentThoughts: [ThoughtPreviewSmall],
@@ -44,7 +47,7 @@ class HomeView: UIView {
     
     //MARK: All objects in homeView
     let profileButton: UIButton = {
-        let btn = UIButton(frame: CGRect(x: ViewSize.SCREEN_WIDTH - 80, y: 57, width: 60, height: 20))
+        let btn = UIButton()
         btn.setTitle("Profile", for: .normal)
         btn.setTitleColor(UIColor(hex: "E91E63"), for: .normal)
         
@@ -53,29 +56,21 @@ class HomeView: UIView {
     
 
     let thoughtLabel: UIImageView = {
-        let img = UIImageView(frame: CGRect(x: 15, y: 50, width: 100, height: 30))
+        let img = UIImageView()
         img.image = #imageLiteral(resourceName: "Logo")
         
         return img
     }()
 
     let reccomendedThoughtLabel: UILabel = {
-        let lbl = UILabel(frame: CGRect(x: 15, y: 85, width: ViewSize.SCREEN_WIDTH - 150, height: 40))
+        let lbl = UILabel()
         lbl.text = "🚂 CONTINUE THE THOUGHT"
         lbl.font = UIFont(name: "Lato-Bold", size: 16)
         lbl.textColor = UIColor(hex: "BFC0C3")
         return lbl
     }()
     let viewAllThoughtsButton: UIButton = {
-        let btn = UIButton(frame: CGRect(x: ViewSize.SCREEN_WIDTH - 95, y: 87, width: 80, height: 30))
-        let attribute = [ NSAttributedString.Key.font: UIFont(name: "Lato-Light", size: 14),  NSAttributedString.Key.foregroundColor: UIColor.darkGray]
-        let myAttrString = NSAttributedString(string: "View all", attributes: attribute as [NSAttributedString.Key : Any])
-        btn.setAttributedTitle(myAttrString, for: .normal)
-        btn.setTitleColor(.darkGray, for: .normal)
-        return btn
-    }()
-    let viewAllEntriesButton: UIButton = {
-        let btn = UIButton(frame: CGRect(x: ViewSize.SCREEN_WIDTH - 120, y: 180, width: 180, height: 20))
+        let btn = UIButton()
         let attribute = [ NSAttributedString.Key.font: UIFont(name: "Lato-Light", size: 14),  NSAttributedString.Key.foregroundColor: UIColor.darkGray]
         let myAttrString = NSAttributedString(string: "View all", attributes: attribute as [NSAttributedString.Key : Any])
         btn.setAttributedTitle(myAttrString, for: .normal)
@@ -94,7 +89,7 @@ class HomeView: UIView {
         return cv
     }()
     var recentEntryTable: UITableView = {
-        let tv = UITableView(frame: CGRect(x: 0, y: 185, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - 285))
+        let tv = UITableView()
         tv.allowsSelection = true
         tv.separatorStyle = .none
         tv.showsVerticalScrollIndicator = false
@@ -103,7 +98,7 @@ class HomeView: UIView {
     }()
     
     let recentEntriesLabel: UILabel = {
-        let lbl = UILabel(frame: CGRect(x: 15, y: 380, width: 180, height: 20))
+        let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.text = "🎯 RECENT ENTRIES"
         lbl.font = UIFont(name: "Lato-Bold", size: 16)
@@ -118,11 +113,16 @@ class HomeView: UIView {
     
     func setView() {
         addSubview(thoughtLabel)
-        addSubview(profileButton)
         addSubview(reccomendedThoughtLabel)
         addSubview(recentThoughtsCollectionView)
         addSubview(recentEntryTable)
         addSubview(viewAllThoughtsButton)
+        
+        thoughtLabel.frame = CGRect(x: 15, y: 50, width: 100, height: 30)
+        reccomendedThoughtLabel.frame = CGRect(x: 15, y: 85, width: ViewSize.SCREEN_WIDTH - 150, height: 40)
+        viewAllThoughtsButton.frame = CGRect(x: ViewSize.SCREEN_WIDTH - 95, y: 87, width: 80, height: 30)
+        recentEntryTable.frame = CGRect(x: 0, y: 185, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - 285)
+        recentEntriesLabel.frame = CGRect(x: 15, y: 380, width: 180, height: 20)
         
         setupTables()
         recentThoughtsCollectionView.reloadData()
@@ -130,6 +130,8 @@ class HomeView: UIView {
         profileButton.addTarget(self, action: #selector(userPressedProfile), for: .touchUpInside)
         viewAllThoughtsButton.addTarget(self, action: #selector(userPressedViewAllThoughts), for: .touchUpInside)
     }
+    
+    
     
     func setupTables() {
         recentThoughtsCollectionView.register(MicroThoughtCell.self, forCellWithReuseIdentifier: MicroThoughtCell.identifier)
@@ -151,6 +153,12 @@ extension HomeView {
     private func updateViews() {
         self.reloadInputViews()
         self.recentThoughtsCollectionView.reloadData()
+    }
+    
+    public func shrink() {
+       
+//        let newFrame = CGRect(x: currentFrame.origin.x + 25, y: currentFrame.origin.y + 55, width: currentFrame.size.width - 50, height: currentFrame.size.height)
+//        self.frame = newFrame
         
     }
 }

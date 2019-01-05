@@ -340,3 +340,22 @@ extension UIView {
 //        print("== \(names)")
 //    }
 //}
+
+
+//how to add Gesture pan recognizer:
+//let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didPan(sender:)))
+//self.isUserInteractionEnabled = true
+//self.addGestureRecognizer(panRecognizer)
+//self.viewCenter = self.center
+//var viewCenter: CGPoint!
+//@objc func didPan(sender: UIPanGestureRecognizer) {
+//    let translation = sender.translation(in: self)
+//    print("translation \(translation)")
+//    if sender.state == .began {
+//        print("Gesture began")
+//    } else if sender.state == .changed {
+//        print("Gesture is changing")
+//    } else if sender.state == .ended {
+//        print("Gesture ended")
+//    }
+//}
