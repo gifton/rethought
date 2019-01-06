@@ -9,7 +9,7 @@ class HomeViewController: UIViewController {
         return vm
     }()
     var homeView: HomeView!
-    var newThoughtController: NewThoughtController?
+    var thoughtDrawer: ThoughtDrawerController?
     override func viewDidLoad() {
         super.viewDidLoad()
         homeView = HomeView(viewModel.getRecentThoughts(),
@@ -23,12 +23,15 @@ class HomeViewController: UIViewController {
         view = homeView
         homeView.dataIsLoaded()
         self.navigationController?.isNavigationBarHidden = true
-        self.newThoughtController = NewThoughtController()
-        self.newThoughtController!.setView(delegate: self, icon: self.viewModel.getReccomendedThought().icon)
-        self.addChild(newThoughtController!)
-        self.view.addSubview(newThoughtController!.view)
         
-        newThoughtController!.didMove(toParent: self)
+        self.thoughtDrawer = ThoughtDrawerController()
+        let thought = viewModel.getMostrecentThought()
+        thoughtDrawer?.setupController(self, lastThought: thought)
+        
+        self.addChild(thoughtDrawer!)
+        self.view.addSubview(thoughtDrawer!.view)
+        
+        thoughtDrawer!.didMove(toParent: self)
     }
 }
 
@@ -59,28 +62,21 @@ extension HomeView: UICollectionViewDelegate {
     }
 }
 extension HomeViewController: HomeViewControllerDelegate {
-    func userTappedNewThought(closure: @escaping () -> Void) {
-        UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 1.15, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-            
-            let center = self.newThoughtController!.nView!
-            if center.frame.origin.y == ViewSize.SCREEN_HEIGHT - 100 {
-                center.frame.origin.y -= 575
-            } else {
-                center.frame.origin.y += 575
-            }
-           closure()
-        })
+    func dataIsLoaded() {
+        self.homeView?.dataIsLoaded()
     }
     
-    func userBeganQuickAdd(_ delta: CGFloat) {
-        print(delta)
-        var centerY = self.newThoughtController!.nView!.center.y
-        centerY += delta
-        print("Made it to delta addition")
+    func userDidTapViewAllThoughts() {
+        let view = ThoughtFeedController()
+        view.thoughts = self.viewModel.thoughts
+        self.navigationController?.pushViewController(view, animated: true)
     }
     
-    func userDidStartNewThought() {
-        self.view.backgroundColor = .mainBlue
+    func userDidTapThought(_ thoughtID: String) {
+        let controller = ThoughtDetailController()
+        controller.thought = viewModel.retrieve(thought: thoughtID)
+
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     func userDidTapOnEntry(_ entryID: String) {
@@ -90,53 +86,27 @@ extension HomeViewController: HomeViewControllerDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func userDidTapQuickAddIcon() {
-        print ("user wants to look at the icons!")
-    }
-    
-    func userTappedNewThought() {
-        UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 1.15, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-            let center = self.newThoughtController!.nView!
-            print(center.frame.origin)
-            print(ViewSize.SCREEN_HEIGHT - 100)
-            if center.frame.origin.y == ViewSize.SCREEN_HEIGHT - 100 {
-                center.frame.origin.y -= 575
-            } else {
-                center.frame.origin.y += 575
+    func userTappedNewThought(state: thoughtDrawerHeight) {
+        let view = thoughtDrawer!.drawer!
+        UIView.animate(withDuration: 0.2) {
+            switch state {
+            case .closed:
+                view.frame = ViewSize.drawerClosed
+            case .beginThought:
+                view.frame = ViewSize.drawerBeginThought
+            case .completeThought:
+                view.frame = ViewSize.drawerCompleteThought
+            case .isWriting:
+                view.frame = ViewSize.drawerIsWriting
             }
-        })
+        }
     }
     
-    func dataIsLoaded() {
-        self.homeView?.dataIsLoaded()
+    func userSavedNewThought(success: Bool) {
+        if success {
+            print("i didnt have time for an animation lol")
+        }
     }
-    
-    func userDidTapProfileButton() {
-        self.navigationController?.pushViewController(ProfileViewController(), animated: true)
-    }
-    
-    func userDidTapViewAllThoughts() {
-        let view = ThoughtFeedController()
-        view.thoughts = self.viewModel.thoughts
-        self.navigationController?.pushViewController(view, animated: true)
-    }
-    
-    func userDidTapViewAllEntries() {
-        self.navigationController?.pushViewController(ProfileViewController(), animated: true)
-    }
-    
-    func userDidTapNewThought() {
-        self.navigationController?.pushViewController(NewThoughtController(), animated: true)
-    }
-    
-    func userDidTapThought(_ thoughtID: String) {
-        let controller = ThoughtDetailController()
-        controller.thought = viewModel.retrieve(thought: thoughtID)
-        
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
-    
-    
 }
 
 extension HomeView: UITableViewDelegate {

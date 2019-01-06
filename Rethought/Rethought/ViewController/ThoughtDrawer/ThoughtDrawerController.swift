@@ -14,12 +14,13 @@ class ThoughtDrawerController: UIViewController {
         super.viewDidLoad()
     }
     
-    public func setupController(_ delegate: HomeViewControllerDelegate) {
-        self.delegate = delegate
-    }
+    var viewModel: ThoughtDrawerViewModel?
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    public func setupController(_ delegate: HomeViewControllerDelegate, lastThought: Thought) {
+        self.delegate = delegate
+        self.viewModel = ThoughtDrawerViewModel(recentThought: lastThought)
+        self.drawer = ThoughtDrawerView(frame: ViewSize.drawerClosed, lastThought: (viewModel?.buildRecent(string: lastThought.lastEdited))!, delegate: self)
+        self.view = drawer
     }
     
     var drawer: ThoughtDrawerView?
@@ -36,7 +37,7 @@ extension ThoughtDrawerController: NewThoughtDelegate {
             return drawer!.state
         }
         set {
-         delegate?.userTappedNewThought(state: newValue)
+            delegate?.userTappedNewThought(state: newValue)
         }
     }
 }

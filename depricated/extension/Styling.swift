@@ -104,6 +104,7 @@ extension UIView {
         for view in views {
             view.backgroundColor = UIColor.white.withAlphaComponent(0.4)
             view.layer.cornerRadius = cornerRadius
+            view.layer.masksToBounds = true
         }
     }
     

@@ -77,6 +77,10 @@ extension HomeViewModel {
             let output = filteredThoughts.first!
             return output.title
         }
-        
+    }
+    func getMostrecentThought() -> Thought {
+        let recentThoughtPreview = self.getRecentThoughts().first!
+        let thought = self.retrieve(thought: recentThoughtPreview.thoughtID)
+        return thought
     }
 }

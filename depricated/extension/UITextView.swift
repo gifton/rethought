@@ -18,6 +18,7 @@ class ReTextView: UITextView {
     convenience init(frame: CGRect, placeholder: String) {
         self.init(frame: frame, textContainer: nil)
         self.placeholder = placeholder
+        self.textColor = .lightGray
     }
     
     

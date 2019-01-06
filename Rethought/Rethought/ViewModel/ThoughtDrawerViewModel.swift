@@ -31,8 +31,19 @@ extension ThoughtDrawerViewModel: ThoughtDrawerViewModelDelegate {
     }
     
     func save(new thought: ThoughtDrawerViewModel, with: Entry) {
-        <#code#>
+        print("we are saved!")
     }
     
-    
+    func buildRecent(string input: Date) -> String {
+        let dateFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .none
+            formatter.timeStyle = .short
+            formatter.doesRelativeDateFormatting = true
+            formatter.formattingContext = .standalone
+            return formatter
+        }()
+        
+        return "last edit: \(dateFormatter.string(from: thought.lastEdited))"
+    }
 }

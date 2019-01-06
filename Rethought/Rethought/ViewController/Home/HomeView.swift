@@ -25,8 +25,7 @@ class HomeView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor(hex: "FAFBFF")
-        self.currentFrame = frame
-        
+        self.currentFrame = frame        
     }
     convenience init(_ recentThoughts: [ThoughtPreviewSmall],
                      _ reccomendedThought: ThoughtPreviewLarge,

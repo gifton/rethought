@@ -37,6 +37,10 @@ struct ViewSize {
     static let minimumEntryPreviewSize = CGSize(width: 350, height: 120)
     let largeCell = CGRect(origin: CGPoint(x: 12.5, y: 10), size: CGSize(width: (UIScreen.main.bounds.width - 25), height: 156))
     static let thoughtTileSize = CGSize(width: 150, height: 150)
+    static let drawerClosed = CGRect(x: 0, y: ViewSize.SCREEN_HEIGHT - 103, width: ViewSize.SCREEN_WIDTH, height: 103)
+    static let drawerBeginThought = CGRect(x: 0, y: ViewSize.SCREEN_HEIGHT - 156, width: ViewSize.SCREEN_WIDTH, height: 156)
+    static let drawerCompleteThought = CGRect(x: 0, y: ViewSize.SCREEN_HEIGHT - 331, width: ViewSize.SCREEN_WIDTH, height: 331)
+    static let drawerIsWriting = CGRect(x: 0, y: ViewSize.SCREEN_HEIGHT - 560, width: ViewSize.SCREEN_WIDTH, height: 560)
 }
 
 struct App {
@@ -56,8 +60,9 @@ enum ErrorDomain: String {
 
 enum thoughtDrawerHeight: CGFloat {
     case closed = 103.0
-    case beginConversation = 148
-    case expandedConversation = 331
+    case beginThought = 156
+    case completeThought = 331
+    case isWriting = 423
 }
 
 extension UIColor {

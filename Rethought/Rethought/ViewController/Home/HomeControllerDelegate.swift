@@ -14,10 +14,10 @@ import UIKit
 protocol HomeViewControllerDelegate {
     func dataIsLoaded()
     func userDidTapViewAllThoughts()
-    func userDidTapNewThought()
     func userDidTapThought(_ thoughtID: String)
     func userDidTapOnEntry(_ entryID: String)
     func userTappedNewThought(state: thoughtDrawerHeight)
+    func userSavedNewThought(success: Bool)
 }
 
 
