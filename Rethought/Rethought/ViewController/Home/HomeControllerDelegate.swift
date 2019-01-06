@@ -19,9 +19,9 @@ protocol HomeViewControllerDelegate {
     func userDidTapNewThought()
     func userDidTapThought(_ thoughtID: String)
     func userDidTapQuickAddIcon()
-    func userBeganQuickAdd()
+    func userBeganQuickAdd(_ delta: CGFloat)
     func userDidTapOnEntry(_ entryID: String)
-    func userDidStartNewThought()
+    func userTappedNewThought(closure: @escaping () -> Void)
 }
 
 

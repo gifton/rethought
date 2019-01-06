@@ -12,6 +12,7 @@
 		D702B21421DC06F1003DCA83 /* rethoughtModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D702B21221DC06F1003DCA83 /* rethoughtModel.xcdatamodeld */; };
 		D71FA87421E0379E000706A5 /* NewThoughtDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87321E0379E000706A5 /* NewThoughtDelegate.swift */; };
 		D71FA87621E038B5000706A5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87521E038B5000706A5 /* String.swift */; };
+		D71FA87821E1525B000706A5 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87721E1525B000706A5 /* UITextView.swift */; };
 		D75B88B921BB70C00023784F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B88B821BB70C00023784F /* AppDelegate.swift */; };
 		D75B88BB21BB70C00023784F /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B88BA21BB70C00023784F /* HomeController.swift */; };
 		D75B88C121BB70C00023784F /* rethought.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D75B88BF21BB70C00023784F /* rethought.xcdatamodeld */; };
@@ -69,6 +70,7 @@
 		D702B21321DC06F1003DCA83 /* rethought.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = rethought.xcdatamodel; sourceTree = "<group>"; };
 		D71FA87321E0379E000706A5 /* NewThoughtDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewThoughtDelegate.swift; sourceTree = "<group>"; };
 		D71FA87521E038B5000706A5 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		D71FA87721E1525B000706A5 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		D75B88B521BB70C00023784F /* rethought.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rethought.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D75B88B821BB70C00023784F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D75B88BA21BB70C00023784F /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				D75B88D221BC51250023784F /* UIImage.swift */,
 				D79B1EF921CC6B0000E951D3 /* UIFont.swift */,
 				D71FA87521E038B5000706A5 /* String.swift */,
+				D71FA87721E1525B000706A5 /* UITextView.swift */,
 			);
 			name = extension;
 			path = ../../depricated/extension;
@@ -473,6 +476,7 @@
 				D702B21421DC06F1003DCA83 /* rethoughtModel.xcdatamodeld in Sources */,
 				D702B21121DBFECA003DCA83 /* BackDelegate.swift in Sources */,
 				D7FFA1DB21D6F496001C3B72 /* ThoughtFeedView.swift in Sources */,
+				D71FA87821E1525B000706A5 /* UITextView.swift in Sources */,
 				D7FFA1D121D6B9DD001C3B72 /* ThoughtFeedDelegate.swift in Sources */,
 				D75B88D121BC507B0023784F /* Styling.swift in Sources */,
 				D7FFA1DD21D6F785001C3B72 /* ThoughtFeedCellTile.swift in Sources */,

@@ -24,12 +24,11 @@ class HomeViewController: UIViewController {
         homeView.dataIsLoaded()
         self.navigationController?.isNavigationBarHidden = true
         self.newThoughtController = NewThoughtController()
-        guard let newThoughtController = newThoughtController else { return }
         self.newThoughtController!.setView(delegate: self, icon: self.viewModel.getReccomendedThought().icon)
-        self.addChild(newThoughtController)
-        self.view.addSubview(newThoughtController.view)
+        self.addChild(newThoughtController!)
+        self.view.addSubview(newThoughtController!.view)
         
-        newThoughtController.didMove(toParent: self)
+        newThoughtController!.didMove(toParent: self)
     }
 }
 
@@ -60,6 +59,26 @@ extension HomeView: UICollectionViewDelegate {
     }
 }
 extension HomeViewController: HomeViewControllerDelegate {
+    func userTappedNewThought(closure: @escaping () -> Void) {
+        UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 1.15, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            
+            let center = self.newThoughtController!.nView!
+            if center.frame.origin.y == ViewSize.SCREEN_HEIGHT - 100 {
+                center.frame.origin.y -= 575
+            } else {
+                center.frame.origin.y += 575
+            }
+           closure()
+        })
+    }
+    
+    func userBeganQuickAdd(_ delta: CGFloat) {
+        print(delta)
+        var centerY = self.newThoughtController!.nView!.center.y
+        centerY += delta
+        print("Made it to delta addition")
+    }
+    
     func userDidStartNewThought() {
         self.view.backgroundColor = .mainBlue
     }
@@ -75,19 +94,17 @@ extension HomeViewController: HomeViewControllerDelegate {
         print ("user wants to look at the icons!")
     }
     
-    func userBeganQuickAdd() {
+    func userTappedNewThought() {
         UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 1.15, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
             let center = self.newThoughtController!.nView!
+            print(center.frame.origin)
+            print(ViewSize.SCREEN_HEIGHT - 100)
             if center.frame.origin.y == ViewSize.SCREEN_HEIGHT - 100 {
                 center.frame.origin.y -= 575
-                self.homeView.shrink()
             } else {
                 center.frame.origin.y += 575
             }
-        }) { _ in
-            let view = self.newThoughtController!.nView!
-            view.isOpen()
-        }
+        })
     }
     
     func dataIsLoaded() {
