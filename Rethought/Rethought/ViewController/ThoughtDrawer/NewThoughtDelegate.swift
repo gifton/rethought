@@ -9,6 +9,6 @@
 import Foundation
 
 protocol NewThoughtDelegate {
-    var reccomendedThought: String { get set }
-    
+    func save(_ thought: Thought)
+    var thoughtState: NewThoughtView.NewThoughtViewState { get set }
 }

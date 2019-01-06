@@ -37,7 +37,6 @@ struct ViewSize {
     static let minimumEntryPreviewSize = CGSize(width: 350, height: 120)
     let largeCell = CGRect(origin: CGPoint(x: 12.5, y: 10), size: CGSize(width: (UIScreen.main.bounds.width - 25), height: 156))
     static let thoughtTileSize = CGSize(width: 150, height: 150)
-    
 }
 
 struct App {
@@ -53,6 +52,12 @@ struct App {
 enum ErrorDomain: String {
     case generic = "GenericError"
     case parsing = "ParsingError"
+}
+
+enum thoughtDrawerHeight: CGFloat {
+    case closed = 103.0
+    case beginConversation = 148
+    case expandedConversation = 331
 }
 
 extension UIColor {

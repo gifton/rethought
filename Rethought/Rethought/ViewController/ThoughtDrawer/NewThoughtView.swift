@@ -116,7 +116,7 @@ extension NewThoughtView {
     public func isOpen() {
         backgroundColor = UIColor(hex: "E7E7E8")
         self.thoughtButton.backgroundColor = UIColor(hex: "51DF9F")
-        let attribute = [ NSAttributedString.Key.font: UIFont(name: "Lato-Bold", size: 16)]
+        let attribute = [ NSAttributedString.Key.font: UIFont(name: "Lato-Bold", size: 16),  NSAttributedString.Key.foregroundColor: UIColor.white]
         let openStr = NSAttributedString(string: "Save Thought", attributes: attribute as [NSAttributedString.Key : Any])
         self.thoughtButton.setAttributedTitle(openStr, for: .normal)
         state = .open

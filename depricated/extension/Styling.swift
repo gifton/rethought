@@ -99,6 +99,14 @@ extension UIView {
         
         return borders
     }
+    
+    func giveLightBackground(to views: [UIView], cornerRadius: CGFloat) {
+        for view in views {
+            view.backgroundColor = UIColor.white.withAlphaComponent(0.4)
+            view.layer.cornerRadius = cornerRadius
+        }
+    }
+    
     //set height and width constrinats exclusively, for UIView
     func setHeightWidth(width: CGFloat?, height: CGFloat?) {
         if let width = width {
