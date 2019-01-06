@@ -53,17 +53,32 @@ extension ThoughtDrawerView {
         addSubview(timeSinceLastThoughtLabel)
         addSubview(activityButton)
         
-        newThoughtIntro.frame = CGRect(x: 55, y: 25, width: ViewSize.SCREEN_WIDTH - 75, height: 30)
-        iconLabel.frame = CGRect(x: 15, y: 25, width: 30, height: 30)
+        newThoughtIntro.frame           = CGRect(x: 55, y: 25, width: ViewSize.SCREEN_WIDTH - 75, height: 30)
+        iconLabel.frame                 = CGRect(x: 15, y: 25, width: 30, height: 30)
         timeSinceLastThoughtLabel.frame = CGRect(x: 90, y: 50, width: 200, height: 12)
-        activityButton.frame = CGRect(x: ViewSize.SCREEN_WIDTH - 45, y: 25, width: 20, height: 20)
+        activityButton.frame            = CGRect(x: ViewSize.SCREEN_WIDTH - 45, y: 25, width: 20, height: 20)
         
-        newThoughtIntro.font = .reBody(ofSize: 12)
-        iconLabel.font = .reBody(ofSize: 24)
+        newThoughtIntro.font           = .reBody(ofSize: 12)
+        iconLabel.font                 = .reBody(ofSize: 24)
         timeSinceLastThoughtLabel.font = .reBodyLight(ofSize: 10)
+        
         timeSinceLastThoughtLabel.textColor = UIColor(hex: 333333)
+        
+        activityButton.setImage(#imageLiteral(resourceName: "arrow-up-border"), for: .normal)
+        
         giveLightBackground(to: [iconLabel, newThoughtIntro], cornerRadius: 5)
     }
     
     
+}
+
+extension ThoughtDrawerView {
+    @objc
+    func userTappedToMakeNewThought() {
+        state = .beginConversation
+        guard var delegate = self.delegate else { return }
+        delegate.thoughtState = .beginConversation
+        layout()
+        style()
+    }
 }

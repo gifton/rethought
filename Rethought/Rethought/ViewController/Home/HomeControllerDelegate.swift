@@ -13,15 +13,11 @@ import UIKit
 
 protocol HomeViewControllerDelegate {
     func dataIsLoaded()
-    func userDidTapProfileButton()
     func userDidTapViewAllThoughts()
-    func userDidTapViewAllEntries()
     func userDidTapNewThought()
     func userDidTapThought(_ thoughtID: String)
-    func userDidTapQuickAddIcon()
-    func userBeganQuickAdd(_ delta: CGFloat)
     func userDidTapOnEntry(_ entryID: String)
-    func userTappedNewThought(closure: @escaping () -> Void)
+    func userTappedNewThought(state: thoughtDrawerHeight)
 }
 
 

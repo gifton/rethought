@@ -46,13 +46,6 @@ class HomeView: UIView {
     }
     
     //MARK: All objects in homeView
-    let profileButton: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("Profile", for: .normal)
-        btn.setTitleColor(UIColor(hex: "E91E63"), for: .normal)
-        
-        return btn
-    }()
     
 
     let thoughtLabel: UIImageView = {
@@ -127,7 +120,6 @@ class HomeView: UIView {
         setupTables()
         recentThoughtsCollectionView.reloadData()
         
-        profileButton.addTarget(self, action: #selector(userPressedProfile), for: .touchUpInside)
         viewAllThoughtsButton.addTarget(self, action: #selector(userPressedViewAllThoughts), for: .touchUpInside)
     }
     
@@ -164,20 +156,8 @@ extension HomeView {
 }
 
 extension HomeView {
-    @objc func userPressedProfile() {
-        print("we made it to this objc func!")
-        delegate?.userDidTapProfileButton()
-    }
     @objc func userPressedViewAllThoughts() {
         print("we made it to this objc func!")
         delegate?.userDidTapViewAllThoughts()
     }
-    @objc func userPressedViewAllEntries() {
-        print("we made it to this objc func!")
-        delegate?.userDidTapProfileButton()
-    }
-    @objc func userPressedOnEntry(_ id: String?) {
-        print ("this actually worked lmao")
-    }
-    
 }

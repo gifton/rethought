@@ -14,6 +14,9 @@
 		D71FA87621E038B5000706A5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87521E038B5000706A5 /* String.swift */; };
 		D71FA87821E1525B000706A5 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87721E1525B000706A5 /* UITextView.swift */; };
 		D71FA87A21E1D2AF000706A5 /* ThoughtDrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87921E1D2AF000706A5 /* ThoughtDrawerView.swift */; };
+		D71FA87C21E1E1C2000706A5 /* ThoughtDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87B21E1E1C2000706A5 /* ThoughtDrawerController.swift */; };
+		D71FA87E21E1E65C000706A5 /* ThoughtDrawerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87D21E1E65C000706A5 /* ThoughtDrawerViewModel.swift */; };
+		D71FA88021E1E704000706A5 /* ThoughtDrawerViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87F21E1E704000706A5 /* ThoughtDrawerViewModelDelegate.swift */; };
 		D75B88B921BB70C00023784F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B88B821BB70C00023784F /* AppDelegate.swift */; };
 		D75B88BB21BB70C00023784F /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B88BA21BB70C00023784F /* HomeController.swift */; };
 		D75B88C121BB70C00023784F /* rethought.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D75B88BF21BB70C00023784F /* rethought.xcdatamodeld */; };
@@ -73,6 +76,9 @@
 		D71FA87521E038B5000706A5 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D71FA87721E1525B000706A5 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		D71FA87921E1D2AF000706A5 /* ThoughtDrawerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDrawerView.swift; sourceTree = "<group>"; };
+		D71FA87B21E1E1C2000706A5 /* ThoughtDrawerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDrawerController.swift; sourceTree = "<group>"; };
+		D71FA87D21E1E65C000706A5 /* ThoughtDrawerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDrawerViewModel.swift; sourceTree = "<group>"; };
+		D71FA87F21E1E704000706A5 /* ThoughtDrawerViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDrawerViewModelDelegate.swift; sourceTree = "<group>"; };
 		D75B88B521BB70C00023784F /* rethought.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rethought.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D75B88B821BB70C00023784F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D75B88BA21BB70C00023784F /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -161,6 +167,7 @@
 				D71FA87321E0379E000706A5 /* NewThoughtDelegate.swift */,
 				D75B891B21BF4A380023784F /* NewThoughtController.swift */,
 				D75B891921BF47EA0023784F /* NewThoughtView.swift */,
+				D71FA87B21E1E1C2000706A5 /* ThoughtDrawerController.swift */,
 				D71FA87921E1D2AF000706A5 /* ThoughtDrawerView.swift */,
 			);
 			path = ThoughtDrawer;
@@ -234,6 +241,8 @@
 				D7FFA1D221D6BB6E001C3B72 /* ThoughtFeedViewModel.swift */,
 				D7FFA1D621D6BD55001C3B72 /* ThoughtFeedViewModelDelegate.swift */,
 				D7FFA1D421D6BCD8001C3B72 /* HomeViewModelDelegate.swift */,
+				D71FA87F21E1E704000706A5 /* ThoughtDrawerViewModelDelegate.swift */,
+				D71FA87D21E1E65C000706A5 /* ThoughtDrawerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -482,8 +491,11 @@
 				D71FA87821E1525B000706A5 /* UITextView.swift in Sources */,
 				D7FFA1D121D6B9DD001C3B72 /* ThoughtFeedDelegate.swift in Sources */,
 				D75B88D121BC507B0023784F /* Styling.swift in Sources */,
+				D71FA87E21E1E65C000706A5 /* ThoughtDrawerViewModel.swift in Sources */,
 				D7FFA1DD21D6F785001C3B72 /* ThoughtFeedCellTile.swift in Sources */,
 				D7FFA1C721D4703C001C3B72 /* ThoughtDetailView.swift in Sources */,
+				D71FA87C21E1E1C2000706A5 /* ThoughtDrawerController.swift in Sources */,
+				D71FA88021E1E704000706A5 /* ThoughtDrawerViewModelDelegate.swift in Sources */,
 				D7FFA1CD21D6B875001C3B72 /* ThoughtFeedController.swift in Sources */,
 				D75B892421C2FE750023784F /* EntryPreviewCell.swift in Sources */,
 				D75B891C21BF4A380023784F /* NewThoughtController.swift in Sources */,

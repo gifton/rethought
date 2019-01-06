@@ -10,5 +10,5 @@ import Foundation
 
 protocol NewThoughtDelegate {
     func save(_ thought: Thought)
-    var thoughtState: NewThoughtView.NewThoughtViewState { get set }
+    var thoughtState: thoughtDrawerHeight { get set }
 }
