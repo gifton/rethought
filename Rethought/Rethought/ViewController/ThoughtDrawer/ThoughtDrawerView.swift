@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import ISEmojiView
 
 class ThoughtDrawerView: UIView {
     override init(frame: CGRect) {
@@ -38,16 +39,18 @@ class ThoughtDrawerView: UIView {
     
     //objects later init'd
     private var newThoughtTitleTextView: ReTextView?
-    private var newThoughtIcon         : UILabel?
+    private var newThoughtIcon         : UIButton?
     private var startThoughtTitleButton: UIButton?
-    private var cancelNewThought: UIButton?
+    private var cancelNewThought       : UIButton?
+    private var emojiView              : EmojiView?
+    private var newThoughtEmojiDisplay : EmojiDisplay?
 }
 
 extension ThoughtDrawerView {
     func layout() {
         switch state {
         case .beginThought:
-            newThoughtIcon          = UILabel(frame: CGRect(x: ViewSize.SCREEN_WIDTH - 60, y: 75, width: 45, height: 45))
+            newThoughtIcon          = UIButton(frame: CGRect(x: ViewSize.SCREEN_WIDTH - 60, y: 75, width: 45, height: 45))
             startThoughtTitleButton = UIButton(frame: CGRect(x: 130, y: 80, width: 175, height: 35))
             cancelNewThought        = UIButton(frame: CGRect(x: 15, y: 80, width: 100, height: 35))
             
@@ -59,6 +62,7 @@ extension ThoughtDrawerView {
             
             activityButton.removeTarget(self, action: #selector(userTappedToMakeNewThought(_:)), for: .touchUpInside)
             activityButton.addTarget(self, action: #selector(beginWriting(_:)), for: .touchUpInside)
+            newThoughtIcon?.addTarget(self, action: #selector(addIcon(_:)), for: .touchUpInside)
         case .isWriting:
             print("it is now riting")
             newThoughtTitleTextView = ReTextView(frame: CGRect(x: 15, y: 80, width: ViewSize.SCREEN_WIDTH - 30, height: 35))
@@ -83,22 +87,22 @@ extension ThoughtDrawerView {
     func style() {
         switch state {
         case .beginThought:
-            newThoughtIcon?.text               = "🔀"
-            newThoughtIcon?.font               = .reBody(ofSize: 24)
-            newThoughtIcon?.textAlignment      = .center
-            newThoughtIcon?.backgroundColor    = UIColor(hex: "47484D")
-            newThoughtIcon?.layer.opacity      = 0.4
-            newThoughtIcon?.layer.cornerRadius = 6
-            newThoughtIcon?.layer.borderWidth  = 5
-            newThoughtIcon?.layer.borderColor  = UIColor.white.cgColor
+            let attSmall                        = [ NSAttributedString.Key.font: UIFont.reBody(ofSize: fontSize.small.rawValue)]
+            let attLarge                        = [ NSAttributedString.Key.font: UIFont.reBody(ofSize: fontSize.xXXLarge.rawValue)]
+            let str1                            = NSAttributedString(string: "🔀", attributes: attLarge as [NSAttributedString.Key : Any])
+            let str2                            = NSAttributedString(string: "Write a brief description", attributes: attSmall as [NSAttributedString.Key : Any])
+            newThoughtIcon?.setAttributedTitle(str1, for: .normal)
+            newThoughtIcon?.backgroundColor     = UIColor(hex: "47484D").withAlphaComponent(0.40)
+            newThoughtIcon?.layer.opacity       = 0.4
+            newThoughtIcon?.layer.cornerRadius  = 6
+            newThoughtIcon?.layer.masksToBounds = true
             
-            let att                                     = [ NSAttributedString.Key.font: UIFont.reBody(ofSize: 15),  NSAttributedString.Key.foregroundColor: UIColor.white]
-            let str                                     = NSAttributedString(string: "Write a brief description", attributes: att as [NSAttributedString.Key : Any])
-            startThoughtTitleButton?.setAttributedTitle(str, for: .normal)
+            
+            startThoughtTitleButton?.setAttributedTitle(str2, for: .normal)
             startThoughtTitleButton?.backgroundColor    = UIColor(hex: "6271fc")
             startThoughtTitleButton?.layer.cornerRadius = 5
             
-            let cancelStr                        = NSAttributedString(string: "Cancel", attributes: att as [NSAttributedString.Key : Any])
+            let cancelStr                        = NSAttributedString(string: "Cancel", attributes: attSmall as [NSAttributedString.Key : Any])
             cancelNewThought?.backgroundColor    = .mainRed
             cancelNewThought?.layer.cornerRadius = 5
             cancelNewThought?.setAttributedTitle(cancelStr, for: .normal)
@@ -108,7 +112,7 @@ extension ThoughtDrawerView {
             startThoughtTitleButton?.addTarget(self, action: #selector(beginWriting(_:)), for: .touchUpInside)
         case .isWriting:
         
-            newThoughtTitleTextView?.placeholder = "Start Here"
+            newThoughtTitleTextView?.placeholder = "Start Hebre"
             newThoughtTitleTextView?.font = .reBody(ofSize: 12)
             newThoughtTitleTextView?.backgroundColor = UIColor(hex: "384CBC")
         default:
@@ -116,7 +120,7 @@ extension ThoughtDrawerView {
         }
         
     }
-    func buildClosed() {
+    fileprivate func buildClosed() {
         for view in self.subviews {
             view.removeFromSuperview()
         }
@@ -131,9 +135,9 @@ extension ThoughtDrawerView {
         timeSinceLastThoughtLabel.frame = CGRect(x: 75, y: 60, width: 200, height: 14)
         activityButton.frame            = CGRect(x: ViewSize.SCREEN_WIDTH - 60, y: 25, width: 30, height: 30)
         
-        newThoughtIntro.font           = .reBody(ofSize: fontSize.small.rawValue)
-        iconLabel.font                 = .reBody(ofSize: fontSize.xXXLarge.rawValue)
-        timeSinceLastThoughtLabel.font = .reBodyLight(ofSize: fontSize.small.rawValue)
+        newThoughtIntro.font           = .reBody(ofSize: 12)
+        iconLabel.font                 = .reBody(ofSize: 24)
+        timeSinceLastThoughtLabel.font = .reBodyLight(ofSize: 12)
         
         timeSinceLastThoughtLabel.textColor = .white
         
@@ -149,6 +153,31 @@ extension ThoughtDrawerView {
         
         newThoughtIntro.text = "Whats on your mind?"
         newThoughtIntro.padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+    }
+    
+    func buildEmojiDrawer() {
+        print("hi from buildEmojiDrawer()!!")
+        let keyboardSettings = KeyboardSettings(bottomType: .pageControl)
+        emojiView = EmojiView(keyboardSettings: keyboardSettings)
+//        emojiView?.translatesAutoresizingMaskIntoConstraints = false
+        emojiView!.delegate = self
+        
+        newThoughtEmojiDisplay = EmojiDisplay(frame: CGRect(x: ViewSize.SCREEN_WIDTH - (((ViewSize.SCREEN_WIDTH - 125) / 2) + 125), y: 130, width: 125, height: 125), emoji: ThoughtIcon("🤸🏼‍♂️"))
+        emojiView?.frame = CGRect(x: 0, y: ViewSize.SCREEN_HEIGHT - 450, width: ViewSize.SCREEN_WIDTH, height: 450)
+        
+        newThoughtEmojiDisplay!.inputView = emojiView
+        
+        addSubview(newThoughtEmojiDisplay!)
+        addSubview(emojiView!)
+        
+        print (newThoughtEmojiDisplay?.frame ?? CGRect(x: 100, y: 100, width: 100, height: 100))
+    }
+    
+}
+
+extension ThoughtDrawerView: EmojiViewDelegate {
+    func emojiViewDidSelectEmoji(_ emoji: String, emojiView: EmojiView) {
+       newThoughtEmojiDisplay?.emoji = ThoughtIcon(emoji)
     }
     
     
@@ -179,11 +208,18 @@ extension ThoughtDrawerView {
     }
     @objc
     func beginWriting(_ sender: UIButton) {
+//        if sender
         state = .isWriting
         delegate?.thoughtState = .isWriting
         activityButton.setImage(#imageLiteral(resourceName: "arrow-down"), for: .normal)
         layout()
         style()
+    }
+    @objc
+    func addIcon(_ sender: UIButton) {
+        delegate?.thoughtState = .isWriting
+        buildEmojiDrawer()
+        print("user wants to add Icon")
     }
 }
 

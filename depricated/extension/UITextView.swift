@@ -47,3 +47,48 @@ extension ReTextView: UITextViewDelegate {
 protocol ReTextViewDelegate {
     var placeholder: String { get set }
 }
+
+class EmojiDisplay: UITextView {
+    override init(frame: CGRect, textContainer: NSTextContainer?) {
+        super.init(frame: frame, textContainer: textContainer)
+        delegate = self
+        styleCell()
+    }
+    
+    convenience init(frame: CGRect, emoji: ThoughtIcon) {
+        self.init(frame: frame)
+        self.text = emoji.icon
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    func styleCell() {
+        self.backgroundColor = UIColor.lightGray.withAlphaComponent(0.28)
+        self.layer.cornerRadius = 6
+        self.textAlignment = .center
+        self.font = .reBody(ofSize: 77)
+        self.isEditable = false
+    }
+}
+
+extension EmojiDisplay: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.text = ""
+    }
+}
+
+extension EmojiDisplay: EmojiDisplayIsEditable {
+    var emoji: ThoughtIcon {
+        get {
+            return ThoughtIcon(self.text)
+        }
+        set {
+            self.text = newValue.icon
+        }
+    }
+}
+
+protocol EmojiDisplayIsEditable {
+    var emoji: ThoughtIcon { get set }
+}
