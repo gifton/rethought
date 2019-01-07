@@ -27,3 +27,23 @@ extension ViewSize {
     static let drawerCompleteThought = CGRect(x: 0, y: ViewSize.SCREEN_HEIGHT - 331, width: ViewSize.SCREEN_WIDTH, height: 331)
     static let drawerIsWriting = CGRect(x: 0, y: ViewSize.SCREEN_HEIGHT - 560, width: ViewSize.SCREEN_WIDTH, height: 560)
 }
+
+enum ThoughtDrawerWritingType {
+    case title
+    case icon
+}
+
+extension ThoughtDrawerController: NewThoughtDelegate {
+    func save(_ thought: Thought) {
+        print("saved contezt: \(thought.title)")
+    }
+    
+    var thoughtState: thoughtDrawerHeight {
+        get {
+            return drawer!.state
+        }
+        set {
+            delegate?.userTappedNewThought(state: newValue)
+        }
+    }
+}

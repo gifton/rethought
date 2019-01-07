@@ -18,10 +18,12 @@ struct EntryPreview {
     var images: [UIImage] = []
     var title: String
     
+    //optional Values
     var description: String?
     var link: String?
     var type: Entry.EntryType
     var thoughtIcon: ThoughtIcon?
+    public var thoughtTitle: String?
     
     init(entry: Entry) {
         self.ThoughtID = entry.thoughtID

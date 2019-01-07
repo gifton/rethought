@@ -14,6 +14,7 @@ class ThoughtDrawerView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor(hex: "384CBC")
+        self.addBorders(edges: [.top], color: UIColor.white, thickness: 5)
         self.addLogoShadow()
         buildClosed()
     }
@@ -29,6 +30,7 @@ class ThoughtDrawerView: UIView {
     }
     //all public vars
     public var state: thoughtDrawerHeight = .closed
+    public var writingState: ThoughtDrawerWritingType = .title
     public var delegate: NewThoughtDelegate?
     
     //main objects
@@ -54,8 +56,6 @@ extension ThoughtDrawerView {
             startThoughtTitleButton = UIButton(frame: CGRect(x: 130, y: 80, width: 175, height: 35))
             cancelNewThought        = UIButton(frame: CGRect(x: 15, y: 80, width: 100, height: 35))
             
-            newThoughtTitleTextView?.removeFromSuperview()
-            
             addSubview(newThoughtIcon!)
             addSubview(startThoughtTitleButton!)
             addSubview(cancelNewThought!)
@@ -64,16 +64,26 @@ extension ThoughtDrawerView {
             activityButton.addTarget(self, action: #selector(beginWriting(_:)), for: .touchUpInside)
             newThoughtIcon?.addTarget(self, action: #selector(addIcon(_:)), for: .touchUpInside)
         case .isWriting:
-            print("it is now riting")
-            newThoughtTitleTextView = ReTextView(frame: CGRect(x: 15, y: 80, width: ViewSize.SCREEN_WIDTH - 30, height: 35))
-            
-            startThoughtTitleButton?.removeFromSuperview()
-            cancelNewThought?.removeFromSuperview()
-            newThoughtIcon?.removeFromSuperview()
-            addSubview(newThoughtTitleTextView!)
-            
-            activityButton.removeTarget(self, action: #selector(beginWriting(_:)), for: .touchUpInside)
-            activityButton.addTarget(self, action: #selector(userTappedToMakeNewThought(_:)), for: .touchUpInside)
+            if self.writingState == .title {
+                newThoughtTitleTextView = ReTextView(frame: CGRect(x: 15, y: 80, width: ViewSize.SCREEN_WIDTH - 30, height: 35))
+                
+                addSubview(newThoughtTitleTextView!)
+                
+                activityButton.removeTarget(self, action: #selector(beginWriting(_:)), for: .touchUpInside)
+                activityButton.addTarget(self, action: #selector(userTappedToMakeNewThought(_:)), for: .touchUpInside)
+            } else {
+                let keyboardSettings = KeyboardSettings(bottomType: .pageControl)
+                emojiView = EmojiView(keyboardSettings: keyboardSettings)
+                emojiView!.delegate = self
+                
+                newThoughtEmojiDisplay = EmojiDisplay(frame: CGRect(x: ViewSize.SCREEN_WIDTH - (((ViewSize.SCREEN_WIDTH - 125) / 2) + 125), y: 130, width: 125, height: 125), emoji: ThoughtIcon("🤸🏼‍♂️"))
+                emojiView?.frame = CGRect(x: 0, y: ViewSize.SCREEN_HEIGHT - 450, width: ViewSize.SCREEN_WIDTH, height: 450)
+                
+                newThoughtEmojiDisplay!.inputView = emojiView
+                
+                addSubview(newThoughtEmojiDisplay!)
+                addSubview(emojiView!)
+            }
             
         case .completeThought:
             newThoughtTitleTextView?.removeFromSuperview()
@@ -81,7 +91,6 @@ extension ThoughtDrawerView {
         default:
             print("fuck")
         }
-        
     }
     
     func style() {
@@ -92,8 +101,7 @@ extension ThoughtDrawerView {
             let str1                            = NSAttributedString(string: "🔀", attributes: attLarge as [NSAttributedString.Key : Any])
             let str2                            = NSAttributedString(string: "Write a brief description", attributes: attSmall as [NSAttributedString.Key : Any])
             newThoughtIcon?.setAttributedTitle(str1, for: .normal)
-            newThoughtIcon?.backgroundColor     = UIColor(hex: "47484D").withAlphaComponent(0.40)
-            newThoughtIcon?.layer.opacity       = 0.4
+            newThoughtIcon?.backgroundColor     = .white
             newThoughtIcon?.layer.cornerRadius  = 6
             newThoughtIcon?.layer.masksToBounds = true
             
@@ -133,7 +141,7 @@ extension ThoughtDrawerView {
         newThoughtIntro.frame           = CGRect(x: 75, y: 25, width: 150, height: 30)
         iconLabel.frame                 = CGRect(x: 15, y: 25, width: 50, height: 50)
         timeSinceLastThoughtLabel.frame = CGRect(x: 75, y: 60, width: 200, height: 14)
-        activityButton.frame            = CGRect(x: ViewSize.SCREEN_WIDTH - 60, y: 25, width: 30, height: 30)
+        activityButton.frame            = CGRect(x: ViewSize.SCREEN_WIDTH - 60, y: 30, width: 30, height: 30)
         
         newThoughtIntro.font           = .reBody(ofSize: 12)
         iconLabel.font                 = .reBody(ofSize: 24)
@@ -144,7 +152,6 @@ extension ThoughtDrawerView {
         activityButton.setImage(#imageLiteral(resourceName: "arrow-up"), for: .normal)
         activityButton.removeTarget(nil, action: nil, for: .allEvents)
         activityButton.addTarget(self, action: #selector(userTappedToMakeNewThought(_:)), for: .touchUpInside)
-        //activityButton.imageView?.sizeToFit()
         
         giveLightBackground(to: [iconLabel, newThoughtIntro], cornerRadius: 5)
         
@@ -155,22 +162,26 @@ extension ThoughtDrawerView {
         newThoughtIntro.padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
     }
     
-    func buildEmojiDrawer() {
-        print("hi from buildEmojiDrawer()!!")
-        let keyboardSettings = KeyboardSettings(bottomType: .pageControl)
-        emojiView = EmojiView(keyboardSettings: keyboardSettings)
-//        emojiView?.translatesAutoresizingMaskIntoConstraints = false
-        emojiView!.delegate = self
-        
-        newThoughtEmojiDisplay = EmojiDisplay(frame: CGRect(x: ViewSize.SCREEN_WIDTH - (((ViewSize.SCREEN_WIDTH - 125) / 2) + 125), y: 130, width: 125, height: 125), emoji: ThoughtIcon("🤸🏼‍♂️"))
-        emojiView?.frame = CGRect(x: 0, y: ViewSize.SCREEN_HEIGHT - 450, width: ViewSize.SCREEN_WIDTH, height: 450)
-        
-        newThoughtEmojiDisplay!.inputView = emojiView
-        
-        addSubview(newThoughtEmojiDisplay!)
-        addSubview(emojiView!)
-        
-        print (newThoughtEmojiDisplay?.frame ?? CGRect(x: 100, y: 100, width: 100, height: 100))
+    private func clear() {
+        switch state {
+        case .beginThought:
+            if self.writingState == .title {
+                newThoughtTitleTextView?.removeFromSuperview()
+            } else {
+                
+            }
+        case .isWriting:
+            if self.writingState == .title {
+                startThoughtTitleButton?.removeFromSuperview()
+                cancelNewThought?.removeFromSuperview()
+                newThoughtIcon?.removeFromSuperview()
+            }
+        case .completeThought:
+            startThoughtTitleButton?.removeFromSuperview()
+            
+        default:
+            print("no clearing needed")
+        }
     }
     
 }
@@ -179,8 +190,6 @@ extension ThoughtDrawerView: EmojiViewDelegate {
     func emojiViewDidSelectEmoji(_ emoji: String, emojiView: EmojiView) {
        newThoughtEmojiDisplay?.emoji = ThoughtIcon(emoji)
     }
-    
-    
 }
 
 extension ThoughtDrawerView {
@@ -196,6 +205,7 @@ extension ThoughtDrawerView {
         if activityButton.image(for: .normal) == UIImage(named: "arrow-down.png") {
             activityButton.setImage(#imageLiteral(resourceName: "arrow-up"), for: .normal)
         }
+        clear()
         layout()
         style()
     }
@@ -208,7 +218,6 @@ extension ThoughtDrawerView {
     }
     @objc
     func beginWriting(_ sender: UIButton) {
-//        if sender
         state = .isWriting
         delegate?.thoughtState = .isWriting
         activityButton.setImage(#imageLiteral(resourceName: "arrow-down"), for: .normal)
@@ -218,7 +227,8 @@ extension ThoughtDrawerView {
     @objc
     func addIcon(_ sender: UIButton) {
         delegate?.thoughtState = .isWriting
-        buildEmojiDrawer()
+        clear()
+        layout()
         print("user wants to add Icon")
     }
 }

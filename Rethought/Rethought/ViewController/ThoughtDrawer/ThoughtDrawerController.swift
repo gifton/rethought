@@ -24,20 +24,5 @@ class ThoughtDrawerController: UIViewController {
     }
     
     var drawer: ThoughtDrawerView?
-    private var delegate: HomeViewControllerDelegate?
-}
-
-extension ThoughtDrawerController: NewThoughtDelegate {
-    func save(_ thought: Thought) {
-        print("saved contezt: \(thought.title)")
-    }
-    
-    var thoughtState: thoughtDrawerHeight {
-        get {
-            return drawer!.state
-        }
-        set {
-            delegate?.userTappedNewThought(state: newValue)
-        }
-    }
+    var delegate: HomeViewControllerDelegate?
 }

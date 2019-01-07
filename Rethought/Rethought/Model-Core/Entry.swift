@@ -28,12 +28,16 @@ public class Entry {
     public var icon: String
     public var thoughtID: String
     
+    
     //unique objects
     public var images: [UIImage] = []
     public var title: String?
     public var link: String?
     public var linkImage: UIImage?
     public var linkTitle: String?
+    
+    //optional values
+    public var thoughtTitle: String?
     
     //minimum
     init(type: EntryType, thoughtID: String, description: String, date: Date, icon: String) {

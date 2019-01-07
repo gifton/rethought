@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class ThoughtDetailController: UIViewController{
-    fileprivate var detailThought: Thought?
+    var detailThought: Thought?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(hex: "55AFF8")
@@ -21,30 +21,6 @@ extension ThoughtDetailController: BackDelegate {
     func returnHome() {
         self.navigationController?.popViewController(animated: true)
     }
-}
-
-extension ThoughtDetailController: DetailThoughtDelegate {
-    
-    var thought: Thought {
-        get {
-            return detailThought ?? Thought()
-        }
-        set {
-            let detailView = ThoughtDetailView(frame: ViewSize.FRAME, thought: newValue, delegate: self)
-            self.view = detailView
-            
-            
-        }
-    }
-    
-    func userTapped(on entryID: String) {
-        let entries = self.thought.entries
-        let entry = entries.filter{ $0.id == entryID }.first ?? Entry.init(title: "Not available")
-        let vc = EntryDetailController()
-        vc.entry = entry
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
 }
 
 extension ThoughtDetailView: UITableViewDelegate {

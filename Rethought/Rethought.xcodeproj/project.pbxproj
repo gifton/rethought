@@ -12,6 +12,8 @@
 		D702B21421DC06F1003DCA83 /* rethoughtModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D702B21221DC06F1003DCA83 /* rethoughtModel.xcdatamodeld */; };
 		D70EA8DE21E301240071E257 /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8DD21E301240071E257 /* Sizes.swift */; };
 		D70EA8E021E301E50071E257 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8DF21E301E50071E257 /* UIColor.swift */; };
+		D70EA8E221E31CF30071E257 /* DrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8E121E31CF30071E257 /* DrawerView.swift */; };
+		D70EA8E421E329140071E257 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8E321E329140071E257 /* UIView.swift */; };
 		D71FA87421E0379E000706A5 /* NewThoughtDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87321E0379E000706A5 /* NewThoughtDelegate.swift */; };
 		D71FA87621E038B5000706A5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87521E038B5000706A5 /* String.swift */; };
 		D71FA87821E1525B000706A5 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87721E1525B000706A5 /* UITextView.swift */; };
@@ -75,6 +77,8 @@
 		D702B21321DC06F1003DCA83 /* rethought.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = rethought.xcdatamodel; sourceTree = "<group>"; };
 		D70EA8DD21E301240071E257 /* Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
 		D70EA8DF21E301E50071E257 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		D70EA8E121E31CF30071E257 /* DrawerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerView.swift; sourceTree = "<group>"; };
+		D70EA8E321E329140071E257 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		D71FA87321E0379E000706A5 /* NewThoughtDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewThoughtDelegate.swift; sourceTree = "<group>"; };
 		D71FA87521E038B5000706A5 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D71FA87721E1525B000706A5 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 		D71FA87221E03781000706A5 /* ThoughtDrawer */ = {
 			isa = PBXGroup;
 			children = (
+				D70EA8E121E31CF30071E257 /* DrawerView.swift */,
 				D71FA87321E0379E000706A5 /* NewThoughtDelegate.swift */,
 				D71FA87B21E1E1C2000706A5 /* ThoughtDrawerController.swift */,
 				D71FA87921E1D2AF000706A5 /* ThoughtDrawerView.swift */,
@@ -225,6 +230,7 @@
 				D71FA87721E1525B000706A5 /* UITextView.swift */,
 				D71FA88121E1F272000706A5 /* UILabel.swift */,
 				D70EA8DF21E301E50071E257 /* UIColor.swift */,
+				D70EA8E321E329140071E257 /* UIView.swift */,
 			);
 			name = extension;
 			path = ../../depricated/extension;
@@ -497,6 +503,7 @@
 				D75B891421BF12530023784F /* HomeViewModel.swift in Sources */,
 				D79237EE21D0360C00BEAE0A /* RecommendedThoughtCell.swift in Sources */,
 				D75B88E021BC54B20023784F /* Entry.swift in Sources */,
+				D70EA8E421E329140071E257 /* UIView.swift in Sources */,
 				D75B891221BEDD0E0023784F /* HomeControllerDelegate.swift in Sources */,
 				D702B21421DC06F1003DCA83 /* rethoughtModel.xcdatamodeld in Sources */,
 				D702B21121DBFECA003DCA83 /* BackDelegate.swift in Sources */,
@@ -522,6 +529,7 @@
 				D75B88B921BB70C00023784F /* AppDelegate.swift in Sources */,
 				D75B892221C2D7D70023784F /* EntryPreview.swift in Sources */,
 				D7FFA1E421D717AD001C3B72 /* EntryDetailView.swift in Sources */,
+				D70EA8E221E31CF30071E257 /* DrawerView.swift in Sources */,
 				D75B88E521BC56AB0023784F /* Thought.swift in Sources */,
 				D75B890A21BDFE780023784F /* DummyData.swift in Sources */,
 				D79B1EF821CC09FC00E951D3 /* MicroThoughtCell.swift in Sources */,
