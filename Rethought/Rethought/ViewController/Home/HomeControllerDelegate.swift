@@ -18,6 +18,7 @@ protocol HomeViewControllerDelegate {
     func userDidTapOnEntry(_ entryID: String)
     func userTappedNewThought(state: thoughtDrawerHeight)
     func userSavedNewThought(success: Bool)
+    func retrieveTitle(from thoughtID: String) -> String
 }
 
 

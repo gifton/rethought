@@ -57,4 +57,17 @@ extension UILabel {
         
         return contentSize
     }
+    
+    func getStringFromDate(date: Date) {
+        let dateFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .none
+            formatter.timeStyle = .short
+            formatter.doesRelativeDateFormatting = true
+            formatter.formattingContext = .standalone
+            return formatter
+        }()
+        let output = dateFormatter.string(from: date)
+        self.text = output
+    }
 }

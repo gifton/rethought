@@ -100,12 +100,39 @@ extension EntryDetailView {
             addText()
         }
     }
-    
+}
+
+extension EntryDetailView {
     func addLink() {
         print("its a link!")
     }
     func addText() {
         print("its text!")
+        let entryTitle: UITextView = {
+            let lbl = UITextView()
+            lbl.font = .reTitle(ofSize: 14)
+            lbl.text = self.title!
+            return lbl
+        }()
+        let entryDescription: UITextView = {
+            let lbl = UITextView()
+            lbl.font = .reBody(ofSize: 12)
+            lbl.text = self.entryDescription
+            return lbl
+        }()
+        let lbls = [entryTitle, entryDescription]
+        for lbl in lbls {
+            addSubview(lbl)
+            lbl.translatesAutoresizingMaskIntoConstraints = false
+        }
+        NSLayoutConstraint.activate ([
+            entryTitle.centerXAnchor.constraint(equalTo: centerXAnchor),
+            entryTitle.widthAnchor.constraint(equalToConstant: ViewSize.SCREEN_WIDTH - 50),
+            entryTitle.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 5),
+            entryDescription.centerXAnchor.constraint(equalTo: centerXAnchor),
+            entryDescription.topAnchor.constraint(equalTo: entryTitle.bottomAnchor, constant: 10),
+            entryDescription.widthAnchor.constraint(equalToConstant: ViewSize.SCREEN_WIDTH - 50)
+        ])
     }
     func addImages() {
         print("they're images!")

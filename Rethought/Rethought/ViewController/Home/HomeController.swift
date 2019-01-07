@@ -4,7 +4,7 @@ import UIKit
 class HomeViewController: UIViewController {
 
     lazy var viewModel: HomeViewModel = {
-        let vm = HomeViewModel(thoughts: self.getDummyDataForReccomededThoughts(8, entryAmount: 8))
+        let vm = HomeViewModel(thoughts: self.recieveDummyData())
         vm.viewDelegate = self
         return vm
     }()
@@ -62,6 +62,10 @@ extension HomeView: UICollectionViewDelegate {
     }
 }
 extension HomeViewController: HomeViewControllerDelegate {
+    func retrieveTitle(from thoughtID: String) -> String {
+        return self.viewModel.getThoughtName(thoughtID)
+    }
+    
     func dataIsLoaded() {
         self.homeView?.dataIsLoaded()
     }
@@ -156,7 +160,10 @@ extension HomeView: UITableViewDataSource {
             return cell
         } else {
             let row = indexPath.row - 1
-            let entry = self.recentEntries![row]
+            var entry = self.recentEntries![row]
+            let id = entry.ThoughtID
+            let title = delegate!.retrieveTitle(from: id)
+            entry.ThoughtID = title
             switch entry.type {
             case .image:
                 let cell = recentEntryTable.dequeueReusableCell(withIdentifier: ImageEntryCell.identifier, for: indexPath) as! ImageEntryCell

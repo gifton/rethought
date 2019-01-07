@@ -28,12 +28,11 @@ public class Thought {
 //    }
     
     convenience init() {
-        self.init(title: "nil", description: "nil", icon: "nil", date: Date.init())
+        self.init(title: "nil", icon: "nil", date: Date.init())
     }
     
     //  all thought objects
     public var title: String
-    public var description: String
     public var icon: String
     public var entries: [Entry] = []
     public var date: Date
@@ -42,17 +41,16 @@ public class Thought {
     public var ID: String = randomString(length: 12)
     
     //  minimum req's to build new thought
-    public init(title: String, description: String, icon: String, date: Date) {
+    public init(title: String, icon: String, date: Date) {
         self.title = title
-        self.description = description
         self.icon = icon
         self.date = date
         self.ID = randomString(length: 12)
         self.lastEdited = Date.init()
     }
     //  thoughts dont have to have entries from the start, so if they do, use this function to set its entries
-    public convenience init(title: String, description: String, icon: String, date: Date, entries: [Entry]) {
-        self.init(title: title, description: description, icon: icon, date: date)
+    public convenience init(title: String, icon: String, date: Date, entries: [Entry]) {
+        self.init(title: title, icon: icon, date: date)
         self.entries = entries
         updateLastEdited()
     }
@@ -81,5 +79,9 @@ public class Thought {
         entryCount["links"] = linkCount
         entryCount["tex"] = textCount
         entryCount["media"] = mediaCount
+    }
+    
+    public func setID(_ id: String) {
+        self.ID = id
     }
 }

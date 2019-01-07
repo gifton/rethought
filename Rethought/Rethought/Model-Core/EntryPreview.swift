@@ -13,7 +13,7 @@ import UIKit
 struct EntryPreview {
     //standard objects
     let id: String
-    let ThoughtID: String
+    var ThoughtID: String
     let date: Date
     var images: [UIImage] = []
     var title: String
@@ -21,6 +21,7 @@ struct EntryPreview {
     var description: String?
     var link: String?
     var type: Entry.EntryType
+    var thoughtIcon: ThoughtIcon?
     
     init(entry: Entry) {
         self.ThoughtID = entry.thoughtID
@@ -42,6 +43,7 @@ struct EntryPreview {
             self.type = .link
         }
         self.id = entry.id
+        self.thoughtIcon = ThoughtIcon(entry.icon)
     }
     var imageCount: Int? {
         return self.images.count
