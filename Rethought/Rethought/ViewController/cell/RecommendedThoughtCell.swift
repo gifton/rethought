@@ -100,7 +100,7 @@ class RecommendedThoughtCell: UITableViewCell {
         iconLabel.textAlignment = .center
         iconLabel.font = UIFont.reTitle(ofSize: 30)
         
-        titleLabel.frame = CGRect(x: 76, y: 7, width: 250, height: 30)
+        titleLabel.frame = CGRect(x: 76, y: 7, width: 160, height: 30)
         
         let lbls = [linkLabel, mediaLabel, dayCountLabel, entryLabel]
         

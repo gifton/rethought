@@ -51,7 +51,8 @@ class ProfileView: UIView {
     let photoButton: UIButton = {
         let btn = UIButton()
         let buttonSize: CGFloat = 100
-        btn.makeCircle(size: buttonSize)
+        btn.layer.cornerRadius = buttonSize / 2
+        btn.layer.masksToBounds = true
         btn.setHeightWidth(width: buttonSize, height: buttonSize)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.backgroundColor = .random

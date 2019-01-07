@@ -10,6 +10,8 @@
 		9B8B8A63BCEA02BD8A429957 /* Pods_rethought.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36BE63D35A2A902760780123 /* Pods_rethought.framework */; };
 		D702B21121DBFECA003DCA83 /* BackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D702B21021DBFECA003DCA83 /* BackDelegate.swift */; };
 		D702B21421DC06F1003DCA83 /* rethoughtModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D702B21221DC06F1003DCA83 /* rethoughtModel.xcdatamodeld */; };
+		D70EA8DE21E301240071E257 /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8DD21E301240071E257 /* Sizes.swift */; };
+		D70EA8E021E301E50071E257 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8DF21E301E50071E257 /* UIColor.swift */; };
 		D71FA87421E0379E000706A5 /* NewThoughtDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87321E0379E000706A5 /* NewThoughtDelegate.swift */; };
 		D71FA87621E038B5000706A5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87521E038B5000706A5 /* String.swift */; };
 		D71FA87821E1525B000706A5 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87721E1525B000706A5 /* UITextView.swift */; };
@@ -71,6 +73,8 @@
 		C7EA374B2D93AE93DEA7C328 /* Pods-rethought.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rethought.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rethought/Pods-rethought.debug.xcconfig"; sourceTree = "<group>"; };
 		D702B21021DBFECA003DCA83 /* BackDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackDelegate.swift; sourceTree = "<group>"; };
 		D702B21321DC06F1003DCA83 /* rethought.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = rethought.xcdatamodel; sourceTree = "<group>"; };
+		D70EA8DD21E301240071E257 /* Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
+		D70EA8DF21E301E50071E257 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		D71FA87321E0379E000706A5 /* NewThoughtDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewThoughtDelegate.swift; sourceTree = "<group>"; };
 		D71FA87521E038B5000706A5 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D71FA87721E1525B000706A5 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
@@ -159,6 +163,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D70EA8DC21E301080071E257 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D75B88CE21BC507B0023784F /* Constants.swift */,
+				D75B88CF21BC507B0023784F /* Styling.swift */,
+				D70EA8DD21E301240071E257 /* Sizes.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		D71FA87221E03781000706A5 /* ThoughtDrawer */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +209,7 @@
 				D75B88EB21BC98A80023784F /* Resources */,
 				D75B88D421BC53150023784F /* Model-Core */,
 				D75B88E121BC566C0023784F /* ViewModel */,
+				D70EA8DC21E301080071E257 /* Helpers */,
 				D75B88CD21BC507B0023784F /* extension */,
 				D75B88EA21BC92410023784F /* ViewController */,
 			);
@@ -204,13 +219,12 @@
 		D75B88CD21BC507B0023784F /* extension */ = {
 			isa = PBXGroup;
 			children = (
-				D75B88CE21BC507B0023784F /* Constants.swift */,
-				D75B88CF21BC507B0023784F /* Styling.swift */,
 				D75B88D221BC51250023784F /* UIImage.swift */,
 				D79B1EF921CC6B0000E951D3 /* UIFont.swift */,
 				D71FA87521E038B5000706A5 /* String.swift */,
 				D71FA87721E1525B000706A5 /* UITextView.swift */,
 				D71FA88121E1F272000706A5 /* UILabel.swift */,
+				D70EA8DF21E301E50071E257 /* UIColor.swift */,
 			);
 			name = extension;
 			path = ../../depricated/extension;
@@ -511,6 +525,7 @@
 				D75B88E521BC56AB0023784F /* Thought.swift in Sources */,
 				D75B890A21BDFE780023784F /* DummyData.swift in Sources */,
 				D79B1EF821CC09FC00E951D3 /* MicroThoughtCell.swift in Sources */,
+				D70EA8E021E301E50071E257 /* UIColor.swift in Sources */,
 				D7FFA1C921D4C050001C3B72 /* ThoughtDetailDelegate.swift in Sources */,
 				D75B88D321BC51250023784F /* UIImage.swift in Sources */,
 				D75B88C121BB70C00023784F /* rethought.xcdatamodeld in Sources */,
@@ -521,6 +536,7 @@
 				D75B88D021BC507B0023784F /* Constants.swift in Sources */,
 				D7FFA1D721D6BD55001C3B72 /* ThoughtFeedViewModelDelegate.swift in Sources */,
 				D71FA88221E1F272000706A5 /* UILabel.swift in Sources */,
+				D70EA8DE21E301240071E257 /* Sizes.swift in Sources */,
 				D75B891E21C07D910023784F /* ThoughtPreview.swift in Sources */,
 				D71FA87421E0379E000706A5 /* NewThoughtDelegate.swift in Sources */,
 				D7FFA1CB21D639A3001C3B72 /* EntryDetailController.swift in Sources */,
