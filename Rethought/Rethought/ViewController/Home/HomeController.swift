@@ -9,7 +9,7 @@ class HomeViewController: UIViewController {
         return vm
     }()
     var homeView: HomeView!
-    var thoughtDrawer: ThoughtDrawerController?
+    var thoughtDrawer: ThoughtDrawer?
     override func viewDidLoad() {
         super.viewDidLoad()
         homeView = HomeView(viewModel.getRecentThoughts(),
@@ -24,9 +24,8 @@ class HomeViewController: UIViewController {
         homeView.dataIsLoaded()
         self.navigationController?.isNavigationBarHidden = true
         
-        self.thoughtDrawer = ThoughtDrawerController()
-        let thought = viewModel.getMostrecentThought()
-        thoughtDrawer?.setupController(self, lastThought: thought)
+        self.thoughtDrawer = ThoughtDrawer()
+        thoughtDrawer?.buildDrawer(delegate: self)
         
         self.addChild(thoughtDrawer!)
         self.view.addSubview(thoughtDrawer!.view)

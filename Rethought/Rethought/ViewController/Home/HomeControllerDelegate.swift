@@ -16,9 +16,9 @@ protocol HomeViewControllerDelegate {
     func userDidTapViewAllThoughts()
     func userDidTapThought(_ thoughtID: String)
     func userDidTapOnEntry(_ entryID: String)
-    func userTappedNewThought(state: thoughtDrawerHeight)
     func userSavedNewThought(success: Bool)
     func retrieveTitle(from thoughtID: String) -> String
+    func drawerRequests(state change: DrawerPosition)
 }
 
 
@@ -51,17 +51,17 @@ extension HomeViewController: HomeViewControllerDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func userTappedNewThought(state: thoughtDrawerHeight) {
+    func drawerRequests(state change: DrawerPosition) {
         let view = thoughtDrawer!.drawer!
         UIView.animate(withDuration: 0.2) {
-            switch state {
-            case .closed:
+            switch change {
+            case .collapsed:
                 view.frame = ViewSize.drawerClosed
-            case .beginThought:
+            case .mini:
                 view.frame = ViewSize.drawerBeginThought
-            case .completeThought:
+            case .medium:
                 view.frame = ViewSize.drawerCompleteThought
-            case .isWriting:
+            case .open:
                 view.frame = ViewSize.drawerIsWriting
             }
         }

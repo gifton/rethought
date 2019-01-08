@@ -26,3 +26,19 @@ class ThoughtDrawerController: UIViewController {
     var drawer: ThoughtDrawerView?
     var delegate: HomeViewControllerDelegate?
 }
+
+class ThoughtDrawer: UIViewController {
+    var drawer: DrawerView?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    public func buildDrawer(delegate: HomeViewControllerDelegate) {
+        drawer = DrawerView(frame: ViewSize.drawerClosed)
+        drawer?.updateSize = delegate
+        self.view = drawer!
+    }
+    
+    
+}

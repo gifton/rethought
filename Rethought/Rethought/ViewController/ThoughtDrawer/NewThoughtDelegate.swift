@@ -43,7 +43,8 @@ extension ThoughtDrawerController: NewThoughtDelegate {
             return drawer!.state
         }
         set {
-            delegate?.userTappedNewThought(state: newValue)
+            print("uhm")
+//            delegate?.userTappedNewThought(state: newValue)
         }
     }
 }
