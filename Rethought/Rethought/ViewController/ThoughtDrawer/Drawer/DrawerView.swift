@@ -194,3 +194,29 @@ extension DrawerView {
     }
 }
 
+extension DrawerView {
+    func buildDrawer() {
+        self.backgroundColor = UIColor(hex: "5066E3")
+        btn.setTitle("Next", for: .normal)
+        addSubview(btn)
+        btn.addTarget(self, action: #selector(changeDrawer(_:)), for: .touchUpInside)
+    }
+    
+    @objc
+    func changeDrawer(_ sender: UIButton) {
+        switch position {
+        case .collapsed:
+            change(position: .mini)
+            self.position = .mini
+        case .mini:
+            change(position: .open)
+            self.position = .open
+        case .open:
+            change(position: .medium)
+            self.position = .medium
+        case .medium:
+            change(position: .collapsed)
+            self.position = .collapsed
+        }
+    }
+}
