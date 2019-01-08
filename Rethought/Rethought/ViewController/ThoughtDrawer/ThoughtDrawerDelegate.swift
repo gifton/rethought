@@ -11,9 +11,7 @@ import UIKit
 
 //set any UIView to drawer object
 //first DrawerPosition is set to DrawerObject.initialState
-protocol DrawerObjectFactory {
-    func convertToDrawerObject(_ view: UIView, availableIn states: [DrawerState]) -> DrawerObject
-}
+
 
 protocol DrawerControllerDelegate {
     func updateState(_ size: DrawerState)

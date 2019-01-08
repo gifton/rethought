@@ -15,3 +15,7 @@ protocol ThoughtDrawerViewModelDelegate {
     func save(new thought: ThoughtDrawerViewModel, with: Entry)
     func buildRecent(string input: Date) -> String
 }
+
+protocol DrawerObjectFactory {
+    func convertToDrawerObject(_ view: UIView, availableIn states: [DrawerState]) -> DrawerObject
+}
