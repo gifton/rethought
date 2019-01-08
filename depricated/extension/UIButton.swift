@@ -11,26 +11,31 @@ import UIKit
 
 //class wrapper for drawer since DrawerView would be MASSIVE otherwise
 
-class DrawerChild: UIView {
+class DrawerButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
-    convenience init(frame: CGRect, state: DrawerState?) {
+    convenience init(frame: CGRect, nextState: DrawerState?) {
         self.init(frame: frame)
         
-        guard let s = state else { return }
-        self.state = s
+        guard let nextState = nextState else { return }
+        
+        self.nextState = nextState
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var state: DrawerState = .closed
-    
-    func nextPosition(from: DrawerPosition) {
-        
-    }
+    var nextState: DrawerState = .closed
 
+}
+
+extension DrawerView {
+    func addChildren(_ children: [UIView]) {
+        for child in children {
+            addSubview(child)
+        }
+    }
 }

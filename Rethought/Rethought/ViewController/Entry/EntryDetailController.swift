@@ -29,7 +29,7 @@ extension EntryDetailController: EntryDetailDelegate {
         }
         set {
             self.content = newValue
-            let newView = EntryDetailView(frame: .zero, entry: newValue, delegate: self)
+            let newView = EntryDetailView(frame: .zero, entry: content!, delegate: self)
             
             self.view = newView
         }

@@ -9,9 +9,15 @@
 import Foundation
 import UIKit
 
+//drawer view is wrapper for UIView
 class DrawerView: UIView {
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        print("initiated drawer view!")
+        //dev purposes
+        self.addLogoShadow()
+        self.addBorders(edges: .top, color: .white, thickness: 10.0)
         buildDrawer()
     }
     
@@ -19,105 +25,102 @@ class DrawerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    convenience init(frame: CGRect, controller: DrawerControllerDelegate, dataSource: [DrawerObject]) {
+        self.init(frame: frame)
+        self.controller = controller
+        put(dataSource)
+        buildDrawer()
+    }
+    
+    //position doesnt initialize changes, only for tracking current size
     var position: DrawerPosition = .collapsed
     var state: DrawerState = .closed
     
-    var objectSource: DrawerObjectSource?
-    var updateSize: HomeViewControllerDelegate?
+    //MARK: delegate
+    var controller: DrawerControllerDelegate?
     
-    private var closedViews:             [DrawerChild] = []
-    private var beginThoughtViews:       [DrawerChild] = []
-    private var titleViews:              [DrawerChild] = []
-    private var emojiViews:              [DrawerChild] = []
-    private var continueTheThoughtViews: [DrawerChild] = []
-    let btn = UIButton(frame: CGRect(x: 25, y: 25, width: 100, height: 30))
-    
+    //MARK: view holders
+    private var closedChildren:             [DrawerObject] = []
+    private var beginThoughtChildren:       [DrawerObject] = []
+    private var titleChildren:              [DrawerObject] = []
+    private var emojiChildren:              [DrawerObject] = []
+    private var continueTheThoughtChildren: [DrawerObject] = []
+}
+
+extension DrawerView {
+    func put(_ data: [DrawerObject]) {
+        for obj in data {
+            switch obj.initialState{
+            case .addEmoji:
+                emojiChildren.append(obj)
+            case .addTitle:
+                titleChildren.append(obj)
+            case .beginThought:
+                beginThoughtChildren.append(obj)
+            case .closed:
+                closedChildren.append(obj)
+            case .continueTheThought:
+                continueTheThoughtChildren.append(obj)
+            }
+        }
+        print(closedChildren)
+    }
 }
 
 extension DrawerView: DrawerDelegate {
-    public func change(position to: DrawerPosition) {
-        guard let updateSize = updateSize else { return }
-        updateSize.drawerRequests(state: to)
+    //when objectSource is called, populate view holders
+    var objectSource: [DrawerObject] {
+        get {
+            var output: [DrawerObject] = []
+            let views = [closedChildren, beginThoughtChildren, titleChildren, emojiChildren, continueTheThoughtChildren]
+            for view in views {
+                for obj in view {
+                    output.append(obj)
+                }
+            }
+            return output
+        }
+        set {
+            for obj in newValue {
+                switch obj.initialState{
+                case .addEmoji:
+                    emojiChildren.append(obj)
+                case .addTitle:
+                    titleChildren.append(obj)
+                case .beginThought:
+                    beginThoughtChildren.append(obj)
+                case .closed:
+                    closedChildren.append(obj)
+                case .continueTheThought:
+                    continueTheThoughtChildren.append(obj)
+                }
+            }
+        }
     }
     
+    //func called from outside view (@objc funcs declared in controller)
     public func change(state to: DrawerState) {
         switch to {
         case .addEmoji:
-            change(position: .open)
+            buildThoughtEmojiView()
             print("emoji!")
         case .addTitle:
-            change(position: .open)
+            buildThoughtTitleView()
             print("title")
         case .beginThought:
-            change(position: .mini)
+            buildBeginThoughtView()
             print("begning")
         case .closed:
-            change(position: .collapsed)
+            buildClosedView()
             print("closed")
         case .continueTheThought:
-            change(position: .medium)
+            buildContinueTheThought()
         }
         
     }
 }
 
-extension DrawerView: DrawerObjectSource {
-    var continueTheThoughtChildren: [DrawerChild] {
-        get {
-            return self.continueTheThoughtViews
-        }
-        set {
-            self.continueTheThoughtViews = newValue
-        }
-    }
-    
-    var closedChildren: [DrawerChild] {
-        get {
-            return self.closedViews
-        }
-        set {
-            self.closedViews = newValue
-            guard let position = newValue.first?.state else { return }
-            self.change(state: position)
-        }
-    }
-    
-    var beginThoughtCildren: [DrawerChild] {
-        get {
-            return beginThoughtViews
-        }
-        set {
-            self.beginThoughtViews = newValue
-            guard let position = newValue.first?.state else { return }
-            self.change(state: position)
-        }
-    }
-    
-    var titleChildren: [DrawerChild] {
-        get {
-            return titleViews
-        }
-        set {
-            self.titleViews = newValue
-            guard let position = newValue.first?.state else { return }
-            self.change(state: position)
-        }
-    }
-    
-    var emojiChildren: [DrawerChild] {
-        get {
-            return emojiViews
-        }
-        set {
-            self.emojiViews = newValue
-            guard let position = newValue.first?.state else { return }
-            self.change(state: position)
-        }
-    }
-}
-
 //func for changing drawerPosition
-
 //Closed -> mini
 //Mini -> open
 //Mini -> closed
@@ -126,15 +129,16 @@ extension DrawerView: DrawerObjectSource {
 //Medium -> closed
 
 extension DrawerView {
+
     private func buildClosedView() {
         switch state {
         case .beginThought:
-            for view in beginThoughtViews {
-                view.removeFromSuperview()
+            for obj in self.beginThoughtChildren {
+                obj.view.removeFromSuperview()
             }
         case .continueTheThought:
-            for view in continueTheThoughtViews {
-                view.removeFromSuperview()
+            for obj in self.continueTheThoughtChildren {
+                obj.view.removeFromSuperview()
             }
         default:
             return
@@ -143,53 +147,65 @@ extension DrawerView {
     private func buildBeginThoughtView() {
         switch state {
         case .closed:
-            for view in beginThoughtViews {
-                addSubview(view)
+            for obj in self.beginThoughtChildren {
+                obj.view.removeFromSuperview()
             }
         case .addEmoji:
-            for view in emojiViews {
-                view.removeFromSuperview()
+            for obj in self.emojiChildren {
+                obj.view.removeFromSuperview()
             }
         case .addTitle:
-            for view in titleViews {
-                view.removeFromSuperview()
+            for obj in self.titleChildren {
+                obj.view.removeFromSuperview()
             }
         default:
             return
+        }
+        for obj in self.beginThoughtChildren {
+            addSubview(obj.view)
         }
     }
     private func buildThoughtTitleView() {
         switch state {
         case .beginThought:
-            for view in beginThoughtViews {
-                view.removeFromSuperview()
+            for obj in self.beginThoughtChildren {
+                obj.view.removeFromSuperview()
             }
         default:
             return
+        }
+        for obj in self.titleChildren {
+            addSubview(obj.view)
         }
     }
     private func buildThoughtEmojiView() {
         switch state {
         case .beginThought:
-            for view in beginThoughtViews {
-                view.removeFromSuperview()
+            for obj in self.beginThoughtChildren {
+                obj.view.removeFromSuperview()
             }
         default:
             return
+        }
+        for obj in self.emojiChildren {
+            addSubview(obj.view)
         }
     }
     private func buildContinueTheThought() {
         switch state {
         case .addTitle:
-            for view in titleViews {
-                view.removeFromSuperview()
+            for obj in self.titleChildren {
+                obj.view.removeFromSuperview()
             }
         case .addEmoji:
-            for view in emojiViews {
-                view.removeFromSuperview()
+            for obj in self.emojiChildren {
+                obj.view.removeFromSuperview()
             }
         default:
             return
+        }
+        for obj in self.continueTheThoughtChildren {
+            addSubview(obj.view)
         }
     }
 }
@@ -197,26 +213,10 @@ extension DrawerView {
 extension DrawerView {
     func buildDrawer() {
         self.backgroundColor = UIColor(hex: "5066E3")
-        btn.setTitle("Next", for: .normal)
-        addSubview(btn)
-        btn.addTarget(self, action: #selector(changeDrawer(_:)), for: .touchUpInside)
-    }
-    
-    @objc
-    func changeDrawer(_ sender: UIButton) {
-        switch position {
-        case .collapsed:
-            change(position: .mini)
-            self.position = .mini
-        case .mini:
-            change(position: .open)
-            self.position = .open
-        case .open:
-            change(position: .medium)
-            self.position = .medium
-        case .medium:
-            change(position: .collapsed)
-            self.position = .collapsed
+        for obj in self.closedChildren {
+            addSubview(obj.view)
         }
+        print("added drawer to superview")
     }
 }
+

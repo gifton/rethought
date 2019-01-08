@@ -13,13 +13,15 @@
 		D70EA8DE21E301240071E257 /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8DD21E301240071E257 /* Sizes.swift */; };
 		D70EA8E021E301E50071E257 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8DF21E301E50071E257 /* UIColor.swift */; };
 		D70EA8E221E31CF30071E257 /* DrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8E121E31CF30071E257 /* DrawerView.swift */; };
-		D70EA8E421E329140071E257 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8E321E329140071E257 /* UIView.swift */; };
+		D70EA8E421E329140071E257 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8E321E329140071E257 /* UIButton.swift */; };
 		D70EA8E621E445C00071E257 /* DrawerSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8E521E445C00071E257 /* DrawerSources.swift */; };
-		D71FA87421E0379E000706A5 /* NewThoughtDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87321E0379E000706A5 /* NewThoughtDelegate.swift */; };
+		D70EA8E921E516130071E257 /* DrawerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8E821E516130071E257 /* DrawerDelegate.swift */; };
+		D70EA8EB21E523520071E257 /* DrawerComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8EA21E523520071E257 /* DrawerComponents.swift */; };
+		D71FA87421E0379E000706A5 /* ThoughtDrawerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87321E0379E000706A5 /* ThoughtDrawerDelegate.swift */; };
 		D71FA87621E038B5000706A5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87521E038B5000706A5 /* String.swift */; };
 		D71FA87821E1525B000706A5 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87721E1525B000706A5 /* UITextView.swift */; };
 		D71FA87A21E1D2AF000706A5 /* ThoughtDrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87921E1D2AF000706A5 /* ThoughtDrawerView.swift */; };
-		D71FA87C21E1E1C2000706A5 /* ThoughtDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87B21E1E1C2000706A5 /* ThoughtDrawerController.swift */; };
+		D71FA87C21E1E1C2000706A5 /* DrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87B21E1E1C2000706A5 /* DrawerController.swift */; };
 		D71FA87E21E1E65C000706A5 /* ThoughtDrawerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87D21E1E65C000706A5 /* ThoughtDrawerViewModel.swift */; };
 		D71FA88021E1E704000706A5 /* ThoughtDrawerViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87F21E1E704000706A5 /* ThoughtDrawerViewModelDelegate.swift */; };
 		D71FA88221E1F272000706A5 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA88121E1F272000706A5 /* UILabel.swift */; };
@@ -79,13 +81,15 @@
 		D70EA8DD21E301240071E257 /* Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
 		D70EA8DF21E301E50071E257 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		D70EA8E121E31CF30071E257 /* DrawerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerView.swift; sourceTree = "<group>"; };
-		D70EA8E321E329140071E257 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		D70EA8E321E329140071E257 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		D70EA8E521E445C00071E257 /* DrawerSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerSources.swift; sourceTree = "<group>"; };
-		D71FA87321E0379E000706A5 /* NewThoughtDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewThoughtDelegate.swift; sourceTree = "<group>"; };
+		D70EA8E821E516130071E257 /* DrawerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerDelegate.swift; sourceTree = "<group>"; };
+		D70EA8EA21E523520071E257 /* DrawerComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerComponents.swift; sourceTree = "<group>"; };
+		D71FA87321E0379E000706A5 /* ThoughtDrawerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDrawerDelegate.swift; sourceTree = "<group>"; };
 		D71FA87521E038B5000706A5 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D71FA87721E1525B000706A5 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		D71FA87921E1D2AF000706A5 /* ThoughtDrawerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDrawerView.swift; sourceTree = "<group>"; };
-		D71FA87B21E1E1C2000706A5 /* ThoughtDrawerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDrawerController.swift; sourceTree = "<group>"; };
+		D71FA87B21E1E1C2000706A5 /* DrawerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerController.swift; sourceTree = "<group>"; };
 		D71FA87D21E1E65C000706A5 /* ThoughtDrawerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDrawerViewModel.swift; sourceTree = "<group>"; };
 		D71FA87F21E1E704000706A5 /* ThoughtDrawerViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDrawerViewModelDelegate.swift; sourceTree = "<group>"; };
 		D71FA88121E1F272000706A5 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 				D75B88CE21BC507B0023784F /* Constants.swift */,
 				D75B88CF21BC507B0023784F /* Styling.swift */,
 				D70EA8DD21E301240071E257 /* Sizes.swift */,
+				D71FA87921E1D2AF000706A5 /* ThoughtDrawerView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -183,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				D70EA8E521E445C00071E257 /* DrawerSources.swift */,
+				D70EA8E821E516130071E257 /* DrawerDelegate.swift */,
 				D70EA8E121E31CF30071E257 /* DrawerView.swift */,
 			);
 			path = Drawer;
@@ -191,10 +197,10 @@
 		D71FA87221E03781000706A5 /* ThoughtDrawer */ = {
 			isa = PBXGroup;
 			children = (
-				D71FA87321E0379E000706A5 /* NewThoughtDelegate.swift */,
+				D70EA8EA21E523520071E257 /* DrawerComponents.swift */,
+				D71FA87321E0379E000706A5 /* ThoughtDrawerDelegate.swift */,
+				D71FA87B21E1E1C2000706A5 /* DrawerController.swift */,
 				D70EA8E721E445C60071E257 /* Drawer */,
-				D71FA87B21E1E1C2000706A5 /* ThoughtDrawerController.swift */,
-				D71FA87921E1D2AF000706A5 /* ThoughtDrawerView.swift */,
 			);
 			path = ThoughtDrawer;
 			sourceTree = "<group>";
@@ -241,7 +247,7 @@
 				D71FA87721E1525B000706A5 /* UITextView.swift */,
 				D71FA88121E1F272000706A5 /* UILabel.swift */,
 				D70EA8DF21E301E50071E257 /* UIColor.swift */,
-				D70EA8E321E329140071E257 /* UIView.swift */,
+				D70EA8E321E329140071E257 /* UIButton.swift */,
 			);
 			name = extension;
 			path = ../../depricated/extension;
@@ -511,10 +517,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D70EA8E921E516130071E257 /* DrawerDelegate.swift in Sources */,
 				D75B891421BF12530023784F /* HomeViewModel.swift in Sources */,
 				D79237EE21D0360C00BEAE0A /* RecommendedThoughtCell.swift in Sources */,
 				D75B88E021BC54B20023784F /* Entry.swift in Sources */,
-				D70EA8E421E329140071E257 /* UIView.swift in Sources */,
+				D70EA8E421E329140071E257 /* UIButton.swift in Sources */,
 				D75B891221BEDD0E0023784F /* HomeControllerDelegate.swift in Sources */,
 				D702B21421DC06F1003DCA83 /* rethoughtModel.xcdatamodeld in Sources */,
 				D702B21121DBFECA003DCA83 /* BackDelegate.swift in Sources */,
@@ -525,7 +532,8 @@
 				D71FA87E21E1E65C000706A5 /* ThoughtDrawerViewModel.swift in Sources */,
 				D7FFA1DD21D6F785001C3B72 /* ThoughtFeedCellTile.swift in Sources */,
 				D7FFA1C721D4703C001C3B72 /* ThoughtDetailView.swift in Sources */,
-				D71FA87C21E1E1C2000706A5 /* ThoughtDrawerController.swift in Sources */,
+				D71FA87C21E1E1C2000706A5 /* DrawerController.swift in Sources */,
+				D70EA8EB21E523520071E257 /* DrawerComponents.swift in Sources */,
 				D70EA8E621E445C00071E257 /* DrawerSources.swift in Sources */,
 				D71FA88021E1E704000706A5 /* ThoughtDrawerViewModelDelegate.swift in Sources */,
 				D7FFA1CD21D6B875001C3B72 /* ThoughtFeedController.swift in Sources */,
@@ -558,7 +566,7 @@
 				D71FA88221E1F272000706A5 /* UILabel.swift in Sources */,
 				D70EA8DE21E301240071E257 /* Sizes.swift in Sources */,
 				D75B891E21C07D910023784F /* ThoughtPreview.swift in Sources */,
-				D71FA87421E0379E000706A5 /* NewThoughtDelegate.swift in Sources */,
+				D71FA87421E0379E000706A5 /* ThoughtDrawerDelegate.swift in Sources */,
 				D7FFA1CB21D639A3001C3B72 /* EntryDetailController.swift in Sources */,
 				D7FFA1D321D6BB6E001C3B72 /* ThoughtFeedViewModel.swift in Sources */,
 			);

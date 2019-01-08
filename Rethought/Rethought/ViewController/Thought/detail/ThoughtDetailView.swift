@@ -57,6 +57,7 @@ class ThoughtDetailView: UIView {
     let entryTV: UITableView = {
         let tv = UITableView(frame: CGRect(x: 0, y: ViewSize.SCREEN_HEIGHT * 0.269, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - (ViewSize.SCREEN_HEIGHT * 0.269)), style: UITableView.Style.plain)
         tv.allowsSelection = true
+        tv.separatorStyle = .none
         tv.estimatedRowHeight = 101
         return tv
     }()

@@ -56,13 +56,13 @@ extension HomeViewController: HomeViewControllerDelegate {
         UIView.animate(withDuration: 0.2) {
             switch change {
             case .collapsed:
-                view.frame = ViewSize.drawerClosed
+                view.frame = ViewSize.drawerIsCollapsed
             case .mini:
-                view.frame = ViewSize.drawerBeginThought
+                view.frame = ViewSize.drawerIsMini
             case .medium:
-                view.frame = ViewSize.drawerCompleteThought
+                view.frame = ViewSize.drawerIsMedium
             case .open:
-                view.frame = ViewSize.drawerIsWriting
+                view.frame = ViewSize.drawerIsOpen
             }
         }
     }

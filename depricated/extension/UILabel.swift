@@ -26,6 +26,12 @@ extension UILabel {
         }
     }
     
+    func giveLightBackground(radius: CGFloat = 5.0) {
+        backgroundColor = UIColor.white.withAlphaComponent(0.4)
+        layer.cornerRadius = radius
+        layer.masksToBounds = true
+    }
+    
     override open func draw(_ rect: CGRect) {
         if let insets = padding {
             self.drawText(in: rect.inset(by: insets))

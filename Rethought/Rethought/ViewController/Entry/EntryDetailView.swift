@@ -107,11 +107,10 @@ extension EntryDetailView {
         print("its a link!")
     }
     func addText() {
-        print("its text!")
         let entryTitle: UITextView = {
             let lbl = UITextView()
             lbl.font = .reTitle(ofSize: 14)
-            lbl.text = self.title!
+            lbl.text = self.title ?? "THis is the title"
             return lbl
         }()
         let entryDescription: UITextView = {

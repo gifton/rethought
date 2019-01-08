@@ -47,3 +47,12 @@ extension ThoughtDrawerViewModel: ThoughtDrawerViewModelDelegate {
         return "last edit: \(dateFormatter.string(from: thought.lastEdited))"
     }
 }
+
+extension ThoughtDrawerViewModel: DrawerObjectFactory {
+    func convertToDrawerObject(_ view: UIView, availableIn states: [DrawerState]) -> DrawerObject {
+        let obj = DrawerObject(view: view, availableIn: states)
+        
+        return obj
+    }
+}
+
