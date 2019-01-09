@@ -50,6 +50,7 @@ class DrawerView: UIView {
 extension DrawerView {
     func put(_ data: [DrawerObject]) {
         for obj in data {
+            
             switch obj.initialState{
             case .addEmoji:
                 emojiChildren.append(obj)
@@ -63,7 +64,7 @@ extension DrawerView {
                 continueTheThoughtChildren.append(obj)
             }
         }
-        print(closedChildren)
+        print(beginThoughtChildren)
     }
 }
 
@@ -109,14 +110,12 @@ extension DrawerView: DrawerDelegate {
             print("title")
         case .beginThought:
             buildBeginThoughtView()
-            print("begning")
         case .closed:
             buildClosedView()
             print("closed")
         case .continueTheThought:
             buildContinueTheThought()
         }
-        
     }
 }
 

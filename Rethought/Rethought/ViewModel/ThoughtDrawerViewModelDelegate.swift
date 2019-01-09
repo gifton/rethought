@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 protocol ThoughtDrawerViewModelDelegate {
     func save(new thought: Thought)
