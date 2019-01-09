@@ -29,6 +29,8 @@ class DrawerButton: UIButton {
     }
     
     var nextState: DrawerState = .closed
+    var isCompleted: Bool = false
+    
 
 }
 

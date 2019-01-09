@@ -19,6 +19,7 @@
 		D70EA8EB21E523520071E257 /* DrawerComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8EA21E523520071E257 /* DrawerComponents.swift */; };
 		D70EA8ED21E58FA70071E257 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8EC21E58FA70071E257 /* UIView.swift */; };
 		D70EA8EF21E5B1620071E257 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8EE21E5B1620071E257 /* ArrayExtension.swift */; };
+		D70EA8F121E5DAD70071E257 /* DrawerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8F021E5DAD70071E257 /* DrawerObject.swift */; };
 		D71FA87421E0379E000706A5 /* ThoughtDrawerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87321E0379E000706A5 /* ThoughtDrawerDelegate.swift */; };
 		D71FA87621E038B5000706A5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87521E038B5000706A5 /* String.swift */; };
 		D71FA87821E1525B000706A5 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87721E1525B000706A5 /* UITextView.swift */; };
@@ -89,6 +90,7 @@
 		D70EA8EA21E523520071E257 /* DrawerComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerComponents.swift; sourceTree = "<group>"; };
 		D70EA8EC21E58FA70071E257 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		D70EA8EE21E5B1620071E257 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		D70EA8F021E5DAD70071E257 /* DrawerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerObject.swift; sourceTree = "<group>"; };
 		D71FA87321E0379E000706A5 /* ThoughtDrawerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDrawerDelegate.swift; sourceTree = "<group>"; };
 		D71FA87521E038B5000706A5 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D71FA87721E1525B000706A5 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				D7FFA1D421D6BCD8001C3B72 /* HomeViewModelDelegate.swift */,
 				D71FA87F21E1E704000706A5 /* ThoughtDrawerViewModelDelegate.swift */,
 				D71FA87D21E1E65C000706A5 /* ThoughtDrawerViewModel.swift */,
+				D70EA8F021E5DAD70071E257 /* DrawerObject.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				D70EA8E621E445C00071E257 /* DrawerSources.swift in Sources */,
 				D71FA88021E1E704000706A5 /* ThoughtDrawerViewModelDelegate.swift in Sources */,
 				D7FFA1CD21D6B875001C3B72 /* ThoughtFeedController.swift in Sources */,
+				D70EA8F121E5DAD70071E257 /* DrawerObject.swift in Sources */,
 				D75B892421C2FE750023784F /* EntryPreviewCell.swift in Sources */,
 				D70EA8EF21E5B1620071E257 /* ArrayExtension.swift in Sources */,
 				D71FA87A21E1D2AF000706A5 /* ThoughtDrawerView.swift in Sources */,

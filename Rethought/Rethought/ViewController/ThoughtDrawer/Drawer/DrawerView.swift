@@ -49,19 +49,19 @@ class DrawerView: UIView {
                 }
             case .beginThought:
                 UIView.animate(withDuration: 0.5) {
-                    self.backgroundColor = UIColor(hex: "61678A")
+                    self.backgroundColor = UIColor(hex: "3A49A3")
                 }
             case .addTitle:
                 UIView.animate(withDuration: 0.5) {
-                    self.backgroundColor = UIColor(hex: "5BA6C9")
+                    self.backgroundColor = UIColor(hex: "475BC9")
                 }
             case .addEmoji:
                 UIView.animate(withDuration: 0.5) {
-                    self.backgroundColor = UIColor(hex: "B18387")
+                    self.backgroundColor = UIColor(hex: "475BC9")
                 }
             default:
                 UIView.animate(withDuration: 0.5) {
-                    self.backgroundColor = UIColor(hex: "C9A16F")
+                    self.backgroundColor = UIColor(hex: "546CF0")
                 }
             }
         }
@@ -110,14 +110,6 @@ extension DrawerView: DrawerDelegate {
         updateView(with: state)
     }
 }
-
-//func for changing drawerPosition
-//Closed -> mini
-//Mini -> open
-//Mini -> closed
-//Open -> mini
-//Open -> medium
-//Medium -> closed
 
 extension DrawerView {
     

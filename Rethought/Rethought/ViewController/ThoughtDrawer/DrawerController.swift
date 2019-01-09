@@ -40,9 +40,9 @@ class DrawerController: UIViewController {
     private var cancelNewThought          = DrawerButton()
     //thought title objs
     private var newThoughtTitleTextView   = ReTextView()
-    private var doneWithTitleButton                = DrawerButton()
+    private var doneWithTitleButton       = DrawerButton()
     //thought emoji objs
-    private var emojiView                 = EmojiView()
+//    private var emojiView                 = EmojiView()
     private var newThoughtEmojiDisplay    = EmojiDisplay(frame: CGRect(x: ViewSize.SCREEN_WIDTH - (((ViewSize.SCREEN_WIDTH - 125) / 2) + 125), y: 130, width: 125, height: 125), emoji: ThoughtIcon("🤸🏼‍♂️"))
     //completed thought objs
     private var doneWithThoughtButton     = DrawerButton()
@@ -79,13 +79,14 @@ extension DrawerController {
         //begin thought views
         newThoughtIcon.frame           = CGRect(x: ViewSize.SCREEN_WIDTH - 60, y: 75, width: 45, height: 45)
         startThoughtTitleButton.frame  = CGRect(x: 130, y: 80, width: 175, height: 35)
-        cancelNewThought.frame         = CGRect(x: ViewSize.SCREEN_WIDTH - 100, y: 30, width: 80, height: 35)
+        cancelNewThought.frame         = CGRect(x: ViewSize.SCREEN_WIDTH - 100, y: 25, width: 80, height: 35)
         //thought title views
         newThoughtTitleTextView.frame  = CGRect(x: 15, y: 85, width: ViewSize.SCREEN_WIDTH - 100, height: 25)
         doneWithTitleButton.frame      = CGRect(x: ViewSize.SCREEN_WIDTH - 100, y: 30, width: 80, height: 35)
         //add emoji views
-        //copntinuye the thought views
         newThoughtEmojiDisplay.frame   = CGRect(x: ViewSize.SCREEN_WIDTH - (((ViewSize.SCREEN_WIDTH - 125) / 2) + 125), y: 130, width: 125, height: 125)
+        
+        //copntinuye the thought views
         doneWithThoughtButton.frame    = CGRect(x: 20, y: 248, width: ViewSize.SCREEN_WIDTH - 40, height: 35)
         
         //---------------------------------------------style views -----------------------------------------------------//
@@ -110,16 +111,24 @@ extension DrawerController {
         newThoughtTitleTextView.layer.cornerRadius  = 5
         newThoughtTitleTextView.layer.masksToBounds = true
         newThoughtTitleTextView.font                = .reBody(ofSize: 12)
+        newThoughtTitleTextView.isScrollEnabled     = false
         doneWithTitleButton.backgroundColor         = UIColor(hex: "51DF9F")
         doneWithTitleButton.layer.cornerRadius      = 5
         newThoughtTitleTextView.giveLightBackground()
         //add emoji view
+        let keyboardSettings = KeyboardSettings(bottomType: .pageControl)
+        let emojiView = EmojiView(keyboardSettings: keyboardSettings)
+        emojiView.translatesAutoresizingMaskIntoConstraints = true
+        emojiView.frame = CGRect(x: 0, y: ViewSize.SCREEN_HEIGHT - 225, width: 375, height: 225)
+        
+        emojiView.delegate = self
+        
         
         //--------------------------------------------- add context ----------------------------------------------------//
         //closed views
         let view = UIView()
         iconLabel.addText(size: 24, font: .body, string: "💭")
-        newThoughtIntro.addText(color: .white, size: 12, font: .body, string: "Whats on your mind?")
+        newThoughtIntro.addText(color: .white, size: 12, font: .body, string: "What's on your mind?")
         timeSinceLastThoughtLabel.addText(color: .white, size: 12, font: .bodyLight, string: self.viewModel!.buildRecent())
         nextButton.setImage(#imageLiteral(resourceName: "arrow-up-border"), for: .normal)
         //begin thought views
@@ -127,7 +136,7 @@ extension DrawerController {
         startThoughtTitleButton.setAttributedTitle(view.addAttributedText(size: fontSize.small.rawValue, font: .body, string: "Type a brief description"), for: .normal)
         cancelNewThought.setAttributedTitle(view.addAttributedText(size: fontSize.small.rawValue, font: .body, string: "cancel"), for: .normal)
         //add title views
-        newThoughtTitleTextView.placeholder = "Start Here"
+        newThoughtTitleTextView.placeholder = "What's on your mind?"
         doneWithTitleButton.setAttributedTitle(view.addAttributedText(size: fontSize.small.rawValue, font: .body, string: "done"), for: .normal)
         //add emoji views
         newThoughtEmojiDisplay.emoji = ThoughtIcon("🌋")
@@ -151,8 +160,9 @@ extension DrawerController {
         doneWithThoughtButton.nextState = .closed
         doneWithThoughtButton.addTarget(self, action: #selector(userTappedUpButton(_:)), for: .touchUpInside)
         
-        let objects = [iconLabel, newThoughtIntro, timeSinceLastThoughtLabel, nextButton, newThoughtIcon, startThoughtTitleButton, cancelNewThought, newThoughtTitleTextView, doneWithTitleButton, newThoughtEmojiDisplay, doneWithThoughtButton]
-        let objectAccess = [iconLabelDrawerAccess, newThoughtIntroDrawerAccess, timeSinceLastThoughtLabelDrawerAccess, nextButtonDrawerAccess, newThoughtIconDrawerAccess, startThoughtTitleButtonDrawerAccess, cancelNewThoughtDrawerAccess, newThoughtTitleTextViewDrawerAccess, doneWithTitleButtonDrawerAccess, newThoughtEmojiDisplayDrawerAccess, doneWithThoughtButtonDrawerAccess]
+        //------------------------------------------ conform to drawer -------------------------------------------------//
+        let objects = [iconLabel, newThoughtIntro, timeSinceLastThoughtLabel, nextButton, newThoughtIcon, startThoughtTitleButton, cancelNewThought, newThoughtTitleTextView, doneWithTitleButton, newThoughtEmojiDisplay, emojiView, doneWithThoughtButton]
+        let objectAccess = [iconLabelDrawerAccess, newThoughtIntroDrawerAccess, timeSinceLastThoughtLabelDrawerAccess, nextButtonDrawerAccess, newThoughtIconDrawerAccess, startThoughtTitleButtonDrawerAccess, cancelNewThoughtDrawerAccess, newThoughtTitleTextViewDrawerAccess, doneWithTitleButtonDrawerAccess, newThoughtEmojiDisplayDrawerAccess, emojiViewDrawerAccess, doneWithThoughtButtonDrawerAccess]
         
         for (obj, acc) in zip(objects, objectAccess) {
             objs.append(viewModel!.convertToDrawerObject(obj, availableIn: acc))
@@ -163,8 +173,30 @@ extension DrawerController {
     
     @objc
     func userTappedUpButton(_ sender: DrawerButton) {
+        if sender.nextState == .beginThought {
+            let check = checkForCompletion()
+            if check == true{
+                drawer?.change(state: .continueTheThought)
+            } else {
+                drawer?.change(state: .beginThought)
+            }
+        }
         self.updateState(sender.nextState)
         drawer?.change(state: sender.nextState)
+    }
+    private func checkForCompletion() -> Bool {
+        if self.startThoughtTitleButton.isCompleted == true || self.newThoughtIcon.isCompleted == true {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+}
+
+extension DrawerController: EmojiViewDelegate {
+    func emojiViewDidSelectEmoji(_ emoji: String, emojiView: EmojiView) {
+        self.newThoughtEmojiDisplay.emoji = ThoughtIcon(emoji)
     }
 }
 
@@ -175,6 +207,16 @@ extension DrawerController: DrawerControllerDelegate {
             self.delegate?.drawerRequests(state: .collapsed)
         case .beginThought:
             self.delegate?.drawerRequests(state: .mini)
+            if self.newThoughtTitleTextView.text != "What's on your mind?" {
+                let str = UIView()
+                self.startThoughtTitleButton.setAttributedTitle(str.addAttributedText(size: fontSize.small.rawValue, font: .body, string: self.newThoughtTitleTextView.text), for: .normal)
+                self.startThoughtTitleButton.isCompleted = true
+            }
+            if newThoughtEmojiDisplay.emoji.icon != "🔀" {
+                let str = UIView()
+                self.newThoughtIcon.setAttributedTitle(str.addAttributedText(size: fontSize.small.rawValue, font: .body, string: self.newThoughtEmojiDisplay.emoji.icon), for: .normal)
+                self.newThoughtIcon.isCompleted = true
+            }
         case .continueTheThought:
             self.delegate?.drawerRequests(state: .medium)
         default:

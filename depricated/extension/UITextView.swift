@@ -21,6 +21,7 @@ class ReTextView: UITextView {
         self.textColor = .lightGray
     }
     
+    public var isCompleted: Bool = false
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
