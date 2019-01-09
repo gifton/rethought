@@ -13,7 +13,7 @@ protocol ThoughtDrawerViewModelDelegate {
     func save(new thought: Thought)
     func createThought(title: String, description: String?)
     func save(new thought: ThoughtDrawerViewModel, with: Entry)
-    func buildRecent(string input: Date) -> String
+    func buildRecent() -> String
 }
 
 protocol DrawerObjectFactory {

@@ -34,7 +34,7 @@ extension ThoughtDrawerViewModel: ThoughtDrawerViewModelDelegate {
         print("we are saved!")
     }
     
-    func buildRecent(string input: Date) -> String {
+    func buildRecent() -> String {
         let dateFormatter: DateFormatter = {
             let formatter = DateFormatter()
             formatter.dateStyle = .none

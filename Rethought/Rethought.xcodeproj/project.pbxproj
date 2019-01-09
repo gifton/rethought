@@ -17,6 +17,8 @@
 		D70EA8E621E445C00071E257 /* DrawerSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8E521E445C00071E257 /* DrawerSources.swift */; };
 		D70EA8E921E516130071E257 /* DrawerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8E821E516130071E257 /* DrawerDelegate.swift */; };
 		D70EA8EB21E523520071E257 /* DrawerComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8EA21E523520071E257 /* DrawerComponents.swift */; };
+		D70EA8ED21E58FA70071E257 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8EC21E58FA70071E257 /* UIView.swift */; };
+		D70EA8EF21E5B1620071E257 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8EE21E5B1620071E257 /* ArrayExtension.swift */; };
 		D71FA87421E0379E000706A5 /* ThoughtDrawerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87321E0379E000706A5 /* ThoughtDrawerDelegate.swift */; };
 		D71FA87621E038B5000706A5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87521E038B5000706A5 /* String.swift */; };
 		D71FA87821E1525B000706A5 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87721E1525B000706A5 /* UITextView.swift */; };
@@ -85,6 +87,8 @@
 		D70EA8E521E445C00071E257 /* DrawerSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerSources.swift; sourceTree = "<group>"; };
 		D70EA8E821E516130071E257 /* DrawerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerDelegate.swift; sourceTree = "<group>"; };
 		D70EA8EA21E523520071E257 /* DrawerComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerComponents.swift; sourceTree = "<group>"; };
+		D70EA8EC21E58FA70071E257 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		D70EA8EE21E5B1620071E257 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		D71FA87321E0379E000706A5 /* ThoughtDrawerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDrawerDelegate.swift; sourceTree = "<group>"; };
 		D71FA87521E038B5000706A5 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D71FA87721E1525B000706A5 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
@@ -248,6 +252,8 @@
 				D71FA88121E1F272000706A5 /* UILabel.swift */,
 				D70EA8DF21E301E50071E257 /* UIColor.swift */,
 				D70EA8E321E329140071E257 /* UIButton.swift */,
+				D70EA8EC21E58FA70071E257 /* UIView.swift */,
+				D70EA8EE21E5B1620071E257 /* ArrayExtension.swift */,
 			);
 			name = extension;
 			path = ../../depricated/extension;
@@ -538,11 +544,13 @@
 				D71FA88021E1E704000706A5 /* ThoughtDrawerViewModelDelegate.swift in Sources */,
 				D7FFA1CD21D6B875001C3B72 /* ThoughtFeedController.swift in Sources */,
 				D75B892421C2FE750023784F /* EntryPreviewCell.swift in Sources */,
+				D70EA8EF21E5B1620071E257 /* ArrayExtension.swift in Sources */,
 				D71FA87A21E1D2AF000706A5 /* ThoughtDrawerView.swift in Sources */,
 				D75B88E921BC92190023784F /* HomeView.swift in Sources */,
 				D7FFA1D521D6BCD8001C3B72 /* HomeViewModelDelegate.swift in Sources */,
 				D75B88BB21BB70C00023784F /* HomeController.swift in Sources */,
 				D71FA87621E038B5000706A5 /* String.swift in Sources */,
+				D70EA8ED21E58FA70071E257 /* UIView.swift in Sources */,
 				D75B891021BE192E0023784F /* ProfileViewController.swift in Sources */,
 				D7FFA1D921D6CB04001C3B72 /* ThoughtComponent.swift in Sources */,
 				D75B890E21BE191C0023784F /* ProfileView.swift in Sources */,

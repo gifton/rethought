@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol DrawerDelegate {
-    func change(state to: DrawerState)
+    func change(state: DrawerState)
     var objectSource: [DrawerObject] { get set }
 }
 
@@ -27,5 +27,3 @@ class DrawerObject {
     var view: UIView
     var initialState: DrawerState = .closed
 }
-
-

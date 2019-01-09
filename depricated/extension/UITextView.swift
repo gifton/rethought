@@ -63,7 +63,7 @@ class EmojiDisplay: UITextView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    func styleCell() {
+    public func styleCell() {
         self.backgroundColor = UIColor.lightGray.withAlphaComponent(0.28)
         self.layer.cornerRadius = 6
         self.textAlignment = .center

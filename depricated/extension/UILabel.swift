@@ -26,12 +26,6 @@ extension UILabel {
         }
     }
     
-    func giveLightBackground(radius: CGFloat = 5.0) {
-        backgroundColor = UIColor.white.withAlphaComponent(0.4)
-        layer.cornerRadius = radius
-        layer.masksToBounds = true
-    }
-    
     override open func draw(_ rect: CGRect) {
         if let insets = padding {
             self.drawText(in: rect.inset(by: insets))
@@ -75,5 +69,21 @@ extension UILabel {
         }()
         let output = dateFormatter.string(from: date)
         self.text = output
+    }
+    
+    func addText(color: UIColor = .black, size: fontSize.RawValue, font: RethoughtFonts, string: String) {
+        var output = NSAttributedString()
+        switch font {
+        case .body:
+            let att = [ NSAttributedString.Key.font: UIFont.reBody(ofSize: size),  NSAttributedString.Key.foregroundColor: color]
+            output = NSAttributedString(string: string, attributes: att as [NSAttributedString.Key : Any])
+        case .title:
+            let att = [ NSAttributedString.Key.font: UIFont.reTitle(ofSize: size),  NSAttributedString.Key.foregroundColor: color]
+            output = NSAttributedString(string: string, attributes: att as [NSAttributedString.Key : Any])
+        default:
+            let att = [ NSAttributedString.Key.font: UIFont.reBodyLight(ofSize: size),  NSAttributedString.Key.foregroundColor: color]
+            output = NSAttributedString(string: string, attributes: att as [NSAttributedString.Key : Any])
+        }
+        self.attributedText = output
     }
 }

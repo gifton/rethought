@@ -21,3 +21,8 @@ extension UIFont {
     }
 }
 
+enum RethoughtFonts {   
+    case body
+    case bodyLight
+    case title
+}
