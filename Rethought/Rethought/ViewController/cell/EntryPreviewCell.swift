@@ -81,7 +81,6 @@ class ImageEntryCell: UITableViewCell {
     private var mainImage       = UIImageView()
     private var parentThought   = UILabel()
     private var date            = UILabel()
-    private var imageCount      = UILabel(frame: CGRect(x: 15, y: 15, width: 65, height: 25))
     
     public static var identifier: String {
         return "ImageEntryPreview"
@@ -90,8 +89,7 @@ class ImageEntryCell: UITableViewCell {
     public func giveContext(with preview: EntryPreview) {
         self.date.getStringFromDate(date: preview.date)
         self.mainImage.image = preview.images.first
-        self.parentThought.text = (preview.thoughtIcon!.icon + preview.ThoughtID)
-        self.imageCount.text = String(describing: preview.imageCount!) + " images"
+        self.parentThought.text = (preview.thoughtIcon!.icon)
         guard let height = mainImage.image?.size.height else { return }
         self.mainImage.frame = CGRect(x: 0, y: 0, width: ViewSize.SCREEN_WIDTH, height: height - 20)
         buildCell()
@@ -100,8 +98,7 @@ class ImageEntryCell: UITableViewCell {
     public func giveContext(with entry: Entry) {
         self.date.getStringFromDate(date: entry.date)
         self.mainImage.image = entry.images.first
-        self.parentThought.text = (entry.icon + entry.thoughtID)
-        self.imageCount.text = String(describing: entry.images.count) + " images"
+        self.parentThought.text = (entry.icon)
         guard let height = mainImage.image?.size.height else { return }
         self.mainImage.frame = CGRect(x: 0, y: 0, width: ViewSize.SCREEN_WIDTH, height: height - 20)
         buildCell()
@@ -109,7 +106,7 @@ class ImageEntryCell: UITableViewCell {
     }
     
     private func buildCell() {
-        let items = [mainImage, parentThought, date, imageCount]
+        let items = [mainImage, parentThought, date]
         for item in items {
             addSubview(item)
         }
@@ -117,15 +114,15 @@ class ImageEntryCell: UITableViewCell {
     }
     
     private func styleCell(_ size: CGRect) {
-        let labels = [parentThought, date, imageCount]
+        let labels = [parentThought, date]
         addSubview(mainImage)
         for label in labels {
             addSubview(label)
-            if label == imageCount || label == date {
-                label.font = UIFont.reTitle(ofSize: 15)
+            if label == date {
+                label.font = .reTitle(ofSize: 15)
                 label.textColor = .black
             } else {
-                label.font = UIFont.reBodyLight(ofSize: 12)
+                label.font = .reBodyLight(ofSize: 18)
                 label.textColor = .darkGray
             }
             label.backgroundColor = .white
@@ -135,7 +132,7 @@ class ImageEntryCell: UITableViewCell {
             label.layer.opacity = 0.9
             label.layer.masksToBounds = true
         }
-        parentThought.frame = CGRect(x: 15, y: size.height - 40, width: 150, height: 25)
+        parentThought.frame = CGRect(x: 15, y: size.height - 45, width: 35, height: 35)
         date.frame = CGRect(x: size.width - 100, y: size.height - 40, width: 80, height: 25)
     }
 }

@@ -95,17 +95,6 @@ extension EntryDetailView {
             delegate?.returnHome()
         }
     }
-    
-    private func setupView(for type: Entry.EntryType) {
-        switch type {
-        case .link:
-            addLink()
-        case .image:
-            addImages()
-        default:
-            addText()
-        }
-    }
 }
 
 extension EntryDetailView {

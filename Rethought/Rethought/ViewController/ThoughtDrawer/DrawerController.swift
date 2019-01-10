@@ -15,6 +15,7 @@ class DrawerController: UIViewController {
     var drawer: DrawerView?
     var delegate: HomeViewControllerDelegate?
     var viewModel: ThoughtDrawerViewModel?
+    var newTHought: Thought?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -141,6 +142,8 @@ extension DrawerController {
         newThoughtEmojiDisplay.emoji = ThoughtIcon("🌋")
         
         //--------------------------------------------- add targets ----------------------------------------------------//
+        newThoughtTitleTextView.delegate = self
+        
         nextButton.nextState = .beginThought
         nextButton.addTarget(self, action: #selector(userTappedUpButton(_:)), for: .touchUpInside)
         
@@ -172,6 +175,14 @@ extension DrawerController {
     
     @objc
     func userTappedUpButton(_ sender: DrawerButton) {
+        
+        switch sender.nextState {
+        case .closed:
+            <#code#>
+        default:
+            <#code#>
+        }
+        
         if sender.nextState == .beginThought {
             let check = checkForCompletion()
             if check == true{
@@ -179,6 +190,14 @@ extension DrawerController {
             } else {
                 drawer?.change(state: .beginThought)
             }
+            print(check)
+        } else if sender.nextState == .closed {
+            let str = UIView()
+            let gif = str.addAttributedText(size: fontSize.small.rawValue, font: .body, string: "Whats on your mind?")
+            
+            self.newThoughtTitleTextView.attributedText = gif
+            
+            self.startThoughtTitleButton.setAttributedTitle(str.addAttributedText(size: fontSize.small.rawValue, font: .body, string:"Whats on your mind?"), for: .normal)
         }
         self.updateState(sender.nextState)
         drawer?.change(state: sender.nextState)
@@ -190,6 +209,11 @@ extension DrawerController {
         else {
             return false
         }
+    }
+    private func clearText() {
+        newThoughtTitleTextView.attributedText = nil
+        newThoughtTitleTextView.placeholder = "Whats on your mind?"
+        startThoughtTitleButton.addAttText(color: .black, size: 12, font: .body, string: "Whats on your mind?")
     }
 }
 
@@ -205,6 +229,7 @@ extension DrawerController: DrawerControllerDelegate {
         case .closed:
             self.delegate?.drawerRequests(state: .collapsed)
         case .beginThought:
+            
             self.delegate?.drawerRequests(state: .mini)
             if self.newThoughtTitleTextView.text != "What's on your mind?" {
                 let str = UIView()
@@ -222,10 +247,37 @@ extension DrawerController: DrawerControllerDelegate {
             self.delegate?.drawerRequests(state: .open)
         }
     }
+    
+    
+    
+    func stateChange(to state: DrawerState) {
+        switch state {
+        case .closed:
+            self.delegate?.drawerRequests(state: .collapsed)
+        case .beginThought:
+            self.delegate?.drawerRequests(state: .mini)
+            if self.newThoughtTitleTextView.isCompleted == true {
+                self.startThoughtTitleButton.addAttText(color: .black, size: fontSize.small.rawValue, font: .body, string: self.newThoughtTitleTextView.text)
+            }
+        case .continueTheThought:
+            self.delegate?.drawerRequests(state: .medium)
+        default:
+            self.delegate?.drawerRequests(state: .open)
+        }
+        self.drawer?.change(state: state)
+    }
+    
 }
+
 
 extension DrawerController: DrawerObjectSource {
     var drawerChildren: [DrawerObject] {
         return createChildren()
+    }
+}
+
+extension DrawerController: UITextViewDelegate {
+    override func didChangeValue(forKey key: String) {
+        self.newThoughtTitleTextView.isCompleted = true
     }
 }
