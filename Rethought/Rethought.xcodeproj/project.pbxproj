@@ -20,6 +20,9 @@
 		D70EA8ED21E58FA70071E257 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8EC21E58FA70071E257 /* UIView.swift */; };
 		D70EA8EF21E5B1620071E257 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8EE21E5B1620071E257 /* ArrayExtension.swift */; };
 		D70EA8F121E5DAD70071E257 /* DrawerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8F021E5DAD70071E257 /* DrawerObject.swift */; };
+		D71B534821E6FFB10030D5C6 /* layout.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D71B534521E6FFB10030D5C6 /* layout.jpg */; };
+		D71B534921E6FFB10030D5C6 /* layout@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D71B534621E6FFB10030D5C6 /* layout@2x.jpg */; };
+		D71B534A21E6FFB10030D5C6 /* layout@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D71B534721E6FFB10030D5C6 /* layout@3x.jpg */; };
 		D71FA87421E0379E000706A5 /* ThoughtDrawerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87321E0379E000706A5 /* ThoughtDrawerDelegate.swift */; };
 		D71FA87621E038B5000706A5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87521E038B5000706A5 /* String.swift */; };
 		D71FA87821E1525B000706A5 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87721E1525B000706A5 /* UITextView.swift */; };
@@ -91,6 +94,9 @@
 		D70EA8EC21E58FA70071E257 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		D70EA8EE21E5B1620071E257 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		D70EA8F021E5DAD70071E257 /* DrawerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerObject.swift; sourceTree = "<group>"; };
+		D71B534521E6FFB10030D5C6 /* layout.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = layout.jpg; path = Assets.xcassets/layout.imageset/layout.jpg; sourceTree = "<group>"; };
+		D71B534621E6FFB10030D5C6 /* layout@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "layout@2x.jpg"; path = "Assets.xcassets/layout.imageset/layout@2x.jpg"; sourceTree = "<group>"; };
+		D71B534721E6FFB10030D5C6 /* layout@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "layout@3x.jpg"; path = "Assets.xcassets/layout.imageset/layout@3x.jpg"; sourceTree = "<group>"; };
 		D71FA87321E0379E000706A5 /* ThoughtDrawerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDrawerDelegate.swift; sourceTree = "<group>"; };
 		D71FA87521E038B5000706A5 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D71FA87721E1525B000706A5 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
@@ -306,6 +312,9 @@
 		D75B88EB21BC98A80023784F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D71B534521E6FFB10030D5C6 /* layout.jpg */,
+				D71B534621E6FFB10030D5C6 /* layout@2x.jpg */,
+				D71B534721E6FFB10030D5C6 /* layout@3x.jpg */,
 				D75B88C221BB70C10023784F /* Assets.xcassets */,
 				D75B88C421BB70C10023784F /* LaunchScreen.storyboard */,
 				D75B88BF21BB70C00023784F /* rethought.xcdatamodeld */,
@@ -452,6 +461,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D71B534921E6FFB10030D5C6 /* layout@2x.jpg in Resources */,
 				D75B88FB21BC98C70023784F /* Lato-LightItalic.ttf in Resources */,
 				D75B890621BDFAC50023784F /* Default-568h@2x.png in Resources */,
 				D75B88C621BB70C10023784F /* LaunchScreen.storyboard in Resources */,
@@ -459,10 +469,12 @@
 				D75B88F621BC98C70023784F /* Lato-Regular.ttf in Resources */,
 				D75B88F521BC98C70023784F /* Lato-Bold.ttf in Resources */,
 				D75B88C321BB70C10023784F /* Assets.xcassets in Resources */,
+				D71B534821E6FFB10030D5C6 /* layout.jpg in Resources */,
 				D75B88FA21BC98C70023784F /* Lato-Light.ttf in Resources */,
 				D75B88F421BC98C70023784F /* Lato-Hairline.ttf in Resources */,
 				D75B88F721BC98C70023784F /* Lato-BoldItalic.ttf in Resources */,
 				D75B88F821BC98C70023784F /* Lato-Italic.ttf in Resources */,
+				D71B534A21E6FFB10030D5C6 /* layout@3x.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -54,10 +54,12 @@ extension ThoughtFeedController: ThoughtFeedDelegate {
 
 extension ThoughtFeedController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print (viewModel?.getThoughtName(thoughts[indexPath.row].ID) as Any)
         let vc = ThoughtDetailController()
+        
         guard let viewModel = self.viewModel else { return }
+        
         vc.thought = viewModel.allThoughts[indexPath.row]
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -68,9 +70,10 @@ extension ThoughtFeedController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThoughtFeedCellTile.identifier, for: indexPath) as! ThoughtFeedCellTile
-        cell.backgroundColor = UIColor(hex: "F5F5F9")
+        
         guard let vm = self.viewModel else { return cell }
         let id = self.thoughts[indexPath.row].ID
+        
         cell.giveContext(with: (vm.retrieveThoughtPreview(id)))
         
         return cell

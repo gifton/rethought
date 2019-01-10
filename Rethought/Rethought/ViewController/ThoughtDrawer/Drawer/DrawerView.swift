@@ -14,8 +14,6 @@ class DrawerView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        print("initiated drawer view!")
-        //dev purposes
         self.addLogoShadow()
         buildDrawer()
     }
@@ -131,7 +129,6 @@ extension DrawerView {
     func buildDrawer() {
         for obj in self.initialChildren {
             self.addSubview(obj.view)
-            print("added drawer to superview")
         }
     }
 }

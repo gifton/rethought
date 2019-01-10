@@ -13,7 +13,7 @@ class EntryDetailController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    private var content: Entry?
+    var entryView: EntryDetailView?
 }
 
 extension EntryDetailController: BackDelegate {
@@ -25,13 +25,13 @@ extension EntryDetailController: BackDelegate {
 extension EntryDetailController: EntryDetailDelegate {
     var entry: Entry {
         get {
-            return content ?? Entry(title: "Giftons other title")
+            return Entry(title: self.entryView?.title)
         }
         set {
-            self.content = newValue
-            let newView = EntryDetailView(frame: .zero, entry: content!, delegate: self)
             
-            self.view = newView
+            entryView = EntryDetailView(frame: .zero, entry: newValue, delegate: self)
+            
+            self.view = entryView
         }
     }
 }

@@ -18,7 +18,6 @@ class DrawerController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("controller loaded")
     }
     
     func setView(delegate: HomeViewControllerDelegate, lastThought: Thought) {
@@ -81,7 +80,7 @@ extension DrawerController {
         startThoughtTitleButton.frame  = CGRect(x: 130, y: 80, width: 175, height: 35)
         cancelNewThought.frame         = CGRect(x: ViewSize.SCREEN_WIDTH - 100, y: 25, width: 80, height: 35)
         //thought title views
-        newThoughtTitleTextView.frame  = CGRect(x: 15, y: 85, width: ViewSize.SCREEN_WIDTH - 100, height: 25)
+        newThoughtTitleTextView.frame  = CGRect(x: 15, y: 85, width: ViewSize.SCREEN_WIDTH - 100, height: 30)
         doneWithTitleButton.frame      = CGRect(x: ViewSize.SCREEN_WIDTH - 100, y: 30, width: 80, height: 35)
         //add emoji views
         newThoughtEmojiDisplay.frame   = CGRect(x: ViewSize.SCREEN_WIDTH - (((ViewSize.SCREEN_WIDTH - 125) / 2) + 125), y: 130, width: 125, height: 125)

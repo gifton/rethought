@@ -14,7 +14,6 @@ class EntryDetailView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
-        styleView()
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
         edgePan.edges = .left
         
@@ -32,7 +31,14 @@ class EntryDetailView: UIView {
         self.delegate = delegate
         setupView()
         
-        setupView(for: entry.type)
+        switch entry.type {
+        case .image:
+            addImages()
+        case .text:
+            addText()
+        case .link:
+            addLink()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -45,7 +51,7 @@ class EntryDetailView: UIView {
     private let logo                        = UIImageView(image: #imageLiteral(resourceName: "Logo_with_bg"))
     
     //content recieved from entry
-    private var title:            String?
+    public var title:            String?
     private var icon:             String?
     private var images:           [UIImage]?
     private var linkTitle:        String?
@@ -54,7 +60,7 @@ class EntryDetailView: UIView {
     private var link:             String?
     //delegate for returning home, moving to new thought, editing etc
     public var delegate: BackDelegate?
-    var content = Entry(title: "Giftons title")
+    var content: Entry = Entry(title: "Giftons title")
 }
 
 extension EntryDetailView {
@@ -62,7 +68,7 @@ extension EntryDetailView {
         addSubview(topView)
         
         let views : [UIView] = [logo, deleteButton, iconLabel]
-        var start = CGPoint(x: 25, y: 35)
+        var start = CGPoint(x: 30, y: 35)
         let spacingConstant: CGFloat = 70.0
         
         iconLabel.frame.size = CGSize(width: 30, height: 35)
@@ -75,6 +81,7 @@ extension EntryDetailView {
             let newX = (spacingConstant + innerView.frame.width)
             start.x += newX
         }
+        styleView()
     }
     func styleView() {
         topView.backgroundColor = UIColor.init(hex: "161616")
@@ -85,7 +92,6 @@ extension EntryDetailView {
     }
     @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         if recognizer.state == .recognized {
-            print("Screen edge swiped!")
             delegate?.returnHome()
         }
     }
@@ -104,36 +110,36 @@ extension EntryDetailView {
 
 extension EntryDetailView {
     func addLink() {
-        print("its a link!")
     }
     func addText() {
         let entryTitle: UITextView = {
             let lbl = UITextView()
             lbl.font = .reTitle(ofSize: 14)
-            lbl.text = self.title ?? "THis is the title"
+            lbl.translatesAutoresizingMaskIntoConstraints = false
             return lbl
         }()
         let entryDescription: UITextView = {
             let lbl = UITextView()
             lbl.font = .reBody(ofSize: 12)
-            lbl.text = self.entryDescription
+            lbl.translatesAutoresizingMaskIntoConstraints = false
             return lbl
         }()
-        let lbls = [entryTitle, entryDescription]
-        for lbl in lbls {
-            addSubview(lbl)
-            lbl.translatesAutoresizingMaskIntoConstraints = false
-        }
+        entryTitle.text = self.title
+        entryDescription.text = self.entryDescription
+        self.addSubview(entryTitle)
+        self.addSubview(entryDescription)
         NSLayoutConstraint.activate ([
-            entryTitle.centerXAnchor.constraint(equalTo: centerXAnchor),
+            entryTitle.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             entryTitle.widthAnchor.constraint(equalToConstant: ViewSize.SCREEN_WIDTH - 50),
-            entryTitle.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 5),
-            entryDescription.centerXAnchor.constraint(equalTo: centerXAnchor),
+            entryTitle.topAnchor.constraint(equalTo: self.topAnchor, constant: (ViewSize.SCREEN_HEIGHT * 0.117) + 25),
+            entryDescription.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             entryDescription.topAnchor.constraint(equalTo: entryTitle.bottomAnchor, constant: 10),
             entryDescription.widthAnchor.constraint(equalToConstant: ViewSize.SCREEN_WIDTH - 50)
         ])
+        
+        print (entryTitle.text)
     }
     func addImages() {
-        print("they're images!")
+        
     }
 }

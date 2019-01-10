@@ -103,7 +103,6 @@ class ImageEntryCell: UITableViewCell {
         self.parentThought.text = (entry.icon + entry.thoughtID)
         self.imageCount.text = String(describing: entry.images.count) + " images"
         guard let height = mainImage.image?.size.height else { return }
-        print("height of image: \(height)")
         self.mainImage.frame = CGRect(x: 0, y: 0, width: ViewSize.SCREEN_WIDTH, height: height - 20)
         buildCell()
         styleCell(mainImage.frame)

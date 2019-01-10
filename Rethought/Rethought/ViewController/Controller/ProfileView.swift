@@ -23,8 +23,7 @@ class ProfileView: UIView {
         self.init(frame: frame)
         self.firstName = firstName
         self.lastName = lastName
-        print("-------------------------------------")
-        print(lastName)
+        
         buildView()
     }
     

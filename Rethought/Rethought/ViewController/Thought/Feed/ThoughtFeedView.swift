@@ -68,7 +68,6 @@ extension ThoughtFeedView {
     }
     @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         if recognizer.state == .recognized {
-            print("Screen edge swiped!")
             delegate?.returnHome()
         }
     }
