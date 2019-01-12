@@ -176,12 +176,12 @@ extension DrawerController {
     @objc
     func userTappedUpButton(_ sender: DrawerButton) {
         
-        switch sender.nextState {
-        case .closed:
-            <#code#>
-        default:
-            <#code#>
-        }
+//        switch sender.nextState {
+//        case .closed:
+//            <#code#>
+//        default:
+//            <#code#>
+//        }
         
         if sender.nextState == .beginThought {
             let check = checkForCompletion()

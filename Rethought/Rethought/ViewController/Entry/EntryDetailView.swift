@@ -29,16 +29,8 @@ class EntryDetailView: UIView {
         self.link = entry.link
         self.linkImage = entry.linkImage
         self.delegate = delegate
+        self.entryType = entry.type
         setupView()
-        
-        switch entry.type {
-        case .image:
-            addImages()
-        case .text:
-            addText()
-        case .link:
-            addLink()
-        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -51,21 +43,56 @@ class EntryDetailView: UIView {
     private let logo                        = UIImageView(image: #imageLiteral(resourceName: "Logo_with_bg"))
     
     //content recieved from entry
-    public var title:            String?
-    private var icon:             String?
-    private var images:           [UIImage]?
-    private var linkTitle:        String?
+    public var entryType        : Entry.EntryType?
+    public var title            : String?
+    private var icon            : String?
+    private var images          : [UIImage]?
+    private var linkTitle       : String?
     private var entryDescription: String?
-    private var linkImage:        UIImage?
-    private var link:             String?
+    private var linkImage       : UIImage?
+    private var link            : String?
     //delegate for returning home, moving to new thought, editing etc
     public var delegate: BackDelegate?
     var content: Entry = Entry(title: "Giftons title")
+    let entryTitleTV: UITextView = {
+        let lbl = UITextView()
+        lbl.font = .reTitle(ofSize: 14)
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        return lbl
+    }()
+    let entryDescriptionTV : UITextView = {
+        let lbl = UITextView()
+        lbl.font = .reBody(ofSize: 12)
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.layer.borderColor = UIColor.red.cgColor
+        lbl.layer.borderWidth = 3
+        return lbl
+    }()
 }
 
 extension EntryDetailView {
     func setupView() {
-        addSubview(topView)
+        anotherFuncName()
+    }
+    func styleView() {
+        topView.backgroundColor = UIColor.init(hex: "161616")
+        
+        iconLabel.font = .reBody(ofSize: 28)
+        
+        deleteButton.setImage(#imageLiteral(resourceName: "Trash"), for: .normal)
+        entryTitleTV.text = self.title ?? "this is the title"
+    }
+    @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+        if recognizer.state == .recognized {
+            delegate?.returnHome()
+        }
+    }
+}
+
+extension EntryDetailView {
+    func addLink() {
+    }
+    func anotherFuncName() {
         
         let views : [UIView] = [logo, deleteButton, iconLabel]
         var start = CGPoint(x: 30, y: 35)
@@ -82,53 +109,25 @@ extension EntryDetailView {
             start.x += newX
         }
         styleView()
-    }
-    func styleView() {
-        topView.backgroundColor = UIColor.init(hex: "161616")
         
-        iconLabel.font = .reBody(ofSize: 28)
+        entryTitleTV.text = self.title ?? "Giftons test"
+        entryDescriptionTV.text = self.entryDescription ?? "Giftons description"
+        self.addSubview(entryTitleTV)
+        self.addSubview(entryDescriptionTV)
         
-        deleteButton.setImage(#imageLiteral(resourceName: "Trash"), for: .normal)
-    }
-    @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
-        if recognizer.state == .recognized {
-            delegate?.returnHome()
-        }
-    }
-}
-
-extension EntryDetailView {
-    func addLink() {
-    }
-    func addText() {
-        let entryTitle: UITextView = {
-            let lbl = UITextView()
-            lbl.font = .reTitle(ofSize: 14)
-            lbl.translatesAutoresizingMaskIntoConstraints = false
-            return lbl
-        }()
-        let entryDescription: UITextView = {
-            let lbl = UITextView()
-            lbl.font = .reBody(ofSize: 12)
-            lbl.translatesAutoresizingMaskIntoConstraints = false
-            return lbl
-        }()
-        entryTitle.text = self.title
-        entryDescription.text = self.entryDescription
-        self.addSubview(entryTitle)
-        self.addSubview(entryDescription)
         NSLayoutConstraint.activate ([
-            entryTitle.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            entryTitle.widthAnchor.constraint(equalToConstant: ViewSize.SCREEN_WIDTH - 50),
-            entryTitle.topAnchor.constraint(equalTo: self.topAnchor, constant: (ViewSize.SCREEN_HEIGHT * 0.117) + 25),
-            entryDescription.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            entryDescription.topAnchor.constraint(equalTo: entryTitle.bottomAnchor, constant: 10),
-            entryDescription.widthAnchor.constraint(equalToConstant: ViewSize.SCREEN_WIDTH - 50)
+            entryTitleTV.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            entryTitleTV.widthAnchor.constraint(equalToConstant: ViewSize.SCREEN_WIDTH - 50),
+            entryTitleTV.topAnchor.constraint(equalTo: self.topAnchor, constant: (ViewSize.SCREEN_HEIGHT * 0.117) + 25),
+            entryDescriptionTV.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            entryDescriptionTV.topAnchor.constraint(equalTo: entryTitleTV.bottomAnchor, constant: 10),
+            entryDescriptionTV.widthAnchor.constraint(equalToConstant: ViewSize.SCREEN_WIDTH - 50)
         ])
         
-        print (entryTitle.text)
+        print (entryTitleTV.frame)
     }
     func addImages() {
         
     }
 }
+
