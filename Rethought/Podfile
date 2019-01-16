@@ -9,4 +9,6 @@ target 'rethought' do
   pod 'Smile'
   pod 'Kingfisher', '~>4.0'
   pod 'NextGrowingTextView'
+  pod 'SwiftLint'
+
 end

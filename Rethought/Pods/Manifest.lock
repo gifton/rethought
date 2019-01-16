@@ -3,12 +3,14 @@ PODS:
   - Kingfisher (4.10.1)
   - NextGrowingTextView (1.4.0)
   - Smile (1.3.0)
+  - SwiftLint (0.28.1)
 
 DEPENDENCIES:
   - ISEmojiView
   - Kingfisher (~> 4.0)
   - NextGrowingTextView
   - Smile
+  - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -16,13 +18,15 @@ SPEC REPOS:
     - Kingfisher
     - NextGrowingTextView
     - Smile
+    - SwiftLint
 
 SPEC CHECKSUMS:
   ISEmojiView: 5b53bdf057ddf484b92e70064a1cc46b5fedf7ea
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   NextGrowingTextView: 6612417168300cbd7fb09089348f063e242b7713
   Smile: 5e0094b5431fd2f4224426f2446ac4d69a8beb38
+  SwiftLint: 7f5f7de0da74a649b16616cb5246ae323489656e
 
-PODFILE CHECKSUM: f0d35ab5544441988d6437c58b4d16f26496bc62
+PODFILE CHECKSUM: cf269f9926b1851f98b7358d29b495896a2b329b
 
 COCOAPODS: 1.5.3

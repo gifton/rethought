@@ -7,75 +7,75 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		008D5DDE0942B5C3EC51E6D4557DFD64 /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89040DFE165E65BA6D07C8E2C6C6610F /* Placeholder.swift */; };
-		01243D8A5347170D19C0AD946271DBE7 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F27C13E11FDF60019097958E133F6A /* Utils.swift */; };
-		06595274A58C022DAE89E7D6DE7AACB2 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E5B1A4B6E64B3545F571D80FD30A3E /* Categories.swift */; };
-		07C0515BAB41A01EDFCB5164FB622170 /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B346AA9F26A773D4637C8B1C2DCE5F58 /* ImageModifier.swift */; };
-		179FCD8BC40E115DFA9C05F603A878A9 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9BE87107A02C7B2933509A32F3B21E /* Resource.swift */; };
-		1C3DA26F13A9B83EB30408F21C5E854B /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 494E6A8C927B245218B2796D8FE57213 /* Images */; };
-		20FEB969513418DFAC5090C858D10516 /* Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC595B44AC07389AF027D7D554927C4 /* Kingfisher.swift */; };
-		2F84C0A84F2B5A0E9E3073417CA651C3 /* ImageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB14366BBEE1EA1FC0A3081C01215C8A /* ImageTransition.swift */; };
-		336D64027AD5C90445AD3A5C0F64DAC3 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A52372DAF5AE8AB04BC8F4AB8DF7E4 /* Category.swift */; };
-		34AEF9EE16EAEAF7FA0E66A48982F0C8 /* UIButton+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131893ED1F8B66A548E007B097FDBE8 /* UIButton+Kingfisher.swift */; };
-		3554E5702FFEA0C2FC74B19EEC7D6325 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109E955FBA03DAB24D3EB057BF3F16C8 /* Indicator.swift */; };
+		008D5DDE0942B5C3EC51E6D4557DFD64 /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829DD2AFB15E05B8F0839F8CE843A4D0 /* Placeholder.swift */; };
+		01243D8A5347170D19C0AD946271DBE7 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D247831BD1614CF7FD49F1E080809EE8 /* Utils.swift */; };
+		06595274A58C022DAE89E7D6DE7AACB2 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E00B26A44DF39EC160D75B0E7D380DC /* Categories.swift */; };
+		07C0515BAB41A01EDFCB5164FB622170 /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACEE2DF23682B117852A9543D3E3E6D /* ImageModifier.swift */; };
+		179FCD8BC40E115DFA9C05F603A878A9 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06585917151A2625A49020974453FB74 /* Resource.swift */; };
+		1C3DA26F13A9B83EB30408F21C5E854B /* Images in Resources */ = {isa = PBXBuildFile; fileRef = D0118E8655514E4A8E5A62311E97EDD0 /* Images */; };
+		20FEB969513418DFAC5090C858D10516 /* Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF0CD864396C6802DAC9D102A7D62D /* Kingfisher.swift */; };
+		2F84C0A84F2B5A0E9E3073417CA651C3 /* ImageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C96DB2FE588F88F2AE9F93244180C /* ImageTransition.swift */; };
+		336D64027AD5C90445AD3A5C0F64DAC3 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1655FD966B20B66755E9E47E113EFCD /* Category.swift */; };
+		34AEF9EE16EAEAF7FA0E66A48982F0C8 /* UIButton+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EB4929F04248407A1C44281D7A2CF /* UIButton+Kingfisher.swift */; };
+		3554E5702FFEA0C2FC74B19EEC7D6325 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F30A75E35E3904551A56936C38AC069 /* Indicator.swift */; };
 		407E12DF0A00F284BD3ECE1C821A74F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89DC365FEF314CAE9760892B813E187E /* Foundation.framework */; };
-		41D22E6F4C3E24D8FE690DE6D644AC3E /* ImagePrefetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8152858F202CE54D4D97E1736E30CCE9 /* ImagePrefetcher.swift */; };
-		453378DA661AD7FCBA79D1BFA59302EB /* FormatIndicatedCacheSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215F4FE6C392F6415B965DF752F17AD4 /* FormatIndicatedCacheSerializer.swift */; };
-		4B57E3E3478985920E5B4BB9F8A0D1D6 /* ISEmojiList.plist in Resources */ = {isa = PBXBuildFile; fileRef = BDE714909A92AD072DD57E1918D1D546 /* ISEmojiList.plist */; };
-		5562C6D4F7D0719C42F6F96EA66CD489 /* EmojiCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82ADA819682E75D904CE4C0E1A604532 /* EmojiCollectionView.xib */; };
-		585171BEC40A5DBAE49E5B2780AF10A3 /* EmojiPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDF336374C5DA0156FDAA2BA75264F0 /* EmojiPopView.swift */; };
-		596799A6280CC1782882B1C18646FDB7 /* ISEmojiView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 44413EC56AC56906848DC96B19A0BBAA /* ISEmojiView-dummy.m */; };
-		5C27283D317F0780CC1667FA83C60C0E /* EmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D451547BE06784440EA4CDE504D6C1EF /* EmojiView.swift */; };
-		5D25A5BD69286DC83C79AA6D51B34F57 /* PageControlBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B886EBA415A2E87DD1B395116F27F2B2 /* PageControlBottomView.swift */; };
-		5E2B1DF30434712458041E66E0E16522 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1362B48D6757B4275A520DFDB5F432B /* Sequence.swift */; };
-		649334C7DADA769AA8B7CCBA4904672A /* ISEmojiList_iOS10.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89C3C9CE58A81DBD0B1CF11FF7C45DEA /* ISEmojiList_iOS10.plist */; };
-		66CCE448DAB752E36445FD69CD761C93 /* KingfisherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1B436803BAB8E799C7CEEAC8143572 /* KingfisherManager.swift */; };
-		6D32552BAB435DE7571092D9CDEBD30B /* Smile-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F619B18D06582D323B2FE52AA52DDB9D /* Smile-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		74991D9F2A55044D75545D00A70C8CA9 /* Kingfisher.h in Headers */ = {isa = PBXBuildFile; fileRef = F7A2DFFB793E10333F9DD9F5509CCEF7 /* Kingfisher.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		74A3F492E381BD0430AFA3BCE5BE5591 /* Smile-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B9C3B37D22BBC2EBD90B4B6F5A552D /* Smile-dummy.m */; };
-		75A1E4900C0AA7CE6E2454C64AA169E2 /* ImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EBCEFA8F091938FD34057C92350311 /* ImageView+Kingfisher.swift */; };
-		785FD36B489B5FF87B3FA36217D3B550 /* CategoriesBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC18491B0C79CCFEB66555DF9B5DD721 /* CategoriesBottomView.swift */; };
-		7DCF88D6CD221C9DA124FFD640C278E4 /* NextGrowingInternalTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20783476C858B1699449F16B605544B4 /* NextGrowingInternalTextView.swift */; };
-		833B4550B26D2A945E08C978BB7BD505 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEDFD902427A5732F24E39C66D2229B /* String+MD5.swift */; };
-		8408233BBB7971E011C4C45361683C01 /* KeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836AC02EFBCB55A092D4DA610FE2F62 /* KeyboardSettings.swift */; };
-		88CE4EE02A104D4BD65DE024ACF209F7 /* KingfisherOptionsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F297BE8D32316D275ED68E443E886A /* KingfisherOptionsInfo.swift */; };
+		41D22E6F4C3E24D8FE690DE6D644AC3E /* ImagePrefetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA5387922FBF0952E491D1078234CDD /* ImagePrefetcher.swift */; };
+		453378DA661AD7FCBA79D1BFA59302EB /* FormatIndicatedCacheSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95141E6BEB47B47F161F87E74030700F /* FormatIndicatedCacheSerializer.swift */; };
+		4B57E3E3478985920E5B4BB9F8A0D1D6 /* ISEmojiList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 217D3597B72A71A26E215C0725BF9CA0 /* ISEmojiList.plist */; };
+		5562C6D4F7D0719C42F6F96EA66CD489 /* EmojiCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5D7324A5DC54D19673A6EDFF22C7BB /* EmojiCollectionView.xib */; };
+		585171BEC40A5DBAE49E5B2780AF10A3 /* EmojiPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073A84F1480F6CC64DF8855839FE23FB /* EmojiPopView.swift */; };
+		596799A6280CC1782882B1C18646FDB7 /* ISEmojiView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB71E24D937FD280895C085A2F683C2C /* ISEmojiView-dummy.m */; };
+		5C27283D317F0780CC1667FA83C60C0E /* EmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27FDAD2F668279889C40004474BD9C0 /* EmojiView.swift */; };
+		5D25A5BD69286DC83C79AA6D51B34F57 /* PageControlBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A3B79F6775DF8BD28FA320FE4C64C1 /* PageControlBottomView.swift */; };
+		5E2B1DF30434712458041E66E0E16522 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6DD9E467DB06A327DCB71DDBD58A93 /* Sequence.swift */; };
+		649334C7DADA769AA8B7CCBA4904672A /* ISEmojiList_iOS10.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6475FB3FD5EA55407DEDD938EDAA35A /* ISEmojiList_iOS10.plist */; };
+		66CCE448DAB752E36445FD69CD761C93 /* KingfisherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9B7CD602F579AB0D753FAA0140613 /* KingfisherManager.swift */; };
+		6D32552BAB435DE7571092D9CDEBD30B /* Smile-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E8879F9F5AE9E0926F3CF146FE969C37 /* Smile-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		74991D9F2A55044D75545D00A70C8CA9 /* Kingfisher.h in Headers */ = {isa = PBXBuildFile; fileRef = C470F20F81D6565FDC6D3E8C07647B78 /* Kingfisher.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		74A3F492E381BD0430AFA3BCE5BE5591 /* Smile-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3B9797006E524F99159E28869A7784 /* Smile-dummy.m */; };
+		75A1E4900C0AA7CE6E2454C64AA169E2 /* ImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A009A7F481B97AAE06EAF1C82AC6FFF /* ImageView+Kingfisher.swift */; };
+		785FD36B489B5FF87B3FA36217D3B550 /* CategoriesBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C949A4D1660DDF4F99C3B7D251208A88 /* CategoriesBottomView.swift */; };
+		7DCF88D6CD221C9DA124FFD640C278E4 /* NextGrowingInternalTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D070C4F740805A2FF89AB5E89D2A37 /* NextGrowingInternalTextView.swift */; };
+		833B4550B26D2A945E08C978BB7BD505 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DEDBD3123BF596A75D52E652626EE7 /* String+MD5.swift */; };
+		8408233BBB7971E011C4C45361683C01 /* KeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5267C70E33A722A3BDFC8EF3FEC869 /* KeyboardSettings.swift */; };
+		88CE4EE02A104D4BD65DE024ACF209F7 /* KingfisherOptionsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DE98E8734C202E0FB97FAC905737C6 /* KingfisherOptionsInfo.swift */; };
 		8AF59614C7FBCE2D7976F5D2423D3617 /* Pods-rethought-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CC705D173CF829ABB82E4D53EB56D9A0 /* Pods-rethought-dummy.m */; };
 		8CC37834857127A8DE9C0EE9EF8D7C25 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89DC365FEF314CAE9760892B813E187E /* Foundation.framework */; };
-		90523ACEFEF8D56C35F5CF41CB70EE58 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ED00351AF8E0F5C936287F218EEB82 /* ImageCache.swift */; };
-		94258857CB374672CD040EAEF67F6294 /* NextGrowingTextView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EE30B4DED6092B4C88F881D21D34A9EC /* NextGrowingTextView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		95AB33523EE2DA5C145714D7279E8D27 /* CacheSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC83B1588AF1565CB5EBCB9AAA8F34C /* CacheSerializer.swift */; };
-		97EB2E795C2BE40106D734B5C0AEBDB3 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B81037C5F29E1BC6F1F5941C23AEEA /* ImageDownloader.swift */; };
-		98D3AB6CC5ADD9B58747B3CC3FF145E2 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BBA5FF84C331F79304CAEA77674389 /* Emoji.swift */; };
-		9954CB3BC5451EA3087220B1E9B5D30F /* CategoriesBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A55620FA26521C5EEDD7AE2DDCF1CF4A /* CategoriesBottomView.xib */; };
-		9EDFA1C34D4853B76A78B8E40B89C775 /* RequestModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3195C76C2ABC136900AE2823638C99 /* RequestModifier.swift */; };
-		A06244AAD1644CD9D34969011A3885C0 /* EmojiLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC4A33599D6AB5C25DE9D39CCECE7B /* EmojiLoader.swift */; };
-		A322F30473448E95BF78F8517BB5EEB2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9E99D408033FB66E746285AA927F9B /* Constants.swift */; };
-		A3E2EAEA264B23F9314454C5842AC5B2 /* PageControlBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38D48B231828B545DBA35FBB0D4A4475 /* PageControlBottomView.xib */; };
+		90523ACEFEF8D56C35F5CF41CB70EE58 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15B29AEEE34907ACABBFD2F9F15A9BD /* ImageCache.swift */; };
+		94258857CB374672CD040EAEF67F6294 /* NextGrowingTextView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DD7E1A71797DC03842517BA4E18477FE /* NextGrowingTextView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		95AB33523EE2DA5C145714D7279E8D27 /* CacheSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F866FE9EC9B96FE685711E69848702E2 /* CacheSerializer.swift */; };
+		97EB2E795C2BE40106D734B5C0AEBDB3 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A86AC043C3BEAD6184EDD9EED2B47AF /* ImageDownloader.swift */; };
+		98D3AB6CC5ADD9B58747B3CC3FF145E2 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA12FF6919222542A2B1B01B89EC3B /* Emoji.swift */; };
+		9954CB3BC5451EA3087220B1E9B5D30F /* CategoriesBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEEFD2FE63813FBB6388FDEDA9507712 /* CategoriesBottomView.xib */; };
+		9EDFA1C34D4853B76A78B8E40B89C775 /* RequestModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EA571832F773379D5122C7BC142064 /* RequestModifier.swift */; };
+		A06244AAD1644CD9D34969011A3885C0 /* EmojiLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7300B1C9804B5A6CA548F804CD28678 /* EmojiLoader.swift */; };
+		A322F30473448E95BF78F8517BB5EEB2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102B772F363CAA50A65107BB7D1A4562 /* Constants.swift */; };
+		A3E2EAEA264B23F9314454C5842AC5B2 /* PageControlBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D33355F741BA95C20234E797EA1A427C /* PageControlBottomView.xib */; };
 		AC9E1AF05C9FF6874FC72EA73A3B1B51 /* ISEmojiView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C09020E13502A1D9F8161920CAE0CC9E /* ISEmojiView.bundle */; };
-		ACB4C298307001168B721DDB8174ECE0 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCECDE8629DC84B401A239D812B16B0F /* Bundle.swift */; };
-		AE633B3532903E2EF04B5D7BA480C3C7 /* Kingfisher-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0EB255A734B8C1E32FC73BBEE6C1B944 /* Kingfisher-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B1D0744B9405A528508A49B4DE06A8DB /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520A43E65C35511392CB86D0BB97AC60 /* Filter.swift */; };
-		B239F6D91EC58C8046497C0909CB2E78 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CC0496E9A62D09C9A384DEF35C534B /* Box.swift */; };
+		ACB4C298307001168B721DDB8174ECE0 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00F26FB585AAE6A91DF25C136E3D64F /* Bundle.swift */; };
+		AE633B3532903E2EF04B5D7BA480C3C7 /* Kingfisher-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 95CC07F343964B5C06B359F8442C784F /* Kingfisher-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B1D0744B9405A528508A49B4DE06A8DB /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E379C0868A8EC807BD258269F84F23FE /* Filter.swift */; };
+		B239F6D91EC58C8046497C0909CB2E78 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39314E677C5FD4357FACCFE7863865C8 /* Box.swift */; };
 		B2EFCB251998FC9F2F1D168E53BD2111 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6757C44D1A8B62FD3A7062E345EA7F6 /* CFNetwork.framework */; };
-		B38AF8CFABA155E25F8C92B7275FC382 /* Smile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5952E9575364FE833756C96139C2E26 /* Smile.swift */; };
-		B757518608D04677010BB98509AA0F4B /* NextGrowingTextView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 93079D76D29EDCD41C8D4A9905AB3882 /* NextGrowingTextView-dummy.m */; };
-		BBE6B85E960BF7927A44E2329DE05A5F /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F06D3BC1C1F7F63ABDEC65D9FF540 /* Image.swift */; };
-		BD8DDB961739006C3E1CE835311B1BA4 /* EmojiCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACDD9ED0F6BED070EB3E7AA7F5ECC89 /* EmojiCollectionView.swift */; };
-		BFC9B4BCED929551A9B673448B7F8384 /* EmojiCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B819EABD36E932722A04C087D5443EB4 /* EmojiCategory.swift */; };
-		C9538BAC268AB8AAB4336A4E62B2EA1F /* Kingfisher-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F361D8B429C26415EC8CA08432D8D9 /* Kingfisher-dummy.m */; };
+		B38AF8CFABA155E25F8C92B7275FC382 /* Smile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABD6D2A6C0F1AA8E33A165E7FF4B94 /* Smile.swift */; };
+		B757518608D04677010BB98509AA0F4B /* NextGrowingTextView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A46EBF3975B1FA984FDED5997E9897 /* NextGrowingTextView-dummy.m */; };
+		BBE6B85E960BF7927A44E2329DE05A5F /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE80C625CC0CA710B7CC18047E11FEA0 /* Image.swift */; };
+		BD8DDB961739006C3E1CE835311B1BA4 /* EmojiCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06176237903327D5BE5F0200067663B /* EmojiCollectionView.swift */; };
+		BFC9B4BCED929551A9B673448B7F8384 /* EmojiCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CAA9AAD79DA802B900B244FD60C66F /* EmojiCategory.swift */; };
+		C9538BAC268AB8AAB4336A4E62B2EA1F /* Kingfisher-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A088DE3DE7BAC19B82A4145E3699BC91 /* Kingfisher-dummy.m */; };
 		CAEE4038822F7934FC9EAB44FFF13AA8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89DC365FEF314CAE9760892B813E187E /* Foundation.framework */; };
-		CF09252BE257297335F39EBD151EB90D /* EmojiCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47971A0429356E3ED4CECAC417BD216 /* EmojiCollectionCell.swift */; };
+		CF09252BE257297335F39EBD151EB90D /* EmojiCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56406526BAC2F266E26FB792862270EA /* EmojiCollectionCell.swift */; };
 		D274C2230E53457776F9D4EF567A0E65 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89DC365FEF314CAE9760892B813E187E /* Foundation.framework */; };
-		D52462A7799C898ED81669ADE5609F3D /* NextGrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228067035F5F35D9A0BBA691E7A0F137 /* NextGrowingTextView.swift */; };
-		D6B14396A96028EFABAED38DDF5A5869 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5A69A9C1A68F3860D4480DB3C07304 /* Emoji.swift */; };
+		D52462A7799C898ED81669ADE5609F3D /* NextGrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D83A4F7D72FE676E7B8780B0975940D /* NextGrowingTextView.swift */; };
+		D6B14396A96028EFABAED38DDF5A5869 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65A92A2C79429E296C13225B1695EE6 /* Emoji.swift */; };
 		D759CA8659E3BEBD33B30851C263920F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89DC365FEF314CAE9760892B813E187E /* Foundation.framework */; };
-		DAC3F0C65BA82526594477C6DDF06745 /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195CDA68110C0698E5A232D9103DDD4 /* ImageProcessor.swift */; };
-		DE75B988AB2334DDD6DFF3A3283A1C6E /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966B58C99581E28A368ABF7962152705 /* CategoryCell.swift */; };
-		E390B50D3D2DDEF8288873EF5DC07D99 /* RecentEmojisManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A50BDE203E92BC3DCA66DAE7F606926 /* RecentEmojisManager.swift */; };
-		EA9BE16ECCC17CC9AD847C52D1B64671 /* AnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6344221CB6DD70BB9100D9DC5F5BA718 /* AnimatedImageView.swift */; };
+		DAC3F0C65BA82526594477C6DDF06745 /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD223DD34272C722FE2FF00F5641C35 /* ImageProcessor.swift */; };
+		DE75B988AB2334DDD6DFF3A3283A1C6E /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E968F5CE42D50F5C78FE04D6DAAB8A /* CategoryCell.swift */; };
+		E390B50D3D2DDEF8288873EF5DC07D99 /* RecentEmojisManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB490A51D1092FB739F72E89F120E6 /* RecentEmojisManager.swift */; };
+		EA9BE16ECCC17CC9AD847C52D1B64671 /* AnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC91F1F3090059D0B81FE0AAD45A879A /* AnimatedImageView.swift */; };
 		F0B954E4F8BBD218ED204B93C7CDF791 /* Pods-rethought-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 425C767D0A471C2FD2B7B8546F9883F7 /* Pods-rethought-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F667936752E8742E44668CC80FC31720 /* ThreadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CE0FD483B894509829F9695C7869E2 /* ThreadHelper.swift */; };
-		FCEF5EFE3B2DD5A82A9C66892EF53993 /* ISEmojiView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9361D627AE941FCBB360F5FE2233D14D /* ISEmojiView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F667936752E8742E44668CC80FC31720 /* ThreadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5FD7F5336AADEA98BC5706333A6508 /* ThreadHelper.swift */; };
+		FCEF5EFE3B2DD5A82A9C66892EF53993 /* ISEmojiView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 32B39D138F6BCEB1EF45DE7E0A770D07 /* ISEmojiView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,102 +117,102 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03BF8D4BC6A8D0AF76EA25878F557E17 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		05A52372DAF5AE8AB04BC8F4AB8DF7E4 /* Category.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Category.swift; path = Source/Classes/Models/Category.swift; sourceTree = "<group>"; };
-		0C3195C76C2ABC136900AE2823638C99 /* RequestModifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestModifier.swift; path = Sources/RequestModifier.swift; sourceTree = "<group>"; };
-		0EB255A734B8C1E32FC73BBEE6C1B944 /* Kingfisher-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kingfisher-umbrella.h"; sourceTree = "<group>"; };
-		109E955FBA03DAB24D3EB057BF3F16C8 /* Indicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Indicator.swift; path = Sources/Indicator.swift; sourceTree = "<group>"; };
-		10EBCEFA8F091938FD34057C92350311 /* ImageView+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ImageView+Kingfisher.swift"; path = "Sources/ImageView+Kingfisher.swift"; sourceTree = "<group>"; };
+		06585917151A2625A49020974453FB74 /* Resource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Resource.swift; path = Sources/Resource.swift; sourceTree = "<group>"; };
+		073A84F1480F6CC64DF8855839FE23FB /* EmojiPopView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EmojiPopView.swift; path = Source/Classes/Views/EmojiPopView/EmojiPopView.swift; sourceTree = "<group>"; };
+		0C5D7324A5DC54D19673A6EDFF22C7BB /* EmojiCollectionView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = EmojiCollectionView.xib; path = Source/Assets/EmojiCollectionView.xib; sourceTree = "<group>"; };
+		0E00B26A44DF39EC160D75B0E7D380DC /* Categories.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Categories.swift; path = Sources/Categories.swift; sourceTree = "<group>"; };
+		0F30A75E35E3904551A56936C38AC069 /* Indicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Indicator.swift; path = Sources/Indicator.swift; sourceTree = "<group>"; };
+		102B772F363CAA50A65107BB7D1A4562 /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Source/Classes/Helpers/Constants.swift; sourceTree = "<group>"; };
+		10831572C940DC1AF76D3DEA46769DA7 /* Smile-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Smile-prefix.pch"; sourceTree = "<group>"; };
+		14A8BCC640669B62C53C9EDB72F9C773 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1576E56FAD9C46BDE3509472D4AB6C08 /* Pods-rethought-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-rethought-acknowledgements.plist"; sourceTree = "<group>"; };
-		1687C86CE0C155C7A7F47B4FBF8D1B45 /* ISEmojiView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ISEmojiView.xcconfig; sourceTree = "<group>"; };
-		16F297BE8D32316D275ED68E443E886A /* KingfisherOptionsInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KingfisherOptionsInfo.swift; path = Sources/KingfisherOptionsInfo.swift; sourceTree = "<group>"; };
-		17CE0FD483B894509829F9695C7869E2 /* ThreadHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThreadHelper.swift; path = Sources/ThreadHelper.swift; sourceTree = "<group>"; };
-		1822120EA2131FE51BA67B685432225B /* Smile-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Smile-prefix.pch"; sourceTree = "<group>"; };
-		1ACDD9ED0F6BED070EB3E7AA7F5ECC89 /* EmojiCollectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EmojiCollectionView.swift; path = Source/Classes/Views/EmojiCollectionView/EmojiCollectionView.swift; sourceTree = "<group>"; };
-		1C1B436803BAB8E799C7CEEAC8143572 /* KingfisherManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KingfisherManager.swift; path = Sources/KingfisherManager.swift; sourceTree = "<group>"; };
-		20783476C858B1699449F16B605544B4 /* NextGrowingInternalTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NextGrowingInternalTextView.swift; path = NextGrowingTextView/NextGrowingInternalTextView.swift; sourceTree = "<group>"; };
-		215F4FE6C392F6415B965DF752F17AD4 /* FormatIndicatedCacheSerializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormatIndicatedCacheSerializer.swift; path = Sources/FormatIndicatedCacheSerializer.swift; sourceTree = "<group>"; };
-		228067035F5F35D9A0BBA691E7A0F137 /* NextGrowingTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NextGrowingTextView.swift; path = NextGrowingTextView/NextGrowingTextView.swift; sourceTree = "<group>"; };
-		2B14A67A986169AE96EE34A241EF7164 /* Smile.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Smile.modulemap; sourceTree = "<group>"; };
-		31CC0496E9A62D09C9A384DEF35C534B /* Box.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Box.swift; path = Sources/Box.swift; sourceTree = "<group>"; };
+		1E60E1F7743F0D187388E6C91A694D43 /* Smile.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Smile.modulemap; sourceTree = "<group>"; };
+		1FD223DD34272C722FE2FF00F5641C35 /* ImageProcessor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageProcessor.swift; path = Sources/ImageProcessor.swift; sourceTree = "<group>"; };
+		217D3597B72A71A26E215C0725BF9CA0 /* ISEmojiList.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = ISEmojiList.plist; path = Source/Assets/ISEmojiList.plist; sourceTree = "<group>"; };
+		32B39D138F6BCEB1EF45DE7E0A770D07 /* ISEmojiView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ISEmojiView-umbrella.h"; sourceTree = "<group>"; };
+		32D070C4F740805A2FF89AB5E89D2A37 /* NextGrowingInternalTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NextGrowingInternalTextView.swift; path = NextGrowingTextView/NextGrowingInternalTextView.swift; sourceTree = "<group>"; };
+		33EF0CD864396C6802DAC9D102A7D62D /* Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Kingfisher.swift; path = Sources/Kingfisher.swift; sourceTree = "<group>"; };
 		347C71502627C6E59A38452701232D02 /* Pods-rethought-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-rethought-acknowledgements.markdown"; sourceTree = "<group>"; };
-		38B81037C5F29E1BC6F1F5941C23AEEA /* ImageDownloader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDownloader.swift; path = Sources/ImageDownloader.swift; sourceTree = "<group>"; };
-		38D48B231828B545DBA35FBB0D4A4475 /* PageControlBottomView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = PageControlBottomView.xib; path = Source/Assets/PageControlBottomView.xib; sourceTree = "<group>"; };
+		380C1E064F22E6C88E388B4A2C2CBDA3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39314E677C5FD4357FACCFE7863865C8 /* Box.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Box.swift; path = Sources/Box.swift; sourceTree = "<group>"; };
+		3CAA8F33D045A1F761DF9E894A4BEA1B /* ISEmojiView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ISEmojiView.xcconfig; sourceTree = "<group>"; };
+		3EA5387922FBF0952E491D1078234CDD /* ImagePrefetcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImagePrefetcher.swift; path = Sources/ImagePrefetcher.swift; sourceTree = "<group>"; };
 		40442D7C5729735917AAF6B55B5CAB59 /* Pods-rethought-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-rethought-frameworks.sh"; sourceTree = "<group>"; };
 		425C767D0A471C2FD2B7B8546F9883F7 /* Pods-rethought-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-rethought-umbrella.h"; sourceTree = "<group>"; };
-		44413EC56AC56906848DC96B19A0BBAA /* ISEmojiView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ISEmojiView-dummy.m"; sourceTree = "<group>"; };
 		45D6085B60D8EF9841F4C686A12CE905 /* Pods-rethought.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-rethought.debug.xcconfig"; sourceTree = "<group>"; };
-		494E6A8C927B245218B2796D8FE57213 /* Images */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = Images; path = Source/Assets/Images; sourceTree = "<group>"; };
-		4AC595B44AC07389AF027D7D554927C4 /* Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Kingfisher.swift; path = Sources/Kingfisher.swift; sourceTree = "<group>"; };
+		46814DB937F652779CF00D5CEFC1CEEE /* NextGrowingTextView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NextGrowingTextView-prefix.pch"; sourceTree = "<group>"; };
+		47CAA9AAD79DA802B900B244FD60C66F /* EmojiCategory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EmojiCategory.swift; path = Source/Classes/Models/EmojiCategory.swift; sourceTree = "<group>"; };
+		4AC2D603F25F95788FD0F82138FF74EF /* Kingfisher.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Kingfisher.xcconfig; sourceTree = "<group>"; };
 		4BEE8F66B1D0CCEE77F5DDBE4BB4166A /* Pods-rethought.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-rethought.modulemap"; sourceTree = "<group>"; };
+		4EE18AEA7BB92DE5D90FA7939CF7745A /* Kingfisher-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kingfisher-prefix.pch"; sourceTree = "<group>"; };
+		4FF9B7CD602F579AB0D753FAA0140613 /* KingfisherManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KingfisherManager.swift; path = Sources/KingfisherManager.swift; sourceTree = "<group>"; };
 		5083DFC916BAA95D10178371BAC05236 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		509407628AF7BEE175EA32A0D6073146 /* Smile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Smile.xcconfig; sourceTree = "<group>"; };
-		520A43E65C35511392CB86D0BB97AC60 /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Filter.swift; sourceTree = "<group>"; };
+		51A46EBF3975B1FA984FDED5997E9897 /* NextGrowingTextView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NextGrowingTextView-dummy.m"; sourceTree = "<group>"; };
+		52ABD6D2A6C0F1AA8E33A165E7FF4B94 /* Smile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Smile.swift; path = Sources/Smile.swift; sourceTree = "<group>"; };
+		56406526BAC2F266E26FB792862270EA /* EmojiCollectionCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EmojiCollectionCell.swift; path = Source/Classes/Views/EmojiCollectionView/EmojiCollectionCell.swift; sourceTree = "<group>"; };
 		581ABBF57B1E5C31EA556645600F448F /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		58C2F74F6DED06E7AD21468BB277D4A9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		59E992A5D0E0813C2D902F988459EFE6 /* Kingfisher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Kingfisher.modulemap; sourceTree = "<group>"; };
-		5A50BDE203E92BC3DCA66DAE7F606926 /* RecentEmojisManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RecentEmojisManager.swift; path = Source/Classes/Helpers/RecentEmojisManager.swift; sourceTree = "<group>"; };
-		5EDF336374C5DA0156FDAA2BA75264F0 /* EmojiPopView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EmojiPopView.swift; path = Source/Classes/Views/EmojiPopView/EmojiPopView.swift; sourceTree = "<group>"; };
-		6344221CB6DD70BB9100D9DC5F5BA718 /* AnimatedImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedImageView.swift; path = Sources/AnimatedImageView.swift; sourceTree = "<group>"; };
-		68D776886573EC2B311E681466DF804C /* Kingfisher.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Kingfisher.xcconfig; sourceTree = "<group>"; };
-		73BC4A33599D6AB5C25DE9D39CCECE7B /* EmojiLoader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EmojiLoader.swift; path = Source/Classes/Helpers/EmojiLoader.swift; sourceTree = "<group>"; };
-		79F27C13E11FDF60019097958E133F6A /* Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = Sources/Utils.swift; sourceTree = "<group>"; };
-		81225AAA1605A8670EC002C980A288C0 /* NextGrowingTextView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = NextGrowingTextView.modulemap; sourceTree = "<group>"; };
-		8152858F202CE54D4D97E1736E30CCE9 /* ImagePrefetcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImagePrefetcher.swift; path = Sources/ImagePrefetcher.swift; sourceTree = "<group>"; };
-		82ADA819682E75D904CE4C0E1A604532 /* EmojiCollectionView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = EmojiCollectionView.xib; path = Source/Assets/EmojiCollectionView.xib; sourceTree = "<group>"; };
-		86BBA5FF84C331F79304CAEA77674389 /* Emoji.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Emoji.swift; path = Source/Classes/Models/Emoji.swift; sourceTree = "<group>"; };
-		89040DFE165E65BA6D07C8E2C6C6610F /* Placeholder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Placeholder.swift; path = Sources/Placeholder.swift; sourceTree = "<group>"; };
-		89C3C9CE58A81DBD0B1CF11FF7C45DEA /* ISEmojiList_iOS10.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = ISEmojiList_iOS10.plist; path = Source/Assets/ISEmojiList_iOS10.plist; sourceTree = "<group>"; };
+		5A009A7F481B97AAE06EAF1C82AC6FFF /* ImageView+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ImageView+Kingfisher.swift"; path = "Sources/ImageView+Kingfisher.swift"; sourceTree = "<group>"; };
+		605EB4929F04248407A1C44281D7A2CF /* UIButton+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIButton+Kingfisher.swift"; path = "Sources/UIButton+Kingfisher.swift"; sourceTree = "<group>"; };
+		6309ED4DF0161B4F5ECC96F88B1F360C /* NextGrowingTextView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = NextGrowingTextView.modulemap; sourceTree = "<group>"; };
+		65A3B79F6775DF8BD28FA320FE4C64C1 /* PageControlBottomView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PageControlBottomView.swift; path = Source/Classes/Views/BottomViews/PageControlBottomView/PageControlBottomView.swift; sourceTree = "<group>"; };
+		73E3DA7DBF2DD5291BAB30E030F2ED4F /* Kingfisher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Kingfisher.modulemap; sourceTree = "<group>"; };
+		829DD2AFB15E05B8F0839F8CE843A4D0 /* Placeholder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Placeholder.swift; path = Sources/Placeholder.swift; sourceTree = "<group>"; };
 		89DC365FEF314CAE9760892B813E187E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		8A86AC043C3BEAD6184EDD9EED2B47AF /* ImageDownloader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDownloader.swift; path = Sources/ImageDownloader.swift; sourceTree = "<group>"; };
+		8ACEE2DF23682B117852A9543D3E3E6D /* ImageModifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageModifier.swift; path = Sources/ImageModifier.swift; sourceTree = "<group>"; };
 		8AEAD6AD64A035D4BBCF64E98694D3FE /* Pods-rethought.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-rethought.release.xcconfig"; sourceTree = "<group>"; };
-		93079D76D29EDCD41C8D4A9905AB3882 /* NextGrowingTextView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NextGrowingTextView-dummy.m"; sourceTree = "<group>"; };
-		9361D627AE941FCBB360F5FE2233D14D /* ISEmojiView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ISEmojiView-umbrella.h"; sourceTree = "<group>"; };
+		8D5267C70E33A722A3BDFC8EF3FEC869 /* KeyboardSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardSettings.swift; path = Source/Classes/Models/KeyboardSettings.swift; sourceTree = "<group>"; };
+		8D83A4F7D72FE676E7B8780B0975940D /* NextGrowingTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NextGrowingTextView.swift; path = NextGrowingTextView/NextGrowingTextView.swift; sourceTree = "<group>"; };
+		8E4C5C53A07A52A0B6C69851617FA36C /* ISEmojiView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ISEmojiView.modulemap; sourceTree = "<group>"; };
+		91F8A5CF7DEB62966657F839D363C074 /* NextGrowingTextView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NextGrowingTextView.xcconfig; sourceTree = "<group>"; };
+		93743A3632B9AF54F945815D13C08F96 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9422553701001AA907C9FDD931396155 /* ISEmojiView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ISEmojiView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		960F06D3BC1C1F7F63ABDEC65D9FF540 /* Image.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Image.swift; path = Sources/Image.swift; sourceTree = "<group>"; };
-		966B58C99581E28A368ABF7962152705 /* CategoryCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CategoryCell.swift; path = Source/Classes/Views/BottomViews/CategoriesBottomView/CategoryCell.swift; sourceTree = "<group>"; };
-		9BFF3DBF1DF3241F3AF7A8AA067525F9 /* ISEmojiView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ISEmojiView.modulemap; sourceTree = "<group>"; };
-		9D8644D548B42D9BCC9A7926B1BF19BB /* ISEmojiView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ISEmojiView-prefix.pch"; sourceTree = "<group>"; };
-		9DA3A85790E98ACF6D34E44453361E4D /* NextGrowingTextView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NextGrowingTextView-prefix.pch"; sourceTree = "<group>"; };
-		9E9BE87107A02C7B2933509A32F3B21E /* Resource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Resource.swift; path = Sources/Resource.swift; sourceTree = "<group>"; };
-		A3E5B1A4B6E64B3545F571D80FD30A3E /* Categories.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Categories.swift; path = Sources/Categories.swift; sourceTree = "<group>"; };
-		A55620FA26521C5EEDD7AE2DDCF1CF4A /* CategoriesBottomView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = CategoriesBottomView.xib; path = Source/Assets/CategoriesBottomView.xib; sourceTree = "<group>"; };
-		A5F361D8B429C26415EC8CA08432D8D9 /* Kingfisher-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Kingfisher-dummy.m"; sourceTree = "<group>"; };
-		AC89658C60E52086FF3A55559E3A4781 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AFEDFD902427A5732F24E39C66D2229B /* String+MD5.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+MD5.swift"; path = "Sources/String+MD5.swift"; sourceTree = "<group>"; };
-		B346AA9F26A773D4637C8B1C2DCE5F58 /* ImageModifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageModifier.swift; path = Sources/ImageModifier.swift; sourceTree = "<group>"; };
-		B819EABD36E932722A04C087D5443EB4 /* EmojiCategory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EmojiCategory.swift; path = Source/Classes/Models/EmojiCategory.swift; sourceTree = "<group>"; };
-		B886EBA415A2E87DD1B395116F27F2B2 /* PageControlBottomView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PageControlBottomView.swift; path = Source/Classes/Views/BottomViews/PageControlBottomView/PageControlBottomView.swift; sourceTree = "<group>"; };
-		B980C411027D50F32CC707546056692F /* NextGrowingTextView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NextGrowingTextView.xcconfig; sourceTree = "<group>"; };
-		B9B9C3B37D22BBC2EBD90B4B6F5A552D /* Smile-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Smile-dummy.m"; sourceTree = "<group>"; };
+		95141E6BEB47B47F161F87E74030700F /* FormatIndicatedCacheSerializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormatIndicatedCacheSerializer.swift; path = Sources/FormatIndicatedCacheSerializer.swift; sourceTree = "<group>"; };
+		95CC07F343964B5C06B359F8442C784F /* Kingfisher-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kingfisher-umbrella.h"; sourceTree = "<group>"; };
+		969444EF218394D33E27721DBB0204AE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A06176237903327D5BE5F0200067663B /* EmojiCollectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EmojiCollectionView.swift; path = Source/Classes/Views/EmojiCollectionView/EmojiCollectionView.swift; sourceTree = "<group>"; };
+		A088DE3DE7BAC19B82A4145E3699BC91 /* Kingfisher-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Kingfisher-dummy.m"; sourceTree = "<group>"; };
+		A3DE98E8734C202E0FB97FAC905737C6 /* KingfisherOptionsInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KingfisherOptionsInfo.swift; path = Sources/KingfisherOptionsInfo.swift; sourceTree = "<group>"; };
+		AB71E24D937FD280895C085A2F683C2C /* ISEmojiView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ISEmojiView-dummy.m"; sourceTree = "<group>"; };
+		B0EA571832F773379D5122C7BC142064 /* RequestModifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestModifier.swift; path = Sources/RequestModifier.swift; sourceTree = "<group>"; };
+		B2DEDBD3123BF596A75D52E652626EE7 /* String+MD5.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+MD5.swift"; path = "Sources/String+MD5.swift"; sourceTree = "<group>"; };
+		B9E968F5CE42D50F5C78FE04D6DAAB8A /* CategoryCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CategoryCell.swift; path = Source/Classes/Views/BottomViews/CategoriesBottomView/CategoryCell.swift; sourceTree = "<group>"; };
 		BBC78E7A723853E71523A5FFE5F72831 /* NextGrowingTextView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NextGrowingTextView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BCECDE8629DC84B401A239D812B16B0F /* Bundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bundle.swift; path = Source/Classes/Extensions/Bundle.swift; sourceTree = "<group>"; };
-		BDE714909A92AD072DD57E1918D1D546 /* ISEmojiList.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = ISEmojiList.plist; path = Source/Assets/ISEmojiList.plist; sourceTree = "<group>"; };
-		BE9E99D408033FB66E746285AA927F9B /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Source/Classes/Helpers/Constants.swift; sourceTree = "<group>"; };
 		C09020E13502A1D9F8161920CAE0CC9E /* ISEmojiView.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ISEmojiView.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		C0ED00351AF8E0F5C936287F218EEB82 /* ImageCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageCache.swift; path = Sources/ImageCache.swift; sourceTree = "<group>"; };
+		C123549B95825852D54CD3D9F4C96298 /* Smile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Smile.xcconfig; sourceTree = "<group>"; };
+		C27FDAD2F668279889C40004474BD9C0 /* EmojiView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EmojiView.swift; path = Source/Classes/Views/EmojiView/EmojiView.swift; sourceTree = "<group>"; };
+		C28C96DB2FE588F88F2AE9F93244180C /* ImageTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageTransition.swift; path = Sources/ImageTransition.swift; sourceTree = "<group>"; };
+		C470F20F81D6565FDC6D3E8C07647B78 /* Kingfisher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Kingfisher.h; path = Sources/Kingfisher.h; sourceTree = "<group>"; };
+		C6475FB3FD5EA55407DEDD938EDAA35A /* ISEmojiList_iOS10.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = ISEmojiList_iOS10.plist; path = Source/Assets/ISEmojiList_iOS10.plist; sourceTree = "<group>"; };
 		C6757C44D1A8B62FD3A7062E345EA7F6 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
+		C949A4D1660DDF4F99C3B7D251208A88 /* CategoriesBottomView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CategoriesBottomView.swift; path = Source/Classes/Views/BottomViews/CategoriesBottomView/CategoriesBottomView.swift; sourceTree = "<group>"; };
+		C97BA0CC7EFE133D7582BCABBFEE2DD6 /* ResourceBundle-ISEmojiView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-ISEmojiView-Info.plist"; sourceTree = "<group>"; };
+		C9BA12FF6919222542A2B1B01B89EC3B /* Emoji.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Emoji.swift; path = Source/Classes/Models/Emoji.swift; sourceTree = "<group>"; };
+		CC5FD7F5336AADEA98BC5706333A6508 /* ThreadHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThreadHelper.swift; path = Sources/ThreadHelper.swift; sourceTree = "<group>"; };
 		CC705D173CF829ABB82E4D53EB56D9A0 /* Pods-rethought-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-rethought-dummy.m"; sourceTree = "<group>"; };
 		CDF33E1C5D27E41FE35083686FAEBAF5 /* Pods-rethought-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-rethought-resources.sh"; sourceTree = "<group>"; };
-		D1362B48D6757B4275A520DFDB5F432B /* Sequence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Sequence.swift; path = Sources/Sequence.swift; sourceTree = "<group>"; };
-		D168C8F0F8DC44ABD0D92A3B99F1C448 /* Kingfisher-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kingfisher-prefix.pch"; sourceTree = "<group>"; };
-		D195CDA68110C0698E5A232D9103DDD4 /* ImageProcessor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageProcessor.swift; path = Sources/ImageProcessor.swift; sourceTree = "<group>"; };
-		D451547BE06784440EA4CDE504D6C1EF /* EmojiView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EmojiView.swift; path = Source/Classes/Views/EmojiView/EmojiView.swift; sourceTree = "<group>"; };
-		D47971A0429356E3ED4CECAC417BD216 /* EmojiCollectionCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EmojiCollectionCell.swift; path = Source/Classes/Views/EmojiCollectionView/EmojiCollectionCell.swift; sourceTree = "<group>"; };
-		D836AC02EFBCB55A092D4DA610FE2F62 /* KeyboardSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardSettings.swift; path = Source/Classes/Models/KeyboardSettings.swift; sourceTree = "<group>"; };
-		DB14366BBEE1EA1FC0A3081C01215C8A /* ImageTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageTransition.swift; path = Sources/ImageTransition.swift; sourceTree = "<group>"; };
-		DC5A69A9C1A68F3860D4480DB3C07304 /* Emoji.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Emoji.swift; path = Sources/Emoji.swift; sourceTree = "<group>"; };
+		CEEFD2FE63813FBB6388FDEDA9507712 /* CategoriesBottomView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = CategoriesBottomView.xib; path = Source/Assets/CategoriesBottomView.xib; sourceTree = "<group>"; };
+		CF3B9797006E524F99159E28869A7784 /* Smile-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Smile-dummy.m"; sourceTree = "<group>"; };
+		D0118E8655514E4A8E5A62311E97EDD0 /* Images */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = Images; path = Source/Assets/Images; sourceTree = "<group>"; };
+		D1655FD966B20B66755E9E47E113EFCD /* Category.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Category.swift; path = Source/Classes/Models/Category.swift; sourceTree = "<group>"; };
+		D247831BD1614CF7FD49F1E080809EE8 /* Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = Sources/Utils.swift; sourceTree = "<group>"; };
+		D33355F741BA95C20234E797EA1A427C /* PageControlBottomView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = PageControlBottomView.xib; path = Source/Assets/PageControlBottomView.xib; sourceTree = "<group>"; };
+		D35F174D64F417F0FC8676EA6D156C83 /* ISEmojiView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ISEmojiView-prefix.pch"; sourceTree = "<group>"; };
+		D65A92A2C79429E296C13225B1695EE6 /* Emoji.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Emoji.swift; path = Sources/Emoji.swift; sourceTree = "<group>"; };
+		DD7E1A71797DC03842517BA4E18477FE /* NextGrowingTextView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NextGrowingTextView-umbrella.h"; sourceTree = "<group>"; };
 		DDF43BADA4544C918B7FC8E59AA832BF /* Pods_rethought.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rethought.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DE3B041E61AC931C5BBFF6DDA36C19C1 /* ResourceBundle-ISEmojiView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-ISEmojiView-Info.plist"; sourceTree = "<group>"; };
-		E131893ED1F8B66A548E007B097FDBE8 /* UIButton+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIButton+Kingfisher.swift"; path = "Sources/UIButton+Kingfisher.swift"; sourceTree = "<group>"; };
-		E5952E9575364FE833756C96139C2E26 /* Smile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Smile.swift; path = Sources/Smile.swift; sourceTree = "<group>"; };
-		EC18491B0C79CCFEB66555DF9B5DD721 /* CategoriesBottomView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CategoriesBottomView.swift; path = Source/Classes/Views/BottomViews/CategoriesBottomView/CategoriesBottomView.swift; sourceTree = "<group>"; };
-		EDC83B1588AF1565CB5EBCB9AAA8F34C /* CacheSerializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CacheSerializer.swift; path = Sources/CacheSerializer.swift; sourceTree = "<group>"; };
-		EDCD735F682D70F1CF0A4C8273F506A5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EE30B4DED6092B4C88F881D21D34A9EC /* NextGrowingTextView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NextGrowingTextView-umbrella.h"; sourceTree = "<group>"; };
-		F619B18D06582D323B2FE52AA52DDB9D /* Smile-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Smile-umbrella.h"; sourceTree = "<group>"; };
+		E00F26FB585AAE6A91DF25C136E3D64F /* Bundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bundle.swift; path = Source/Classes/Extensions/Bundle.swift; sourceTree = "<group>"; };
+		E379C0868A8EC807BD258269F84F23FE /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Filter.swift; sourceTree = "<group>"; };
+		E8879F9F5AE9E0926F3CF146FE969C37 /* Smile-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Smile-umbrella.h"; sourceTree = "<group>"; };
+		EC91F1F3090059D0B81FE0AAD45A879A /* AnimatedImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedImageView.swift; path = Sources/AnimatedImageView.swift; sourceTree = "<group>"; };
+		F15B29AEEE34907ACABBFD2F9F15A9BD /* ImageCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageCache.swift; path = Sources/ImageCache.swift; sourceTree = "<group>"; };
+		F7300B1C9804B5A6CA548F804CD28678 /* EmojiLoader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EmojiLoader.swift; path = Source/Classes/Helpers/EmojiLoader.swift; sourceTree = "<group>"; };
 		F79C98F372A540CDB73F937BA99942B2 /* Smile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Smile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F7A2DFFB793E10333F9DD9F5509CCEF7 /* Kingfisher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Kingfisher.h; path = Sources/Kingfisher.h; sourceTree = "<group>"; };
+		F866FE9EC9B96FE685711E69848702E2 /* CacheSerializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CacheSerializer.swift; path = Sources/CacheSerializer.swift; sourceTree = "<group>"; };
+		FABB490A51D1092FB739F72E89F120E6 /* RecentEmojisManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RecentEmojisManager.swift; path = Source/Classes/Helpers/RecentEmojisManager.swift; sourceTree = "<group>"; };
+		FD6DD9E467DB06A327DCB71DDBD58A93 /* Sequence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Sequence.swift; path = Sources/Sequence.swift; sourceTree = "<group>"; };
+		FE80C625CC0CA710B7CC18047E11FEA0 /* Image.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Image.swift; path = Sources/Image.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,29 +267,70 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0B9E7859C558DAAB612BC4480DE03B87 /* Support Files */ = {
+		04C8CA6AA656B13E11C3A14FBF35B71F /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				EDCD735F682D70F1CF0A4C8273F506A5 /* Info.plist */,
-				81225AAA1605A8670EC002C980A288C0 /* NextGrowingTextView.modulemap */,
-				B980C411027D50F32CC707546056692F /* NextGrowingTextView.xcconfig */,
-				93079D76D29EDCD41C8D4A9905AB3882 /* NextGrowingTextView-dummy.m */,
-				9DA3A85790E98ACF6D34E44453361E4D /* NextGrowingTextView-prefix.pch */,
-				EE30B4DED6092B4C88F881D21D34A9EC /* NextGrowingTextView-umbrella.h */,
+				969444EF218394D33E27721DBB0204AE /* Info.plist */,
+				6309ED4DF0161B4F5ECC96F88B1F360C /* NextGrowingTextView.modulemap */,
+				91F8A5CF7DEB62966657F839D363C074 /* NextGrowingTextView.xcconfig */,
+				51A46EBF3975B1FA984FDED5997E9897 /* NextGrowingTextView-dummy.m */,
+				46814DB937F652779CF00D5CEFC1CEEE /* NextGrowingTextView-prefix.pch */,
+				DD7E1A71797DC03842517BA4E18477FE /* NextGrowingTextView-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/NextGrowingTextView";
 			sourceTree = "<group>";
 		};
-		285109D999D9F4C40224A5A73C5FF2F3 /* Pods */ = {
+		0C49344E4C88A1DCFE11DD48F75C2699 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				6855C51750CBA706F5F5D101F837FC89 /* ISEmojiView */,
-				6632F2E7FD20693E9BF448AB7014921E /* Kingfisher */,
-				CBEF0D468AAECA4E2834D29A550F3B94 /* NextGrowingTextView */,
-				6A0DBA844E390E934D87EEE07BADC08C /* Smile */,
+				380C1E064F22E6C88E388B4A2C2CBDA3 /* Info.plist */,
+				8E4C5C53A07A52A0B6C69851617FA36C /* ISEmojiView.modulemap */,
+				3CAA8F33D045A1F761DF9E894A4BEA1B /* ISEmojiView.xcconfig */,
+				AB71E24D937FD280895C085A2F683C2C /* ISEmojiView-dummy.m */,
+				D35F174D64F417F0FC8676EA6D156C83 /* ISEmojiView-prefix.pch */,
+				32B39D138F6BCEB1EF45DE7E0A770D07 /* ISEmojiView-umbrella.h */,
+				C97BA0CC7EFE133D7582BCABBFEE2DD6 /* ResourceBundle-ISEmojiView-Info.plist */,
 			);
-			name = Pods;
+			name = "Support Files";
+			path = "../Target Support Files/ISEmojiView";
+			sourceTree = "<group>";
+		};
+		1B60927A0FC1BD73B8F62092B653DD9C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CEEFD2FE63813FBB6388FDEDA9507712 /* CategoriesBottomView.xib */,
+				0C5D7324A5DC54D19673A6EDFF22C7BB /* EmojiCollectionView.xib */,
+				D0118E8655514E4A8E5A62311E97EDD0 /* Images */,
+				217D3597B72A71A26E215C0725BF9CA0 /* ISEmojiList.plist */,
+				C6475FB3FD5EA55407DEDD938EDAA35A /* ISEmojiList_iOS10.plist */,
+				D33355F741BA95C20234E797EA1A427C /* PageControlBottomView.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		3FF72D3EE1004F443C82A793594795FC /* ISEmojiView */ = {
+			isa = PBXGroup;
+			children = (
+				E00F26FB585AAE6A91DF25C136E3D64F /* Bundle.swift */,
+				C949A4D1660DDF4F99C3B7D251208A88 /* CategoriesBottomView.swift */,
+				D1655FD966B20B66755E9E47E113EFCD /* Category.swift */,
+				B9E968F5CE42D50F5C78FE04D6DAAB8A /* CategoryCell.swift */,
+				102B772F363CAA50A65107BB7D1A4562 /* Constants.swift */,
+				C9BA12FF6919222542A2B1B01B89EC3B /* Emoji.swift */,
+				47CAA9AAD79DA802B900B244FD60C66F /* EmojiCategory.swift */,
+				56406526BAC2F266E26FB792862270EA /* EmojiCollectionCell.swift */,
+				A06176237903327D5BE5F0200067663B /* EmojiCollectionView.swift */,
+				F7300B1C9804B5A6CA548F804CD28678 /* EmojiLoader.swift */,
+				073A84F1480F6CC64DF8855839FE23FB /* EmojiPopView.swift */,
+				C27FDAD2F668279889C40004474BD9C0 /* EmojiView.swift */,
+				8D5267C70E33A722A3BDFC8EF3FEC869 /* KeyboardSettings.swift */,
+				65A3B79F6775DF8BD28FA320FE4C64C1 /* PageControlBottomView.swift */,
+				FABB490A51D1092FB739F72E89F120E6 /* RecentEmojisManager.swift */,
+				1B60927A0FC1BD73B8F62092B653DD9C /* Resources */,
+				0C49344E4C88A1DCFE11DD48F75C2699 /* Support Files */,
+			);
+			path = ISEmojiView;
 			sourceTree = "<group>";
 		};
 		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
@@ -300,18 +341,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		54DEF3D37A151D99489CC3BEA0DEEAE9 /* Support Files */ = {
+		43DEED98675DFDF7376E48F5DEC1525F /* Smile */ = {
 			isa = PBXGroup;
 			children = (
-				58C2F74F6DED06E7AD21468BB277D4A9 /* Info.plist */,
-				59E992A5D0E0813C2D902F988459EFE6 /* Kingfisher.modulemap */,
-				68D776886573EC2B311E681466DF804C /* Kingfisher.xcconfig */,
-				A5F361D8B429C26415EC8CA08432D8D9 /* Kingfisher-dummy.m */,
-				D168C8F0F8DC44ABD0D92A3B99F1C448 /* Kingfisher-prefix.pch */,
-				0EB255A734B8C1E32FC73BBEE6C1B944 /* Kingfisher-umbrella.h */,
+				0E00B26A44DF39EC160D75B0E7D380DC /* Categories.swift */,
+				D65A92A2C79429E296C13225B1695EE6 /* Emoji.swift */,
+				FD6DD9E467DB06A327DCB71DDBD58A93 /* Sequence.swift */,
+				52ABD6D2A6C0F1AA8E33A165E7FF4B94 /* Smile.swift */,
+				D247831BD1614CF7FD49F1E080809EE8 /* Utils.swift */,
+				ACFB5C7EC5491CBB01000E67997DDE13 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/Kingfisher";
+			path = Smile;
 			sourceTree = "<group>";
 		};
 		5507669C2BD3C9B0E12BE5007C6F2A98 /* Products */ = {
@@ -327,86 +367,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6632F2E7FD20693E9BF448AB7014921E /* Kingfisher */ = {
+		66AFEACE5F1A5B96EF870DB1B3E3B45E /* NextGrowingTextView */ = {
 			isa = PBXGroup;
 			children = (
-				6344221CB6DD70BB9100D9DC5F5BA718 /* AnimatedImageView.swift */,
-				31CC0496E9A62D09C9A384DEF35C534B /* Box.swift */,
-				EDC83B1588AF1565CB5EBCB9AAA8F34C /* CacheSerializer.swift */,
-				520A43E65C35511392CB86D0BB97AC60 /* Filter.swift */,
-				215F4FE6C392F6415B965DF752F17AD4 /* FormatIndicatedCacheSerializer.swift */,
-				960F06D3BC1C1F7F63ABDEC65D9FF540 /* Image.swift */,
-				C0ED00351AF8E0F5C936287F218EEB82 /* ImageCache.swift */,
-				38B81037C5F29E1BC6F1F5941C23AEEA /* ImageDownloader.swift */,
-				B346AA9F26A773D4637C8B1C2DCE5F58 /* ImageModifier.swift */,
-				8152858F202CE54D4D97E1736E30CCE9 /* ImagePrefetcher.swift */,
-				D195CDA68110C0698E5A232D9103DDD4 /* ImageProcessor.swift */,
-				DB14366BBEE1EA1FC0A3081C01215C8A /* ImageTransition.swift */,
-				10EBCEFA8F091938FD34057C92350311 /* ImageView+Kingfisher.swift */,
-				109E955FBA03DAB24D3EB057BF3F16C8 /* Indicator.swift */,
-				F7A2DFFB793E10333F9DD9F5509CCEF7 /* Kingfisher.h */,
-				4AC595B44AC07389AF027D7D554927C4 /* Kingfisher.swift */,
-				1C1B436803BAB8E799C7CEEAC8143572 /* KingfisherManager.swift */,
-				16F297BE8D32316D275ED68E443E886A /* KingfisherOptionsInfo.swift */,
-				89040DFE165E65BA6D07C8E2C6C6610F /* Placeholder.swift */,
-				0C3195C76C2ABC136900AE2823638C99 /* RequestModifier.swift */,
-				9E9BE87107A02C7B2933509A32F3B21E /* Resource.swift */,
-				AFEDFD902427A5732F24E39C66D2229B /* String+MD5.swift */,
-				17CE0FD483B894509829F9695C7869E2 /* ThreadHelper.swift */,
-				E131893ED1F8B66A548E007B097FDBE8 /* UIButton+Kingfisher.swift */,
-				54DEF3D37A151D99489CC3BEA0DEEAE9 /* Support Files */,
+				32D070C4F740805A2FF89AB5E89D2A37 /* NextGrowingInternalTextView.swift */,
+				8D83A4F7D72FE676E7B8780B0975940D /* NextGrowingTextView.swift */,
+				04C8CA6AA656B13E11C3A14FBF35B71F /* Support Files */,
 			);
-			path = Kingfisher;
-			sourceTree = "<group>";
-		};
-		6855C51750CBA706F5F5D101F837FC89 /* ISEmojiView */ = {
-			isa = PBXGroup;
-			children = (
-				BCECDE8629DC84B401A239D812B16B0F /* Bundle.swift */,
-				EC18491B0C79CCFEB66555DF9B5DD721 /* CategoriesBottomView.swift */,
-				05A52372DAF5AE8AB04BC8F4AB8DF7E4 /* Category.swift */,
-				966B58C99581E28A368ABF7962152705 /* CategoryCell.swift */,
-				BE9E99D408033FB66E746285AA927F9B /* Constants.swift */,
-				86BBA5FF84C331F79304CAEA77674389 /* Emoji.swift */,
-				B819EABD36E932722A04C087D5443EB4 /* EmojiCategory.swift */,
-				D47971A0429356E3ED4CECAC417BD216 /* EmojiCollectionCell.swift */,
-				1ACDD9ED0F6BED070EB3E7AA7F5ECC89 /* EmojiCollectionView.swift */,
-				73BC4A33599D6AB5C25DE9D39CCECE7B /* EmojiLoader.swift */,
-				5EDF336374C5DA0156FDAA2BA75264F0 /* EmojiPopView.swift */,
-				D451547BE06784440EA4CDE504D6C1EF /* EmojiView.swift */,
-				D836AC02EFBCB55A092D4DA610FE2F62 /* KeyboardSettings.swift */,
-				B886EBA415A2E87DD1B395116F27F2B2 /* PageControlBottomView.swift */,
-				5A50BDE203E92BC3DCA66DAE7F606926 /* RecentEmojisManager.swift */,
-				70883104D2D98057C10459D470401DDC /* Resources */,
-				AA17B78FC70E8D9BC55581E8FF64E0E0 /* Support Files */,
-			);
-			path = ISEmojiView;
-			sourceTree = "<group>";
-		};
-		6A0DBA844E390E934D87EEE07BADC08C /* Smile */ = {
-			isa = PBXGroup;
-			children = (
-				A3E5B1A4B6E64B3545F571D80FD30A3E /* Categories.swift */,
-				DC5A69A9C1A68F3860D4480DB3C07304 /* Emoji.swift */,
-				D1362B48D6757B4275A520DFDB5F432B /* Sequence.swift */,
-				E5952E9575364FE833756C96139C2E26 /* Smile.swift */,
-				79F27C13E11FDF60019097958E133F6A /* Utils.swift */,
-				B612AFBC5894CD964B50747BF8AFEC08 /* Support Files */,
-			);
-			path = Smile;
-			sourceTree = "<group>";
-		};
-		70883104D2D98057C10459D470401DDC /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				A55620FA26521C5EEDD7AE2DDCF1CF4A /* CategoriesBottomView.xib */,
-				82ADA819682E75D904CE4C0E1A604532 /* EmojiCollectionView.xib */,
-				494E6A8C927B245218B2796D8FE57213 /* Images */,
-				BDE714909A92AD072DD57E1918D1D546 /* ISEmojiList.plist */,
-				89C3C9CE58A81DBD0B1CF11FF7C45DEA /* ISEmojiList_iOS10.plist */,
-				38D48B231828B545DBA35FBB0D4A4475 /* PageControlBottomView.xib */,
-			);
-			name = Resources;
+			path = NextGrowingTextView;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -414,10 +382,36 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
-				285109D999D9F4C40224A5A73C5FF2F3 /* Pods */,
+				91953ED46070CC7F7D7FCD40F63677F0 /* Pods */,
 				5507669C2BD3C9B0E12BE5007C6F2A98 /* Products */,
 				9D94DB21A95089F2388F592D17B2EF10 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		84CAFB084F2874B7BA6B00D4F8F647C1 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				14A8BCC640669B62C53C9EDB72F9C773 /* Info.plist */,
+				73E3DA7DBF2DD5291BAB30E030F2ED4F /* Kingfisher.modulemap */,
+				4AC2D603F25F95788FD0F82138FF74EF /* Kingfisher.xcconfig */,
+				A088DE3DE7BAC19B82A4145E3699BC91 /* Kingfisher-dummy.m */,
+				4EE18AEA7BB92DE5D90FA7939CF7745A /* Kingfisher-prefix.pch */,
+				95CC07F343964B5C06B359F8442C784F /* Kingfisher-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Kingfisher";
+			sourceTree = "<group>";
+		};
+		91953ED46070CC7F7D7FCD40F63677F0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3FF72D3EE1004F443C82A793594795FC /* ISEmojiView */,
+				D66391482AAACAB32A0F022540CAF919 /* Kingfisher */,
+				66AFEACE5F1A5B96EF870DB1B3E3B45E /* NextGrowingTextView */,
+				43DEED98675DFDF7376E48F5DEC1525F /* Smile */,
+				ED08F5B5659B4BF39AC91C5D01EBFBC8 /* SwiftLint */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		9D94DB21A95089F2388F592D17B2EF10 /* Targets Support Files */ = {
@@ -428,19 +422,18 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		AA17B78FC70E8D9BC55581E8FF64E0E0 /* Support Files */ = {
+		ACFB5C7EC5491CBB01000E67997DDE13 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				03BF8D4BC6A8D0AF76EA25878F557E17 /* Info.plist */,
-				9BFF3DBF1DF3241F3AF7A8AA067525F9 /* ISEmojiView.modulemap */,
-				1687C86CE0C155C7A7F47B4FBF8D1B45 /* ISEmojiView.xcconfig */,
-				44413EC56AC56906848DC96B19A0BBAA /* ISEmojiView-dummy.m */,
-				9D8644D548B42D9BCC9A7926B1BF19BB /* ISEmojiView-prefix.pch */,
-				9361D627AE941FCBB360F5FE2233D14D /* ISEmojiView-umbrella.h */,
-				DE3B041E61AC931C5BBFF6DDA36C19C1 /* ResourceBundle-ISEmojiView-Info.plist */,
+				93743A3632B9AF54F945815D13C08F96 /* Info.plist */,
+				1E60E1F7743F0D187388E6C91A694D43 /* Smile.modulemap */,
+				C123549B95825852D54CD3D9F4C96298 /* Smile.xcconfig */,
+				CF3B9797006E524F99159E28869A7784 /* Smile-dummy.m */,
+				10831572C940DC1AF76D3DEA46769DA7 /* Smile-prefix.pch */,
+				E8879F9F5AE9E0926F3CF146FE969C37 /* Smile-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/ISEmojiView";
+			path = "../Target Support Files/Smile";
 			sourceTree = "<group>";
 		};
 		B039977C65CB02B4E704A71756BE8B8B /* Pods-rethought */ = {
@@ -461,30 +454,6 @@
 			path = "Target Support Files/Pods-rethought";
 			sourceTree = "<group>";
 		};
-		B612AFBC5894CD964B50747BF8AFEC08 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				AC89658C60E52086FF3A55559E3A4781 /* Info.plist */,
-				2B14A67A986169AE96EE34A241EF7164 /* Smile.modulemap */,
-				509407628AF7BEE175EA32A0D6073146 /* Smile.xcconfig */,
-				B9B9C3B37D22BBC2EBD90B4B6F5A552D /* Smile-dummy.m */,
-				1822120EA2131FE51BA67B685432225B /* Smile-prefix.pch */,
-				F619B18D06582D323B2FE52AA52DDB9D /* Smile-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Smile";
-			sourceTree = "<group>";
-		};
-		CBEF0D468AAECA4E2834D29A550F3B94 /* NextGrowingTextView */ = {
-			isa = PBXGroup;
-			children = (
-				20783476C858B1699449F16B605544B4 /* NextGrowingInternalTextView.swift */,
-				228067035F5F35D9A0BBA691E7A0F137 /* NextGrowingTextView.swift */,
-				0B9E7859C558DAAB612BC4480DE03B87 /* Support Files */,
-			);
-			path = NextGrowingTextView;
-			sourceTree = "<group>";
-		};
 		D52304B3F0670EE0236B3F34A532CB30 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,6 +461,45 @@
 				89DC365FEF314CAE9760892B813E187E /* Foundation.framework */,
 			);
 			name = iOS;
+			sourceTree = "<group>";
+		};
+		D66391482AAACAB32A0F022540CAF919 /* Kingfisher */ = {
+			isa = PBXGroup;
+			children = (
+				EC91F1F3090059D0B81FE0AAD45A879A /* AnimatedImageView.swift */,
+				39314E677C5FD4357FACCFE7863865C8 /* Box.swift */,
+				F866FE9EC9B96FE685711E69848702E2 /* CacheSerializer.swift */,
+				E379C0868A8EC807BD258269F84F23FE /* Filter.swift */,
+				95141E6BEB47B47F161F87E74030700F /* FormatIndicatedCacheSerializer.swift */,
+				FE80C625CC0CA710B7CC18047E11FEA0 /* Image.swift */,
+				F15B29AEEE34907ACABBFD2F9F15A9BD /* ImageCache.swift */,
+				8A86AC043C3BEAD6184EDD9EED2B47AF /* ImageDownloader.swift */,
+				8ACEE2DF23682B117852A9543D3E3E6D /* ImageModifier.swift */,
+				3EA5387922FBF0952E491D1078234CDD /* ImagePrefetcher.swift */,
+				1FD223DD34272C722FE2FF00F5641C35 /* ImageProcessor.swift */,
+				C28C96DB2FE588F88F2AE9F93244180C /* ImageTransition.swift */,
+				5A009A7F481B97AAE06EAF1C82AC6FFF /* ImageView+Kingfisher.swift */,
+				0F30A75E35E3904551A56936C38AC069 /* Indicator.swift */,
+				C470F20F81D6565FDC6D3E8C07647B78 /* Kingfisher.h */,
+				33EF0CD864396C6802DAC9D102A7D62D /* Kingfisher.swift */,
+				4FF9B7CD602F579AB0D753FAA0140613 /* KingfisherManager.swift */,
+				A3DE98E8734C202E0FB97FAC905737C6 /* KingfisherOptionsInfo.swift */,
+				829DD2AFB15E05B8F0839F8CE843A4D0 /* Placeholder.swift */,
+				B0EA571832F773379D5122C7BC142064 /* RequestModifier.swift */,
+				06585917151A2625A49020974453FB74 /* Resource.swift */,
+				B2DEDBD3123BF596A75D52E652626EE7 /* String+MD5.swift */,
+				CC5FD7F5336AADEA98BC5706333A6508 /* ThreadHelper.swift */,
+				605EB4929F04248407A1C44281D7A2CF /* UIButton+Kingfisher.swift */,
+				84CAFB084F2874B7BA6B00D4F8F647C1 /* Support Files */,
+			);
+			path = Kingfisher;
+			sourceTree = "<group>";
+		};
+		ED08F5B5659B4BF39AC91C5D01EBFBC8 /* SwiftLint */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SwiftLint;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -867,7 +875,7 @@
 /* Begin XCBuildConfiguration section */
 		155DDBCB19339B850CAA719CACBCC873 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1687C86CE0C155C7A7F47B4FBF8D1B45 /* ISEmojiView.xcconfig */;
+			baseConfigurationReference = 3CAA8F33D045A1F761DF9E894A4BEA1B /* ISEmojiView.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -899,7 +907,7 @@
 		};
 		1E26A53F2F2B53FBDDB88EDF42C66AEF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1687C86CE0C155C7A7F47B4FBF8D1B45 /* ISEmojiView.xcconfig */;
+			baseConfigurationReference = 3CAA8F33D045A1F761DF9E894A4BEA1B /* ISEmojiView.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ISEmojiView";
@@ -915,7 +923,7 @@
 		};
 		301FAF280AA3DEC2C16ECFBCD5E5EAAF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B980C411027D50F32CC707546056692F /* NextGrowingTextView.xcconfig */;
+			baseConfigurationReference = 91F8A5CF7DEB62966657F839D363C074 /* NextGrowingTextView.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -947,7 +955,7 @@
 		};
 		7BDE4290662A1C5246FCEF10449B7CB0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 509407628AF7BEE175EA32A0D6073146 /* Smile.xcconfig */;
+			baseConfigurationReference = C123549B95825852D54CD3D9F4C96298 /* Smile.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1016,7 +1024,7 @@
 		};
 		808B8A9EAA992A14ED87D04C595369DA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B980C411027D50F32CC707546056692F /* NextGrowingTextView.xcconfig */;
+			baseConfigurationReference = 91F8A5CF7DEB62966657F839D363C074 /* NextGrowingTextView.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1049,7 +1057,7 @@
 		};
 		8B0D9D629793E3B1703461BED209214A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68D776886573EC2B311E681466DF804C /* Kingfisher.xcconfig */;
+			baseConfigurationReference = 4AC2D603F25F95788FD0F82138FF74EF /* Kingfisher.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1146,7 +1154,7 @@
 		};
 		A3702B3A2BE6C09FDA05BEE43EE12E87 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1687C86CE0C155C7A7F47B4FBF8D1B45 /* ISEmojiView.xcconfig */;
+			baseConfigurationReference = 3CAA8F33D045A1F761DF9E894A4BEA1B /* ISEmojiView.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ISEmojiView";
@@ -1162,7 +1170,7 @@
 		};
 		A409489DD952DA0B58BE60C3B0DEF946 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1687C86CE0C155C7A7F47B4FBF8D1B45 /* ISEmojiView.xcconfig */;
+			baseConfigurationReference = 3CAA8F33D045A1F761DF9E894A4BEA1B /* ISEmojiView.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1255,7 +1263,7 @@
 		};
 		D29FDFB269ED4C171C5FC01B7CE8860E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 509407628AF7BEE175EA32A0D6073146 /* Smile.xcconfig */;
+			baseConfigurationReference = C123549B95825852D54CD3D9F4C96298 /* Smile.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1287,7 +1295,7 @@
 		};
 		DE9B7A0AF27891101E5C85A5FCCFFB7E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68D776886573EC2B311E681466DF804C /* Kingfisher.xcconfig */;
+			baseConfigurationReference = 4AC2D603F25F95788FD0F82138FF74EF /* Kingfisher.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
