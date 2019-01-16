@@ -40,7 +40,7 @@ extension ThoughtDetailView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if entries != nil {
-            if let entry = entries![indexPath.row].images.first {
+            if let entry = entries![indexPath.row].image {
                  return entry.size.height
             } else {
                 return 110

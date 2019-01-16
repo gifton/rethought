@@ -20,6 +20,16 @@
 		D70EA8ED21E58FA70071E257 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8EC21E58FA70071E257 /* UIView.swift */; };
 		D70EA8EF21E5B1620071E257 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8EE21E5B1620071E257 /* ArrayExtension.swift */; };
 		D70EA8F121E5DAD70071E257 /* DrawerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8F021E5DAD70071E257 /* DrawerObject.swift */; };
+		D713100B21EEE9C2001D7584 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713100A21EEE9C2001D7584 /* DashboardViewModel.swift */; };
+		D713100D21EEE9D4001D7584 /* DashboardViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713100C21EEE9D4001D7584 /* DashboardViewModelDelegate.swift */; };
+		D713100F21EEEB5E001D7584 /* QuoteOfTheDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713100E21EEEB5E001D7584 /* QuoteOfTheDay.swift */; };
+		D713101221EEF3BE001D7584 /* DashboardThought.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713101121EEF3BE001D7584 /* DashboardThought.swift */; };
+		D713101521EF0417001D7584 /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713101421EF0417001D7584 /* DashboardController.swift */; };
+		D713101721EF0420001D7584 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713101621EF0420001D7584 /* DashboardView.swift */; };
+		D713101921EF0436001D7584 /* ThoughtCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713101821EF0436001D7584 /* ThoughtCardController.swift */; };
+		D713101B21EF043F001D7584 /* ThoughtCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713101A21EF043F001D7584 /* ThoughtCard.swift */; };
+		D713101D21EF0503001D7584 /* ThoughtCardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713101C21EF0503001D7584 /* ThoughtCardDelegate.swift */; };
+		D713101F21EF0511001D7584 /* DashboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713101E21EF0511001D7584 /* DashboardDelegate.swift */; };
 		D71B534821E6FFB10030D5C6 /* layout.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D71B534521E6FFB10030D5C6 /* layout.jpg */; };
 		D71B534921E6FFB10030D5C6 /* layout@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D71B534621E6FFB10030D5C6 /* layout@2x.jpg */; };
 		D71B534A21E6FFB10030D5C6 /* layout@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D71B534721E6FFB10030D5C6 /* layout@3x.jpg */; };
@@ -94,6 +104,16 @@
 		D70EA8EC21E58FA70071E257 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		D70EA8EE21E5B1620071E257 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		D70EA8F021E5DAD70071E257 /* DrawerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerObject.swift; sourceTree = "<group>"; };
+		D713100A21EEE9C2001D7584 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		D713100C21EEE9D4001D7584 /* DashboardViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModelDelegate.swift; sourceTree = "<group>"; };
+		D713100E21EEEB5E001D7584 /* QuoteOfTheDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteOfTheDay.swift; sourceTree = "<group>"; };
+		D713101121EEF3BE001D7584 /* DashboardThought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardThought.swift; sourceTree = "<group>"; };
+		D713101421EF0417001D7584 /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
+		D713101621EF0420001D7584 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		D713101821EF0436001D7584 /* ThoughtCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtCardController.swift; sourceTree = "<group>"; };
+		D713101A21EF043F001D7584 /* ThoughtCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtCard.swift; sourceTree = "<group>"; };
+		D713101C21EF0503001D7584 /* ThoughtCardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtCardDelegate.swift; sourceTree = "<group>"; };
+		D713101E21EF0511001D7584 /* DashboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardDelegate.swift; sourceTree = "<group>"; };
 		D71B534521E6FFB10030D5C6 /* layout.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = layout.jpg; path = Assets.xcassets/layout.imageset/layout.jpg; sourceTree = "<group>"; };
 		D71B534621E6FFB10030D5C6 /* layout@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "layout@2x.jpg"; path = "Assets.xcassets/layout.imageset/layout@2x.jpg"; sourceTree = "<group>"; };
 		D71B534721E6FFB10030D5C6 /* layout@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "layout@3x.jpg"; path = "Assets.xcassets/layout.imageset/layout@3x.jpg"; sourceTree = "<group>"; };
@@ -206,6 +226,38 @@
 			path = Drawer;
 			sourceTree = "<group>";
 		};
+		D713100921EEE96A001D7584 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				D713100A21EEE9C2001D7584 /* DashboardViewModel.swift */,
+				D713100C21EEE9D4001D7584 /* DashboardViewModelDelegate.swift */,
+				D713101121EEF3BE001D7584 /* DashboardThought.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		D713101021EEF380001D7584 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				D75B891321BF12530023784F /* HomeViewModel.swift */,
+				D7FFA1D421D6BCD8001C3B72 /* HomeViewModelDelegate.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		D713101321EF0409001D7584 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				D713101421EF0417001D7584 /* DashboardController.swift */,
+				D713101621EF0420001D7584 /* DashboardView.swift */,
+				D713101821EF0436001D7584 /* ThoughtCardController.swift */,
+				D713101A21EF043F001D7584 /* ThoughtCard.swift */,
+				D713101C21EF0503001D7584 /* ThoughtCardDelegate.swift */,
+				D713101E21EF0511001D7584 /* DashboardDelegate.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
 		D71FA87221E03781000706A5 /* ThoughtDrawer */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +329,7 @@
 				D7FFA1D821D6CB04001C3B72 /* ThoughtComponent.swift */,
 				D75B891D21C07D910023784F /* ThoughtPreview.swift */,
 				D702B21221DC06F1003DCA83 /* rethoughtModel.xcdatamodeld */,
+				D713100E21EEEB5E001D7584 /* QuoteOfTheDay.swift */,
 			);
 			path = "Model-Core";
 			sourceTree = "<group>";
@@ -284,11 +337,11 @@
 		D75B88E121BC566C0023784F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D713100921EEE96A001D7584 /* Dashboard */,
 				D75B890921BDFE780023784F /* DummyData.swift */,
-				D75B891321BF12530023784F /* HomeViewModel.swift */,
+				D713101021EEF380001D7584 /* HomeView */,
 				D7FFA1D221D6BB6E001C3B72 /* ThoughtFeedViewModel.swift */,
 				D7FFA1D621D6BD55001C3B72 /* ThoughtFeedViewModelDelegate.swift */,
-				D7FFA1D421D6BCD8001C3B72 /* HomeViewModelDelegate.swift */,
 				D71FA87F21E1E704000706A5 /* ThoughtDrawerViewModelDelegate.swift */,
 				D71FA87D21E1E65C000706A5 /* ThoughtDrawerViewModel.swift */,
 				D70EA8F021E5DAD70071E257 /* DrawerObject.swift */,
@@ -299,6 +352,7 @@
 		D75B88EA21BC92410023784F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D713101321EF0409001D7584 /* Dashboard */,
 				D71FA87221E03781000706A5 /* ThoughtDrawer */,
 				D7FFA1CE21D6B93E001C3B72 /* Home */,
 				D7FFA1CF21D6B958001C3B72 /* Thought */,
@@ -547,6 +601,7 @@
 				D702B21421DC06F1003DCA83 /* rethoughtModel.xcdatamodeld in Sources */,
 				D702B21121DBFECA003DCA83 /* BackDelegate.swift in Sources */,
 				D7FFA1DB21D6F496001C3B72 /* ThoughtFeedView.swift in Sources */,
+				D713101921EF0436001D7584 /* ThoughtCardController.swift in Sources */,
 				D71FA87821E1525B000706A5 /* UITextView.swift in Sources */,
 				D7FFA1D121D6B9DD001C3B72 /* ThoughtFeedDelegate.swift in Sources */,
 				D75B88D121BC507B0023784F /* Styling.swift in Sources */,
@@ -560,10 +615,12 @@
 				D7FFA1CD21D6B875001C3B72 /* ThoughtFeedController.swift in Sources */,
 				D70EA8F121E5DAD70071E257 /* DrawerObject.swift in Sources */,
 				D75B892421C2FE750023784F /* EntryPreviewCell.swift in Sources */,
+				D713101221EEF3BE001D7584 /* DashboardThought.swift in Sources */,
 				D70EA8EF21E5B1620071E257 /* ArrayExtension.swift in Sources */,
 				D71FA87A21E1D2AF000706A5 /* ThoughtDrawerView.swift in Sources */,
 				D75B88E921BC92190023784F /* HomeView.swift in Sources */,
 				D7FFA1D521D6BCD8001C3B72 /* HomeViewModelDelegate.swift in Sources */,
+				D713101F21EF0511001D7584 /* DashboardDelegate.swift in Sources */,
 				D75B88BB21BB70C00023784F /* HomeController.swift in Sources */,
 				D71FA87621E038B5000706A5 /* String.swift in Sources */,
 				D70EA8ED21E58FA70071E257 /* UIView.swift in Sources */,
@@ -576,23 +633,30 @@
 				D70EA8E221E31CF30071E257 /* DrawerView.swift in Sources */,
 				D75B88E521BC56AB0023784F /* Thought.swift in Sources */,
 				D75B890A21BDFE780023784F /* DummyData.swift in Sources */,
+				D713101721EF0420001D7584 /* DashboardView.swift in Sources */,
+				D713101B21EF043F001D7584 /* ThoughtCard.swift in Sources */,
+				D713100F21EEEB5E001D7584 /* QuoteOfTheDay.swift in Sources */,
 				D79B1EF821CC09FC00E951D3 /* MicroThoughtCell.swift in Sources */,
+				D713101D21EF0503001D7584 /* ThoughtCardDelegate.swift in Sources */,
 				D70EA8E021E301E50071E257 /* UIColor.swift in Sources */,
 				D7FFA1C921D4C050001C3B72 /* ThoughtDetailDelegate.swift in Sources */,
 				D75B88D321BC51250023784F /* UIImage.swift in Sources */,
 				D75B88C121BB70C00023784F /* rethought.xcdatamodeld in Sources */,
 				D75B891821BF1F5A0023784F /* ThoughtDetailController.swift in Sources */,
 				D7FFA1E221D716D7001C3B72 /* EntryDetailDelegate.swift in Sources */,
+				D713100D21EEE9D4001D7584 /* DashboardViewModelDelegate.swift in Sources */,
 				D79B1EFA21CC6B0000E951D3 /* UIFont.swift in Sources */,
 				D79B1EFC21CC748B00E951D3 /* RecommendedThoughtView.swift in Sources */,
 				D75B88D021BC507B0023784F /* Constants.swift in Sources */,
 				D7FFA1D721D6BD55001C3B72 /* ThoughtFeedViewModelDelegate.swift in Sources */,
+				D713101521EF0417001D7584 /* DashboardController.swift in Sources */,
 				D71FA88221E1F272000706A5 /* UILabel.swift in Sources */,
 				D70EA8DE21E301240071E257 /* Sizes.swift in Sources */,
 				D75B891E21C07D910023784F /* ThoughtPreview.swift in Sources */,
 				D71FA87421E0379E000706A5 /* ThoughtDrawerDelegate.swift in Sources */,
 				D7FFA1CB21D639A3001C3B72 /* EntryDetailController.swift in Sources */,
 				D7FFA1D321D6BB6E001C3B72 /* ThoughtFeedViewModel.swift in Sources */,
+				D713100B21EEE9C2001D7584 /* DashboardViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

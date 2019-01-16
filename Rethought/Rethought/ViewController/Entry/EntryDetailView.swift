@@ -24,7 +24,7 @@ class EntryDetailView: UIView {
         self.init(frame: frame)
         self.title    = entry.title
         self.icon     = entry.icon
-        self.images = entry.images
+        self.image = entry.image
         self.entryDescription = entry.description
         self.link = entry.link
         self.linkImage = entry.linkImage
@@ -46,7 +46,7 @@ class EntryDetailView: UIView {
     public var entryType        : Entry.EntryType?
     public var title            : String?
     private var icon            : String?
-    private var images          : [UIImage]?
+    private var image           : UIImage?
     private var linkTitle       : String?
     private var entryDescription: String?
     private var linkImage       : UIImage?

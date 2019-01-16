@@ -30,7 +30,7 @@ public class Entry {
     
     
     //unique objects
-    public var images: [UIImage] = []
+    public var image: UIImage?
     public var title: String?
     public var link: String?
     public var linkImage: UIImage?
@@ -50,11 +50,9 @@ public class Entry {
     }
     
     //image type
-    convenience init(type: EntryType, thoughtID: String, description: String, date: Date, icon: String, images: [UIImage]) {
+    convenience init(type: EntryType, thoughtID: String, description: String, date: Date, icon: String, image: UIImage) {
         self.init(type: type, thoughtID: thoughtID, description: description, date: date, icon: icon)
-        for image in images {
-            self.images.append(image)
-        }
+        self.image = image
     }
     //link type
     convenience init(type: EntryType, thoughtID: String, description: String, date: Date, icon: String, link: String, linkImage: UIImage, linkTitle: String) {

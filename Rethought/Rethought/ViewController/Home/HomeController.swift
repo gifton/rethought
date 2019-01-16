@@ -68,26 +68,23 @@ extension HomeView: UITableViewDelegate {
         } else {
             // -1 to adjust for adding one row on top for the tableView
             let row = indexPath.row - 1
-            if let img = self.recentEntries![row].images.first {
-                return img.size.height
-            } else {
-                return 101
+            guard let img: UIImage = self.recentEntries![row].image else { return 101 }
+            return img.size.height
             }
         }
-    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // -1 to adjust for adding one row on top for the tableView
-        switch indexPath.row {
-        case 0:
-            tableView.cellForRow(at: indexPath)?.isSelected = false
-            self.delegate?.userDidTapThought(reccomendedThought!.thoughtID)
-        default:
-            let row = indexPath.row - 1
-            let entry = self.recentEntries![row]
-            self.delegate?.userDidTapOnEntry(entry.id)
-        }
-        tableView.cellForRow(at: indexPath)?.isSelected = false
+//        switch indexPath.row {
+//        case 0:
+//            tableView.cellForRow(at: indexPath)?.isSelected = false
+//            self.delegate?.userDidTapThought(reccomendedThought!.thoughtID)
+//        default:
+//            let row = indexPath.row - 1
+//            let entry = self.recentEntries![row]
+//            self.delegate?.userDidTapOnEntry(entry.id)
+//        }
+//        tableView.cellForRow(at: indexPath)?.isSelected = false
     }
 }
 

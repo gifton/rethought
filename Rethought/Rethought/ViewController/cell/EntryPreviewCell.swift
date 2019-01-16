@@ -88,7 +88,7 @@ class ImageEntryCell: UITableViewCell {
     
     public func giveContext(with preview: EntryPreview) {
         self.date.getStringFromDate(date: preview.date)
-        self.mainImage.image = preview.images.first
+        self.mainImage.image = preview.image
         self.parentThought.text = (preview.thoughtIcon!.icon)
         guard let height = mainImage.image?.size.height else { return }
         self.mainImage.frame = CGRect(x: 0, y: 0, width: ViewSize.SCREEN_WIDTH, height: height - 20)
@@ -97,7 +97,7 @@ class ImageEntryCell: UITableViewCell {
     }
     public func giveContext(with entry: Entry) {
         self.date.getStringFromDate(date: entry.date)
-        self.mainImage.image = entry.images.first
+        self.mainImage.image = entry.image
         self.parentThought.text = (entry.icon)
         guard let height = mainImage.image?.size.height else { return }
         self.mainImage.frame = CGRect(x: 0, y: 0, width: ViewSize.SCREEN_WIDTH, height: height - 20)

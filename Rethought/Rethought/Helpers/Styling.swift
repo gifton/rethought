@@ -214,6 +214,12 @@ extension UIView {
         
         layer.insertSublayer(gradientLayer, at: 0)
     }
+    public func removeLogoShadow() {
+        self.layer.shadowColor = nil
+        self.layer.shadowOpacity = 0
+        self.layer.shadowOffset = .zero
+        self.layer.shadowRadius = 0
+    }
 }
 
 //drop this in a viewDidLoad() to list all available fonts

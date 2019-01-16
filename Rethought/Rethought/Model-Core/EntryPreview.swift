@@ -15,7 +15,7 @@ struct EntryPreview {
     let id: String
     var ThoughtID: String
     let date: Date
-    var images: [UIImage] = []
+    var image: UIImage?
     var title: String
     
     //optional Values
@@ -32,7 +32,7 @@ struct EntryPreview {
         switch entry.type {
         case .image:
             self.title = entry.description
-            self.images = entry.images
+            self.image = entry.image!
             self.type = .image
         case .text:
             self.title = entry.title ?? "This is the title"
@@ -41,13 +41,10 @@ struct EntryPreview {
         case .link:
             self.title = entry.linkTitle!
             self.link = entry.link!
-            self.images.append(entry.linkImage!)
+            self.image = entry.image!
             self.type = .link
         }
         self.id = entry.id
         self.thoughtIcon = ThoughtIcon(entry.icon)
-    }
-    var imageCount: Int? {
-        return self.images.count
     }
 }
