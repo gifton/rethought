@@ -60,3 +60,16 @@ extension UIButton {
         self.setAttributedTitle(output, for: .normal)
     }
 }
+
+class newEntryButton: UIButton {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+    }
+    
+    public var entryType: Entry.EntryType = .text
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}

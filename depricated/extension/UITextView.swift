@@ -22,6 +22,8 @@ class ReTextView: UITextView {
     }
     
     public var isCompleted: Bool = false
+    public var size: CGFloat = 12
+    public var color: UIColor = .black
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -34,14 +36,18 @@ extension ReTextView: ReTextViewDelegate {
             return text
         }
         set {
-            text = newValue
+            self.attributedText = self.addAttributedText(color: color, size: size, font: .body, string: newValue)
         }
     }
 }
 
 extension ReTextView: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.text = ""
+        textView.attributedText = self.addAttributedText(color: color, size: size, font: .body, string: "")
+        self.isCompleted = true
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        self.isCompleted = true
     }
 }
 
@@ -49,10 +55,13 @@ protocol ReTextViewDelegate {
     var placeholder: String { get set }
 }
 
+
+
 class EmojiDisplay: UITextView {
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
         delegate = self
+        self.isScrollEnabled = false
         styleCell()
     }
     
@@ -64,18 +73,33 @@ class EmojiDisplay: UITextView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    var isCompleted: Bool = false
     public func styleCell() {
-        self.backgroundColor = UIColor.lightGray.withAlphaComponent(0.28)
+        self.backgroundColor = .black
         self.layer.cornerRadius = 6
         self.textAlignment = .center
-        self.font = .reBody(ofSize: 77)
-        self.isEditable = false
+        self.font = .reBody(ofSize: 45)
+        self.isEditable = true
     }
 }
 
 extension EmojiDisplay: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.text = ""
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.text.count > 1 {
+            textView.text = "\(textView.text!.last!)"
+        }
+        self.isCompleted = true
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        self.isCompleted = true
+    }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let currentText = textView.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        
+        let changedText = currentText.replacingCharacters(in: stringRange, with: text)
+        
+        return changedText.count <= 2
     }
 }
 
