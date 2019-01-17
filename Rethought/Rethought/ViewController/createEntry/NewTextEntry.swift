@@ -12,38 +12,117 @@ import UIKit
 class NewTextEntry: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        loadContent()
+        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
+        edgePan.edges = .left
+        
+        view.addGestureRecognizer(edgePan)
+        titleTextView.delegate = self
+        descriptionTextView.delegate = self
     }
     
-    var delegate: ThoughtCardDelegate?
-    var returnDescription: String = ""
-    var returnTitle: String = ""
+    public var delegate       : ThoughtCardDelegate?
+    public var parentThought  : Thought?
+    private var newDescription: String = ""
+    private var newTitle      : String = ""
     
-    var titleTextView: UITextView = {
-        let tv = UITextView()
+    var titleTextView: UITextField = {
+        let tv = UITextField()
+        tv.attributedText = tv.addAttributedText(color: .white, size: 14, font: .body, string: "Add a title for your entry")
+        tv.backgroundColor = .darkGray
+        tv.layer.cornerRadius = 6
+        tv.layer.masksToBounds = true
         
         return tv
     }()
     var descriptionTextView: UITextView = {
         let tv = UITextView()
+        tv.attributedText = tv.addAttributedText(color: .black, size: 14, font: .body, string: "okay, start at the begining...")
         
         return tv
     }()
     var doneButton: UIButton = {
         let btn = UIButton()
-        btn.backgroundColor = UIColor(hex: "51DF9F")
+        btn.backgroundColor = UIColor(hex: "6271fc")
         btn.setAttributedTitle(btn.addAttributedText(size: 12, font: .title, string: "Save"), for: .normal)
-        btn.layer.cornerRadius = 8
+        btn.layer.cornerRadius = 6
         
         return btn
     }()
     
-    override func viewWillAppear(_ animated: Bool) {
-        titleTextView.backgroundColor = UIColor(hex: "161616")
-        titleTextView.attributedText = titleTextView.addAttributedText(size: 14, font: .body, string: "add a title")
-        doneButton.frame = CGRect(x: 25, y: 500, width: ViewSize.SCREEN_WIDTH - 50, height: 59)
-        titleTextView.frame = CGRect(x: 15, y: 50, width: ViewSize.SCREEN_WIDTH - 30, height: 54)
+    let incompleteLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.layer.cornerRadius = 5
+        lbl.addText(color: .white, size: fontSize.small.rawValue, font: .bodyLight, string: "Please enter a title and description")
+        lbl.textAlignment = .center
+        lbl.backgroundColor = .darkBackground
+        lbl.layer.masksToBounds = true
+        lbl.layer.opacity = 0.0
+        
+        return lbl
+    }()
+    
+    func loadContent() {
+        
+        titleTextView.frame       = CGRect(x: 15, y: 50, width: ViewSize.SCREEN_WIDTH - 30, height: 54)
+        descriptionTextView.frame = CGRect(x: 25, y: 115, width: ViewSize.SCREEN_WIDTH - 50, height: 600)
+        doneButton.frame          = CGRect(x: 25, y: ViewSize.SCREEN_HEIGHT - 99, width: ViewSize.SCREEN_WIDTH - 50, height: 59)
+        incompleteLabel.frame     = CGRect(x: 25, y: ViewSize.SCREEN_HEIGHT - 200, width: ViewSize.SCREEN_WIDTH - 50, height: 59)
         
         view.addSubview(titleTextView)
+        view.addSubview(descriptionTextView)
         view.addSubview(doneButton)
+        view.addSubview(incompleteLabel)
+        
+        doneButton.addTarget(self, action: #selector(userPressedSave(_:)), for: .touchUpInside)
+        
+        print (doneButton)
     }
+}
+
+extension NewTextEntry {
+    @objc
+    func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+        if recognizer.state == .recognized {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    @objc
+    func userPressedSave(_ sender: UIButton) {
+        if self.newTitle != "" && self.newDescription != ""{
+            let entry = Entry(type: .text, thoughtID: self.parentThought?.ID ?? "nil", description: self.newDescription, date: Date(), icon: self.parentThought?.icon ?? "🥗")
+            self.delegate?.addEntry(entry)
+            UIView.animate(withDuration: 1.25, animations: {
+                self.doneButton.backgroundColor = .mainRed
+            }) { (false) in
+                self.doneButton.backgroundColor = UIColor(hex: "6271fc")
+                self.navigationController?.popViewController(animated: true)
+                
+            }
+            
+        }
+    }
+}
+
+extension NewTextEntry: UITextViewDelegate {
+    func textViewDidEndEditing(_ textView: UITextView) {
+        self.newDescription = textView.text
+    }
+    
+}
+
+extension NewTextEntry: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("return pressed")
+        textField.resignFirstResponder()
+        self.newTitle = titleTextView.text!
+        return false
+    }
+}
+
+
+protocol CreatorView {
+    init(thought: Thought)
 }

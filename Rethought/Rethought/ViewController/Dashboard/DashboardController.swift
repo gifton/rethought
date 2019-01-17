@@ -22,6 +22,7 @@ class DashboardController: UIViewController {
         
         thoughtCard!.didMove(toParent: self)
     }
+    
 }
 
 extension DashboardController: DashboardDelegate {

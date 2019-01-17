@@ -28,9 +28,20 @@ class ThoughtCardController: UIViewController {
 
 extension ThoughtCardController: ThoughtCardDelegate {
     func startNewEntry(_ type: Entry.EntryType) {
-        let v = NewTextEntry()
-        v.delegate = self
-        self.navigationController?.pushViewController(v, animated: true)
+        switch type {
+        case .text, .link:
+            let v = NewTextEntry()
+            v.delegate = self
+            v.parentThought = self.newThought
+            self.navigationController?.pushViewController(v, animated: true)
+        default:
+            let v = NewImageEntry()
+            v.delegate = self
+            v.parentThought = self.newThought
+            self.navigationController?.pushViewController(v, animated: true)
+        }
+        
+        
     }
     
     func addEntry(_ entry: Entry) {

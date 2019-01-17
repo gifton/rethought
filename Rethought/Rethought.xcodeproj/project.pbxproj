@@ -33,6 +33,8 @@
 		D713102221EFB8D3001D7584 /* CardObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713102121EFB8D3001D7584 /* CardObject.swift */; };
 		D713102421F006E8001D7584 /* EmojiDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713102321F006E8001D7584 /* EmojiDisplay.swift */; };
 		D713102721F01631001D7584 /* NewTextEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713102621F01631001D7584 /* NewTextEntry.swift */; };
+		D713102921F068ED001D7584 /* NewImageEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713102821F068ED001D7584 /* NewImageEntry.swift */; };
+		D713102B21F06ED4001D7584 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713102A21F06ED4001D7584 /* UITextField.swift */; };
 		D71B534821E6FFB10030D5C6 /* layout.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D71B534521E6FFB10030D5C6 /* layout.jpg */; };
 		D71B534921E6FFB10030D5C6 /* layout@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D71B534621E6FFB10030D5C6 /* layout@2x.jpg */; };
 		D71B534A21E6FFB10030D5C6 /* layout@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D71B534721E6FFB10030D5C6 /* layout@3x.jpg */; };
@@ -120,6 +122,8 @@
 		D713102121EFB8D3001D7584 /* CardObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardObject.swift; sourceTree = "<group>"; };
 		D713102321F006E8001D7584 /* EmojiDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiDisplay.swift; sourceTree = "<group>"; };
 		D713102621F01631001D7584 /* NewTextEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTextEntry.swift; sourceTree = "<group>"; };
+		D713102821F068ED001D7584 /* NewImageEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewImageEntry.swift; sourceTree = "<group>"; };
+		D713102A21F06ED4001D7584 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		D71B534521E6FFB10030D5C6 /* layout.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = layout.jpg; path = Assets.xcassets/layout.imageset/layout.jpg; sourceTree = "<group>"; };
 		D71B534621E6FFB10030D5C6 /* layout@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "layout@2x.jpg"; path = "Assets.xcassets/layout.imageset/layout@2x.jpg"; sourceTree = "<group>"; };
 		D71B534721E6FFB10030D5C6 /* layout@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "layout@3x.jpg"; path = "Assets.xcassets/layout.imageset/layout@3x.jpg"; sourceTree = "<group>"; };
@@ -277,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				D713102621F01631001D7584 /* NewTextEntry.swift */,
+				D713102821F068ED001D7584 /* NewImageEntry.swift */,
 			);
 			path = createEntry;
 			sourceTree = "<group>";
@@ -332,6 +337,7 @@
 				D79B1EF921CC6B0000E951D3 /* UIFont.swift */,
 				D71FA87521E038B5000706A5 /* String.swift */,
 				D71FA87721E1525B000706A5 /* UITextView.swift */,
+				D713102A21F06ED4001D7584 /* UITextField.swift */,
 				D71FA88121E1F272000706A5 /* UILabel.swift */,
 				D70EA8DF21E301E50071E257 /* UIColor.swift */,
 				D70EA8E321E329140071E257 /* UIButton.swift */,
@@ -620,6 +626,7 @@
 				D70EA8E921E516130071E257 /* DrawerDelegate.swift in Sources */,
 				D75B891421BF12530023784F /* HomeViewModel.swift in Sources */,
 				D79237EE21D0360C00BEAE0A /* RecommendedThoughtCell.swift in Sources */,
+				D713102B21F06ED4001D7584 /* UITextField.swift in Sources */,
 				D75B88E021BC54B20023784F /* Entry.swift in Sources */,
 				D70EA8E421E329140071E257 /* UIButton.swift in Sources */,
 				D75B891221BEDD0E0023784F /* HomeControllerDelegate.swift in Sources */,
@@ -676,6 +683,7 @@
 				D75B88D021BC507B0023784F /* Constants.swift in Sources */,
 				D7FFA1D721D6BD55001C3B72 /* ThoughtFeedViewModelDelegate.swift in Sources */,
 				D713101521EF0417001D7584 /* DashboardController.swift in Sources */,
+				D713102921F068ED001D7584 /* NewImageEntry.swift in Sources */,
 				D713102421F006E8001D7584 /* EmojiDisplay.swift in Sources */,
 				D71FA88221E1F272000706A5 /* UILabel.swift in Sources */,
 				D70EA8DE21E301240071E257 /* Sizes.swift in Sources */,

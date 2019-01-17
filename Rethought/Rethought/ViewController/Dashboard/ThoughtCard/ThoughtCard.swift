@@ -64,6 +64,7 @@ class ThoughtCard: UIView {
     private let noteBtn      = newEntryButton()
     private let linkBtn      = newEntryButton()
     private let cameraBtn    = newEntryButton()
+    private let errorLabel   = UILabel()
 }
 
 extension ThoughtCard {
@@ -71,7 +72,7 @@ extension ThoughtCard {
         for view in subviews{
             animateOut(view)
         }
-        self.backgroundColor = UIColor(hex: "161616")
+        self.backgroundColor = .darkBackground
         self.layer.cornerRadius = 7
         self.layer.masksToBounds = true
         self.addLogoShadow()
@@ -108,15 +109,21 @@ extension ThoughtCard {
         doneButton.backgroundColor = UIColor(hex: "51DF9F")
         doneButton.layer.cornerRadius = 10
         doneButton.addAttText(color: .white, size: 16, font: .title, string: "Done")
+        errorLabel.attributedText = errorLabel.addAttributedText(color: .white, size: 14, font: .bodyLight, string: "please add a title and icon")
+        errorLabel.textAlignment = .center
+        errorLabel.layer.opacity = 0.0
         
         //add && targets
         doneButton.addTarget(self, action: #selector(checkIfCardComplete(_:)), for: .touchUpInside)
-        //build entryStackView
         
         linkBtn.setImage(#imageLiteral(resourceName: "link"), for: .normal)
+        linkBtn.entryType = .link
         cameraBtn.setImage(#imageLiteral(resourceName: "camera-alt"), for: .normal)
+        cameraBtn.entryType = .image
         noteBtn.setImage(#imageLiteral(resourceName: "pen-square"), for: .normal)
+        noteBtn.entryType = .text
         micBtn.setImage(#imageLiteral(resourceName: "microphone"), for: .normal)
+        micBtn.entryType = .recording
     }
     
     func setupOpenView() {
@@ -140,13 +147,13 @@ extension ThoughtCard {
         addTitleTV.frame   = CGRect(x: 15, y: 75, width: self.frame.width * 0.7, height: 81)
         addIconTV = EmojiDisplay(frame: CGRect(x: (self.frame.width * 0.7) + 25, y: 75, width: 81, height: 81), emoji: ThoughtIcon("🥘"))
         doneButton.frame = CGRect(x: 15, y: self.frame.height - 67, width: self.frame.width - 30, height: 57)
+        errorLabel.frame = CGRect(x: 0, y: 250, width: self.frame.width, height: 15)
         let views = [cancelButton, addTitleTV, addIconTV, doneButton]
         for view in views {
             let nView = CardObject(view: view, availableIn: [.cardIsEditing, .cardIsDoneEditing])
-            
             self.animateIn(nView.view)
-            
         }
+        self.addSubview(errorLabel)
     }
     
     
@@ -172,7 +179,12 @@ extension ThoughtCard {
     
     
     func addEntry(_ sender: newEntryButton) {
-        self.delegate?.startNewEntry(sender.entryType)
+        if isTitleComplete == true && isIconComplete == true {
+            self.delegate?.startNewEntry(sender.entryType)
+        } else {
+            showErrorLabel()
+        }
+        
     }
     
     func updateState(_ state: ThoughtCardState) {
@@ -207,7 +219,15 @@ extension ThoughtCard {
             print("is lit")
             self.updateState(.collapsed)
         } else {
-            print("ISNOT lit")
+            showErrorLabel()
+        }
+    }
+    
+    func showErrorLabel() {
+        UIView.animate(withDuration: 2.5, animations: {
+            self.errorLabel.layer.opacity = 1.0
+        }) { (true) in
+            self.errorLabel.layer.opacity = 0.0
         }
     }
     

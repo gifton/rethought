@@ -72,7 +72,7 @@ public class Thought {
                 mediaCount += 1
             case .text:
                 textCount += 1
-            case .link:
+            default:
                 linkCount += 1
             }
         }

@@ -38,6 +38,8 @@ extension UIColor {
     
     static let darkText = UIColor(hex: "333333")
     static let tileBackground = UIColor(hex: "FBF6EB")
+    
+    static let darkBackground = UIColor(hex: "161616")
 }
 
 public func randomString(length: Int) -> String {

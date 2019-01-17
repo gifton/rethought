@@ -38,7 +38,7 @@ struct EntryPreview {
             self.title = entry.title ?? "This is the title"
             self.description = entry.description
             self.type = .text
-        case .link:
+        default:
             self.title = entry.linkTitle!
             self.link = entry.link!
             self.image = entry.image!

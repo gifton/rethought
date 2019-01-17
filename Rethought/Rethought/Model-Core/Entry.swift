@@ -18,6 +18,7 @@ public class Entry {
         case image
         case text
         case link
+        case recording
     }
     
     //standard objects
