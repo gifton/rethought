@@ -99,4 +99,12 @@ extension UIView {
         }
     }
     
+    func buttonPressAnimation() {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.layer.opacity = 0.75
+        }) { (true) in
+            self.layer.opacity = 1.0
+        }
+    }
+    
 }

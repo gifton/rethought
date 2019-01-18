@@ -14,6 +14,7 @@ class ThoughtCard: UIView {
     var delegate: ThoughtCardDelegate?
     var state: ThoughtCardState
     var panGestureRecognizer: UIPanGestureRecognizer?
+    var tapRecognizer: UITapGestureRecognizer?
     var isTitleComplete: Bool {
         get {
             print ( self.addTitleTV.isCompleted)
@@ -39,6 +40,10 @@ class ThoughtCard: UIView {
         panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureAction(_:)))
         self.addGestureRecognizer(panGestureRecognizer!)
         
+        tapRecognizer = UITapGestureRecognizer()
+        self.addTapGestureRecognizer {
+            self.tapOnNewThought(self.tapRecognizer!)
+        }
     }
     
     convenience init(delegate: ThoughtCardDelegate) {
@@ -146,6 +151,7 @@ extension ThoughtCard {
         
         //frame
         cancelButton.frame = CGRect(x: self.frame.width - 75, y: 20, width: 60, height: 28)
+        cancelButton.addTarget(self, action: #selector(cancelThought(_:)), for: .touchUpInside)
         addTitleTV.frame   = CGRect(x: 15, y: 75, width: self.frame.width * 0.7, height: 81)
         addIconTV = EmojiDisplay(frame: CGRect(x: (self.frame.width * 0.7) + 25, y: 75, width: 81, height: 81), emoji: ThoughtIcon("🥘"))
         doneButton.frame = CGRect(x: 15, y: self.frame.height - 77, width: self.frame.width - 30, height: 57)
@@ -178,6 +184,21 @@ extension ThoughtCard {
         }
     }
     
+    @objc
+    func tapOnNewThought(_ tapper: UITapGestureRecognizer) {
+        print("tapped")
+        if state == .collapsed {
+            self.updateState(.cardIsEditing)
+            self.state = .cardIsEditing
+        }
+        
+    }
+    @objc
+    func cancelThought(_ sender: Any) {
+        self.updateState(.collapsed)
+        self.state = .collapsed
+    }
+    
     func addEntry(_ sender: newEntryButton) {
         if isTitleComplete == true && isIconComplete == true {
             self.delegate?.startNewEntry(sender.entryType)
@@ -192,6 +213,10 @@ extension ThoughtCard {
         switch state {
         case .collapsed:
             setupCard()
+            let btns = [linkBtn, noteBtn, cameraBtn, micBtn]
+            for btn in btns {
+                btn.addBorders(edges: [.bottom], color: .darkBackground, thickness: 4)
+            }
         default:
             setupOpenView()
         }

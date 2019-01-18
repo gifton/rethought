@@ -34,9 +34,6 @@ extension DashboardController: DashboardDelegate {
             default:
                 self.thoughtCard?.card?.frame = CGRect(x: 10, y: (ViewSize.SCREEN_HEIGHT * 0.184) , width: ViewSize.SCREEN_WIDTH - 20, height: 367)
             }
-        }) { (true) in
-            print("complete")
-        }
-        
+        }) { (true) in }
     }
 }

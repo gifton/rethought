@@ -37,11 +37,15 @@ class NewLinkEntry: UIViewController {
 
 extension NewLinkEntry {
     private func setupView() {
+        self.view.backgroundColor = .white
         mainImage.image = .random()
         mainImage.frame.size = CGSize(width: 150, height: 150)
         mainImage.contentMode = .scaleToFill
-        mainImage.center = CGPoint(x: self.view.center.x, y: 100)
+        mainImage.center = CGPoint(x: self.view.center.x, y: 200)
         
         linkTextField = ReTextField(frame: CGRect(x: 25, y: 350, width: ViewSize.SCREEN_WIDTH - 50, height: 59), attPlaceholder: "https://www.wesaturate.com")
+        
+        self.view.addSubview(mainImage)
+        self.view.addSubview(linkTextField!)
     }
 }
