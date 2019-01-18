@@ -110,4 +110,5 @@ extension UIImage {
         
         return CGSize(width: desiredWidth, height: newHeight)
     }
+    
 }

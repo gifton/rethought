@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6310F22A2BE1E65AA93E646EA3B5DF2F"
-               BuildableName = "Pods_rethought.framework"
-               BlueprintName = "Pods-rethought"
+               BlueprintIdentifier = "7D448EB86F8BC4215A705AF299EB8426"
+               BuildableName = "SwiftLinkPreview.framework"
+               BlueprintName = "SwiftLinkPreview"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6310F22A2BE1E65AA93E646EA3B5DF2F"
-            BuildableName = "Pods_rethought.framework"
-            BlueprintName = "Pods-rethought"
+            BlueprintIdentifier = "7D448EB86F8BC4215A705AF299EB8426"
+            BuildableName = "SwiftLinkPreview.framework"
+            BlueprintName = "SwiftLinkPreview"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

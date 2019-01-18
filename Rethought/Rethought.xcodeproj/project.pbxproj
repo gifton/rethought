@@ -76,6 +76,7 @@
 		D75B891E21C07D910023784F /* ThoughtPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B891D21C07D910023784F /* ThoughtPreview.swift */; };
 		D75B892221C2D7D70023784F /* EntryPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B892121C2D7D70023784F /* EntryPreview.swift */; };
 		D75B892421C2FE750023784F /* EntryPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B892321C2FE750023784F /* EntryPreviewCell.swift */; };
+		D766A00821F1B8E800BD9F2A /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D766A00721F1B8E800BD9F2A /* UIImageView.swift */; };
 		D79237EE21D0360C00BEAE0A /* RecommendedThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79237ED21D0360C00BEAE0A /* RecommendedThoughtCell.swift */; };
 		D79B1EF821CC09FC00E951D3 /* MicroThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B1EF721CC09FC00E951D3 /* MicroThoughtCell.swift */; };
 		D79B1EFA21CC6B0000E951D3 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B1EF921CC6B0000E951D3 /* UIFont.swift */; };
@@ -168,6 +169,7 @@
 		D75B891D21C07D910023784F /* ThoughtPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtPreview.swift; sourceTree = "<group>"; };
 		D75B892121C2D7D70023784F /* EntryPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPreview.swift; sourceTree = "<group>"; };
 		D75B892321C2FE750023784F /* EntryPreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPreviewCell.swift; sourceTree = "<group>"; };
+		D766A00721F1B8E800BD9F2A /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		D79237ED21D0360C00BEAE0A /* RecommendedThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedThoughtCell.swift; sourceTree = "<group>"; };
 		D79B1EF721CC09FC00E951D3 /* MicroThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroThoughtCell.swift; sourceTree = "<group>"; };
 		D79B1EF921CC6B0000E951D3 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 		D75B88CD21BC507B0023784F /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				D766A00721F1B8E800BD9F2A /* UIImageView.swift */,
 				D75B88D221BC51250023784F /* UIImage.swift */,
 				D79B1EF921CC6B0000E951D3 /* UIFont.swift */,
 				D71FA87521E038B5000706A5 /* String.swift */,
@@ -604,6 +607,7 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/NextGrowingTextView/NextGrowingTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/Smile/Smile.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftLinkPreview/SwiftLinkPreview.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -613,6 +617,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NextGrowingTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Smile.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftLinkPreview.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -690,6 +695,7 @@
 				D713102421F006E8001D7584 /* EmojiDisplay.swift in Sources */,
 				D71FA88221E1F272000706A5 /* UILabel.swift in Sources */,
 				D70EA8DE21E301240071E257 /* Sizes.swift in Sources */,
+				D766A00821F1B8E800BD9F2A /* UIImageView.swift in Sources */,
 				D75B891E21C07D910023784F /* ThoughtPreview.swift in Sources */,
 				D71FA87421E0379E000706A5 /* ThoughtDrawerDelegate.swift in Sources */,
 				D713102D21F124ED001D7584 /* NewLinkEntry.swift in Sources */,

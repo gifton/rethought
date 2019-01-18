@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+protocol ConnectToTextView {
+    func textFieldDidFinishEditing(string: String)
+}
+
 class ReTextField: UITextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,6 +31,7 @@ class ReTextField: UITextField {
     public var isCompleted: Bool = false
     public var size: CGFloat = 12
     public var color: UIColor = .black
+    public var connector: ConnectToTextView?
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -47,12 +52,14 @@ extension ReTextField: ReTextFieldDelegate {
 extension ReTextField: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.attPlaceholder = ""
+        self.text = ""
         self.isCompleted = true
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.isCompleted = true
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.connector?.textFieldDidFinishEditing(string: self.text ?? "nil")
         self.resignFirstResponder()
         return false
     }
