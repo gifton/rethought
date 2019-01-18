@@ -11,4 +11,5 @@ target 'rethought' do
   pod 'NextGrowingTextView'
   pod 'SwiftLint'
   pod 'SwiftLinkPreview', '~> 3.0.0'
+  pod 'MagazineLayout'
 end
