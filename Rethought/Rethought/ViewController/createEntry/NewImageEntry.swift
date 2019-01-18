@@ -31,12 +31,25 @@ class NewImageEntry: UIViewController {
         
         cameraButton.addTarget(self, action: #selector(addCam(_:)), for: .touchUpInside)
         doneButton.addTarget(self, action: #selector(userPressedSave(_:)), for: .touchUpInside)
+        
+        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
+        edgePan.edges = .left
+        view.addGestureRecognizer(edgePan)
     }
     
+    public var entry          : Entry?
     public var delegate       : ThoughtCardDelegate?
     public var parentThought  : Thought?
-    private var newDescription: String = ""
-    private var newTitle      : String = ""
+    private var newDescription: String {
+        get {
+            return String(describing: self.titleTextField.attributedText ?? NSAttributedString(string: ""))
+        }
+    }
+    private var descriptionString: String {
+        get {
+            return self.entry?.description ?? "please add a description"
+        }
+    }
     
     var titleTextField = ReTextField(frame: CGRect(x: 25, y: 350, width: ViewSize.SCREEN_WIDTH - 50, height: 59), attPlaceholder: "Add a title for your entry")
     var cameraButton = UIButton()
@@ -55,6 +68,18 @@ class NewImageEntry: UIViewController {
         iv.layer.cornerRadius = 6
         iv.layer.masksToBounds = true
         return iv
+    }()
+    
+    let incompleteLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.layer.cornerRadius = 5
+        lbl.addText(color: .white, size: fontSize.small.rawValue, font: .bodyLight, string: "Please enter a title and description")
+        lbl.textAlignment = .center
+        lbl.backgroundColor = .darkBackground
+        lbl.layer.masksToBounds = true
+        lbl.layer.opacity = 0.0
+        
+        return lbl
     }()
     
 }
@@ -125,19 +150,29 @@ extension NewImageEntry: UIImagePickerControllerDelegate {
     
     @objc
     func userPressedSave(_ sender: UIButton) {
-        if self.newTitle != "" && self.newDescription != ""{
-            let entry = Entry(type: .text, thoughtID: self.parentThought?.ID ?? "nil", description: self.newDescription, date: Date(), icon: self.parentThought?.icon ?? "🥗")
+        print("fwk")
+        if self.newDescription != "" && imageViewer.image != UIImage(named: "imagePlaceholder.png"){
+            let entry = Entry(type: .image, thoughtID: parentThought?.ID ?? "nil", description: newDescription, date: Date(), icon: parentThought?.icon ?? "🍤", image: imageViewer.image!)
             self.delegate?.addEntry(entry)
-            UIView.animate(withDuration: 1.25, animations: {
-                self.doneButton.backgroundColor = .mainRed
-            }) { (false) in
-                self.doneButton.backgroundColor = UIColor(hex: "6271fc")
-                self.navigationController?.popViewController(animated: true)
-                
-            }
+            self.navigationController?.popViewController(animated: true)
             
+        } else {
+            incompleteLabel.frame = CGRect(x: 25, y: ViewSize.SCREEN_HEIGHT - 200, width: ViewSize.SCREEN_WIDTH - 50, height: 59)
+            self.view.addSubview(incompleteLabel)
+            self.view.animateTemporaryView(duration: 1.0, view: incompleteLabel)
         }
     }
 }
 
-extension NewImageEntry: UINavigationControllerDelegate {}
+extension NewImageEntry {
+    @objc
+    func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+        if recognizer.state == .recognized {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+}
+
+extension NewImageEntry: UINavigationControllerDelegate {
+    
+}

@@ -22,14 +22,24 @@ class NewTextEntry: UIViewController {
         descriptionTextView.delegate = self
     }
     
+    public var entry: Entry?
     public var delegate       : ThoughtCardDelegate?
     public var parentThought  : Thought?
     private var newDescription: String = ""
     private var newTitle      : String = ""
+    var descriptionString: String {
+        get {
+            return entry?.description ?? "Add a title for your entry"
+        }
+    }
+    var titleString: String {
+        get {
+            return entry?.title ?? "okay, start at the begining"
+        }
+    }
     
     var titleTextView: UITextField = {
         let tv = UITextField()
-        tv.attributedText = tv.addAttributedText(color: .white, size: 14, font: .body, string: "Add a title for your entry")
         tv.backgroundColor = .darkGray
         tv.layer.cornerRadius = 6
         tv.layer.masksToBounds = true
@@ -38,7 +48,6 @@ class NewTextEntry: UIViewController {
     }()
     var descriptionTextView: UITextView = {
         let tv = UITextView()
-        tv.attributedText = tv.addAttributedText(color: .black, size: 14, font: .body, string: "okay, start at the begining...")
         
         return tv
     }()
@@ -70,6 +79,9 @@ class NewTextEntry: UIViewController {
         doneButton.frame          = CGRect(x: 25, y: ViewSize.SCREEN_HEIGHT - 99, width: ViewSize.SCREEN_WIDTH - 50, height: 59)
         incompleteLabel.frame     = CGRect(x: 25, y: ViewSize.SCREEN_HEIGHT - 200, width: ViewSize.SCREEN_WIDTH - 50, height: 59)
         
+        titleTextView.attributedText = titleTextView.addAttributedText(color: .white, size: 14, font: .body, string: descriptionString)
+        descriptionTextView.attributedText = descriptionTextView.addAttributedText(color: .black, size: 14, font: .body, string: "okay, start at the begining...")
+        
         view.addSubview(titleTextView)
         view.addSubview(descriptionTextView)
         view.addSubview(doneButton)
@@ -94,14 +106,10 @@ extension NewTextEntry {
         if self.newTitle != "" && self.newDescription != ""{
             let entry = Entry(type: .text, thoughtID: self.parentThought?.ID ?? "nil", description: self.newDescription, date: Date(), icon: self.parentThought?.icon ?? "🥗")
             self.delegate?.addEntry(entry)
-            UIView.animate(withDuration: 1.25, animations: {
-                self.doneButton.backgroundColor = .mainRed
-            }) { (false) in
-                self.doneButton.backgroundColor = UIColor(hex: "6271fc")
-                self.navigationController?.popViewController(animated: true)
-                
-            }
+            self.navigationController?.popViewController(animated: true)
             
+        } else {
+            self.view.animateTemporaryView(duration: 1.0, view: incompleteLabel)
         }
     }
 }
@@ -120,9 +128,4 @@ extension NewTextEntry: UITextFieldDelegate {
         self.newTitle = titleTextView.text!
         return false
     }
-}
-
-
-protocol CreatorView {
-    init(thought: Thought)
 }

@@ -29,8 +29,13 @@ class ThoughtCardController: UIViewController {
 extension ThoughtCardController: ThoughtCardDelegate {
     func startNewEntry(_ type: Entry.EntryType) {
         switch type {
-        case .text, .link:
+        case .text:
             let v = NewTextEntry()
+            v.delegate = self
+            v.parentThought = self.newThought
+            self.navigationController?.pushViewController(v, animated: true)
+        case .link:
+            let v = NewLinkEntry()
             v.delegate = self
             v.parentThought = self.newThought
             self.navigationController?.pushViewController(v, animated: true)
@@ -46,6 +51,7 @@ extension ThoughtCardController: ThoughtCardDelegate {
     
     func addEntry(_ entry: Entry) {
         self.newEntries?.append(entry)
+        card?.didAddEntry(entry.type)
     }
     
     func addThoughtComponents(title: String, icon: ThoughtIcon) {
@@ -55,6 +61,4 @@ extension ThoughtCardController: ThoughtCardDelegate {
     func updateState(state: ThoughtCardState) {
         delegate?.changeSize(size: state)
     }
-    
-    
 }

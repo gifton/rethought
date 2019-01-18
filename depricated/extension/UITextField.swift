@@ -13,16 +13,15 @@ class ReTextField: UITextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
         delegate = self
+        self.textColor = .darkBackground
+        self.textAlignment = .center
+        self.layer.masksToBounds = true
+        self.addBorders(edges: [.bottom], color: .black, thickness: 8)
     }
     
     convenience init(frame: CGRect, attPlaceholder: String) {
         self.init(frame: frame)
         self.attPlaceholder = attPlaceholder
-        
-        self.textColor = .darkBackground
-        self.textAlignment = .center
-        self.layer.masksToBounds = true
-        self.addBorders(edges: [.bottom], color: .black, thickness: 8)
     }
     
     public var isCompleted: Bool = false

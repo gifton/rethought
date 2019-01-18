@@ -73,7 +73,7 @@ extension ThoughtCard {
             animateOut(view)
         }
         self.backgroundColor = .darkBackground
-        self.layer.cornerRadius = 7
+        self.layer.cornerRadius = 15
         self.layer.masksToBounds = true
         self.addLogoShadow()
         
@@ -117,23 +117,24 @@ extension ThoughtCard {
         doneButton.addTarget(self, action: #selector(checkIfCardComplete(_:)), for: .touchUpInside)
         
         linkBtn.setImage(#imageLiteral(resourceName: "link"), for: .normal)
-        linkBtn.entryType = .link
         cameraBtn.setImage(#imageLiteral(resourceName: "camera-alt"), for: .normal)
-        cameraBtn.entryType = .image
         noteBtn.setImage(#imageLiteral(resourceName: "pen-square"), for: .normal)
-        noteBtn.entryType = .text
         micBtn.setImage(#imageLiteral(resourceName: "microphone"), for: .normal)
+        
+        linkBtn.entryType = .link
+        cameraBtn.entryType = .image
+        noteBtn.entryType = .text
         micBtn.entryType = .recording
     }
     
     func setupOpenView() {
         let entryBtns = [linkBtn, cameraBtn, noteBtn, micBtn]
-        var xStart: CGFloat = 25
+        var xStart: CGFloat = 12.5
         for btn in entryBtns {
             if btn == micBtn {
-                btn.frame = CGRect(x: xStart, y: 182.5, width: 20, height: 25)
+                btn.frame = CGRect(x: xStart, y: 179.5, width: 20*1.8, height: 25*1.8)
             } else {
-                btn.frame = CGRect(x: xStart, y: 185, width: 20, height: 20)
+                btn.frame = CGRect(x: xStart, y: 185, width: 20*1.8, height: 20*1.8)
             }
             
             xStart += self.frame.width * 0.28
@@ -142,11 +143,12 @@ extension ThoughtCard {
             }
             self.animateIn(btn)
         }
+        
         //frame
         cancelButton.frame = CGRect(x: self.frame.width - 75, y: 20, width: 60, height: 28)
         addTitleTV.frame   = CGRect(x: 15, y: 75, width: self.frame.width * 0.7, height: 81)
         addIconTV = EmojiDisplay(frame: CGRect(x: (self.frame.width * 0.7) + 25, y: 75, width: 81, height: 81), emoji: ThoughtIcon("🥘"))
-        doneButton.frame = CGRect(x: 15, y: self.frame.height - 67, width: self.frame.width - 30, height: 57)
+        doneButton.frame = CGRect(x: 15, y: self.frame.height - 77, width: self.frame.width - 30, height: 57)
         errorLabel.frame = CGRect(x: 0, y: 250, width: self.frame.width, height: 15)
         let views = [cancelButton, addTitleTV, addIconTV, doneButton]
         for view in views {
@@ -155,7 +157,6 @@ extension ThoughtCard {
         }
         self.addSubview(errorLabel)
     }
-    
     
     @objc
     func panGestureAction(_ panGesture: UIPanGestureRecognizer) {
@@ -176,7 +177,6 @@ extension ThoughtCard {
             }
         }
     }
-    
     
     func addEntry(_ sender: newEntryButton) {
         if isTitleComplete == true && isIconComplete == true {
@@ -231,4 +231,20 @@ extension ThoughtCard {
         }
     }
     
+}
+
+
+extension ThoughtCard {
+    public func didAddEntry(_ type: Entry.EntryType) {
+        switch type {
+        case .link:
+            self.linkBtn.addBorders(edges: [.bottom], color: UIColor(hex: "51DF9F"), thickness: 4)
+        case .image:
+            self.cameraBtn.addBorders(edges: [.bottom], color: UIColor(hex: "51DF9F"), thickness: 4)
+        case .recording:
+            self.micBtn.addBorders(edges: [.bottom], color: UIColor(hex: "51DF9F"), thickness: 4)
+        case .text:
+            self.noteBtn.addBorders(edges: [.bottom], color: UIColor(hex: "51DF9F"), thickness: 4)
+        }
+    }
 }

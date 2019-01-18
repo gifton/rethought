@@ -89,4 +89,14 @@ extension UIView {
         }
     }
     
+    func animateTemporaryView(duration: Double, view: UIView) {
+        UIView.animate(withDuration: duration, animations: {
+            view.layer.opacity = 1.0
+        }) { (false) in
+            UIView.animate(withDuration: 1.0, animations: {
+                view.layer.opacity = 0.0
+            })
+        }
+    }
+    
 }
