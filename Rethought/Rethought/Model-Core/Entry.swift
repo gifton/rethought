@@ -68,6 +68,13 @@ public class Entry {
         self.init(type: type, thoughtID: thoughtID, description: description, date: date, icon: icon)
         self.title = title
     }
+    //link type
+    convenience init(type: Entry.EntryType, thoughtID: String, description: String, date: Date, icon: String, linkTitle: String, linkImage: UIImage, link: String, shorthandLink: String) {
+        self.init(type: type, thoughtID: thoughtID, description: description, date: date, icon: icon)
+        self.link = link
+        self.linkImage = linkImage
+        self.linkTitle = linkTitle
+    }
     //empty entry
     convenience init(title: String?) {
         self.init(type: .text, thoughtID: "nil", description: "not available", date: Date(timeIntervalSinceNow: TimeInterval.init(exactly: 1000)!), icon: "🚫")

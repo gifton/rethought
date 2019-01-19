@@ -39,6 +39,11 @@ extension ThoughtCardController: ThoughtCardDelegate {
             v.delegate = self
             v.parentThought = self.newThought
             self.navigationController?.pushViewController(v, animated: true)
+        case .recording:
+            let v = NewAudioEntry()
+            v.delegate = self
+            v.parentThought = self.newThought
+            self.navigationController?.pushViewController(v, animated: true)
         default:
             let v = NewImageEntry()
             v.delegate = self
@@ -55,7 +60,8 @@ extension ThoughtCardController: ThoughtCardDelegate {
     }
     
     func addThoughtComponents(title: String, icon: ThoughtIcon) {
-        print("added string \(title) to thought")
+        let thought = Thought(title: title, icon: icon.icon, date: Date())
+        self.newThought = thought
     }
     
     func updateState(state: ThoughtCardState) {

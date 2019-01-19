@@ -20,6 +20,7 @@
 		D70EA8ED21E58FA70071E257 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8EC21E58FA70071E257 /* UIView.swift */; };
 		D70EA8EF21E5B1620071E257 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8EE21E5B1620071E257 /* ArrayExtension.swift */; };
 		D70EA8F121E5DAD70071E257 /* DrawerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8F021E5DAD70071E257 /* DrawerObject.swift */; };
+		D711281021F2A76E006C732E /* NewAudioEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D711280F21F2A76E006C732E /* NewAudioEntry.swift */; };
 		D713100B21EEE9C2001D7584 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713100A21EEE9C2001D7584 /* DashboardViewModel.swift */; };
 		D713100D21EEE9D4001D7584 /* DashboardViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713100C21EEE9D4001D7584 /* DashboardViewModelDelegate.swift */; };
 		D713100F21EEEB5E001D7584 /* QuoteOfTheDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713100E21EEEB5E001D7584 /* QuoteOfTheDay.swift */; };
@@ -111,6 +112,7 @@
 		D70EA8EC21E58FA70071E257 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		D70EA8EE21E5B1620071E257 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		D70EA8F021E5DAD70071E257 /* DrawerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerObject.swift; sourceTree = "<group>"; };
+		D711280F21F2A76E006C732E /* NewAudioEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAudioEntry.swift; sourceTree = "<group>"; };
 		D713100A21EEE9C2001D7584 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		D713100C21EEE9D4001D7584 /* DashboardViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModelDelegate.swift; sourceTree = "<group>"; };
 		D713100E21EEEB5E001D7584 /* QuoteOfTheDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteOfTheDay.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 				D713102621F01631001D7584 /* NewTextEntry.swift */,
 				D713102821F068ED001D7584 /* NewImageEntry.swift */,
 				D713102C21F124ED001D7584 /* NewLinkEntry.swift */,
+				D711280F21F2A76E006C732E /* NewAudioEntry.swift */,
 			);
 			path = createEntry;
 			sourceTree = "<group>";
@@ -681,6 +684,7 @@
 				D713101D21EF0503001D7584 /* ThoughtCardDelegate.swift in Sources */,
 				D70EA8E021E301E50071E257 /* UIColor.swift in Sources */,
 				D7FFA1C921D4C050001C3B72 /* ThoughtDetailDelegate.swift in Sources */,
+				D711281021F2A76E006C732E /* NewAudioEntry.swift in Sources */,
 				D75B88D321BC51250023784F /* UIImage.swift in Sources */,
 				D75B88C121BB70C00023784F /* rethought.xcdatamodeld in Sources */,
 				D75B891821BF1F5A0023784F /* ThoughtDetailController.swift in Sources */,

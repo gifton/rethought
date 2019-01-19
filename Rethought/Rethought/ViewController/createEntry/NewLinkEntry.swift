@@ -24,17 +24,29 @@ class NewLinkEntry: UIViewController {
     public var entry          : Entry?
     public var delegate       : ThoughtCardDelegate?
     public var parentThought  : Thought?
-    var urlString: String {
+    private var linkImage: UIImage {
+        get {
+            return self.mainImage.image!
+        }
+    }
+    private var shorthandURL: String {
+        get {
+            return self.shortLinkLabel.text ?? "not available"
+        }
+    }
+    private var longURL: String = ""
+    var linkDescriptionString: String {
         get {
             return entry?.description ?? "Add a title for your entry"
         }
     }
     
-    var mainImage = UIImageView()
-    var linkTextField: ReTextField?
-    var titleLabel = UILabel()
-    var slp: SwiftLinkPreview?
-    var shortLinkLabel = UILabel()
+    var mainImage       = UIImageView()
+    var linkTextField   : ReTextField?
+    var titleLabel      = UILabel()
+    let doneBtn         = UIButton()
+    var slp             : SwiftLinkPreview?
+    var shortLinkLabel  = UILabel()
     var linkDescription = UITextView()
 }
 
@@ -49,8 +61,9 @@ extension NewLinkEntry {
         mainImage.contentMode = .scaleAspectFit
         mainImage.center = CGPoint(x: self.view.center.x, y: 250)
         
-        linkTextField = ReTextField(frame: CGRect(x: 25, y: 350, width: ViewSize.SCREEN_WIDTH - 50, height: 59), attPlaceholder: urlString)
+        linkTextField = ReTextField(frame: CGRect(x: 25, y: 350, width: ViewSize.SCREEN_WIDTH - 50, height: 59), attPlaceholder: linkDescriptionString)
         linkTextField?.connector = self
+        linkTextField!.keyboardType = UIKeyboardType.URL
         
         shortLinkLabel.frame = CGRect(x: 25, y: 425, width: 200, height: 45)
         shortLinkLabel.backgroundColor = UIColor(hex: "F2F2F2")
@@ -62,10 +75,19 @@ extension NewLinkEntry {
         linkDescription.backgroundColor = UIColor(hex: "F2F2F2")
         linkDescription.layer.cornerRadius = 4
         
+        doneBtn.frame = CGRect(x: 25, y: ViewSize.SCREEN_HEIGHT - 99, width: ViewSize.SCREEN_WIDTH - 50, height: 59)
+        doneBtn.backgroundColor = .mainBlue
+        doneBtn.setAttributedTitle(doneBtn.addAttributedText(size: 12, font: .title, string: "Save"), for: .normal)
+        doneBtn.layer.cornerRadius = 6
+        doneBtn.addTarget(self, action: #selector(saveEntry(_:)), for: .touchUpInside)
+        doneBtn.disableButton()
+        
+        
         self.view.addSubview(mainImage)
         self.view.addSubview(linkTextField!)
         self.view.addSubview(shortLinkLabel)
         self.view.addSubview(linkDescription)
+        self.view.addSubview(doneBtn)
     }
     
     func setupLinkPreview() {
@@ -85,24 +107,34 @@ extension NewLinkEntry: ConnectToTextView {
     func textFieldDidFinishEditing(string: String) {
                 slp?.preview(string,
                             onSuccess: { result in
+                                
                                 guard let imgUrl: URL = URL(string: result[SwiftLinkResponseKey.image] as! String) else { return }
-                                let shortHandURL = result[SwiftLinkResponseKey.url] 
                                 
-                                let description = String(describing: result[SwiftLinkResponseKey.description])
-//                                var newString = String()
-//                                newString += "\(String(describing: shortHandURL))"
-                                
-                                print (shortHandURL)
-                                
-                                
-//                                let subUrl = shortHandURLString.dropFirst(6)
                                 self.mainImage.load(url: imgUrl)
-//                                self.shortLinkLabel.attributedText = self.shortLinkLabel.addAttributedText(size: 14, font: .title, string: String(subUrl))
-//                                self.linkDescription.attributedText = self.linkDescription.addAttributedText(size: 14, font: .body, string: descriptionString)
-
+                                self.shortLinkLabel.attributedText = self.shortLinkLabel.addAttributedText(size: 14, font: .title, string: result[SwiftLinkResponseKey.canonicalUrl] as? String ?? "Not available")
+                                self.linkDescription.attributedText = self.linkDescription.addAttributedText(size: 14, font: .body, string: result[SwiftLinkResponseKey.description] as? String ?? "Not available")
+                                self.doneBtn.enableButton()
+                                self.longURL = result[SwiftLinkResponseKey.finalUrl] as? String ?? "Not available"
                 },
                             onError: { error in
                                 print("\(error)")
                 })
+    }
+    
+    @objc
+    func saveEntry(_ sender: Any) {
+        print("saving!")
+        guard let ID = parentThought?.ID else {
+            print("error with ID")
+            return
+        }
+        guard let icon = parentThought?.icon else {
+            print("error with icon")
+            return
+        }
+        let entry = Entry(type: .link, thoughtID: ID, description: self.longURL, date: Date(), icon: icon, link: self.longURL, linkImage: self.linkImage, linkTitle: self.shorthandURL)
+        self.delegate?.addEntry(entry)
+        self.navigationController?.popViewController(animated: true)
+        print("saved")
     }
 }

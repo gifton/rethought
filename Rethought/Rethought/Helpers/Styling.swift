@@ -180,11 +180,9 @@ extension UIView {
 extension UIButton {
     func disableButton() {
         self.layer.opacity = 0.4
-        self.isEnabled = false
     }
     func enableButton() {
         self.layer.opacity = 1.0
-        self.isEnabled = true
     }
 }
 

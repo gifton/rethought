@@ -201,6 +201,7 @@ extension ThoughtCard {
     
     func addEntry(_ sender: newEntryButton) {
         if isTitleComplete == true && isIconComplete == true {
+            self.delegate?.addThoughtComponents(title: addTitleTV.text, icon: addIconTV.emoji)
             self.delegate?.startNewEntry(sender.entryType)
         } else {
             showErrorLabel()
