@@ -47,7 +47,7 @@ class NewImageEntry: UIViewController {
     }
     private var descriptionString: String {
         get {
-            return self.entry?.description ?? "please add a description"
+            return self.entry?.detail ?? "please add a description"
         }
     }
     
@@ -110,9 +110,6 @@ extension NewImageEntry: UIImagePickerControllerDelegate {
         imageViewer.center.x = self.view.center.x
         imageViewer.center.y = 175
         
-        
-        // print out the image size as a test
-        print(image.size)
         picker.dismiss(animated: true)
     }
     
@@ -150,9 +147,8 @@ extension NewImageEntry: UIImagePickerControllerDelegate {
     
     @objc
     func userPressedSave(_ sender: UIButton) {
-        print("fwk")
         if self.newDescription != "" && imageViewer.image != UIImage(named: "imagePlaceholder.png"){
-            let entry = Entry(type: .image, thoughtID: parentThought?.ID ?? "nil", description: newDescription, date: Date(), icon: parentThought?.icon ?? "🍤", image: imageViewer.image!)
+            let entry = Entry(type: .image, thoughtID: parentThought?.ID ?? "nil", detail: newDescription, date: Date(), icon: parentThought?.icon ?? "🍤", image: imageViewer.image!)
             self.delegate?.addEntry(entry)
             self.navigationController?.popViewController(animated: true)
             

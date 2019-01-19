@@ -37,7 +37,7 @@ class NewLinkEntry: UIViewController {
     private var longURL: String = ""
     var linkDescriptionString: String {
         get {
-            return entry?.description ?? "Add a title for your entry"
+            return entry?.detail ?? "Add a title for your entry"
         }
     }
     
@@ -71,7 +71,7 @@ extension NewLinkEntry {
         shortLinkLabel.layer.masksToBounds = true
         shortLinkLabel.padding = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         
-        linkDescription.frame = CGRect(x: 25, y: 480, width: ViewSize.SCREEN_WIDTH - 50, height: 45)
+        linkDescription.frame = CGRect(x: 25, y: 480, width: ViewSize.SCREEN_WIDTH - 50, height: 65)
         linkDescription.backgroundColor = UIColor(hex: "F2F2F2")
         linkDescription.layer.cornerRadius = 4
         
@@ -113,6 +113,7 @@ extension NewLinkEntry: ConnectToTextView {
                                 self.mainImage.load(url: imgUrl)
                                 self.shortLinkLabel.attributedText = self.shortLinkLabel.addAttributedText(size: 14, font: .title, string: result[SwiftLinkResponseKey.canonicalUrl] as? String ?? "Not available")
                                 self.linkDescription.attributedText = self.linkDescription.addAttributedText(size: 14, font: .body, string: result[SwiftLinkResponseKey.description] as? String ?? "Not available")
+                                self.linkDescription.adjustsFontForContentSizeCategory = true
                                 self.doneBtn.enableButton()
                                 self.longURL = result[SwiftLinkResponseKey.finalUrl] as? String ?? "Not available"
                 },
@@ -123,7 +124,6 @@ extension NewLinkEntry: ConnectToTextView {
     
     @objc
     func saveEntry(_ sender: Any) {
-        print("saving!")
         guard let ID = parentThought?.ID else {
             print("error with ID")
             return
@@ -132,9 +132,8 @@ extension NewLinkEntry: ConnectToTextView {
             print("error with icon")
             return
         }
-        let entry = Entry(type: .link, thoughtID: ID, description: self.longURL, date: Date(), icon: icon, link: self.longURL, linkImage: self.linkImage, linkTitle: self.shorthandURL)
+        let entry = Entry(type: .link, thoughtID: ID, detail: self.longURL, date: Date(), icon: icon, link: self.longURL, linkImage: self.linkImage, linkTitle: self.shorthandURL)
         self.delegate?.addEntry(entry)
         self.navigationController?.popViewController(animated: true)
-        print("saved")
     }
 }

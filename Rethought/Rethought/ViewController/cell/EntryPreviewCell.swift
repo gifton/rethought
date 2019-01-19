@@ -36,7 +36,7 @@ class TextEntryCell: UITableViewCell {
     public func giveContext(with preview: EntryPreview) {
         self.title.text = preview.title
         self.date.getStringFromDate(date: preview.date)
-        self.body.text = preview.description
+        self.body.text = preview.detail
         self.body.numberOfLines = 5
         self.parentThought.text = (preview.thoughtIcon!.icon + preview.ThoughtID)
         
@@ -44,7 +44,7 @@ class TextEntryCell: UITableViewCell {
     public func giveContext(with entry: Entry) {
         self.title.text = entry.title
         self.date.getStringFromDate(date: entry.date)
-        self.body.text = entry.description
+        self.body.text = entry.detail
         self.body.numberOfLines = 5
         self.parentThought.text = (entry.icon + entry.thoughtID)
     }

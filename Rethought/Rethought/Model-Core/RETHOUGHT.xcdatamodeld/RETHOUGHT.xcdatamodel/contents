@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="EntryModel" representedClassName="EntryModel" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="linkImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="linkTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="recording" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="shorthandLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <relationship name="thoughtModel" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ThoughtModel" inverseName="entryModel" inverseEntity="ThoughtModel" syncable="YES"/>
+    </entity>
+    <entity name="TestThought" representedClassName="TestThought" syncable="YES" codeGenerationType="class">
+        <attribute name="testDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="testTitle" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ThoughtModel" representedClassName="ThoughtModel" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <relationship name="entryModel" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EntryModel" inverseName="thoughtModel" inverseEntity="EntryModel" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="TestThought" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="ThoughtModel" positionX="-54" positionY="9" width="128" height="120"/>
+        <element name="EntryModel" positionX="-36" positionY="18" width="128" height="225"/>
+    </elements>
+</model>

@@ -75,7 +75,7 @@ class EmojiDisplay: UITextView {
     }
     var isCompleted: Bool = false
     public func styleCell() {
-        self.backgroundColor = .black
+        self.backgroundColor = .cardLabelBackgroundLight
         self.layer.cornerRadius = 6
         self.textAlignment = .center
         self.font = .reBody(ofSize: 45)

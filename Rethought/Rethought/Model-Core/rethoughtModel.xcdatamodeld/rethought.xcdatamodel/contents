@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="ModelEntry" representedClassName="ModelEntry" syncable="YES" codeGenerationType="class">
+    <entity name="ReEntry" representedClassName="ReEntry" syncable="YES" codeGenerationType="class">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="entryDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="entryImage" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
@@ -8,7 +8,20 @@
         <attribute name="entryTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="ReThought" representedClassName="ReThought" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thoughtDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="TestThought" representedClassName="TestThought" syncable="YES">
+        <attribute name="testDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="testTitle" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="ModelEntry" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="ReEntry" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="ReThought" positionX="-63" positionY="27" width="128" height="120"/>
+        <element name="TestThought" positionX="-45" positionY="63" width="128" height="75"/>
     </elements>
 </model>

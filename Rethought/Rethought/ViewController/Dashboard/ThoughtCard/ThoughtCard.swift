@@ -17,13 +17,11 @@ class ThoughtCard: UIView {
     var tapRecognizer: UITapGestureRecognizer?
     var isTitleComplete: Bool {
         get {
-            print ( self.addTitleTV.isCompleted)
             return self.addTitleTV.isCompleted
         }
     }
     var isIconComplete: Bool {
         get {
-            print ( self.addIconTV.isCompleted)
             return self.addIconTV.isCompleted
         }
     }
@@ -77,8 +75,8 @@ extension ThoughtCard {
         for view in subviews{
             animateOut(view)
         }
-        self.backgroundColor = .darkBackground
-        self.layer.cornerRadius = 15
+        self.backgroundColor = .cardBackground
+        self.layer.cornerRadius = 7
         self.layer.masksToBounds = true
         self.addLogoShadow()
         
@@ -86,12 +84,12 @@ extension ThoughtCard {
         iconLabel.frame                 = CGRect(x: 15, y: 10, width: 50, height: 50)
         timeSinceLastThoughtLabel.frame = CGRect(x: 75, y: 42.5, width: 200, height: 14)
         
-        newThoughtIntro.padding        = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
-        iconLabel.layer.cornerRadius   = 6
-        iconLabel.layer.masksToBounds  = true
-        iconLabel.textAlignment        = .center
-        newThoughtIntro.giveDarkBackground()
-        iconLabel.giveDarkBackground()
+        newThoughtIntro.padding         = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        iconLabel.layer.cornerRadius    = 6
+        iconLabel.layer.masksToBounds   = true
+        iconLabel.textAlignment         = .center
+        newThoughtIntro.backgroundColor = .cardLabelBackgroundDark
+        iconLabel.backgroundColor       = .cardLabelBackgroundDark
         iconLabel.addText(size: 24, font: .body, string: "💭")
         newThoughtIntro.addText(color: .white, size: 12, font: .body, string: "What's on your mind?")
         timeSinceLastThoughtLabel.addText(color: .white, size: 12, font: .bodyLight, string: "Last new thought: 4 days")
@@ -101,17 +99,17 @@ extension ThoughtCard {
         animateIn(timeSinceLastThoughtLabel)
         
         //style
-        cancelButton.addAttText(color: .black, size: 12, font: .body, string: "cancel")
-        cancelButton.backgroundColor = UIColor(hex: "909090")
+        cancelButton.addAttText(color: .black, size: 16, font: .body, string: "cancel")
+        cancelButton.backgroundColor = .cancelColor
         cancelButton.layer.cornerRadius = 3
         addTitleTV.color = .white
         addTitleTV.size = 14
         addTitleTV.placeholder = "Type a brief description"
-        addTitleTV.backgroundColor = .black
-        addTitleTV.layer.cornerRadius = 10
+        addTitleTV.backgroundColor = .cardLabelBackgroundLight
+        addTitleTV.layer.cornerRadius = 6
         addTitleTV.padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
-        addIconTV.backgroundColor = .black
-        doneButton.backgroundColor = UIColor(hex: "51DF9F")
+        addIconTV.backgroundColor = .cardLabelBackgroundLight
+        doneButton.backgroundColor = .cardLabelBackgroundLight
         doneButton.layer.cornerRadius = 10
         doneButton.addAttText(color: .white, size: 16, font: .title, string: "Done")
         errorLabel.attributedText = errorLabel.addAttributedText(color: .white, size: 14, font: .bodyLight, string: "please add a title and icon")
@@ -150,7 +148,7 @@ extension ThoughtCard {
         }
         
         //frame
-        cancelButton.frame = CGRect(x: self.frame.width - 75, y: 20, width: 60, height: 28)
+        cancelButton.frame = CGRect(x: self.frame.width - 75, y: 10, width: 60, height: 28)
         cancelButton.addTarget(self, action: #selector(cancelThought(_:)), for: .touchUpInside)
         addTitleTV.frame   = CGRect(x: 15, y: 75, width: self.frame.width * 0.7, height: 81)
         addIconTV = EmojiDisplay(frame: CGRect(x: (self.frame.width * 0.7) + 25, y: 75, width: 81, height: 81), emoji: ThoughtIcon("🥘"))
@@ -186,7 +184,6 @@ extension ThoughtCard {
     
     @objc
     func tapOnNewThought(_ tapper: UITapGestureRecognizer) {
-        print("tapped")
         if state == .collapsed {
             self.updateState(.cardIsEditing)
             self.state = .cardIsEditing
@@ -216,7 +213,7 @@ extension ThoughtCard {
             setupCard()
             let btns = [linkBtn, noteBtn, cameraBtn, micBtn]
             for btn in btns {
-                btn.addBorders(edges: [.bottom], color: .darkBackground, thickness: 4)
+                btn.addBorders(edges: [.bottom], color: .cardBackground, thickness: 4)
             }
         default:
             setupOpenView()
@@ -242,7 +239,7 @@ extension ThoughtCard {
     @objc
     func checkIfCardComplete(_ sender: Any) {
         if isTitleComplete == true && isIconComplete == true {
-            print("is lit")
+            self.delegate?.didPressSave()
             self.updateState(.collapsed)
         } else {
             showErrorLabel()
@@ -264,13 +261,13 @@ extension ThoughtCard {
     public func didAddEntry(_ type: Entry.EntryType) {
         switch type {
         case .link:
-            self.linkBtn.addBorders(edges: [.bottom], color: UIColor(hex: "51DF9F"), thickness: 4)
+            self.linkBtn.addBorders(edges: [.bottom], color: UIColor(hex: "13ACBE"), thickness: 4)
         case .image:
-            self.cameraBtn.addBorders(edges: [.bottom], color: UIColor(hex: "51DF9F"), thickness: 4)
+            self.cameraBtn.addBorders(edges: [.bottom], color: UIColor(hex: "13ACBE"), thickness: 4)
         case .recording:
-            self.micBtn.addBorders(edges: [.bottom], color: UIColor(hex: "51DF9F"), thickness: 4)
+            self.micBtn.addBorders(edges: [.bottom], color: UIColor(hex: "13ACBE"), thickness: 4)
         case .text:
-            self.noteBtn.addBorders(edges: [.bottom], color: UIColor(hex: "51DF9F"), thickness: 4)
+            self.noteBtn.addBorders(edges: [.bottom], color: UIColor(hex: "13ACBE"), thickness: 4)
         }
     }
 }

@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         let rootVC = DashboardController()
+        rootVC.context = self.persistentContainer.viewContext
         let nav = UINavigationController(rootViewController: rootVC)
         nav.isNavigationBarHidden = true
         window?.rootViewController = nav
@@ -55,13 +56,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentContainer = {
-        /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
-        */
-        let container = NSPersistentContainer(name: "rethought")
+
+        let container = NSPersistentContainer(name: "RETHOUGHT")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.

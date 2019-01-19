@@ -37,11 +37,11 @@ extension HomeViewController {
             let newImg = rawimg.resizeImageWith(newSize: size)
             let entry1 = Entry(type: .image,
                                thoughtID: id,
-                               description: "Is how I met your mother better than friends?",
+                               detail: "Is how I met your mother better than friends?",
                                date: self.generateRandomDate(daysBack: 4)!,
                                icon: "🍇",
                                image: newImg)
-            let entry2 = Entry(type: .text, thoughtID: id, description: "It just... it dontr make no sense cuz, how could it be true? HOW? HOW HUH HOW??", date: generateRandomDate(daysBack: 2)!, icon: "🤸🏼‍♂️", title: "I guess the perplection continues...")
+            let entry2 = Entry(type: .text, thoughtID: id, detail: "It just... it dontr make no sense cuz, how could it be true? HOW? HOW HUH HOW??", date: generateRandomDate(daysBack: 2)!, icon: "🤸🏼‍♂️", title: "I guess the perplection continues...")
             
             let thought = Thought(title: "Is how I met your mother better than friends?", icon: "🍇", date: generateRandomDate(daysBack: 12)!, entries: [entry1, entry2])
             thought.setID(id)
@@ -56,11 +56,11 @@ extension HomeViewController {
             let newImg = rawimg.resizeImageWith(newSize: size)
             let entry1 = Entry(type: .image,
                                thoughtID: id,
-                               description: "Should I love the private club?",
+                               detail: "Should I love the private club?",
                                date: self.generateRandomDate(daysBack: 6)!,
                                icon: "⚽️",
                                image: newImg)
-            let entry2 = Entry(type: .text, thoughtID: id, description: "From what I can gather, the private club is a void in which poeople all simultaniously yell into to see how makes it out", date: generateRandomDate(daysBack: 2)!, icon: "🤸🏼‍♂️", title: "I guess, the private club should be avoided")
+            let entry2 = Entry(type: .text, thoughtID: id, detail: "From what I can gather, the private club is a void in which poeople all simultaniously yell into to see how makes it out", date: generateRandomDate(daysBack: 2)!, icon: "🤸🏼‍♂️", title: "I guess, the private club should be avoided")
             
             let thought = Thought(title: "From what I can gather, when you ball out, you fall out", icon: "⚽️", date: generateRandomDate(daysBack: 12)!, entries: [entry1, entry2])
             thought.setID(id)
@@ -74,11 +74,11 @@ extension HomeViewController {
             let newImg = rawimg.resizeImageWith(newSize: size)
             let entry1 = Entry(type: .image,
                                thoughtID: id,
-                               description: "Gang members should always carry a ruler",
+                               detail: "Gang members should always carry a ruler",
                                date: self.generateRandomDate(daysBack: 6)!,
                                icon: "🍬",
                                image: newImg)
-            let entry2 = Entry(type: .text, thoughtID: id, description: "From what I can gather, the private club is a void in which poeople all simultaniously yell into to see how makes it out", date: generateRandomDate(daysBack: 2)!, icon: "🤸🏼‍♂️", title: "I guess, the private club should be avoided")
+            let entry2 = Entry(type: .text, thoughtID: id, detail: "From what I can gather, the private club is a void in which poeople all simultaniously yell into to see how makes it out", date: generateRandomDate(daysBack: 2)!, icon: "🤸🏼‍♂️", title: "I guess, the private club should be avoided")
             
             let thought = Thought(title: "From what I can gather, when you ball out, you fall out", icon: "🍔", date: generateRandomDate(daysBack: 12)!, entries: [entry1, entry2])
             thought.setID(id)
@@ -92,11 +92,11 @@ extension HomeViewController {
             let newImg = rawimg.resizeImageWith(newSize: size)
             let entry1 = Entry(type: .image,
                                thoughtID: id,
-                               description: "Should I love the private club?",
+                               detail: "Should I love the private club?",
                                date: self.generateRandomDate(daysBack: 6)!,
                                icon: "⚽️",
                                image: newImg)
-            let entry2 = Entry(type: .text, thoughtID: id, description: "From what I can gather, the private club is a void in which poeople all simultaniously yell into to see how makes it out", date: generateRandomDate(daysBack: 2)!, icon: "🤸🏼‍♂️", title: "I guess, the private club should be avoided")
+            let entry2 = Entry(type: .text, thoughtID: id, detail: "From what I can gather, the private club is a void in which poeople all simultaniously yell into to see how makes it out", date: generateRandomDate(daysBack: 2)!, icon: "🤸🏼‍♂️", title: "I guess, the private club should be avoided")
             
             let thought = Thought(title: "From what I can gather, when you ball out, you fall out", icon: "💻", date: generateRandomDate(daysBack: 12)!, entries: [entry1, entry2])
             thought.setID(id)
@@ -110,11 +110,11 @@ extension HomeViewController {
             let newImg = rawimg.resizeImageWith(newSize: size)
             let entry1 = Entry(type: .image,
                                thoughtID: id,
-                               description: "Man we really out here my guyyy",
+                               detail: "Man we really out here my guyyy",
                                date: self.generateRandomDate(daysBack: 6)!,
                                icon: "⚽️",
                                image: newImg)
-            let entry2 = Entry(type: .text, thoughtID: id, description: "From what I can gather, the private club is a void in which poeople all simultaniously yell into to see how makes it out", date: generateRandomDate(daysBack: 2)!, icon: "🤸🏼‍♂️", title: "I guess, the private club should be avoided")
+            let entry2 = Entry(type: .text, thoughtID: id, detail: "From what I can gather, the private club is a void in which poeople all simultaniously yell into to see how makes it out", date: generateRandomDate(daysBack: 2)!, icon: "🤸🏼‍♂️", title: "I guess, the private club should be avoided")
             
             let thought = Thought(title: "From what I can gather, when you ball out, you fall out", icon: "✊🏾", date: generateRandomDate(daysBack: 12)!, entries: [entry1, entry2])
             thought.setID(id)

@@ -19,7 +19,7 @@ struct EntryPreview {
     var title: String
     
     //optional Values
-    var description: String?
+    var detail: String?
     var link: String?
     var type: Entry.EntryType
     var thoughtIcon: ThoughtIcon?
@@ -31,12 +31,12 @@ struct EntryPreview {
         //depending on entry type, initiate proper variables
         switch entry.type {
         case .image:
-            self.title = entry.description
+            self.title = entry.detail
             self.image = entry.image!
             self.type = .image
         case .text:
             self.title = entry.title ?? "This is the title"
-            self.description = entry.description
+            self.detail = entry.detail
             self.type = .text
         default:
             self.title = entry.linkTitle!

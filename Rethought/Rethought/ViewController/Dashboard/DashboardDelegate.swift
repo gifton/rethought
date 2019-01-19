@@ -8,7 +8,9 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 protocol DashboardDelegate {
     func changeSize(size: ThoughtCardState)
+    var context: NSManagedObjectContext { get set }
 }

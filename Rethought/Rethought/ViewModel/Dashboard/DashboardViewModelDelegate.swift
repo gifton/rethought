@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 protocol DashboardViewModelDelegate {
-    func getQuoteOfTheDay() -> QuoteOfTheDayElement
     func getRecentEntries() -> EntryPreview
     func getThoughts() -> [DashboardThought]
     func retrieve(thought id: String) -> Thought

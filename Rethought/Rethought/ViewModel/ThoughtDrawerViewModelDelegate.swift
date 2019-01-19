@@ -11,7 +11,7 @@ import UIKit
 
 protocol ThoughtDrawerViewModelDelegate {
     func save(new thought: Thought)
-    func createThought(title: String, description: String?)
+    func createThought(title: String, detail: String?)
     func save(new thought: ThoughtDrawerViewModel, with: Entry)
     func buildRecent() -> String
 }

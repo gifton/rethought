@@ -190,7 +190,6 @@ extension DrawerController {
             } else {
                 drawer?.change(state: .beginThought)
             }
-            print(check)
         } else if sender.nextState == .closed {
             let str = UIView()
             let gif = str.addAttributedText(size: fontSize.small.rawValue, font: .body, string: "Whats on your mind?")

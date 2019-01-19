@@ -25,7 +25,7 @@ extension ThoughtDrawerViewModel: ThoughtDrawerViewModelDelegate {
         print ("saved context: \(thought)")
     }
     
-    func createThought(title: String, description: String?) {
+    func createThought(title: String, detail: String?) {
         print("created thought \(title)")
 //        let thought = Thought
     }

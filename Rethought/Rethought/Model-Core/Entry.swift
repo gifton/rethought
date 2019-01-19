@@ -25,7 +25,7 @@ public class Entry {
     public let type: EntryType
     public let id: String
     public let date: Date
-    public var description: String
+    public var detail: String
     public var icon: String
     public var thoughtID: String
     
@@ -41,43 +41,43 @@ public class Entry {
     public var thoughtTitle: String?
     
     //minimum
-    init(type: EntryType, thoughtID: String, description: String, date: Date, icon: String) {
+    init(type: EntryType, thoughtID: String, detail: String, date: Date, icon: String) {
         self.type = type
         self.thoughtID = thoughtID
         self.id = randomString(length: 12)
-        self.description = description
+        self.detail = detail
         self.date = date
         self.icon = icon
     }
     
     //image type
-    convenience init(type: EntryType, thoughtID: String, description: String, date: Date, icon: String, image: UIImage) {
-        self.init(type: type, thoughtID: thoughtID, description: description, date: date, icon: icon)
+    convenience init(type: EntryType, thoughtID: String, detail: String, date: Date, icon: String, image: UIImage) {
+        self.init(type: type, thoughtID: thoughtID, detail: detail, date: date, icon: icon)
         self.image = image
     }
     //link type
-    convenience init(type: EntryType, thoughtID: String, description: String, date: Date, icon: String, link: String, linkImage: UIImage, linkTitle: String) {
-        self.init(type: type, thoughtID: thoughtID, description: description, date: date, icon: icon)
+    convenience init(type: EntryType, thoughtID: String, detail: String, date: Date, icon: String, link: String, linkImage: UIImage, linkTitle: String) {
+        self.init(type: type, thoughtID: thoughtID, detail: detail, date: date, icon: icon)
         self.linkImage = linkImage
         self.link = link
         self.linkTitle = linkTitle
         self.thoughtID = thoughtID
     }
     //string type
-    convenience init(type: EntryType, thoughtID: String, description: String, date: Date, icon: String, title: String) {
-        self.init(type: type, thoughtID: thoughtID, description: description, date: date, icon: icon)
+    convenience init(type: EntryType, thoughtID: String, detail: String, date: Date, icon: String, title: String) {
+        self.init(type: type, thoughtID: thoughtID, detail: detail, date: date, icon: icon)
         self.title = title
     }
     //link type
-    convenience init(type: Entry.EntryType, thoughtID: String, description: String, date: Date, icon: String, linkTitle: String, linkImage: UIImage, link: String, shorthandLink: String) {
-        self.init(type: type, thoughtID: thoughtID, description: description, date: date, icon: icon)
+    convenience init(type: Entry.EntryType, thoughtID: String, detail: String, date: Date, icon: String, linkTitle: String, linkImage: UIImage, link: String, shorthandLink: String) {
+        self.init(type: type, thoughtID: thoughtID, detail: detail, date: date, icon: icon)
         self.link = link
         self.linkImage = linkImage
         self.linkTitle = linkTitle
     }
     //empty entry
     convenience init(title: String?) {
-        self.init(type: .text, thoughtID: "nil", description: "not available", date: Date(timeIntervalSinceNow: TimeInterval.init(exactly: 1000)!), icon: "🚫")
+        self.init(type: .text, thoughtID: "nil", detail: "not available", date: Date(timeIntervalSinceNow: TimeInterval.init(exactly: 1000)!), icon: "🚫")
     }
     
 }

@@ -74,8 +74,6 @@ class NewAudioEntry: UIViewController {
         view.addSubview(incompleteLabel)
         
         doneButton.addTarget(self, action: #selector(userPressedSave(_:)), for: .touchUpInside)
-        
-        print (doneButton)
     }
 }
 
@@ -108,7 +106,6 @@ extension NewAudioEntry: UITextViewDelegate {
 
 extension NewAudioEntry: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("return pressed")
         textField.resignFirstResponder()
         self.newTitle = titleTextView.text!
         return false

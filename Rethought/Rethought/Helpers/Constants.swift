@@ -40,6 +40,13 @@ extension UIColor {
     static let tileBackground = UIColor(hex: "FBF6EB")
     
     static let darkBackground = UIColor(hex: "161616")
+    
+    //cardColors
+    static let cardBackground           = UIColor(hex: "414468")
+    static let cardLabelBackgroundLight = UIColor.white.withAlphaComponent(0.15)
+    static let cardLabelBackgroundDark  = UIColor.black.withAlphaComponent(0.15)
+    static let cancelColor              = UIColor(hex: "F2BE54")
+    static let highlightGreen           = UIColor(hex: "51DF9F")
 }
 
 public func randomString(length: Int) -> String {

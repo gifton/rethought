@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class DashboardViewModel: DashboardViewModelDelegate {
     func getRecentEntries() -> EntryPreview {
@@ -16,42 +17,49 @@ class DashboardViewModel: DashboardViewModelDelegate {
     
     func getThoughts() -> [DashboardThought] {
         var thoughts = [DashboardThought]()
-        for thought in self.thoughts {
-            let thoughter = DashboardThought(thought: thought)
-            thoughts.append(thoughter)
+        let thoughtFetcher = NSFetchRequest<NSFetchRequestResult>(entityName: "ThoughtModel")
+        do {
+            if let dataIn = try moc.fetch(thoughtFetcher) as? [ThoughtModel] {
+                for data in dataIn {
+                    let t = Thought(title: data.title!, icon: data.icon!, date: data.date!)
+                    let dt = DashboardThought(thought: t)
+                    thoughts.append(dt)
+                }
+            }
+        } catch let err {
+            print("error pulling data from db \(err)")
         }
         return thoughts
     }
     
-    func getQuoteOfTheDay() -> QuoteOfTheDayElement {
-        let url: URL = URL(string: "http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1")!
-        let qotd = try! QuoteOfTheDayElement(fromURL: url)
-        return qotd
-    }
-    
     private var viewDelegate: HomeViewControllerDelegate?
+    public var moc: NSManagedObjectContext
     
     private var thoughts: [Thought]
     private var entries: [Entry] = []
     
-    init(thoughts: [Thought]) {
+    init(thoughts: [Thought], moc: NSManagedObjectContext) {
         self.thoughts = thoughts
         for thought in thoughts {
             for entry in thought.entries{ self.entries.append(entry) }
+        }
+        self.moc = moc
+        
+        let thoughtFetcher = NSFetchRequest<NSFetchRequestResult>(entityName: "ThoughtModel")
+        do {
+            if let dataIn = try moc.fetch(thoughtFetcher) as? [ThoughtModel] {
+                for data in dataIn {
+                    let t = Thought(title: data.title!, icon: data.icon!, date: data.date!)
+                    self.thoughts.append(t)
+                }
+            }
+        } catch let err {
+            print("error pulling data from db \(err)")
         }
     }
 }
 
 extension DashboardViewModel {
-    func getReccomendedThought() -> ThoughtPreviewLarge {
-        let thoughtPreview: ThoughtPreviewLarge = {
-            guard let thought: Thought = self.thoughts.last else { return ThoughtPreviewLarge.init() }
-            let tp = ThoughtPreviewLarge(icon: thought.icon, createdAt: "\(thought.date)", thoughtID: thought.ID, entryCount: thought.entryCount, title: thought.title)
-            self.viewDelegate?.dataIsLoaded()
-            return tp
-        }()
-        return thoughtPreview
-    }
     func getRecentEntries() -> [EntryPreview] {
         var recentEntries = [EntryPreview]()
         for (count, entry) in self.entries.enumerated() {
@@ -68,5 +76,36 @@ extension DashboardViewModel {
     }
     func retrieve(entry entryID: String) -> Entry {
         return entries.filter{ $0.id == entryID }.first ?? Entry.init(title: "Not available")
+    }
+    
+    func test() {
+        let thought = ThoughtModel(context: moc)
+        thought.date = Date()
+        thought.icon = "🏚"
+        thought.id = "dfvbbedf"
+        thought.title = "Giftons new title2!"
+        
+        do {
+            try moc.save()
+            print("woah it wrked!")
+        } catch let err {
+            print(err)
+        }
+        pullTest()
+    }
+    
+    func pullTest() {
+        let fetcher = NSFetchRequest<NSFetchRequestResult>(entityName: "ThoughtModel")
+        
+//        fetcher.execute()
+        do {
+            let out = try moc.fetch(fetcher)
+            for o in out {
+                print(o)
+            }
+        } catch let err {
+            print("error pulling data from db \(err)")
+        }
+       
     }
 }

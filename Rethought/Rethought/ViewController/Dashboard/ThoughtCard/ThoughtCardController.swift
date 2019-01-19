@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class ThoughtCardController: UIViewController {
     override func viewDidLoad() {
@@ -18,7 +19,7 @@ class ThoughtCardController: UIViewController {
     private var delegate: DashboardDelegate?
     
     private var newThought: Thought?
-    private var newEntries: [Entry]?
+    private var newEntries: [Entry] = []
     
     func setCard(delegate: DashboardDelegate) {
         self.delegate = delegate
@@ -55,7 +56,7 @@ extension ThoughtCardController: ThoughtCardDelegate {
     }
     
     func addEntry(_ entry: Entry) {
-        self.newEntries?.append(entry)
+        self.newEntries.append(entry)
         card?.didAddEntry(entry.type)
     }
     
@@ -66,5 +67,58 @@ extension ThoughtCardController: ThoughtCardDelegate {
     
     func updateState(state: ThoughtCardState) {
         delegate?.changeSize(size: state)
+    }
+    
+    func didPressSave() {
+        print("btn pressed")
+        guard let newThought = self.newThought else {
+            print("thot err")
+            return
+        }
+        if newEntries.count > 0 {
+            for entry in newEntries {
+                newThought.addNew(entry: entry)
+            }
+        }
+        savePost()
+        print("post saved!")
+    }
+}
+
+
+
+
+
+//core data extension for saving
+extension ThoughtCardController {
+    
+    func savePost() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        guard let newThought = self.newThought else {
+            print("unable to get new thought")
+            return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let thought = ThoughtModel(context: managedContext)
+        thought.date = newThought.date
+        thought.icon = newThought.icon
+        thought.id = newThought.ID
+        thought.title = newThought.title
+        
+        for entry in newEntries {
+            let entryOut = EntryModel(context: managedContext)
+            entryOut.date = Date()
+            entryOut.detail = entry.detail
+            entryOut.addToThoughtModel(thought)
+            thought.addToEntryModel(entryOut)
+        }
+        do {
+            let save = try managedContext.save()
+        } catch let err  {
+            print("----------error-----------")
+            print(err)
+        }
+        print("saved thought!")
     }
 }

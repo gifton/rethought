@@ -7,10 +7,10 @@ import Smile
 //thought is parent object holding all entries
 public class Thought {
     
-//    public func addNew(entry: Entry) {
-//        self.entries.append(entry)
-//        self.updateLastEdited()
-//    }
+    public func addNew(entry: Entry) {
+        self.entries.append(entry)
+        self.updateLastEdited()
+    }
 //    public func remove(entry: Entry) {
 //        if let mark = entries.index(where: { $0.id == entry.id }) {
 //            entries.remove(at: mark)

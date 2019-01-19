@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class DashboardController: UIViewController {
     var thoughtCard: ThoughtCardController?
@@ -23,9 +24,21 @@ class DashboardController: UIViewController {
         thoughtCard!.didMove(toParent: self)
     }
     
+    var model: DashboardViewModel!
+    
 }
 
 extension DashboardController: DashboardDelegate {
+    var context: NSManagedObjectContext {
+        get {
+            return model?.moc ?? NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        }
+        set {
+            self.model = DashboardViewModel(thoughts: [Thought(title: "", icon: "", date: Date())], moc: newValue)
+            
+        }
+    }
+    
     func changeSize(size: ThoughtCardState) {
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 2.0, initialSpringVelocity: 0.4, options: UIView.AnimationOptions.curveEaseIn, animations: {
             switch size {

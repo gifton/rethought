@@ -25,7 +25,7 @@ class EntryDetailView: UIView {
         self.title    = entry.title
         self.icon     = entry.icon
         self.image = entry.image
-        self.entryDescription = entry.description
+        self.entryDescription = entry.detail
         self.link = entry.link
         self.linkImage = entry.linkImage
         self.delegate = delegate

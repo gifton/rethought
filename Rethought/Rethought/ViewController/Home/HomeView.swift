@@ -156,7 +156,6 @@ extension HomeView {
 
 extension HomeView {
     @objc func userPressedViewAllThoughts() {
-        print("we made it to this objc func!")
         delegate?.userDidTapViewAllThoughts()
     }
 }

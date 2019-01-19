@@ -39,6 +39,7 @@ class DashboardThought {
         }
         self.init(icon: thought.icon, createdAt: buildRecent(date: thought.date), thoughtID: thought.ID, entryCount: thought.entryCount, title: thought.title)
     }
+    
     convenience init(_ empty: Bool? = true) {
         self.init(icon: "", createdAt: "", thoughtID: "", entryCount: ["String" : 0], title: "")
         if empty == true {
