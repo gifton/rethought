@@ -80,9 +80,9 @@ public class Entry {
         self.init(type: .text, thoughtID: "nil", detail: "not available", date: Date(timeIntervalSinceNow: TimeInterval.init(exactly: 1000)!), icon: "🚫")
     }
     
-    convenience init(entryModel: entryModel) {
-        self.init(type: entryModel.type, thoughtID: entryModel.id, detail: entryModel.detail, date: entryModel.date, icon: entryModel.icon)
-    }
+//    convenience init(entryModel: EntryModel) {
+//        self.init(type: entryModel.type, thoughtID: entryModel.id, detail: entryModel.detail, date: entryModel.date, icon: entryModel.icon)
+//    }
     
 }
 

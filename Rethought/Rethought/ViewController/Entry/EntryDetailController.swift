@@ -25,7 +25,7 @@ extension EntryDetailController: BackDelegate {
 extension EntryDetailController: EntryDetailDelegate {
     var entry: Entry {
         get {
-            return Entry(title: self.entryView?.title)
+            return Entry(title: self.entryView!.title)
         }
         set {
             

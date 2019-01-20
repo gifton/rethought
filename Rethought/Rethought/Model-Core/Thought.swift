@@ -85,14 +85,14 @@ public class Thought {
         self.ID = id
     }
     
-    convenience init(_ model: ThoughtModel) {        
-        self.init(title: model.title, icon: model.icon, date: model.date)
-        self.ID = model.ID
-        let modelEntries
-        guard let mEntries = model.entryModel!.allObjects as? [EntryModel] else { return }
-        for entry in mEntries {
-            let newEntry = Entry(entryModel: entry)
-            self.addNew(entry: newEntry)
-        }
-    }
+//    convenience init(_ model: ThoughtModel) {
+//        self.init(title: model.title, icon: model.icon, date: model.date)
+//        self.ID = model.ID
+//        let modelEntries
+//        guard let mEntries = model.entryModel!.allObjects as? [EntryModel] else { return }
+//        for entry in mEntries {
+//            let newEntry = Entry(entryModel: entry)
+//            self.addNew(entry: newEntry)
+//        }
+//    }
 }

@@ -44,18 +44,6 @@ class DashboardViewModel: DashboardViewModelDelegate {
             for entry in thought.entries{ self.entries.append(entry) }
         }
         self.moc = moc
-        
-        let thoughtFetcher = NSFetchRequest<NSFetchRequestResult>(entityName: "ThoughtModel")
-        do {
-            if let dataIn = try moc.fetch(thoughtFetcher) as? [ThoughtModel] {
-                for data in dataIn {
-                    let t = Thought(title: data.title!, icon: data.icon!, date: data.date!)
-                    self.thoughts.append(t)
-                }
-            }
-        } catch let err {
-            print("error pulling data from db \(err)")
-        }
     }
 }
 
@@ -78,77 +66,48 @@ extension DashboardViewModel {
         return entries.filter{ $0.id == entryID }.first ?? Entry.init(title: "Not available")
     }
     
-    func test() {
-        let thought = ThoughtModel(context: moc)
-        thought.date = Date()
-        thought.icon = "🏚"
-        thought.id = "dfvbbedf"
-        thought.title = "Giftons new title2!"
-        
-        do {
-            try moc.save()
-        } catch let err {
-            print(err)
-        }
-        pullTest()
-    }
-    
-    func pullTest() {
-        let fetcher = NSFetchRequest<NSFetchRequestResult>(entityName: "ThoughtModel")
-        
-        do {
-            let out = try moc.fetch(fetcher)
-            for o in out {
-                print(o)
-            }
-        } catch let err {
-            print("error pulling data from db \(err)")
-        }
-       
-    }
-    
-    func insertThoughts( _ context: NSManagedObjectContext) {
-        let thoughtFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "ThoughtModel")
-        thoughtFetch.fetchLimit = 25
-        thoughtFetch.resultType = .managedObjectResultType
-        
-        do {
-            //read data
-            let dataIn = try context.fetch(thoughtFetch) as! [ThoughtModel]
-            for data in dataIn {
-                //create thought
-                let t = Thought(title: data.title!, icon: data.icon!, date: data.date!)
-                //set entrie model
-                guard let entries = data.entryModel!.allObjects as? [EntryModel] else { return }
-                for entry in entries {
-                    //init new entry, id
-                    var  newEntry: Entry?
-                    guard let id = entry.id else { print("couldnt get id"); return }
-                    //depending on entrytype, fill entrys
-                    
-                    switch entry.type {
-                    case Entry.EntryType.image.rawValue:
-                        //specific gurards
-                        guard let image = entry.image else { print("couldnt get pic"); return }
-                        guard let detail = entry.detail else { print("couldnt get detail"); return }
-                        guard let entryDate = entry.entryDate else { print("couldnt get entryDate"); return }
-                        let img = UIImage(data: image)
-                        //create entry
-                        newEntry = Entry(type: .image, thoughtID: t.ID, detail: detail, date: entryDate, icon: t.icon, image: img ?? UIImage(named: "placeholder.png")!)
-                        newEntry?.id = id
-                    default:
-                        break
-                    }
-                    //if there is a new entry
-                    if newEntry != nil {
-                        t.addNew(entry: newEntry!)
-                    }
-                }
-                //add thoughts to model
-                self.thoughts.append(t)
-            }
-        } catch {
-            fatalError("Failed to fetch employees: \(error)")
-        }
-    }
+//    func insertThoughts( _ context: NSManagedObjectContext) {
+//        let thoughtFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "ThoughtModel")
+//        thoughtFetch.fetchLimit = 25
+//        thoughtFetch.resultType = .managedObjectResultType
+//
+//        do {
+//            //read data
+//            let dataIn = try context.fetch(thoughtFetch) as! [ThoughtModel]
+//            for data in dataIn {
+//                //create thought
+//                let t = Thought(title: data.title!, icon: data.icon!, date: data.date!)
+//                //set entrie model
+//                guard let entries = data.entryModel!.allObjects as? [EntryModel] else { return }
+//                for entry in entries {
+//                    //init new entry, id
+//                    var  newEntry: Entry?
+//                    guard let id = entry.id else { print("couldnt get id"); return }
+//                    //depending on entrytype, fill entrys
+//
+//                    switch entry.type {
+//                    case Entry.EntryType.image.rawValue:
+//                        //specific gurards
+//                        guard let image = entry.image else { print("couldnt get pic"); return }
+//                        guard let detail = entry.detail else { print("couldnt get detail"); return }
+//                        guard let entryDate = entry.entryDate else { print("couldnt get entryDate"); return }
+//                        let img = UIImage(data: image)
+//                        //create entry
+//                        newEntry = Entry(type: .image, thoughtID: t.ID, detail: detail, date: entryDate, icon: t.icon, image: img ?? UIImage(named: "placeholder.png")!)
+//                        newEntry?.id = id
+//                    default:
+//                        break
+//                    }
+//                    //if there is a new entry
+//                    if newEntry != nil {
+//                        t.addNew(entry: newEntry!)
+//                    }
+//                }
+//                //add thoughts to model
+//                self.thoughts.append(t)
+//            }
+//        } catch {
+//            fatalError("Failed to fetch employees: \(error)")
+//        }
+//    }
 }
