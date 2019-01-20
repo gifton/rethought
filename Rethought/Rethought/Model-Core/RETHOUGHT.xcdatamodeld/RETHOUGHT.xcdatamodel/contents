@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="EntryModel" representedClassName="EntryModel" syncable="YES" codeGenerationType="class">
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+    <entity name="EntryModel" representedClassName="EntryModel" parentEntity="ThoughtModel" syncable="YES" codeGenerationType="class">
         <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="entryDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="entryID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="entryTitle" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="linkImage" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="linkTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="recording" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="shorthandLink" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
         <relationship name="thoughtModel" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ThoughtModel" inverseName="entryModel" inverseEntity="ThoughtModel" syncable="YES"/>
     </entity>

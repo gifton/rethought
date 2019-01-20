@@ -70,9 +70,8 @@ extension ThoughtCardController: ThoughtCardDelegate {
     }
     
     func didPressSave() {
-        print("btn pressed")
         guard let newThought = self.newThought else {
-            print("thot err")
+            print("thought err")
             return
         }
         if newEntries.count > 0 {
@@ -114,7 +113,7 @@ extension ThoughtCardController {
             thought.addToEntryModel(entryOut)
         }
         do {
-            let save = try managedContext.save()
+            try managedContext.save()
         } catch let err  {
             print("----------error-----------")
             print(err)

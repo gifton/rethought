@@ -48,7 +48,10 @@ extension DashboardView {
         do {
             let testResults = try managedContext.fetch(userFetch) as! [ThoughtModel]
             for result in testResults {
-                print(result.entryModel)
+                guard let entry = result.entryModel!.allObjects as? [EntryModel] else { return }
+                for e in entry {
+                    print(e)
+                }
             }
         } catch {
             fatalError("Failed to fetch employees: \(error)")

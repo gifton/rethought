@@ -35,9 +35,3 @@ extension ThoughtModel: Managed {
         return [NSSortDescriptor(key: #keyPath(date), ascending: false)]
     }
 }
-
-extension EntryModel: Managed {
-    static var defaultSortDescriptors: [NSSortDescriptor] {
-        return [NSSortDescriptor(key: #keyPath(date), ascending: false)]
-    }
-}

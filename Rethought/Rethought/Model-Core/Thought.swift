@@ -46,7 +46,7 @@ public class Thought {
         self.icon = icon
         self.date = date
         self.ID = randomString(length: 12)
-        self.lastEdited = Date.init()
+        self.lastEdited = entries.last?.date ?? date
     }
     //  thoughts dont have to have entries from the start, so if they do, use this function to set its entries
     public convenience init(title: String, icon: String, date: Date, entries: [Entry]) {
@@ -83,5 +83,16 @@ public class Thought {
     
     public func setID(_ id: String) {
         self.ID = id
+    }
+    
+    convenience init(_ model: ThoughtModel) {        
+        self.init(title: model.title, icon: model.icon, date: model.date)
+        self.ID = model.ID
+        let modelEntries
+        guard let mEntries = model.entryModel!.allObjects as? [EntryModel] else { return }
+        for entry in mEntries {
+            let newEntry = Entry(entryModel: entry)
+            self.addNew(entry: newEntry)
+        }
     }
 }

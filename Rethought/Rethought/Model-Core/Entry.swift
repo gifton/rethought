@@ -14,16 +14,16 @@ import UIKit
 
 //base level Entry class for identifying entry types
 public class Entry {
-    public enum EntryType {
-        case image
-        case text
-        case link
-        case recording
+    public enum EntryType: String {
+        case image = "IMAGE"
+        case text = "TEXT"
+        case link = "LINK"
+        case recording = "RECORDING"
     }
     
     //standard objects
     public let type: EntryType
-    public let id: String
+    public var id: String!
     public let date: Date
     public var detail: String
     public var icon: String
@@ -78,6 +78,10 @@ public class Entry {
     //empty entry
     convenience init(title: String?) {
         self.init(type: .text, thoughtID: "nil", detail: "not available", date: Date(timeIntervalSinceNow: TimeInterval.init(exactly: 1000)!), icon: "🚫")
+    }
+    
+    convenience init(entryModel: entryModel) {
+        self.init(type: entryModel.type, thoughtID: entryModel.id, detail: entryModel.detail, date: entryModel.date, icon: entryModel.icon)
     }
     
 }
