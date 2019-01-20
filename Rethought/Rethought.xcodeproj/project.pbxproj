@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		9B8B8A63BCEA02BD8A429957 /* Pods_rethought.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36BE63D35A2A902760780123 /* Pods_rethought.framework */; };
 		D702B21121DBFECA003DCA83 /* BackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D702B21021DBFECA003DCA83 /* BackDelegate.swift */; };
-		D702B21421DC06F1003DCA83 /* rethoughtModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D702B21221DC06F1003DCA83 /* rethoughtModel.xcdatamodeld */; };
 		D70EA8DE21E301240071E257 /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8DD21E301240071E257 /* Sizes.swift */; };
 		D70EA8E021E301E50071E257 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8DF21E301E50071E257 /* UIColor.swift */; };
 		D70EA8E221E31CF30071E257 /* DrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8E121E31CF30071E257 /* DrawerView.swift */; };
@@ -102,7 +101,6 @@
 		36BE63D35A2A902760780123 /* Pods_rethought.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rethought.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7EA374B2D93AE93DEA7C328 /* Pods-rethought.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rethought.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rethought/Pods-rethought.debug.xcconfig"; sourceTree = "<group>"; };
 		D702B21021DBFECA003DCA83 /* BackDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackDelegate.swift; sourceTree = "<group>"; };
-		D702B21321DC06F1003DCA83 /* rethought.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = rethought.xcdatamodel; sourceTree = "<group>"; };
 		D70EA8DD21E301240071E257 /* Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
 		D70EA8DF21E301E50071E257 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		D70EA8E121E31CF30071E257 /* DrawerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerView.swift; sourceTree = "<group>"; };
@@ -370,7 +368,6 @@
 				D75B88DF21BC54B20023784F /* Entry.swift */,
 				D75B892121C2D7D70023784F /* EntryPreview.swift */,
 				D75B891D21C07D910023784F /* ThoughtPreview.swift */,
-				D702B21221DC06F1003DCA83 /* rethoughtModel.xcdatamodeld */,
 				D713100E21EEEB5E001D7584 /* QuoteOfTheDay.swift */,
 				D711281121F30C4B006C732E /* DataController.swift */,
 			);
@@ -646,7 +643,6 @@
 				D70EA8E421E329140071E257 /* UIButton.swift in Sources */,
 				D75B891221BEDD0E0023784F /* HomeControllerDelegate.swift in Sources */,
 				D713102721F01631001D7584 /* NewTextEntry.swift in Sources */,
-				D702B21421DC06F1003DCA83 /* rethoughtModel.xcdatamodeld in Sources */,
 				D702B21121DBFECA003DCA83 /* BackDelegate.swift in Sources */,
 				D7FFA1DB21D6F496001C3B72 /* ThoughtFeedView.swift in Sources */,
 				D713101921EF0436001D7584 /* ThoughtCardController.swift in Sources */,
@@ -908,16 +904,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		D702B21221DC06F1003DCA83 /* rethoughtModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				D702B21321DC06F1003DCA83 /* rethought.xcdatamodel */,
-			);
-			currentVersion = D702B21321DC06F1003DCA83 /* rethought.xcdatamodel */;
-			path = rethoughtModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		D773456621F32FCC0075B4C8 /* RETHOUGHT.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
