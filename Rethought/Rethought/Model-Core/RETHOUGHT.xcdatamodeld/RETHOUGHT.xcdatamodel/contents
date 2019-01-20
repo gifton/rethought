@@ -14,10 +14,7 @@
         <attribute name="type" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
         <relationship name="thoughtModel" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ThoughtModel" inverseName="entryModel" inverseEntity="ThoughtModel" syncable="YES"/>
     </entity>
-    <entity name="TestThought" representedClassName="TestThought" syncable="YES" codeGenerationType="class">
-        <attribute name="testDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="testTitle" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
+    <entity name="THOUGHT" representedClassName="THOUGHT" syncable="YES" codeGenerationType="class"/>
     <entity name="ThoughtModel" representedClassName="ThoughtModel" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
@@ -26,8 +23,8 @@
         <relationship name="entryModel" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EntryModel" inverseName="thoughtModel" inverseEntity="EntryModel" syncable="YES"/>
     </entity>
     <elements>
-        <element name="TestThought" positionX="-63" positionY="-18" width="128" height="75"/>
-        <element name="ThoughtModel" positionX="-54" positionY="9" width="128" height="120"/>
         <element name="EntryModel" positionX="-36" positionY="18" width="128" height="225"/>
+        <element name="ThoughtModel" positionX="-54" positionY="9" width="128" height="120"/>
+        <element name="THOUGHT" positionX="-45" positionY="108" width="128" height="45"/>
     </elements>
 </model>
