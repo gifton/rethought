@@ -32,12 +32,12 @@ class ThoughtFeedCellTile: UICollectionViewCell {
     private var dayCount:      Int?
     
     //objs
-    var titleLabel            = UILabel(frame: CGRect(x: 8, y: 8, width: 134, height: 34))
-    var iconLabel             = UILabel(frame: CGRect(x: 59, y: 45, width: 42, height: 42))
+    var titleLabel            = UILabel()
+    var iconLabel             = UILabel()
     private var linkLabel     = UILabel()
     private var entryLabel    = UILabel()
     private var mediaLabel    = UILabel()
-    private let dayCountLabel = UILabel(frame: CGRect(x: 60, y: 122, width: 100, height: 20))
+    private let dayCountLabel = UILabel()
     
     public func giveContext(with preview: ThoughtPreviewLarge) {
         self.icon       = preview.icon
@@ -64,7 +64,14 @@ class ThoughtFeedCellTile: UICollectionViewCell {
         let stack = UIStackView(arrangedSubviews: lbls)
         stack.axis = .vertical
         stack.distribution = .equalSpacing
-        stack.frame = CGRect(x: 10, y: 85, width: 70, height: 55)
+        stack.frame = CGRect(x: 15, y: self.frame.height - 75, width: 70, height: 55)
+        
+        titleLabel.frame = CGRect(x: 8, y: 8, width: self.frame.width - 16, height: 55)
+        iconLabel.center = CGPoint(x: (self.frame.width - 21) / 2, y: (self.frame.height - 21) / 2)
+        iconLabel.frame.size = CGSize(width: 42, height: 42)
+        dayCountLabel.frame = CGRect(x: 100, y: self.frame.height - 35, width: 100, height: 15)
+        dayCountLabel.layer.borderColor = UIColor.white.cgColor
+        
         addSubview(stack)
         addSubview(titleLabel)
         addSubview(iconLabel)
@@ -72,7 +79,7 @@ class ThoughtFeedCellTile: UICollectionViewCell {
     }
     
     private func styleCell() {
-        self.layer.cornerRadius = 10
+        self.layer.cornerRadius = 4
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 2
         titleLabel.font = .reBody(ofSize: 14)
@@ -80,10 +87,11 @@ class ThoughtFeedCellTile: UICollectionViewCell {
         let lbls = [linkLabel, entryLabel, mediaLabel]
         for lbl in lbls {
             lbl.font = .reBodyLight(ofSize: 12)
-            lbl.textColor = UIColor(hex: "5D5D5D")
+            lbl.textColor = .white
         }
         dayCountLabel.font = .reTitle(ofSize: 12)
         dayCountLabel.textAlignment = .center
+        print (self.frame)
     }
     
     private func recievedContext() {//check for all variables

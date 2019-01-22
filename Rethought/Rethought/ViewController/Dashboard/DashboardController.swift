@@ -67,7 +67,8 @@ extension DashboardController: UICollectionViewDataSource {
         return cell
     }
 }
-extension DashboardController: UICollectionViewDelegate {}
+extension DashboardController: UICollectionViewDelegate {
+}
 
 extension DashboardController {
     func setupView() {

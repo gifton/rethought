@@ -26,14 +26,15 @@ class DashboardView: UIView {
     let thoughtCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = ViewSize.thoughtTileSize
+        layout.minimumLineSpacing = 5
+        layout.estimatedItemSize = CGSize(width: ((ViewSize.SCREEN_WIDTH - 15) / 2) - 2.5, height: ((ViewSize.SCREEN_WIDTH - 15) / 2) - 2.5)
+        layout.sectionInsetReference = .fromContentInset
         
-        let cv = UICollectionView(frame: CGRect(x: 0, y: 50, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - 50), collectionViewLayout: layout)
-        cv.contentSize = ViewSize.thoughtTileSize
-        cv.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        cv.backgroundColor = .blue
+        let cv = UICollectionView(frame: CGRect(x: 0, y: 220, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - 220), collectionViewLayout: layout)
+        cv.contentSize = CGSize(width: ((ViewSize.SCREEN_WIDTH - 10) / 2) + 2.5, height: ((ViewSize.SCREEN_WIDTH - 10) / 2) + 2.5)
+        cv.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        cv.backgroundColor = .clear
         cv.showsVerticalScrollIndicator = false
-        cv.flashScrollIndicators()
         
         return cv
     }()
@@ -47,6 +48,8 @@ class DashboardView: UIView {
 extension DashboardView {
     func setupTV() {
         thoughtCollectionView.register(ThoughtFeedCellTile.self, forCellWithReuseIdentifier: ThoughtFeedCellTile.identifier)
+        thoughtCollectionView.register(DashboardHeader.self, forCellWithReuseIdentifier: DashboardHeader.identifier)
         addSubview(thoughtCollectionView)
+        print (thoughtCollectionView.frame.size)
     }
 }

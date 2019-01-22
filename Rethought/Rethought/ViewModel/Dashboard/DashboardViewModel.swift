@@ -25,7 +25,7 @@ class DashboardViewModel: DashboardViewModelDelegate {
     }
     public var moc: NSManagedObjectContext
     private var viewDelegate: HomeViewControllerDelegate?
-    private var thoughts: [Thought]!
+    private var thoughts: [Thought] = []
     private var entries: [Entry] = []
     public var count: Int {
         get {
@@ -35,7 +35,13 @@ class DashboardViewModel: DashboardViewModelDelegate {
     
     init(moc: NSManagedObjectContext) {
         self.moc = moc
-        self.thoughts = self.recieveDummyData()
+        for _ in 0...2 {
+            let thought = self.recieveDummyData()
+            for t in thought {
+                thoughts.append(t)
+            }
+        }
+        
         for thought in thoughts {
             for entry in thought.entries{ self.entries.append(entry) }
         }
