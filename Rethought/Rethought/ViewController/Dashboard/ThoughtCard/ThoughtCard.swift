@@ -77,8 +77,6 @@ extension ThoughtCard {
         }
         self.backgroundColor = .cardBackground
         self.layer.cornerRadius = 10
-        self.layer.masksToBounds = true
-        self.addLogoShadow()
         
         newThoughtIntro.frame           = CGRect(x: 75, y: 10, width: 150, height: 30)
         iconLabel.frame                 = CGRect(x: 15, y: 10, width: 50, height: 50)
@@ -110,8 +108,9 @@ extension ThoughtCard {
         addTitleTV.layer.cornerRadius = 6
         addTitleTV.padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         addIconTV.backgroundColor = .cardLabelBackgroundLight
-        doneButton.backgroundColor = .cardLabelBackgroundLight
+        doneButton.backgroundColor = UIColor(hex: "51DF9F")
         doneButton.layer.cornerRadius = 10
+        doneButton.layer.masksToBounds = true
         doneButton.addAttText(color: .white, size: 16, font: .title, string: "Done")
         errorLabel.attributedText = errorLabel.addAttributedText(color: .white, size: 14, font: .bodyLight, string: "please add a title and icon")
         errorLabel.textAlignment = .center
@@ -159,6 +158,8 @@ extension ThoughtCard {
         let views = [cancelButton, addTitleTV, addIconTV, doneButton]
         for view in views {
             let nView = CardObject(view: view, availableIn: [.cardIsEditing, .cardIsDoneEditing])
+            nView.layer.masksToBounds = true
+            nView.view.layer.masksToBounds = true
             self.animateIn(nView.view)
         }
         self.addSubview(errorLabel)
@@ -232,7 +233,7 @@ extension ThoughtCard {
     
     func animateIn(_ view: UIView) {
         view.alpha = 0.0
-        UIView.animate(withDuration: 0.25) {
+        UIView.animate(withDuration: 0.75) {
             self.addSubview(view)
             view.alpha = 1.0
         }

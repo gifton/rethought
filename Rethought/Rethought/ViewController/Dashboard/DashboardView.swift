@@ -29,8 +29,9 @@ class DashboardView: UIView {
         layout.minimumLineSpacing = 5
         layout.estimatedItemSize = CGSize(width: ((ViewSize.SCREEN_WIDTH - 15) / 2) - 2.5, height: ((ViewSize.SCREEN_WIDTH - 15) / 2) - 2.5)
         layout.sectionInsetReference = .fromContentInset
+        layout.headerReferenceSize = CGSize(width: ViewSize.SCREEN_WIDTH, height: 200)
         
-        let cv = UICollectionView(frame: CGRect(x: 0, y: 220, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - 220), collectionViewLayout: layout)
+        let cv = UICollectionView(frame: CGRect(x: 0, y: 35, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - 30), collectionViewLayout: layout)
         cv.contentSize = CGSize(width: ((ViewSize.SCREEN_WIDTH - 10) / 2) + 2.5, height: ((ViewSize.SCREEN_WIDTH - 10) / 2) + 2.5)
         cv.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         cv.backgroundColor = .clear
@@ -47,8 +48,10 @@ class DashboardView: UIView {
 
 extension DashboardView {
     func setupTV() {
+        
         thoughtCollectionView.register(ThoughtFeedCellTile.self, forCellWithReuseIdentifier: ThoughtFeedCellTile.identifier)
-        thoughtCollectionView.register(DashboardHeader.self, forCellWithReuseIdentifier: DashboardHeader.identifier)
+        thoughtCollectionView.register(DashboardHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: DashboardHeader.identifier)
+        
         addSubview(thoughtCollectionView)
         print (thoughtCollectionView.frame.size)
     }
