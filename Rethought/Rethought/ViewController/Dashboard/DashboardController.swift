@@ -51,23 +51,48 @@ extension DashboardController: DashboardDelegate {
         }) { (true) in }
     }
 }
+
+
+extension DashboardController {
+    func setupView() {
+        guard let thoughts = self.thoughts else { return }
+        if thoughts.count > 0 {
+            let dashboard = DashboardView(delegate: self, frame: .zero)
+            dashboard.thoughtCollectionView.dataSource = self
+            dashboard.thoughtCollectionView.delegate = self
+            dashboard.recentEntries = self.model.getRecentEntries()
+            self.view = dashboard
+        }
+        
+        thoughtCard = ThoughtCardController()
+        thoughtCard?.setCard(delegate: self)
+        self.addChild(thoughtCard!)
+        self.view.addSubview(thoughtCard!.card!)
+        thoughtCard!.didMove(toParent: self)
+    }
+}
+
+//MARK: collectionView Delegates
 extension DashboardController: UICollectionViewDataSource {
     
+    //header
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard kind == UICollectionView.elementKindSectionHeader else {
             return UICollectionReusableView()
         }
         
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ThoughtFeedCellTile", for: indexPath)
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ThoughtFeedCellTile", for: indexPath) as! DashboardHeader
+        headerView.recentEntries = model.getRecentEntries()
         // Customize headerView here
         return headerView
     }
     
-    
+    //count
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return model.count
     }
 
+    //cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThoughtFeedCellTile.identifier, for: indexPath) as! ThoughtFeedCellTile
         
@@ -85,21 +110,3 @@ extension DashboardController: UICollectionViewDelegate {
     }
 }
 
-extension DashboardController {
-    func setupView() {
-        guard let thoughts = self.thoughts else { return }
-        if thoughts.count > 0 {
-            let dashboard = DashboardView(delegate: self, frame: .zero)
-            dashboard.thoughtCollectionView.dataSource = self
-            dashboard.thoughtCollectionView.delegate = self
-            
-            self.view = dashboard
-        }
-        
-        thoughtCard = ThoughtCardController()
-        thoughtCard?.setCard(delegate: self)
-        self.addChild(thoughtCard!)
-        self.view.addSubview(thoughtCard!.card!)
-        thoughtCard!.didMove(toParent: self)
-    }
-}

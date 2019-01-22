@@ -15,11 +15,6 @@ class DashboardHeader: UICollectionReusableView {
         self.backgroundColor = .clear
         setViews()
     }
-    
-    convenience init(frame: CGRect, delegate: DashboardDelegate) {
-        self.init(frame: frame)
-        self.delegate = delegate
-    }
     override var reuseIdentifier: String? {
         return "ThoughtFeedCellTile"
     }
@@ -27,6 +22,7 @@ class DashboardHeader: UICollectionReusableView {
         return "ThoughtFeedCellTile"
     }
     public var delegate: DashboardDelegate?
+    public var recentEntries: [EntryPreview] = []
     
     let allEntriesButton: UIButton = {
         let btn = UIButton()
@@ -38,12 +34,16 @@ class DashboardHeader: UICollectionReusableView {
     
     let reLogo = UIImageView(image: #imageLiteral(resourceName: "Logo"))
     
-    let cvView: UIView = {
-        let v = UIView()
-        v.backgroundColor = .mainBlue
-        v.translatesAutoresizingMaskIntoConstraints = false
+    var recentEntriesCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = ViewSize.thoughtCellSmall
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = .clear
+        cv.showsHorizontalScrollIndicator = false
+        cv.translatesAutoresizingMaskIntoConstraints = false
         
-        return v
+        return cv
     }()
     
     var searcher: UISearchBar = {
@@ -64,6 +64,7 @@ extension DashboardHeader {
         addSubview(allEntriesButton)
         addSubview(searcher)
         addSubview(reLogo)
+        addSubview(recentEntriesCollectionView)
         allEntriesButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 12.5, paddingTrailing: 20)
         
         searcher.frame.origin = CGPoint(x: 0, y: self.frame.height - 45)
@@ -74,9 +75,37 @@ extension DashboardHeader {
         NSLayoutConstraint.activate([
             reLogo.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             reLogo.topAnchor.constraint(equalTo: safeTopAnchor, constant: 10),
+            
         ])
+        
+        recentEntriesCollectionView.register(RecentEntryCell.self, forCellWithReuseIdentifier: RecentEntryCell.identifier)
+        recentEntriesCollectionView.delegate = self
+        recentEntriesCollectionView.dataSource = self
+        
+        recentEntriesCollectionView.setAnchor(top: reLogo.bottomAnchor, leading: leadingAnchor, bottom: searcher.topAnchor, trailing: trailingAnchor, paddingTop: 5, paddingLeading: 0, paddingBottom: 5, paddingTrailing: 0)
     }
 }
 extension DashboardHeader: UISearchBarDelegate {
     
 }
+
+
+extension DashboardHeader: UICollectionViewDelegate {
+    
+}
+
+extension DashboardHeader: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return recentEntries.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentEntryCell.identifier, for: indexPath) as! RecentEntryCell
+        cell.giveContext(recentEntries[indexPath.row])
+        print("oh snap this happened")
+        return cell
+    }
+    
+    
+}
+

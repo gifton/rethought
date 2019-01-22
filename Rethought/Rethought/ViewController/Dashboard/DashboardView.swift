@@ -25,6 +25,8 @@ class DashboardView: UIView {
         self.setupTV()
     }
     
+    public var recentEntries: [EntryPreview] = []
+    
     let thoughtCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -56,6 +58,6 @@ extension DashboardView {
         thoughtCollectionView.register(DashboardHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: DashboardHeader.identifier)
         
         addSubview(thoughtCollectionView)
-        print (thoughtCollectionView.frame.size)
+        
     }
 }

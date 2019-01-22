@@ -91,7 +91,6 @@ class ThoughtFeedCellTile: UICollectionViewCell {
         }
         dayCountLabel.font = .reTitle(ofSize: 12)
         dayCountLabel.textAlignment = .center
-        print (self.frame)
     }
     
     private func recievedContext() {//check for all variables

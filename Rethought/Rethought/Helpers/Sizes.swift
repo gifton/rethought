@@ -17,7 +17,7 @@ struct ViewSize {
     static let SCALE = UIScreen.main.scale
     static let FRAME = UIScreen.main.bounds
     
-    static let thoughtCellSmall = CGSize(width: 100, height: 50)
+    static let thoughtCellSmall = CGSize(width: 80, height: 55)
     let largeCell = CGRect(origin: CGPoint(x: 12.5, y: 10), size: CGSize(width: (UIScreen.main.bounds.width - 25), height: 156))
     static let thoughtTileSize = CGSize(width: (UIScreen.main.bounds.width - 15) / 2, height: (UIScreen.main.bounds.width - 15) / 2)
 }
