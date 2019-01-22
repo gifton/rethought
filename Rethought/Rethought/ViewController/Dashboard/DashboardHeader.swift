@@ -36,7 +36,15 @@ class DashboardHeader: UICollectionReusableView {
         return btn
     }()
     
-    var searchTextView = ReSearchBar()
+    let reLogo = UIImageView(image: #imageLiteral(resourceName: "Logo"))
+    
+    let cvView: UIView = {
+        let v = UIView()
+        v.backgroundColor = .mainBlue
+        v.translatesAutoresizingMaskIntoConstraints = false
+        
+        return v
+    }()
     
     var searcher: UISearchBar = {
         let sb = UISearchBar()
@@ -53,38 +61,22 @@ class DashboardHeader: UICollectionReusableView {
 
 extension DashboardHeader {
     func setViews() {
-        searchTextView.connector = self
         addSubview(allEntriesButton)
         addSubview(searcher)
-        allEntriesButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 12.5, paddingTrailing: 25)
+        addSubview(reLogo)
+        allEntriesButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 12.5, paddingTrailing: 20)
         
         searcher.frame.origin = CGPoint(x: 0, y: self.frame.height - 45)
         searcher.frame.size = CGSize(width: ViewSize.SCREEN_WIDTH - 110, height: 40)
         searcher.backgroundImage = UIImage()
         
+        reLogo.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            reLogo.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            reLogo.topAnchor.constraint(equalTo: safeTopAnchor, constant: 10),
+        ])
     }
 }
-
-extension DashboardHeader: DashboardHeaderConnector {
-    func userTapped(on searchBar: ReSearchBarState) {
-        UIView.animate(withDuration: 1.5) {
-            if self.searchTextView.searchState == .closed {
-                self.searchTextView.frame.size.width += ViewSize.SCREEN_WIDTH / 1.7
-                self.searchTextView.searchState = .open
-            } else {
-                self.searchTextView.frame.size.width = 35
-                self.searchTextView.searchState = .closed
-            }
-        }
-    }
-}
-
-
-protocol DashboardHeaderConnector {
-    func userTapped(on searchBar: ReSearchBarState)
-//    func userQuery(_ query: String) -> [DashboardThought]
-}
-
 extension DashboardHeader: UISearchBarDelegate {
     
 }

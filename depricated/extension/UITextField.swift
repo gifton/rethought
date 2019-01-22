@@ -99,7 +99,6 @@ class ReSearchBar: UITextField {
     }
     
     var searchState: ReSearchBarState = .closed
-    public var connector: DashboardHeaderConnector?
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

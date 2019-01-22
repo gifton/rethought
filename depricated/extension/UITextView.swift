@@ -44,11 +44,7 @@ extension ReTextView: ReTextViewDelegate {
 
 extension ReTextView: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        do {
-            connector!.updateState(state: .cardIsEditing)
-        } catch {
-            print("counldnt call connector")
-        }
+        connector!.updateState(state: .cardIsEditing)
         
         textView.attributedText = self.addAttributedText(color: color, size: size, font: .body, string: "")
         self.isCompleted = true
