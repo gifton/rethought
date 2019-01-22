@@ -84,12 +84,13 @@ extension ThoughtCard {
         iconLabel.frame                 = CGRect(x: 15, y: 10, width: 50, height: 50)
         timeSinceLastThoughtLabel.frame = CGRect(x: 75, y: 42.5, width: 200, height: 14)
         
-        newThoughtIntro.padding         = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
-        iconLabel.layer.cornerRadius    = 6
-        iconLabel.layer.masksToBounds   = true
-        iconLabel.textAlignment         = .center
-        newThoughtIntro.backgroundColor = .cardLabelBackgroundDark
-        iconLabel.backgroundColor       = .cardLabelBackgroundDark
+        newThoughtIntro.padding            = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        newThoughtIntro.backgroundColor    = .cardLabelBackgroundDark
+        newThoughtIntro.layer.cornerRadius = 4
+        iconLabel.layer.cornerRadius       = 6
+        iconLabel.layer.masksToBounds      = true
+        iconLabel.textAlignment            = .center
+        iconLabel.backgroundColor          = .cardLabelBackgroundDark
         iconLabel.addText(size: 24, font: .body, string: "💭")
         newThoughtIntro.addText(color: .white, size: 12, font: .body, string: "What's on your mind?")
         timeSinceLastThoughtLabel.addText(color: .white, size: 12, font: .bodyLight, string: "Last new thought: 4 days")
@@ -151,6 +152,7 @@ extension ThoughtCard {
         cancelButton.frame = CGRect(x: self.frame.width - 75, y: 10, width: 60, height: 28)
         cancelButton.addTarget(self, action: #selector(cancelThought(_:)), for: .touchUpInside)
         addTitleTV.frame   = CGRect(x: 15, y: 75, width: self.frame.width * 0.7, height: 81)
+        addTitleTV.connector = self.delegate
         addIconTV = EmojiDisplay(frame: CGRect(x: (self.frame.width * 0.7) + 25, y: 75, width: 81, height: 81), emoji: ThoughtIcon("🥘"))
         doneButton.frame = CGRect(x: 15, y: self.frame.height - 77, width: self.frame.width - 30, height: 57)
         errorLabel.frame = CGRect(x: 0, y: 250, width: self.frame.width, height: 15)
@@ -185,8 +187,8 @@ extension ThoughtCard {
     @objc
     func tapOnNewThought(_ tapper: UITapGestureRecognizer) {
         if state == .collapsed {
-            self.updateState(.cardIsEditing)
-            self.state = .cardIsEditing
+            self.updateState(.cardIsDoneEditing)
+            self.state = .cardIsDoneEditing
         }
         
     }

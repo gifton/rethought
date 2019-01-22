@@ -13,4 +13,7 @@ import CoreData
 protocol DashboardDelegate {
     func changeSize(size: ThoughtCardState)
     var context: NSManagedObjectContext { get set }
+    
+    func userTapped(on thoughtID: String)
+    var thoughts: [DashboardThought] { get }
 }

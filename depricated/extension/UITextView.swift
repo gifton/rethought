@@ -24,6 +24,7 @@ class ReTextView: UITextView {
     public var isCompleted: Bool = false
     public var size: CGFloat = 12
     public var color: UIColor = .black
+    public var connector: ThoughtCardDelegate?
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -43,6 +44,12 @@ extension ReTextView: ReTextViewDelegate {
 
 extension ReTextView: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
+        do {
+            connector!.updateState(state: .cardIsEditing)
+        } catch {
+            print("counldnt call connector")
+        }
+        
         textView.attributedText = self.addAttributedText(color: color, size: size, font: .body, string: "")
         self.isCompleted = true
     }
