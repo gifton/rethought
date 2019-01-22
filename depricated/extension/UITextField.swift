@@ -93,7 +93,7 @@ class ReSearchBar: UITextField {
         super.init(frame: frame)
         self.frame.size = CGSize(width: 55, height: 25)
         self.addBorders(edges: [.bottom], color: .white, thickness: 4)
-        
+        self.keyboardType = UIKeyboardType.webSearch
         setClosedState()
         delegate = self
     }
@@ -139,5 +139,11 @@ extension ReSearchBar: UITextFieldDelegate {
         cancelBtn.layer.masksToBounds = true
         self.rightView = cancelBtn
         self.rightViewMode = .whileEditing
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.resignFirstResponder()
+        self.frame.size.width = 35
+        self.searchState = .closed
+        return false
     }
 }

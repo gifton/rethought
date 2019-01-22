@@ -80,6 +80,9 @@ extension DashboardController: UICollectionViewDataSource {
     }
 }
 extension DashboardController: UICollectionViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.resignFirstResponder()
+    }
 }
 
 extension DashboardController {

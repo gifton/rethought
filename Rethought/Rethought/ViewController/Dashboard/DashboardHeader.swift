@@ -38,6 +38,14 @@ class DashboardHeader: UICollectionReusableView {
     
     var searchTextView = ReSearchBar()
     
+    var searcher: UISearchBar = {
+        let sb = UISearchBar()
+        sb.barStyle = .blackOpaque
+        sb.returnKeyType = .search
+        
+        return sb
+    }()
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -47,10 +55,12 @@ extension DashboardHeader {
     func setViews() {
         searchTextView.connector = self
         addSubview(allEntriesButton)
-        addSubview(searchTextView)
-        allEntriesButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 10, paddingTrailing: 25)
+        addSubview(searcher)
+        allEntriesButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 12.5, paddingTrailing: 25)
         
-        searchTextView.frame.origin = CGPoint(x: 10, y: frame.height - 35)
+        searcher.frame.origin = CGPoint(x: 0, y: self.frame.height - 45)
+        searcher.frame.size = CGSize(width: ViewSize.SCREEN_WIDTH - 110, height: 40)
+        searcher.backgroundImage = UIImage()
         
     }
 }
@@ -73,4 +83,8 @@ extension DashboardHeader: DashboardHeaderConnector {
 protocol DashboardHeaderConnector {
     func userTapped(on searchBar: ReSearchBarState)
 //    func userQuery(_ query: String) -> [DashboardThought]
+}
+
+extension DashboardHeader: UISearchBarDelegate {
+    
 }

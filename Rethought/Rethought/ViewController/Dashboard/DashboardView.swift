@@ -11,15 +11,17 @@ import UIKit
 import CoreData
 
 class DashboardView: UIView {
-    private var delegate: DashboardDelegate!
+    private var dDelegate: DashboardDelegate!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         addGBackgroundGradientTo(view: self)
+        
+        self.backgroundColor = UIColor(hex: "F9FCFF")
     }
     convenience init(delegate: DashboardDelegate, frame: CGRect) {
         self.init(frame: frame)
-        self.delegate = delegate
+        self.dDelegate = delegate
         self.setupTV()
     }
     
@@ -36,6 +38,7 @@ class DashboardView: UIView {
         cv.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         cv.backgroundColor = .clear
         cv.showsVerticalScrollIndicator = false
+        cv.keyboardDismissMode = .interactive
         
         return cv
     }()

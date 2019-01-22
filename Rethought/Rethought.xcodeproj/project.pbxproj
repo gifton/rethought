@@ -270,8 +270,8 @@
 				D713101421EF0417001D7584 /* DashboardController.swift */,
 				D713101621EF0420001D7584 /* DashboardView.swift */,
 				D713101E21EF0511001D7584 /* DashboardDelegate.swift */,
-				D713102021EFAC15001D7584 /* ThoughtCard */,
 				D7BEFC6E21F78E6800D55C8E /* DashboardHeader.swift */,
+				D713102021EFAC15001D7584 /* ThoughtCard */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
