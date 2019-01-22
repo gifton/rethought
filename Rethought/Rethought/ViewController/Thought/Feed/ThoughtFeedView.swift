@@ -63,9 +63,6 @@ extension ThoughtFeedView {
         
         thoughtCollectionView.register(ThoughtFeedCellTile.self, forCellWithReuseIdentifier: ThoughtFeedCellTile.identifier)
     }
-    func styleView() {
-        
-    }
     @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         if recognizer.state == .recognized {
             delegate?.returnHome()

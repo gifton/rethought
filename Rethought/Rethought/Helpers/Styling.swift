@@ -194,15 +194,22 @@ extension UIView {
         self.layer.shadowRadius = 20
     }
     
-    func setGradientBackground(colorTop: UIColor, colorBottom: UIColor) {
+    func addGBackgroundGradientTo(view: UIView) {
+        //gradient layer
         let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [colorBottom.cgColor, colorTop.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
-        gradientLayer.locations = [0, 1]
-        gradientLayer.frame = bounds
         
-        layer.insertSublayer(gradientLayer, at: 0)
+        //define colors
+        gradientLayer.colors = [UIColor(hex: "2E2E38").cgColor,UIColor(hex: "2C2C2C").cgColor]
+        
+        //define locations of colors as NSNumbers in range from 0.0 to 1.0
+        //if locations not provided the colors will spread evenly
+        gradientLayer.locations = [0.0, 0.6, 0.8]
+        
+        //define frame
+        gradientLayer.frame = ViewSize.FRAME
+        
+        //insert the gradient layer to the view layer
+        view.layer.insertSublayer(gradientLayer, at: 0)
     }
     public func removeLogoShadow() {
         self.layer.shadowColor = nil

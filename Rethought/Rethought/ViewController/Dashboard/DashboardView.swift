@@ -11,25 +11,33 @@ import UIKit
 import CoreData
 
 class DashboardView: UIView {
-    var objs: [NSManagedObject] = []
+    private var delegate: DashboardDelegate!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.addGradientToView(view: self)
-        
-        mainLabel.frame = CGRect(x: 25, y: 200, width: 200, height: 25)
-        mainLabel.layer.borderWidth = 2
-        mainLabel.backgroundColor = .mainBlue
-        
-        mainButton.frame = CGRect(x: 25, y: 250, width: 200, height: 45)
-        mainButton.addTarget(self, action: #selector(checkIfSaved(_:)), for: .touchUpInside)
-        mainButton.setImage(.random(), for: .normal)
-        
-        addSubview(mainLabel)
-        addSubview(mainButton)
+        addGBackgroundGradientTo(view: self)
+    }
+    convenience init(delegate: DashboardDelegate, frame: CGRect) {
+        self.init(frame: frame)
+        self.delegate = delegate
+        self.setupTV()
     }
     
-    var mainLabel = UILabel()
-    var mainButton = UIButton()
+    let thoughtCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = ViewSize.thoughtTileSize
+        
+        let cv = UICollectionView(frame: CGRect(x: 0, y: 50, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - 50), collectionViewLayout: layout)
+        cv.contentSize = ViewSize.thoughtTileSize
+        cv.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        cv.backgroundColor = .blue
+        cv.showsVerticalScrollIndicator = false
+        cv.flashScrollIndicators()
+        
+        return cv
+    }()
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -37,42 +45,8 @@ class DashboardView: UIView {
 }
 
 extension DashboardView {
-    @objc
-    func checkIfSaved(_ sender: Any) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let userFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "ThoughtModel")
-        userFetch.fetchLimit = 25
-        userFetch.resultType = .managedObjectResultType
-        
-        do {
-            let testResults = try managedContext.fetch(userFetch) as! [ThoughtModel]
-            for result in testResults {
-                guard let entry = result.entryModel!.allObjects as? [EntryModel] else { return }
-                for e in entry {
-                    print(e)
-                }
-            }
-        } catch {
-            fatalError("Failed to fetch employees: \(error)")
-        }
-    }
-    
-    func addGradientToView(view: UIView) {
-        //gradient layer
-        let gradientLayer = CAGradientLayer()
-        
-        //define colors
-        gradientLayer.colors = [UIColor(hex: "F9FCFF").cgColor,UIColor(hex: "DEE0F3").cgColor]
-        
-        //define locations of colors as NSNumbers in range from 0.0 to 1.0
-        //if locations not provided the colors will spread evenly
-        gradientLayer.locations = [0.0, 0.6, 0.8]
-        
-        //define frame
-        gradientLayer.frame = ViewSize.FRAME
-        
-        //insert the gradient layer to the view layer
-        view.layer.insertSublayer(gradientLayer, at: 0)
+    func setupTV() {
+        thoughtCollectionView.register(ThoughtFeedCellTile.self, forCellWithReuseIdentifier: ThoughtFeedCellTile.identifier)
+        addSubview(thoughtCollectionView)
     }
 }

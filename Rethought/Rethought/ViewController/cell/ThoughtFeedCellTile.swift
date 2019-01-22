@@ -12,7 +12,7 @@ import UIKit
 class ThoughtFeedCellTile: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .mainBlue
+        self.backgroundColor = UIColor.white.withAlphaComponent(0.10)
         setupCell()
         styleCell()
     }
@@ -32,20 +32,30 @@ class ThoughtFeedCellTile: UICollectionViewCell {
     private var dayCount:      Int?
     
     //objs
-    var titleLabel          = UILabel(frame: CGRect(x: 8, y: 8, width: 134, height: 34))
-    var iconLabel           = UILabel(frame: CGRect(x: 59, y: 45, width: 42, height: 42))
-    private var linkLabel   = UILabel()
-    private var entryLabel  = UILabel()
-    private var mediaLabel  = UILabel()
+    var titleLabel            = UILabel(frame: CGRect(x: 8, y: 8, width: 134, height: 34))
+    var iconLabel             = UILabel(frame: CGRect(x: 59, y: 45, width: 42, height: 42))
+    private var linkLabel     = UILabel()
+    private var entryLabel    = UILabel()
+    private var mediaLabel    = UILabel()
     private let dayCountLabel = UILabel(frame: CGRect(x: 60, y: 122, width: 100, height: 20))
     
     public func giveContext(with preview: ThoughtPreviewLarge) {
-        self.icon = preview.icon
-        self.title = preview.title
+        self.icon       = preview.icon
+        self.title      = preview.title
         self.entryCount = preview.entryCount["entries"]
-        self.linkCount = preview.entryCount["links"]
+        self.linkCount  = preview.entryCount["links"]
         self.mediaCount = preview.entryCount["media"]
-        self.dayCount = 232
+        self.dayCount   = 232
+        recievedContext()
+    }
+    
+    public func giveContext(with dashboardThought: DashboardThought) {
+        self.icon       = dashboardThought.icon
+        self.title      = dashboardThought.title
+        self.entryCount = dashboardThought.entryCount["entries"]
+        self.linkCount  = dashboardThought.entryCount["links"]
+        self.mediaCount = dashboardThought.entryCount["media"]
+        self.dayCount   = 232
         recievedContext()
     }
     

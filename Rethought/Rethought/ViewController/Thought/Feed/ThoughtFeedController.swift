@@ -17,7 +17,6 @@ class ThoughtFeedController: UIViewController {
         self.view.backgroundColor = .mainBlue
     }
     
-    //private vars
     public var viewModel: ThoughtFeedViewModel?
 }
 

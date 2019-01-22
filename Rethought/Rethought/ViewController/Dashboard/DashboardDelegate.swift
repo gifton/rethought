@@ -15,5 +15,4 @@ protocol DashboardDelegate {
     var context: NSManagedObjectContext { get set }
     
     func userTapped(on thoughtID: String)
-    var thoughts: [DashboardThought] { get }
 }

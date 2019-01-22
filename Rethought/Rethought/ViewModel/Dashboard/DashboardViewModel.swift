@@ -17,33 +17,28 @@ class DashboardViewModel: DashboardViewModelDelegate {
     
     func getThoughts() -> [DashboardThought] {
         var thoughts = [DashboardThought]()
-        let thoughtFetcher = NSFetchRequest<NSFetchRequestResult>(entityName: "ThoughtModel")
-        do {
-            if let dataIn = try moc.fetch(thoughtFetcher) as? [ThoughtModel] {
-                for data in dataIn {
-                    let t = Thought(title: data.title!, icon: data.icon!, date: data.date!)
-                    let dt = DashboardThought(thought: t)
-                    thoughts.append(dt)
-                }
-            }
-        } catch let err {
-            print("error pulling data from db \(err)")
+        for thought in self.thoughts {
+            let dThought = DashboardThought(thought: thought)
+            thoughts.append(dThought)
         }
         return thoughts
     }
-    
-    private var viewDelegate: HomeViewControllerDelegate?
     public var moc: NSManagedObjectContext
-    
-    private var thoughts: [Thought]
+    private var viewDelegate: HomeViewControllerDelegate?
+    private var thoughts: [Thought]!
     private var entries: [Entry] = []
+    public var count: Int {
+        get {
+            return self.thoughts.count
+        }
+    }
     
-    init(thoughts: [Thought], moc: NSManagedObjectContext) {
-        self.thoughts = thoughts
+    init(moc: NSManagedObjectContext) {
+        self.moc = moc
+        self.thoughts = self.recieveDummyData()
         for thought in thoughts {
             for entry in thought.entries{ self.entries.append(entry) }
         }
-        self.moc = moc
     }
 }
 
@@ -65,7 +60,6 @@ extension DashboardViewModel {
     func retrieve(entry entryID: String) -> Entry {
         return entries.filter{ $0.id == entryID }.first ?? Entry.init(title: "Not available")
     }
-    
 //    func insertThoughts( _ context: NSManagedObjectContext) {
 //        let thoughtFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "ThoughtModel")
 //        thoughtFetch.fetchLimit = 25
@@ -110,4 +104,16 @@ extension DashboardViewModel {
 //            fatalError("Failed to fetch employees: \(error)")
 //        }
 //    }
+//        let thoughtFetcher = NSFetchRequest<NSFetchRequestResult>(entityName: "ThoughtModel")
+//        do {
+//            if let dataIn = try moc.fetch(thoughtFetcher) as? [ThoughtModel] {
+//                for data in dataIn {
+//                    let t = Thought(title: data.title!, icon: data.icon!, date: data.date!)
+//                    let dt = DashboardThought(thought: t)
+//                    thoughts.append(dt)
+//                }
+//            }
+//        } catch let err {
+//            print("error pulling data from db \(err)")
+//        }
 }

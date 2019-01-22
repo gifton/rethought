@@ -76,7 +76,7 @@ extension ThoughtCard {
             animateOut(view)
         }
         self.backgroundColor = .cardBackground
-        self.layer.cornerRadius = 7
+        self.layer.cornerRadius = 10
         self.layer.masksToBounds = true
         self.addLogoShadow()
         
