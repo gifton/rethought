@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class RecentEntryCell: UICollectionViewCell {
+class ReccomendedThoughtCellMicro: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }

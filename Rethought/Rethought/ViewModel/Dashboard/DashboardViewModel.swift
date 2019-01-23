@@ -21,7 +21,6 @@ class DashboardViewModel: DashboardViewModelDelegate {
         return thoughts
     }
     public var moc: NSManagedObjectContext
-    private var viewDelegate: HomeViewControllerDelegate?
     private var thoughts: [Thought] = []
     private var entries: [Entry] = []
     public var count: Int {

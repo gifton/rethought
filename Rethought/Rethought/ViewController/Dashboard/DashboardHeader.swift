@@ -34,7 +34,7 @@ class DashboardHeader: UICollectionReusableView {
     
     let reLogo = UIImageView(image: #imageLiteral(resourceName: "Logo"))
     
-    var recentEntriesCollectionView: UICollectionView = {
+    var reccomendedThoughtsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = ViewSize.thoughtCellSmall
@@ -64,7 +64,7 @@ extension DashboardHeader {
         addSubview(allEntriesButton)
         addSubview(searcher)
         addSubview(reLogo)
-        addSubview(recentEntriesCollectionView)
+        addSubview(reccomendedThoughtsCollectionView)
         allEntriesButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 12.5, paddingTrailing: 20)
         
         searcher.frame.origin = CGPoint(x: 0, y: self.frame.height - 45)
@@ -78,11 +78,11 @@ extension DashboardHeader {
             
         ])
         
-        recentEntriesCollectionView.register(RecentEntryCell.self, forCellWithReuseIdentifier: RecentEntryCell.identifier)
-        recentEntriesCollectionView.delegate = self
-        recentEntriesCollectionView.dataSource = self
+        reccomendedThoughtsCollectionView.register(ReccomendedThoughtCellMicro.self, forCellWithReuseIdentifier: ReccomendedThoughtCellMicro.identifier)
+        reccomendedThoughtsCollectionView.delegate = self
+        reccomendedThoughtsCollectionView.dataSource = self
         
-        recentEntriesCollectionView.setAnchor(top: reLogo.bottomAnchor, leading: leadingAnchor, bottom: searcher.topAnchor, trailing: trailingAnchor, paddingTop: 5, paddingLeading: 0, paddingBottom: 5, paddingTrailing: 0)
+        reccomendedThoughtsCollectionView.setAnchor(top: reLogo.bottomAnchor, leading: leadingAnchor, bottom: searcher.topAnchor, trailing: trailingAnchor, paddingTop: 5, paddingLeading: 0, paddingBottom: 5, paddingTrailing: 0)
     }
 }
 extension DashboardHeader: UISearchBarDelegate {
@@ -100,7 +100,7 @@ extension DashboardHeader: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentEntryCell.identifier, for: indexPath) as! RecentEntryCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReccomendedThoughtCellMicro.identifier, for: indexPath) as! ReccomendedThoughtCellMicro
         cell.giveContext(recentEntries[indexPath.row])
 
         return cell

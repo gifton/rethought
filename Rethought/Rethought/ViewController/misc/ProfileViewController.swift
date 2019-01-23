@@ -13,16 +13,10 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let pView = ProfileView(frame: .zero, firstName: "Gifton", lastName: "Okoronkwo", email: "giftono@gmail.com")
-        pView.delegate = self
         self.view = pView
     }
 }
 
-extension ProfileViewController: HomeDelegate {
-    func userPressedHomeButton() {
-        navigationController?.pushViewController(HomeViewController(), animated: false)
-    }
-}
 
 protocol ProfileProtocol {
     func userDidPressProfile()
