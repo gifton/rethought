@@ -56,7 +56,7 @@ class NewImageEntry: UIViewController {
     var doneButton: UIButton = {
         let btn = UIButton()
         btn.backgroundColor = UIColor(hex: "6271fc")
-        btn.setAttributedTitle(btn.addAttributedText(size: 12, font: .title, string: "Save"), for: .normal)
+        btn.setAttributedTitle(btn.returnAttributedText(size: 12, font: .title, string: "Save"), for: .normal)
         btn.layer.cornerRadius = 6
         
         return btn

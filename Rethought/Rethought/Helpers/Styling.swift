@@ -11,7 +11,7 @@ import UIKit
 
 extension UIView {
     //round individual corners of view
-    func roundCorners(corners:UIRectCorner, radius: CGFloat) {
+    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         let mask = CAShapeLayer()
         mask.path = path.cgPath
@@ -161,7 +161,7 @@ extension UIView {
     }
     
     //add apple-standard blurred background to view
-    func blurBackground(type : UIBlurEffect.Style, cornerRadius : CGFloat = 20) {
+    func blurBackground(type : UIBlurEffect.Style, cornerRadius : CGFloat = 10) {
         let blurEffect = UIBlurEffect(style: type)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.bounds
@@ -175,18 +175,7 @@ extension UIView {
         blurEffectView.layer.masksToBounds = true
         self.insertSubview(blurEffectView, at: 0)
     }
-}
 
-extension UIButton {
-    func disableButton() {
-        self.layer.opacity = 0.4
-    }
-    func enableButton() {
-        self.layer.opacity = 1.0
-    }
-}
-
-extension UIView {
     public func addLogoShadow() {
         self.layer.shadowColor = UIColor(hex: "161616", alpha: 0.8).cgColor
         self.layer.shadowOpacity = 1
@@ -211,11 +200,14 @@ extension UIView {
         //insert the gradient layer to the view layer
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
-    public func removeLogoShadow() {
-        self.layer.shadowColor = nil
-        self.layer.shadowOpacity = 0
-        self.layer.shadowOffset = .zero
-        self.layer.shadowRadius = 0
+}
+
+extension UIButton {
+    func disableButton() {
+        self.layer.opacity = 0.4
+    }
+    func enableButton() {
+        self.layer.opacity = 1.0
     }
 }
 
@@ -228,20 +220,3 @@ extension UIView {
 //}
 
 
-//how to add Gesture pan recognizer:
-//let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didPan(sender:)))
-//self.isUserInteractionEnabled = true
-//self.addGestureRecognizer(panRecognizer)
-//self.viewCenter = self.center
-//var viewCenter: CGPoint!
-//@objc func didPan(sender: UIPanGestureRecognizer) {
-//    let translation = sender.translation(in: self)
-//    print("translation \(translation)")
-//    if sender.state == .began {
-//        print("Gesture began")
-//    } else if sender.state == .changed {
-//        print("Gesture is changing")
-//    } else if sender.state == .ended {
-//        print("Gesture ended")
-//    }
-//}

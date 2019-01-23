@@ -54,7 +54,7 @@ class NewTextEntry: UIViewController {
     var doneButton: UIButton = {
         let btn = UIButton()
         btn.backgroundColor = UIColor(hex: "6271fc")
-        btn.setAttributedTitle(btn.addAttributedText(size: 12, font: .title, string: "Save"), for: .normal)
+        btn.setAttributedTitle(btn.returnAttributedText(size: 12, font: .title, string: "Save"), for: .normal)
         btn.layer.cornerRadius = 6
         
         return btn
@@ -80,9 +80,9 @@ class NewTextEntry: UIViewController {
         incompleteLabel.frame     = CGRect(x: 25, y: ViewSize.SCREEN_HEIGHT - 200, width: ViewSize.SCREEN_WIDTH - 50, height: 59)
         
         titleTextView.textRect(forBounds: CGRect(x: 10, y: 0, width: titleTextView.frame.width - 10, height: titleTextView.frame.height))
-        titleTextView.attributedText = titleTextView.addAttributedText(color: .white, size: 14, font: .body, string: descriptionString)
+        titleTextView.attributedText = titleTextView.returnAttributedText(color: .white, size: 14, font: .body, string: descriptionString)
         titleTextView.addLeftPadding(size: 10)
-        detailTextView.attributedText = detailTextView.addAttributedText(color: .black, size: 14, font: .body, string: "okay, start at the begining...")
+        detailTextView.attributedText = detailTextView.returnAttributedText(color: .black, size: 14, font: .body, string: "okay, start at the begining...")
         
         let toolBarKeyboardView = UIToolbar()
         toolBarKeyboardView.sizeToFit()

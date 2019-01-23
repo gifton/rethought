@@ -77,7 +77,7 @@ extension NewLinkEntry {
         
         doneBtn.frame = CGRect(x: 25, y: ViewSize.SCREEN_HEIGHT - 99, width: ViewSize.SCREEN_WIDTH - 50, height: 59)
         doneBtn.backgroundColor = .mainBlue
-        doneBtn.setAttributedTitle(doneBtn.addAttributedText(size: 12, font: .title, string: "Save"), for: .normal)
+        doneBtn.setAttributedTitle(doneBtn.returnAttributedText(size: 12, font: .title, string: "Save"), for: .normal)
         doneBtn.layer.cornerRadius = 6
         doneBtn.addTarget(self, action: #selector(saveEntry(_:)), for: .touchUpInside)
         doneBtn.disableButton()
@@ -111,8 +111,8 @@ extension NewLinkEntry: ConnectToTextView {
                                 guard let imgUrl: URL = URL(string: result[SwiftLinkResponseKey.image] as! String) else { return }
                                 
                                 self.mainImage.load(url: imgUrl)
-                                self.shortLinkLabel.attributedText = self.shortLinkLabel.addAttributedText(size: 14, font: .title, string: result[SwiftLinkResponseKey.canonicalUrl] as? String ?? "Not available")
-                                self.linkDescription.attributedText = self.linkDescription.addAttributedText(size: 14, font: .body, string: result[SwiftLinkResponseKey.description] as? String ?? "Not available")
+                                self.shortLinkLabel.attributedText = self.shortLinkLabel.returnAttributedText(size: 14, font: .title, string: result[SwiftLinkResponseKey.canonicalUrl] as? String ?? "Not available")
+                                self.linkDescription.attributedText = self.linkDescription.returnAttributedText(size: 14, font: .body, string: result[SwiftLinkResponseKey.description] as? String ?? "Not available")
                                 self.linkDescription.adjustsFontForContentSizeCategory = true
                                 self.doneBtn.enableButton()
                                 self.longURL = result[SwiftLinkResponseKey.finalUrl] as? String ?? "Not available"

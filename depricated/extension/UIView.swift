@@ -20,23 +20,7 @@ extension UIView {
         layer.cornerRadius = radius
         layer.masksToBounds = true
     }
-    func applyGradient(color1: UIColor, color2: UIColor) {
-        let gradient = CAGradientLayer()
-        gradient.colors = [color1.cgColor, color2.cgColor]  
-        gradient.locations = [0.0, 1.0]
-        gradient.frame = self.bounds
-        self.layer.masksToBounds = true
-        self.layer.insertSublayer(gradient, at: 1)
-    }
-    func addGradient(){
-        
-        let gradient:CAGradientLayer = CAGradientLayer()
-        gradient.frame.size = self.frame.size
-        gradient.colors = [UIColor(hex: "F9FCFF").cgColor,UIColor(hex: "DEDFEE").cgColor] //Or any colors
-        self.layer.addSublayer(gradient)
-        
-    }
-    func addAttributedText(color: UIColor = .black, size: fontSize.RawValue, font: RethoughtFonts, string: String) -> NSAttributedString {
+    func returnAttributedText(color: UIColor = .black, size: fontSize.RawValue, font: RethoughtFonts, string: String) -> NSAttributedString {
         var output = NSAttributedString()
         switch font {
         case .body:
@@ -52,21 +36,6 @@ extension UIView {
         return output
     }
 }
-
-extension UIView {
-    func layerGradient() {
-        let layer : CAGradientLayer = CAGradientLayer()
-        layer.frame.size = self.frame.size
-        layer.frame.origin = CGPoint(x: 0, y: 0)
-        layer.cornerRadius = CGFloat(frame.width / 20)
-        
-
-        
-        layer.colors = [UIColor(hex: "F9FCFF").cgColor,UIColor(hex: "DEE0F3").cgColor]
-        self.layer.insertSublayer(layer, at: 0)
-    }
-}
-
 
 extension UIView {
     

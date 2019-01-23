@@ -27,7 +27,6 @@
 		D713101D21EF0503001D7584 /* ThoughtCardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713101C21EF0503001D7584 /* ThoughtCardDelegate.swift */; };
 		D713101F21EF0511001D7584 /* DashboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713101E21EF0511001D7584 /* DashboardDelegate.swift */; };
 		D713102221EFB8D3001D7584 /* CardObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713102121EFB8D3001D7584 /* CardObject.swift */; };
-		D713102421F006E8001D7584 /* EmojiDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713102321F006E8001D7584 /* EmojiDisplay.swift */; };
 		D713102721F01631001D7584 /* NewTextEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713102621F01631001D7584 /* NewTextEntry.swift */; };
 		D713102921F068ED001D7584 /* NewImageEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713102821F068ED001D7584 /* NewImageEntry.swift */; };
 		D713102B21F06ED4001D7584 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713102A21F06ED4001D7584 /* UITextField.swift */; };
@@ -35,10 +34,14 @@
 		D71B534821E6FFB10030D5C6 /* layout.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D71B534521E6FFB10030D5C6 /* layout.jpg */; };
 		D71B534921E6FFB10030D5C6 /* layout@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D71B534621E6FFB10030D5C6 /* layout@2x.jpg */; };
 		D71B534A21E6FFB10030D5C6 /* layout@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D71B534721E6FFB10030D5C6 /* layout@3x.jpg */; };
-		D71FA87621E038B5000706A5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87521E038B5000706A5 /* String.swift */; };
-		D71FA87821E1525B000706A5 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87721E1525B000706A5 /* UITextView.swift */; };
-		D71FA87A21E1D2AF000706A5 /* ThoughtDrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87921E1D2AF000706A5 /* ThoughtDrawerView.swift */; };
+		D71FA87621E038B5000706A5 /* ThoughtIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87521E038B5000706A5 /* ThoughtIcon.swift */; };
+		D71FA87821E1525B000706A5 /* ReTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA87721E1525B000706A5 /* ReTextView.swift */; };
 		D71FA88221E1F272000706A5 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FA88121E1F272000706A5 /* UILabel.swift */; };
+		D739400221F88AE100D2B736 /* EmojiDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D739400121F88AE100D2B736 /* EmojiDisplay.swift */; };
+		D739400421F88B8300D2B736 /* ReTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D739400321F88B8300D2B736 /* ReTextField.swift */; };
+		D739400621F88BF600D2B736 /* ConnectToView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D739400521F88BF600D2B736 /* ConnectToView.swift */; };
+		D739400821F88C7C00D2B736 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D739400721F88C7C00D2B736 /* UITextView.swift */; };
+		D739400A21F88D4300D2B736 /* NewEntryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D739400921F88D4300D2B736 /* NewEntryButton.swift */; };
 		D75B88B921BB70C00023784F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B88B821BB70C00023784F /* AppDelegate.swift */; };
 		D75B88C321BB70C10023784F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D75B88C221BB70C10023784F /* Assets.xcassets */; };
 		D75B88C621BB70C10023784F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D75B88C421BB70C10023784F /* LaunchScreen.storyboard */; };
@@ -66,9 +69,7 @@
 		D766A00821F1B8E800BD9F2A /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D766A00721F1B8E800BD9F2A /* UIImageView.swift */; };
 		D773456821F32FCC0075B4C8 /* RETHOUGHT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D773456621F32FCC0075B4C8 /* RETHOUGHT.xcdatamodeld */; };
 		D773456A21F343DE0075B4C8 /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D773456921F343DE0075B4C8 /* Managed.swift */; };
-		D79237EE21D0360C00BEAE0A /* RecommendedThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79237ED21D0360C00BEAE0A /* RecommendedThoughtCell.swift */; };
 		D79B1EFA21CC6B0000E951D3 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B1EF921CC6B0000E951D3 /* UIFont.swift */; };
-		D79B1EFC21CC748B00E951D3 /* RecommendedThoughtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B1EFB21CC748B00E951D3 /* RecommendedThoughtView.swift */; };
 		D7BEFC6F21F78E6800D55C8E /* DashboardHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEFC6E21F78E6800D55C8E /* DashboardHeader.swift */; };
 		D7BEFC7121F7D77400D55C8E /* ReccomendedThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEFC7021F7D77400D55C8E /* ReccomendedThoughtCell.swift */; };
 		D7BEFC7321F7F58A00D55C8E /* ReccomendedThought.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEFC7221F7F58A00D55C8E /* ReccomendedThought.swift */; };
@@ -107,7 +108,6 @@
 		D713101C21EF0503001D7584 /* ThoughtCardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtCardDelegate.swift; sourceTree = "<group>"; };
 		D713101E21EF0511001D7584 /* DashboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardDelegate.swift; sourceTree = "<group>"; };
 		D713102121EFB8D3001D7584 /* CardObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardObject.swift; sourceTree = "<group>"; };
-		D713102321F006E8001D7584 /* EmojiDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiDisplay.swift; sourceTree = "<group>"; };
 		D713102621F01631001D7584 /* NewTextEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTextEntry.swift; sourceTree = "<group>"; };
 		D713102821F068ED001D7584 /* NewImageEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewImageEntry.swift; sourceTree = "<group>"; };
 		D713102A21F06ED4001D7584 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
@@ -115,10 +115,14 @@
 		D71B534521E6FFB10030D5C6 /* layout.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = layout.jpg; path = Assets.xcassets/layout.imageset/layout.jpg; sourceTree = "<group>"; };
 		D71B534621E6FFB10030D5C6 /* layout@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "layout@2x.jpg"; path = "Assets.xcassets/layout.imageset/layout@2x.jpg"; sourceTree = "<group>"; };
 		D71B534721E6FFB10030D5C6 /* layout@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "layout@3x.jpg"; path = "Assets.xcassets/layout.imageset/layout@3x.jpg"; sourceTree = "<group>"; };
-		D71FA87521E038B5000706A5 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		D71FA87721E1525B000706A5 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
-		D71FA87921E1D2AF000706A5 /* ThoughtDrawerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDrawerView.swift; sourceTree = "<group>"; };
+		D71FA87521E038B5000706A5 /* ThoughtIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtIcon.swift; sourceTree = "<group>"; };
+		D71FA87721E1525B000706A5 /* ReTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReTextView.swift; sourceTree = "<group>"; };
 		D71FA88121E1F272000706A5 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		D739400121F88AE100D2B736 /* EmojiDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiDisplay.swift; sourceTree = "<group>"; };
+		D739400321F88B8300D2B736 /* ReTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReTextField.swift; sourceTree = "<group>"; };
+		D739400521F88BF600D2B736 /* ConnectToView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectToView.swift; sourceTree = "<group>"; };
+		D739400721F88C7C00D2B736 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
+		D739400921F88D4300D2B736 /* NewEntryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryButton.swift; sourceTree = "<group>"; };
 		D75B88B521BB70C00023784F /* rethought.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rethought.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D75B88B821BB70C00023784F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D75B88C221BB70C10023784F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -148,9 +152,7 @@
 		D766A00721F1B8E800BD9F2A /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		D773456721F32FCC0075B4C8 /* RETHOUGHT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RETHOUGHT.xcdatamodel; sourceTree = "<group>"; };
 		D773456921F343DE0075B4C8 /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
-		D79237ED21D0360C00BEAE0A /* RecommendedThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedThoughtCell.swift; sourceTree = "<group>"; };
 		D79B1EF921CC6B0000E951D3 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
-		D79B1EFB21CC748B00E951D3 /* RecommendedThoughtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedThoughtView.swift; sourceTree = "<group>"; };
 		D7BEFC6E21F78E6800D55C8E /* DashboardHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHeader.swift; sourceTree = "<group>"; };
 		D7BEFC7021F7D77400D55C8E /* ReccomendedThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReccomendedThoughtCell.swift; sourceTree = "<group>"; };
 		D7BEFC7221F7F58A00D55C8E /* ReccomendedThought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReccomendedThought.swift; sourceTree = "<group>"; };
@@ -203,8 +205,9 @@
 				D75B88CE21BC507B0023784F /* Constants.swift */,
 				D75B88CF21BC507B0023784F /* Styling.swift */,
 				D70EA8DD21E301240071E257 /* Sizes.swift */,
-				D71FA87921E1D2AF000706A5 /* ThoughtDrawerView.swift */,
 				D773456921F343DE0075B4C8 /* Managed.swift */,
+				D79B1EF921CC6B0000E951D3 /* UIFont.swift */,
+				D739400521F88BF600D2B736 /* ConnectToView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -252,6 +255,18 @@
 			path = createEntry;
 			sourceTree = "<group>";
 		};
+		D739400021F88A7800D2B736 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				D71FA87521E038B5000706A5 /* ThoughtIcon.swift */,
+				D739400121F88AE100D2B736 /* EmojiDisplay.swift */,
+				D71FA87721E1525B000706A5 /* ReTextView.swift */,
+				D739400321F88B8300D2B736 /* ReTextField.swift */,
+				D739400921F88D4300D2B736 /* NewEntryButton.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
 		D75B88AC21BB70C00023784F = {
 			isa = PBXGroup;
 			children = (
@@ -276,7 +291,8 @@
 			children = (
 				D75B88C721BB70C10023784F /* Info.plist */,
 				D75B88EB21BC98A80023784F /* Resources */,
-				D75B88D421BC53150023784F /* Model-Core */,
+				D75B88D421BC53150023784F /* Core */,
+				D739400021F88A7800D2B736 /* Objects */,
 				D75B88E121BC566C0023784F /* ViewModel */,
 				D70EA8DC21E301080071E257 /* Helpers */,
 				D75B88CD21BC507B0023784F /* extension */,
@@ -290,22 +306,19 @@
 			children = (
 				D766A00721F1B8E800BD9F2A /* UIImageView.swift */,
 				D75B88D221BC51250023784F /* UIImage.swift */,
-				D79B1EF921CC6B0000E951D3 /* UIFont.swift */,
-				D71FA87521E038B5000706A5 /* String.swift */,
-				D71FA87721E1525B000706A5 /* UITextView.swift */,
+				D739400721F88C7C00D2B736 /* UITextView.swift */,
 				D713102A21F06ED4001D7584 /* UITextField.swift */,
 				D71FA88121E1F272000706A5 /* UILabel.swift */,
 				D70EA8DF21E301E50071E257 /* UIColor.swift */,
 				D70EA8E321E329140071E257 /* UIButton.swift */,
 				D70EA8EC21E58FA70071E257 /* UIView.swift */,
 				D70EA8EE21E5B1620071E257 /* ArrayExtension.swift */,
-				D713102321F006E8001D7584 /* EmojiDisplay.swift */,
 			);
 			name = extension;
 			path = ../../depricated/extension;
 			sourceTree = "<group>";
 		};
-		D75B88D421BC53150023784F /* Model-Core */ = {
+		D75B88D421BC53150023784F /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				D773456621F32FCC0075B4C8 /* RETHOUGHT.xcdatamodeld */,
@@ -318,7 +331,7 @@
 				D711281121F30C4B006C732E /* DataController.swift */,
 				D7BEFC7221F7F58A00D55C8E /* ReccomendedThought.swift */,
 			);
-			path = "Model-Core";
+			path = Core;
 			sourceTree = "<group>";
 		};
 		D75B88E121BC566C0023784F /* ViewModel */ = {
@@ -369,7 +382,6 @@
 		D75B890221BDFA6C0023784F /* misc */ = {
 			isa = PBXGroup;
 			children = (
-				D79B1EFB21CC748B00E951D3 /* RecommendedThoughtView.swift */,
 				D75B890D21BE191C0023784F /* ProfileView.swift */,
 				D75B890F21BE192E0023784F /* ProfileViewController.swift */,
 				D702B21021DBFECA003DCA83 /* BackDelegate.swift */,
@@ -381,7 +393,6 @@
 			isa = PBXGroup;
 			children = (
 				D75B892321C2FE750023784F /* EntryPreviewCell.swift */,
-				D79237ED21D0360C00BEAE0A /* RecommendedThoughtCell.swift */,
 				D7FFA1DC21D6F785001C3B72 /* ThoughtFeedCellTile.swift */,
 				D7BEFC7021F7D77400D55C8E /* ReccomendedThoughtCell.swift */,
 			);
@@ -566,7 +577,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D79237EE21D0360C00BEAE0A /* RecommendedThoughtCell.swift in Sources */,
 				D7BEFC7321F7F58A00D55C8E /* ReccomendedThought.swift in Sources */,
 				D713102B21F06ED4001D7584 /* UITextField.swift in Sources */,
 				D7BEFC7121F7D77400D55C8E /* ReccomendedThoughtCell.swift in Sources */,
@@ -575,20 +585,21 @@
 				D70EA8E421E329140071E257 /* UIButton.swift in Sources */,
 				D713102721F01631001D7584 /* NewTextEntry.swift in Sources */,
 				D702B21121DBFECA003DCA83 /* BackDelegate.swift in Sources */,
+				D739400821F88C7C00D2B736 /* UITextView.swift in Sources */,
 				D7FFA1DB21D6F496001C3B72 /* ThoughtFeedView.swift in Sources */,
 				D713101921EF0436001D7584 /* ThoughtCardController.swift in Sources */,
-				D71FA87821E1525B000706A5 /* UITextView.swift in Sources */,
+				D71FA87821E1525B000706A5 /* ReTextView.swift in Sources */,
 				D7FFA1D121D6B9DD001C3B72 /* ThoughtFeedDelegate.swift in Sources */,
 				D75B88D121BC507B0023784F /* Styling.swift in Sources */,
 				D7FFA1DD21D6F785001C3B72 /* ThoughtFeedCellTile.swift in Sources */,
 				D7FFA1C721D4703C001C3B72 /* ThoughtDetailView.swift in Sources */,
 				D7FFA1CD21D6B875001C3B72 /* ThoughtFeedController.swift in Sources */,
+				D739400621F88BF600D2B736 /* ConnectToView.swift in Sources */,
 				D75B892421C2FE750023784F /* EntryPreviewCell.swift in Sources */,
 				D713101221EEF3BE001D7584 /* DashboardThought.swift in Sources */,
 				D70EA8EF21E5B1620071E257 /* ArrayExtension.swift in Sources */,
-				D71FA87A21E1D2AF000706A5 /* ThoughtDrawerView.swift in Sources */,
 				D713101F21EF0511001D7584 /* DashboardDelegate.swift in Sources */,
-				D71FA87621E038B5000706A5 /* String.swift in Sources */,
+				D71FA87621E038B5000706A5 /* ThoughtIcon.swift in Sources */,
 				D711281221F30C4B006C732E /* DataController.swift in Sources */,
 				D70EA8ED21E58FA70071E257 /* UIView.swift in Sources */,
 				D75B891021BE192E0023784F /* ProfileViewController.swift in Sources */,
@@ -598,11 +609,13 @@
 				D7FFA1E421D717AD001C3B72 /* EntryDetailView.swift in Sources */,
 				D75B88E521BC56AB0023784F /* Thought.swift in Sources */,
 				D75B890A21BDFE780023784F /* DummyData.swift in Sources */,
+				D739400221F88AE100D2B736 /* EmojiDisplay.swift in Sources */,
 				D713101721EF0420001D7584 /* DashboardView.swift in Sources */,
 				D713101B21EF043F001D7584 /* ThoughtCard.swift in Sources */,
 				D713100F21EEEB5E001D7584 /* QuoteOfTheDay.swift in Sources */,
 				D713101D21EF0503001D7584 /* ThoughtCardDelegate.swift in Sources */,
 				D70EA8E021E301E50071E257 /* UIColor.swift in Sources */,
+				D739400A21F88D4300D2B736 /* NewEntryButton.swift in Sources */,
 				D7FFA1C921D4C050001C3B72 /* ThoughtDetailDelegate.swift in Sources */,
 				D711281021F2A76E006C732E /* NewAudioEntry.swift in Sources */,
 				D75B88D321BC51250023784F /* UIImage.swift in Sources */,
@@ -610,13 +623,12 @@
 				D7FFA1E221D716D7001C3B72 /* EntryDetailDelegate.swift in Sources */,
 				D713100D21EEE9D4001D7584 /* DashboardViewModelDelegate.swift in Sources */,
 				D79B1EFA21CC6B0000E951D3 /* UIFont.swift in Sources */,
-				D79B1EFC21CC748B00E951D3 /* RecommendedThoughtView.swift in Sources */,
 				D75B88D021BC507B0023784F /* Constants.swift in Sources */,
 				D7FFA1D721D6BD55001C3B72 /* ThoughtFeedViewModelDelegate.swift in Sources */,
 				D713101521EF0417001D7584 /* DashboardController.swift in Sources */,
 				D713102921F068ED001D7584 /* NewImageEntry.swift in Sources */,
 				D773456821F32FCC0075B4C8 /* RETHOUGHT.xcdatamodeld in Sources */,
-				D713102421F006E8001D7584 /* EmojiDisplay.swift in Sources */,
+				D739400421F88B8300D2B736 /* ReTextField.swift in Sources */,
 				D71FA88221E1F272000706A5 /* UILabel.swift in Sources */,
 				D70EA8DE21E301240071E257 /* Sizes.swift in Sources */,
 				D766A00821F1B8E800BD9F2A /* UIImageView.swift in Sources */,

@@ -112,7 +112,7 @@ extension ThoughtCard {
         doneButton.layer.cornerRadius = 10
         doneButton.layer.masksToBounds = true
         doneButton.addAttText(color: .white, size: 16, font: .title, string: "Done")
-        errorLabel.attributedText = errorLabel.addAttributedText(color: .white, size: 14, font: .bodyLight, string: "please add a title and icon")
+        errorLabel.attributedText = errorLabel.returnAttributedText(color: .white, size: 14, font: .bodyLight, string: "please add a title and icon")
         errorLabel.textAlignment = .center
         errorLabel.layer.opacity = 0.0
         

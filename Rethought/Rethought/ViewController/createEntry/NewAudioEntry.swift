@@ -43,7 +43,7 @@ class NewAudioEntry: UIViewController {
     var doneButton: UIButton = {
         let btn = UIButton()
         btn.backgroundColor = UIColor(hex: "6271fc")
-        btn.setAttributedTitle(btn.addAttributedText(size: 12, font: .title, string: "Save"), for: .normal)
+        btn.setAttributedTitle(btn.returnAttributedText(size: 12, font: .title, string: "Save"), for: .normal)
         btn.layer.cornerRadius = 6
         
         return btn
@@ -67,7 +67,7 @@ class NewAudioEntry: UIViewController {
         doneButton.frame          = CGRect(x: 25, y: ViewSize.SCREEN_HEIGHT - 99, width: ViewSize.SCREEN_WIDTH - 50, height: 59)
         incompleteLabel.frame     = CGRect(x: 25, y: ViewSize.SCREEN_HEIGHT - 200, width: ViewSize.SCREEN_WIDTH - 50, height: 59)
         
-        titleTextView.attributedText = titleTextView.addAttributedText(color: .white, size: 14, font: .body, string: "Add a description")
+        titleTextView.attributedText = titleTextView.returnAttributedText(color: .white, size: 14, font: .body, string: "Add a description")
         
         view.addSubview(titleTextView)
         view.addSubview(doneButton)
