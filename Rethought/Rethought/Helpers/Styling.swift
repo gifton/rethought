@@ -199,7 +199,7 @@ extension UIView {
         let gradientLayer = CAGradientLayer()
         
         //define colors
-        gradientLayer.colors = [UIColor(hex: "2E2E38").cgColor,UIColor(hex: "2C2C2C").cgColor]
+        gradientLayer.colors = [UIColor(hex: "F9FCFF").cgColor,UIColor(hex: "BEC1E0").cgColor]
         
         //define locations of colors as NSNumbers in range from 0.0 to 1.0
         //if locations not provided the colors will spread evenly

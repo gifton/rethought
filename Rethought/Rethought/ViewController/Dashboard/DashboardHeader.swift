@@ -22,11 +22,11 @@ class DashboardHeader: UICollectionReusableView {
         return "ThoughtFeedCellTile"
     }
     public var delegate: DashboardDelegate?
-    public var recentEntries: [EntryPreview] = []
+    public var recentEntries: [ReccomendedThought] = []
     
     let allEntriesButton: UIButton = {
         let btn = UIButton()
-        btn.addAttText(color: UIColor(hex: "51DF9F"), size: 13, font: .title, string: "All entries")
+        btn.addAttText(color: UIColor(hex: "D63864"), size: 13, font: .title, string: "All entries")
         btn.translatesAutoresizingMaskIntoConstraints = false
         
         return btn
@@ -48,7 +48,7 @@ class DashboardHeader: UICollectionReusableView {
     
     var searcher: UISearchBar = {
         let sb = UISearchBar()
-        sb.barStyle = .blackOpaque
+        sb.barStyle = .default
         sb.returnKeyType = .search
         
         return sb
@@ -102,7 +102,7 @@ extension DashboardHeader: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentEntryCell.identifier, for: indexPath) as! RecentEntryCell
         cell.giveContext(recentEntries[indexPath.row])
-        print("oh snap this happened")
+
         return cell
     }
     

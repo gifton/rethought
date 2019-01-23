@@ -12,7 +12,7 @@ import UIKit
 class ThoughtFeedCellTile: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.white.withAlphaComponent(0.10)
+        self.backgroundColor = UIColor.black.withAlphaComponent(0.10)
         setupCell()
         styleCell()
     }
@@ -66,7 +66,7 @@ class ThoughtFeedCellTile: UICollectionViewCell {
         stack.distribution = .equalSpacing
         stack.frame = CGRect(x: 15, y: self.frame.height - 75, width: 70, height: 55)
         
-        titleLabel.frame = CGRect(x: 8, y: 8, width: self.frame.width - 16, height: 55)
+        titleLabel.frame = CGRect(x: 15, y: 8, width: self.frame.width - 30, height: 55)
         iconLabel.center = CGPoint(x: (self.frame.width - 21) / 2, y: (self.frame.height - 21) / 2)
         iconLabel.frame.size = CGSize(width: 42, height: 42)
         dayCountLabel.frame = CGRect(x: 100, y: self.frame.height - 35, width: 100, height: 15)

@@ -17,12 +17,12 @@ struct EntryPreview {
     let date: Date
     var image: UIImage?
     var title: String
+    var thoughtIcon: ThoughtIcon?
     
     //optional Values
     var detail: String?
     var link: String?
     var type: Entry.EntryType
-    var thoughtIcon: ThoughtIcon?
     public var thoughtTitle: String?
     
     init(entry: Entry) {

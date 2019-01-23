@@ -60,7 +60,6 @@ extension DashboardController {
             let dashboard = DashboardView(delegate: self, frame: .zero)
             dashboard.thoughtCollectionView.dataSource = self
             dashboard.thoughtCollectionView.delegate = self
-            dashboard.recentEntries = self.model.getRecentEntries()
             self.view = dashboard
         }
         
@@ -109,4 +108,3 @@ extension DashboardController: UICollectionViewDelegate {
         self.resignFirstResponder()
     }
 }
-

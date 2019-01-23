@@ -38,6 +38,7 @@ class RecommendedThoughtCell: UITableViewCell {
         let iv = UIImageView(frame: size.largeCell)
         iv.image = #imageLiteral(resourceName: "ReccomendedThought")
         iv.layer.cornerRadius = 10
+        iv.setImageColor(color: .black)
         return iv
     }()
     

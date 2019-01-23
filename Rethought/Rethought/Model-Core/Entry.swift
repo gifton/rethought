@@ -84,6 +84,8 @@ public class Entry {
 //        self.init(type: entryModel.type, thoughtID: entryModel.id, detail: entryModel.detail, date: entryModel.date, icon: entryModel.icon)
 //    }
     
+    var preview: [EntryPreview]?
+    
 }
 
 extension Entry {

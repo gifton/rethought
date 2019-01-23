@@ -11,9 +11,6 @@ import UIKit
 import CoreData
 
 class DashboardViewModel: DashboardViewModelDelegate {
-    func getRecentEntries() -> EntryPreview {
-        return EntryPreview(entry: Entry(title: "FWK"))
-    }
     
     func getThoughts() -> [DashboardThought] {
         var thoughts = [DashboardThought]()
@@ -49,13 +46,10 @@ class DashboardViewModel: DashboardViewModelDelegate {
 }
 
 extension DashboardViewModel {
-    func getRecentEntries() -> [EntryPreview] {
-        var recentEntries = [EntryPreview]()
-        for (count, entry) in self.entries.enumerated() {
-            if count == 25 {
-                break
-            }
-            let entryPrev = EntryPreview(entry: entry)
+    func getRecentEntries() -> [ReccomendedThought] {
+        var recentEntries = [ReccomendedThought]()
+        for thought in self.thoughts {
+            let entryPrev = ReccomendedThought(thought)
             recentEntries.append(entryPrev)
         }
         return recentEntries
