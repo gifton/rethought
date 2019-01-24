@@ -25,9 +25,10 @@ enum ErrorDomain: String {
 }
 
 extension UIColor {
+    static let lightBackground          = UIColor(hex: "EFEFEF")
     static let darkBackground           = UIColor(hex: "161616")
     static let mainBlue                 = UIColor(hex: "5066E3")
-    static let cardBackground           = UIColor(hex: "414468")
+    static let cardBackground           = UIColor(hex: "3D3D46")
     static let cardLabelBackgroundLight = UIColor.white.withAlphaComponent(0.15)
     static let cardLabelBackgroundDark  = UIColor.black.withAlphaComponent(0.15)
     static let cancelColor              = UIColor(hex: "F2BE54")

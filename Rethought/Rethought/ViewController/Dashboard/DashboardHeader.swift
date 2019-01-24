@@ -47,16 +47,28 @@ class DashboardHeader: UICollectionReusableView {
         cv.backgroundColor = .clear
         cv.showsHorizontalScrollIndicator = false
         cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.addBorders(edges: [.right], color: .lightGray, thickness: 4)
         
         return cv
     }()
     
-    var searcher: UISearchBar = {
-        let sb = UISearchBar()
-        sb.barStyle = .default
-        sb.returnKeyType = .search
+    var searchButton: UIButton = {
+        let btn = UIButton()
+        btn.setImage(#imageLiteral(resourceName: "Search"), for: .normal)
         
-        return sb
+        return btn
+    }()
+    
+    let newQuickThought: UIButton = {
+        let btn = UIButton()
+        btn.setHeightWidth(width: 60, height: 60)
+        btn.setImage(#imageLiteral(resourceName: "flash"), for: .normal)
+        btn.layer.borderColor = UIColor.black.cgColor
+        btn.layer.borderWidth = 3
+        btn.layer.cornerRadius = 30
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        
+        return btn
     }()
     
     required init?(coder aDecoder: NSCoder) {
@@ -69,35 +81,35 @@ extension DashboardHeader {
         
         //add to superView
         addSubview(allEntriesButton)
-        addSubview(searcher)
+        addSubview(searchButton)
         addSubview(reLogo)
         addSubview(reccomendedThoughtsCollectionView)
+        addSubview(newQuickThought)
         
-        //sty;e
+        //style
         allEntriesButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 12.5, paddingTrailing: 20)
         
-        searcher.frame.origin = CGPoint(x: 0, y: self.frame.height - 45)
-        searcher.frame.size = CGSize(width: ViewSize.SCREEN_WIDTH - 110, height: 40)
-        searcher.backgroundImage = UIImage()
+        searchButton.frame.origin = CGPoint(x: 10, y: self.frame.height - 45)
+        searchButton.frame.size = CGSize(width: 20, height: 20)
         
         reLogo.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             reLogo.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             reLogo.topAnchor.constraint(equalTo: safeTopAnchor, constant: 10),
-            
         ])
         
-        reccomendedThoughtsCollectionView.register(ReccomendedThoughtCellMicro.self, forCellWithReuseIdentifier: ReccomendedThoughtCellMicro.identifier)
+        reccomendedThoughtsCollectionView.register(QuickThoughtCell.self, forCellWithReuseIdentifier: QuickThoughtCell.identifier)
         reccomendedThoughtsCollectionView.delegate = self
         reccomendedThoughtsCollectionView.dataSource = self
         
-        reccomendedThoughtsCollectionView.setAnchor(top: reLogo.bottomAnchor, leading: leadingAnchor, bottom: searcher.topAnchor, trailing: trailingAnchor, paddingTop: 5, paddingLeading: 0, paddingBottom: 5, paddingTrailing: 0)
+        reccomendedThoughtsCollectionView.setAnchor(top: reLogo.bottomAnchor, leading: leadingAnchor, bottom: searchButton.topAnchor, trailing: trailingAnchor, paddingTop: 20, paddingLeading: 0, paddingBottom: 20, paddingTrailing: 80)
+        
+        NSLayoutConstraint.activate([
+            newQuickThought.centerYAnchor.constraint(equalTo: reccomendedThoughtsCollectionView.centerYAnchor),
+            newQuickThought.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -22),
+        ])
     }
 }
-extension DashboardHeader: UISearchBarDelegate {
-    
-}
-
 
 extension DashboardHeader: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -112,8 +124,8 @@ extension DashboardHeader: UICollectionViewDataSource {
     
     //set cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReccomendedThoughtCellMicro.identifier, for: indexPath) as! ReccomendedThoughtCellMicro
-        cell.giveContext(recentEntries[indexPath.row])
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuickThoughtCell.identifier, for: indexPath) as! QuickThoughtCell
+        
 
         return cell
     }

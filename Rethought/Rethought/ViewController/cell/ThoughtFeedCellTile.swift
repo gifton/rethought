@@ -12,7 +12,7 @@ import UIKit
 class ThoughtFeedCellTile: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.black.withAlphaComponent(0.10)
+        self.backgroundColor = UIColor.black.withAlphaComponent(0.05)
         setupCell()
         styleCell()
     }
@@ -66,11 +66,10 @@ class ThoughtFeedCellTile: UICollectionViewCell {
         stack.distribution = .equalSpacing
         stack.frame = CGRect(x: 15, y: self.frame.height - 75, width: 70, height: 55)
         
-        titleLabel.frame = CGRect(x: 15, y: 8, width: self.frame.width - 30, height: 55)
-        iconLabel.center = CGPoint(x: (self.frame.width - 21) / 2, y: (self.frame.height - 21) / 2)
+        titleLabel.frame     = CGRect(x: 15, y: 8, width: self.frame.width - 30, height: 55)
+        iconLabel.center     = CGPoint(x: (self.frame.width - 21) / 2, y: (self.frame.height - 21) / 2)
         iconLabel.frame.size = CGSize(width: 42, height: 42)
-        dayCountLabel.frame = CGRect(x: 100, y: self.frame.height - 35, width: 100, height: 15)
-        dayCountLabel.layer.borderColor = UIColor.white.cgColor
+        dayCountLabel.frame  = CGRect(x: 100, y: self.frame.height - 35, width: 100, height: 15)
         
         addSubview(stack)
         addSubview(titleLabel)
@@ -87,7 +86,7 @@ class ThoughtFeedCellTile: UICollectionViewCell {
         let lbls = [linkLabel, entryLabel, mediaLabel]
         for lbl in lbls {
             lbl.font = .reBodyLight(ofSize: 12)
-            lbl.textColor = .white
+            lbl.textColor = .darkBackground
         }
         dayCountLabel.font = .reTitle(ofSize: 12)
         dayCountLabel.textAlignment = .center

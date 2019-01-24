@@ -16,7 +16,7 @@ class DashboardView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addGBackgroundGradientTo(view: self)
+        self.backgroundColor = .lightBackground
         
         self.backgroundColor = UIColor(hex: "F9FCFF")
     }
@@ -32,7 +32,7 @@ class DashboardView: UIView {
         layout.minimumLineSpacing = 5
         layout.estimatedItemSize = CGSize(width: ((ViewSize.SCREEN_WIDTH - 15) / 2) - 2.5, height: ((ViewSize.SCREEN_WIDTH - 15) / 2) - 2.5)
         layout.sectionInsetReference = .fromContentInset
-        layout.headerReferenceSize = CGSize(width: ViewSize.SCREEN_WIDTH, height: 150)
+        layout.headerReferenceSize = CGSize(width: ViewSize.SCREEN_WIDTH, height: 220)
         
         let cv = UICollectionView(frame: CGRect(x: 0, y: 35, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - 30), collectionViewLayout: layout)
         cv.contentSize = CGSize(width: ((ViewSize.SCREEN_WIDTH - 10) / 2) + 2.5, height: ((ViewSize.SCREEN_WIDTH - 10) / 2) + 2.5)
