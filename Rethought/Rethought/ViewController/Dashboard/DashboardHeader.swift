@@ -31,9 +31,8 @@ class DashboardHeader: UICollectionReusableView {
     
     let allEntriesButton: UIButton = {
         let btn = UIButton()
-        btn.addAttText(color: UIColor(hex: "D63864"), size: 13, font: .title, string: "All entries")
+        btn.addAttText(color: UIColor(hex: "D63864"), size: 13, font: .title, string: "All quick Thoughts")
         btn.translatesAutoresizingMaskIntoConstraints = false
-        
         return btn
     }()
     
@@ -48,6 +47,7 @@ class DashboardHeader: UICollectionReusableView {
         cv.showsHorizontalScrollIndicator = false
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.addBorders(edges: [.right], color: .lightGray, thickness: 4)
+        cv.layer.cornerRadius = 9
         
         return cv
     }()
@@ -87,7 +87,7 @@ extension DashboardHeader {
         addSubview(newQuickThought)
         
         //style
-        allEntriesButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 12.5, paddingTrailing: 20)
+        allEntriesButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 25, paddingTrailing: 20)
         
         searchButton.frame.origin = CGPoint(x: 10, y: self.frame.height - 45)
         searchButton.frame.size = CGSize(width: 20, height: 20)
@@ -106,7 +106,7 @@ extension DashboardHeader {
         
         NSLayoutConstraint.activate([
             newQuickThought.centerYAnchor.constraint(equalTo: reccomendedThoughtsCollectionView.centerYAnchor),
-            newQuickThought.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -22),
+            newQuickThought.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
         ])
     }
 }

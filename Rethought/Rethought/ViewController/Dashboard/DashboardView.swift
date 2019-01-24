@@ -30,13 +30,12 @@ class DashboardView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 5
-        layout.estimatedItemSize = CGSize(width: ((ViewSize.SCREEN_WIDTH - 15) / 2) - 2.5, height: ((ViewSize.SCREEN_WIDTH - 15) / 2) - 2.5)
+        layout.estimatedItemSize = CGSize(width: ((ViewSize.SCREEN_WIDTH - 15) / 2) - 5, height: ((ViewSize.SCREEN_WIDTH - 15) / 2) - 5)
         layout.sectionInsetReference = .fromContentInset
         layout.headerReferenceSize = CGSize(width: ViewSize.SCREEN_WIDTH, height: 220)
         
-        let cv = UICollectionView(frame: CGRect(x: 0, y: 35, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - 30), collectionViewLayout: layout)
+        let cv = UICollectionView(frame: CGRect(x: 10, y: 35, width: ViewSize.SCREEN_WIDTH - 10, height: ViewSize.SCREEN_HEIGHT - 35), collectionViewLayout: layout)
         cv.contentSize = CGSize(width: ((ViewSize.SCREEN_WIDTH - 10) / 2) + 2.5, height: ((ViewSize.SCREEN_WIDTH - 10) / 2) + 2.5)
-        cv.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         cv.backgroundColor = .clear
         cv.showsVerticalScrollIndicator = false
         cv.keyboardDismissMode = .interactive

@@ -25,7 +25,8 @@ class QuickThoughtCell: UICollectionViewCell {
     
     let mainView: UIView = {
         let view = UIView()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .random
+        
         view.frame.size = CGSize(width: 50, height: 50)
         view.layer.cornerRadius = 25
         view.layer.masksToBounds = true
