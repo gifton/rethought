@@ -272,11 +272,7 @@ extension ThoughtCard {
     
     //display error message
     func showErrorLabel() {
-        UIView.animate(withDuration: 2.5, animations: {
-            self.errorLabel.layer.opacity = 1.0
-        }) { (true) in
-            self.errorLabel.layer.opacity = 0.0
-        }
+        animateTemporaryView(duration: 1.0, view: errorLabel)
     }
     
 }

@@ -79,11 +79,11 @@ class NewImageEntry: UIViewController {
         let iv = UIImageView()
         iv.image = #imageLiteral(resourceName: "imagePlaceholder")
         iv.layer.cornerRadius = 6
-        iv.layer.masksToBounds = true
+        
         return iv
     }()
     
-    let incompleteLabel: UILabel = {
+    lazy var incompleteLabel: UILabel = {
         let lbl = UILabel()
         lbl.layer.cornerRadius = 5
         lbl.addText(color: .white, size: fontSize.small.rawValue, font: .bodyLight, string: "Please enter a title and description")
@@ -95,6 +95,14 @@ class NewImageEntry: UIViewController {
         return lbl
     }()
     
+    lazy var removeImage: UIButton = {
+        let btn = UIButton()
+        btn.frame.size = CGSize(width: 30, height: 30)
+        btn.backgroundColor = .mainBlue
+        btn.layer.cornerRadius = 15
+        
+        return btn
+    }()
 }
 
 //allow user to take photo
@@ -129,6 +137,8 @@ extension NewImageEntry: UIImagePickerControllerDelegate {
         self.imageViewer.image = image
         imageViewer.center.x = self.view.center.x
         imageViewer.center.y = 175
+        
+        didSetNewImage(imageViewer.frame)
         
         picker.dismiss(animated: true)
     }
@@ -193,6 +203,24 @@ extension NewImageEntry {
         if recognizer.state == .recognized {
             self.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    //add remove picture button
+    func didSetNewImage(_ frame: CGRect) {
+        removeImage.frame.origin = CGPoint(x: (frame.origin.x + frame.width) - 15, y: frame.origin.y - 15)
+        self.view.insertSubview(removeImage, at: 10000)
+        
+        print(removeImage.frame)
+        removeImage.addTarget(self, action: #selector(removeImage(_:)), for: .touchUpInside)
+    }
+    
+    @objc
+    func removeImage(_ sender: UIButton) {
+        self.imageViewer.image = #imageLiteral(resourceName: "imagePlaceholder")
+        imageViewer.frame.size = CGSize(width: 50, height: 50)
+        imageViewer.center.x = self.view.center.x
+        imageViewer.center.y = 190
+        self.removeImage.removeFromSuperview()
     }
 }
 

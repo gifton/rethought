@@ -14,7 +14,12 @@
         <attribute name="type" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
         <relationship name="thoughtModel" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ThoughtModel" inverseName="entryModel" inverseEntity="ThoughtModel" syncable="YES"/>
     </entity>
-    <entity name="THOUGHT" representedClassName="THOUGHT" syncable="YES" codeGenerationType="class"/>
+    <entity name="FlashThought" representedClassName="FlashThought" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="flashDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="ThoughtModel" representedClassName="ThoughtModel" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
@@ -25,6 +30,6 @@
     <elements>
         <element name="EntryModel" positionX="-36" positionY="18" width="128" height="225"/>
         <element name="ThoughtModel" positionX="-54" positionY="9" width="128" height="120"/>
-        <element name="THOUGHT" positionX="-45" positionY="108" width="128" height="45"/>
+        <element name="FlashThought" positionX="-27" positionY="126" width="128" height="105"/>
     </elements>
 </model>

@@ -37,8 +37,9 @@ class DashboardHeader: UICollectionReusableView {
     }()
     
     let reLogo = UIImageView(image: #imageLiteral(resourceName: "Logo"))
+    let settingsButton = UIButton()
     
-    var reccomendedThoughtsCollectionView: UICollectionView = {
+    var flashThoughtsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = ViewSize.thoughtCellSmall
@@ -46,7 +47,6 @@ class DashboardHeader: UICollectionReusableView {
         cv.backgroundColor = .clear
         cv.showsHorizontalScrollIndicator = false
         cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.addBorders(edges: [.right], color: .lightGray, thickness: 4)
         cv.layer.cornerRadius = 9
         
         return cv
@@ -59,7 +59,7 @@ class DashboardHeader: UICollectionReusableView {
         return btn
     }()
     
-    let newQuickThought: UIButton = {
+    let newFlashThought: UIButton = {
         let btn = UIButton()
         btn.setHeightWidth(width: 60, height: 60)
         btn.setImage(#imageLiteral(resourceName: "flash"), for: .normal)
@@ -83,8 +83,9 @@ extension DashboardHeader {
         addSubview(allEntriesButton)
         addSubview(searchButton)
         addSubview(reLogo)
-        addSubview(reccomendedThoughtsCollectionView)
-        addSubview(newQuickThought)
+        addSubview(flashThoughtsCollectionView)
+        addSubview(newFlashThought)
+        addSubview(settingsButton)
         
         //style
         allEntriesButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 25, paddingTrailing: 20)
@@ -98,16 +99,19 @@ extension DashboardHeader {
             reLogo.topAnchor.constraint(equalTo: safeTopAnchor, constant: 10),
         ])
         
-        reccomendedThoughtsCollectionView.register(QuickThoughtCell.self, forCellWithReuseIdentifier: QuickThoughtCell.identifier)
-        reccomendedThoughtsCollectionView.delegate = self
-        reccomendedThoughtsCollectionView.dataSource = self
+        flashThoughtsCollectionView.register(FlashThoughtCell.self, forCellWithReuseIdentifier: FlashThoughtCell.identifier)
+        flashThoughtsCollectionView.delegate = self
+        flashThoughtsCollectionView.dataSource = self
         
-        reccomendedThoughtsCollectionView.setAnchor(top: reLogo.bottomAnchor, leading: leadingAnchor, bottom: searchButton.topAnchor, trailing: trailingAnchor, paddingTop: 20, paddingLeading: 0, paddingBottom: 20, paddingTrailing: 80)
+        flashThoughtsCollectionView.setAnchor(top: reLogo.bottomAnchor, leading: leadingAnchor, bottom: searchButton.topAnchor, trailing: trailingAnchor, paddingTop: 20, paddingLeading: 80, paddingBottom: 20, paddingTrailing: 0)
         
         NSLayoutConstraint.activate([
-            newQuickThought.centerYAnchor.constraint(equalTo: reccomendedThoughtsCollectionView.centerYAnchor),
-            newQuickThought.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            newFlashThought.centerYAnchor.constraint(equalTo: flashThoughtsCollectionView.centerYAnchor),
+            newFlashThought.trailingAnchor.constraint(equalTo: flashThoughtsCollectionView.leadingAnchor, constant: -10),
         ])
+        
+        settingsButton.frame = CGRect(x: ViewSize.SCREEN_WIDTH - 50, y: 12.5, width: 25, height: 25)
+        settingsButton.setImage(#imageLiteral(resourceName: "cog"), for: .normal)
     }
 }
 
@@ -124,7 +128,7 @@ extension DashboardHeader: UICollectionViewDataSource {
     
     //set cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuickThoughtCell.identifier, for: indexPath) as! QuickThoughtCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FlashThoughtCell.identifier, for: indexPath) as! FlashThoughtCell
         
 
         return cell

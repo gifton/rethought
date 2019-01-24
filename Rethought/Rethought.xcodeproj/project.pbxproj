@@ -72,8 +72,8 @@
 		D7BEFC6F21F78E6800D55C8E /* DashboardHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEFC6E21F78E6800D55C8E /* DashboardHeader.swift */; };
 		D7BEFC7121F7D77400D55C8E /* ReccomendedThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEFC7021F7D77400D55C8E /* ReccomendedThoughtCell.swift */; };
 		D7BEFC7321F7F58A00D55C8E /* ReccomendedThought.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEFC7221F7F58A00D55C8E /* ReccomendedThought.swift */; };
-		D7F9FD5421F9C8E000E73BFC /* QuickThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F9FD5321F9C8E000E73BFC /* QuickThoughtCell.swift */; };
-		D7F9FD5621F9D00F00E73BFC /* QuickThought.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F9FD5521F9D00F00E73BFC /* QuickThought.swift */; };
+		D7F9FD5421F9C8E000E73BFC /* FlashThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F9FD5321F9C8E000E73BFC /* FlashThoughtCell.swift */; };
+		D7F9FD5621F9D00F00E73BFC /* QuickThoughts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F9FD5521F9D00F00E73BFC /* QuickThoughts.swift */; };
 		D7FFA1C721D4703C001C3B72 /* ThoughtDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1C621D4703C001C3B72 /* ThoughtDetailView.swift */; };
 		D7FFA1C921D4C050001C3B72 /* ThoughtDetailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1C821D4C050001C3B72 /* ThoughtDetailDelegate.swift */; };
 		D7FFA1CB21D639A3001C3B72 /* EntryDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1CA21D639A3001C3B72 /* EntryDetailController.swift */; };
@@ -153,8 +153,8 @@
 		D7BEFC6E21F78E6800D55C8E /* DashboardHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHeader.swift; sourceTree = "<group>"; };
 		D7BEFC7021F7D77400D55C8E /* ReccomendedThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReccomendedThoughtCell.swift; sourceTree = "<group>"; };
 		D7BEFC7221F7F58A00D55C8E /* ReccomendedThought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReccomendedThought.swift; sourceTree = "<group>"; };
-		D7F9FD5321F9C8E000E73BFC /* QuickThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickThoughtCell.swift; sourceTree = "<group>"; };
-		D7F9FD5521F9D00F00E73BFC /* QuickThought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickThought.swift; sourceTree = "<group>"; };
+		D7F9FD5321F9C8E000E73BFC /* FlashThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashThoughtCell.swift; sourceTree = "<group>"; };
+		D7F9FD5521F9D00F00E73BFC /* QuickThoughts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickThoughts.swift; sourceTree = "<group>"; };
 		D7FFA1C621D4703C001C3B72 /* ThoughtDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailView.swift; sourceTree = "<group>"; };
 		D7FFA1C821D4C050001C3B72 /* ThoughtDetailDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailDelegate.swift; sourceTree = "<group>"; };
 		D7FFA1CA21D639A3001C3B72 /* EntryDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailController.swift; sourceTree = "<group>"; };
@@ -325,7 +325,7 @@
 				D75B891D21C07D910023784F /* ThoughtPreview.swift */,
 				D711281121F30C4B006C732E /* DataController.swift */,
 				D7BEFC7221F7F58A00D55C8E /* ReccomendedThought.swift */,
-				D7F9FD5521F9D00F00E73BFC /* QuickThought.swift */,
+				D7F9FD5521F9D00F00E73BFC /* QuickThoughts.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -391,7 +391,7 @@
 				D75B892321C2FE750023784F /* EntryPreviewCell.swift */,
 				D7FFA1DC21D6F785001C3B72 /* ThoughtFeedCellTile.swift */,
 				D7BEFC7021F7D77400D55C8E /* ReccomendedThoughtCell.swift */,
-				D7F9FD5321F9C8E000E73BFC /* QuickThoughtCell.swift */,
+				D7F9FD5321F9C8E000E73BFC /* FlashThoughtCell.swift */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -576,7 +576,7 @@
 				D71FA87821E1525B000706A5 /* ReTextView.swift in Sources */,
 				D75B88D121BC507B0023784F /* Styling.swift in Sources */,
 				D7FFA1DD21D6F785001C3B72 /* ThoughtFeedCellTile.swift in Sources */,
-				D7F9FD5621F9D00F00E73BFC /* QuickThought.swift in Sources */,
+				D7F9FD5621F9D00F00E73BFC /* QuickThoughts.swift in Sources */,
 				D7FFA1C721D4703C001C3B72 /* ThoughtDetailView.swift in Sources */,
 				D739400621F88BF600D2B736 /* ConnectToView.swift in Sources */,
 				D75B892421C2FE750023784F /* EntryPreviewCell.swift in Sources */,
@@ -589,7 +589,7 @@
 				D75B891021BE192E0023784F /* ProfileViewController.swift in Sources */,
 				D75B890E21BE191C0023784F /* ProfileView.swift in Sources */,
 				D75B88B921BB70C00023784F /* AppDelegate.swift in Sources */,
-				D7F9FD5421F9C8E000E73BFC /* QuickThoughtCell.swift in Sources */,
+				D7F9FD5421F9C8E000E73BFC /* FlashThoughtCell.swift in Sources */,
 				D75B892221C2D7D70023784F /* EntryPreview.swift in Sources */,
 				D7FFA1E421D717AD001C3B72 /* EntryDetailView.swift in Sources */,
 				D75B88E521BC56AB0023784F /* Thought.swift in Sources */,
