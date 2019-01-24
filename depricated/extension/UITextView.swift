@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+//add padding to UITextView
 extension UITextView {
     private struct AssociatedKeys {
         static var padding = UIEdgeInsets()

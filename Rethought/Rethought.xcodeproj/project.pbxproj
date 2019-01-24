@@ -18,7 +18,6 @@
 		D711281221F30C4B006C732E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D711281121F30C4B006C732E /* DataController.swift */; };
 		D713100B21EEE9C2001D7584 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713100A21EEE9C2001D7584 /* DashboardViewModel.swift */; };
 		D713100D21EEE9D4001D7584 /* DashboardViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713100C21EEE9D4001D7584 /* DashboardViewModelDelegate.swift */; };
-		D713100F21EEEB5E001D7584 /* QuoteOfTheDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713100E21EEEB5E001D7584 /* QuoteOfTheDay.swift */; };
 		D713101221EEF3BE001D7584 /* DashboardThought.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713101121EEF3BE001D7584 /* DashboardThought.swift */; };
 		D713101521EF0417001D7584 /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713101421EF0417001D7584 /* DashboardController.swift */; };
 		D713101721EF0420001D7584 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713101621EF0420001D7584 /* DashboardView.swift */; };
@@ -76,11 +75,8 @@
 		D7FFA1C721D4703C001C3B72 /* ThoughtDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1C621D4703C001C3B72 /* ThoughtDetailView.swift */; };
 		D7FFA1C921D4C050001C3B72 /* ThoughtDetailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1C821D4C050001C3B72 /* ThoughtDetailDelegate.swift */; };
 		D7FFA1CB21D639A3001C3B72 /* EntryDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1CA21D639A3001C3B72 /* EntryDetailController.swift */; };
-		D7FFA1CD21D6B875001C3B72 /* ThoughtFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1CC21D6B875001C3B72 /* ThoughtFeedController.swift */; };
-		D7FFA1D121D6B9DD001C3B72 /* ThoughtFeedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1D021D6B9DD001C3B72 /* ThoughtFeedDelegate.swift */; };
 		D7FFA1D321D6BB6E001C3B72 /* ThoughtFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1D221D6BB6E001C3B72 /* ThoughtFeedViewModel.swift */; };
 		D7FFA1D721D6BD55001C3B72 /* ThoughtFeedViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1D621D6BD55001C3B72 /* ThoughtFeedViewModelDelegate.swift */; };
-		D7FFA1DB21D6F496001C3B72 /* ThoughtFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1DA21D6F496001C3B72 /* ThoughtFeedView.swift */; };
 		D7FFA1DD21D6F785001C3B72 /* ThoughtFeedCellTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1DC21D6F785001C3B72 /* ThoughtFeedCellTile.swift */; };
 		D7FFA1E221D716D7001C3B72 /* EntryDetailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1E121D716D7001C3B72 /* EntryDetailDelegate.swift */; };
 		D7FFA1E421D717AD001C3B72 /* EntryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1E321D717AD001C3B72 /* EntryDetailView.swift */; };
@@ -99,7 +95,6 @@
 		D711281121F30C4B006C732E /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		D713100A21EEE9C2001D7584 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		D713100C21EEE9D4001D7584 /* DashboardViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModelDelegate.swift; sourceTree = "<group>"; };
-		D713100E21EEEB5E001D7584 /* QuoteOfTheDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteOfTheDay.swift; sourceTree = "<group>"; };
 		D713101121EEF3BE001D7584 /* DashboardThought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardThought.swift; sourceTree = "<group>"; };
 		D713101421EF0417001D7584 /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
 		D713101621EF0420001D7584 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
@@ -159,11 +154,8 @@
 		D7FFA1C621D4703C001C3B72 /* ThoughtDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailView.swift; sourceTree = "<group>"; };
 		D7FFA1C821D4C050001C3B72 /* ThoughtDetailDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailDelegate.swift; sourceTree = "<group>"; };
 		D7FFA1CA21D639A3001C3B72 /* EntryDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailController.swift; sourceTree = "<group>"; };
-		D7FFA1CC21D6B875001C3B72 /* ThoughtFeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtFeedController.swift; sourceTree = "<group>"; };
-		D7FFA1D021D6B9DD001C3B72 /* ThoughtFeedDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtFeedDelegate.swift; sourceTree = "<group>"; };
 		D7FFA1D221D6BB6E001C3B72 /* ThoughtFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtFeedViewModel.swift; sourceTree = "<group>"; };
 		D7FFA1D621D6BD55001C3B72 /* ThoughtFeedViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtFeedViewModelDelegate.swift; sourceTree = "<group>"; };
-		D7FFA1DA21D6F496001C3B72 /* ThoughtFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtFeedView.swift; sourceTree = "<group>"; };
 		D7FFA1DC21D6F785001C3B72 /* ThoughtFeedCellTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtFeedCellTile.swift; sourceTree = "<group>"; };
 		D7FFA1E121D716D7001C3B72 /* EntryDetailDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailDelegate.swift; sourceTree = "<group>"; };
 		D7FFA1E321D717AD001C3B72 /* EntryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailView.swift; sourceTree = "<group>"; };
@@ -327,7 +319,6 @@
 				D75B88DF21BC54B20023784F /* Entry.swift */,
 				D75B892121C2D7D70023784F /* EntryPreview.swift */,
 				D75B891D21C07D910023784F /* ThoughtPreview.swift */,
-				D713100E21EEEB5E001D7584 /* QuoteOfTheDay.swift */,
 				D711281121F30C4B006C732E /* DataController.swift */,
 				D7BEFC7221F7F58A00D55C8E /* ReccomendedThought.swift */,
 			);
@@ -403,7 +394,6 @@
 			isa = PBXGroup;
 			children = (
 				D7FFA1DE21D6F7FB001C3B72 /* detail */,
-				D7FFA1DF21D6F803001C3B72 /* Feed */,
 			);
 			path = Thought;
 			sourceTree = "<group>";
@@ -416,16 +406,6 @@
 				D7FFA1C621D4703C001C3B72 /* ThoughtDetailView.swift */,
 			);
 			path = detail;
-			sourceTree = "<group>";
-		};
-		D7FFA1DF21D6F803001C3B72 /* Feed */ = {
-			isa = PBXGroup;
-			children = (
-				D7FFA1CC21D6B875001C3B72 /* ThoughtFeedController.swift */,
-				D7FFA1D021D6B9DD001C3B72 /* ThoughtFeedDelegate.swift */,
-				D7FFA1DA21D6F496001C3B72 /* ThoughtFeedView.swift */,
-			);
-			path = Feed;
 			sourceTree = "<group>";
 		};
 		D7FFA1E021D716C9001C3B72 /* Entry */ = {
@@ -586,14 +566,11 @@
 				D713102721F01631001D7584 /* NewTextEntry.swift in Sources */,
 				D702B21121DBFECA003DCA83 /* BackDelegate.swift in Sources */,
 				D739400821F88C7C00D2B736 /* UITextView.swift in Sources */,
-				D7FFA1DB21D6F496001C3B72 /* ThoughtFeedView.swift in Sources */,
 				D713101921EF0436001D7584 /* ThoughtCardController.swift in Sources */,
 				D71FA87821E1525B000706A5 /* ReTextView.swift in Sources */,
-				D7FFA1D121D6B9DD001C3B72 /* ThoughtFeedDelegate.swift in Sources */,
 				D75B88D121BC507B0023784F /* Styling.swift in Sources */,
 				D7FFA1DD21D6F785001C3B72 /* ThoughtFeedCellTile.swift in Sources */,
 				D7FFA1C721D4703C001C3B72 /* ThoughtDetailView.swift in Sources */,
-				D7FFA1CD21D6B875001C3B72 /* ThoughtFeedController.swift in Sources */,
 				D739400621F88BF600D2B736 /* ConnectToView.swift in Sources */,
 				D75B892421C2FE750023784F /* EntryPreviewCell.swift in Sources */,
 				D713101221EEF3BE001D7584 /* DashboardThought.swift in Sources */,
@@ -612,7 +589,6 @@
 				D739400221F88AE100D2B736 /* EmojiDisplay.swift in Sources */,
 				D713101721EF0420001D7584 /* DashboardView.swift in Sources */,
 				D713101B21EF043F001D7584 /* ThoughtCard.swift in Sources */,
-				D713100F21EEEB5E001D7584 /* QuoteOfTheDay.swift in Sources */,
 				D713101D21EF0503001D7584 /* ThoughtCardDelegate.swift in Sources */,
 				D70EA8E021E301E50071E257 /* UIColor.swift in Sources */,
 				D739400A21F88D4300D2B736 /* NewEntryButton.swift in Sources */,

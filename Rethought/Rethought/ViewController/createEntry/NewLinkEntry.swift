@@ -10,23 +10,29 @@ import Foundation
 import UIKit
 import SwiftLinkPreview
 
+//let user add an entry with a link
 class NewLinkEntry: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setupLinkPreview()
         
+        //set edge pans
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
         edgePan.edges = .left
         view.addGestureRecognizer(edgePan)
     }
     
+    //public objects
+    //if user has previously added a text entry to the thought, set object
     public var entry          : Entry?
     public var delegate       : ThoughtCardDelegate?
     public var parentThought  : Thought?
+    
+    //return entry objects
     private var linkImage: UIImage {
         get {
-            return self.mainImage.image!
+            return self.mainImage.image ?? UIImage()
         }
     }
     private var shorthandURL: String {
@@ -41,6 +47,7 @@ class NewLinkEntry: UIViewController {
         }
     }
     
+    //varibales
     var mainImage       = UIImageView()
     var linkTextField   : ReTextField?
     var titleLabel      = UILabel()
@@ -53,6 +60,8 @@ class NewLinkEntry: UIViewController {
 
 extension NewLinkEntry {
     private func setupView() {
+        
+        //style
         self.view.backgroundColor = .white
         mainImage.frame.size = CGSize(width: 150, height: 150)
         mainImage.layer.cornerRadius = 6.0
@@ -82,7 +91,7 @@ extension NewLinkEntry {
         doneBtn.addTarget(self, action: #selector(saveEntry(_:)), for: .touchUpInside)
         doneBtn.disableButton()
         
-        
+        //add to superview
         self.view.addSubview(mainImage)
         self.view.addSubview(linkTextField!)
         self.view.addSubview(shortLinkLabel)
@@ -90,11 +99,12 @@ extension NewLinkEntry {
         self.view.addSubview(doneBtn)
     }
     
+    //set slp
     func setupLinkPreview() {
         slp = SwiftLinkPreview(session: .shared, workQueue: SwiftLinkPreview.defaultWorkQueue, responseQueue: DispatchQueue.main, cache: DisabledCache.instance)
-        
     }
     
+    //return home
     @objc
     func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         if recognizer.state == .recognized {
@@ -104,6 +114,8 @@ extension NewLinkEntry {
 }
 
 extension NewLinkEntry: ConnectToTextView {
+    
+    // slp request
     func textFieldDidFinishEditing(string: String) {
                 slp?.preview(string,
                             onSuccess: { result in
@@ -122,6 +134,7 @@ extension NewLinkEntry: ConnectToTextView {
                 })
     }
     
+    //entry object validation, creation, and propgation
     @objc
     func saveEntry(_ sender: Any) {
         guard let ID = parentThought?.ID else {
@@ -134,6 +147,7 @@ extension NewLinkEntry: ConnectToTextView {
         }
         let entry = Entry(type: .link, thoughtID: ID, detail: self.longURL, date: Date(), icon: icon, link: self.longURL, linkImage: self.linkImage, linkTitle: self.shorthandURL)
         self.delegate?.addEntry(entry)
+        //return home
         self.navigationController?.popViewController(animated: true)
     }
 }

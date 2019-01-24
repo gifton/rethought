@@ -39,7 +39,7 @@ class ThoughtFeedCellTile: UICollectionViewCell {
     private var mediaLabel    = UILabel()
     private let dayCountLabel = UILabel()
     
-    public func giveContext(with preview: ThoughtPreviewLarge) {
+    public func giveContext(with preview: ThoughtPreview) {
         self.icon       = preview.icon
         self.title      = preview.title
         self.entryCount = preview.entryCount["entries"]

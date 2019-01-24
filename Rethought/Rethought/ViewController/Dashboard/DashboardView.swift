@@ -11,6 +11,7 @@ import UIKit
 import CoreData
 
 class DashboardView: UIView {
+    //conect to controller
     private var dDelegate: DashboardDelegate!
     
     override init(frame: CGRect) {
@@ -50,11 +51,14 @@ class DashboardView: UIView {
 }
 
 extension DashboardView {
+    
+    //register cells and head
     func setupTV() {
         
         thoughtCollectionView.register(ThoughtFeedCellTile.self, forCellWithReuseIdentifier: ThoughtFeedCellTile.identifier)
         thoughtCollectionView.register(DashboardHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: DashboardHeader.identifier)
         
+        //add to superView
         addSubview(thoughtCollectionView)
         
     }

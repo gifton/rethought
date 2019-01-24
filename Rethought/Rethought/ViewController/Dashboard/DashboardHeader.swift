@@ -9,18 +9,23 @@
 import Foundation
 import UIKit
 
+//CollectionView header
 class DashboardHeader: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .clear
         setViews()
     }
+    
+    //set custom identifier, set default identifier
     override var reuseIdentifier: String? {
         return "ThoughtFeedCellTile"
     }
     static var identifier: String {
         return "ThoughtFeedCellTile"
     }
+    
+    //conect to dashboard, hold recent thoughts for collectionView
     public var delegate: DashboardDelegate?
     public var recentEntries: [ReccomendedThought] = []
     
@@ -61,10 +66,14 @@ class DashboardHeader: UICollectionReusableView {
 
 extension DashboardHeader {
     func setViews() {
+        
+        //add to superView
         addSubview(allEntriesButton)
         addSubview(searcher)
         addSubview(reLogo)
         addSubview(reccomendedThoughtsCollectionView)
+        
+        //sty;e
         allEntriesButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 12.5, paddingTrailing: 20)
         
         searcher.frame.origin = CGPoint(x: 0, y: self.frame.height - 45)
@@ -91,7 +100,9 @@ extension DashboardHeader: UISearchBarDelegate {
 
 
 extension DashboardHeader: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("selected thought \(recentEntries[indexPath.row].icon.icon)")
+    }
 }
 
 extension DashboardHeader: UICollectionViewDataSource {
@@ -99,6 +110,7 @@ extension DashboardHeader: UICollectionViewDataSource {
         return recentEntries.count
     }
     
+    //set cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReccomendedThoughtCellMicro.identifier, for: indexPath) as! ReccomendedThoughtCellMicro
         cell.giveContext(recentEntries[indexPath.row])

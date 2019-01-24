@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+//add padding to UITextfield
 extension UITextField {
     func addLeftPadding(size: CGFloat) {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: size, height: self.frame.height))

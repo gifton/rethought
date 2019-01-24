@@ -9,7 +9,7 @@ public class Thought {
     
     public func addNew(entry: Entry) {
         self.entries.append(entry)
-        self.updateLastEdited()
+        self.updateCounts()
     }
 //    public func remove(entry: Entry) {
 //        if let mark = entries.index(where: { $0.id == entry.id }) {
@@ -35,7 +35,7 @@ public class Thought {
     public var title: String
     public var icon: String
     public var entries: [Entry] = []
-    public var date: Date
+    public var createdAt: Date
     public var lastEdited: Date
     public var entryCount: [String:Int] = ["links": 0, "entries": 0, "media":0]
     public var ID: String = randomString(length: 12)
@@ -44,7 +44,7 @@ public class Thought {
     public init(title: String, icon: String, date: Date) {
         self.title = title
         self.icon = icon
-        self.date = date
+        self.createdAt = date
         self.ID = randomString(length: 12)
         self.lastEdited = entries.last?.date ?? date
     }
@@ -52,12 +52,12 @@ public class Thought {
     public convenience init(title: String, icon: String, date: Date, entries: [Entry]) {
         self.init(title: title, icon: icon, date: date)
         self.entries = entries
-        updateLastEdited()
+        updateCounts()
     }
     
     //  last edited func refactored to be able to be called when new entry is added,
     //  and when new thought is made that comes with a list of thoughts
-    private func updateLastEdited() {
+    private func updateCounts() {
         let lastEntry = self.entries.last
         guard let lastDate: Date? = lastEntry?.date else { return }
         self.lastEdited = lastDate ?? Date.init()
@@ -84,15 +84,4 @@ public class Thought {
     public func setID(_ id: String) {
         self.ID = id
     }
-    
-//    convenience init(_ model: ThoughtModel) {
-//        self.init(title: model.title, icon: model.icon, date: model.date)
-//        self.ID = model.ID
-//        let modelEntries
-//        guard let mEntries = model.entryModel!.allObjects as? [EntryModel] else { return }
-//        for entry in mEntries {
-//            let newEntry = Entry(entryModel: entry)
-//            self.addNew(entry: newEntry)
-//        }
-//    }
 }

@@ -10,9 +10,13 @@ import Foundation
 import UIKit
 import AVKit
 
+//let user add an entry with a title and image
+
 class NewImageEntry: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //stype
         view.backgroundColor = .white
         cameraButton.frame = CGRect(x: (ViewSize.SCREEN_WIDTH - 150) / 2, y: 450, width: 150, height: 150)
         cameraButton.layer.cornerRadius = 6
@@ -22,24 +26,33 @@ class NewImageEntry: UIViewController {
         imageViewer.center.x = self.view.center.x
         imageViewer.center.y = 190
         doneButton.frame = CGRect(x: 25, y: ViewSize.SCREEN_HEIGHT - 99, width: ViewSize.SCREEN_WIDTH - 50, height: 59)
-//        imageViewer.frame = CGRect(x: 150, y: 90, width: 150, height: 150)
         
-        view.addSubview(titleTextField)
-        view.addSubview(cameraButton)
-        view.addSubview(doneButton)
-        view.addSubview(imageViewer)
         
+        
+        //add targets
         cameraButton.addTarget(self, action: #selector(addCam(_:)), for: .touchUpInside)
         doneButton.addTarget(self, action: #selector(userPressedSave(_:)), for: .touchUpInside)
         
+        //set edge pans
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
         edgePan.edges = .left
         view.addGestureRecognizer(edgePan)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        view.addSubview(titleTextField)
+        view.addSubview(cameraButton)
+        view.addSubview(doneButton)
+        view.addSubview(imageViewer)
+    }
+    
+    //public objects
+    //if user has previously added a text entry to the thought, set object
     public var entry          : Entry?
     public var delegate       : ThoughtCardDelegate?
     public var parentThought  : Thought?
+    
+    //if entry has been added already, set text to be entries info, else set it to welcome string
     private var newDescription: String {
         get {
             return String(describing: self.titleTextField.attributedText ?? NSAttributedString(string: ""))
@@ -84,7 +97,10 @@ class NewImageEntry: UIViewController {
     
 }
 
+//allow user to take photo
 extension NewImageEntry: UIImagePickerControllerDelegate {
+    
+    //initiate camera
     @objc
     func addCam(_ sender: UIButton) {
         
@@ -96,6 +112,8 @@ extension NewImageEntry: UIImagePickerControllerDelegate {
         }
         
     }
+    
+    //when image is set
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         guard var image = info[.originalImage] as? UIImage else {
@@ -103,6 +121,8 @@ extension NewImageEntry: UIImagePickerControllerDelegate {
             picker.dismiss(animated: true)
             return
         }
+        
+        //set image view above title to image just taken
         image = image.resizeImage(250, opaque: false)
         
         self.imageViewer.frame.size = image.size
@@ -113,6 +133,7 @@ extension NewImageEntry: UIImagePickerControllerDelegate {
         picker.dismiss(animated: true)
     }
     
+    //user camera access validation
     func requestCameraPermission() {
         AVCaptureDevice.requestAccess(for: .video, completionHandler: {accessGranted in
             guard accessGranted == true else { return }
@@ -128,6 +149,7 @@ extension NewImageEntry: UIImagePickerControllerDelegate {
         self.present(photoPicker, animated: true, completion: nil)
     }
     
+    //if camera access is denied, alert user if faliure to perform
     func alertCameraAccessNeeded() {
         let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
         
@@ -145,8 +167,11 @@ extension NewImageEntry: UIImagePickerControllerDelegate {
         present(alert, animated: true, completion: nil)
     }
     
+    //create new entry, send to delegate
     @objc
     func userPressedSave(_ sender: UIButton) {
+        
+        //validate completion of objects
         if self.newDescription != "" && imageViewer.image != UIImage(named: "imagePlaceholder.png"){
             let entry = Entry(type: .image, thoughtID: parentThought?.ID ?? "nil", detail: newDescription, date: Date(), icon: parentThought?.icon ?? "🍤", image: imageViewer.image!)
             self.delegate?.addEntry(entry)
@@ -161,6 +186,8 @@ extension NewImageEntry: UIImagePickerControllerDelegate {
 }
 
 extension NewImageEntry {
+    
+    //return home
     @objc
     func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         if recognizer.state == .recognized {
@@ -169,6 +196,5 @@ extension NewImageEntry {
     }
 }
 
-extension NewImageEntry: UINavigationControllerDelegate {
-    
-}
+//req for camera
+extension NewImageEntry: UINavigationControllerDelegate {}

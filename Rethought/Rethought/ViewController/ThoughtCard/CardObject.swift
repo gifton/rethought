@@ -9,12 +9,13 @@
 import Foundation
 import UIKit
 
+//custom UIVIew wrapper that holds a regular view, its available card states, and its initial card state
 class CardObject: UIView {
     convenience init(view: UIView, availableIn states: [ThoughtCardState]) {
         self.init(frame: view.frame)
-        self.view = view
+        self.view            = view
         self.drawerPositions = states
-        self.initialState = states.first!
+        self.initialState    = states.first!
     }
     override init(frame: CGRect) {
         super.init(frame: frame)

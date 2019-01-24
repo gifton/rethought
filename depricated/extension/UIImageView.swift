@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 extension UIImageView {
+    
+    //get image from URL 
     func load(url: URL) {
         self.image = nil
         let AI = UIActivityIndicatorView(frame: .zero)

@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+
+//padding for Labels
 extension UILabel {
     private struct AssociatedKeys {
         static var padding = UIEdgeInsets()
@@ -57,6 +59,7 @@ extension UILabel {
         return contentSize
     }
     
+    //set text to date
     func getStringFromDate(date: Date) {
         let dateFormatter: DateFormatter = {
             let formatter = DateFormatter()
@@ -70,6 +73,7 @@ extension UILabel {
         self.text = output
     }
     
+    //add attrinutedText to label
     func addText(color: UIColor = .black, size: fontSize.RawValue, font: RethoughtFonts, string: String) {
         var output = NSAttributedString()
         switch font {

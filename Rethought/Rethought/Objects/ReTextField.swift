@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+//custom textField
 class ReTextField: UITextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,10 +24,11 @@ class ReTextField: UITextField {
         self.init(frame: frame)
         self.attPlaceholder = attPlaceholder
     }
-    
+    //public vars
     public var isCompleted: Bool = false
     public var size: CGFloat = 12
     public var color: UIColor = .black
+    //connector for state handling
     public var connector: ConnectToTextView?
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,7 +36,9 @@ class ReTextField: UITextField {
     }
 }
 
+//delegate
 extension ReTextField: ReTextFieldDelegate {
+    //set attributed placeHoolder
     public var attPlaceholder: String {
         get {
             return text ?? ""
@@ -46,14 +50,19 @@ extension ReTextField: ReTextFieldDelegate {
 }
 
 extension ReTextField: UITextFieldDelegate {
+    //remove placeholder and set as complete
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.attPlaceholder = ""
         self.text = ""
         self.isCompleted = true
     }
+    
+    //set as complete
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.isCompleted = true
     }
+    
+    //drop keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.connector?.textFieldDidFinishEditing(string: self.text ?? "nil")
         self.resignFirstResponder()

@@ -10,7 +10,11 @@ import Foundation
 import UIKit
 import CoreData
 
+
+//Main application view
 class DashboardController: UIViewController {
+    
+    //open var for thoughtCard
     var thoughtCard: ThoughtCardController?
     
     override func viewDidLoad() {
@@ -27,17 +31,20 @@ extension DashboardController: DashboardDelegate {
         print("tapped on \(thoughtID)")
     }
     
+    //core data context (set from app delegate)
     var context: NSManagedObjectContext {
         get {
             return model.moc
         }
         set {
+            //set view once recieving context, initializing model
             self.model = DashboardViewModel(moc: newValue)
             self.thoughts = model.getThoughts()
             setupView()
         }
     }
     
+    //tought card frame change
     func changeSize(size: ThoughtCardState) {
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 2.0, initialSpringVelocity: 0.4, options: UIView.AnimationOptions.curveLinear, animations: {
             switch size {
@@ -56,6 +63,7 @@ extension DashboardController: DashboardDelegate {
 extension DashboardController {
     func setupView() {
         guard let thoughts = self.thoughts else { return }
+        // add error validation for if there are no thoughts yet
         if thoughts.count > 0 {
             let dashboard = DashboardView(delegate: self, frame: .zero)
             dashboard.thoughtCollectionView.dataSource = self
@@ -63,6 +71,7 @@ extension DashboardController {
             self.view = dashboard
         }
         
+        //set thoght card
         thoughtCard = ThoughtCardController()
         thoughtCard?.setCard(delegate: self)
         self.addChild(thoughtCard!)
@@ -102,8 +111,20 @@ extension DashboardController: UICollectionViewDataSource {
         
         return cell
     }
+    //display new Thoght
+    func userTapped(on thought: Thought) {
+        let view = ThoughtDetailController()
+        view.thought = thought
+        self.navigationController?.pushViewController(view, animated: true)
+    }
 }
 extension DashboardController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
+    
+    //hide keyboard on scroll
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.resignFirstResponder()
     }

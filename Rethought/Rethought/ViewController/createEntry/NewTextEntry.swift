@@ -9,11 +9,14 @@
 import Foundation
 import UIKit
 
+//let user add an entry with a title and description
 class NewTextEntry: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         loadContent()
+        
+        //add gesture to return home
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
         edgePan.edges = .left
         
@@ -22,11 +25,17 @@ class NewTextEntry: UIViewController {
         detailTextView.delegate = self
     }
     
+    //public objects
+    //if user has previously added a text entry to the thought, set object
     public var entry: Entry?
     public var delegate       : ThoughtCardDelegate?
     public var parentThought  : Thought?
+    
+    //private objects
     private var newDescription: String = ""
     private var newTitle      : String = ""
+    
+    //if entry has been added already, set text to be entries info, else set it to welcome string
     var descriptionString: String {
         get {
             return entry?.detail ?? "Add a title for your entry"
@@ -73,7 +82,7 @@ class NewTextEntry: UIViewController {
     }()
     
     func loadContent() {
-        
+        //set frames
         titleTextView.frame       = CGRect(x: 15, y: 50, width: ViewSize.SCREEN_WIDTH - 30, height: 54)
         detailTextView.frame = CGRect(x: 25, y: 115, width: ViewSize.SCREEN_WIDTH - 50, height: 600)
         doneButton.frame          = CGRect(x: 25, y: ViewSize.SCREEN_HEIGHT - 99, width: ViewSize.SCREEN_WIDTH - 50, height: 59)
@@ -84,24 +93,27 @@ class NewTextEntry: UIViewController {
         titleTextView.addLeftPadding(size: 10)
         detailTextView.attributedText = detailTextView.returnAttributedText(color: .black, size: 14, font: .body, string: "okay, start at the begining...")
         
+        //set keyboard
         let toolBarKeyboardView = UIToolbar()
         toolBarKeyboardView.sizeToFit()
         let btnDoneOnKeyboard = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneBtnFromKeyboardClicked))
         toolBarKeyboardView.items = [btnDoneOnKeyboard]
         detailTextView.inputAccessoryView = toolBarKeyboardView
         
+        //add to superview
         view.addSubview(titleTextView)
         view.addSubview(detailTextView)
         view.addSubview(doneButton)
         view.addSubview(incompleteLabel)
         
+        //set target
         doneButton.addTarget(self, action: #selector(userPressedSave(_:)), for: .touchUpInside)
-        
-        print (doneButton)
     }
 }
 
 extension NewTextEntry {
+    
+    //return home on left edge swipe
     @objc
     func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         if recognizer.state == .recognized {
@@ -109,8 +121,11 @@ extension NewTextEntry {
         }
     }
     
+    //create entry, return to controller
     @objc
     func userPressedSave(_ sender: UIButton) {
+        
+        //validate text views have been edited
         if self.newTitle != "" && self.newDescription != ""{
             let entry = Entry(type: .text, thoughtID: self.parentThought?.ID ?? "nil", detail: self.newDescription, date: Date(), icon: self.parentThought?.icon ?? "🥗")
             self.delegate?.addEntry(entry)
@@ -121,6 +136,7 @@ extension NewTextEntry {
         }
     }
     
+    //set desciprion string to textview.text
     @objc
     func doneBtnFromKeyboardClicked(_ sender: Any) {
         self.newDescription = detailTextView.text

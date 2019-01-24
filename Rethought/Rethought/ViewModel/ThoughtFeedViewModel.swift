@@ -18,9 +18,9 @@ class ThoughtFeedViewModel: ThoughtFeedViewModelDelegate {
     func retrieve(_ thoughtID: String) -> Thought {
         return thoughts.filter{ $0.ID == thoughtID }.first ?? Thought.init()
     }
-    func retrieveThoughtPreview(_ thoughtID: String) -> ThoughtPreviewLarge {
+    func retrieveThoughtPreview(_ thoughtID: String) -> ThoughtPreview {
         let thought = thoughts.filter{ $0.ID == thoughtID }.first ?? Thought.init()
-        let preview = ThoughtPreviewLarge(icon: thought.icon, createdAt: String(describing: thought.date), thoughtID: thoughtID, entryCount: thought.entryCount, title: thought.title)
+        let preview = ThoughtPreview(thought)
         return preview
     }
     func getThoughtName(_ thoughtID: String) -> String {

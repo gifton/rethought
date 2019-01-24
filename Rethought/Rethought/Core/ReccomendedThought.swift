@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+//Small cell with minimum req's for display
 struct ReccomendedThought {
     init(_ thought: Thought) {
         self.icon = ThoughtIcon(thought.icon)

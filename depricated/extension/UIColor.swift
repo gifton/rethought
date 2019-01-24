@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-//allows dev to input hex valuse instead of standard UIcolo init
-
+//allows input as hex valuse instead of standard UIcolo init
 public extension UIColor {
     
     public convenience init(hex: Int, alpha: CGFloat = 1.0) {

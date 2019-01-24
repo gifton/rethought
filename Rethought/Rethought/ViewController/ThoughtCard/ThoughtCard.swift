@@ -9,12 +9,18 @@
 import Foundation
 import UIKit
 
-
+//custom card view
 class ThoughtCard: UIView {
+    
+    //objects
     var delegate: ThoughtCardDelegate?
     var state: ThoughtCardState
+    
+    //gestures
     var panGestureRecognizer: UIPanGestureRecognizer?
     var tapRecognizer: UITapGestureRecognizer?
+    
+    //check if textViews is complete
     var isTitleComplete: Bool {
         get {
             return self.addTitleTV.isCompleted
@@ -25,15 +31,12 @@ class ThoughtCard: UIView {
             return self.addIconTV.isCompleted
         }
     }
-    var entries: [Entry] = []
     
     override init(frame: CGRect) {
         let innerFrame = CGRect(x: 10, y: ViewSize.SCREEN_HEIGHT * 0.87, width: ViewSize.SCREEN_WIDTH - 20, height: 69)
         self.state = .collapsed
         super.init(frame: innerFrame)
         
-        self.addLogoShadow()
-        self.isUserInteractionEnabled = true
         setupCard()
         panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureAction(_:)))
         self.addGestureRecognizer(panGestureRecognizer!)
@@ -44,6 +47,7 @@ class ThoughtCard: UIView {
         }
     }
     
+    //set with delegate
     convenience init(delegate: ThoughtCardDelegate) {
         self.init(frame: .zero)
         self.delegate = delegate
@@ -71,13 +75,21 @@ class ThoughtCard: UIView {
 }
 
 extension ThoughtCard {
+    
     func setupCard() {
+        
+        //animate all views out on collapse
         for view in subviews{
             animateOut(view)
         }
+        
+        //self styling
         self.backgroundColor = .cardBackground
         self.layer.cornerRadius = 10
+        self.addLogoShadow()
+        self.isUserInteractionEnabled = true
         
+        //frame
         newThoughtIntro.frame           = CGRect(x: 75, y: 10, width: 150, height: 30)
         iconLabel.frame                 = CGRect(x: 15, y: 10, width: 50, height: 50)
         timeSinceLastThoughtLabel.frame = CGRect(x: 75, y: 42.5, width: 200, height: 14)
@@ -130,6 +142,7 @@ extension ThoughtCard {
         micBtn.entryType = .recording
     }
     
+    //build view for open state
     func setupOpenView() {
         let entryBtns = [linkBtn, cameraBtn, noteBtn, micBtn]
         var xStart: CGFloat = 12.5
@@ -165,6 +178,7 @@ extension ThoughtCard {
         self.addSubview(errorLabel)
     }
     
+    //allow user to slide card to middle of view
     @objc
     func panGestureAction(_ panGesture: UIPanGestureRecognizer) {
         let translation = panGesture.translation(in: DashboardView())
@@ -185,6 +199,8 @@ extension ThoughtCard {
         }
     }
     
+    //allow user to tap on card and set open state
+    //card waits for keyboard interaction to set frame.origin.y -= keyboard.size.height
     @objc
     func tapOnNewThought(_ tapper: UITapGestureRecognizer) {
         if state == .collapsed {
@@ -193,12 +209,15 @@ extension ThoughtCard {
         }
         
     }
+    
+    //set state to closed, remove entry visual confirmations, delete thought components
     @objc
     func cancelThought(_ sender: Any) {
         self.updateState(.collapsed)
         self.state = .collapsed
     }
     
+    //alert controller of an entry addition request
     func addEntry(_ sender: newEntryButton) {
         if isTitleComplete == true && isIconComplete == true {
             self.delegate?.addThoughtComponents(title: addTitleTV.text, icon: addIconTV.emoji)
@@ -209,6 +228,7 @@ extension ThoughtCard {
         
     }
     
+    //set new state
     func updateState(_ state: ThoughtCardState) {
         self.delegate?.updateState(state: state)
         switch state {
@@ -239,6 +259,7 @@ extension ThoughtCard {
         }
     }
     
+    //card validation
     @objc
     func checkIfCardComplete(_ sender: Any) {
         if isTitleComplete == true && isIconComplete == true {
@@ -249,6 +270,7 @@ extension ThoughtCard {
         }
     }
     
+    //display error message
     func showErrorLabel() {
         UIView.animate(withDuration: 2.5, animations: {
             self.errorLabel.layer.opacity = 1.0
@@ -259,7 +281,7 @@ extension ThoughtCard {
     
 }
 
-
+//show visual confirmation of new thought added
 extension ThoughtCard {
     public func didAddEntry(_ type: Entry.EntryType) {
         switch type {

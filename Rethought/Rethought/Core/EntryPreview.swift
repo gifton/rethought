@@ -12,39 +12,41 @@ import UIKit
 //model for entry previews in dashboard (tableView cells (indexPath.row > 0))
 struct EntryPreview {
     //standard objects
-    let id: String
-    var ThoughtID: String
-    let date: Date
-    var image: UIImage?
-    var title: String
+    let id         : String
+    var ThoughtID  : String
+    let date       : Date
+    var image      : UIImage?
+    var title      : String
     var thoughtIcon: ThoughtIcon?
     
     //optional Values
-    var detail: String?
-    var link: String?
-    var type: Entry.EntryType
-    public var thoughtTitle: String?
+    var detail      : String?
+    var link        : String?
+    var type        : Entry.EntryType
+    var thoughtTitle: String?
     
     init(entry: Entry) {
         self.ThoughtID = entry.thoughtID
         self.date = entry.date
+        
         //depending on entry type, initiate proper variables
         switch entry.type {
         case .image:
             self.title = entry.detail
             self.image = entry.image!
-            self.type = .image
+            self.type  = .image
         case .text:
-            self.title = entry.title ?? "This is the title"
+            self.title  = entry.title ?? "This is the title"
             self.detail = entry.detail
-            self.type = .text
+            self.type   = .text
         default:
             self.title = entry.linkTitle!
-            self.link = entry.link!
+            self.link  = entry.link!
             self.image = entry.image!
-            self.type = .link
+            self.type  = .link
         }
-        self.id = entry.id
+        
+        self.id          = entry.id
         self.thoughtIcon = ThoughtIcon(entry.icon)
     }
 }

@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+//emoji display allows users to add an emoji to
+// to thought
+//paired with ThoughtIcon class
 class EmojiDisplay: UITextView {
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
@@ -26,6 +29,7 @@ class EmojiDisplay: UITextView {
         fatalError("init(coder:) has not been implemented")
     }
     var isCompleted: Bool = false
+    
     public func styleCell() {
         self.backgroundColor = .cardLabelBackgroundLight
         self.layer.cornerRadius = 6
@@ -36,18 +40,21 @@ class EmojiDisplay: UITextView {
 }
 
 extension EmojiDisplay: UITextViewDelegate {
+    //overrides the previous char
     func textViewDidChange(_ textView: UITextView) {
         if textView.text.count > 1 {
             textView.text = "\(textView.text!.last!)"
         }
         self.isCompleted = true
     }
+    //set completion to yes
     func textViewDidEndEditing(_ textView: UITextView) {
         self.isCompleted = true
     }
 }
 
 extension EmojiDisplay: EmojiDisplayIsEditable {
+    //set new emoji
     var emoji: ThoughtIcon {
         get {
             return ThoughtIcon(self.text)
@@ -58,6 +65,8 @@ extension EmojiDisplay: EmojiDisplayIsEditable {
     }
 }
 
+
+//emoji delegate
 protocol EmojiDisplayIsEditable {
     var emoji: ThoughtIcon { get set }
 }

@@ -9,7 +9,9 @@
 import Foundation
 import UIKit
 
+//custom thought class
 class DashboardThought {
+    //minimum req's
     let icon: String
     let createdAt: String
     let entryCount: [String: Int]
@@ -24,6 +26,7 @@ class DashboardThought {
         self.title = title
     }
     
+    //init with thought
     convenience init(thought: Thought) {
         func buildRecent(date: Date) -> String {
             let dateFormatter: DateFormatter = {
@@ -37,9 +40,10 @@ class DashboardThought {
             
             return String(describing: dateFormatter.string(from: date))
         }
-        self.init(icon: thought.icon, createdAt: buildRecent(date: thought.date), thoughtID: thought.ID, entryCount: thought.entryCount, title: thought.title)
+        self.init(icon: thought.icon, createdAt: buildRecent(date: thought.createdAt), thoughtID: thought.ID, entryCount: thought.entryCount, title: thought.title)
     }
     
+    //empty init
     convenience init(_ empty: Bool? = true) {
         self.init(icon: "", createdAt: "", thoughtID: "", entryCount: ["String" : 0], title: "")
         if empty == true {

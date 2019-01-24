@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import CoreData
 
+
+//core data controller object error handling
 class DataController: NSObject {
     var persistentContainer: NSPersistentContainer
     init(completionClosure: @escaping () -> ()) {

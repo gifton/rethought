@@ -80,6 +80,7 @@ extension UIView {
         }
     }
     
+    //standard animation into view
     func animateTemporaryView(duration: Double, view: UIView) {
         UIView.animate(withDuration: duration, animations: {
             view.layer.opacity = 1.0
@@ -90,6 +91,7 @@ extension UIView {
         }
     }
     
+    //standard animation out of view
     func buttonPressAnimation() {
         UIView.animate(withDuration: 0.25, animations: {
             self.layer.opacity = 0.75

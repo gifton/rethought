@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+//custom textView
 class ReTextView: UITextView {
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
@@ -21,9 +22,11 @@ class ReTextView: UITextView {
         self.textColor = .lightGray
     }
     
+    //public vars
     public var isCompleted: Bool = false
     public var size: CGFloat = 12
     public var color: UIColor = .black
+    //connector for state handling
     public var connector: ThoughtCardDelegate?
     
     required init?(coder aDecoder: NSCoder) {
@@ -31,6 +34,7 @@ class ReTextView: UITextView {
     }
 }
 
+//delegate
 extension ReTextView: ReTextViewDelegate {
     public var placeholder: String {
         get {

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-//class wrapper for drawer since DrawerView would be MASSIVE otherwise
+//add atrtibuted text  to UIButton
 
 extension UIButton {
     func addAttText(color: UIColor, size: CGFloat, font: RethoughtFonts, string: String) {

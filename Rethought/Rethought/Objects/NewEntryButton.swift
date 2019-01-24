@@ -9,12 +9,13 @@
 import Foundation
 import UIKit
 
+//custom button for ThoughtCard
 class newEntryButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
     }
-    
+    //entrytype defines what state the button belongs to
     public var entryType: Entry.EntryType = .text
     
     required init?(coder aDecoder: NSCoder) {

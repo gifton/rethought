@@ -86,6 +86,7 @@ class ImageEntryCell: UITableViewCell {
         return "ImageEntryPreview"
     }
     
+    //give contest with entry preview
     public func giveContext(with preview: EntryPreview) {
         self.date.getStringFromDate(date: preview.date)
         self.mainImage.image = preview.image
@@ -95,6 +96,8 @@ class ImageEntryCell: UITableViewCell {
         buildCell()
         styleCell(mainImage.frame)
     }
+    
+    //give contest with entry
     public func giveContext(with entry: Entry) {
         self.date.getStringFromDate(date: entry.date)
         self.mainImage.image = entry.image
@@ -113,6 +116,7 @@ class ImageEntryCell: UITableViewCell {
         
     }
     
+    //style cell with image frame in mind
     private func styleCell(_ size: CGRect) {
         let labels = [parentThought, date]
         addSubview(mainImage)

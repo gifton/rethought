@@ -10,40 +10,24 @@ import Foundation
 import UIKit
 
 //model for thought previews in dashboard (collectionview cells)
-class ThoughtPreviewSmall {
-    let icon: String
-    let lastEdited: Date
-    let itemCount: String
-    let thoughtID: String
-    
-    init(icon: String, lastEdited: Date, relatedThought: String, itemCount: Int) {
-        self.icon = icon
-        self.lastEdited = lastEdited
-        self.thoughtID = relatedThought
-        self.itemCount = "\(itemCount) items"
-    }
-}
 
-
-//model for thought previews in dashboard (tableView cellForIndexPath: 0)
-class ThoughtPreviewLarge {
-    let icon: String
-    let createdAt: String
+class ThoughtPreview {
+    let icon      : String
+    let createdAt : String
     let entryCount: [String: Int]
-    let thoughtID: String
-    let title: String
+    let thoughtID : String
+    let title     : String
     
-    init(icon: String, createdAt: String, thoughtID: String, entryCount: [String: Int], title: String) {
-        self.icon = icon
-        self.createdAt = createdAt
-        self.thoughtID = thoughtID
-        self.entryCount = entryCount
-        self.title = title
+    //param thought breakdown
+    init(_ thought: Thought) {
+        self.icon       = thought.icon
+        self.createdAt  = "\(thought.lastEdited)"
+        self.entryCount = thought.entryCount
+        self.thoughtID  = thought.ID
+        self.title      = thought.title
     }
+    
     convenience init(_ empty: Bool? = true) {
-        self.init(icon: "", createdAt: "", thoughtID: "", entryCount: ["String" : 0], title: "")
-        if empty == true {
-            print ("new thoughtPreviewLarge made empty")
-        }
+        self.init(Thought())
     }
 }
