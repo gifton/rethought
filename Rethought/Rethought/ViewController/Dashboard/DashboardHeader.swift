@@ -61,11 +61,12 @@ class DashboardHeader: UICollectionReusableView {
     
     let newFlashThought: UIButton = {
         let btn = UIButton()
-        btn.setHeightWidth(width: 60, height: 60)
+        btn.setHeightWidth(width: 70, height: 70)
         btn.setImage(#imageLiteral(resourceName: "flash"), for: .normal)
         btn.layer.borderColor = UIColor.black.cgColor
+        btn.backgroundColor = UIColor(hex: "51DF9F")
         btn.layer.borderWidth = 3
-        btn.layer.cornerRadius = 30
+        btn.layer.cornerRadius = 35
         btn.translatesAutoresizingMaskIntoConstraints = false
         
         return btn
@@ -103,11 +104,11 @@ extension DashboardHeader {
         flashThoughtsCollectionView.delegate = self
         flashThoughtsCollectionView.dataSource = self
         
-        flashThoughtsCollectionView.setAnchor(top: reLogo.bottomAnchor, leading: leadingAnchor, bottom: searchButton.topAnchor, trailing: trailingAnchor, paddingTop: 20, paddingLeading: 80, paddingBottom: 20, paddingTrailing: 0)
+        flashThoughtsCollectionView.setAnchor(top: reLogo.bottomAnchor, leading: leadingAnchor, bottom: searchButton.topAnchor, trailing: trailingAnchor, paddingTop: 20, paddingLeading: 75, paddingBottom: 20, paddingTrailing: 0)
         
         NSLayoutConstraint.activate([
             newFlashThought.centerYAnchor.constraint(equalTo: flashThoughtsCollectionView.centerYAnchor),
-            newFlashThought.trailingAnchor.constraint(equalTo: flashThoughtsCollectionView.leadingAnchor, constant: -10),
+            newFlashThought.trailingAnchor.constraint(equalTo: flashThoughtsCollectionView.leadingAnchor, constant: -5),
         ])
         
         settingsButton.frame = CGRect(x: ViewSize.SCREEN_WIDTH - 50, y: 12.5, width: 25, height: 25)
