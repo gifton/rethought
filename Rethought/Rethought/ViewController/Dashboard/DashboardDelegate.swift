@@ -14,4 +14,5 @@ protocol DashboardDelegate {
     func changeSize(size: ThoughtCardState)
     var context: NSManagedObjectContext { get set }
     func userTapped(on thoughtID: String)
+    func userStartedNewFastThought()
 }

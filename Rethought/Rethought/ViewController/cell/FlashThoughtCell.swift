@@ -25,7 +25,7 @@ class FlashThoughtCell: UICollectionViewCell {
     
     let mainView: UIView = {
         let view = UIView()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.1)
         view.frame.size = CGSize(width: 50, height: 50)
         view.layer.cornerRadius = 25
         view.layer.masksToBounds = true
@@ -47,5 +47,6 @@ class FlashThoughtCell: UICollectionViewCell {
         addSubview(title)
         title.setAnchor(top: mainView.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 2, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
     }
+    
     
 }

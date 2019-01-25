@@ -17,6 +17,13 @@ class DashboardHeader: UICollectionReusableView {
         setViews()
     }
     
+    convenience init(frame: CGRect, connector: DashboardDelegate) {
+        self.init(frame: frame)
+        self.connector = connector
+    }
+    
+    var delegate: DashboardDelegate?
+    
     //set custom identifier, set default identifier
     override var reuseIdentifier: String? {
         return "ThoughtFeedCellTile"
@@ -25,8 +32,11 @@ class DashboardHeader: UICollectionReusableView {
         return "ThoughtFeedCellTile"
     }
     
+    //dev object
+    let randomTitles: [String] = ["Books", "Movies", "Keys", "reading", "Movie to watch", "backpack"]
+    
     //conect to dashboard, hold recent thoughts for collectionView
-    public var delegate: DashboardDelegate?
+    public var connector: DashboardDelegate?
     public var recentEntries: [ReccomendedThought] = []
     
     let allEntriesButton: UIButton = {
@@ -103,6 +113,7 @@ extension DashboardHeader {
         flashThoughtsCollectionView.register(FlashThoughtCell.self, forCellWithReuseIdentifier: FlashThoughtCell.identifier)
         flashThoughtsCollectionView.delegate = self
         flashThoughtsCollectionView.dataSource = self
+        newFlashThought.addTarget(self, action: #selector(setLarger(_:)), for: .touchUpInside)
         
         flashThoughtsCollectionView.setAnchor(top: reLogo.bottomAnchor, leading: leadingAnchor, bottom: searchButton.topAnchor, trailing: trailingAnchor, paddingTop: 20, paddingLeading: 75, paddingBottom: 20, paddingTrailing: 0)
         
@@ -130,11 +141,21 @@ extension DashboardHeader: UICollectionViewDataSource {
     //set cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FlashThoughtCell.identifier, for: indexPath) as! FlashThoughtCell
-        
-
+        var inputs: [String] = []
+        for _ in 0...2 {
+            inputs += randomTitles
+        }
+        cell.title.text = inputs[indexPath.row]
         return cell
     }
     
+    @objc
+    func setLarger(_ sender: Any) {
+        UIView.animate(withDuration: 0.65) {
+            self.newFlashThought.frame = CGRect(x: 0, y: 50, width: ViewSize.SCREEN_WIDTH - 20, height: 250)
+        }
+        self.connector?.userStartedNewFastThought()
+    }
     
 }
 

@@ -123,6 +123,3 @@ extension DashboardViewModel {
         return [thought1, thought2, thought3, thought4, thought5]
     }
 }
-
-
-

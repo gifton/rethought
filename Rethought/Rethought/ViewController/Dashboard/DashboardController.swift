@@ -26,6 +26,13 @@ class DashboardController: UIViewController {
 }
 
 extension DashboardController: DashboardDelegate {
+    func userStartedNewFastThought() {
+        UIView.animate(withDuration: 0.5) {
+            self.view.backgroundColor = .black
+            self.view.layer.opacity = 0.2
+        }
+    }
+    
     
     func userTapped(on thoughtID: String) {
         print("tapped on \(thoughtID)")
