@@ -70,7 +70,6 @@
 		D773456A21F343DE0075B4C8 /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D773456921F343DE0075B4C8 /* Managed.swift */; };
 		D79B1EFA21CC6B0000E951D3 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B1EF921CC6B0000E951D3 /* UIFont.swift */; };
 		D7BEFC6F21F78E6800D55C8E /* DashboardHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEFC6E21F78E6800D55C8E /* DashboardHeader.swift */; };
-		D7BEFC7121F7D77400D55C8E /* ReccomendedThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEFC7021F7D77400D55C8E /* ReccomendedThoughtCell.swift */; };
 		D7BEFC7321F7F58A00D55C8E /* ReccomendedThought.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEFC7221F7F58A00D55C8E /* ReccomendedThought.swift */; };
 		D7F9FD5421F9C8E000E73BFC /* FlashThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F9FD5321F9C8E000E73BFC /* FlashThoughtCell.swift */; };
 		D7F9FD5621F9D00F00E73BFC /* QuickThoughts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F9FD5521F9D00F00E73BFC /* QuickThoughts.swift */; };
@@ -152,7 +151,6 @@
 		D773456921F343DE0075B4C8 /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
 		D79B1EF921CC6B0000E951D3 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		D7BEFC6E21F78E6800D55C8E /* DashboardHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHeader.swift; sourceTree = "<group>"; };
-		D7BEFC7021F7D77400D55C8E /* ReccomendedThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReccomendedThoughtCell.swift; sourceTree = "<group>"; };
 		D7BEFC7221F7F58A00D55C8E /* ReccomendedThought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReccomendedThought.swift; sourceTree = "<group>"; };
 		D7F9FD5321F9C8E000E73BFC /* FlashThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashThoughtCell.swift; sourceTree = "<group>"; };
 		D7F9FD5521F9D00F00E73BFC /* QuickThoughts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickThoughts.swift; sourceTree = "<group>"; };
@@ -393,7 +391,6 @@
 			children = (
 				D75B892321C2FE750023784F /* EntryPreviewCell.swift */,
 				D7FFA1DC21D6F785001C3B72 /* ThoughtFeedCellTile.swift */,
-				D7BEFC7021F7D77400D55C8E /* ReccomendedThoughtCell.swift */,
 				D7F9FD5321F9C8E000E73BFC /* FlashThoughtCell.swift */,
 			);
 			path = cell;
@@ -568,7 +565,6 @@
 			files = (
 				D7BEFC7321F7F58A00D55C8E /* ReccomendedThought.swift in Sources */,
 				D713102B21F06ED4001D7584 /* UITextField.swift in Sources */,
-				D7BEFC7121F7D77400D55C8E /* ReccomendedThoughtCell.swift in Sources */,
 				D773456A21F343DE0075B4C8 /* Managed.swift in Sources */,
 				D75B88E021BC54B20023784F /* Entry.swift in Sources */,
 				D70EA8E421E329140071E257 /* UIButton.swift in Sources */,

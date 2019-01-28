@@ -35,7 +35,6 @@ class FlashThoughtCell: UICollectionViewCell {
     
     let title: UILabel = {
         let lbl = UILabel()
-        lbl.addText(size: 13, font: .bodyLight, string: randomString(length: 8))
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.textAlignment = .center
         
@@ -47,6 +46,7 @@ class FlashThoughtCell: UICollectionViewCell {
         addSubview(title)
         title.setAnchor(top: mainView.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 2, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
     }
-    
-    
+    override func prepareForReuse() {
+        self.title.addText(size: 9, font: .bodyLight, string: "")
+    }
 }

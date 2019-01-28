@@ -56,8 +56,7 @@ class DashboardHeader: UICollectionReusableView {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .clear
         cv.showsHorizontalScrollIndicator = false
-        cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.layer.cornerRadius = 9
+        cv.layer.cornerRadius = 20
         
         return cv
     }()
@@ -71,13 +70,12 @@ class DashboardHeader: UICollectionReusableView {
     
     let newFlashThought: UIButton = {
         let btn = UIButton()
-        btn.setHeightWidth(width: 70, height: 70)
+        btn.frame.size = CGSize(width: 70, height: 70)
         btn.setImage(#imageLiteral(resourceName: "flash"), for: .normal)
         btn.layer.borderColor = UIColor.black.cgColor
         btn.backgroundColor = UIColor(hex: "51DF9F")
         btn.layer.borderWidth = 3
         btn.layer.cornerRadius = 35
-        btn.translatesAutoresizingMaskIntoConstraints = false
         
         return btn
     }()
@@ -115,12 +113,11 @@ extension DashboardHeader {
         flashThoughtsCollectionView.dataSource = self
         newFlashThought.addTarget(self, action: #selector(setLarger(_:)), for: .touchUpInside)
         
-        flashThoughtsCollectionView.setAnchor(top: reLogo.bottomAnchor, leading: leadingAnchor, bottom: searchButton.topAnchor, trailing: trailingAnchor, paddingTop: 20, paddingLeading: 75, paddingBottom: 20, paddingTrailing: 0)
+        flashThoughtsCollectionView.frame = CGRect(x: 75, y: 65, width: ViewSize.SCREEN_WIDTH - 60, height: 70)
         
-        NSLayoutConstraint.activate([
-            newFlashThought.centerYAnchor.constraint(equalTo: flashThoughtsCollectionView.centerYAnchor),
-            newFlashThought.trailingAnchor.constraint(equalTo: flashThoughtsCollectionView.leadingAnchor, constant: -5),
-        ])
+//        flashThoughtsCollectionView.setAnchor(top: reLogo.bottomAnchor, leading: leadingAnchor, bottom: searchButton.topAnchor, trailing: trailingAnchor, paddingTop: 20, paddingLeading: 75, paddingBottom: 20, paddingTrailing: 0)
+        
+        newFlashThought.frame.origin = CGPoint(x: 0, y: 65)
         
         settingsButton.frame = CGRect(x: ViewSize.SCREEN_WIDTH - 50, y: 12.5, width: 25, height: 25)
         settingsButton.setImage(#imageLiteral(resourceName: "cog"), for: .normal)
@@ -145,17 +142,23 @@ extension DashboardHeader: UICollectionViewDataSource {
         for _ in 0...2 {
             inputs += randomTitles
         }
-        cell.title.text = inputs[indexPath.row]
+        cell.title.addText(size: 9, font: .bodyLight, string: inputs[indexPath.row])
         return cell
     }
     
     @objc
     func setLarger(_ sender: Any) {
-        UIView.animate(withDuration: 0.65) {
-            self.newFlashThought.frame = CGRect(x: 0, y: 50, width: ViewSize.SCREEN_WIDTH - 20, height: 250)
+        if self.newFlashThought.frame.width > 100 {
+            UIView.animate(withDuration: 0.65) {
+                self.newFlashThought.frame = CGRect(x: 0, y: 50, width: ViewSize.SCREEN_WIDTH - 20, height: 250)
+            }
+        } else {
+            UIView.animate(withDuration: 0.65) {
+                self.newFlashThought.frame = CGRect(x: 0, y: 50, width: ViewSize.SCREEN_WIDTH - 20, height: 250)
+            }
         }
-        self.connector?.userStartedNewFastThought()
+        
+//        self.connector?.userStartedNewFastThought()
     }
     
 }
-
