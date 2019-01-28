@@ -60,7 +60,7 @@ extension DashboardController: DashboardDelegate {
             case .cardIsDoneEditing:
                 self.thoughtCard?.card?.frame = CGRect(x: 10, y: (ViewSize.SCREEN_HEIGHT - 397) , width: ViewSize.SCREEN_WIDTH - 20, height: 367)
             default:
-                self.thoughtCard?.card?.frame = CGRect(x: 10, y: (ViewSize.SCREEN_HEIGHT * 0.184) , width: ViewSize.SCREEN_WIDTH - 20, height: 367)
+                self.thoughtCard?.card?.frame = CGRect(x: 0, y: (ViewSize.SCREEN_HEIGHT * 0.184) , width: ViewSize.SCREEN_WIDTH, height: 367)
             }
         }) { (true) in }
     }
@@ -124,6 +124,10 @@ extension DashboardController: UICollectionViewDataSource {
         view.thought = thought
         self.navigationController?.pushViewController(view, animated: true)
     }
+    //size
+    override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
+        return CGSize(width: 100, height: 100)
+    }
 }
 extension DashboardController: UICollectionViewDelegate {
     
@@ -134,5 +138,9 @@ extension DashboardController: UICollectionViewDelegate {
     //hide keyboard on scroll
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.resignFirstResponder()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: 100)
     }
 }

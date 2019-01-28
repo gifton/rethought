@@ -63,15 +63,15 @@ class ThoughtCard: UIView {
     private var newThoughtIntro           = UILabel()
     private var timeSinceLastThoughtLabel = UILabel()
     // optional views
-    private var cancelButton = UIButton()
-    private var addTitleTV   = ReTextView()
-    private var addIconTV    = EmojiDisplay()
-    private var doneButton   = newEntryButton()
-    private let micBtn       = newEntryButton()
-    private let noteBtn      = newEntryButton()
-    private let linkBtn      = newEntryButton()
-    private let cameraBtn    = newEntryButton()
-    private let errorLabel   = UILabel()
+    private lazy var cancelButton = UIButton()
+    private lazy var addTitleTV   = ReTextView()
+    private lazy var addIconTV    = EmojiDisplay()
+    private lazy var doneButton   = newEntryButton()
+    private lazy var micBtn       = newEntryButton()
+    private lazy var noteBtn      = newEntryButton()
+    private lazy var linkBtn      = newEntryButton()
+    private lazy var cameraBtn    = newEntryButton()
+    private lazy var errorLabel   = UILabel()
 }
 
 extension ThoughtCard {
