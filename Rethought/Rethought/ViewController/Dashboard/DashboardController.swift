@@ -21,6 +21,15 @@ class DashboardController: UIViewController {
         super.viewDidLoad()
     }
     
+    init(withContext context: NSManagedObjectContext) {
+        super.init(nibName: "DashboardController", bundle: nil)
+        self.context = context
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     var model: DashboardViewModel!
     var thoughts: [DashboardThought]?
 }
