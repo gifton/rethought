@@ -20,6 +20,7 @@ struct ViewSize {
     static let thoughtCellSmall = CGSize(width: 50, height: 70)
     static let largeCell = CGRect(origin: CGPoint(x: 12.5, y: 10), size: CGSize(width: (UIScreen.main.bounds.width - 25), height: 156))
     static let thoughtTileSize = CGSize(width: (UIScreen.main.bounds.width - 15) / 2, height: (UIScreen.main.bounds.width - 15) / 2)
+    
 }
 
 enum fontSize: CGFloat {

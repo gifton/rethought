@@ -14,20 +14,21 @@ class ThoughtDetailView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
-        styleView()
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
         edgePan.edges = .left
         
         addGestureRecognizer(edgePan)
     }
     
-    convenience init(frame: CGRect, thought: Thought, delegate: DetailThoughtDelegate) {
+    convenience init(frame: CGRect, thought: Thought, delegate: ThoughtDetailDelegagte) {
         self.init(frame: frame)
         self.title    = thought.title
         self.icon     = thought.icon
         self.entries  = thought.entries
         self.delegate = delegate
+        self.counts = thought.entryCount
         addContext()
+        styleView()
         setupView()
     }
     
@@ -35,27 +36,23 @@ class ThoughtDetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     //init all objects
-    private let topView                     = UIView(frame: CGRect(x: 0, y: 0, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT * 0.217))
+    private let topView                     = UIView()
     private let deleteButton                = UIButton()
     private var iconLabel                   = UILabel()
-    private var titleLabel                  = UILabel()
+    private var titleLabel                  = UITextView()
     private let logo                        = UIImageView(image: #imageLiteral(resourceName: "Logo_with_bg"))
-    private var recentEntriesLabel: UILabel = {
-        let lbl = UILabel(frame: CGRect(x: 20, y: ViewSize.SCREEN_HEIGHT * 0.22, width: 300, height: 40))
-        lbl.text = "Recent Entries 💭"
-        lbl.textColor = .black
-        lbl.font = .reBody(ofSize: 18)
-        return lbl
-    }()
+    
     //content recieved from thought
     private var title:   String?
     private var icon:    String?
     public var entries:  [Entry]?
+    private var counts: [String: Int]?
+    
     //delegate for returning home, moving to new thought, editing etc
-    public var delegate: DetailThoughtDelegate?
+    public var delegate: ThoughtDetailDelegagte?
     
     let entryTV: UITableView = {
-        let tv = UITableView(frame: CGRect(x: 0, y: ViewSize.SCREEN_HEIGHT * 0.269, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - (ViewSize.SCREEN_HEIGHT * 0.269)), style: UITableView.Style.plain)
+        let tv = UITableView()
         tv.allowsSelection = true
         tv.separatorStyle = .none
         tv.estimatedRowHeight = 101
@@ -66,8 +63,13 @@ class ThoughtDetailView: UIView {
 extension ThoughtDetailView {
     func setupView() {
         addSubview(topView)
-        addSubview(recentEntriesLabel)
         addSubview(entryTV)
+        
+        topView.setAnchor(top: safeTopAnchor, leading: safeLeadingAnchor, bottom: nil, trailing: safeTrailingAnchor, paddingTop: 0, paddingLeading: 2.5, paddingBottom: 0, paddingTrailing: 2.5)
+        topView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+
+        
+        entryTV.frame = CGRect(x: 0, y: 230, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - 230)
         
         let views : [UIView] = [logo, deleteButton, iconLabel]
         var start = CGPoint(x: 25, y: 35)
@@ -83,27 +85,21 @@ extension ThoughtDetailView {
             start.x += newX
         }
         topView.addSubview(titleLabel)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate ([
-            titleLabel.centerXAnchor.constraint(equalTo: topView.centerXAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -10),
-            titleLabel.widthAnchor.constraint(equalToConstant: 325)
-        ])
+        titleLabel.frame = CGRect(x: 25, y: 55, width: ViewSize.SCREEN_WIDTH - 50, height: 100)
     }
     func styleView() {
         topView.backgroundColor = UIColor.init(hex: "161616")
+        topView.layer.cornerRadius = 7
         
         iconLabel.font = .reBody(ofSize: 28)
         
         deleteButton.setImage(#imageLiteral(resourceName: "Trash"), for: .normal)
         
         titleLabel.font = .reBody(ofSize: 18)
-        titleLabel.numberOfLines = 3
         titleLabel.textColor = .white
     }
     func addContext() {
-        self.titleLabel.text = "What is to be done, nay to be said for the ill informed, advised and intentined portrayal of watermelon in modern film?"
+        self.titleLabel.text = self.title
         self.iconLabel.text = self.icon
         
         entryTV.delegate = self

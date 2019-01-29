@@ -69,7 +69,7 @@ extension DashboardController: DashboardDelegate {
             case .cardIsDoneEditing:
                 self.thoughtCard?.card?.frame = CGRect(x: 10, y: (ViewSize.SCREEN_HEIGHT - 397) , width: ViewSize.SCREEN_WIDTH - 20, height: 367)
             default:
-                self.thoughtCard?.card?.frame = CGRect(x: 0, y: (ViewSize.SCREEN_HEIGHT * 0.184) , width: ViewSize.SCREEN_WIDTH, height: 367)
+                self.thoughtCard?.card?.frame = CGRect(x: 5, y: (ViewSize.SCREEN_HEIGHT * 0.184) , width: ViewSize.SCREEN_WIDTH - 10, height: 367)
             }
         }) { (true) in }
     }
@@ -85,11 +85,12 @@ extension DashboardController {
             dashboard.thoughtCollectionView.dataSource = self
             dashboard.thoughtCollectionView.delegate = self
             self.view = dashboard
+        } else {
+            self.view.backgroundColor = UIColor(hex: "6271fc")
         }
         
         //set thoght card
-        thoughtCard = ThoughtCardController()
-        thoughtCard?.setCard(delegate: self)
+        thoughtCard = ThoughtCardController(withDelegate: self)
         self.addChild(thoughtCard!)
         self.view.addSubview(thoughtCard!.card!)
         thoughtCard!.didMove(toParent: self)
@@ -127,12 +128,6 @@ extension DashboardController: UICollectionViewDataSource {
         
         return cell
     }
-    //display new Thoght
-    func userTapped(on thought: Thought) {
-        let view = ThoughtDetailController()
-        view.thought = thought
-        self.navigationController?.pushViewController(view, animated: true)
-    }
     //size
     override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
         return CGSize(width: 100, height: 100)
@@ -141,7 +136,14 @@ extension DashboardController: UICollectionViewDataSource {
 extension DashboardController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        guard let thoughtID: String = self.thoughts?[indexPath.row].thoughtID else { return }
+        let thought = self.model.retrieve(thought: thoughtID)
+        let vm = ThoughtDetailViewModel(thought: thought, context: self.context)
+        let vc = ThoughtDetailController(withThoughtModel: vm)
+        self.navigationController?.pushViewController(vc, animated: true)
+//        let view = ThoughtDetailController()
+//        view.thought = thought
+//        self.navigationController?.pushViewController(view, animated: true)
     }
     
     //hide keyboard on scroll

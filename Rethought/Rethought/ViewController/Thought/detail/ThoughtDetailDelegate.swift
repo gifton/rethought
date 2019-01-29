@@ -9,32 +9,7 @@
 import Foundation
 import UIKit
 
-protocol DetailThoughtDelegate {
-    var thought: Thought { get set }
-    func returnHome()
+protocol ThoughtDetailDelegagte {
     func userTapped(on entryID: String)
-}
-
-extension ThoughtDetailController: DetailThoughtDelegate {
-    
-    var thought: Thought {
-        get {
-            return detailThought ?? Thought()
-        }
-        set {
-            let detailView = ThoughtDetailView(frame: ViewSize.FRAME, thought: newValue, delegate: self)
-            self.view = detailView
-            
-            
-        }
-    }
-    
-    func userTapped(on entryID: String) {
-        let entries = self.thought.entries
-        let entry = entries.filter{ $0.id == entryID }.first ?? Entry.init(title: "Not available")
-        let vc = EntryDetailController()
-        vc.entry = entry
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
+    func returnHome()
 }

@@ -10,11 +10,34 @@ import Foundation
 import UIKit
 
 class ThoughtDetailController: UIViewController{
-    var detailThought: Thought?
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(hex: "55AFF8")
+        self.view.backgroundColor = UIColor(hex: "506686")
     }
+    
+    init(withThoughtModel model: ThoughtDetailViewModel) {
+        super.init(nibName: nil, bundle: nil)
+        self.model = model
+        setView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    var model: ThoughtDetailViewModel?
+    
+    func setView() {
+        self.view = ThoughtDetailView(frame: .zero, thought: self.model?.thought ?? Thought(), delegate: self)
+    }
+}
+
+extension ThoughtDetailController: ThoughtDetailDelegagte  {
+    func userTapped(on entryID: String) {
+        print("aww jeez! \(entryID)")
+    }
+    
+    
 }
 
 extension ThoughtDetailController: BackDelegate {

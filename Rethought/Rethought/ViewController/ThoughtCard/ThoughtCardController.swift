@@ -26,6 +26,16 @@ class ThoughtCardController: UIViewController {
     private var newThought: Thought?
     private var newEntries: [Entry] = []
     
+    init(withDelegate delegate: DashboardDelegate) {
+        super.init(nibName: "ThoughtCardController", bundle: nil)
+        self.delegate = delegate
+        card = ThoughtCard(delegate: self)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     //once dashboard delegate is set, initiate card view
     func setCard(delegate: DashboardDelegate) {
         self.delegate = delegate
