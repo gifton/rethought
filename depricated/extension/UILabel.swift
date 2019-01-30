@@ -63,14 +63,14 @@ extension UILabel {
     func getStringFromDate(date: Date) {
         let dateFormatter: DateFormatter = {
             let formatter = DateFormatter()
-            formatter.dateStyle = .none
-            formatter.timeStyle = .short
+            formatter.dateStyle = .long
+            formatter.timeStyle = .none
             formatter.doesRelativeDateFormatting = true
             formatter.formattingContext = .standalone
             return formatter
         }()
         let output = dateFormatter.string(from: date)
-        self.text = output
+        self.addText(size: 12, font: .bodyLight, string: output)
     }
     
     //add attrinutedText to label

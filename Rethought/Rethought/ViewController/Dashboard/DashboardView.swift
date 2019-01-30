@@ -39,10 +39,6 @@ class DashboardView: UIView {
         cv.backgroundColor = .clear
         cv.showsVerticalScrollIndicator = false
         cv.keyboardDismissMode = .interactive
-        
-        print(layout.estimatedItemSize)
-        print("-------------------------")
-        print(cv.frame)
         return cv
     }()
     

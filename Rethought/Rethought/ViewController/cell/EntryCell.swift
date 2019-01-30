@@ -23,7 +23,7 @@ class TextEntryCell: UITableViewCell {
     }
     //all object init's
     private var title           = UILabel(frame: CGRect(x: 5, y: 0, width: ViewSize.SCREEN_WIDTH - 20, height: 20))
-    private var body            = UILabel(frame: CGRect(x: 5, y: 15, width: ViewSize.SCREEN_WIDTH - 20, height: 60))
+    private var body            = UILabel(frame: CGRect(x: 5, y: 15, width: ViewSize.SCREEN_WIDTH - 20, height: 100))
     private var parentThought   = UILabel(frame: CGRect(x: 5, y: 70, width: 100, height: 20))
     private var date            = UILabel(frame: CGRect(x: ViewSize.SCREEN_WIDTH - 70, y: 75, width: 80, height: 10))
     
@@ -138,5 +138,53 @@ class ImageEntryCell: UITableViewCell {
         }
         parentThought.frame = CGRect(x: 15, y: size.height - 45, width: 35, height: 35)
         date.frame = CGRect(x: size.width - 100, y: size.height - 40, width: 80, height: 25)
+    }
+}
+
+
+class EntryImageCell: UITableViewCell {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
+    private var mainImage  = UIImageView()
+    private var titleLabel = UILabel()
+    private var dateLabel  = UILabel()
+    
+    private var entryImg   : UIImage?
+    private var entryTitle : String?
+    private var entryDate  : Date?
+    
+    func giveContext(with entry: Entry) {
+        self.entryImg   = entry.image
+        self.entryTitle = entry.detail
+        self.entryDate  = entry.date
+        setView()
+    }
+    
+    func setView() {
+        mainImage.image               = entryImg
+        mainImage.contentMode         = .scaleAspectFill
+        mainImage.layer.cornerRadius  = 6
+        mainImage.frame               = CGRect(x: 15, y: 0, width: self.frame.width - 30, height: (entryImg?.size.height)!)
+        mainImage.layer.masksToBounds = true
+        
+        titleLabel.addText(size: 12, font: .bodyLight, string: entryTitle ?? "💭")
+        dateLabel.getStringFromDate(date: entryDate ?? Date())
+        
+        titleLabel.frame = CGRect(x: 20, y: self.frame.size.height - 25, width: 250, height: 15)
+        dateLabel.frame = CGRect(x: self.frame.size.width - 115, y: self.frame.size.height - 25, width: 120, height: 15)
+        
+        print(self.mainImage.frame)
+        addSubview(mainImage)
+        addSubview(titleLabel)
+        addSubview(dateLabel)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    public static var identifier: String {
+        return "imageCell"
     }
 }

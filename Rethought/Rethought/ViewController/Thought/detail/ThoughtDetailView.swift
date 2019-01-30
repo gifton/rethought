@@ -13,7 +13,7 @@ import UIKit
 class ThoughtDetailView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .white
+        self.backgroundColor  = UIColor(hex: "FAFBFF")
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
         edgePan.edges = .left
         
@@ -28,7 +28,6 @@ class ThoughtDetailView: UIView {
         self.delegate = delegate
         self.counts = thought.entryCount
         addContext()
-        styleView()
         setupView()
     }
     
@@ -36,17 +35,18 @@ class ThoughtDetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     //init all objects
-    private let topView                     = UIView()
-    private let deleteButton                = UIButton()
-    private var iconLabel                   = UILabel()
-    private var titleLabel                  = UITextView()
-    private let logo                        = UIImageView(image: #imageLiteral(resourceName: "Logo_with_bg"))
+    private let topView      = UIView()
+    private let deleteButton = UIButton()
+    private var iconLabel    = UILabel()
+    private var titleTV      = UITextView()
+    private let logo         = UIImageView(image: #imageLiteral(resourceName: "Logo_with_bg"))
+    private var entryView    : EntryCountView?
     
     //content recieved from thought
     private var title:   String?
     private var icon:    String?
     public var entries:  [Entry]?
-    private var counts: [String: Int]?
+    private var counts: [String: Int]!
     
     //delegate for returning home, moving to new thought, editing etc
     public var delegate: ThoughtDetailDelegagte?
@@ -62,51 +62,56 @@ class ThoughtDetailView: UIView {
 
 extension ThoughtDetailView {
     func setupView() {
-        addSubview(topView)
+        let media     = self.counts["media"] ?? 0
+        let links     = self.counts["links"] ?? 0
+        let recording = self.counts["recording"] ?? 0
+        let text      = self.counts["text"] ?? 0
+        
+        entryView = EntryCountView(media: media , links: links, recordings: recording, text: text)
+        
+        addSubview(logo)
+        addSubview(titleTV)
+        addSubview(deleteButton)
+        addSubview(iconLabel)
+        addSubview(entryView!)
+        addSubview(iconLabel)
         addSubview(entryTV)
         
-        topView.setAnchor(top: safeTopAnchor, leading: safeLeadingAnchor, bottom: nil, trailing: safeTrailingAnchor, paddingTop: 0, paddingLeading: 2.5, paddingBottom: 0, paddingTrailing: 2.5)
-        topView.heightAnchor.constraint(equalToConstant: 150).isActive = true
-
+        logo.translatesAutoresizingMaskIntoConstraints = false
+        logo.leadingAnchor.constraint(equalTo: safeLeadingAnchor, constant: 15).isActive = true
+        logo.topAnchor.constraint(equalTo: safeTopAnchor, constant: 15).isActive = true
         
-        entryTV.frame = CGRect(x: 0, y: 230, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - 230)
+        titleTV.frame = CGRect(x: 50, y: 90, width: ViewSize.SCREEN_WIDTH - 100, height: 91)
         
-        let views : [UIView] = [logo, deleteButton, iconLabel]
-        var start = CGPoint(x: 25, y: 35)
-        let spacingConstant: CGFloat = 70.0
+        deleteButton.translatesAutoresizingMaskIntoConstraints = false
+        deleteButton.trailingAnchor.constraint(equalTo: safeTrailingAnchor, constant: -25).isActive = true
+        deleteButton.topAnchor.constraint(equalTo: safeTopAnchor, constant: 18).isActive = true
         
-        iconLabel.frame.size = CGSize(width: 30, height: 35)
-        deleteButton.frame.size = CGSize(width: 30, height: 35)
+        iconLabel.translatesAutoresizingMaskIntoConstraints = false
+        iconLabel.trailingAnchor.constraint(equalTo: safeTrailingAnchor, constant: -25).isActive = true
+        iconLabel.topAnchor.constraint(equalTo: deleteButton.bottomAnchor, constant: 80).isActive = true
         
-        for innerView in views {
-            topView.addSubview(innerView)
-            innerView.frame.origin = start
-            let newX = (spacingConstant + innerView.frame.width)
-            start.x += newX
-        }
-        topView.addSubview(titleLabel)
-        titleLabel.frame = CGRect(x: 25, y: 55, width: ViewSize.SCREEN_WIDTH - 50, height: 100)
+        entryTV.frame = CGRect(x: 0, y: 260, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - 260)
+        
+        styleView()
     }
     func styleView() {
-        topView.backgroundColor = UIColor.init(hex: "161616")
-        topView.layer.cornerRadius = 7
-        
-        iconLabel.font = .reBody(ofSize: 28)
+        titleTV.font = .reTitle(ofSize: 24)
+        titleTV.backgroundColor = .clear
         
         deleteButton.setImage(#imageLiteral(resourceName: "Trash"), for: .normal)
-        
-        titleLabel.font = .reBody(ofSize: 18)
-        titleLabel.textColor = .white
     }
     func addContext() {
-        self.titleLabel.text = self.title
+        self.titleTV.text = self.title
         self.iconLabel.text = self.icon
         
         entryTV.delegate = self
         entryTV.dataSource = self
         entryTV.register(TextEntryCell.self, forCellReuseIdentifier: TextEntryCell.identifier)
         entryTV.register(ImageEntryCell.self, forCellReuseIdentifier: ImageEntryCell.identifier)
+        entryTV.register(EntryImageCell.self, forCellReuseIdentifier: EntryImageCell.identifier)
     }
+    
     @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         if recognizer.state == .recognized {
             print("Screen edge swiped!")
@@ -114,3 +119,48 @@ extension ThoughtDetailView {
         }
     }
 }
+
+
+//table view handlers
+extension ThoughtDetailView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.userTapped(on: self.entries![indexPath.row].id)
+    }
+}
+
+extension ThoughtDetailView: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if entries != nil {
+            return entries!.count
+        } else {
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if entries != nil {
+            if let img = entries![indexPath.row].image {
+                return img.size.height + 30
+            } else {
+                return 110
+            }
+        } else {
+            return 45
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let entry = entries![indexPath.row]
+        switch entry.type {
+        case .text:
+            let cell = entryTV.dequeueReusableCell(withIdentifier: TextEntryCell.identifier, for: indexPath) as! TextEntryCell
+            cell.giveContext(with: entry)
+            return cell
+        default:
+            let cell = entryTV.dequeueReusableCell(withIdentifier: EntryImageCell.identifier, for: indexPath) as! EntryImageCell
+            cell.giveContext(with: entry)
+            return cell
+        }
+    }
+}
+

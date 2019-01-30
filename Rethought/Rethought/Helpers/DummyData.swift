@@ -60,7 +60,7 @@ extension DashboardViewModel {
                                image: newImg)
             let entry2 = Entry(type: .text, thoughtID: id, detail: "From what I can gather, the private club is a void in which poeople all simultaniously yell into to see how makes it out", date: generateRandomDate(daysBack: 5)!, icon: "🤸🏼‍♂️", title: "I guess, the private club should be avoided")
             
-            let thought = Thought(title: "From what I can gather, when you ball out, you fall out", icon: "⚽️", date: generateRandomDate(daysBack: 12)!, entries: [entry1, entry2])
+            let thought = Thought(title: "From what I can gather, when you ball out, you fall out", icon: "💭", date: generateRandomDate(daysBack: 12)!, entries: [entry1, entry2])
             thought.setID(id)
             
             return thought
@@ -76,7 +76,7 @@ extension DashboardViewModel {
                                date: self.generateRandomDate(daysBack: 6)!,
                                icon: "🍬",
                                image: newImg)
-            let entry2 = Entry(type: .text, thoughtID: id, detail: "From what I can gather, the private club is a void in which poeople all simultaniously yell into to see how makes it out", date: generateRandomDate(daysBack: 7)!, icon: "🤸🏼‍♂️", title: "I guess, the private club should be avoided")
+            let entry2 = Entry(type: .text, thoughtID: id, detail: "yrdtjfhygif what I can gather, the private club is a void in which poeople all simultaniously yell into to see how makes it outFrom what I can gather, the private club is a void in which poeople all simultaniously yell into to see how makes it out", date: generateRandomDate(daysBack: 7)!, icon: "🤸🏼‍♂️", title: "I guess, the private club should be avoided")
             
             let thought = Thought(title: "From what I can gather, when you ball out, you fall out", icon: "🍔", date: generateRandomDate(daysBack: 12)!, entries: [entry1, entry2])
             thought.setID(id)

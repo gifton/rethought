@@ -48,5 +48,6 @@ class FlashThoughtCell: UICollectionViewCell {
     }
     override func prepareForReuse() {
         self.title.addText(size: 9, font: .bodyLight, string: "")
+        
     }
 }

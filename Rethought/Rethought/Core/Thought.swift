@@ -37,7 +37,7 @@ public class Thought {
     public var entries: [Entry] = []
     public var createdAt: Date
     public var lastEdited: Date
-    public var entryCount: [String:Int] = ["links": 0, "entries": 0, "media":0, "audio": 0]
+    public var entryCount: [String: Int] = ["links": 0, "entries": 0, "media":0, "audio": 0]
     public var ID: String = randomString(length: 12)
     
     //  minimum req's to build new thought
