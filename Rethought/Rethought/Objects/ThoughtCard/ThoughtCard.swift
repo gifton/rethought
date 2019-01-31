@@ -33,9 +33,8 @@ class ThoughtCard: UIView {
     }
     
     override init(frame: CGRect) {
-        let innerFrame = CGRect(x: 10, y: ViewSize.SCREEN_HEIGHT * 0.87, width: ViewSize.SCREEN_WIDTH - 20, height: 69)
         self.state = .collapsed
-        super.init(frame: innerFrame)
+        super.init(frame: ViewSize.largeBar)
         
         setupCard()
         panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureAction(_:)))

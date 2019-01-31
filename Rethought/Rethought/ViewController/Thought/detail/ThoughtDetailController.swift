@@ -19,6 +19,11 @@ class ThoughtDetailController: UIViewController{
         super.init(nibName: nil, bundle: nil)
         self.model = model
         setView()
+        
+        let newEntryView = EntryBarController(delegate: self)
+        self.addChild(newEntryView)
+        self.view.addSubview(newEntryView.bar)
+        newEntryView.didMove(toParent: self)
     }
     
     required init?(coder aDecoder: NSCoder) {

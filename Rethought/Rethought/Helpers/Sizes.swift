@@ -18,9 +18,9 @@ struct ViewSize {
     static let FRAME = UIScreen.main.bounds
     
     static let thoughtCellSmall = CGSize(width: 50, height: 70)
-    static let largeCell = CGRect(origin: CGPoint(x: 12.5, y: 10), size: CGSize(width: (UIScreen.main.bounds.width - 25), height: 156))
-    static let thoughtTileSize = CGSize(width: (UIScreen.main.bounds.width - 15) / 2, height: (UIScreen.main.bounds.width - 15) / 2)
-    
+    static let largeCell        = CGRect(origin: CGPoint(x: 12.5, y: 10), size: CGSize(width: (UIScreen.main.bounds.width - 25), height: 156))
+    static let thoughtTileSize  = CGSize(width: (UIScreen.main.bounds.width - 15) / 2, height: (UIScreen.main.bounds.width - 15) / 2)
+    static let largeBar         = CGRect(x: 10, y: ViewSize.SCREEN_HEIGHT * 0.87, width: ViewSize.SCREEN_WIDTH - 20, height: 69)
 }
 
 enum fontSize: CGFloat {
