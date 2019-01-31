@@ -10,151 +10,24 @@ import Foundation
 import UIKit
 
 //theres 2 types of cells right now: Text, and image.
-class TextEntryCell: UITableViewCell {
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        styleCell()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-        
-    }
-    //all object init's
-    private var title           = UILabel(frame: CGRect(x: 5, y: 0, width: ViewSize.SCREEN_WIDTH - 20, height: 20))
-    private var body            = UILabel(frame: CGRect(x: 5, y: 15, width: ViewSize.SCREEN_WIDTH - 20, height: 100))
-    private var parentThought   = UILabel(frame: CGRect(x: 5, y: 70, width: 100, height: 20))
-    private var date            = UILabel(frame: CGRect(x: ViewSize.SCREEN_WIDTH - 70, y: 75, width: 80, height: 10))
-    
-    //cellIdentifier
-    public static var identifier: String {
-        return "TextEntryPreview"
-    }
-    
-    // "give context" is called during the cewllForRow: function in delegate
-    public func giveContext(with preview: EntryPreview) {
-        self.title.text = preview.title
-        self.date.getStringFromDate(date: preview.date)
-        self.body.text = preview.detail
-        self.body.numberOfLines = 5
-        self.parentThought.text = (preview.thoughtIcon!.icon + preview.ThoughtID)
-        
-    }
-    public func giveContext(with entry: Entry) {
-        self.title.text = entry.title
-        self.date.getStringFromDate(date: entry.date)
-        self.body.text = entry.detail
-        self.body.numberOfLines = 5
-        self.parentThought.text = (entry.icon + entry.thoughtID)
-    }
-    
-    private func styleCell() {
-        addSubview(title)
-        addSubview(body)
-        addSubview(parentThought)
-        addSubview(date)
-        
-        title.font = UIFont.reTitle(ofSize: 15)
-        body.font = UIFont.reBody(ofSize: 15)
-        parentThought.font = UIFont.reBodyLight(ofSize: 14)
-        date.font = UIFont.reTitle(ofSize: 12)
-        
-        title.textColor = .black
-        body.textColor = .black
-        parentThought.textColor = .darkGray
-        date.textColor = .darkGray
-    }
-}
-
 
 //image cell
-class ImageEntryCell: UITableViewCell {
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private var mainImage       = UIImageView()
-    private var parentThought   = UILabel()
-    private var date            = UILabel()
-    
-    public static var identifier: String {
-        return "ImageEntryPreview"
-    }
-    
-    //give contest with entry preview
-    public func giveContext(with preview: EntryPreview) {
-        self.date.getStringFromDate(date: preview.date)
-        self.mainImage.image = preview.image
-        self.parentThought.text = (preview.thoughtIcon!.icon)
-        guard let height = mainImage.image?.size.height else { return }
-        self.mainImage.frame = CGRect(x: 0, y: 0, width: ViewSize.SCREEN_WIDTH, height: height - 20)
-        buildCell()
-        styleCell(mainImage.frame)
-    }
-    
-    //give contest with entry
-    public func giveContext(with entry: Entry) {
-        self.date.getStringFromDate(date: entry.date)
-        self.mainImage.image = entry.image
-        self.parentThought.text = (entry.icon)
-        guard let height = mainImage.image?.size.height else { return }
-        self.mainImage.frame = CGRect(x: 0, y: 0, width: ViewSize.SCREEN_WIDTH, height: height - 20)
-        buildCell()
-        styleCell(mainImage.frame)
-    }
-    
-    private func buildCell() {
-        let items = [mainImage, parentThought, date]
-        for item in items {
-            addSubview(item)
-        }
-        
-    }
-    
-    //style cell with image frame in mind
-    private func styleCell(_ size: CGRect) {
-        let labels = [parentThought, date]
-        addSubview(mainImage)
-        for label in labels {
-            addSubview(label)
-            if label == date {
-                label.font = .reTitle(ofSize: 15)
-                label.textColor = .black
-            } else {
-                label.font = .reBodyLight(ofSize: 18)
-                label.textColor = .darkGray
-            }
-            label.backgroundColor = .white
-            label.layer.cornerRadius = 5
-            label.textAlignment = .center
-            
-            label.layer.opacity = 0.9
-            label.layer.masksToBounds = true
-        }
-        parentThought.frame = CGRect(x: 15, y: size.height - 45, width: 35, height: 35)
-        date.frame = CGRect(x: size.width - 100, y: size.height - 40, width: 80, height: 25)
-    }
-}
-
-
 class EntryImageCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
+    //objects
     private var mainImage  = UIImageView()
     private var titleLabel = UILabel()
     private var dateLabel  = UILabel()
     
+    //variables
     private var entryImg   : UIImage?
     private var entryTitle : String?
     private var entryDate  : Date?
     
+    //send info to cell
     func giveContext(with entry: Entry) {
         self.entryImg   = entry.image
         self.entryTitle = entry.detail
@@ -162,6 +35,7 @@ class EntryImageCell: UITableViewCell {
         setView()
     }
     
+    //buildCell
     func setView() {
         mainImage.image               = entryImg
         mainImage.contentMode         = .scaleAspectFill
@@ -187,4 +61,72 @@ class EntryImageCell: UITableViewCell {
     public static var identifier: String {
         return "imageCell"
     }
+}
+
+class EntryTextCell: UITableViewCell {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
+    public static var identifier: String { return "textCell" }
+    
+    //all objects
+    private var titleLabel           = UILabel()
+    private var bodyLabel            = UILabel()
+    private var dateLabel            = UILabel()
+    private var cellView             = UIView()
+    
+    //all variables
+    private var title: String?
+    private var body : String?
+    private var date : String?
+    
+    func setView() {
+        addSubview(bodyLabel)
+        addSubview(titleLabel)
+        
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        bodyLabel.translatesAutoresizingMaskIntoConstraints  = false
+        
+        
+        bodyLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive     = true
+        bodyLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive            = true
+        bodyLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
+        bodyLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive        = true
+        
+        print(bodyLabel.frame)
+    }
+    
+    var entry: Entry? {
+        didSet {
+            titleLabel.addText(size: 17, font: .title, string: entry!.title!)
+            bodyLabel.addText(size: 12, font: .body, string: dummyBody)
+            bodyLabel.numberOfLines = 0
+            
+            setView()
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    let dummyBody = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores"
+    
+//    private func styleCell() {
+//
+//        self.backgroundColor = UIColor(hex: "6271fc")
+//        cell.layer.cornerRadius = 6
+//        print("styling cell...")
+//
+//        title.numberOfLines = 0
+//
+//        title.font = UIFont.reTitle(ofSize: 15)
+//        body.font = UIFont.reBody(ofSize: 15)
+//        date.font = UIFont.reTitle(ofSize: 12)
+//
+//        title.textColor = .black
+//        body.textColor = .black
+//        date.textColor = .darkGray
+//    }
 }

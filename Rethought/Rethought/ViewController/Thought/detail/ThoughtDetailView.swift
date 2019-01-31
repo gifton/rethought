@@ -54,8 +54,9 @@ class ThoughtDetailView: UIView {
     let entryTV: UITableView = {
         let tv = UITableView()
         tv.allowsSelection = true
-        tv.separatorStyle = .none
-        tv.estimatedRowHeight = 101
+//        tv.separatorStyle = .none
+        tv.estimatedRowHeight = 110
+        tv.rowHeight = UITableView.automaticDimension
         return tv
     }()
 }
@@ -107,8 +108,7 @@ extension ThoughtDetailView {
         
         entryTV.delegate = self
         entryTV.dataSource = self
-        entryTV.register(TextEntryCell.self, forCellReuseIdentifier: TextEntryCell.identifier)
-        entryTV.register(ImageEntryCell.self, forCellReuseIdentifier: ImageEntryCell.identifier)
+        entryTV.register(EntryTextCell.self, forCellReuseIdentifier: EntryTextCell.identifier)
         entryTV.register(EntryImageCell.self, forCellReuseIdentifier: EntryImageCell.identifier)
     }
     
@@ -153,8 +153,8 @@ extension ThoughtDetailView: UITableViewDataSource {
         let entry = entries![indexPath.row]
         switch entry.type {
         case .text:
-            let cell = entryTV.dequeueReusableCell(withIdentifier: TextEntryCell.identifier, for: indexPath) as! TextEntryCell
-            cell.giveContext(with: entry)
+            let cell = entryTV.dequeueReusableCell(withIdentifier: EntryTextCell.identifier, for: indexPath) as! EntryTextCell
+            cell.entry = entry
             return cell
         default:
             let cell = entryTV.dequeueReusableCell(withIdentifier: EntryImageCell.identifier, for: indexPath) as! EntryImageCell

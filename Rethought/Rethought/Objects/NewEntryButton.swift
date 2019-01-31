@@ -15,6 +15,11 @@ class newEntryButton: UIButton {
         super.init(frame: frame)
         
     }
+    
+    convenience init(entryType: Entry.EntryType, frame: CGRect) {
+        self.init(frame: frame)
+        self.entryType = entryType
+    }
     //entrytype defines what state the button belongs to
     public var entryType: Entry.EntryType = .text
     
