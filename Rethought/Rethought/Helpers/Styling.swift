@@ -90,6 +90,13 @@ extension UIView {
         return borders
     }
     
+    func makeCircle(size: CGFloat) {
+        self.heightAnchor.constraint(equalToConstant: size).isActive = true
+        self.widthAnchor.constraint(equalToConstant: size).isActive = true
+        self.layer.cornerRadius = size / 2
+        self.clipsToBounds = true
+    }
+    
     //set height and width constrinats exclusively, for UIView
     func setHeightWidth(width: CGFloat?, height: CGFloat?) {
         if let width = width {

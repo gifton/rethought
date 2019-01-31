@@ -22,11 +22,12 @@ class ThoughtDetailView: UIView {
     
     convenience init(frame: CGRect, thought: Thought, delegate: ThoughtDetailDelegagte) {
         self.init(frame: frame)
-        self.title    = thought.title
-        self.icon     = thought.icon
-        self.entries  = thought.entries
+        let thoughts = self.getDummyData()
+        self.title    = thoughts.title
+        self.icon     = thoughts.icon
+        self.entries  = thoughts.entries
         self.delegate = delegate
-        self.counts = thought.entryCount
+        self.counts = thoughts.entryCount
         addContext()
         setupView()
     }
@@ -54,7 +55,7 @@ class ThoughtDetailView: UIView {
     let entryTV: UITableView = {
         let tv = UITableView()
         tv.allowsSelection = true
-//        tv.separatorStyle = .none
+        tv.separatorStyle = .none
         tv.estimatedRowHeight = 110
         tv.rowHeight = UITableView.automaticDimension
         return tv
@@ -110,6 +111,7 @@ extension ThoughtDetailView {
         entryTV.dataSource = self
         entryTV.register(EntryTextCell.self, forCellReuseIdentifier: EntryTextCell.identifier)
         entryTV.register(EntryImageCell.self, forCellReuseIdentifier: EntryImageCell.identifier)
+        entryTV.register(EntryLinkCell.self, forCellReuseIdentifier: EntryLinkCell.identifier)
     }
     
     @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
@@ -124,11 +126,12 @@ extension ThoughtDetailView {
 //table view handlers
 extension ThoughtDetailView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.userTapped(on: self.entries![indexPath.row].id)
+//        delegate?.userTapped(on: self.entries![indexPath.row].id)
     }
 }
 
 extension ThoughtDetailView: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if entries != nil {
             return entries!.count
@@ -141,8 +144,10 @@ extension ThoughtDetailView: UITableViewDataSource {
         if entries != nil {
             if let img = entries![indexPath.row].image {
                 return img.size.height + 30
+            } else if let _ = entries![indexPath.row].link {
+                return 90
             } else {
-                return 110
+                return 97.5
             }
         } else {
             return 45
@@ -154,6 +159,10 @@ extension ThoughtDetailView: UITableViewDataSource {
         switch entry.type {
         case .text:
             let cell = entryTV.dequeueReusableCell(withIdentifier: EntryTextCell.identifier, for: indexPath) as! EntryTextCell
+            cell.entry = entry
+            return cell
+        case .link:
+            let cell = entryTV.dequeueReusableCell(withIdentifier: EntryLinkCell.identifier, for: indexPath) as! EntryLinkCell
             cell.entry = entry
             return cell
         default:

@@ -11,13 +11,13 @@ import UIKit
 
 extension UIFont {
     static func reTitle(ofSize fontSize: CGFloat) -> UIFont {
-        return UIFont(name: "Lato-Bold", size: fontSize) ?? .boldSystemFont(ofSize: fontSize)
+        return UIFont(name: "SanFranciscoDisplay-Bold ", size: fontSize) ?? .boldSystemFont(ofSize: fontSize)
     }
     static func reBody(ofSize fontSize: CGFloat) -> UIFont {
-        return UIFont(name: "Lato", size: fontSize) ?? .boldSystemFont(ofSize: fontSize)
+        return UIFont(name: "SanFranciscoText-Medium ", size: fontSize) ?? .boldSystemFont(ofSize: fontSize)
     }
     static func reBodyLight(ofSize fontSize: CGFloat) -> UIFont {
-        return UIFont(name: "Lato-Light", size: fontSize) ?? .boldSystemFont(ofSize: fontSize)
+        return UIFont(name: "SanFranciscoText-Light ", size: fontSize) ?? .boldSystemFont(ofSize: fontSize)
     }
 }
 

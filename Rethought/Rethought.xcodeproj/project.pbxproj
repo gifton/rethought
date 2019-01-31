@@ -261,6 +261,7 @@
 		D739400021F88A7800D2B736 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				D713102021EFAC15001D7584 /* ThoughtCard */,
 				D71FA87521E038B5000706A5 /* ThoughtIcon.swift */,
 				D739400121F88AE100D2B736 /* EmojiDisplay.swift */,
 				D71FA87721E1525B000706A5 /* ReTextView.swift */,
@@ -351,7 +352,6 @@
 		D75B88EA21BC92410023784F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D713102021EFAC15001D7584 /* ThoughtCard */,
 				D713102521F015D3001D7584 /* createEntry */,
 				D713101321EF0409001D7584 /* Dashboard */,
 				D7FFA1CF21D6B958001C3B72 /* Thought */,

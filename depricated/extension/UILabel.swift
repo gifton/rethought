@@ -63,9 +63,9 @@ extension UILabel {
     func getStringFromDate(date: Date) {
         let dateFormatter: DateFormatter = {
             let formatter = DateFormatter()
-            formatter.dateStyle = .long
+            formatter.dateStyle = .medium
             formatter.timeStyle = .none
-            formatter.doesRelativeDateFormatting = true
+            formatter.doesRelativeDateFormatting = false
             formatter.formattingContext = .standalone
             return formatter
         }()
