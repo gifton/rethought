@@ -83,7 +83,9 @@ extension ThoughtCard {
         }
         
         //self styling
-        self.backgroundColor = .cardBackground
+        self.backgroundColor = UIColor(hex: "FFFFFF")
+        self.layer.borderColor = UIColor.darkGray.cgColor
+        self.layer.borderWidth = 2
         self.layer.cornerRadius = 10
         self.addLogoShadow()
         self.isUserInteractionEnabled = true
@@ -93,26 +95,27 @@ extension ThoughtCard {
         iconLabel.frame                 = CGRect(x: 15, y: 10, width: 50, height: 50)
         timeSinceLastThoughtLabel.frame = CGRect(x: 75, y: 42.5, width: 200, height: 14)
         
-        newThoughtIntro.padding            = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
-        newThoughtIntro.backgroundColor    = .cardLabelBackgroundDark
-        newThoughtIntro.layer.cornerRadius = 4
-        iconLabel.layer.cornerRadius       = 6
-        iconLabel.layer.masksToBounds      = true
-        iconLabel.textAlignment            = .center
-        iconLabel.backgroundColor          = .cardLabelBackgroundDark
+        newThoughtIntro.padding             = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        newThoughtIntro.backgroundColor     = .cardLabelBackgroundDark
+        newThoughtIntro.layer.cornerRadius  = 4
+        newThoughtIntro.layer.masksToBounds = true
+        iconLabel.layer.cornerRadius        = 6
+        iconLabel.layer.masksToBounds       = true
+        iconLabel.textAlignment             = .center
+        iconLabel.backgroundColor           = .cardLabelBackgroundDark
         iconLabel.addText(size: 24, font: .body, string: "💭")
-        newThoughtIntro.addText(color: .white, size: 12, font: .body, string: "What's on your mind?")
-        timeSinceLastThoughtLabel.addText(color: .white, size: 12, font: .bodyLight, string: "Last new thought: 4 days")
+        newThoughtIntro.addText(color: UIColor(hex: "4A4A4A"), size: 12, font: .body, string: "What's on your mind?")
+        timeSinceLastThoughtLabel.addText(color: .black, size: 10, font: .bodyLight, string: "Last new thought: 4 days")
         
         animateIn(iconLabel)
         animateIn(newThoughtIntro)
         animateIn(timeSinceLastThoughtLabel)
         
         //style
-        cancelButton.addAttText(color: .black, size: 16, font: .body, string: "cancel")
-        cancelButton.backgroundColor = .cancelColor
+        cancelButton.addAttText(color: .white, size: 16, font: .body, string: "cancel")
+        cancelButton.backgroundColor = .darkGray
         cancelButton.layer.cornerRadius = 3
-        addTitleTV.color = .white
+        addTitleTV.color = UIColor(hex: "5D5D5D")
         addTitleTV.size = 14
         addTitleTV.placeholder = "Type a brief description"
         addTitleTV.backgroundColor = .cardLabelBackgroundLight
@@ -122,18 +125,18 @@ extension ThoughtCard {
         doneButton.backgroundColor = UIColor(hex: "51DF9F")
         doneButton.layer.cornerRadius = 10
         doneButton.layer.masksToBounds = true
-        doneButton.addAttText(color: .white, size: 16, font: .title, string: "Done")
-        errorLabel.attributedText = errorLabel.returnAttributedText(color: .white, size: 14, font: .bodyLight, string: "please add a title and icon")
+        doneButton.addAttText(color: UIColor(hex: "5D5D5D"), size: 16, font: .title, string: "Done")
+        errorLabel.attributedText = errorLabel.returnAttributedText(color: .black, size: 14, font: .bodyLight, string: "please add a title and icon")
         errorLabel.textAlignment = .center
         errorLabel.layer.opacity = 0.0
         
         //add && targets
         doneButton.addTarget(self, action: #selector(checkIfCardComplete(_:)), for: .touchUpInside)
         
-        linkBtn.setImage(#imageLiteral(resourceName: "link"), for: .normal)
-        cameraBtn.setImage(#imageLiteral(resourceName: "camera-alt"), for: .normal)
-        noteBtn.setImage(#imageLiteral(resourceName: "pen-square"), for: .normal)
-        micBtn.setImage(#imageLiteral(resourceName: "microphone"), for: .normal)
+        linkBtn.setImage(#imageLiteral(resourceName: "link-dark"), for: .normal)
+        cameraBtn.setImage(#imageLiteral(resourceName: "camera-dark"), for: .normal)
+        noteBtn.setImage(#imageLiteral(resourceName: "pen-square-dark"), for: .normal)
+        micBtn.setImage(#imageLiteral(resourceName: "microphone-dark"), for: .normal)
         
         linkBtn.entryType = .link
         cameraBtn.entryType = .image
@@ -235,7 +238,7 @@ extension ThoughtCard {
             setupCard()
             let btns = [linkBtn, noteBtn, cameraBtn, micBtn]
             for btn in btns {
-                btn.addBorders(edges: [.bottom], color: .cardBackground, thickness: 4)
+                btn.addBorders(edges: [.bottom], color: UIColor(hex: "ffffff"), thickness: 4)
             }
         default:
             setupOpenView()

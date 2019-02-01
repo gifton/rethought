@@ -27,6 +27,7 @@ class DashboardView: UIView {
     }
     
     let thoughtCollectionView: UICollectionView = {
+        
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.itemSize = CGSize(width: (ViewSize.SCREEN_WIDTH / 2) - 7.5, height: (ViewSize.SCREEN_WIDTH / 2) - 7.5)

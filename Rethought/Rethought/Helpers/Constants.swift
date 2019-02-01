@@ -31,7 +31,7 @@ extension UIColor {
     static let cardBackground           = UIColor(hex: "3D3D46")
     static let cardLabelBackgroundLight = UIColor.white.withAlphaComponent(0.15)
     static let cardLabelBackgroundDark  = UIColor.black.withAlphaComponent(0.15)
-    static let cancelColor              = UIColor(hex: "F2BE54")
+    static let cancelColor              = UIColor(hex: "D63864")
     static let highlightGreen           = UIColor(hex: "51DF9F")
 }
 

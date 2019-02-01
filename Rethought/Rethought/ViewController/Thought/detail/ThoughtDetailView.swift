@@ -127,6 +127,7 @@ extension ThoughtDetailView {
 extension ThoughtDetailView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        delegate?.userTapped(on: self.entries![indexPath.row].id)
+        
     }
 }
 
