@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rethought/ViewModel/Dashboard/DashboardViewModel.swift"
+            timestampString = "570780107.790397"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "insertThoughts()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rethought/Core/PersistanceService.swift"
+            timestampString = "570780107.790527"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "persistentContainer"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "rethought.PersistanceService.persistentContainer.unsafeMutableAddressor : __C.NSPersistentContainer"
+                  moduleName = "rethought"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dev/Developer/projects/swift/Rethought/rethought/rethought/Core/PersistanceService.swift"
+                  timestampString = "570775309.029741"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "globalinit_33_B9816C9D610C7FAD71486AEE39393697_func0"
+                  moduleName = "rethought"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dev/Developer/projects/swift/Rethought/rethought/rethought/Core/PersistanceService.swift"
+                  timestampString = "570775309.033208"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "8">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; __C.NSPersistentContainer in variable initialization expression of static rethought.PersistanceService.persistentContainer : __C.NSPersistentContainer"
+                  moduleName = "rethought"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dev/Developer/projects/swift/Rethought/rethought/rethought/Core/PersistanceService.swift"
+                  timestampString = "570775309.035676"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

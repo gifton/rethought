@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="EntryModel" representedClassName="EntryModel" parentEntity="ThoughtModel" syncable="YES" codeGenerationType="class">
+    <entity name="EntryModel" representedClassName="EntryModel" parentEntity="ThoughtModel" syncable="YES">
         <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="entryDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="entryID" optional="YES" attributeType="String" syncable="YES"/>
@@ -12,7 +12,7 @@
         <attribute name="recording" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="shorthandLink" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
-        <relationship name="thoughtModel" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ThoughtModel" inverseName="entryModel" inverseEntity="ThoughtModel" syncable="YES"/>
+        <relationship name="thoughtModel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ThoughtModel" inverseName="entryModel" inverseEntity="ThoughtModel" syncable="YES"/>
     </entity>
     <entity name="FlashThought" representedClassName="FlashThought" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -20,7 +20,7 @@
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="ThoughtModel" representedClassName="ThoughtModel" syncable="YES" codeGenerationType="class">
+    <entity name="ThoughtModel" representedClassName="ThoughtModel" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
@@ -29,7 +29,7 @@
     </entity>
     <elements>
         <element name="EntryModel" positionX="-36" positionY="18" width="128" height="225"/>
-        <element name="ThoughtModel" positionX="-54" positionY="9" width="128" height="120"/>
         <element name="FlashThought" positionX="-27" positionY="126" width="128" height="105"/>
+        <element name="ThoughtModel" positionX="-54" positionY="9" width="128" height="120"/>
     </elements>
 </model>

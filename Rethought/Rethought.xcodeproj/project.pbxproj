@@ -73,6 +73,11 @@
 		D773456A21F343DE0075B4C8 /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D773456921F343DE0075B4C8 /* Managed.swift */; };
 		D77DC6C222016079007C165F /* EntryCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DC6C122016079007C165F /* EntryCountView.swift */; };
 		D79B1EFA21CC6B0000E951D3 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B1EF921CC6B0000E951D3 /* UIFont.swift */; };
+		D7B27CDD22053C0F00A09E0F /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B27CDC22053C0F00A09E0F /* PersistanceService.swift */; };
+		D7B27CEA2205689F00A09E0F /* ThoughtModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B27CE62205689F00A09E0F /* ThoughtModel+CoreDataClass.swift */; };
+		D7B27CEB2205689F00A09E0F /* ThoughtModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B27CE72205689F00A09E0F /* ThoughtModel+CoreDataProperties.swift */; };
+		D7B27CEC2205689F00A09E0F /* EntryModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B27CE82205689F00A09E0F /* EntryModel+CoreDataClass.swift */; };
+		D7B27CED2205689F00A09E0F /* EntryModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B27CE92205689F00A09E0F /* EntryModel+CoreDataProperties.swift */; };
 		D7BEFC6F21F78E6800D55C8E /* DashboardHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEFC6E21F78E6800D55C8E /* DashboardHeader.swift */; };
 		D7BEFC7321F7F58A00D55C8E /* ReccomendedThought.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEFC7221F7F58A00D55C8E /* ReccomendedThought.swift */; };
 		D7F967AB2200066F00D10919 /* ThoughtDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F967AA2200066F00D10919 /* ThoughtDetailViewModel.swift */; };
@@ -160,6 +165,11 @@
 		D773456921F343DE0075B4C8 /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
 		D77DC6C122016079007C165F /* EntryCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryCountView.swift; sourceTree = "<group>"; };
 		D79B1EF921CC6B0000E951D3 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		D7B27CDC22053C0F00A09E0F /* PersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
+		D7B27CE62205689F00A09E0F /* ThoughtModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThoughtModel+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D7B27CE72205689F00A09E0F /* ThoughtModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThoughtModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D7B27CE82205689F00A09E0F /* EntryModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntryModel+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D7B27CE92205689F00A09E0F /* EntryModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntryModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D7BEFC6E21F78E6800D55C8E /* DashboardHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHeader.swift; sourceTree = "<group>"; };
 		D7BEFC7221F7F58A00D55C8E /* ReccomendedThought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReccomendedThought.swift; sourceTree = "<group>"; };
 		D7F967AA2200066F00D10919 /* ThoughtDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailViewModel.swift; sourceTree = "<group>"; };
@@ -226,7 +236,6 @@
 			children = (
 				D713100A21EEE9C2001D7584 /* DashboardViewModel.swift */,
 				D713100C21EEE9D4001D7584 /* DashboardViewModelDelegate.swift */,
-				D713101121EEF3BE001D7584 /* DashboardThought.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -334,15 +343,21 @@
 		D75B88D421BC53150023784F /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				D7B27CE62205689F00A09E0F /* ThoughtModel+CoreDataClass.swift */,
+				D7B27CE72205689F00A09E0F /* ThoughtModel+CoreDataProperties.swift */,
+				D7B27CE82205689F00A09E0F /* EntryModel+CoreDataClass.swift */,
+				D7B27CE92205689F00A09E0F /* EntryModel+CoreDataProperties.swift */,
 				D773456621F32FCC0075B4C8 /* RETHOUGHT.xcdatamodeld */,
 				D75B88B821BB70C00023784F /* AppDelegate.swift */,
 				D75B88E421BC56AB0023784F /* Thought.swift */,
+				D713101121EEF3BE001D7584 /* DashboardThought.swift */,
 				D75B88DF21BC54B20023784F /* Entry.swift */,
 				D75B892121C2D7D70023784F /* EntryPreview.swift */,
 				D75B891D21C07D910023784F /* ThoughtPreview.swift */,
 				D711281121F30C4B006C732E /* DataController.swift */,
 				D7BEFC7221F7F58A00D55C8E /* ReccomendedThought.swift */,
 				D7F9FD5521F9D00F00E73BFC /* QuickThoughts.swift */,
+				D7B27CDC22053C0F00A09E0F /* PersistanceService.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -622,6 +637,7 @@
 				D711281221F30C4B006C732E /* DataController.swift in Sources */,
 				D70EA8ED21E58FA70071E257 /* UIView.swift in Sources */,
 				D75B891021BE192E0023784F /* ProfileViewController.swift in Sources */,
+				D7B27CDD22053C0F00A09E0F /* PersistanceService.swift in Sources */,
 				D75B890E21BE191C0023784F /* ProfileView.swift in Sources */,
 				D75B88B921BB70C00023784F /* AppDelegate.swift in Sources */,
 				D7F9FD5421F9C8E000E73BFC /* FlashThoughtCell.swift in Sources */,
@@ -634,6 +650,7 @@
 				D739400221F88AE100D2B736 /* EmojiDisplay.swift in Sources */,
 				D713101721EF0420001D7584 /* DashboardView.swift in Sources */,
 				D713101B21EF043F001D7584 /* ThoughtCard.swift in Sources */,
+				D7B27CEA2205689F00A09E0F /* ThoughtModel+CoreDataClass.swift in Sources */,
 				D713101D21EF0503001D7584 /* ThoughtCardDelegate.swift in Sources */,
 				D70EA8E021E301E50071E257 /* UIColor.swift in Sources */,
 				D739400A21F88D4300D2B736 /* NewEntryButton.swift in Sources */,
@@ -647,11 +664,14 @@
 				D75B88D021BC507B0023784F /* Constants.swift in Sources */,
 				D7FFA1D721D6BD55001C3B72 /* ThoughtFeedViewModelDelegate.swift in Sources */,
 				D713101521EF0417001D7584 /* DashboardController.swift in Sources */,
+				D7B27CEC2205689F00A09E0F /* EntryModel+CoreDataClass.swift in Sources */,
 				D713102921F068ED001D7584 /* NewImageEntry.swift in Sources */,
+				D7B27CEB2205689F00A09E0F /* ThoughtModel+CoreDataProperties.swift in Sources */,
 				D773456821F32FCC0075B4C8 /* RETHOUGHT.xcdatamodeld in Sources */,
 				D739400421F88B8300D2B736 /* ReTextField.swift in Sources */,
 				D7F967AB2200066F00D10919 /* ThoughtDetailViewModel.swift in Sources */,
 				D71FA88221E1F272000706A5 /* UILabel.swift in Sources */,
+				D7B27CED2205689F00A09E0F /* EntryModel+CoreDataProperties.swift in Sources */,
 				D77DC6C222016079007C165F /* EntryCountView.swift in Sources */,
 				D70EA8DE21E301240071E257 /* Sizes.swift in Sources */,
 				D766A00821F1B8E800BD9F2A /* UIImageView.swift in Sources */,

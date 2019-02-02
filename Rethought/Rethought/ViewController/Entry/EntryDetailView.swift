@@ -71,9 +71,6 @@ class EntryDetailView: UIView {
 }
 
 extension EntryDetailView {
-    func setupView() {
-        anotherFuncName()
-    }
     func styleView() {
         topView.backgroundColor = UIColor.init(hex: "161616")
         
@@ -92,7 +89,7 @@ extension EntryDetailView {
 extension EntryDetailView {
     func addLink() {
     }
-    func anotherFuncName() {
+    func setupView() {
         
         let views : [UIView] = [logo, deleteButton, iconLabel]
         var start = CGPoint(x: 30, y: 35)

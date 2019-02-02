@@ -27,7 +27,7 @@ class ThoughtCardController: UIViewController {
     private var newEntries: [Entry] = []
     
     init(withDelegate delegate: DashboardDelegate) {
-        super.init(nibName: "ThoughtCardController", bundle: nil)
+        super.init(nibName: nil, bundle: nil)
         self.delegate = delegate
         card = ThoughtCard(delegate: self)
     }
@@ -117,32 +117,11 @@ extension ThoughtCardController {
     
     //save new thought
     func savePost() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        
         guard let newThought = self.newThought else {
             print("unable to get new thought")
             return
         }
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let thought = ThoughtModel(context: managedContext)
-        thought.date = newThought.createdAt
-        thought.icon = newThought.icon
-        thought.id = newThought.ID
-        thought.title = newThought.title
-        
-        for entry in newEntries {
-            let entryOut = EntryModel(context: managedContext)
-            entryOut.date = Date()
-            entryOut.detail = entry.detail
-            entryOut.addToThoughtModel(thought)
-            thought.addToEntryModel(entryOut)
-        }
-        do {
-            try managedContext.save()
-        } catch let err  {
-            print("----------error-----------")
-            print(err)
-        }
-        print("saved thought!")
+        self.delegate?.saveNewThought(newThought)
     }
 }

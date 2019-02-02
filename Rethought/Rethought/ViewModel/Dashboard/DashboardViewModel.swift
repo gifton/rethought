@@ -25,8 +25,17 @@ class DashboardViewModel: DashboardViewModelDelegate {
     
     //connect core data
     public var moc: NSManagedObjectContext
-    private var thoughts: [Thought] = []
-    private var entries: [Entry] = []
+    private var thoughts: [Thought] {
+        return insertThoughts()
+    }
+    private var entries: [Entry] {
+        var ents = [Entry]()
+        for thought in self.thoughts {
+            for entry in thought.entries{ ents.append(entry) }
+        }
+        
+        return ents
+    }
     public var count: Int {
         get {
             return self.thoughts.count
@@ -36,16 +45,10 @@ class DashboardViewModel: DashboardViewModelDelegate {
     //set moc at initialization
     init(moc: NSManagedObjectContext) {
         self.moc = moc
-        for _ in 0...2 {
-            let thought = self.recieveDummyData()
-            for t in thought {
-                thoughts.append(t)
-            }
-        }
+//        insertThoughts()
         //after thoughts set, for through to append entries\
-        for thought in thoughts {
-            for entry in thought.entries{ self.entries.append(entry) }
-        }
+        
+        print (thoughts.count)
     }
 }
 
@@ -61,6 +64,8 @@ extension DashboardViewModel {
         return recentEntries
     }
     
+    
+    
     //find thought by ID
     func retrieve(thought thoughtID: String) -> Thought {
         return thoughts.filter{ $0.ID == thoughtID }.first ?? Thought.init()
@@ -71,34 +76,42 @@ extension DashboardViewModel {
         return entries.filter{ $0.id == entryID }.first ?? Entry.init(title: "Not available")
     }
     
-    func insertThoughts( _ context: NSManagedObjectContext) {
+    func saveNewThought(_ thought: Thought) -> Bool {
+        return self.sendThoughtToDB(thought)
+    }
+    
+    func insertThoughts() -> [Thought] {
         let thoughtFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "ThoughtModel")
         thoughtFetch.fetchLimit = 25
         thoughtFetch.resultType = .managedObjectResultType
-
+        var out = [Thought]()
         do {
             //read data
-            let dataIn = try context.fetch(thoughtFetch) as! [ThoughtModel]
+            let dataIn = try moc.fetch(thoughtFetch) as! [ThoughtModel]
             for data in dataIn {
+                print (data)
                 //create thought
-                let t = Thought(title: data.title!, icon: data.icon!, date: data.date!)
+                let title = data.title ?? "No title available"
+                let icon  = data.icon  ?? "😛"
+                let date  = data.date ?? Date()
+                let t = Thought(title: title, icon: icon, date: date)
                 //set entrie model
-                guard let entries = data.entryModel!.allObjects as? [EntryModel] else { return }
+                guard let entries = data.entryModel!.allObjects as? [EntryModel] else { print("print returnning from entries"); return out }
                 for entry in entries {
                     //init new entry, id
                     var  newEntry: Entry?
-                    guard let id = entry.id else { print("couldnt get id"); return }
+                    guard let id = entry.id else { print("couldnt get id"); return out }
                     //depending on entrytype, fill entrys
 
                     switch entry.type {
                     case Entry.EntryType.image.rawValue:
                         //specific gurards
-                        guard let image = entry.image else { print("couldnt get pic"); return }
-                        guard let detail = entry.detail else { print("couldnt get detail"); return }
-                        guard let entryDate = entry.entryDate else { print("couldnt get entryDate"); return }
+                        guard let image = entry.image else { print("couldnt get pic"); return out }
+                        guard let detail = entry.detail else { print("couldnt get detail"); return out }
+                        guard let entryDate = entry.entryDate else { print("couldnt get entryDate"); return out }
                         let img = UIImage(data: image)
                         //create entry
-                        newEntry = Entry(type: .image, thoughtID: t.ID, detail: detail, date: entryDate, icon: t.icon, image: img ?? UIImage(named: "placeholder.png")!)
+                        newEntry = Entry(type: .image, thoughtID: t.ID, detail: detail, date: Date(), icon: t.icon, image: img ?? UIImage(named: "placeholder.png")!)
                         newEntry?.id = id
                     default:
                         break
@@ -109,22 +122,45 @@ extension DashboardViewModel {
                     }
                 }
                 //add thoughts to model
-                self.thoughts.append(t)
+                out.append(t)
             }
         } catch {
-            fatalError("Failed to fetch employees: \(error)")
+            fatalError("Failed to fetch thoughts: \(error)")
+        }
+        
+        return out
+        
+    }
+    
+    func sendThoughtToDB(_ newThought: Thought) -> Bool {
+        let thought = ThoughtModel(context: moc)
+        
+        thought.date = Date()
+        thought.icon = newThought.icon
+        thought.id = newThought.ID
+        thought.title = newThought.title
+        
+        for entry in newThought.entries {
+            let entryOut = EntryModel(context: moc)
+            guard let imageData = entry.image?.pngData() else { continue }
+            guard let linkImageData = entry.linkImage?.pngData() else { continue }
+            entryOut.date = entry.date
+            entryOut.detail = entry.detail
+            entryOut.image = imageData
+            entryOut.entryID = thought.id
+            entryOut.entryTitle = entry.title
+            entryOut.link = entry.link
+            entryOut.linkImage = linkImageData
+            entryOut.linkTitle = entry.linkTitle
+            thought.addToEntryModel(entryOut)
+        }
+        do {
+            try moc.save()
+            return true
+        } catch let err  {
+            print("----------error-----------")
+            print(err)
+            return false
         }
     }
-//        let thoughtFetcher = NSFetchRequest<NSFetchRequestResult>(entityName: "ThoughtModel")
-//        do {
-//            if let dataIn = try moc.fetch(thoughtFetcher) as? [ThoughtModel] {
-//                for data in dataIn {
-//                    let t = Thought(title: data.title!, icon: data.icon!, date: data.date!)
-//                    let dt = DashboardThought(thought: t)
-//                    thoughts.append(dt)
-//                }
-//            }
-//        } catch let err {
-//            print("error pulling data from db \(err)")
-//        }
 }

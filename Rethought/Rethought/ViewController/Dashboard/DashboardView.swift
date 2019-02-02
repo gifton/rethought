@@ -23,7 +23,6 @@ class DashboardView: UIView {
     convenience init(delegate: DashboardDelegate, frame: CGRect) {
         self.init(frame: frame)
         self.dDelegate = delegate
-        self.setupTV()
     }
     
     let thoughtCollectionView: UICollectionView = {
@@ -53,12 +52,27 @@ extension DashboardView {
     
     //register cells and head
     func setupTV() {
-        
+        for view in self.subviews {
+            view.removeFromSuperview()
+        }
         thoughtCollectionView.register(ThoughtFeedCellTile.self, forCellWithReuseIdentifier: ThoughtFeedCellTile.identifier)
         thoughtCollectionView.register(DashboardHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: DashboardHeader.identifier)
         
         //add to superView
         addSubview(thoughtCollectionView)
-        
+    }
+    
+    public func setWithoutDataset() {
+        let imgV: UIImageView = {
+            let iv = UIImageView()
+            iv.image = #imageLiteral(resourceName: "emptyDataSet")
+            iv.frame = CGRect(x: 10, y: 300, width: ViewSize.SCREEN_WIDTH - 20, height: 347)
+            iv.layer.opacity = 0.65
+            iv.layer.cornerRadius = 10
+            iv.layer.masksToBounds = true
+            
+            return iv
+        }()
+        self.addSubview(imgV)
     }
 }

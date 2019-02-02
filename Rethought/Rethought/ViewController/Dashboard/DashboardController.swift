@@ -16,13 +16,14 @@ class DashboardController: UIViewController {
     
     //open var for thoughtCard
     var thoughtCard: ThoughtCardController?
+    var dashboard: DashboardView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     init(withContext context: NSManagedObjectContext) {
-        super.init(nibName: "DashboardController", bundle: nil)
+        super.init(nibName: nil, bundle: nil)
         self.context = context
     }
     
@@ -31,10 +32,21 @@ class DashboardController: UIViewController {
     }
     
     var model: DashboardViewModel!
-    var thoughts: [DashboardThought]?
+    var thoughts: [DashboardThought]? {
+        return model?.getThoughts()
+    }
 }
 
 extension DashboardController: DashboardDelegate {
+    func saveNewThought(_ thought: Thought) -> Bool {
+        let out = model.saveNewThought(thought)
+        if out {
+            self.dashboard?.reloadInputViews()
+            self.dashboard?.thoughtCollectionView.reloadData()
+        }
+        return out
+        
+    }
     func userStartedNewFastThought() {
         UIView.animate(withDuration: 0.5) {
             self.view.backgroundColor = .black
@@ -55,7 +67,6 @@ extension DashboardController: DashboardDelegate {
         set {
             //set view once recieving context, initializing model
             self.model = DashboardViewModel(moc: newValue)
-            self.thoughts = model.getThoughts()
             setupView()
         }
     }
@@ -71,7 +82,7 @@ extension DashboardController: DashboardDelegate {
             default:
                 self.thoughtCard?.card?.frame = CGRect(x: 5, y: (ViewSize.SCREEN_HEIGHT * 0.184) , width: ViewSize.SCREEN_WIDTH - 10, height: 367)
             }
-        }) { (true) in }
+        })
     }
 }
 
@@ -81,19 +92,41 @@ extension DashboardController {
         guard let thoughts = self.thoughts else { return }
         // add error validation for if there are no thoughts yet
         if thoughts.count > 0 {
-            let dashboard = DashboardView(delegate: self, frame: .zero)
-            dashboard.thoughtCollectionView.dataSource = self
-            dashboard.thoughtCollectionView.delegate = self
+            dashboard = DashboardView(delegate: self, frame: .zero)
+            dashboard!.thoughtCollectionView.dataSource = self
+            dashboard!.thoughtCollectionView.delegate = self
+            dashboard!.setupTV()
             self.view = dashboard
         } else {
-            self.view.backgroundColor = UIColor(hex: "6271fc")
+            dashboard = DashboardView(delegate: self, frame: .zero)
+            self.dashboard!.backgroundColor = UIColor(hex: "FAFBFF")
+            self.dashboard!.setWithoutDataset()
+            self.view = dashboard!
         }
+        
         
         //set thoght card
         thoughtCard = ThoughtCardController(withDelegate: self)
         self.addChild(thoughtCard!)
-        self.view.addSubview(thoughtCard!.card!)
+        self.view.insertSubview(thoughtCard!.card!, at: 1000000000)
         thoughtCard!.didMove(toParent: self)
+    }
+    
+    private func checkForUpdates() {
+        if self.thoughts?.count ?? 0 > 0 {
+            dashboard!.thoughtCollectionView.dataSource = self
+            dashboard!.thoughtCollectionView.delegate = self
+            self.dashboard!.setupTV()
+        }
+    }
+    
+    public func newThoughtSaved() {
+        checkForUpdates()
+        newThoughtAnimation()
+    }
+    
+    private func newThoughtAnimation() {
+        
     }
 }
 
