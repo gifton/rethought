@@ -17,12 +17,11 @@ extension ThoughtModel {
         return NSFetchRequest<ThoughtModel>(entityName: "ThoughtModel")
     }
 
-    @NSManaged public var date: Date?
-    @NSManaged public var icon: String?
-    @NSManaged public var id: String?
     @NSManaged public var title: String?
+    @NSManaged public var icon: String?
     @NSManaged public var entryModel: NSSet?
-
+    @NSManaged public var date: Date?
+    @NSManaged public var id: String?
 }
 
 // MARK: Generated accessors for entryModel

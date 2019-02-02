@@ -11,21 +11,6 @@ public class Thought {
         self.entries.append(entry)
         self.updateCounts()
     }
-//    public func remove(entry: Entry) {
-//        if let mark = entries.index(where: { $0.id == entry.id }) {
-//            entries.remove(at: mark)
-//        } else {
-//            return
-//        }
-//        updateLastEdited()
-//    }
-//
-//    public func update(thought: Thought) {
-//        self.title = thought.title
-//        self.description = thought.description
-//        self.icon = thought.icon
-//        self.updateLastEdited()
-//    }
     
     convenience init() {
         self.init(title: "nil", icon: "nil", date: Date.init())
@@ -51,6 +36,23 @@ public class Thought {
     //  thoughts dont have to have entries from the start, so if they do, use this function to set its entries
     public convenience init(title: String, icon: String, date: Date, entries: [Entry]) {
         self.init(title: title, icon: icon, date: date)
+        self.entries = entries
+        updateCounts()
+    }
+    
+    //init for entryModel
+    public convenience init( thoughtModel: ThoughtModel) {
+        self.init()
+        guard let title = thoughtModel.title else { return }
+        guard let icon = thoughtModel.icon else { return }
+        guard let date = thoughtModel.date else { return }
+        guard let id = thoughtModel.id else { return }
+        guard let entries = thoughtModel.entryModel!.allObjects as? [Entry] else { return }
+        self.title = title
+        self.icon = icon
+        self.createdAt = date
+        self.lastEdited = date
+        self.ID = id
         self.entries = entries
         updateCounts()
     }
