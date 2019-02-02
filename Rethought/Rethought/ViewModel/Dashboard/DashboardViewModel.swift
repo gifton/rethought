@@ -89,10 +89,9 @@ extension DashboardViewModel {
             //read data
             let dataIn = try moc.fetch(thoughtFetch) as! [ThoughtModel]
             for data in dataIn {
-                print (data)
                 //create thought
                 let title = data.title ?? "No title available"
-                let icon  = data.icon  ?? "😛"
+                let icon  = data.icon  ?? "💭"
                 let date  = data.date ?? Date()
                 let t = Thought(title: title, icon: icon, date: date)
                 //set entrie model
