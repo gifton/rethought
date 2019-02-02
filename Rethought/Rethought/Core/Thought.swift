@@ -48,6 +48,7 @@ public class Thought {
         guard let date = thoughtModel.date else { return }
         guard let id = thoughtModel.id else { return }
         guard let entries = thoughtModel.entryModel!.allObjects as? [Entry] else { return }
+         
         self.title = title
         self.icon = icon
         self.createdAt = date

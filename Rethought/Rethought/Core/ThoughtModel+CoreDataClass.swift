@@ -11,8 +11,4 @@ import Foundation
 import CoreData
 
 @objc(ThoughtModel)
-public class ThoughtModel: NSManagedObject {
-    func fromThought(_ thought: Thought) {
-        
-    }
-}
+public class ThoughtModel: NSManagedObject {}

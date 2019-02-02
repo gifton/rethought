@@ -54,7 +54,6 @@ extension DashboardController: DashboardDelegate {
         }
     }
     
-    
     func userTapped(on thoughtID: String) {
         print("tapped on \(thoughtID)")
     }

@@ -16,6 +16,14 @@ extension ThoughtModel {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<ThoughtModel> {
         return NSFetchRequest<ThoughtModel>(entityName: "ThoughtModel")
     }
+    
+    convenience init(moc: NSManagedObjectContext, thought: Thought) {
+        self.init(context: moc)
+        self.title = thought.title
+        self.icon = thought.icon
+        self.id = thought.ID
+        
+    }
 
     @NSManaged public var title: String?
     @NSManaged public var icon: String?

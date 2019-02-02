@@ -25,9 +25,8 @@ class DashboardViewModel: DashboardViewModelDelegate {
     
     //connect core data
     public var moc: NSManagedObjectContext
-    private var thoughts: [Thought] {
-        return insertThoughts()
-    }
+    private var thoughts = [Thought]()
+    
     private var entries: [Entry] {
         var ents = [Entry]()
         for thought in self.thoughts {
@@ -45,10 +44,9 @@ class DashboardViewModel: DashboardViewModelDelegate {
     //set moc at initialization
     init(moc: NSManagedObjectContext) {
         self.moc = moc
-//        insertThoughts()
-        //after thoughts set, for through to append entries\
         
-        print (thoughts.count)
+        //set thoughts
+        self.thoughts = fetchThoughts()
     }
 }
 
@@ -80,41 +78,27 @@ extension DashboardViewModel {
         return self.sendThoughtToDB(thought)
     }
     
-    func insertThoughts() -> [Thought] {
-        let thoughtFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "ThoughtModel")
-        thoughtFetch.fetchLimit = 25
-        thoughtFetch.resultType = .managedObjectResultType
+    func fetchThoughts() -> [Thought] {
+        let fetcher: NSFetchRequest = ThoughtModel.fetchRequest()
         var out = [Thought]()
         do {
-            //read data
-            let dataIn = try moc.fetch(thoughtFetch) as! [ThoughtModel]
-            for data in dataIn {
-                //create thought
-                let title = data.title ?? "No title available"
-                let icon  = data.icon  ?? "💭"
-                let date  = data.date ?? Date()
-                let t = Thought(title: title, icon: icon, date: date)
-                //set entrie model
-                guard let entries = data.entryModel!.allObjects as? [EntryModel] else { print("print returnning from entries"); return out }
-                for entry in entries {
-                    //init new entry, id
-                    let  newEntry = Entry(entryModel: entry)
-                    t.addNew(entry: newEntry)
-                }
-                //add thoughts to model
+            let fetchResult = try moc.fetch(fetcher)
+            for tm in fetchResult {
+                let t = Thought(thoughtModel: tm)
                 out.append(t)
             }
-        } catch {
-            fatalError("Failed to fetch thoughts: \(error)")
+        } catch let err {
+            print (err)
         }
-        
+        print("-------------------------")
+        print (out.count)
         return out
     }
     
     func sendThoughtToDB(_ newThought: Thought) -> Bool {
         let thought = ThoughtModel(context: moc)
         
-        thought.date = Date()
+        thought.date = newThought.createdAt
         thought.icon = newThought.icon
         thought.id = newThought.ID
         thought.title = newThought.title

@@ -11,6 +11,4 @@ import Foundation
 import CoreData
 
 @objc(EntryModel)
-public class EntryModel: ThoughtModel {
-
-}
+public class EntryModel: ThoughtModel {}

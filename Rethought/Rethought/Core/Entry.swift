@@ -21,6 +21,8 @@ public class Entry {
         case recording = "RECORDING"
     }
     
+    var preview: [EntryPreview]?
+    
     //standard objects
     public var type: EntryType
     public var id: String!
@@ -125,9 +127,6 @@ public class Entry {
     convenience init(title: String?) {
         self.init(type: .text, thoughtID: "nil", detail: "not available", date: Date(timeIntervalSinceNow: TimeInterval.init(exactly: 1000)!), icon: "🚫")
     }
-    
-    var preview: [EntryPreview]?
-    
 }
 
 extension Entry {
