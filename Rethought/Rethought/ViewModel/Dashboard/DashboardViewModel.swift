@@ -98,27 +98,8 @@ extension DashboardViewModel {
                 guard let entries = data.entryModel!.allObjects as? [EntryModel] else { print("print returnning from entries"); return out }
                 for entry in entries {
                     //init new entry, id
-                    var  newEntry: Entry?
-                    guard let id = entry.id else { print("couldnt get id"); return out }
-                    //depending on entrytype, fill entrys
-
-                    switch entry.type {
-                    case Entry.EntryType.image.rawValue:
-                        //specific gurards
-                        guard let image = entry.image else { print("couldnt get pic"); return out }
-                        guard let detail = entry.detail else { print("couldnt get detail"); return out }
-                        guard let entryDate = entry.entryDate else { print("couldnt get entryDate"); return out }
-                        let img = UIImage(data: image)
-                        //create entry
-                        newEntry = Entry(type: .image, thoughtID: t.ID, detail: detail, date: Date(), icon: t.icon, image: img ?? UIImage(named: "placeholder.png")!)
-                        newEntry?.id = id
-                    default:
-                        break
-                    }
-                    //if there is a new entry
-                    if newEntry != nil {
-                        t.addNew(entry: newEntry!)
-                    }
+                    let  newEntry = Entry(entryModel: entry)
+                    t.addNew(entry: newEntry)
                 }
                 //add thoughts to model
                 out.append(t)
@@ -128,7 +109,6 @@ extension DashboardViewModel {
         }
         
         return out
-        
     }
     
     func sendThoughtToDB(_ newThought: Thought) -> Bool {

@@ -12,5 +12,7 @@ import CoreData
 
 @objc(ThoughtModel)
 public class ThoughtModel: NSManagedObject {
-
+    func fromThought(_ thought: Thought) {
+        
+    }
 }
