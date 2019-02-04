@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		9B8B8A63BCEA02BD8A429957 /* Pods_rethought.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36BE63D35A2A902760780123 /* Pods_rethought.framework */; };
 		D702B21121DBFECA003DCA83 /* BackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D702B21021DBFECA003DCA83 /* BackDelegate.swift */; };
+		D7043F2822078270006EC7C6 /* Managed+Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7043F2722078270006EC7C6 /* Managed+Objects.swift */; };
+		D7043F2D220788E9006EC7C6 /* EntryModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7043F29220788E9006EC7C6 /* EntryModel+CoreDataClass.swift */; };
+		D7043F2E220788E9006EC7C6 /* EntryModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7043F2A220788E9006EC7C6 /* EntryModel+CoreDataProperties.swift */; };
+		D7043F2F220788E9006EC7C6 /* ThoughtModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7043F2B220788E9006EC7C6 /* ThoughtModel+CoreDataClass.swift */; };
+		D7043F30220788E9006EC7C6 /* ThoughtModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7043F2C220788E9006EC7C6 /* ThoughtModel+CoreDataProperties.swift */; };
 		D70EA8DE21E301240071E257 /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8DD21E301240071E257 /* Sizes.swift */; };
 		D70EA8E021E301E50071E257 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8DF21E301E50071E257 /* UIColor.swift */; };
 		D70EA8E421E329140071E257 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8E321E329140071E257 /* UIButton.swift */; };
@@ -74,10 +79,6 @@
 		D77DC6C222016079007C165F /* EntryCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DC6C122016079007C165F /* EntryCountView.swift */; };
 		D79B1EFA21CC6B0000E951D3 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B1EF921CC6B0000E951D3 /* UIFont.swift */; };
 		D7B27CDD22053C0F00A09E0F /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B27CDC22053C0F00A09E0F /* PersistanceService.swift */; };
-		D7B27CEA2205689F00A09E0F /* ThoughtModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B27CE62205689F00A09E0F /* ThoughtModel+CoreDataClass.swift */; };
-		D7B27CEB2205689F00A09E0F /* ThoughtModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B27CE72205689F00A09E0F /* ThoughtModel+CoreDataProperties.swift */; };
-		D7B27CEC2205689F00A09E0F /* EntryModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B27CE82205689F00A09E0F /* EntryModel+CoreDataClass.swift */; };
-		D7B27CED2205689F00A09E0F /* EntryModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B27CE92205689F00A09E0F /* EntryModel+CoreDataProperties.swift */; };
 		D7BEFC6F21F78E6800D55C8E /* DashboardHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEFC6E21F78E6800D55C8E /* DashboardHeader.swift */; };
 		D7BEFC7321F7F58A00D55C8E /* ReccomendedThought.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEFC7221F7F58A00D55C8E /* ReccomendedThought.swift */; };
 		D7F967AB2200066F00D10919 /* ThoughtDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F967AA2200066F00D10919 /* ThoughtDetailViewModel.swift */; };
@@ -99,6 +100,11 @@
 		36BE63D35A2A902760780123 /* Pods_rethought.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rethought.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7EA374B2D93AE93DEA7C328 /* Pods-rethought.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rethought.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rethought/Pods-rethought.debug.xcconfig"; sourceTree = "<group>"; };
 		D702B21021DBFECA003DCA83 /* BackDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackDelegate.swift; sourceTree = "<group>"; };
+		D7043F2722078270006EC7C6 /* Managed+Objects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Managed+Objects.swift"; sourceTree = "<group>"; };
+		D7043F29220788E9006EC7C6 /* EntryModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntryModel+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D7043F2A220788E9006EC7C6 /* EntryModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntryModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D7043F2B220788E9006EC7C6 /* ThoughtModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThoughtModel+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D7043F2C220788E9006EC7C6 /* ThoughtModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThoughtModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D70EA8DD21E301240071E257 /* Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
 		D70EA8DF21E301E50071E257 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		D70EA8E321E329140071E257 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
@@ -166,10 +172,6 @@
 		D77DC6C122016079007C165F /* EntryCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryCountView.swift; sourceTree = "<group>"; };
 		D79B1EF921CC6B0000E951D3 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		D7B27CDC22053C0F00A09E0F /* PersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
-		D7B27CE62205689F00A09E0F /* ThoughtModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThoughtModel+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D7B27CE72205689F00A09E0F /* ThoughtModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThoughtModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		D7B27CE82205689F00A09E0F /* EntryModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntryModel+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D7B27CE92205689F00A09E0F /* EntryModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntryModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D7BEFC6E21F78E6800D55C8E /* DashboardHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHeader.swift; sourceTree = "<group>"; };
 		D7BEFC7221F7F58A00D55C8E /* ReccomendedThought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReccomendedThought.swift; sourceTree = "<group>"; };
 		D7F967AA2200066F00D10919 /* ThoughtDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailViewModel.swift; sourceTree = "<group>"; };
@@ -215,6 +217,19 @@
 				36BE63D35A2A902760780123 /* Pods_rethought.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D7043F2622070418006EC7C6 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				D7043F29220788E9006EC7C6 /* EntryModel+CoreDataClass.swift */,
+				D7043F2A220788E9006EC7C6 /* EntryModel+CoreDataProperties.swift */,
+				D7043F2B220788E9006EC7C6 /* ThoughtModel+CoreDataClass.swift */,
+				D7043F2C220788E9006EC7C6 /* ThoughtModel+CoreDataProperties.swift */,
+				D773456621F32FCC0075B4C8 /* RETHOUGHT.xcdatamodeld */,
+				D7043F2722078270006EC7C6 /* Managed+Objects.swift */,
+			);
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 		D70EA8DC21E301080071E257 /* Helpers */ = {
@@ -343,11 +358,7 @@
 		D75B88D421BC53150023784F /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				D7B27CE62205689F00A09E0F /* ThoughtModel+CoreDataClass.swift */,
-				D7B27CE72205689F00A09E0F /* ThoughtModel+CoreDataProperties.swift */,
-				D7B27CE82205689F00A09E0F /* EntryModel+CoreDataClass.swift */,
-				D7B27CE92205689F00A09E0F /* EntryModel+CoreDataProperties.swift */,
-				D773456621F32FCC0075B4C8 /* RETHOUGHT.xcdatamodeld */,
+				D7043F2622070418006EC7C6 /* DataModel */,
 				D75B88B821BB70C00023784F /* AppDelegate.swift */,
 				D75B88E421BC56AB0023784F /* Thought.swift */,
 				D713101121EEF3BE001D7584 /* DashboardThought.swift */,
@@ -646,36 +657,37 @@
 				D75B88E521BC56AB0023784F /* Thought.swift in Sources */,
 				D76CBF972202F4E60087FC07 /* EntryBarView.swift in Sources */,
 				D76CBF952202F3A10087FC07 /* EntryBarDelegate.swift in Sources */,
+				D7043F2822078270006EC7C6 /* Managed+Objects.swift in Sources */,
 				D75B890A21BDFE780023784F /* DummyData.swift in Sources */,
 				D739400221F88AE100D2B736 /* EmojiDisplay.swift in Sources */,
 				D713101721EF0420001D7584 /* DashboardView.swift in Sources */,
 				D713101B21EF043F001D7584 /* ThoughtCard.swift in Sources */,
-				D7B27CEA2205689F00A09E0F /* ThoughtModel+CoreDataClass.swift in Sources */,
 				D713101D21EF0503001D7584 /* ThoughtCardDelegate.swift in Sources */,
+				D7043F2D220788E9006EC7C6 /* EntryModel+CoreDataClass.swift in Sources */,
 				D70EA8E021E301E50071E257 /* UIColor.swift in Sources */,
 				D739400A21F88D4300D2B736 /* NewEntryButton.swift in Sources */,
 				D7FFA1C921D4C050001C3B72 /* ThoughtDetailDelegate.swift in Sources */,
 				D711281021F2A76E006C732E /* NewAudioEntry.swift in Sources */,
 				D75B88D321BC51250023784F /* UIImage.swift in Sources */,
 				D75B891821BF1F5A0023784F /* ThoughtDetailController.swift in Sources */,
+				D7043F30220788E9006EC7C6 /* ThoughtModel+CoreDataProperties.swift in Sources */,
 				D7FFA1E221D716D7001C3B72 /* EntryDetailDelegate.swift in Sources */,
 				D713100D21EEE9D4001D7584 /* DashboardViewModelDelegate.swift in Sources */,
 				D79B1EFA21CC6B0000E951D3 /* UIFont.swift in Sources */,
+				D7043F2E220788E9006EC7C6 /* EntryModel+CoreDataProperties.swift in Sources */,
 				D75B88D021BC507B0023784F /* Constants.swift in Sources */,
 				D7FFA1D721D6BD55001C3B72 /* ThoughtFeedViewModelDelegate.swift in Sources */,
 				D713101521EF0417001D7584 /* DashboardController.swift in Sources */,
-				D7B27CEC2205689F00A09E0F /* EntryModel+CoreDataClass.swift in Sources */,
 				D713102921F068ED001D7584 /* NewImageEntry.swift in Sources */,
-				D7B27CEB2205689F00A09E0F /* ThoughtModel+CoreDataProperties.swift in Sources */,
 				D773456821F32FCC0075B4C8 /* RETHOUGHT.xcdatamodeld in Sources */,
 				D739400421F88B8300D2B736 /* ReTextField.swift in Sources */,
 				D7F967AB2200066F00D10919 /* ThoughtDetailViewModel.swift in Sources */,
 				D71FA88221E1F272000706A5 /* UILabel.swift in Sources */,
-				D7B27CED2205689F00A09E0F /* EntryModel+CoreDataProperties.swift in Sources */,
 				D77DC6C222016079007C165F /* EntryCountView.swift in Sources */,
 				D70EA8DE21E301240071E257 /* Sizes.swift in Sources */,
 				D766A00821F1B8E800BD9F2A /* UIImageView.swift in Sources */,
 				D75B891E21C07D910023784F /* ThoughtPreview.swift in Sources */,
+				D7043F2F220788E9006EC7C6 /* ThoughtModel+CoreDataClass.swift in Sources */,
 				D7BEFC6F21F78E6800D55C8E /* DashboardHeader.swift in Sources */,
 				D7F967AD2200069E00D10919 /* ThoughtDetailViewModelDelegate.swift in Sources */,
 				D713102D21F124ED001D7584 /* NewLinkEntry.swift in Sources */,

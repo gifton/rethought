@@ -47,6 +47,7 @@ class DashboardViewModel: DashboardViewModelDelegate {
         
         //set thoughts
         self.thoughts = fetchThoughts()
+        printThoughts()
     }
 }
 
@@ -75,16 +76,33 @@ extension DashboardViewModel {
     }
     
     func saveNewThought(_ thought: Thought) -> Bool {
+        print("dashboardViewModel recieved thought:")
+        print(thought)
         return self.sendThoughtToDB(thought)
     }
     
+    func printThoughts() {
+        let fetcher: NSFetchRequest = ThoughtModel.fetchRequest()
+        do {
+            let results = try moc.fetch(fetcher)
+            for i in results {
+                print (i.title)
+            }
+        } catch let err {
+            print (err)
+        }
+    }
+    
     func fetchThoughts() -> [Thought] {
+        print("fetching thoughts....")
         let fetcher: NSFetchRequest = ThoughtModel.fetchRequest()
         var out = [Thought]()
         do {
             let fetchResult = try moc.fetch(fetcher)
             for tm in fetchResult {
+                print("thoughtModel recieved from DB: \n \(tm)")
                 let t = Thought(thoughtModel: tm)
+                print("thought converted from TM: \n \(t)")
                 out.append(t)
             }
         } catch let err {
@@ -96,32 +114,20 @@ extension DashboardViewModel {
     }
     
     func sendThoughtToDB(_ newThought: Thought) -> Bool {
-        let thought = ThoughtModel(context: moc)
-        
-        thought.date = newThought.createdAt
-        thought.icon = newThought.icon
-        thought.id = newThought.ID
-        thought.title = newThought.title
+        let thought = ThoughtModel(thought: newThought, moc: moc)
         
         for entry in newThought.entries {
-            let entryOut = EntryModel(context: moc)
-            guard let imageData = entry.image?.pngData() else { continue }
-            guard let linkImageData = entry.linkImage?.pngData() else { continue }
-            entryOut.date = entry.date
-            entryOut.detail = entry.detail
-            entryOut.image = imageData
-            entryOut.entryID = thought.id
-            entryOut.entryTitle = entry.title
-            entryOut.link = entry.link
-            entryOut.linkImage = linkImageData
-            entryOut.linkTitle = entry.linkTitle
-            thought.addToEntryModel(entryOut)
+            let entOut = EntryModel(moc: moc, entry: entry)
+            thought.addToEntryModels(entOut)
         }
+        
+        print("thought prepared for DB insertion, thoughtModel: \n \(thought)")
+        
         do {
             try moc.save()
             return true
         } catch let err  {
-            print("----------error-----------")
+            print("---error---")
             print(err)
             return false
         }

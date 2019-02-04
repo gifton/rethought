@@ -183,7 +183,7 @@ extension NewImageEntry: UIImagePickerControllerDelegate {
         
         //validate completion of objects
         if self.newDescription != "" && imageViewer.image != UIImage(named: "imagePlaceholder.png"){
-            let entry = Entry(type: .image, thoughtID: parentThought?.ID ?? "nil", detail: newDescription, date: Date(), icon: parentThought?.icon ?? "🍤", image: imageViewer.image!)
+            let entry = Entry(type: .image, thoughtID: parentThought?.ID ?? "nil", detail: newDescription, date: Date(), image: imageViewer.image!)
             self.delegate?.addEntry(entry)
             self.navigationController?.popViewController(animated: true)
             

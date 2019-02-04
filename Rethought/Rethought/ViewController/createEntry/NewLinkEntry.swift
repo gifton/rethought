@@ -27,7 +27,12 @@ class NewLinkEntry: UIViewController {
     //if user has previously added a text entry to the thought, set object
     public var entry          : Entry?
     public var delegate       : ThoughtCardDelegate?
-    public var parentThought  : Thought?
+    public var parentThought  : Thought? {
+        didSet {
+            print("did set parentTohught")
+            
+        }
+    }
     
     //return entry objects
     private var linkImage: UIImage {
@@ -141,11 +146,7 @@ extension NewLinkEntry: ConnectToTextView {
             print("error with ID")
             return
         }
-        guard let icon = parentThought?.icon else {
-            print("error with icon")
-            return
-        }
-        let entry = Entry(type: .link, thoughtID: ID, detail: self.longURL, date: Date(), icon: icon, link: self.longURL, linkImage: self.linkImage, linkTitle: self.shorthandURL)
+        let entry = Entry(type: .link, thoughtID: ID, detail: self.longURL, date: Date(), link: self.longURL, linkImage: self.linkImage, linkTitle: self.shorthandURL)
         self.delegate?.addEntry(entry)
         //return home
         self.navigationController?.popViewController(animated: true)

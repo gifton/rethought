@@ -127,7 +127,7 @@ extension NewAudioEntry {
         
         //validate text views have been edited
         if self.newTitle != "" && self.newDescription != ""{
-            let entry = Entry(type: .text, thoughtID: self.parentThought?.ID ?? "nil", detail: self.newDescription, date: Date(), icon: self.parentThought?.icon ?? "🥗")
+            let entry = Entry(type: .text, thoughtID: self.parentThought?.ID ?? "nil", detail: self.newDescription, date: Date())
             self.delegate?.addEntry(entry)
             self.navigationController?.popViewController(animated: true)
             

@@ -28,8 +28,7 @@ public class Entry {
     public var id: String!
     public var date: Date
     public var detail: String
-    public var icon: String
-    public var thoughtID: String
+    public var thoughtID: String!
     
     
     //unique objects
@@ -38,72 +37,64 @@ public class Entry {
     public var link         : String?
     public var linkImage    : UIImage?
     public var linkTitle    : String?
-    public var shorthandLink: String?
     
     //optional values
     public var thoughtTitle: String?
     
     //minimum
-    init(type: EntryType, thoughtID: String, detail: String, date: Date, icon: String) {
+    init(type: EntryType, thoughtID: String, detail: String, date: Date) {
         self.type = type
         self.thoughtID = thoughtID
         self.id = randomString(length: 12)
         self.detail = detail
         self.date = date
-        self.icon = icon
     }
     
     //image type
-    convenience init(type: EntryType, thoughtID: String, detail: String, date: Date, icon: String, image: UIImage) {
-        self.init(type: type, thoughtID: thoughtID, detail: detail, date: date, icon: icon)
+    convenience init(type: EntryType, thoughtID: String, detail: String, date: Date, image: UIImage) {
+        self.init(type: type, thoughtID: thoughtID, detail: detail, date: date)
         self.image = image
     }
     //link type
-    convenience init(type: EntryType, thoughtID: String, detail: String, date: Date, icon: String, link: String, linkImage: UIImage, linkTitle: String) {
-        self.init(type: type, thoughtID: thoughtID, detail: detail, date: date, icon: icon)
+    convenience init(type: EntryType, thoughtID: String, detail: String, date: Date, link: String, linkImage: UIImage, linkTitle: String) {
+        self.init(type: type, thoughtID: thoughtID, detail: detail, date: date)
         self.linkImage = linkImage
         self.link = link
         self.linkTitle = linkTitle
         self.thoughtID = thoughtID
     }
     //string type
-    convenience init(type: EntryType, thoughtID: String, detail: String, date: Date, icon: String, title: String) {
-        self.init(type: type, thoughtID: thoughtID, detail: detail, date: date, icon: icon)
+    convenience init(type: EntryType, thoughtID: String, detail: String, date: Date, title: String) {
+        self.init(type: type, thoughtID: thoughtID, detail: detail, date: date)
         self.title = title
     }
     //link type
-    convenience init(type: Entry.EntryType, thoughtID: String, detail: String, date: Date, icon: String, linkTitle: String, linkImage: UIImage, link: String, shorthandLink: String) {
-        self.init(type: type, thoughtID: thoughtID, detail: detail, date: date, icon: icon)
+    convenience init(type: Entry.EntryType, thoughtID: String, detail: String, date: Date, linkTitle: String, linkImage: UIImage, link: String) {
+        self.init(type: type, thoughtID: thoughtID, detail: detail, date: date)
         self.link          = link
         self.linkImage     = linkImage
         self.linkTitle     = linkTitle
-        self.shorthandLink = shorthandLink
+
     }
     //entryModel init
     convenience init(entryModel: EntryModel) {
         self.init(title: nil)
         //necessary parts
         guard let detail    = entryModel.detail else { return }
-        guard let id        = entryModel.entryID else { return }
-        guard let date      = entryModel.entryDate else { return }
-        guard let thoughtID = entryModel.id else { return }
         
-        self.detail = detail
-        self.id = id
-        self.date = date
-        self.thoughtID = thoughtID
+        self.detail    = detail
+        self.id        = entryModel.id
+        self.date      = entryModel.date
         
         //check entry type
         //link
         if entryModel.link != nil {
             self.type = .link
             guard let link      = entryModel.link else { return }
-            guard let linkSH    = entryModel.shorthandLink else { return }
             guard let linkTitle = entryModel.linkTitle else { return }
             guard let linkImage = entryModel.linkImage else { return }
-            
+
             self.link = link
-            self.shorthandLink = linkSH
             self.linkTitle = linkTitle
             self.linkImage = UIImage(data: linkImage)
             return
@@ -118,14 +109,13 @@ public class Entry {
             return
         //text
         } else {
-            guard let title = entryModel.title else { return }
-            self.title = title
+            self.title = entryModel.title
             return
         }
     }
     //empty entry
     convenience init(title: String?) {
-        self.init(type: .text, thoughtID: "nil", detail: "not available", date: Date(timeIntervalSinceNow: TimeInterval.init(exactly: 1000)!), icon: "🚫")
+        self.init(type: .text, thoughtID: "nil", detail: "not available", date: Date(timeIntervalSinceNow: TimeInterval.init(exactly: 1000)!))
     }
 }
 

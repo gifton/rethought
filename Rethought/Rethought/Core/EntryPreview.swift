@@ -47,6 +47,5 @@ struct EntryPreview {
         }
         
         self.id          = entry.id
-        self.thoughtIcon = ThoughtIcon(entry.icon)
     }
 }

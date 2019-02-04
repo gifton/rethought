@@ -206,6 +206,7 @@ extension ThoughtCard {
     @objc
     func tapOnNewThought(_ tapper: UITapGestureRecognizer) {
         if state == .collapsed {
+            self.delegate?.addThoughtComponents(title: addTitleTV.text, icon: addIconTV.emoji)
             self.updateState(.cardIsDoneEditing)
             self.state = .cardIsDoneEditing
         }
@@ -224,6 +225,7 @@ extension ThoughtCard {
         if isTitleComplete == true && isIconComplete == true {
             self.delegate?.addThoughtComponents(title: addTitleTV.text, icon: addIconTV.emoji)
             self.delegate?.startNewEntry(sender.entryType)
+            
         } else {
             showErrorLabel()
         }
@@ -264,12 +266,22 @@ extension ThoughtCard {
     //card validation
     @objc
     func checkIfCardComplete(_ sender: Any) {
-        if isTitleComplete == true && isIconComplete == true {
+        if textViewCompleted {
+            self.delegate?.addThoughtComponents(title: addTitleTV.text, icon: addIconTV.emoji)
             self.delegate?.didPressSave()
             self.updateState(.collapsed)
         } else {
             showErrorLabel()
         }
+    }
+    
+    private var textViewCompleted: Bool {
+        if isTitleComplete == true && isIconComplete == true {
+            return true
+        } else {
+            return false
+        }
+        
     }
     
     //display error message

@@ -127,8 +127,8 @@ extension NewTextEntry {
         
         //validate text views have been edited
         if self.newTitle != "" && self.newDescription != ""{
-            let entry = Entry(type: .text, thoughtID: self.parentThought?.ID ?? "nil", detail: self.newDescription, date: Date(), icon: self.parentThought?.icon ?? "🥗")
-            self.delegate?.addEntry(entry)
+            let outEnt = Entry(type: .text, thoughtID: self.parentThought?.ID ?? "nil", detail: self.newDescription, date: Date(), title: self.newTitle)
+            self.delegate?.addEntry(outEnt)
             self.navigationController?.popViewController(animated: true)
             
         } else {

@@ -23,7 +23,6 @@ class EntryDetailView: UIView {
     convenience init(frame: CGRect, entry: Entry, delegate: BackDelegate) {
         self.init(frame: frame)
         self.title    = entry.title
-        self.icon     = entry.icon
         self.image = entry.image
         self.entryDescription = entry.detail
         self.link = entry.link
@@ -45,7 +44,6 @@ class EntryDetailView: UIView {
     //content recieved from entry
     public var entryType        : Entry.EntryType?
     public var title            : String?
-    private var icon            : String?
     private var image           : UIImage?
     private var linkTitle       : String?
     private var entryDescription: String?
@@ -96,7 +94,6 @@ extension EntryDetailView {
         let spacingConstant: CGFloat = 70.0
         
         iconLabel.frame.size = CGSize(width: 30, height: 35)
-        iconLabel.text = self.icon!
         deleteButton.frame.size = CGSize(width: 30, height: 35)
         
         for innerView in views {
