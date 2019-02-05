@@ -15,5 +15,6 @@ protocol DashboardDelegate {
     var context: NSManagedObjectContext { get set }
     func userTapped(on thoughtID: String)
     func userStartedNewFastThought()
-    func saveNewThought(_ thought: Thought) -> Bool
+    func saveNewThought(_ thought: Thought)
+    func updateInputs()
 }

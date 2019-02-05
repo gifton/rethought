@@ -22,12 +22,6 @@ extension ThoughtModel {
         self.icon = thought.icon
         self.id = thought.ID
         self.title = thought.title
-        printTest()
-    }
-    
-    func printTest() {
-        print("return date at model:")
-        print(self.createdAt, type(of: self.createdAt))
     }
     
     @NSManaged public var createdAt: NSDate

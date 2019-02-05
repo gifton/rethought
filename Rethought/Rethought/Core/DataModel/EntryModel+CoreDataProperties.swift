@@ -21,13 +21,14 @@ extension EntryModel {
     convenience init(moc: NSManagedObjectContext, entry: Entry) {
         self.init(context: moc)
         
-        let date_pre = entry.date as NSDate?
+        let date_pre   = entry.date as NSDate?
         guard let date = date_pre as NSDate? else { return }
         
-        self.type = entry.type.rawValue
+        self.createdAt = date
+        self.type      = entry.type.rawValue
         self.entryDate = date
-        self.entryID = entry.id
-        self.detail = entry.detail
+        self.entryID   = entry.id
+        self.detail    = entry.detail
         
         switch entry.type {
         case .text:

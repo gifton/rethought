@@ -16,9 +16,8 @@ class DashboardView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .lightBackground
+        self.backgroundColor = UIColor(hex: "E0E0E0")
         
-        self.backgroundColor = UIColor(hex: "F9FCFF")
     }
     convenience init(delegate: DashboardDelegate, frame: CGRect) {
         self.init(frame: frame)
@@ -55,7 +54,7 @@ extension DashboardView {
         for view in self.subviews {
             view.removeFromSuperview()
         }
-        thoughtCollectionView.register(ThoughtFeedCellTile.self, forCellWithReuseIdentifier: ThoughtFeedCellTile.identifier)
+        thoughtCollectionView.register(ThoughtCell.self, forCellWithReuseIdentifier: ThoughtCell.identifier)
         thoughtCollectionView.register(DashboardHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: DashboardHeader.identifier)
         
         //add to superView

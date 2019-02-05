@@ -83,14 +83,16 @@ extension ThoughtCard {
         
         //self styling
         self.layer.borderColor = UIColor.darkGray.cgColor
-        self.blurBackground(type: .light, cornerRadius: 30)
+        self.blurBackground(type: .prominent, cornerRadius: 30)
         self.layer.cornerRadius = 30
+        self.layer.borderWidth = 10
+        self.layer.borderColor = UIColor(hex: "DBDADB").cgColor
         self.isUserInteractionEnabled = true
         
         //frame
-        newThoughtIntro.frame           = CGRect(x: 75, y: 35, width: 150, height: 30)
-        iconLabel.frame                 = CGRect(x: 15, y: 35, width: 50, height: 50)
-        timeSinceLastThoughtLabel.frame = CGRect(x: 75, y: 67.5, width: 200, height: 14)
+        newThoughtIntro.frame           = CGRect(x: 85, y: 35, width: 150, height: 30)
+        iconLabel.frame                 = CGRect(x: 25, y: 35, width: 50, height: 50)
+        timeSinceLastThoughtLabel.frame = CGRect(x: 85, y: 67.5, width: 200, height: 14)
         
         newThoughtIntro.padding             = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         newThoughtIntro.backgroundColor     = .cardLabelBackgroundDark
@@ -122,7 +124,7 @@ extension ThoughtCard {
         doneButton.backgroundColor = UIColor(hex: "6271fc")
         doneButton.layer.cornerRadius = 19
         doneButton.layer.masksToBounds = true
-        doneButton.addAttText(color: UIColor(hex: "5D5D5D"), size: 16, font: .title, string: "Done")
+        doneButton.addAttText(color: UIColor(hex: "ffffff"), size: 16, font: .title, string: "Done")
         errorLabel.attributedText = errorLabel.returnAttributedText(color: .black, size: 14, font: .bodyLight, string: "please add a title and icon")
         errorLabel.textAlignment = .center
         errorLabel.layer.opacity = 0.0
@@ -160,12 +162,12 @@ extension ThoughtCard {
         }
         
         //frame
-        cancelButton.frame = CGRect(x: self.frame.width - 75, y: 40, width: 60, height: 28)
+        cancelButton.frame = CGRect(x: self.frame.width - 85, y: 35, width: 60, height: 28)
         cancelButton.addTarget(self, action: #selector(cancelThought(_:)), for: .touchUpInside)
         addTitleTV.frame   = CGRect(x: 15, y: 100, width: self.frame.width * 0.7, height: 81)
         addTitleTV.connector = self.delegate
         addIconTV = EmojiDisplay(frame: CGRect(x: (self.frame.width * 0.7) + 25, y: 100, width: 81, height: 81), emoji: ThoughtIcon("🥘"))
-        doneButton.frame = CGRect(x: 15, y: self.frame.height - 79, width: self.frame.width - 30, height: 59)
+        doneButton.frame = CGRect(x: 15, y: self.frame.height - 74, width: self.frame.width - 30, height: 59)
         errorLabel.frame = CGRect(x: 0, y: 250, width: self.frame.width, height: 15)
         let views = [cancelButton, addTitleTV, addIconTV, doneButton]
         for view in views {

@@ -57,7 +57,6 @@ extension ThoughtCardController: ThoughtCardDelegate {
             let v = NewLinkEntry()
             v.delegate = self
             v.parentThought = self.newThought
-            print(self.newThought)
             self.navigationController?.pushViewController(v, animated: true)
         case .recording:
             let v = NewAudioEntry()
@@ -94,7 +93,7 @@ extension ThoughtCardController: ThoughtCardDelegate {
     //save new thought validation
     func didPressSave() {
         guard let newThought = self.newThought else {
-            print("thought fwk")
+            print("could nit confirm new thought on save")
             return
         }
         
@@ -106,7 +105,6 @@ extension ThoughtCardController: ThoughtCardDelegate {
         }
         savePost()
         print("post saved!:")
-        print(newThought.createdAt)
         print("----------------------------")
     }
 }
@@ -120,13 +118,10 @@ extension ThoughtCardController {
     
     //save new thought
     func savePost() {
-        
         guard let newThought = self.newThought else {
             print("unable to get new thought")
             return
         }
-        let out = self.delegate?.saveNewThought(newThought)
-        print("saving post is completed out: \(String(describing: out))")
-        
+        self.delegate?.saveNewThought(newThought)
     }
 }

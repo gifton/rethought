@@ -38,14 +38,13 @@ class DashboardController: UIViewController {
 }
 
 extension DashboardController: DashboardDelegate {
-    func saveNewThought(_ thought: Thought) -> Bool {
+    func saveNewThought(_ thought: Thought) {
         let out = model.saveNewThought(thought)
         if out {
+            print("CFWTM")
             self.dashboard?.reloadInputViews()
             self.dashboard?.thoughtCollectionView.reloadData()
-        }
-        return out
-        
+        }        
     }
     func userStartedNewFastThought() {
         UIView.animate(withDuration: 0.5) {
@@ -82,6 +81,12 @@ extension DashboardController: DashboardDelegate {
                 self.thoughtCard?.card?.frame = CGRect(x: 5, y: (ViewSize.SCREEN_HEIGHT * 0.184) , width: ViewSize.SCREEN_WIDTH - 10, height: 367)
             }
         })
+    }
+    
+    //after post is saved, reload input values
+    func updateInputs() {
+        self.dashboard?.thoughtCollectionView.reloadData()
+        self.dashboard?.thoughtCollectionView.reloadInputViews()
     }
 }
 
@@ -138,7 +143,7 @@ extension DashboardController: UICollectionViewDataSource {
             return UICollectionReusableView()
         }
         
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ThoughtFeedCellTile", for: indexPath) as! DashboardHeader
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ThoughtFeedHeader", for: indexPath) as! DashboardHeader
         headerView.recentEntries = model.getRecentEntries()
         // Customize headerView here
         return headerView
@@ -151,7 +156,7 @@ extension DashboardController: UICollectionViewDataSource {
 
     //cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThoughtFeedCellTile.identifier, for: indexPath) as! ThoughtFeedCellTile
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThoughtCell.identifier, for: indexPath) as! ThoughtCell
         
         guard let thoughts = self.thoughts else { return cell }
         let thought = thoughts[indexPath.row]

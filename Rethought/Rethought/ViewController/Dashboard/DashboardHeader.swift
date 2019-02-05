@@ -26,10 +26,10 @@ class DashboardHeader: UICollectionReusableView {
     
     //set custom identifier, set default identifier
     override var reuseIdentifier: String? {
-        return "ThoughtFeedCellTile"
+        return "ThoughtFeedHeader"
     }
     static var identifier: String {
-        return "ThoughtFeedCellTile"
+        return "ThoughtFeedHeader"
     }
     
     //dev object

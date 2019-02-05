@@ -1,5 +1,5 @@
 //
-//  ThoughtFeedCellTile.swift
+//  ThoughtCelll.swift
 //  rethought
 //
 //  Created by Dev on 12/28/18.
@@ -9,21 +9,23 @@
 import Foundation
 import UIKit
 
-class ThoughtFeedCellTile: UICollectionViewCell {
+class ThoughtCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.black.withAlphaComponent(0.05)
-        setupCell()
-        styleCell()
+        self.backgroundColor = UIColor(hex: "ffffff").withAlphaComponent(0.25)
+        setupCell(); styleCell()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    //vars
+    
+    //cell identifier
     static var identifier:     String {
-        return "ThoughtFeedCellTile"
+        return "ThoughtCellIdentifier"
     }
+    
+    //MARK: Private variabls
     private var icon:          String?
     private var title:         String?
     private var entryCount:    Int?

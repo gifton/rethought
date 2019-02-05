@@ -29,12 +29,11 @@ class EntrybarView: UIView {
     }
     
     func styleCell() {
-        self.addLogoShadow()
-        self.backgroundColor = UIColor(hex: "161616")
+        self.backgroundColor = UIColor(hex: "DBDADB")
         self.layer.cornerRadius = 6
         let leftView: UIView = {
             let v = UIView()
-            v.frame = CGRect(x: 0, y: 0, width: 69, height: 69)
+            v.frame = CGRect(x: 0, y: 0, width: ViewSize.largeBar.size.height, height: ViewSize.largeBar.size.height)
             v.backgroundColor = .white
             v.roundCorners(corners: [.topLeft, .bottomLeft], radius: 6)
             

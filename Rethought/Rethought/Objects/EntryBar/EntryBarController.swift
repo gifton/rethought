@@ -32,7 +32,7 @@ class EntryBarController: UIViewController {
 
 extension EntryBarController: EntryBarDelegate {
     func newEntry(_ type: Entry.EntryType) {
-        print("gang")
+        return
     }
     
     
