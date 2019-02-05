@@ -16,9 +16,10 @@ class DashboardViewModel: DashboardViewModelDelegate {
     //return list of ALL thoughts
     func getThoughts() -> [DashboardThought] {
         var thoughts = [DashboardThought]()
+        print("COUNT: \(self.thoughts.count)")
         for thought in self.thoughts {
-            let dThought = DashboardThought(thought: thought)
-            thoughts.append(dThought)
+            let t = DashboardThought(thought: thought)
+            thoughts.append(t)
         }
         return thoughts
     }
@@ -47,7 +48,6 @@ class DashboardViewModel: DashboardViewModelDelegate {
         
         //set thoughts
         self.thoughts = fetchThoughts()
-        printThoughts()
     }
 }
 
@@ -76,7 +76,11 @@ extension DashboardViewModel {
     }
     
     func saveNewThought(_ thought: Thought) -> Bool {
-        return self.sendThoughtToDB(thought)
+        let out = self.sendThoughtToDB(thought)
+        if out {
+            self.thoughts.append(thought)
+        }
+        return out
     }
     
     func fetchThoughts() -> [Thought] {
@@ -88,7 +92,7 @@ extension DashboardViewModel {
             let fetchResult = try moc.fetch(fetcher)
             for tm in fetchResult {
                 print("thoughtModel recieved from DB: \n \(tm.icon)")
-                let t = try Thought(thoughtModel: tm)
+                let t = Thought(thoughtModel: tm)
                 print("thought converted from TM: \n \(t.icon)")
                 out.append(t)
             }

@@ -31,17 +31,19 @@ class DashboardController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var model: DashboardViewModel!
-    var thoughts: [DashboardThought]? {
-        return model?.getThoughts()
+    var model: DashboardViewModel! {
+        didSet {
+            self.thoughts = model.getThoughts()
+        }
     }
+    var thoughts: [DashboardThought]?
 }
 
 extension DashboardController: DashboardDelegate {
     func saveNewThought(_ thought: Thought) {
         let out = model.saveNewThought(thought)
         if out {
-            print("CFWTM")
+            updateInputs()
             self.dashboard?.reloadInputViews()
             self.dashboard?.thoughtCollectionView.reloadData()
         }        
@@ -85,6 +87,7 @@ extension DashboardController: DashboardDelegate {
     
     //after post is saved, reload input values
     func updateInputs() {
+        self.thoughts = model.getThoughts()
         self.dashboard?.thoughtCollectionView.reloadData()
         self.dashboard?.thoughtCollectionView.reloadInputViews()
     }
@@ -159,6 +162,9 @@ extension DashboardController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThoughtCell.identifier, for: indexPath) as! ThoughtCell
         
         guard let thoughts = self.thoughts else { return cell }
+        print("============thought count from collection delegate==============")
+        
+        print (thoughts.count)
         let thought = thoughts[indexPath.row]
         
         cell.giveContext(with: thought)
@@ -172,23 +178,19 @@ extension DashboardController: UICollectionViewDataSource {
 }
 extension DashboardController: UICollectionViewDelegate {
     
+    //push thought detail
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let thoughtID: String = self.thoughts?[indexPath.row].thoughtID else { return }
         let thought = self.model.retrieve(thought: thoughtID)
+        
+        //set thought detail viewmodel, attach to thoughtDetail
         let vm = ThoughtDetailViewModel(thought: thought, context: self.context)
         let vc = ThoughtDetailController(withThoughtModel: vm)
         self.navigationController?.pushViewController(vc, animated: true)
-//        let view = ThoughtDetailController()
-//        view.thought = thought
-//        self.navigationController?.pushViewController(view, animated: true)
     }
     
     //hide keyboard on scroll
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.resignFirstResponder()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 100)
     }
 }
