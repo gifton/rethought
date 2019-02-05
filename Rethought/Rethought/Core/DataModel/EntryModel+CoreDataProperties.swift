@@ -20,8 +20,12 @@ extension EntryModel {
     
     convenience init(moc: NSManagedObjectContext, entry: Entry) {
         self.init(context: moc)
+        
+        let date_pre = entry.date as NSDate?
+        guard let date = date_pre as NSDate? else { return }
+        
         self.type = entry.type.rawValue
-        self.entryDate = entry.date
+        self.entryDate = date
         self.entryID = entry.id
         self.detail = entry.detail
         
@@ -38,7 +42,7 @@ extension EntryModel {
     }
 
     @NSManaged public var type: String
-    @NSManaged public var entryDate: Date
+    @NSManaged public var entryDate: NSDate
     @NSManaged public var entryID: String
     @NSManaged public var detail: String?
     @NSManaged public var entryTitle: String?

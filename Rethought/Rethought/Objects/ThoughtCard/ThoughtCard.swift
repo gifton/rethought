@@ -76,24 +76,21 @@ class ThoughtCard: UIView {
 extension ThoughtCard {
     
     func setupCard() {
-        
         //animate all views out on collapse
         for view in subviews{
             animateOut(view)
         }
         
         //self styling
-        self.backgroundColor = UIColor(hex: "FFFFFF")
         self.layer.borderColor = UIColor.darkGray.cgColor
-        self.layer.borderWidth = 2
-        self.layer.cornerRadius = 10
-        self.addLogoShadow()
+        self.blurBackground(type: .light, cornerRadius: 30)
+        self.layer.cornerRadius = 30
         self.isUserInteractionEnabled = true
         
         //frame
-        newThoughtIntro.frame           = CGRect(x: 75, y: 10, width: 150, height: 30)
-        iconLabel.frame                 = CGRect(x: 15, y: 10, width: 50, height: 50)
-        timeSinceLastThoughtLabel.frame = CGRect(x: 75, y: 42.5, width: 200, height: 14)
+        newThoughtIntro.frame           = CGRect(x: 75, y: 35, width: 150, height: 30)
+        iconLabel.frame                 = CGRect(x: 15, y: 35, width: 50, height: 50)
+        timeSinceLastThoughtLabel.frame = CGRect(x: 75, y: 67.5, width: 200, height: 14)
         
         newThoughtIntro.padding             = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         newThoughtIntro.backgroundColor     = .cardLabelBackgroundDark
@@ -122,8 +119,8 @@ extension ThoughtCard {
         addTitleTV.layer.cornerRadius = 6
         addTitleTV.padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         addIconTV.backgroundColor = .cardLabelBackgroundLight
-        doneButton.backgroundColor = UIColor(hex: "51DF9F")
-        doneButton.layer.cornerRadius = 10
+        doneButton.backgroundColor = UIColor(hex: "6271fc")
+        doneButton.layer.cornerRadius = 19
         doneButton.layer.masksToBounds = true
         doneButton.addAttText(color: UIColor(hex: "5D5D5D"), size: 16, font: .title, string: "Done")
         errorLabel.attributedText = errorLabel.returnAttributedText(color: .black, size: 14, font: .bodyLight, string: "please add a title and icon")
@@ -150,9 +147,9 @@ extension ThoughtCard {
         var xStart: CGFloat = 12.5
         for btn in entryBtns {
             if btn == micBtn {
-                btn.frame = CGRect(x: xStart, y: 179.5, width: 20*1.8, height: 25*1.8)
+                btn.frame = CGRect(x: xStart, y: 179.5 + 25, width: 20*1.8, height: 25*1.8)
             } else {
-                btn.frame = CGRect(x: xStart, y: 185, width: 20*1.8, height: 20*1.8)
+                btn.frame = CGRect(x: xStart, y: 185 + 25, width: 20*1.8, height: 20*1.8)
             }
             
             xStart += self.frame.width * 0.28
@@ -163,12 +160,12 @@ extension ThoughtCard {
         }
         
         //frame
-        cancelButton.frame = CGRect(x: self.frame.width - 75, y: 10, width: 60, height: 28)
+        cancelButton.frame = CGRect(x: self.frame.width - 75, y: 40, width: 60, height: 28)
         cancelButton.addTarget(self, action: #selector(cancelThought(_:)), for: .touchUpInside)
-        addTitleTV.frame   = CGRect(x: 15, y: 75, width: self.frame.width * 0.7, height: 81)
+        addTitleTV.frame   = CGRect(x: 15, y: 100, width: self.frame.width * 0.7, height: 81)
         addTitleTV.connector = self.delegate
-        addIconTV = EmojiDisplay(frame: CGRect(x: (self.frame.width * 0.7) + 25, y: 75, width: 81, height: 81), emoji: ThoughtIcon("🥘"))
-        doneButton.frame = CGRect(x: 15, y: self.frame.height - 77, width: self.frame.width - 30, height: 57)
+        addIconTV = EmojiDisplay(frame: CGRect(x: (self.frame.width * 0.7) + 25, y: 100, width: 81, height: 81), emoji: ThoughtIcon("🥘"))
+        doneButton.frame = CGRect(x: 15, y: self.frame.height - 79, width: self.frame.width - 30, height: 59)
         errorLabel.frame = CGRect(x: 0, y: 250, width: self.frame.width, height: 15)
         let views = [cancelButton, addTitleTV, addIconTV, doneButton]
         for view in views {
@@ -238,10 +235,6 @@ extension ThoughtCard {
         switch state {
         case .collapsed:
             setupCard()
-            let btns = [linkBtn, noteBtn, cameraBtn, micBtn]
-            for btn in btns {
-                btn.addBorders(edges: [.bottom], color: UIColor(hex: "ffffff"), thickness: 4)
-            }
         default:
             setupOpenView()
         }

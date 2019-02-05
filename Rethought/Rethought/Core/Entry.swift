@@ -84,7 +84,7 @@ public class Entry {
         
         self.detail    = detail
         self.id        = entryModel.id
-        self.date      = entryModel.date
+        self.date      = entryModel.createdAt as Date
         
         //check entry type
         //link
@@ -124,7 +124,7 @@ extension Entry {
         print ("sent \(self) to DB")
     }
     public func removeThoughtFromDB() {
-        print ("removed thought: \(String(describing: self.title)) from db")
+        print ("removed from db")
     }
     
     public func updateThought(thoughtID: String, payload: Thought) {

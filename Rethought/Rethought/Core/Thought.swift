@@ -43,15 +43,16 @@ public class Thought {
     //init for entryModel
     public convenience init( thoughtModel: ThoughtModel) {
         self.init()
-        print(thoughtModel.date)
+        print(thoughtModel)
         guard let entries = thoughtModel.entryModels!.allObjects as? [Entry] else { return }
         entries.forEach { ent in
             ent.thoughtID = thoughtModel.id
         }
+        
         self.title      = thoughtModel.title
         self.icon       = thoughtModel.icon
-        self.createdAt  = thoughtModel.date
-        self.lastEdited = thoughtModel.date
+        self.createdAt  = Date()
+        self.lastEdited = Date() 
         self.ID         = thoughtModel.id
         self.entries    = entries
         updateCounts()

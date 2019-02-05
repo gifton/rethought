@@ -35,22 +35,22 @@ extension ThoughtDetailViewModel: ThoughtDetailViewModelDelegate {
     }
     
     func update(entry: Entry) -> Bool {
-        print("updated entry \(entry.id)")
+        
         return true
     }
     
     func update(thought: Thought) -> Bool {
-        print("updated entry \(thought.ID)")
+        
         return true
     }
     
     func delete(entry: Entry) -> Bool {
-        print("removed entry \(entry.id)")
+        
         return true
     }
     
     func delete(thought: Thought) -> Bool {
-        print("removed entry \(thought.ID)")
+        
         return true
     }
     

@@ -98,14 +98,17 @@ extension DashboardViewModel {
         let fetcher: NSFetchRequest = ThoughtModel.fetchRequest()
         var out = [Thought]()
         do {
+            print("begining fetch...")
             let fetchResult = try moc.fetch(fetcher)
             for tm in fetchResult {
                 print("thoughtModel recieved from DB: \n \(tm)")
-                let t = Thought(thoughtModel: tm)
+                print(tm.icon)
+                let t = try Thought(thoughtModel: tm )
                 print("thought converted from TM: \n \(t)")
                 out.append(t)
             }
         } catch let err {
+            print("error!------>")
             print (err)
         }
         print("-------------------------")
@@ -114,7 +117,8 @@ extension DashboardViewModel {
     }
     
     func sendThoughtToDB(_ newThought: Thought) -> Bool {
-        let thought = ThoughtModel(thought: newThought, moc: moc)
+        let thought = ThoughtModel(context: moc)
+        thought.setModel(thought: newThought)
         
         for entry in newThought.entries {
             let entOut = EntryModel(moc: moc, entry: entry)

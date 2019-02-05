@@ -106,7 +106,7 @@ extension ThoughtCardController: ThoughtCardDelegate {
         }
         savePost()
         print("post saved!:")
-        print(newThought)
+        print(newThought.createdAt)
         print("----------------------------")
     }
 }

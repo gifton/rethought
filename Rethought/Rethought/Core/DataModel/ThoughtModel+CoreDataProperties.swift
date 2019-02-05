@@ -17,9 +17,8 @@ extension ThoughtModel {
         return NSFetchRequest<ThoughtModel>(entityName: "ThoughtModel")
     }
     
-    convenience init(thought: Thought, moc: NSManagedObjectContext) {
-        self.init(context: moc)
-        self.date = thought.createdAt
+    func setModel(thought: Thought) {
+        self.createdAt = thought.createdAt as NSDate
         self.icon = thought.icon
         self.id = thought.ID
         self.title = thought.title
@@ -27,10 +26,11 @@ extension ThoughtModel {
     }
     
     func printTest() {
-        print(self.date)
+        print("return date at model:")
+        print(self.createdAt, type(of: self.createdAt))
     }
     
-    @NSManaged public var date: Date
+    @NSManaged public var createdAt: NSDate
     @NSManaged public var icon: String
     @NSManaged public var id: String
     @NSManaged public var title: String

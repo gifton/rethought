@@ -14,7 +14,7 @@
         <relationship name="thoughtModel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ThoughtModel" inverseName="entryModels" inverseEntity="ThoughtModel" syncable="YES"/>
     </entity>
     <entity name="ThoughtModel" representedClassName="ThoughtModel" syncable="YES">
-        <attribute name="date" transient="YES" attributeType="Date" usesScalarValueType="NO" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <attribute name="createdAt" transient="YES" attributeType="Date" usesScalarValueType="NO" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="icon" attributeType="String" syncable="YES"/>
         <attribute name="id" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="title" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
