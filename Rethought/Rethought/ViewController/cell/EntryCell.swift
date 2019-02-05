@@ -106,7 +106,8 @@ class EntryTextCell: UITableViewCell {
     
     var entry: Entry! {
         didSet {
-            titleLabel.addText(size: 17, font: .title, string: entry.title!)
+            titleLabel.addText(size: 17, font: .body, string: entry.title!)
+            titleLabel.textColor = .black
             bodyLabel.addText(size: 12, font: .body, string: dummyBody)
             bodyLabel.textColor = UIColor(hex: "4A4A4A")
             bodyLabel.numberOfLines = 3

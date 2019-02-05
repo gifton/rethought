@@ -91,9 +91,7 @@ extension DashboardViewModel {
             print("begining fetch...")
             let fetchResult = try moc.fetch(fetcher)
             for tm in fetchResult {
-                print("thoughtModel recieved from DB: \n \(tm.icon)")
                 let t = Thought(thoughtModel: tm)
-                print("thought converted from TM: \n \(t.icon)")
                 out.append(t)
             }
         } catch let err {

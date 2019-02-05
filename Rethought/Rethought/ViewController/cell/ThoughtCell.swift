@@ -69,7 +69,7 @@ class ThoughtCell: UICollectionViewCell {
         stack.frame = CGRect(x: 15, y: self.frame.height - 75, width: 70, height: 55)
         
         titleLabel.frame     = CGRect(x: 15, y: 8, width: self.frame.width - 30, height: 55)
-        iconLabel.center     = CGPoint(x: (self.frame.width - 21) / 2, y: (self.frame.height - 21) / 2)
+        iconLabel.center     = CGPoint(x: (self.frame.width - 21) / 2, y: (self.frame.height - 21) / 2.5)
         iconLabel.frame.size = CGSize(width: 42, height: 42)
         dayCountLabel.frame  = CGRect(x: 100, y: self.frame.height - 35, width: 100, height: 15)
         
@@ -80,10 +80,14 @@ class ThoughtCell: UICollectionViewCell {
     }
     
     private func styleCell() {
-        self.layer.cornerRadius = 4
-        titleLabel.textAlignment = .center
-        titleLabel.numberOfLines = 2
-        titleLabel.font = .reBody(ofSize: 14)
+        self.layer.cornerRadius        = 4
+        titleLabel.textAlignment       = .center
+        titleLabel.numberOfLines       = 2
+        titleLabel.backgroundColor     = UIColor.white.withAlphaComponent(0.25)
+        titleLabel.font                = .reBody(ofSize: 14)
+        titleLabel.layer.masksToBounds = true
+        titleLabel.layer.cornerRadius  = 5
+        
         iconLabel.font = .reBody(ofSize: 32)
         let lbls = [linkLabel, entryLabel, mediaLabel]
         for lbl in lbls {

@@ -11,14 +11,15 @@ import UIKit
 
 extension UIFont {
     static func reTitle(ofSize fontSize: CGFloat) -> UIFont {
-        return UIFont(name: "SanFranciscoDisplay-Bold ", size: fontSize) ?? .systemFont(ofSize: fontSize, weight: .medium)
+        return UIFont(name: "Lato-Bold ", size: fontSize) ?? .systemFont(ofSize: fontSize, weight: .heavy)
     }
     static func reBody(ofSize fontSize: CGFloat) -> UIFont {
-        return UIFont(name: "SanFranciscoText-Regular ", size: fontSize) ?? .systemFont(ofSize: fontSize, weight: .regular)
+        return UIFont(name: "Lato-Regular ", size: fontSize) ?? .systemFont(ofSize: fontSize, weight: .regular)
     }
     static func reBodyLight(ofSize fontSize: CGFloat) -> UIFont {
-        return UIFont(name: "SanFranciscoText-Light ", size: fontSize) ?? .systemFont(ofSize: fontSize, weight: .light)
+        return UIFont(name: "Lato-Light ", size: fontSize) ?? .systemFont(ofSize: fontSize, weight: .light)
     }
+    
 }
 
 enum RethoughtFonts {   

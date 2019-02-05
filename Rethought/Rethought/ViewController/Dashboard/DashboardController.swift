@@ -162,9 +162,6 @@ extension DashboardController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThoughtCell.identifier, for: indexPath) as! ThoughtCell
         
         guard let thoughts = self.thoughts else { return cell }
-        print("============thought count from collection delegate==============")
-        
-        print (thoughts.count)
         let thought = thoughts[indexPath.row]
         
         cell.giveContext(with: thought)
