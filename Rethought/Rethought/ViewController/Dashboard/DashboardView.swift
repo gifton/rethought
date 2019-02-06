@@ -30,7 +30,7 @@ class DashboardView: UIView {
         layout.scrollDirection = .vertical
         layout.itemSize = CGSize(width: (ViewSize.SCREEN_WIDTH / 2) - 7.5, height: (ViewSize.SCREEN_WIDTH / 2) - 7.5)
         layout.sectionInsetReference = .fromContentInset
-        layout.headerReferenceSize = CGSize(width: ViewSize.SCREEN_WIDTH - 20, height: 220)
+        layout.headerReferenceSize = CGSize(width: ViewSize.SCREEN_WIDTH - 20, height: 160)
         layout.minimumInteritemSpacing = 2.5
         layout.minimumLineSpacing = 5
         

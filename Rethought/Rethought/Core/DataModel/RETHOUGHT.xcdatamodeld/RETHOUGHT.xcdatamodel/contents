@@ -2,13 +2,13 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="EntryModel" representedClassName="EntryModel" parentEntity="ThoughtModel" syncable="YES">
         <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="entryDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="entryDate" attributeType="Date" usesScalarValueType="NO" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="entryID" transient="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="entryTitle" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="linkImage" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="linkTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="linkTitle" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="recording" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="type" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
         <relationship name="thoughtModel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ThoughtModel" inverseName="entryModels" inverseEntity="ThoughtModel" syncable="YES"/>

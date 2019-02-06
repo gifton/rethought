@@ -84,7 +84,7 @@ extension DashboardViewModel {
     }
     
     func fetchThoughts() -> [Thought] {
-        print("fetching thoughts....")
+        print("fetch requested....")
         let fetcher: NSFetchRequest = ThoughtModel.fetchRequest()
         var out = [Thought]()
         do {
@@ -108,8 +108,11 @@ extension DashboardViewModel {
         thought.setModel(thought: newThought)
         
         for entry in newThought.entries {
-            let entOut = EntryModel(moc: moc, entry: entry)
+            let entOut = EntryModel(context: moc)
+            entOut.setModel(entry: entry)
+            print("Writing to db: \(entOut.title)")
             thought.addToEntryModels(entOut)
+            print("complete")
         }
         
         print("thought prepared for DB insertion, thoughtModel: \n \(thought)")

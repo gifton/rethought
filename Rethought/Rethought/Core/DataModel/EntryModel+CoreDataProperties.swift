@@ -18,11 +18,13 @@ extension EntryModel {
         return NSFetchRequest<EntryModel>(entityName: "EntryModel")
     }
     
-    convenience init(moc: NSManagedObjectContext, entry: Entry) {
-        self.init(context: moc)
-        
+    func setModel(entry: Entry) {
         let date_pre   = entry.date as NSDate?
-        guard let date = date_pre as NSDate? else { return }
+        guard let date = date_pre as NSDate? else {
+            print("error calculating date")
+            return
+            
+        }
         
         self.createdAt = date
         self.type      = entry.type.rawValue
