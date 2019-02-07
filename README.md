@@ -22,5 +22,6 @@ Rethought is an application designed to help keep track of your thoughts, and co
 
 Happy thinking! 
 
-![Image of app](https://s3-us-west-2.amazonaws.com/gifton/rethoughtImage1.png)
 ![Image of app - 2](https://s3-us-west-2.amazonaws.com/gifton/rethoughtImage2.png)
+![Image of app](https://s3-us-west-2.amazonaws.com/gifton/rethoughtImage1.png)
+
