@@ -70,6 +70,14 @@ class DashboardHeader: UICollectionReusableView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    let rethoughtLogo: UILabel = {
+        let lbl = UILabel()
+        lbl.text = "Rethought"
+        lbl.font = .reTitle(ofSize: 35)
+        
+        return lbl
+    }()
 }
 
 extension DashboardHeader {
@@ -77,35 +85,16 @@ extension DashboardHeader {
         
         //add to superView
         addSubview(allEntriesButton)
-        addSubview(searchButton)
-        addSubview(reLogo)
-        addSubview(flashThoughtsCollectionView)
-
         addSubview(settingsButton)
+        addSubview(rethoughtLogo)
         
         //style
         allEntriesButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 15, paddingTrailing: 20)
         
-        searchButton.frame.origin = CGPoint(x: 10, y: self.frame.height - 35)
-        searchButton.frame.size = CGSize(width: 20, height: 20)
-        
-        reLogo.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            reLogo.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            reLogo.topAnchor.constraint(equalTo: safeTopAnchor, constant: 10),
-        ])
-        
-        flashThoughtsCollectionView.register(LinkCell.self, forCellWithReuseIdentifier: LinkCell.identifier)
-        flashThoughtsCollectionView.delegate = self
-        flashThoughtsCollectionView.dataSource = self
-        
-        flashThoughtsCollectionView.frame = CGRect(x: 15, y: 45, width: ViewSize.SCREEN_WIDTH - 30, height: 70)
-        
-//        flashThoughtsCollectionView.setAnchor(top: reLogo.bottomAnchor, leading: leadingAnchor, bottom: searchButton.topAnchor, trailing: trailingAnchor, paddingTop: 20, paddingLeading: 75, paddingBottom: 20, paddingTrailing: 0)
-        
-        
         settingsButton.frame = CGRect(x: ViewSize.SCREEN_WIDTH - 50, y: 12.5, width: 25, height: 25)
         settingsButton.setImage(#imageLiteral(resourceName: "cog"), for: .normal)
+        
+        rethoughtLogo.frame = CGRect(x: 20, y: 50, width: 180, height: 41)
     }
 }
 

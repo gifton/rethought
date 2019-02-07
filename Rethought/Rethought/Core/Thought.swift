@@ -40,7 +40,7 @@ public class Thought {
         updateCounts()
     }
     
-    //init for entryModel
+    //init for thoughtModel
     public convenience init( thoughtModel: ThoughtModel) {
         self.init()
         guard let entries = thoughtModel.entryModels!.allObjects as? [Entry] else { return }
@@ -55,6 +55,8 @@ public class Thought {
         self.ID         = thoughtModel.id
         self.entries    = entries
         updateCounts()
+        
+        print(self)
     }
     
     //  last edited func refactored to be able to be called when new entry is added,
