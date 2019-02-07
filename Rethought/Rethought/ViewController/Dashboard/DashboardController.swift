@@ -184,6 +184,7 @@ extension DashboardController: UICollectionViewDelegate {
         let vm = ThoughtDetailViewModel(thought: thought, context: self.context)
         let vc = ThoughtDetailController(withThoughtModel: vm)
         self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     //hide keyboard on scroll
