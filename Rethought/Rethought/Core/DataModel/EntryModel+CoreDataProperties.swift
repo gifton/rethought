@@ -23,7 +23,6 @@ extension EntryModel {
         guard let date = date_pre as NSDate? else {
             print("error calculating date")
             return
-            
         }
         
         self.createdAt = date
@@ -42,6 +41,9 @@ extension EntryModel {
             self.linkImage = entry.linkImage!.pngData()
             self.linkTitle = entry.linkTitle!
         }
+        
+        print("self from entryModel:")
+        print(self)
     }
 
     @NSManaged public var type: String
@@ -55,5 +57,4 @@ extension EntryModel {
     @NSManaged public var linkTitle: String?
     @NSManaged public var recording: Data?
     @NSManaged public var thoughtModel: ThoughtModel?
-
 }

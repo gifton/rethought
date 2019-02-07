@@ -63,8 +63,6 @@ extension DashboardViewModel {
         return recentEntries
     }
     
-    
-    
     //find thought by ID
     func retrieve(thought thoughtID: String) -> Thought {
         return thoughts.filter{ $0.ID == thoughtID }.first ?? Thought.init()
@@ -99,23 +97,25 @@ extension DashboardViewModel {
             print (err)
         }
         print("-------------------------")
-        print (out.count)
         return out
     }
     
     func sendThoughtToDB(_ newThought: Thought) -> Bool {
-        let thought = ThoughtModel(context: moc)
-        thought.setModel(thought: newThought)
+        let t = ThoughtModel(context: moc)
+        t.setModel(thought: newThought)
+        var e = [EntryModel]()
         
         for entry in newThought.entries {
             let entOut = EntryModel(context: moc)
             entOut.setModel(entry: entry)
-            print("Writing to db: \(entOut.title)")
-            thought.addToEntryModels(entOut)
-            print("complete")
+            e.append(entOut)
+            print("==========entout date==========")
+            print(entOut.entryDate)
         }
         
-        print("thought prepared for DB insertion, thoughtModel: \n \(thought)")
+        if e.count < 0 {
+            
+        }
         
         do {
             try moc.save()
