@@ -11,3 +11,16 @@ Rethought is an application designed to help keep track of your thoughts, and co
 * run `pod install` to install dependancies 
 * open the .xcworkspace file, NOT the .xcodeproj file
 
+## Road map: 
+- [ ] UIColor protocol for users to customize colors in application
+- [ ] Rethought needs a backend! Currently all data is stored locally. 
+- [ ] Share extension.  Let users save links from within other applications like safari
+- [ ] Thought card refactoring.  The thoughtcard object can be moved to a cocoapod (possibly)
+
+## Contributing
+> If you're looking to contribute to rethought, please take a look at the roadmap to see how you can help!
+
+Happy thinking! 
+
+![Image of app](https://s3-us-west-2.amazonaws.com/gifton/rethoughtImage1.png)
+![Image of app - 2](https://s3-us-west-2.amazonaws.com/gifton/rethoughtImage2.png)
