@@ -104,7 +104,7 @@ extension ThoughtCardController: ThoughtCardDelegate {
             }
         }
         savePost()
-        print("post saved!:")
+        print("post saved!: \(newThought.title)")
         print("----------------------------")
     }
 }

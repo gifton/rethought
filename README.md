@@ -10,3 +10,4 @@ Rethought is an application designed to help keep track of your thoughts, and co
 * cd into the directory you saved the project
 * run `pod install` to install dependancies 
 * open the .xcworkspace file, NOT the .xcodeproj file
+

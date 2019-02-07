@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class FlashThoughtCell: UICollectionViewCell {
+class LinkCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setView()
@@ -20,23 +20,31 @@ class FlashThoughtCell: UICollectionViewCell {
     }
     
     public static var identifier: String {
-        return "TextEntryPreview"
+        return "LinkCell"
     }
     
     let mainView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.1)
-        view.frame.size = CGSize(width: 50, height: 50)
-        view.layer.cornerRadius = 25
+        view.backgroundColor = UIColor(hex: "EFEFEF")
+        view.frame.size = CGSize(width: 196, height: 40)
+        view.layer.cornerRadius = 8
         view.layer.masksToBounds = true
         
         return view
     }()
     
+    let linkImage: UIImageView = {
+        let iv = UIImageView()
+        iv.frame.size = CGSize(width: 25, height: 25)
+        iv.image = #imageLiteral(resourceName: "linkImage")
+        
+        return iv
+    }()
+    
     let title: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.textAlignment = .center
+        lbl.textAlignment = .left
         
         return lbl
     }()
@@ -44,8 +52,14 @@ class FlashThoughtCell: UICollectionViewCell {
     func setView() {
         addSubview(mainView)
         addSubview(title)
-        title.setAnchor(top: mainView.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 2, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
+        
+        title.setAnchor(top: mainView.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 2, paddingLeading: 10, paddingBottom: 0, paddingTrailing: 0)
+        
+        mainView.addSubview(linkImage)
+        linkImage.frame.origin = CGPoint(x: 7.5, y: 7.5)
     }
+    
+    //resetting
     override func prepareForReuse() {
         self.title.addText(size: 9, font: .bodyLight, string: "")
         

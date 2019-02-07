@@ -27,12 +27,7 @@ class NewLinkEntry: UIViewController {
     //if user has previously added a text entry to the thought, set object
     public var entry          : Entry?
     public var delegate       : ThoughtCardDelegate?
-    public var parentThought  : Thought? {
-        didSet {
-            print("did set parentTohught")
-            
-        }
-    }
+    public var parentThought  : Thought?
     
     //return entry objects
     private var linkImage: UIImage {

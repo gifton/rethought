@@ -33,7 +33,7 @@ class DashboardHeader: UICollectionReusableView {
     }
     
     //dev object
-    let randomTitles: [String] = ["Books", "Movies", "Keys", "reading", "Movie to watch", "backpack"]
+    let randomTitles: [String] = ["March 14th", "April 11th", "January 22nd", "March 1st", "June 22nd", "May 21st"]
     
     //conect to dashboard, hold recent thoughts for collectionView
     public var connector: DashboardDelegate?
@@ -52,11 +52,10 @@ class DashboardHeader: UICollectionReusableView {
     var flashThoughtsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = ViewSize.thoughtCellSmall
+        layout.itemSize = CGSize(width: 196, height: 55)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .clear
         cv.showsHorizontalScrollIndicator = false
-        cv.layer.cornerRadius = 20
         
         return cv
     }()
@@ -64,18 +63,6 @@ class DashboardHeader: UICollectionReusableView {
     var searchButton: UIButton = {
         let btn = UIButton()
         btn.setImage(#imageLiteral(resourceName: "Search"), for: .normal)
-        
-        return btn
-    }()
-    
-    let newFlashThought: UIButton = {
-        let btn = UIButton()
-        btn.frame.size = CGSize(width: 70, height: 70)
-        btn.setImage(#imageLiteral(resourceName: "flash"), for: .normal)
-        btn.layer.borderColor = UIColor.black.cgColor
-        btn.backgroundColor = UIColor(hex: "51DF9F")
-        btn.layer.borderWidth = 3
-        btn.layer.cornerRadius = 35
         
         return btn
     }()
@@ -93,13 +80,13 @@ extension DashboardHeader {
         addSubview(searchButton)
         addSubview(reLogo)
         addSubview(flashThoughtsCollectionView)
-        addSubview(newFlashThought)
+
         addSubview(settingsButton)
         
         //style
-        allEntriesButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 25, paddingTrailing: 20)
+        allEntriesButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 15, paddingTrailing: 20)
         
-        searchButton.frame.origin = CGPoint(x: 10, y: self.frame.height - 45)
+        searchButton.frame.origin = CGPoint(x: 10, y: self.frame.height - 35)
         searchButton.frame.size = CGSize(width: 20, height: 20)
         
         reLogo.translatesAutoresizingMaskIntoConstraints = false
@@ -108,16 +95,14 @@ extension DashboardHeader {
             reLogo.topAnchor.constraint(equalTo: safeTopAnchor, constant: 10),
         ])
         
-        flashThoughtsCollectionView.register(FlashThoughtCell.self, forCellWithReuseIdentifier: FlashThoughtCell.identifier)
+        flashThoughtsCollectionView.register(LinkCell.self, forCellWithReuseIdentifier: LinkCell.identifier)
         flashThoughtsCollectionView.delegate = self
         flashThoughtsCollectionView.dataSource = self
-        newFlashThought.addTarget(self, action: #selector(setLarger(_:)), for: .touchUpInside)
         
-        flashThoughtsCollectionView.frame = CGRect(x: 75, y: 65, width: ViewSize.SCREEN_WIDTH - 60, height: 70)
+        flashThoughtsCollectionView.frame = CGRect(x: 15, y: 45, width: ViewSize.SCREEN_WIDTH - 30, height: 70)
         
 //        flashThoughtsCollectionView.setAnchor(top: reLogo.bottomAnchor, leading: leadingAnchor, bottom: searchButton.topAnchor, trailing: trailingAnchor, paddingTop: 20, paddingLeading: 75, paddingBottom: 20, paddingTrailing: 0)
         
-        newFlashThought.frame.origin = CGPoint(x: 0, y: 65)
         
         settingsButton.frame = CGRect(x: ViewSize.SCREEN_WIDTH - 50, y: 12.5, width: 25, height: 25)
         settingsButton.setImage(#imageLiteral(resourceName: "cog"), for: .normal)
@@ -137,28 +122,13 @@ extension DashboardHeader: UICollectionViewDataSource {
     
     //set cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FlashThoughtCell.identifier, for: indexPath) as! FlashThoughtCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LinkCell.identifier, for: indexPath) as! LinkCell
         var inputs: [String] = []
         for _ in 0...2 {
             inputs += randomTitles
         }
         cell.title.addText(size: 9, font: .bodyLight, string: inputs[indexPath.row])
         return cell
-    }
-    
-    @objc
-    func setLarger(_ sender: Any) {
-        if self.newFlashThought.frame.width > 100 {
-            UIView.animate(withDuration: 0.65) {
-                self.newFlashThought.frame = CGRect(x: 0, y: 50, width: ViewSize.SCREEN_WIDTH - 20, height: 250)
-            }
-        } else {
-            UIView.animate(withDuration: 0.65) {
-                self.newFlashThought.frame = CGRect(x: 0, y: 50, width: ViewSize.SCREEN_WIDTH - 20, height: 250)
-            }
-        }
-        
-//        self.connector?.userStartedNewFastThought()
     }
     
 }
