@@ -11,6 +11,24 @@ Rethought is an application designed to help keep track of your thoughts, and co
 * run `pod install` to install dependancies 
 * open the .xcworkspace file, NOT the .xcodeproj file
 
+## usage 
+* /Resources - All fonts, and images
+* /Core - Thought, Entry, Persistant service, and several mutations of data types. 
+  * /DataModel - All core data objects + helper functions
+* /Objects - ThoughtCard, EmojiDisplay, EntryBar, ReText and ReTextField, NewEntryButton, EntryCountView
+* /ViewModel
+  * /Dashboard - Connect to Core data to mutate objects into DashboardThoughts, retrieve specific thoughts and Entries, and save them
+  * /ThoughtDetail - Handles injection, editing, deletion, addition of new entries and updating for a single thought
+* Helpers - Application constants(sizing, fonts, colors), styling assistants
+* Extensions - Apples UIKit object conveniance extensions
+* /ViewController - All views and controllers programmatically laid out
+  * /createEntry - Views and controllers to create Text, Image, Link, and Audio Entries
+  * /Dashboard - View, Controller, and Delegate for The main Homepage of rethought
+  * /Thought - View, Controller, and Delegate for display of thoughts and related thoughts
+  * /Entry - View, Controller, and Delegate for display of individual Entries
+  * /Cell - UICollectionViewCell's, UITableViewCell's, and UICollectionView supplimentary views
+  
+
 ## Road map: 
 - [ ] UIColor protocol for users to customize colors in application
 - [ ] Rethought needs a backend! Currently all data is stored locally. 
