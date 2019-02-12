@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9B8B8A63BCEA02BD8A429957 /* Pods_rethought.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36BE63D35A2A902760780123 /* Pods_rethought.framework */; };
+		D701C0DB22129DDA001D8923 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D701C0DA22129DDA001D8923 /* Defaults.swift */; };
 		D702B21121DBFECA003DCA83 /* BackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D702B21021DBFECA003DCA83 /* BackDelegate.swift */; };
 		D7043F2822078270006EC7C6 /* Managed+Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7043F2722078270006EC7C6 /* Managed+Objects.swift */; };
 		D7043F2D220788E9006EC7C6 /* EntryModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7043F29220788E9006EC7C6 /* EntryModel+CoreDataClass.swift */; };
@@ -97,6 +98,7 @@
 /* Begin PBXFileReference section */
 		36BE63D35A2A902760780123 /* Pods_rethought.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rethought.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7EA374B2D93AE93DEA7C328 /* Pods-rethought.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rethought.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rethought/Pods-rethought.debug.xcconfig"; sourceTree = "<group>"; };
+		D701C0DA22129DDA001D8923 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		D702B21021DBFECA003DCA83 /* BackDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackDelegate.swift; sourceTree = "<group>"; };
 		D7043F2722078270006EC7C6 /* Managed+Objects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Managed+Objects.swift"; sourceTree = "<group>"; };
 		D7043F29220788E9006EC7C6 /* EntryModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntryModel+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				D773456921F343DE0075B4C8 /* Managed.swift */,
 				D79B1EF921CC6B0000E951D3 /* UIFont.swift */,
 				D739400521F88BF600D2B736 /* ConnectToView.swift */,
+				D701C0DA22129DDA001D8923 /* Defaults.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				D75B892221C2D7D70023784F /* EntryPreview.swift in Sources */,
 				D7FFA1E421D717AD001C3B72 /* EntryDetailView.swift in Sources */,
 				D75B88E521BC56AB0023784F /* Thought.swift in Sources */,
+				D701C0DB22129DDA001D8923 /* Defaults.swift in Sources */,
 				D76CBF972202F4E60087FC07 /* EntryBarView.swift in Sources */,
 				D76CBF952202F3A10087FC07 /* EntryBarDelegate.swift in Sources */,
 				D7043F2822078270006EC7C6 /* Managed+Objects.swift in Sources */,

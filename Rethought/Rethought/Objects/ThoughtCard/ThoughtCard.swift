@@ -82,7 +82,7 @@ extension ThoughtCard {
         }
         
         //self styling
-        self.blurBackground(type: .light, cornerRadius: 30)
+        self.blurBackground(type: .regular, cornerRadius: 30)
         self.layer.cornerRadius = 30
         self.layer.borderWidth = 10
         self.layer.borderColor = UIColor(hex: "DBDADB").cgColor

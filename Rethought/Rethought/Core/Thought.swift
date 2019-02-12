@@ -50,8 +50,8 @@ public class Thought {
         
         self.title      = thoughtModel.title
         self.icon       = thoughtModel.icon
-        self.createdAt  = Date()
-        self.lastEdited = Date()
+        self.createdAt  = thoughtModel.createdAt as Date
+        self.lastEdited = thoughtModel.createdAt as Date
         self.ID         = thoughtModel.id
         self.entries    = entries
         updateCounts()

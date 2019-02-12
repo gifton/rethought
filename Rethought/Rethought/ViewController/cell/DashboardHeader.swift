@@ -61,7 +61,7 @@ class DashboardHeader: UICollectionReusableView {
     }()
     let allEntriesButton: UIButton = {
         let btn = UIButton()
-        btn.addAttText(color: .black, size: 14, font: .body, string: "All entries")
+        btn.addAttText(color: .red, size: 14, font: .body, string: "All entries")
         
         return btn
     }()

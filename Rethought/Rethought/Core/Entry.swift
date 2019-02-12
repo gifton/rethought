@@ -30,7 +30,6 @@ public class Entry {
     public var detail: String
     public var thoughtID: String!
     
-    
     //unique objects
     public var image        : UIImage?
     public var title        : String?
@@ -79,13 +78,12 @@ public class Entry {
     //entryModel init
     convenience init(entryModel: EntryModel) {
         self.init(title: nil)
-        //necessary parts
-        guard let detail     = entryModel.detail else { return }
-        guard let date: Date = entryModel.entryDate as! Date else { return }
+        //optional parts validation
+        guard let detail = entryModel.detail else { return }
         
         self.detail    = detail
         self.id        = entryModel.id
-        self.date      = date
+        self.date      = entryModel.createdAt as Date
         
         //check entry type
         //link

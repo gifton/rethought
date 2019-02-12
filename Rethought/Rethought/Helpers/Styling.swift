@@ -173,12 +173,7 @@ extension UIView {
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        if cornerRadius == 0 {
-            print ("no radius")
-        } else {
-            blurEffectView.layer.cornerRadius = cornerRadius
-        }
-        
+        blurEffectView.layer.cornerRadius = cornerRadius
         blurEffectView.layer.masksToBounds = true
         self.insertSubview(blurEffectView, at: 0)
     }

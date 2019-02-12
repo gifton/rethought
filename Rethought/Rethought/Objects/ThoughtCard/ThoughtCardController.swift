@@ -80,9 +80,15 @@ extension ThoughtCardController: ThoughtCardDelegate {
     }
     
     //create thought from card view objects
+    //user defaults used to sace thoughtID, and keep naming concurrent
     func addThoughtComponents(title: String, icon: ThoughtIcon) {
         let thought = Thought(title: title, icon: icon.icon, date: Date())
+        let defaults = UserDefaults.standard
+        let thoughtNum: Int = defaults.integer(forKey: UserDefaults.Keys.thoughtID) + 1
+        thought.ID = "T\(thoughtNum)"
         self.newThought = thought
+        
+        defaults.set(thoughtNum, forKey: UserDefaults.Keys.thoughtID)
     }
     
     //update dashboardcontrolller with new card state

@@ -24,7 +24,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         nav.isNavigationBarHidden = true
         window?.rootViewController = nav
         
-        // Override point for customization after application launch.
+        //defaults handle thoughtID validation
+        //check to see if a thought has ever been made, if so, defaults will have updated to a non-zero num
+        //otherwise set defaults to 1
+        let defaults = UserDefaults.standard
+        if defaults.integer(forKey: UserDefaults.Keys.thoughtID) == 0 && defaults.integer(forKey: UserDefaults.Keys.entryID) == 0 {
+            print("user has not set first thought")
+            defaults.set(1, forKey: UserDefaults.Keys.thoughtID)
+            defaults.set(1, forKey: UserDefaults.Keys.entryID)
+        }
+        
         return true
     }
 
@@ -39,22 +48,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         PersistanceService.saveContext()
     }
-    
-//    fileprivate func handleRunCount() {
-//        let defaults = UserDefaults.standard
-//
-//        //Store a finger to runCount, not that complex, nothing to worry about.
-//        var runCount: Int = defaults.integer(forKey: runCountNamespace)
-//
-//        if(runCount == 0) {
-//            print("First time app run, therefore importing event data from local source...")
-//            localReplicator.fetchData()
-//        }
-//
-//        runCount += 1
-//        defaults.set(runCount, forKey:runCountNamespace)
-//        print("current runCount: \(runCount)")
-//    }
 
 }
 

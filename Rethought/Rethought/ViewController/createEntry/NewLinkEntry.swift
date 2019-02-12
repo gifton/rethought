@@ -120,13 +120,14 @@ extension NewLinkEntry: ConnectToTextView {
                 slp?.preview(string,
                             onSuccess: { result in
                                 
+                                //image validation
                                 if let imgUrl: URL = URL(string: result[SwiftLinkResponseKey.image] as! String) {
                                     self.mainImage.load(url: imgUrl)
                                 } else {
                                     self.mainImage.image = #imageLiteral(resourceName: "linkImage")
                                 }
                                 
-                                
+                                //set link objects
                                 self.shortLinkLabel.attributedText = self.shortLinkLabel.returnAttributedText(size: 14, font: .title, string: result[SwiftLinkResponseKey.canonicalUrl] as? String ?? "Not available")
                                 self.linkDescription.attributedText = self.linkDescription.returnAttributedText(size: 14, font: .body, string: result[SwiftLinkResponseKey.description] as? String ?? "Not available")
                                 self.linkDescription.adjustsFontForContentSizeCategory = true
@@ -145,8 +146,19 @@ extension NewLinkEntry: ConnectToTextView {
             print("error with ID")
             return
         }
+        
+        //load user defaults
+        let defaults = UserDefaults.standard
+        let entryID: Int = defaults.integer(forKey: UserDefaults.Keys.entryID) + 1
+        
+        //set thought
         let entry = Entry(type: .link, thoughtID: ID, detail: self.longURL, date: Date(), link: self.longURL, linkImage: self.linkImage, linkTitle: self.shorthandURL)
+        entry.id = "E\(entryID)"
+        
+        //send back to thoughtController
         self.delegate?.addEntry(entry)
+        
+        defaults.set(entryID, forKey: UserDefaults.Keys.entryID)
         //return home
         self.navigationController?.popViewController(animated: true)
     }
