@@ -17,10 +17,10 @@ extension ThoughtModel {
         return NSFetchRequest<ThoughtModel>(entityName: "ThoughtModel")
     }
 
-    @NSManaged public var createdAt: NSDate?
-    @NSManaged public var icon: String?
-    @NSManaged public var id: String?
-    @NSManaged public var title: String?
+    @NSManaged public var createdAt: NSDate
+    @NSManaged public var icon: String
+    @NSManaged public var id: String
+    @NSManaged public var title: String
     @NSManaged public var entryModels: NSOrderedSet?
 
 }

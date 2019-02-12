@@ -39,33 +39,8 @@ class DashboardHeader: UICollectionReusableView {
     public var connector: DashboardDelegate?
     public var recentEntries: [ReccomendedThought] = []
     
-    let allEntriesButton: UIButton = {
-        let btn = UIButton()
-        btn.addAttText(color: UIColor(hex: "D63864"), size: 13, font: .title, string: "All quick Thoughts")
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        return btn
-    }()
-    
     let reLogo = UIImageView(image: #imageLiteral(resourceName: "Logo"))
     let settingsButton = UIButton()
-    
-    var flashThoughtsCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 196, height: 55)
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = .clear
-        cv.showsHorizontalScrollIndicator = false
-        
-        return cv
-    }()
-    
-    var searchButton: UIButton = {
-        let btn = UIButton()
-        btn.setImage(#imageLiteral(resourceName: "Search"), for: .normal)
-        
-        return btn
-    }()
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -78,6 +53,27 @@ class DashboardHeader: UICollectionReusableView {
         
         return lbl
     }()
+    let bar: UIView = {
+        let v = UIView()
+        v.backgroundColor = .black
+        
+        return v
+    }()
+    let allEntriesButton: UIButton = {
+        let btn = UIButton()
+        btn.addAttText(color: .black, size: 14, font: .body, string: "All entries")
+        
+        return btn
+    }()
+    
+    let reSearch : UISearchBar = {
+        let s = UISearchBar()
+        s.backgroundImage = UIImage()
+        s.placeholder = "Gifton"
+        s.barStyle = .default
+        
+        return s
+    }()
 }
 
 extension DashboardHeader {
@@ -87,14 +83,20 @@ extension DashboardHeader {
         addSubview(allEntriesButton)
         addSubview(settingsButton)
         addSubview(rethoughtLogo)
+        addSubview(bar)
+        addSubview(reSearch)
         
         //style
-        allEntriesButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 15, paddingTrailing: 20)
+        allEntriesButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 20)
         
         settingsButton.frame = CGRect(x: ViewSize.SCREEN_WIDTH - 50, y: 12.5, width: 25, height: 25)
         settingsButton.setImage(#imageLiteral(resourceName: "cog"), for: .normal)
         
-        rethoughtLogo.frame = CGRect(x: 20, y: 50, width: 180, height: 41)
+        rethoughtLogo.frame = CGRect(x: 20, y: 10, width: 180, height: 41)
+        
+        reSearch.frame = CGRect(x: 0, y: 60, width: ViewSize.SCREEN_WIDTH, height: 51)
+        
+        bar.frame = CGRect(x: 15, y: 115, width: ViewSize.SCREEN_WIDTH - 30, height: 1)
     }
 }
 

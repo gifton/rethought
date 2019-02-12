@@ -47,7 +47,7 @@ extension ThoughtDetailView {
                            detail: "Man we really out here my guyyy",
                            date: self.generateRandomDate(daysBack: 14),
                            image: newImg2)
-        let entry5 = Entry(type: .link, thoughtID: id, detail: "Free RAW and jpeg photos", date: generateRandomDate(daysBack: 24), link: "https://wesaturate.com", linkImage: #imageLiteral(resourceName: "wesat_logo"), linkTitle: "Wesaturate.com")
+        let entry5 = Entry(type: .link, thoughtID: id, detail: "Free RAW and jpeg photos", date: generateRandomDate(daysBack: 24), link: "https://wesaturate.com", linkImage: #imageLiteral(resourceName: "linkImage"), linkTitle: "Wesaturate.com")
 
         let rawimgThree = UIImage(named: "testImage3")!
         let sizeThree: CGSize = rawimgThree.calculateImageHeight()

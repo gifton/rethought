@@ -18,15 +18,15 @@ extension EntryModel {
     }
 
     @NSManaged public var detail: String?
-    @NSManaged public var entryDate: NSDate?
-    @NSManaged public var entryID: String?
+    @NSManaged public var entryDate: NSDate
+    @NSManaged public var entryID: String
     @NSManaged public var entryTitle: String?
-    @NSManaged public var image: NSData?
+    @NSManaged public var image: Data?
     @NSManaged public var link: String?
-    @NSManaged public var linkImage: NSData?
+    @NSManaged public var linkImage: Data?
     @NSManaged public var linkTitle: String?
-    @NSManaged public var recording: NSData?
-    @NSManaged public var type: String?
-    @NSManaged public var thoughtModel: ThoughtModel?
+    @NSManaged public var recording: Data?
+    @NSManaged public var type: String
+    @NSManaged public var thoughtModel: ThoughtModel
 
 }
