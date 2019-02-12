@@ -103,20 +103,13 @@ extension DashboardViewModel {
     func sendThoughtToDB(_ newThought: Thought) -> Bool {
         let t = ThoughtModel(context: moc)
         t.setModel(thought: newThought)
-        var e = [EntryModel]()
         
-        for entry in newThought.entries {
-            let entOut = EntryModel(context: moc)
-            entOut.setModel(entry: entry)
-            e.append(entOut)
-            print("==========entout date==========")
-            print(entOut.entryDate)
+        for ent in newThought.entries {
+            let e = EntryModel(context: moc)
+            e.setModel(entry: ent, thought: t)
+            print("entryModel: \n \(e)")
         }
-        
-        if e.count < 0 {
-            
-        }
-        
+
         do {
             try moc.save()
             return true

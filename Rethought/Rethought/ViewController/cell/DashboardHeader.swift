@@ -39,37 +39,41 @@ class DashboardHeader: UICollectionReusableView {
     public var connector: DashboardDelegate?
     public var recentEntries: [ReccomendedThought] = []
     
-    let allEntriesButton: UIButton = {
-        let btn = UIButton()
-        btn.addAttText(color: UIColor(hex: "D63864"), size: 13, font: .title, string: "All quick Thoughts")
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        return btn
-    }()
-    
     let reLogo = UIImageView(image: #imageLiteral(resourceName: "Logo"))
     let settingsButton = UIButton()
-    
-    var flashThoughtsCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 196, height: 55)
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = .clear
-        cv.showsHorizontalScrollIndicator = false
-        
-        return cv
-    }()
-    
-    var searchButton: UIButton = {
-        let btn = UIButton()
-        btn.setImage(#imageLiteral(resourceName: "Search"), for: .normal)
-        
-        return btn
-    }()
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    let rethoughtLogo: UILabel = {
+        let lbl = UILabel()
+        lbl.text = "Rethought"
+        lbl.font = .reTitle(ofSize: 35)
+        
+        return lbl
+    }()
+    let bar: UIView = {
+        let v = UIView()
+        v.backgroundColor = .black
+        
+        return v
+    }()
+    let allEntriesButton: UIButton = {
+        let btn = UIButton()
+        btn.addAttText(color: .black, size: 14, font: .body, string: "All entries")
+        
+        return btn
+    }()
+    
+    let reSearch : UISearchBar = {
+        let s = UISearchBar()
+        s.backgroundImage = UIImage()
+        s.placeholder = "Gifton"
+        s.barStyle = .default
+        
+        return s
+    }()
 }
 
 extension DashboardHeader {
@@ -77,35 +81,22 @@ extension DashboardHeader {
         
         //add to superView
         addSubview(allEntriesButton)
-        addSubview(searchButton)
-        addSubview(reLogo)
-        addSubview(flashThoughtsCollectionView)
-
         addSubview(settingsButton)
+        addSubview(rethoughtLogo)
+        addSubview(bar)
+        addSubview(reSearch)
         
         //style
-        allEntriesButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 15, paddingTrailing: 20)
-        
-        searchButton.frame.origin = CGPoint(x: 10, y: self.frame.height - 35)
-        searchButton.frame.size = CGSize(width: 20, height: 20)
-        
-        reLogo.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            reLogo.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            reLogo.topAnchor.constraint(equalTo: safeTopAnchor, constant: 10),
-        ])
-        
-        flashThoughtsCollectionView.register(LinkCell.self, forCellWithReuseIdentifier: LinkCell.identifier)
-        flashThoughtsCollectionView.delegate = self
-        flashThoughtsCollectionView.dataSource = self
-        
-        flashThoughtsCollectionView.frame = CGRect(x: 15, y: 45, width: ViewSize.SCREEN_WIDTH - 30, height: 70)
-        
-//        flashThoughtsCollectionView.setAnchor(top: reLogo.bottomAnchor, leading: leadingAnchor, bottom: searchButton.topAnchor, trailing: trailingAnchor, paddingTop: 20, paddingLeading: 75, paddingBottom: 20, paddingTrailing: 0)
-        
+        allEntriesButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 20)
         
         settingsButton.frame = CGRect(x: ViewSize.SCREEN_WIDTH - 50, y: 12.5, width: 25, height: 25)
         settingsButton.setImage(#imageLiteral(resourceName: "cog"), for: .normal)
+        
+        rethoughtLogo.frame = CGRect(x: 20, y: 10, width: 180, height: 41)
+        
+        reSearch.frame = CGRect(x: 0, y: 60, width: ViewSize.SCREEN_WIDTH, height: 51)
+        
+        bar.frame = CGRect(x: 15, y: 115, width: ViewSize.SCREEN_WIDTH - 30, height: 1)
     }
 }
 

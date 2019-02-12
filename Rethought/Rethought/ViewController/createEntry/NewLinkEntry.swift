@@ -120,9 +120,13 @@ extension NewLinkEntry: ConnectToTextView {
                 slp?.preview(string,
                             onSuccess: { result in
                                 
-                                guard let imgUrl: URL = URL(string: result[SwiftLinkResponseKey.image] as! String) else { return }
+                                if let imgUrl: URL = URL(string: result[SwiftLinkResponseKey.image] as! String) {
+                                    self.mainImage.load(url: imgUrl)
+                                } else {
+                                    self.mainImage.image = #imageLiteral(resourceName: "linkImage")
+                                }
                                 
-                                self.mainImage.load(url: imgUrl)
+                                
                                 self.shortLinkLabel.attributedText = self.shortLinkLabel.returnAttributedText(size: 14, font: .title, string: result[SwiftLinkResponseKey.canonicalUrl] as? String ?? "Not available")
                                 self.linkDescription.attributedText = self.linkDescription.returnAttributedText(size: 14, font: .body, string: result[SwiftLinkResponseKey.description] as? String ?? "Not available")
                                 self.linkDescription.adjustsFontForContentSizeCategory = true

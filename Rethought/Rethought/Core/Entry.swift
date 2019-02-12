@@ -80,11 +80,12 @@ public class Entry {
     convenience init(entryModel: EntryModel) {
         self.init(title: nil)
         //necessary parts
-        guard let detail    = entryModel.detail else { return }
+        guard let detail     = entryModel.detail else { return }
+        guard let date: Date = entryModel.entryDate as! Date else { return }
         
         self.detail    = detail
         self.id        = entryModel.id
-        self.date      = entryModel.createdAt as Date
+        self.date      = date
         
         //check entry type
         //link
