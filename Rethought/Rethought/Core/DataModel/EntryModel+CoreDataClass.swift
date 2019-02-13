@@ -42,7 +42,6 @@ public class EntryModel: ThoughtModel {
         self.id = thought.id
         self.thoughtModel = thought
         
-        print("self from entryModel:")
-        print(self)
+        print("ID from entryModel: \(self.entryID)")
     }
 }

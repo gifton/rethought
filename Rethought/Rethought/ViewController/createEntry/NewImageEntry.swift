@@ -181,20 +181,11 @@ extension NewImageEntry: UIImagePickerControllerDelegate {
     @objc
     func userPressedSave(_ sender: UIButton) {
         
-        //load user defaults
-        let defaults = UserDefaults.standard
-        let entryID: Int = defaults.integer(forKey: UserDefaults.Keys.entryID) + 1
-        
         //validate completion of objects
         if self.newDescription != "" && imageViewer.image != UIImage(named: "imagePlaceholder.png"){
             let entry = Entry(type: .image, thoughtID: parentThought?.ID ?? "nil", detail: newDescription, date: Date(), image: imageViewer.image!)
-            entry.id = "E\(entryID)"
-            
-            //send back to thoughtController
             self.delegate?.addEntry(entry)
             self.navigationController?.popViewController(animated: true)
-            
-            defaults.set(entryID, forKey: UserDefaults.Keys.entryID)
             
         } else {
             incompleteLabel.frame = CGRect(x: 25, y: ViewSize.SCREEN_HEIGHT - 200, width: ViewSize.SCREEN_WIDTH - 50, height: 59)

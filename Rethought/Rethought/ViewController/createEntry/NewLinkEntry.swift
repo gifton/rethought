@@ -147,18 +147,8 @@ extension NewLinkEntry: ConnectToTextView {
             return
         }
         
-        //load user defaults
-        let defaults = UserDefaults.standard
-        let entryID: Int = defaults.integer(forKey: UserDefaults.Keys.entryID) + 1
-        
-        //set thought
         let entry = Entry(type: .link, thoughtID: ID, detail: self.longURL, date: Date(), link: self.longURL, linkImage: self.linkImage, linkTitle: self.shorthandURL)
-        entry.id = "E\(entryID)"
-        
-        //send back to thoughtController
         self.delegate?.addEntry(entry)
-        
-        defaults.set(entryID, forKey: UserDefaults.Keys.entryID)
         //return home
         self.navigationController?.popViewController(animated: true)
     }

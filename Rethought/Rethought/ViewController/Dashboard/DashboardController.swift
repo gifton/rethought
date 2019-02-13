@@ -183,7 +183,7 @@ extension DashboardController: UICollectionViewDelegate {
         //set thought detail viewmodel, attach to thoughtDetail
         let vm = ThoughtDetailViewModel(thought: thought, context: self.context)
         let vc = ThoughtDetailController(withThoughtModel: vm)
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: false)
         
     }
     

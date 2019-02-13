@@ -17,6 +17,7 @@ class DashboardViewModel: DashboardViewModelDelegate {
     func getThoughts() -> [DashboardThought] {
         var thoughts = [DashboardThought]()
         print("COUNT: \(self.thoughts.count)")
+        print("====")
         for thought in self.thoughts {
             let t = DashboardThought(thought: thought)
             thoughts.append(t)
@@ -90,25 +91,28 @@ extension DashboardViewModel {
             let fetchResult = try moc.fetch(fetcher)
             for tm in fetchResult {
                 let t = Thought(thoughtModel: tm)
+                print(t.ID)
                 out.append(t)
             }
         } catch let err {
             print("error!------>")
             print (err)
         }
-        print("-------------------------")
+        print("------------Completed fetch-------------")
         return out
     }
     
     func sendThoughtToDB(_ newThought: Thought) -> Bool {
         let t = ThoughtModel(context: moc)
-        t.setModel(thought: newThought)
+        var ents = [EntryModel]()
         
         for ent in newThought.entries {
             let e = EntryModel(context: moc)
             e.setModel(entry: ent, thought: t)
-            print("entryModel: \n \(e)")
+            ents.append(e)
         }
+        
+        t.setModel(thought: newThought, entries: ents)
 
         do {
             try moc.save()

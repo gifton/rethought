@@ -127,20 +127,14 @@ extension NewTextEntry {
     @objc
     func userPressedSave(_ sender: UIButton) {
         
-        //load user defaults
-        let defaults = UserDefaults.standard
-        let entryID: Int = defaults.integer(forKey: UserDefaults.Keys.entryID) + 1
         
         //validate text views have been edited
         if self.newTitle != "" && self.newDescription != ""{
             let outEnt = Entry(type: .text, thoughtID: self.parentThought?.ID ?? "nil", detail: self.newDescription, date: Date(), title: self.newTitle)
-            outEnt.id = "E\(entryID)"
             
             //send back to thoughtController
             self.delegate?.addEntry(outEnt)
             self.navigationController?.popViewController(animated: true)
-            
-            defaults.set(entryID, forKey: UserDefaults.Keys.entryID)
             
         } else {
             self.view.animateTemporaryView(duration: 1.0, view: incompleteLabel)

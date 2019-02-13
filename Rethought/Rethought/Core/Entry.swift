@@ -42,11 +42,15 @@ public class Entry {
     
     //minimum
     init(type: EntryType, thoughtID: String, detail: String, date: Date) {
+        let defaults   = UserDefaults.standard
+        let newID: Int = defaults.integer(forKey: UserDefaults.Keys.entryID) + 1
         self.type = type
         self.thoughtID = thoughtID
-        self.id = randomString(length: 12)
+        self.id = "E\(newID)"
         self.detail = detail
         self.date = date
+        
+        defaults.set(newID, forKey: UserDefaults.Keys.entryID)
     }
     
     //image type
@@ -78,38 +82,44 @@ public class Entry {
     //entryModel init
     convenience init(entryModel: EntryModel) {
         self.init(title: nil)
-        //optional parts validation
-        guard let detail = entryModel.detail else { return }
         
-        self.detail    = detail
-        self.id        = entryModel.id
+        self.id        = entryModel.entryID
         self.date      = entryModel.createdAt as Date
+        self.thoughtID = entryModel.thoughtModel.id
+        self.detail    = entryModel.detail
         
         //check entry type
         //link
         if entryModel.link != nil {
             self.type = .link
-            guard let link      = entryModel.link else { return }
-            guard let linkTitle = entryModel.linkTitle else { return }
-            guard let linkImage = entryModel.linkImage else { return }
+            guard let link      = entryModel.link else {
+                print("could not recieve link from model")
+                return
+            }
+            guard let linkTitle = entryModel.linkTitle else {
+                print("could not recieve link title from model")
+                return
+            }
+            guard let linkImage = entryModel.linkImage else {
+                print("could not recieve link image from model")
+                return
+            }
 
             self.link = link
             self.linkTitle = linkTitle
             self.linkImage = UIImage(data: linkImage)
-            return
         //image
         } else if entryModel.image != nil {
             self.type = .image
-            guard let image       = entryModel.image else { return }
-            guard let detail     = entryModel.detail else { return }
-            
+            guard let image       = entryModel.image else {
+                print("could not recieve image from model")
+                return
+            }
             self.image = UIImage(data: image)
-            self.detail = detail
-            return
         //text
         } else {
+            self.type = .text
             self.title = entryModel.title
-            return
         }
     }
     //empty entry

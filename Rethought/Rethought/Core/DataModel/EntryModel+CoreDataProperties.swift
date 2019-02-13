@@ -17,7 +17,7 @@ extension EntryModel {
         return NSFetchRequest<EntryModel>(entityName: "EntryModel")
     }
 
-    @NSManaged public var detail: String?
+    @NSManaged public var detail: String
     @NSManaged public var entryDate: NSDate
     @NSManaged public var entryID: String
     @NSManaged public var entryTitle: String?

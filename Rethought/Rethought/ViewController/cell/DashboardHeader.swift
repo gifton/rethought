@@ -13,7 +13,7 @@ import UIKit
 class DashboardHeader: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .clear
+        self.layer.cornerRadius = 10
         setViews()
     }
     

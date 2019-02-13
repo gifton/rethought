@@ -43,20 +43,28 @@ public class Thought {
     //init for thoughtModel
     public convenience init( thoughtModel: ThoughtModel) {
         self.init()
-        guard let entries = thoughtModel.entryModels!.array as? [Entry] else { return }
-        entries.forEach { ent in
-            print(ent)
-        }
         
         self.title      = thoughtModel.title
         self.icon       = thoughtModel.icon
         self.createdAt  = thoughtModel.createdAt as Date
         self.lastEdited = thoughtModel.createdAt as Date
         self.ID         = thoughtModel.id
-        self.entries    = entries
-        updateCounts()
         
-        print("entries from thought init: ", self.entries)
+        if let entryer = thoughtModel.entryModels {
+            for ent in entryer {
+                guard let em = ent as? EntryModel else {
+                    print("we gatstago")
+                    return
+                }
+                let e = Entry(entryModel: em)
+                self.entries.append(e)
+            }
+        } else {
+            print("no thoughts to unwrap in Thought object")
+        }
+        
+        print("thought mutation complete with ID: \(self.ID)")
+        updateCounts()
     }
     
     //  last edited func refactored to be able to be called when new entry is added,
