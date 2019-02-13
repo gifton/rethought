@@ -19,6 +19,7 @@ public class ThoughtModel: NSManagedObject {
         self.title = thought.title
         if let entries = entries {
             for ent in entries {
+                print("saved entry: \(ent)")
                 self.addToEntryModels(ent)
             }
         }
