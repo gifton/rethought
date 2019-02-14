@@ -1,11 +1,14 @@
-//
-//  EntryModel+CoreDataClass.swift
-//  rethought
-//
-//  Created by Dev on 2/3/19.
-//  Copyright © 2019 Wesaturate. All rights reserved.
-//
-//
+//@NSManaged public var detail: String
+//@NSManaged public var entryDate: NSDate
+//@NSManaged public var entryID: String
+//@NSManaged public var entryTitle: String?
+//@NSManaged public var image: Data?
+//@NSManaged public var link: String?
+//@NSManaged public var linkImage: Data?
+//@NSManaged public var linkTitle: String?
+//@NSManaged public var recording: Data?
+//@NSManaged public var type: String
+//@NSManaged public var thoughtModel: ThoughtModel
 
 import Foundation
 import CoreData
@@ -43,5 +46,35 @@ public class EntryModel: ThoughtModel {
         self.thoughtModel = thought
         
         print("ID from entryModel: \(self.entryID)")
+    }
+    
+    public enum EntryType: String {
+        case image = "IMAGE"
+        case text = "TEXT"
+        case link = "LINK"
+        case recording = "RECORDING"
+    }
+    
+    var date: Date? {
+        get {
+            return self.createdAt as Date
+        }
+        set {
+            self.createdAt = newValue as NSDate? ?? NSDate()
+        }
+    }
+    
+    public var eType: EntryType {
+        get {
+            if self.link != nil {
+                return .link
+            } else if self.image != nil {
+                return .image
+            } else if self.recording != nil {
+                return .recording
+            } else {
+                return .text
+            }
+        }
     }
 }
