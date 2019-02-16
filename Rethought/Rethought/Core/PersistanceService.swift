@@ -56,3 +56,14 @@ class PersistanceService {
         }
     }
 }
+
+
+func createThoughtContainer(completion: @escaping (NSPersistentContainer) -> ()) {
+    let container = NSPersistentContainer(name: "RETHOUGHT")
+    container.loadPersistentStores { (_, error) in
+        guard error == nil else { fatalError("failed to load store: \(error!)")}
+        DispatchQueue.main.async {
+            completion(container)
+        }
+    }
+}

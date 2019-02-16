@@ -13,16 +13,19 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var container: NSPersistentContainer!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: ViewSize.FRAME)
         window?.makeKeyAndVisible()
         
-        let rootVC = DashboardController(withContext: PersistanceService.context)
-        let nav = UINavigationController(rootViewController: rootVC)
-        nav.isNavigationBarHidden = true
-        window?.rootViewController = nav
+        createThoughtContainer { (container) in
+            self.container = container
+            let rootVC = DashboardController(withContext: PersistanceService.context)
+            let nav = UINavigationController(rootViewController: rootVC)
+            nav.isNavigationBarHidden = true
+            self.window?.rootViewController = nav
+        }
         
         //defaults handle thoughtID validation
         //check to see if a thought has ever been made, if so, defaults will have updated to a non-zero num

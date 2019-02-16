@@ -82,24 +82,13 @@ extension DashboardViewModel {
         return out
     }
     
-    func fetchThoughts() -> [Thought] {
-        print("fetch requested....")
-        let fetcher: NSFetchRequest = ThoughtModel.fetchRequest()
-        var out = [Thought]()
-        do {
-            print("begining fetch...")
-            let fetchResult = try moc.fetch(fetcher)
-            for tm in fetchResult {
-                let t = Thought(thoughtModel: tm)
-                print(t.ID)
-                out.append(t)
-            }
-        } catch let err {
-            print("error!------>")
-            print (err)
-        }
-        print("------------Completed fetch-------------")
-        return out
+    func fetchThoughts() {
+        let request = NSFetchRequest<ThoughtModel>(entityName: "RETHOUGHT")
+        let sorter = NSSortDescriptor(key: "date", ascending: false)
+        request.sortDescriptors = [sorter]
+        request.fetchBatchSize = 25
+        
+        
     }
     
     func sendThoughtToDB(_ newThought: Thought) -> Bool {

@@ -25,3 +25,9 @@ public class ThoughtModel: NSManagedObject {
         }
     }
 }
+
+extension ThoughtModel: Managed {
+    static var defaultSortDescriptors: [NSSortDescriptor] {
+        return [NSSortDescriptor(key: #keyPath(createdAt), ascending: false)]
+    }
+}

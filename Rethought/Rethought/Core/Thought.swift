@@ -6,16 +6,16 @@ import Smile
 
 //thought is parent object holding all entries
 public class Thought {
-    
+
     public func addNew(entry: Entry) {
         self.entries.append(entry)
         self.updateCounts()
     }
-    
+
     convenience init() {
         self.init(title: "nil", icon: "nil", date: Date.init())
     }
-    
+
     //  all thought objects
     public var title: String
     public var icon: String
@@ -24,7 +24,7 @@ public class Thought {
     public var lastEdited: Date
     public var entryCount: [String: Int] = ["links": 0, "entries": 0, "media":0, "audio": 0]
     public var ID: String = randomString(length: 12)
-    
+
     //  minimum req's to build new thought
     public init(title: String, icon: String, date: Date) {
         self.title = title
@@ -39,17 +39,17 @@ public class Thought {
         self.entries = entries
         updateCounts()
     }
-    
+
     //init for thoughtModel
     public convenience init( thoughtModel: ThoughtModel) {
         self.init()
-        
+
         self.title      = thoughtModel.title
         self.icon       = thoughtModel.icon
         self.createdAt  = thoughtModel.createdAt as Date
         self.lastEdited = thoughtModel.createdAt as Date
         self.ID         = thoughtModel.id
-        
+
         if let entryer = thoughtModel.entryModels {
             for ent in entryer {
                 guard let em = ent as? EntryModel else {
@@ -62,22 +62,22 @@ public class Thought {
         } else {
             print("no thoughts to unwrap in Thought object")
         }
-        
+
         print("thought mutation complete with ID: \(self.ID)")
         updateCounts()
     }
-    
+
     //  last edited func refactored to be able to be called when new entry is added,
     //  and when new thought is made that comes with a list of thoughts
     private func updateCounts() {
         let lastEntry = self.entries.last
         guard let lastDate: Date? = lastEntry?.date else { return }
         self.lastEdited = lastDate ?? Date.init()
-        
+
         var linkCount: Int = 0
         var textCount: Int = 0
         var mediaCount: Int = 0
-        
+
         for entry in entries {
             switch entry.type {
             case .image:
@@ -92,7 +92,7 @@ public class Thought {
         entryCount["tex"] = textCount
         entryCount["media"] = mediaCount
     }
-    
+
     public func setID(_ id: String) {
         self.ID = id
     }

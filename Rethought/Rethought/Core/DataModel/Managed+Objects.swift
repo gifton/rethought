@@ -41,15 +41,6 @@ extension Managed where Self: NSManagedObject {
         return try! context.fetch(request)
     }
     
-//    static func findOrCreate(in context: NSManagedObjectContext, matching predicate: NSPredicate, configure: (Self) -> ()) -> Self {
-//        guard let object = findOrFetch(in: context, matching: predicate) else {
-//            let newObject: Self = context.insertedObjects
-//            configure(newObject)
-//            return newObject
-//        }
-//        return object
-//    }
-    
     static func findOrFetch(in context: NSManagedObjectContext, matching predicate: NSPredicate) -> Self? {
         guard let object = materializedObject(in: context, matching: predicate) else {
             return fetch(in: context) { request in

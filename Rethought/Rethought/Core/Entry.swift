@@ -20,26 +20,26 @@ public class Entry {
         case link = "LINK"
         case recording = "RECORDING"
     }
-    
+
     var preview: [EntryPreview]?
-    
+
     //standard objects
     public var type: EntryType
     public var id: String!
     public var date: Date
     public var detail: String
     public var thoughtID: String!
-    
+
     //unique objects
     public var image        : UIImage?
     public var title        : String?
     public var link         : String?
     public var linkImage    : UIImage?
     public var linkTitle    : String?
-    
+
     //optional values
     public var thoughtTitle: String?
-    
+
     //minimum
     init(type: EntryType, thoughtID: String, detail: String, date: Date) {
         let defaults   = UserDefaults.standard
@@ -49,10 +49,10 @@ public class Entry {
         self.id = "E\(newID)"
         self.detail = detail
         self.date = date
-        
+
         defaults.set(newID, forKey: UserDefaults.Keys.entryID)
     }
-    
+
     //image type
     convenience init(type: EntryType, thoughtID: String, detail: String, date: Date, image: UIImage) {
         self.init(type: type, thoughtID: thoughtID, detail: detail, date: date)
@@ -82,12 +82,12 @@ public class Entry {
     //entryModel init
     convenience init(entryModel: EntryModel) {
         self.init(title: nil)
-        
+
         self.id        = entryModel.entryID
         self.date      = entryModel.createdAt as Date
         self.thoughtID = entryModel.thoughtModel.id
         self.detail    = entryModel.detail
-        
+
         //check entry type
         //link
         if entryModel.link != nil {
@@ -135,7 +135,7 @@ extension Entry {
     public func removeThoughtFromDB() {
         print ("removed from db")
     }
-    
+
     public func updateThought(thoughtID: String, payload: Thought) {
         print (thoughtID, "Updated!")
     }
