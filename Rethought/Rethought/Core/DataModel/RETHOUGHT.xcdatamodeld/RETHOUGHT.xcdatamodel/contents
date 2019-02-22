@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="EntryModel" representedClassName=".EntryModel" parentEntity="ThoughtModel" syncable="YES">
-        <attribute name="detail" attributeType="String" syncable="YES"/>
-        <attribute name="entryDate" attributeType="Date" usesScalarValueType="NO" spotlightIndexingEnabled="YES" syncable="YES"/>
-        <attribute name="entryID" transient="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
-        <attribute name="entryTitle" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
-        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="linkImage" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="linkTitle" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
-        <attribute name="rawType" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
-        <attribute name="recording" optional="YES" attributeType="Binary" syncable="YES"/>
-        <relationship name="thoughtModel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ThoughtModel" inverseName="entryModels" inverseEntity="ThoughtModel" syncable="YES"/>
+    <entity name="Entry" representedClassName="Entry" syncable="YES">
+        <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="String" syncable="YES"/>
+        <attribute name="rawImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="rawRecording" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="rawURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <relationship name="thought" maxCount="1" deletionRule="Nullify" destinationEntity="Thought" inverseName="entries" inverseEntity="Thought" syncable="YES"/>
     </entity>
-    <entity name="ThoughtModel" representedClassName=".ThoughtModel" syncable="YES">
-        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" spotlightIndexingEnabled="YES" syncable="YES"/>
-        <attribute name="icon" attributeType="String" syncable="YES"/>
-        <attribute name="id" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
-        <attribute name="title" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
-        <relationship name="entryModels" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="EntryModel" inverseName="thoughtModel" inverseEntity="EntryModel" syncable="YES"/>
+    <entity name="Thought" representedClassName="Thought" syncable="YES">
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <attribute name="icon" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <attribute name="id" attributeType="String" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <relationship name="entries" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Entry" inverseName="thought" inverseEntity="Entry" syncable="YES"/>
     </entity>
     <elements>
-        <element name="EntryModel" positionX="-36" positionY="18" width="128" height="210"/>
-        <element name="ThoughtModel" positionX="-54" positionY="9" width="128" height="120"/>
+        <element name="Thought" positionX="-45" positionY="0" width="128" height="120"/>
+        <element name="Entry" positionX="-18" positionY="54" width="128" height="150"/>
     </elements>
 </model>

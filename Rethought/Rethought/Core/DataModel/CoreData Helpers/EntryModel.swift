@@ -1,0 +1,151 @@
+//
+//  EntryModel.swift
+//  rethought
+//
+//  Created by Dev on 2/21/19.
+//  Copyright © 2019 Wesaturate. All rights reserved.
+//
+
+import Foundation
+import CoreData
+import UIKit
+import SwiftLinkPreview
+
+final class Entry: NSManagedObject {
+    //core data attributes
+    @NSManaged fileprivate(set) var date:         Date
+    @NSManaged fileprivate(set) var id:           String
+    @NSManaged fileprivate(set) var detail:       String?
+    @NSManaged fileprivate(set) var title:        String?
+    @NSManaged fileprivate(set) var rawImage:     Data?
+    @NSManaged fileprivate(set) var rawLink:      String?
+    @NSManaged fileprivate(set) var rawRecording: Data?
+    
+    //set new image entry
+    static func insertNewImageEntry(into context: NSManagedObjectContext, image: UIImage, detail: String) -> Entry {
+        let entry: Entry = context.insertObject()
+        
+        //get ID number count from defaults, and increment
+        let defaults = UserDefaults.standard
+        let entryNum: Int = defaults.integer(forKey: UserDefaults.Keys.entryID)
+        
+        //set variables
+        entry.id = "E\(entryNum)"
+        entry.image      = image
+        entry.detail     = detail
+        entry.date       = Date()
+        
+        defaults.set(entryNum + 1, forKey: UserDefaults.Keys.entryID)
+        
+        return entry
+    }
+    
+    //set new link entry
+    static func insertNewLinkEntry(into context: NSManagedObjectContext, linkObject: EntryLinkObject) -> Entry {
+        let entry: Entry = context.insertObject()
+        
+        //get ID number count from defaults, and increment
+        let defaults = UserDefaults.standard
+        let entryNum: Int = defaults.integer(forKey: UserDefaults.Keys.entryID)
+        
+        //set variables
+        entry.id   = "E\(entryNum)"
+        entry.link = linkObject
+        entry.date = Date()
+        
+        defaults.set(entryNum + 1, forKey: UserDefaults.Keys.entryID)
+        return entry
+        
+    }
+    
+    //set new Text entry
+    static func insertNewTextEntry(into context: NSManagedObjectContext, title: String, detail: String) -> Entry {
+        let entry: Entry = context.insertObject()
+        
+        //get ID number count from defaults, and increment
+        let defaults = UserDefaults.standard
+        let entryNum: Int = defaults.integer(forKey: UserDefaults.Keys.entryID)
+        
+        //set variables
+        entry.id = "E\(entryNum)"
+        entry.title = title
+        entry.detail = detail
+        
+        defaults.set(entryNum + 1, forKey: UserDefaults.Keys.entryID)
+        return entry
+    }
+    
+    //calculated values
+    //image returns UIImage, consider creating custom data transformer
+    var image: UIImage? {
+        get {
+            guard let rawImage = self.rawImage else { return nil}
+            guard let image = UIImage(data: rawImage) else { return nil}
+            return image
+        }
+        set {
+            guard let nv: UIImage = newValue else { fatalError()}
+            self.rawImage = nv.pngData()
+        }
+    }
+    
+    //convert LinkObject to string for storage, or return LinkObject for views to display
+    var link: EntryLinkObject? {
+        get {
+            guard let rawLink: String = self.rawLink else { return nil}
+            var ent = EntryLinkObject()
+            let slp = SwiftLinkPreview(session: .shared, workQueue: SwiftLinkPreview.defaultWorkQueue, responseQueue: DispatchQueue.main, cache: DisabledCache.instance)
+            slp.preview(rawLink,
+                         onSuccess: { result in
+                            
+                            //image validation and setter
+                            if let imgUrl: URL = URL(string: result[SwiftLinkResponseKey.image] as! String) {
+                                ent.image = imgUrl
+                            } else {
+                                self.image = UIImage()
+                            }
+                            
+                            //set link objects
+                            ent.shorthand = result[SwiftLinkResponseKey.canonicalUrl] as? String ?? "Not available"
+                            ent.description = result[SwiftLinkResponseKey.description] as? String ?? "Not available"
+                            guard let link: URL = URL(string: result[SwiftLinkResponseKey.finalUrl] as! String) else {
+                                return
+                            }
+                            ent.link = link
+            },
+                         onError: { error in
+                            print("\(error)")
+            })
+            
+            return ent
+        }
+        set {
+            guard let link: URL = newValue?.link else {
+                self.rawLink = "https://wesaturate.com"
+                return
+            }
+            self.rawLink = "\(link)"
+        }
+    }
+    
+    //return entrytype depending on what data is currently present
+    var type: EntryType {
+        get {
+            if self.image != nil {
+                return EntryType.image
+            } else if self.link != nil {
+                return EntryType.link
+            } else if self.rawRecording != nil {
+                return EntryType.recording
+            } else {
+                return EntryType.text
+            }
+        }
+    }
+}
+
+extension Entry: Managed {
+    static var defaultSortDescriptors: [NSSortDescriptor] {
+        return [NSSortDescriptor(key: #keyPath(date), ascending: false)]
+    }
+}

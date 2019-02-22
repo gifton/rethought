@@ -39,3 +39,10 @@ public func randomString(length: Int) -> String {
     let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
     return String((0...length-1).map{ _ in letters.randomElement()! })
 }
+
+public enum EntryType: String {
+    case image = "IMAGE"
+    case text = "TEXT"
+    case link = "LINK"
+    case recording = "RECORDING"
+}
