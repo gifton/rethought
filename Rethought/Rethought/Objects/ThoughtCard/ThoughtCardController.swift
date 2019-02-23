@@ -21,6 +21,11 @@ class ThoughtCardController: UIViewController {
     
     //connect to dashbaord
     private var delegate: DashboardDelegate?
+    private var context: NSManagedObjectContext? {
+        get {
+            return delegate?.context
+        }
+    }
     
     //hold to-be-created objects
     private var newThought: Thought?
@@ -46,7 +51,7 @@ class ThoughtCardController: UIViewController {
 extension ThoughtCardController: ThoughtCardDelegate {
     
     //navigate to new Entries
-    func startNewEntry(_ type: Entry.EntryType) {
+    func startNewEntry(_ type: EntryType) {
         switch type {
         case .text:
             let v = NewTextEntry()
@@ -69,8 +74,6 @@ extension ThoughtCardController: ThoughtCardDelegate {
             v.parentThought = self.newThought
             self.navigationController?.pushViewController(v, animated: true)
         }
-        
-        
     }
     
     //set view to visually confirm entry addition
@@ -81,14 +84,14 @@ extension ThoughtCardController: ThoughtCardDelegate {
     
     //create thought from card view objects
     //user defaults used to sace thoughtID, and keep naming concurrent
-    func addThoughtComponents(title: String, icon: ThoughtIcon) {
-        let thought = Thought(title: title, icon: icon.icon, date: Date())
-        let defaults = UserDefaults.standard
-        let thoughtNum: Int = defaults.integer(forKey: UserDefaults.Keys.thoughtID) + 1
-        thought.ID = "T\(thoughtNum)"
+    func buildThought(title: String, icon: ThoughtIcon) {
+        guard let context = delegate?.context else { fatalError("unable to recieve context from delegate")}
+        let thought = Thought(context: context)
         self.newThought = thought
+    }
+    
+    func buildtextEntry(title: String, detail: String) {
         
-        defaults.set(thoughtNum, forKey: UserDefaults.Keys.thoughtID)
     }
     
     //update dashboardcontrolller with new card state
@@ -98,35 +101,29 @@ extension ThoughtCardController: ThoughtCardDelegate {
     
     //save new thought validation
     func didPressSave() {
-        guard let newThought = self.newThought else {
-            print("could nit confirm new thought on save")
+        guard let _ = self.newThought, let _ = self.context else {
+            print("could not confirm new thought on didPressSave")
             return
-        }
-        
-        //add any entryes into thought
-        if newEntries.count > 0 {
-            for entry in newEntries {
-                newThought.addNew(entry: entry)
-            }
         }
         savePost()
         print("----------------------------")
     }
 }
 
-
-
-
-
 //core data extension for saving
 extension ThoughtCardController {
     
     //save new thought
     func savePost() {
-        guard let newThought = self.newThought else {
+        guard let _ = self.newThought else {
             print("unable to get new thought")
             return
         }
-        self.delegate?.saveNewThought(newThought)
+        do {
+            try context?.save()
+        } catch let err {
+            print("unable to save new thought")
+            print(err)
+        }
     }
 }

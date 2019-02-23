@@ -16,12 +16,12 @@ class newEntryButton: UIButton {
         
     }
     
-    convenience init(entryType: Entry.EntryType, frame: CGRect) {
+    convenience init(entryType: EntryType, frame: CGRect) {
         self.init(frame: frame)
         self.entryType = entryType
     }
     //entrytype defines what state the button belongs to
-    public var entryType: Entry.EntryType = .text
+    public var entryType: EntryType = .text
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

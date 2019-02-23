@@ -204,11 +204,10 @@ extension ThoughtCard {
     @objc
     func tapOnNewThought(_ tapper: UITapGestureRecognizer) {
         if state == .collapsed {
-            self.delegate?.addThoughtComponents(title: addTitleTV.text, icon: addIconTV.emoji)
+            self.delegate?.buildThought(title: addTitleTV.text, icon: addIconTV.emoji)
             self.updateState(.cardIsDoneEditing)
             self.state = .cardIsDoneEditing
         }
-        
     }
     
     //set state to closed, remove entry visual confirmations, delete thought components
@@ -221,7 +220,7 @@ extension ThoughtCard {
     //alert controller of an entry addition request
     func addEntry(_ sender: newEntryButton) {
         if isTitleComplete == true && isIconComplete == true {
-            self.delegate?.addThoughtComponents(title: addTitleTV.text, icon: addIconTV.emoji)
+            self.delegate?.buildThought(title: addTitleTV.text, icon: addIconTV.emoji)
             self.delegate?.startNewEntry(sender.entryType)
             
         } else {
@@ -261,7 +260,7 @@ extension ThoughtCard {
     @objc
     func checkIfCardComplete(_ sender: Any) {
         if textViewCompleted {
-            self.delegate?.addThoughtComponents(title: addTitleTV.text, icon: addIconTV.emoji)
+            self.delegate?.buildThought(title: addTitleTV.text, icon: addIconTV.emoji)
             self.delegate?.didPressSave()
             self.updateState(.collapsed)
         } else {

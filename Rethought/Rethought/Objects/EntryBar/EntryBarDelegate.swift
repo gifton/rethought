@@ -9,5 +9,5 @@
 import Foundation
 
 protocol EntryBarDelegate {
-    func newEntry(_ type: Entry.EntryType)
+    func newEntry(_ type: EntryType)
 }

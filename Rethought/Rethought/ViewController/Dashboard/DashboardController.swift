@@ -46,7 +46,7 @@ extension DashboardController: DashboardDelegate {
             updateInputs()
             self.dashboard?.reloadInputViews()
             self.dashboard?.thoughtCollectionView.reloadData()
-        }        
+        }
     }
     func userStartedNewFastThought() {
         UIView.animate(withDuration: 0.5) {

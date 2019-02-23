@@ -25,12 +25,12 @@ import UIKit
     private var recordingsLabel = UILabel()
     private var textLabel       = UILabel()
     
-    convenience init(media: Int, links: Int, recordings: Int, text: Int) {
+    convenience init(_ counts: EntryCount) {
         self.init()
-        self.media = String(describing: media)
-        self.links = String(describing: links)
-        self.recordings = String(describing: recordings)
-        self.text = String(describing: text)
+        self.media = String(describing: counts.image)
+        self.links = String(describing: counts.link)
+        self.recordings = String(describing: counts.recording)
+        self.text = String(describing: counts.text)
         
         giveContext()
         setView()

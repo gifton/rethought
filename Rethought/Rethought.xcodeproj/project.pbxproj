@@ -224,6 +224,15 @@
 			path = DataModel;
 			sourceTree = "<group>";
 		};
+		D704ED472221338D00F91A9A /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D75B890D21BE191C0023784F /* ProfileView.swift */,
+				D75B890F21BE192E0023784F /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		D70EA8DC21E301080071E257 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,8 +301,7 @@
 				D739400921F88D4300D2B736 /* NewEntryButton.swift */,
 				D7F9FD5721FA58C300E73BFC /* GradientView.swift */,
 				D77DC6C122016079007C165F /* EntryCountView.swift */,
-				D75B890D21BE191C0023784F /* ProfileView.swift */,
-				D75B890F21BE192E0023784F /* ProfileViewController.swift */,
+				D704ED472221338D00F91A9A /* Profile */,
 			);
 			path = Objects;
 			sourceTree = "<group>";

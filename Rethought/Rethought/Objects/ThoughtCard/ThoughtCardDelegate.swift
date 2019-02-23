@@ -11,9 +11,9 @@ import UIKit
 
 protocol ThoughtCardDelegate {
     func updateState(state: ThoughtCardState)
-    func startNewEntry(_ type: Entry.EntryType)
+    func startNewEntry(_ type: EntryType)
     func addEntry(_ entry: Entry)
-    func addThoughtComponents(title: String, icon: ThoughtIcon)
+    func buildThought(title: String, icon: ThoughtIcon)
     func didPressSave() 
 }
 

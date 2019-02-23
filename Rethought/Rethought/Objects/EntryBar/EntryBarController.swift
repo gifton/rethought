@@ -31,7 +31,7 @@ class EntryBarController: UIViewController {
 }
 
 extension EntryBarController: EntryBarDelegate {
-    func newEntry(_ type: Entry.EntryType) {
+    func newEntry(_ type: EntryType) {
         return
     }
     
