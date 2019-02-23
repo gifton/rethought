@@ -84,7 +84,6 @@
 		D7F967AB2200066F00D10919 /* ThoughtDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F967AA2200066F00D10919 /* ThoughtDetailViewModel.swift */; };
 		D7F967AD2200069E00D10919 /* ThoughtDetailViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F967AC2200069E00D10919 /* ThoughtDetailViewModelDelegate.swift */; };
 		D7F9FD5421F9C8E000E73BFC /* linkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F9FD5321F9C8E000E73BFC /* linkCell.swift */; };
-		D7F9FD5621F9D00F00E73BFC /* QuickThoughts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F9FD5521F9D00F00E73BFC /* QuickThoughts.swift */; };
 		D7F9FD5821FA58C300E73BFC /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F9FD5721FA58C300E73BFC /* GradientView.swift */; };
 		D7FFA1C721D4703C001C3B72 /* ThoughtDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1C621D4703C001C3B72 /* ThoughtDetailView.swift */; };
 		D7FFA1C921D4C050001C3B72 /* ThoughtDetailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFA1C821D4C050001C3B72 /* ThoughtDetailDelegate.swift */; };
@@ -175,7 +174,6 @@
 		D7F967AA2200066F00D10919 /* ThoughtDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailViewModel.swift; sourceTree = "<group>"; };
 		D7F967AC2200069E00D10919 /* ThoughtDetailViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailViewModelDelegate.swift; sourceTree = "<group>"; };
 		D7F9FD5321F9C8E000E73BFC /* linkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = linkCell.swift; sourceTree = "<group>"; };
-		D7F9FD5521F9D00F00E73BFC /* QuickThoughts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickThoughts.swift; sourceTree = "<group>"; };
 		D7F9FD5721FA58C300E73BFC /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		D7FFA1C621D4703C001C3B72 /* ThoughtDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailView.swift; sourceTree = "<group>"; };
 		D7FFA1C821D4C050001C3B72 /* ThoughtDetailDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailDelegate.swift; sourceTree = "<group>"; };
@@ -344,7 +342,6 @@
 				D75B891D21C07D910023784F /* ThoughtPreview.swift */,
 				D711281121F30C4B006C732E /* DataController.swift */,
 				D7BEFC7221F7F58A00D55C8E /* ReccomendedThought.swift */,
-				D7F9FD5521F9D00F00E73BFC /* QuickThoughts.swift */,
 				D7B27CDC22053C0F00A09E0F /* PersistanceService.swift */,
 			);
 			path = Core;
@@ -634,7 +631,6 @@
 				D7F9FD5821FA58C300E73BFC /* GradientView.swift in Sources */,
 				D75B88D121BC507B0023784F /* Styling.swift in Sources */,
 				D7FFA1DD21D6F785001C3B72 /* ThoughtCell.swift in Sources */,
-				D7F9FD5621F9D00F00E73BFC /* QuickThoughts.swift in Sources */,
 				D7FFA1C721D4703C001C3B72 /* ThoughtDetailView.swift in Sources */,
 				D739400621F88BF600D2B736 /* ConnectToView.swift in Sources */,
 				D76CBF932202F3840087FC07 /* EntryBarController.swift in Sources */,

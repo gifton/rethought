@@ -12,9 +12,9 @@ import UIKit
 //model for thought previews in dashboard (collectionview cells)
 
 class ThoughtPreview {
-    let icon      : String
+    let icon      : ThoughtIcon
     let createdAt : String
-    let entryCount: [String: Int]
+    let entryCount: EntryCount
     let thoughtID : String
     let title     : String
     
@@ -23,7 +23,7 @@ class ThoughtPreview {
         self.icon       = thought.icon
         self.createdAt  = "\(thought.lastEdited)"
         self.entryCount = thought.entryCount
-        self.thoughtID  = thought.ID
+        self.thoughtID  = thought.id
         self.title      = thought.title
     }
     

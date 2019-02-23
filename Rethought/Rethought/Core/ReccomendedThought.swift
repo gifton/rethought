@@ -12,14 +12,14 @@ import UIKit
 //Small cell with minimum req's for display
 struct ReccomendedThought {
     init(_ thought: Thought) {
-        self.icon = ThoughtIcon(thought.icon)
+        self.icon = thought.icon
         self.daysSinceLastEdit = thought.lastEdited
         self.thoughtID = thought.id
-        self.lastEntryType = thought.entries.last?.type ?? .text
+        self.lastEntryType = thought.entries.first?.type ?? .text
     }
     
     let icon             : ThoughtIcon
     let daysSinceLastEdit: Date
     let thoughtID        : String
-    let lastEntryType    : Entry.EntryType
+    let lastEntryType    : EntryType
 }
