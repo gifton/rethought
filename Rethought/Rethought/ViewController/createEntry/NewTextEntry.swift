@@ -130,10 +130,10 @@ extension NewTextEntry {
         
         //validate text views have been edited
         if self.newTitle != "" && self.newDescription != ""{
-            let outEnt = Entry(type: .text, thoughtID: self.parentThought?.ID ?? "nil", detail: self.newDescription, date: Date(), title: self.newTitle)
+            
             
             //send back to thoughtController
-            self.delegate?.addEntry(outEnt)
+            
             self.navigationController?.popViewController(animated: true)
             
         } else {

@@ -82,16 +82,32 @@ extension ThoughtCardController: ThoughtCardDelegate {
         card?.didAddEntry(entry.type)
     }
     
+    //thought type savings
+    func addTextEntry(title: String, detail: String) {
+        guard let context = delegate?.context else { fatalError("unable to recieve context from delegate")}
+        let _ = Entry.insertNewTextEntry(into: context, title: title, detail: description)
+    }
+    
+    func addImageEntry(image: UIImage, detail: String) {
+        guard let context = delegate?.context else { fatalError("unable to recieve context from delegate")}
+        let _ = Entry.insertNewImageEntry(into: context, image: image, detail: detail)
+    }
+    
+    func addLinkEntry(link: EntryLinkObject) {
+        guard let context = delegate?.context else { fatalError("unable to recieve context from delegate")}
+        let _ = Entry.insertNewLinkEntry(into: context, linkObject: link)
+    }
+    
+    func addRecordingEntry(title: String, detail: String) {
+        print("daved recording")
+    }
+    
     //create thought from card view objects
     //user defaults used to sace thoughtID, and keep naming concurrent
     func buildThought(title: String, icon: ThoughtIcon) {
         guard let context = delegate?.context else { fatalError("unable to recieve context from delegate")}
         let thought = Thought(context: context)
         self.newThought = thought
-    }
-    
-    func buildtextEntry(title: String, detail: String) {
-        
     }
     
     //update dashboardcontrolller with new card state
@@ -115,14 +131,10 @@ extension ThoughtCardController {
     
     //save new thought
     func savePost() {
-        guard let _ = self.newThought else {
-            print("unable to get new thought")
-            return
-        }
         do {
             try context?.save()
         } catch let err {
-            print("unable to save new thought")
+            print("unable to save new thought in thoughtCard")
             print(err)
         }
     }

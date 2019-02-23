@@ -14,7 +14,11 @@ protocol ThoughtCardDelegate {
     func startNewEntry(_ type: EntryType)
     func addEntry(_ entry: Entry)
     func buildThought(title: String, icon: ThoughtIcon)
-    func didPressSave() 
+    func didPressSave()
+    func addTextEntry(title: String, detail: String)
+    func addImageEntry(image: UIImage, detail: String)
+    func addLinkEntry(link: EntryLinkObject)
+    func addRecordingEntry(title: String, detail: String)
 }
 
 

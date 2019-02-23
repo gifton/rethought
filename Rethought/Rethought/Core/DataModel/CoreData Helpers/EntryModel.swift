@@ -102,7 +102,7 @@ final class Entry: NSManagedObject {
     }
     
     //set new image entry
-    static func insertNewImageEntry(into context: NSManagedObjectContext, image: UIImage, detail: String) -> Entry {
+    public static func insertNewImageEntry(into context: NSManagedObjectContext, image: UIImage, detail: String) -> Entry {
         let entry: Entry = context.insertObject()
         
         //get ID number count from defaults, and increment
@@ -121,7 +121,7 @@ final class Entry: NSManagedObject {
     }
     
     //set new link entry
-    static func insertNewLinkEntry(into context: NSManagedObjectContext, linkObject: EntryLinkObject) -> Entry {
+    public static func insertNewLinkEntry(into context: NSManagedObjectContext, linkObject: EntryLinkObject) -> Entry {
         let entry: Entry = context.insertObject()
         
         //get ID number count from defaults, and increment
@@ -139,7 +139,7 @@ final class Entry: NSManagedObject {
     }
     
     //set new Text entry
-    static func insertNewTextEntry(into context: NSManagedObjectContext, title: String, detail: String) -> Entry {
+    public static func insertNewTextEntry(into context: NSManagedObjectContext, title: String, detail: String) -> Entry {
         let entry: Entry = context.insertObject()
         
         //get ID number count from defaults, and increment
