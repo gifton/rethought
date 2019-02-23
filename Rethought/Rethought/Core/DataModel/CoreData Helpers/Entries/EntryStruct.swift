@@ -38,7 +38,7 @@ struct EntryCount {
     var link:      Int
     var recording: Int
     
-    init(text: Int, images: Int, recordings: Int, links: TextOutputStream) {
+    init(text: Int, images: Int, recordings: Int, links: Int) {
         self.text = text
         self.image = images
         self.link = links

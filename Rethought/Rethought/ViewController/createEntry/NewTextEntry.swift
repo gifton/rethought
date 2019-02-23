@@ -131,7 +131,7 @@ extension NewTextEntry {
         //validate text views have been edited
         if self.newTitle != "" && self.newDescription != ""{
             
-            
+            delegate?.addTextEntry(title: newTitle, detail: newDescription)
             //send back to thoughtController
             
             self.navigationController?.popViewController(animated: true)

@@ -176,23 +176,6 @@ extension NewImageEntry: UIImagePickerControllerDelegate {
         
         present(alert, animated: true, completion: nil)
     }
-    
-    //create new entry, send to delegate
-    @objc
-    func userPressedSave(_ sender: UIButton) {
-        
-        //validate completion of objects
-        if self.newDescription != "" && imageViewer.image != UIImage(named: "imagePlaceholder.png"){
-            let entry = Entry(type: .image, thoughtID: parentThought?.ID ?? "nil", detail: newDescription, date: Date(), image: imageViewer.image!)
-            self.delegate?.addEntry(entry)
-            self.navigationController?.popViewController(animated: true)
-            
-        } else {
-            incompleteLabel.frame = CGRect(x: 25, y: ViewSize.SCREEN_HEIGHT - 200, width: ViewSize.SCREEN_WIDTH - 50, height: 59)
-            self.view.addSubview(incompleteLabel)
-            self.view.animateTemporaryView(duration: 1.0, view: incompleteLabel)
-        }
-    }
 }
 
 extension NewImageEntry {
@@ -221,6 +204,21 @@ extension NewImageEntry {
         imageViewer.center.x = self.view.center.x
         imageViewer.center.y = 190
         self.removeImage.removeFromSuperview()
+    }
+    
+    //create new entry, send to delegate
+    @objc
+    func userPressedSave(_ sender: UIButton) {
+        
+        //validate completion of objects
+        if self.newDescription != "" && imageViewer.image != UIImage(named: "imagePlaceholder.png"){
+            delegate?.addImageEntry(image: imageViewer.image!, detail: newDescription)
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            incompleteLabel.frame = CGRect(x: 25, y: ViewSize.SCREEN_HEIGHT - 200, width: ViewSize.SCREEN_WIDTH - 50, height: 59)
+            self.view.addSubview(incompleteLabel)
+            self.view.animateTemporaryView(duration: 1.0, view: incompleteLabel)
+        }
     }
 }
 

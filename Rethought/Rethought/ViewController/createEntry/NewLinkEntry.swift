@@ -30,17 +30,13 @@ class NewLinkEntry: UIViewController {
     public var parentThought  : Thought?
     
     //return entry objects
-    private var linkImage: UIImage {
-        get {
-            return self.mainImage.image ?? UIImage()
-        }
-    }
+    private var linkImage: URL = URL.imagePlaceHolder()
     private var shorthandURL: String {
         get {
             return self.shortLinkLabel.text ?? "not available"
         }
     }
-    private var longURL: String = ""
+    private var longURL: URL = URL(string: "https://wesaturate.com")!
     var linkDescriptionString: String {
         get {
             return entry?.detail ?? "Add a title for your entry"
@@ -132,7 +128,7 @@ extension NewLinkEntry: ConnectToTextView {
                                 self.linkDescription.attributedText = self.linkDescription.returnAttributedText(size: 14, font: .body, string: result[SwiftLinkResponseKey.description] as? String ?? "Not available")
                                 self.linkDescription.adjustsFontForContentSizeCategory = true
                                 self.doneBtn.enableButton()
-                                self.longURL = result[SwiftLinkResponseKey.finalUrl] as? String ?? "Not available"
+                                self.longURL = result[SwiftLinkResponseKey.finalUrl] as? URL ?? URL(string: "https://wesaturate.com")!
                 },
                             onError: { error in
                                 print("\(error)")
@@ -142,14 +138,14 @@ extension NewLinkEntry: ConnectToTextView {
     //entry object validation, creation, and propgation
     @objc
     func saveEntry(_ sender: Any) {
-        guard let ID = parentThought?.ID else {
+        guard let ID = parentThought?.id else {
             print("error with ID")
             return
         }
         
-        let entry = Entry(type: .link, thoughtID: ID, detail: self.longURL, date: Date(), link: self.longURL, linkImage: self.linkImage, linkTitle: self.shorthandURL)
-        self.delegate?.addEntry(entry)
-        //return home
+        let linkOBJ = EntryLinkObject(link: longURL, description: linkDescriptionString, image: linkImage, shorthand: shorthandURL)
+        delegate?.addLinkEntry(link: linkOBJ)
         self.navigationController?.popViewController(animated: true)
     }
 }
+
