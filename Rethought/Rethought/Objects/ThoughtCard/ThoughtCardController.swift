@@ -84,18 +84,28 @@ extension ThoughtCardController: ThoughtCardDelegate {
     
     //thought type savings
     func addTextEntry(title: String, detail: String) {
-        guard let context = delegate?.context else { fatalError("unable to recieve context from delegate")}
-        let _ = Entry.insertNewTextEntry(into: context, title: title, detail: description)
+        guard let context = delegate?.context, let thought = self.newThought else {
+            fatalError("unable to recieve context from delegate")
+        }
+        
+        let _ = Entry.insertNewTextEntry(into: context, title: title, detail: description, thought: thought)
+        
     }
     
     func addImageEntry(image: UIImage, detail: String) {
-        guard let context = delegate?.context else { fatalError("unable to recieve context from delegate")}
-        let _ = Entry.insertNewImageEntry(into: context, image: image, detail: detail)
+        guard let context = delegate?.context, let thought = self.newThought else {
+            fatalError("unable to recieve context or thoughtfrom delegate")
+        }
+        
+        let _ = Entry.insertNewImageEntry(into: context, image: image, detail: detail, thought: thought)
     }
     
     func addLinkEntry(link: EntryLinkObject) {
-        guard let context = delegate?.context else { fatalError("unable to recieve context from delegate")}
-        let _ = Entry.insertNewLinkEntry(into: context, linkObject: link)
+        guard let context = delegate?.context, let thought = self.newThought else {
+            fatalError("unable to recieve context or thought from delegate")
+        }
+        
+        let _ = Entry.insertNewLinkEntry(into: context, linkObject: link, thought: thought)
     }
     
     func addRecordingEntry(title: String, detail: String) {

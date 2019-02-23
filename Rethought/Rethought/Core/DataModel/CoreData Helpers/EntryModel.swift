@@ -102,7 +102,11 @@ final class Entry: NSManagedObject {
     }
     
     //set new image entry
-    public static func insertNewImageEntry(into context: NSManagedObjectContext, image: UIImage, detail: String) -> Entry {
+    public static func insertNewImageEntry(into context: NSManagedObjectContext,
+                                           image: UIImage,
+                                           detail: String,
+                                           thought: Thought) -> Entry {
+        
         let entry: Entry = context.insertObject()
         
         //get ID number count from defaults, and increment
@@ -114,6 +118,7 @@ final class Entry: NSManagedObject {
         entry.image      = image
         entry.detail     = detail
         entry.date       = Date()
+        entry.thought    = thought
         
         defaults.set(entryNum + 1, forKey: UserDefaults.Keys.entryID)
         
@@ -121,7 +126,10 @@ final class Entry: NSManagedObject {
     }
     
     //set new link entry
-    public static func insertNewLinkEntry(into context: NSManagedObjectContext, linkObject: EntryLinkObject) -> Entry {
+    public static func insertNewLinkEntry(into context: NSManagedObjectContext,
+                                          linkObject: EntryLinkObject,
+                                          thought: Thought) -> Entry {
+        
         let entry: Entry = context.insertObject()
         
         //get ID number count from defaults, and increment
@@ -129,9 +137,10 @@ final class Entry: NSManagedObject {
         let entryNum: Int = defaults.integer(forKey: UserDefaults.Keys.entryID)
         
         //set variables
-        entry.id   = "E\(entryNum)"
-        entry.link = linkObject
-        entry.date = Date()
+        entry.id      = "E\(entryNum)"
+        entry.link    = linkObject
+        entry.date    = Date()
+        entry.thought = thought
         
         defaults.set(entryNum + 1, forKey: UserDefaults.Keys.entryID)
         return entry
@@ -139,7 +148,11 @@ final class Entry: NSManagedObject {
     }
     
     //set new Text entry
-    public static func insertNewTextEntry(into context: NSManagedObjectContext, title: String, detail: String) -> Entry {
+    public static func insertNewTextEntry(into context: NSManagedObjectContext,
+                                          title: String,
+                                          detail: String,
+                                          thought: Thought) -> Entry {
+        
         let entry: Entry = context.insertObject()
         
         //get ID number count from defaults, and increment
@@ -147,9 +160,10 @@ final class Entry: NSManagedObject {
         let entryNum: Int = defaults.integer(forKey: UserDefaults.Keys.entryID)
         
         //set variables
-        entry.id = "E\(entryNum)"
-        entry.title = title
-        entry.detail = detail
+        entry.id      = "E\(entryNum)"
+        entry.title   = title
+        entry.detail  = detail
+        entry.thought = thought
         
         defaults.set(entryNum + 1, forKey: UserDefaults.Keys.entryID)
         return entry
