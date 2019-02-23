@@ -18,9 +18,8 @@ class ThoughtDetailViewModel {
     
     var context: NSManagedObjectContext!
     var thought: Thought!
-    var entries: [Entry] {
-        return self.thought.entries
-    }
+    //MARK: Entries need to return proper set
+    var entries = [Entry]()
 }
 
 
@@ -30,7 +29,7 @@ extension ThoughtDetailViewModel: ThoughtDetailViewModelDelegate {
     }
     
     func save(entry: Entry) -> Bool {
-        self.thought.addNew(entry: entry)
+        
         return true
     }
     
