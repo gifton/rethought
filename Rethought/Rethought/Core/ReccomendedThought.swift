@@ -14,7 +14,7 @@ struct ReccomendedThought {
     init(_ thought: Thought) {
         self.icon = ThoughtIcon(thought.icon)
         self.daysSinceLastEdit = thought.lastEdited
-        self.thoughtID = thought.ID
+        self.thoughtID = thought.id
         self.lastEntryType = thought.entries.last?.type ?? .text
     }
     

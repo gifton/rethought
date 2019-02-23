@@ -15,34 +15,37 @@ struct EntryPreview {
     let id         : String
     var ThoughtID  : String
     let date       : Date
-    var image      : UIImage?
-    var title      : String
-    var thoughtIcon: ThoughtIcon?
+    var thoughtIcon: ThoughtIcon
     
     //optional Values
-    var detail      : String?
-    var link        : String?
-    var type        : Entry.EntryType
+    var title       : String?
+    var detail      : String
+    var link        : EntryLinkObject?
+    var type        : EntryType?
+    var image       : String?
     var thoughtTitle: String?
     
     init(entry: Entry) {
-        self.ThoughtID = entry.thoughtID
+        self.ThoughtID = entry.thought.id
         self.date = entry.date
         
         //depending on entry type, initiate proper variables
         switch entry.type {
         case .image:
-            self.title = entry.detail
-            self.image = entry.image!
+            self.title = entry.detail ?? "No description available"
+            self.image = entry.image ?? UIImage()
             self.type  = .image
         case .text:
-            self.title  = entry.title ?? "This is the title"
-            self.detail = entry.detail
+            self.title  = entry.title ?? "No title available"
+            self.detail = entry.detail ?? "No detail available"
             self.type   = .text
         default:
-            self.title = entry.linkTitle!
-            self.link  = entry.link!
-            self.image = entry.image!
+            if let link = entry.link {
+                self.link = link
+            } else {
+                fatalError("unable to extract link object from entry")
+            }
+            
             self.type  = .link
         }
         

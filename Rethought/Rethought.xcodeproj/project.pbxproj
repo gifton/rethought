@@ -71,7 +71,6 @@
 		D76CBF932202F3840087FC07 /* EntryBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76CBF922202F3840087FC07 /* EntryBarController.swift */; };
 		D76CBF952202F3A10087FC07 /* EntryBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76CBF942202F3A10087FC07 /* EntryBarDelegate.swift */; };
 		D76CBF972202F4E60087FC07 /* EntryBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76CBF962202F4E60087FC07 /* EntryBarView.swift */; };
-		D773456A21F343DE0075B4C8 /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D773456921F343DE0075B4C8 /* Managed.swift */; };
 		D77DC6C222016079007C165F /* EntryCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DC6C122016079007C165F /* EntryCountView.swift */; };
 		D7913150221EA53800A4F140 /* RETHOUGHT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D791314E221EA53800A4F140 /* RETHOUGHT.xcdatamodeld */; };
 		D7913152221EA73C00A4F140 /* EntryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7913151221EA73C00A4F140 /* EntryModel.swift */; };
@@ -163,7 +162,6 @@
 		D76CBF922202F3840087FC07 /* EntryBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryBarController.swift; sourceTree = "<group>"; };
 		D76CBF942202F3A10087FC07 /* EntryBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryBarDelegate.swift; sourceTree = "<group>"; };
 		D76CBF962202F4E60087FC07 /* EntryBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryBarView.swift; sourceTree = "<group>"; };
-		D773456921F343DE0075B4C8 /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
 		D77DC6C122016079007C165F /* EntryCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryCountView.swift; sourceTree = "<group>"; };
 		D791314F221EA53800A4F140 /* RETHOUGHT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RETHOUGHT.xcdatamodel; sourceTree = "<group>"; };
 		D7913151221EA73C00A4F140 /* EntryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryModel.swift; sourceTree = "<group>"; };
@@ -236,7 +234,6 @@
 				D75B88CE21BC507B0023784F /* Constants.swift */,
 				D75B88CF21BC507B0023784F /* Styling.swift */,
 				D70EA8DD21E301240071E257 /* Sizes.swift */,
-				D773456921F343DE0075B4C8 /* Managed.swift */,
 				D79B1EF921CC6B0000E951D3 /* UIFont.swift */,
 				D739400521F88BF600D2B736 /* ConnectToView.swift */,
 				D701C0DA22129DDA001D8923 /* Defaults.swift */,
@@ -628,7 +625,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7BEFC7321F7F58A00D55C8E /* ReccomendedThought.swift in Sources */,
-				D773456A21F343DE0075B4C8 /* Managed.swift in Sources */,
 				D75B88E021BC54B20023784F /* Entry.swift in Sources */,
 				D791315A221EB75500A4F140 /* ThoughtModel.swift in Sources */,
 				D713102721F01631001D7584 /* NewTextEntry.swift in Sources */,

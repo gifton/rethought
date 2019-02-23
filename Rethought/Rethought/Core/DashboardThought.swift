@@ -14,40 +14,15 @@ class DashboardThought {
     //minimum req's
     let icon: String
     let createdAt: String
-    let entryCount: [String: Int]
+    let entryCount: EntryCount
     let thoughtID: String
     let title: String
     
-    init(icon: String, createdAt: String,  thoughtID: String, entryCount: [String: Int], title: String) {
+    init(icon: String, createdAt: String,  thoughtID: String, entryCount: EntryCount, title: String) {
         self.icon = icon
         self.createdAt = createdAt
         self.thoughtID = thoughtID
         self.entryCount = entryCount
         self.title = title
-    }
-    
-    //init with thought
-    convenience init(thought: Thought) {
-        func buildRecent(date: Date) -> String {
-            let dateFormatter: DateFormatter = {
-                let formatter = DateFormatter()
-                formatter.dateStyle = .none
-                formatter.timeStyle = .short
-                formatter.doesRelativeDateFormatting = true
-                formatter.formattingContext = .standalone
-                return formatter
-            }()
-            
-            return String(describing: dateFormatter.string(from: date))
-        }
-        self.init(icon: thought.icon, createdAt: buildRecent(date: thought.createdAt), thoughtID: thought.ID, entryCount: thought.entryCount, title: thought.title)
-    }
-    
-    //empty init
-    convenience init(_ empty: Bool? = true) {
-        self.init(icon: "", createdAt: "", thoughtID: "", entryCount: ["String" : 0], title: "")
-        if empty == true {
-            print ("new thoughtPreviewLarge made empty")
-        }
     }
 }

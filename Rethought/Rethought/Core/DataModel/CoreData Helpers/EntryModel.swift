@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 import SwiftLinkPreview
+import CoreLocation
 
 final class Entry: NSManagedObject {
     //core data attributes
@@ -20,6 +21,85 @@ final class Entry: NSManagedObject {
     @NSManaged fileprivate(set) var rawImage:     Data?
     @NSManaged fileprivate(set) var rawLink:      String?
     @NSManaged fileprivate(set) var rawRecording: Data?
+    
+    @NSManaged fileprivate var latitude:          NSNumber?
+    @NSManaged fileprivate var longitude:         NSNumber?
+    
+    // MARK: public facing varibales
+    @NSManaged public fileprivate(set) var thought: Thought
+    //calculated values
+    //image returns UIImage, consider creating custom data transformer
+    var image: UIImage? {
+        get {
+            guard let rawImage = self.rawImage else { return nil}
+            guard let image = UIImage(data: rawImage) else { return nil}
+            return image
+        }
+        set {
+            guard let nv: UIImage = newValue else { fatalError()}
+            self.rawImage = nv.pngData()
+        }
+    }
+    
+    //convert LinkObject to string for storage, or return LinkObject for views to display
+    var link: EntryLinkObject? {
+        get {
+            guard let rawLink: String = self.rawLink else { return nil}
+            var linkEntry = EntryLinkObject()
+            let slp = SwiftLinkPreview(session: .shared, workQueue: SwiftLinkPreview.defaultWorkQueue, responseQueue: DispatchQueue.main, cache: DisabledCache.instance)
+            slp.preview(rawLink,
+                        onSuccess: { result in
+                            
+                            //image validation and setter
+                            if let imgUrl: URL = URL(string: result[SwiftLinkResponseKey.image] as! String) {
+                                linkEntry.image = imgUrl
+                            } else {
+                                self.image = UIImage()
+                            }
+                            
+                            //set link objects
+                            linkEntry.shorthand = result[SwiftLinkResponseKey.canonicalUrl] as? String ?? "Not available"
+                            linkEntry.description = result[SwiftLinkResponseKey.description] as? String ?? "Not available"
+                            guard let link: URL = URL(string: result[SwiftLinkResponseKey.finalUrl] as! String) else {
+                                return
+                            }
+                            linkEntry.link = link
+            },
+                        onError: { error in
+                            print("\(error)")
+            })
+            
+            return linkEntry
+        }
+        set {
+            guard let link: URL = newValue?.link else {
+                self.rawLink = "https://wesaturate.com"
+                return
+            }
+            self.rawLink = "\(link)"
+        }
+    }
+    
+    //return entrytype depending on what data is currently present
+    var type: EntryType {
+        get {
+            if self.image != nil {
+                return .image
+            } else if self.link != nil {
+                return .link
+            } else if self.rawRecording != nil {
+                return .recording
+            } else {
+                return .text
+            }
+        }
+    }
+    
+    //return location as CLLocation
+    public var location: CLLocation? {
+        guard let lat = latitude, let lon = longitude else { return nil }
+        return CLLocation(latitude: lat.doubleValue, longitude: lon.doubleValue)
+    }
     
     //set new image entry
     static func insertNewImageEntry(into context: NSManagedObjectContext, image: UIImage, detail: String) -> Entry {
@@ -73,74 +153,6 @@ final class Entry: NSManagedObject {
         
         defaults.set(entryNum + 1, forKey: UserDefaults.Keys.entryID)
         return entry
-    }
-    
-    //calculated values
-    //image returns UIImage, consider creating custom data transformer
-    var image: UIImage? {
-        get {
-            guard let rawImage = self.rawImage else { return nil}
-            guard let image = UIImage(data: rawImage) else { return nil}
-            return image
-        }
-        set {
-            guard let nv: UIImage = newValue else { fatalError()}
-            self.rawImage = nv.pngData()
-        }
-    }
-    
-    //convert LinkObject to string for storage, or return LinkObject for views to display
-    var link: EntryLinkObject? {
-        get {
-            guard let rawLink: String = self.rawLink else { return nil}
-            var ent = EntryLinkObject()
-            let slp = SwiftLinkPreview(session: .shared, workQueue: SwiftLinkPreview.defaultWorkQueue, responseQueue: DispatchQueue.main, cache: DisabledCache.instance)
-            slp.preview(rawLink,
-                         onSuccess: { result in
-                            
-                            //image validation and setter
-                            if let imgUrl: URL = URL(string: result[SwiftLinkResponseKey.image] as! String) {
-                                ent.image = imgUrl
-                            } else {
-                                self.image = UIImage()
-                            }
-                            
-                            //set link objects
-                            ent.shorthand = result[SwiftLinkResponseKey.canonicalUrl] as? String ?? "Not available"
-                            ent.description = result[SwiftLinkResponseKey.description] as? String ?? "Not available"
-                            guard let link: URL = URL(string: result[SwiftLinkResponseKey.finalUrl] as! String) else {
-                                return
-                            }
-                            ent.link = link
-            },
-                         onError: { error in
-                            print("\(error)")
-            })
-            
-            return ent
-        }
-        set {
-            guard let link: URL = newValue?.link else {
-                self.rawLink = "https://wesaturate.com"
-                return
-            }
-            self.rawLink = "\(link)"
-        }
-    }
-    
-    //return entrytype depending on what data is currently present
-    var type: EntryType {
-        get {
-            if self.image != nil {
-                return EntryType.image
-            } else if self.link != nil {
-                return EntryType.link
-            } else if self.rawRecording != nil {
-                return EntryType.recording
-            } else {
-                return EntryType.text
-            }
-        }
     }
 }
 

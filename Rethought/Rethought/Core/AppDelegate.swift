@@ -21,13 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         createThoughtContainer { (container) in
             self.container = container
-            let rootVC = DashboardController(withContext: PersistanceService.context)
+            let rootVC = DashboardController(withContext: container.viewContext)
             let nav = UINavigationController(rootViewController: rootVC)
             nav.isNavigationBarHidden = true
             self.window?.rootViewController = nav
         }
         
-        //defaults handle thoughtID validation
+        //defaults handle thought andentry ID validation
         //check to see if a thought has ever been made, if so, defaults will have updated to a non-zero num
         //otherwise set defaults to 1
         let defaults = UserDefaults.standard
