@@ -10,18 +10,20 @@ import Foundation
 import UIKit
 
 struct EntryLinkObject: EntryLinkObjectDelegate {
-    init?(link: URL, description: String, image: URL, shorthand: String) {
+    init?(link: URL, description: String, image: URL, shorthand: String, title: String) {
         self.init()
         self.link = link
         self.image = image
         self.description = description
         self.shorthand = shorthand
+        self.title = title
     }
     
-    var link: URL = URL(string: "https://wesaturate.com")!
+    var link: URL           = URL(string: "https://wesaturate.com")!
     var description: String = ""
-    var image: URL = URL(string: "https://wesaturate.com")!
-    var shorthand: String = ""
+    var image: URL          = URL(string: "https://wesaturate.com")!
+    var shorthand: String   = ""
+    var title: String       = ""
     
     init() {
         
@@ -29,7 +31,7 @@ struct EntryLinkObject: EntryLinkObjectDelegate {
 }
 
 protocol EntryLinkObjectDelegate {
-    init?(link: URL, description: String, image: URL, shorthand: String)
+    init?(link: URL, description: String, image: URL, shorthand: String, title: String)
 }
 
 struct EntryCount {

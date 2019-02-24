@@ -286,7 +286,7 @@ extension ThoughtCard {
 
 //show visual confirmation of new thought added
 extension ThoughtCard {
-    public func didAddEntry(_ type: Entry.EntryType) {
+    public func didAddEntry(_ type: EntryType) {
         switch type {
         case .link:
             self.linkBtn.addBorders(edges: [.bottom], color: UIColor(hex: "13ACBE"), thickness: 4)

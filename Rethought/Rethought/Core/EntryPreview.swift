@@ -22,7 +22,7 @@ struct EntryPreview {
     var detail      : String
     var link        : EntryLinkObject?
     var type        : EntryType?
-    var image       : String?
+    var image       : UIImage
     var thoughtTitle: String?
     
     init(entry: Entry) {
@@ -33,7 +33,7 @@ struct EntryPreview {
         switch entry.type {
         case .image:
             self.title = entry.detail ?? "No description available"
-            self.image = entry.image ?? UIImage()
+            self.image = entry.image ?? UIImage.placeholder(type: "image")
             self.type  = .image
         case .text:
             self.title  = entry.title ?? "No title available"

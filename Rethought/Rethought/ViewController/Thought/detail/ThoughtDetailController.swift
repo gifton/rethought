@@ -18,7 +18,6 @@ class ThoughtDetailController: UIViewController{
     init(withThoughtModel model: ThoughtDetailViewModel) {
         super.init(nibName: nil, bundle: nil)
         self.model = model
-        setView()
         
         let newEntryView = EntryBarController(delegate: self)
         self.addChild(newEntryView)
@@ -30,10 +29,10 @@ class ThoughtDetailController: UIViewController{
         fatalError("init(coder:) has not been implemented")
     }
     
-    var model: ThoughtDetailViewModel?
-    
-    func setView() {
-        self.view = ThoughtDetailView(frame: .zero, thought: self.model?.thought ?? Thought(), delegate: self)
+    var model: ThoughtDetailViewModel? {
+        didSet {
+            self.view = ThoughtDetailView(frame: .zero, thought: self.model?.thought ?? Thought(), delegate: self)
+        }
     }
 }
 

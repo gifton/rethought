@@ -95,3 +95,21 @@ extension UIImage {
     }
     
 }
+
+//MARK: set default placeholder image
+extension UIImage {
+    public static func placeholder(type: String) -> UIImage {
+        var img = UIImage()
+        switch type {
+            
+        case "text":
+            img = #imageLiteral(resourceName: "pen-square")
+        case "image":
+            img = #imageLiteral(resourceName: "camera-alt")
+        default:
+            img = #imageLiteral(resourceName: "imagePlaceholder")
+        }
+        
+        return img
+    }
+}

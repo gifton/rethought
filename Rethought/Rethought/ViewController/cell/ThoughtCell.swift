@@ -42,11 +42,11 @@ class ThoughtCell: UICollectionViewCell {
     private let dayCountLabel = UILabel()
     
     public func giveContext(with preview: ThoughtPreview) {
-        self.icon       = preview.icon
+        self.icon       = preview.icon.icon
         self.title      = preview.title
-        self.entryCount = preview.entryCount["entries"]
-        self.linkCount  = preview.entryCount["links"]
-        self.mediaCount = preview.entryCount["media"]
+        self.entryCount = preview.entryCount.text
+        self.linkCount  = preview.entryCount.link
+        self.mediaCount = preview.entryCount.image
         self.dayCount   = 232
         recievedContext()
     }
@@ -54,9 +54,9 @@ class ThoughtCell: UICollectionViewCell {
     public func giveContext(with dashboardThought: DashboardThought) {
         self.icon       = dashboardThought.icon
         self.title      = dashboardThought.title
-        self.entryCount = dashboardThought.entryCount["entries"]
-        self.linkCount  = dashboardThought.entryCount["links"]
-        self.mediaCount = dashboardThought.entryCount["media"]
+        self.entryCount = dashboardThought.entryCount.text
+        self.linkCount  = dashboardThought.entryCount.link
+        self.mediaCount = dashboardThought.entryCount.image
         self.dayCount   = 232
         recievedContext()
     }

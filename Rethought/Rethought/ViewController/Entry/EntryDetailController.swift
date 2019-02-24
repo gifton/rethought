@@ -24,10 +24,7 @@ extension EntryDetailController: BackDelegate {
 }
 extension EntryDetailController: EntryDetailDelegate {
     var entry: Entry {
-        get {
-            return Entry(title: self.entryView!.title)
-        }
-        set {
+        didSet {
             
             entryView = EntryDetailView(frame: .zero, entry: newValue, delegate: self)
             

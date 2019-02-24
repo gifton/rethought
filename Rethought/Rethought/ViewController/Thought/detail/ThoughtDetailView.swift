@@ -22,12 +22,11 @@ class ThoughtDetailView: UIView {
     
     convenience init(frame: CGRect, thought: Thought, delegate: ThoughtDetailDelegagte) {
         self.init(frame: frame)
-        let thoughts = self.getDummyData()
-        self.title    = thoughts.title
-        self.icon     = thoughts.icon
-        self.entries  = thoughts.entries
+        self.title    = thought.title
+        self.icon     = thought.icon.icon
+        self.entries  = thought.entries as? [Entry]
         self.delegate = delegate
-        self.counts = thoughts.entryCount
+        self.counts   = thought.entryCount
         addContext()
         setupView()
     }
@@ -47,7 +46,7 @@ class ThoughtDetailView: UIView {
     private var title:   String?
     private var icon:    String?
     public var entries:  [Entry]?
-    private var counts: [String: Int]!
+    private var counts:  EntryCount!
     
     //delegate for returning home, moving to new thought, editing etc
     public var delegate: ThoughtDetailDelegagte?
@@ -64,12 +63,14 @@ class ThoughtDetailView: UIView {
 
 extension ThoughtDetailView {
     func setupView() {
-        let media     = self.counts["media"] ?? 0
-        let links     = self.counts["links"] ?? 0
-        let recording = self.counts["recording"] ?? 0
-        let text      = self.counts["text"] ?? 0
+        let media     = self.counts.image
+        let links     = self.counts.link
+        let recording = self.counts.recording
+        let text      = self.counts.text
         
-        entryView = EntryCountView(media: media , links: links, recordings: recording, text: text)
+        let counter = EntryCount(text: text, images: media, recordings: recording, links: links)
+        
+        entryView = EntryCountView(counter)
         
         addSubview(logo)
         addSubview(titleTV)

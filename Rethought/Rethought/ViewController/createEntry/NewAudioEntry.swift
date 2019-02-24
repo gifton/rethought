@@ -126,14 +126,7 @@ extension NewAudioEntry {
     func userPressedSave(_ sender: UIButton) {
         
         //validate text views have been edited
-        if self.newTitle != "" && self.newDescription != ""{
-            let entry = Entry(type: .text, thoughtID: self.parentThought?.ID ?? "nil", detail: self.newDescription, date: Date())
-            self.delegate?.addEntry(entry)
-            self.navigationController?.popViewController(animated: true)
-            
-        } else {
-            self.view.animateTemporaryView(duration: 1.0, view: incompleteLabel)
-        }
+        self.navigationController?.popViewController(animated: true)
     }
     
     //set desciprion string to textview.text

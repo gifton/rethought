@@ -32,6 +32,9 @@ extension UIImageView {
             }
         }
     }
+    
+    
+    //change tint color of image
     func setImageColor(color: UIColor) {
         let templateImage = self.image?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
         self.image = templateImage

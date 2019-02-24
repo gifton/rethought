@@ -138,13 +138,11 @@ extension NewLinkEntry: ConnectToTextView {
     //entry object validation, creation, and propgation
     @objc
     func saveEntry(_ sender: Any) {
-        guard let ID = parentThought?.id else {
-            print("error with ID")
-            return
-        }
         
-        let linkOBJ = EntryLinkObject(link: longURL, description: linkDescriptionString, image: linkImage, shorthand: shorthandURL)
+        
+        guard let linkOBJ = EntryLinkObject(link: longURL, description: linkDescriptionString, image: linkImage, shorthand: shorthandURL, title: titleLabel.text!) else { return }
         delegate?.addLinkEntry(link: linkOBJ)
+        
         self.navigationController?.popViewController(animated: true)
     }
 }

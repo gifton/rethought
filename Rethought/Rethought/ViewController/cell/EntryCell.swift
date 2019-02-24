@@ -129,7 +129,7 @@ class EntryLinkCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
-    private var linkImage : UIImage!
+    private var linkImage : URL!
     private var detail    : String!
     private var linkDate      : Date!
     private var linkTitle : String!
@@ -146,9 +146,10 @@ class EntryLinkCell: UITableViewCell {
     
     var entry: Entry! {
         didSet {
-            self.linkImage = entry.linkImage!
-            self.linkTitle = entry.linkTitle
-            self.detail = entry.detail
+            guard let link = entry.link else { fatalError("unable to parse entry model to recieve links")}
+            self.linkImage = link.image
+            self.linkTitle = link.description
+            self.detail = link.description
             self.linkDate = entry.date
             buildCell()
         }
@@ -161,7 +162,7 @@ class EntryLinkCell: UITableViewCell {
         cell.layer.cornerRadius = 6
         addSubview(cell)
         
-        linkIV.image = linkImage
+        linkIV.load(url: linkImage)
         linkIV.layer.cornerRadius = 5
         linkIV.layer.masksToBounds = true
         linkIV.frame = CGRect(x: 20, y: 15, width: 45, height: 45)

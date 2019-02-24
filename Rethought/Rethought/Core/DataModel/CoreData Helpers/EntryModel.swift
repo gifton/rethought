@@ -141,6 +141,7 @@ final class Entry: NSManagedObject {
         entry.link    = linkObject
         entry.date    = Date()
         entry.thought = thought
+        entry.title   = linkObject.title
         
         defaults.set(entryNum + 1, forKey: UserDefaults.Keys.entryID)
         return entry
