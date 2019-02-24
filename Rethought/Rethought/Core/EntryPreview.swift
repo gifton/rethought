@@ -19,10 +19,10 @@ struct EntryPreview {
     
     //optional Values
     var title       : String?
-    var detail      : String
+    var detail      : String?
     var link        : EntryLinkObject?
     var type        : EntryType?
-    var image       : UIImage
+    var image       : URL?
     var thoughtTitle: String?
     
     init(entry: Entry) {
@@ -33,7 +33,7 @@ struct EntryPreview {
         switch entry.type {
         case .image:
             self.title = entry.detail ?? "No description available"
-            self.image = entry.image ?? UIImage.placeholder(type: "image")
+            self.image = entry.link?.image ?? URL.imagePlaceHolder()
             self.type  = .image
         case .text:
             self.title  = entry.title ?? "No title available"
@@ -49,6 +49,7 @@ struct EntryPreview {
             self.type  = .link
         }
         
-        self.id          = entry.id
+        self.thoughtIcon = entry.thought.icon
+        self.id = entry.id
     }
 }

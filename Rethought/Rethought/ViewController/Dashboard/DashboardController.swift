@@ -178,7 +178,9 @@ extension DashboardController: UICollectionViewDelegate {
     //push thought detail
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let thoughtID: String = self.thoughts?[indexPath.row].thoughtID else { return }
-        let thought = self.model.retrieve(thought: thoughtID)
+        guard let thought = self.model.retrieve(thought: thoughtID) else  {
+            fatalError("unable to retrieve thought from viewmodel")
+        }
         
         //set thought detail viewmodel, attach to thoughtDetail
         let vm = ThoughtDetailViewModel(thought: thought, context: self.context)

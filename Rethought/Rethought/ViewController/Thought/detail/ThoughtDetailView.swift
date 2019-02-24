@@ -24,7 +24,7 @@ class ThoughtDetailView: UIView {
         self.init(frame: frame)
         self.title    = thought.title
         self.icon     = thought.icon.icon
-        self.entries  = thought.entries as? [Entry]
+        self.entries  = thought.allEntries
         self.delegate = delegate
         self.counts   = thought.entryCount
         addContext()

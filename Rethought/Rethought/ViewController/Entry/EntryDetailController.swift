@@ -10,10 +10,14 @@ import Foundation
 import UIKit
 
 class EntryDetailController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     var entryView: EntryDetailView?
+    
+    var entry: Entry!
+    
 }
 
 extension EntryDetailController: BackDelegate {
@@ -21,14 +25,4 @@ extension EntryDetailController: BackDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     
-}
-extension EntryDetailController: EntryDetailDelegate {
-    var entry: Entry {
-        didSet {
-            
-            entryView = EntryDetailView(frame: .zero, entry: newValue, delegate: self)
-            
-            self.view = entryView
-        }
-    }
 }

@@ -19,7 +19,7 @@ class DashboardViewModel: DashboardViewModelDelegate {
         print("COUNT: \(self.thoughts.count)")
         print("====")
         for thought in self.thoughts {
-            let t = DashboardThought(thought: thought)
+            let t = DashboardThought(icon: thought.icon.icon, createdAt: thought.date, thoughtID: thought.id, entryCount: thought.entryCount, title: thought.title)
             thoughts.append(t)
         }
         return thoughts
@@ -65,13 +65,13 @@ extension DashboardViewModel {
     }
     
     //find thought by ID
-    func retrieve(thought thoughtID: String) -> Thought {
-        return thoughts.filter{ $0.ID == thoughtID }.first ?? Thought.init()
+    func retrieve(thought thoughtID: String) -> Thought? {
+        return thoughts.filter{ $0.id == thoughtID }.first ?? nil
     }
     
     //find entry by ID
-    func retrieve(entry entryID: String) -> Entry {
-        return entries.filter{ $0.id == entryID }.first ?? Entry.init(title: "Not available")
+    func retrieve(entry entryID: String) -> Entry? {
+        return entries.filter{ $0.id == entryID }.first ?? nil
     }
     
     func saveNewThought(_ thought: Thought) -> Bool {
@@ -82,26 +82,11 @@ extension DashboardViewModel {
         return out
     }
     
-    func fetchThoughts() {
-        let request = NSFetchRequest<ThoughtModel>(entityName: "RETHOUGHT")
-        let sorter = NSSortDescriptor(key: "date", ascending: false)
-        request.sortDescriptors = [sorter]
-        request.fetchBatchSize = 25
-        
-        
+    func fetchThoughts() -> [Thought] {
+        return Thought.fetch(in: moc)
     }
     
     func sendThoughtToDB(_ newThought: Thought) -> Bool {
-        let t = ThoughtModel(context: moc)
-        var ents = [EntryModel]()
-        
-        for ent in newThought.entries {
-            let e = EntryModel(context: moc)
-            e.setModel(entry: ent, thought: t)
-            ents.append(e)
-        }
-        
-        t.setModel(thought: newThought, entries: ents)
 
         do {
             try moc.save()

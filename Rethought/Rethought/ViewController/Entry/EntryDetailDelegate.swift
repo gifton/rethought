@@ -9,5 +9,5 @@
 import Foundation
 
 protocol EntryDetailDelegate {
-    var entry: Entry 
+    var entry: Entry { get set }
 }

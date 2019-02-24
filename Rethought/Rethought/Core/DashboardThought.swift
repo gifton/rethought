@@ -13,12 +13,12 @@ import UIKit
 class DashboardThought {
     //minimum req's
     let icon: String
-    let createdAt: String
+    let createdAt: Date
     let entryCount: EntryCount
     let thoughtID: String
     let title: String
     
-    init(icon: String, createdAt: String,  thoughtID: String, entryCount: EntryCount, title: String) {
+    init(icon: String, createdAt: Date,  thoughtID: String, entryCount: EntryCount, title: String) {
         self.icon = icon
         self.createdAt = createdAt
         self.thoughtID = thoughtID

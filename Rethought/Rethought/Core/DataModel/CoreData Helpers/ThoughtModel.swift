@@ -33,6 +33,13 @@ final class Thought: NSManagedObject {
         return recentEntry.date
     }
     
+    var allEntries: [Entry]? {
+        get {
+            guard let entries: Entry = entries else { return nil}
+            return entries
+        }
+    }
+    
     var entryCount: EntryCount {
         get {
             let texts: Int = entries.filter( {$0.type == EntryType.text}).count
@@ -42,4 +49,7 @@ final class Thought: NSManagedObject {
             return EntryCount(text: texts, images: images, recordings: recordings, links: links)
         }
     }
+}
+extension Thought: Managed {
+    
 }
