@@ -12,7 +12,8 @@ import UIKit
 import SwiftLinkPreview
 import CoreLocation
 
-final class Entry: NSManagedObject {
+@objc(Entry)
+public class Entry: NSManagedObject {
     //core data attributes
     @NSManaged fileprivate(set) var id:           String
     @NSManaged fileprivate(set) var detail:       String?
@@ -127,7 +128,7 @@ final class Entry: NSManagedObject {
     }
     
     //set new link entry
-    public static func insertNewLinkEntry(into context: NSManagedObjectContext,
+    static func insertNewLinkEntry(into context: NSManagedObjectContext,
                                           linkObject: EntryLinkObject,
                                           thought: Thought) -> Entry {
         

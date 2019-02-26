@@ -17,15 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let rootVC = DashboardController(withContext: PersistanceService.context)
-        let nav = UINavigationController(rootViewController: rootVC)
-        nav.isNavigationBarHidden = true
-        window?.rootViewController = nav
+//        let rootVC = DashboardController(withContext: PersistanceService.context)
+//        let nav = UINavigationController(rootViewController: rootVC)
+//        nav.isNavigationBarHidden = true
+//        window?.rootViewController = nav
         
         createThoughtContainer { (container) in
             self.window = UIWindow(frame: ViewSize.FRAME)
             self.window?.makeKeyAndVisible()
             self.persistentContainer = container
+            self.isUsersFirstTime()
             let rootVC = DashboardController(withContext: self.persistentContainer.viewContext)
     
             let nav = UINavigationController(rootViewController: rootVC)
@@ -34,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = nav
         }
         
-        setDefaults()
+        
         
         return true
     }
@@ -55,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func setDefaults() {
+    func isUsersFirstTime() {
         //defaults handle thought andentry ID validation
         //check to see if a thought has ever been made, if so, defaults will have updated to a non-zero num
         //otherwise set defaults to 1
@@ -64,7 +65,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("user has not set first thought")
             defaults.set(1, forKey: UserDefaults.Keys.thoughtID)
             defaults.set(1, forKey: UserDefaults.Keys.entryID)
+            addThoughts()
         }
+    }
+    
+    func addThoughts() {
+        let replicator = Replicator(with: self.persistentContainer.viewContext)
+        replicator.createThoughts()
     }
 
 }

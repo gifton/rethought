@@ -84,15 +84,14 @@ extension DashboardViewModel {
     }
     
     func fetchThoughts() -> [Thought] {
-//        let request = Thought.fetchRequest()
-//        do {
-//            let result = try moc.fetch(request)
-//            return result as! [Thought]
-//        } catch let err {
-//            print("there was an error fetching: \(err)")
-//        }
-//        fatalError("fwk")
-        return [Thought]()
+        let request = Thought.fetchRequest()
+        do {
+            let result = try moc.fetch(request)
+            return result as! [Thought]
+        } catch let err {
+            print("there was an error fetching: \(err)")
+        }
+        fatalError("fwk")
     }
     
     func sendThoughtToDB(_ newThought: Thought) -> Bool {

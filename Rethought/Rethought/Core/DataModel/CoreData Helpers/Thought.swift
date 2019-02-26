@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 import CoreData
 
-final class Thought: NSManagedObject {
+@objc(Thought)
+public class Thought: NSManagedObject {
     @NSManaged fileprivate(set) var date:    Date
     @NSManaged fileprivate(set) var id:      String
     @NSManaged fileprivate(set) var title:   String
@@ -51,6 +52,23 @@ final class Thought: NSManagedObject {
             let links: Int = entries.filter( {$0.type == EntryType.link}).count
             return EntryCount(text: texts, images: images, recordings: recordings, links: links)
         }
+    }
+    
+    convenience init(moc: NSManagedObjectContext) {
+        self.init(context: moc)
+        self.date = Date()
+    }
+    
+    func createThought(title: String, icon: ThoughtIcon) {
+        let defaults = UserDefaults.standard
+        let num = defaults.integer(forKey: UserDefaults.Keys.thoughtID)
+        
+        self.date = Date()
+        self.icon = icon
+        self.title = title
+        self.id = "T\(num)"
+        
+        defaults.set(num + 1, forKey: UserDefaults.Keys.thoughtID)
     }
 }
 extension Thought: Managed {

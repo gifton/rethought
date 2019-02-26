@@ -8,10 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9B8B8A63BCEA02BD8A429957 /* Pods_rethought.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36BE63D35A2A902760780123 /* Pods_rethought.framework */; };
-		D701AAC82225F6B700AEB27F /* Thought+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D701AAC42225F6B700AEB27F /* Thought+CoreDataClass.swift */; };
-		D701AAC92225F6B700AEB27F /* Thought+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D701AAC52225F6B700AEB27F /* Thought+CoreDataProperties.swift */; };
-		D701AACA2225F6B700AEB27F /* Entry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D701AAC62225F6B700AEB27F /* Entry+CoreDataClass.swift */; };
-		D701AACB2225F6B700AEB27F /* Entry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D701AAC72225F6B700AEB27F /* Entry+CoreDataProperties.swift */; };
+		D701AACE2225FAFF00AEB27F /* ReplicatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D701AACD2225FAFF00AEB27F /* ReplicatorDelegate.swift */; };
+		D701AAD02225FC2500AEB27F /* Replicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D701AACF2225FC2500AEB27F /* Replicator.swift */; };
 		D701C0DB22129DDA001D8923 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D701C0DA22129DDA001D8923 /* Defaults.swift */; };
 		D702B21121DBFECA003DCA83 /* BackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D702B21021DBFECA003DCA83 /* BackDelegate.swift */; };
 		D7043F2822078270006EC7C6 /* Managed+Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7043F2722078270006EC7C6 /* Managed+Objects.swift */; };
@@ -99,10 +97,8 @@
 /* Begin PBXFileReference section */
 		36BE63D35A2A902760780123 /* Pods_rethought.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rethought.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7EA374B2D93AE93DEA7C328 /* Pods-rethought.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rethought.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rethought/Pods-rethought.debug.xcconfig"; sourceTree = "<group>"; };
-		D701AAC42225F6B700AEB27F /* Thought+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thought+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D701AAC52225F6B700AEB27F /* Thought+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thought+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		D701AAC62225F6B700AEB27F /* Entry+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entry+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D701AAC72225F6B700AEB27F /* Entry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entry+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D701AACD2225FAFF00AEB27F /* ReplicatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicatorDelegate.swift; sourceTree = "<group>"; };
+		D701AACF2225FC2500AEB27F /* Replicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Replicator.swift; sourceTree = "<group>"; };
 		D701C0DA22129DDA001D8923 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		D702B21021DBFECA003DCA83 /* BackDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackDelegate.swift; sourceTree = "<group>"; };
 		D7043F2722078270006EC7C6 /* Managed+Objects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Managed+Objects.swift"; sourceTree = "<group>"; };
@@ -219,13 +215,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D701AACC2225FAEB00AEB27F /* Replicator */ = {
+			isa = PBXGroup;
+			children = (
+				D701AACD2225FAFF00AEB27F /* ReplicatorDelegate.swift */,
+				D701AACF2225FC2500AEB27F /* Replicator.swift */,
+			);
+			path = Replicator;
+			sourceTree = "<group>";
+		};
 		D7043F2622070418006EC7C6 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
-				D701AAC42225F6B700AEB27F /* Thought+CoreDataClass.swift */,
-				D701AAC52225F6B700AEB27F /* Thought+CoreDataProperties.swift */,
-				D701AAC62225F6B700AEB27F /* Entry+CoreDataClass.swift */,
-				D701AAC72225F6B700AEB27F /* Entry+CoreDataProperties.swift */,
 				D7913153221EAA2700A4F140 /* CoreData Helpers */,
 				D791314E221EA53800A4F140 /* RETHOUGHT.xcdatamodeld */,
 			);
@@ -336,6 +337,7 @@
 		D75B88B721BB70C00023784F /* rethought */ = {
 			isa = PBXGroup;
 			children = (
+				D701AACC2225FAEB00AEB27F /* Replicator */,
 				D75B88C721BB70C10023784F /* Info.plist */,
 				D75B88EB21BC98A80023784F /* Resources */,
 				D75B88D421BC53150023784F /* Core */,
@@ -351,8 +353,8 @@
 		D75B88D421BC53150023784F /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				D7043F2622070418006EC7C6 /* DataModel */,
 				D75B88B821BB70C00023784F /* AppDelegate.swift */,
+				D7043F2622070418006EC7C6 /* DataModel */,
 				D713101121EEF3BE001D7584 /* DashboardThought.swift */,
 				D75B892121C2D7D70023784F /* EntryPreview.swift */,
 				D75B891D21C07D910023784F /* ThoughtPreview.swift */,
@@ -644,7 +646,6 @@
 				D702B21121DBFECA003DCA83 /* BackDelegate.swift in Sources */,
 				D713101921EF0436001D7584 /* ThoughtCardController.swift in Sources */,
 				D71FA87821E1525B000706A5 /* ReTextView.swift in Sources */,
-				D701AACB2225F6B700AEB27F /* Entry+CoreDataProperties.swift in Sources */,
 				D7F9FD5821FA58C300E73BFC /* GradientView.swift in Sources */,
 				D75B88D121BC507B0023784F /* Styling.swift in Sources */,
 				D7FFA1DD21D6F785001C3B72 /* ThoughtCell.swift in Sources */,
@@ -654,10 +655,10 @@
 				D75B892421C2FE750023784F /* EntryCell.swift in Sources */,
 				D713101221EEF3BE001D7584 /* DashboardThought.swift in Sources */,
 				D713101F21EF0511001D7584 /* DashboardDelegate.swift in Sources */,
+				D701AAD02225FC2500AEB27F /* Replicator.swift in Sources */,
 				D71FA87621E038B5000706A5 /* ThoughtIcon.swift in Sources */,
 				D711281221F30C4B006C732E /* DataController.swift in Sources */,
 				D76BB3F22213A4E200A6187C /* UIView.swift in Sources */,
-				D701AAC92225F6B700AEB27F /* Thought+CoreDataProperties.swift in Sources */,
 				D75B891021BE192E0023784F /* ProfileViewController.swift in Sources */,
 				D7B27CDD22053C0F00A09E0F /* PersistanceService.swift in Sources */,
 				D76BB3F02213A4E200A6187C /* UITextField.swift in Sources */,
@@ -666,7 +667,6 @@
 				D75B88B921BB70C00023784F /* AppDelegate.swift in Sources */,
 				D7F9FD5421F9C8E000E73BFC /* linkCell.swift in Sources */,
 				D75B892221C2D7D70023784F /* EntryPreview.swift in Sources */,
-				D701AAC82225F6B700AEB27F /* Thought+CoreDataClass.swift in Sources */,
 				D7FFA1E421D717AD001C3B72 /* EntryDetailView.swift in Sources */,
 				D701C0DB22129DDA001D8923 /* Defaults.swift in Sources */,
 				D76CBF972202F4E60087FC07 /* EntryBarView.swift in Sources */,
@@ -684,8 +684,8 @@
 				D711281021F2A76E006C732E /* NewAudioEntry.swift in Sources */,
 				D75B891821BF1F5A0023784F /* ThoughtDetailController.swift in Sources */,
 				D76BB3ED2213A4E200A6187C /* UITextView.swift in Sources */,
+				D701AACE2225FAFF00AEB27F /* ReplicatorDelegate.swift in Sources */,
 				D7FFA1E221D716D7001C3B72 /* EntryDetailDelegate.swift in Sources */,
-				D701AACA2225F6B700AEB27F /* Entry+CoreDataClass.swift in Sources */,
 				D713100D21EEE9D4001D7584 /* DashboardViewModelDelegate.swift in Sources */,
 				D79B1EFA21CC6B0000E951D3 /* UIFont.swift in Sources */,
 				D75B88D021BC507B0023784F /* Constants.swift in Sources */,
