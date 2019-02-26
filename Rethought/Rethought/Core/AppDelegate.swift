@@ -13,29 +13,28 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var container: NSPersistentContainer!
+    var persistentContainer: NSPersistentContainer!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: ViewSize.FRAME)
-        window?.makeKeyAndVisible()
+        
+        let rootVC = DashboardController(withContext: PersistanceService.context)
+        let nav = UINavigationController(rootViewController: rootVC)
+        nav.isNavigationBarHidden = true
+        window?.rootViewController = nav
         
         createThoughtContainer { (container) in
-            self.container = container
-            let rootVC = DashboardController(withContext: container.viewContext)
+            self.window = UIWindow(frame: ViewSize.FRAME)
+            self.window?.makeKeyAndVisible()
+            self.persistentContainer = container
+            let rootVC = DashboardController(withContext: self.persistentContainer.viewContext)
+    
             let nav = UINavigationController(rootViewController: rootVC)
             nav.isNavigationBarHidden = true
+            
             self.window?.rootViewController = nav
         }
         
-        //defaults handle thought andentry ID validation
-        //check to see if a thought has ever been made, if so, defaults will have updated to a non-zero num
-        //otherwise set defaults to 1
-        let defaults = UserDefaults.standard
-        if defaults.integer(forKey: UserDefaults.Keys.thoughtID) == 0 && defaults.integer(forKey: UserDefaults.Keys.entryID) == 0 {
-            print("user has not set first thought")
-            defaults.set(1, forKey: UserDefaults.Keys.thoughtID)
-            defaults.set(1, forKey: UserDefaults.Keys.entryID)
-        }
+        setDefaults()
         
         return true
     }
@@ -49,7 +48,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) { }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        PersistanceService.saveContext()
+        do {
+            try persistentContainer.viewContext.save()
+        } catch let err {
+            print(err)
+        }
+    }
+    
+    func setDefaults() {
+        //defaults handle thought andentry ID validation
+        //check to see if a thought has ever been made, if so, defaults will have updated to a non-zero num
+        //otherwise set defaults to 1
+        let defaults = UserDefaults.standard
+        if defaults.integer(forKey: UserDefaults.Keys.thoughtID) == 0 && defaults.integer(forKey: UserDefaults.Keys.entryID) == 0 {
+            print("user has not set first thought")
+            defaults.set(1, forKey: UserDefaults.Keys.thoughtID)
+            defaults.set(1, forKey: UserDefaults.Keys.entryID)
+        }
     }
 
 }

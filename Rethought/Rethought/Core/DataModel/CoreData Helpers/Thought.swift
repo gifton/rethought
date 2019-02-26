@@ -33,10 +33,13 @@ final class Thought: NSManagedObject {
         return recentEntry.date
     }
     
-    var allEntries: [Entry]? {
+    var allEntries: [Entry] {
         get {
-            guard let entries: Entry = entries else { return nil}
-            return entries
+            var enwEnt = [Entry]()
+            for ent in entries {
+                enwEnt.append(ent)
+            }
+            return enwEnt
         }
     }
     
@@ -51,5 +54,7 @@ final class Thought: NSManagedObject {
     }
 }
 extension Thought: Managed {
-    
+    static var defaultSortDescriptors: [NSSortDescriptor] {
+        return [NSSortDescriptor(key: #keyPath(date), ascending: false)]
+    }
 }

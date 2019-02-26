@@ -14,12 +14,12 @@ import CoreLocation
 
 final class Entry: NSManagedObject {
     //core data attributes
-    @NSManaged fileprivate(set) var date:         Date
     @NSManaged fileprivate(set) var id:           String
     @NSManaged fileprivate(set) var detail:       String?
     @NSManaged fileprivate(set) var title:        String?
-    @NSManaged fileprivate(set) var rawImage:     Data?
     @NSManaged fileprivate(set) var rawLink:      String?
+    @NSManaged fileprivate(set) var date:         Date
+    @NSManaged fileprivate(set) var rawImage:     Data?
     @NSManaged fileprivate(set) var rawRecording: Data?
     
     @NSManaged fileprivate var latitude:          NSNumber?
@@ -27,6 +27,7 @@ final class Entry: NSManagedObject {
     
     // MARK: public facing varibales
     @NSManaged public fileprivate(set) var thought: Thought
+    
     //calculated values
     //image returns UIImage, consider creating custom data transformer
     var image: UIImage? {

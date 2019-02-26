@@ -31,7 +31,6 @@ extension Managed {
     }
 }
 
-
 extension Managed where Self: NSManagedObject {
     static var entityName: String { return entity().name!  }
     

@@ -26,7 +26,7 @@ class DashboardViewModel: DashboardViewModelDelegate {
     }
     
     //connect core data
-    public var moc: NSManagedObjectContext
+    public var moc: NSManagedObjectContext!
     private var thoughts = [Thought]()
     
     private var entries: [Entry] {
@@ -46,7 +46,8 @@ class DashboardViewModel: DashboardViewModelDelegate {
     //set moc at initialization
     init(moc: NSManagedObjectContext) {
         self.moc = moc
-        
+        print("initialzed moc!")
+        print(moc)
         //set thoughts
         self.thoughts = fetchThoughts()
     }
@@ -83,7 +84,15 @@ extension DashboardViewModel {
     }
     
     func fetchThoughts() -> [Thought] {
-        return Thought.fetch(in: moc)
+//        let request = Thought.fetchRequest()
+//        do {
+//            let result = try moc.fetch(request)
+//            return result as! [Thought]
+//        } catch let err {
+//            print("there was an error fetching: \(err)")
+//        }
+//        fatalError("fwk")
+        return [Thought]()
     }
     
     func sendThoughtToDB(_ newThought: Thought) -> Bool {
