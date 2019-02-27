@@ -338,7 +338,6 @@
 			isa = PBXGroup;
 			children = (
 				D701AACC2225FAEB00AEB27F /* Replicator */,
-				D75B88C721BB70C10023784F /* Info.plist */,
 				D75B88EB21BC98A80023784F /* Resources */,
 				D75B88D421BC53150023784F /* Core */,
 				D739400021F88A7800D2B736 /* Objects */,
@@ -389,6 +388,7 @@
 		D75B88EB21BC98A80023784F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D75B88C721BB70C10023784F /* Info.plist */,
 				D71B534521E6FFB10030D5C6 /* layout.jpg */,
 				D71B534621E6FFB10030D5C6 /* layout@2x.jpg */,
 				D71B534721E6FFB10030D5C6 /* layout@3x.jpg */,
