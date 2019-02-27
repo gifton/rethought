@@ -13,6 +13,7 @@ Rethought is an application designed to help keep track of your thoughts, and co
 
 ## usage 
 * /Resources - All fonts, and images
+* /Replicator - When a user opens the app for the first time, load a few thoughts into core data
 * /Core - Thought, Entry, Persistant service, and several mutations of data types. 
   * /DataModel - All core data objects + helper functions
 * /Objects - ThoughtCard, EmojiDisplay, EntryBar, ReText and ReTextField, NewEntryButton, EntryCountView
@@ -22,6 +23,7 @@ Rethought is an application designed to help keep track of your thoughts, and co
 * Helpers - Application constants(sizing, fonts, colors), styling assistants
 * Extensions - Apples UIKit object conveniance extensions
 * /ViewController - All views and controllers programmatically laid out
+  * /Root = Views, controller and delegate for rootView
   * /createEntry - Views and controllers to create Text, Image, Link, and Audio Entries
   * /Dashboard - View, Controller, and Delegate for The main Homepage of rethought
   * /Thought - View, Controller, and Delegate for display of thoughts and related thoughts
