@@ -227,7 +227,11 @@
 		D7043F2622070418006EC7C6 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
-				D7913153221EAA2700A4F140 /* CoreData Helpers */,
+				D7913157221EABC900A4F140 /* EntryStruct.swift */,
+				D7913151221EA73C00A4F140 /* Entry.swift */,
+				D7913159221EB75500A4F140 /* Thought.swift */,
+				D7043F2722078270006EC7C6 /* Managed+Objects.swift */,
+				D7913154221EAA4200A4F140 /* MOCExtension.swift */,
 				D791314E221EA53800A4F140 /* RETHOUGHT.xcdatamodeld */,
 			);
 			path = DataModel;
@@ -337,9 +341,9 @@
 		D75B88B721BB70C00023784F /* rethought */ = {
 			isa = PBXGroup;
 			children = (
-				D701AACC2225FAEB00AEB27F /* Replicator */,
 				D75B88C721BB70C10023784F /* Info.plist */,
 				D75B88EB21BC98A80023784F /* Resources */,
+				D701AACC2225FAEB00AEB27F /* Replicator */,
 				D75B88D421BC53150023784F /* Core */,
 				D739400021F88A7800D2B736 /* Objects */,
 				D75B88E121BC566C0023784F /* ViewModel */,
@@ -442,26 +446,6 @@
 				D704ED482221D51F00F91A9A /* URL.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		D7913153221EAA2700A4F140 /* CoreData Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				D7913156221EABA900A4F140 /* Entries */,
-				D7913151221EA73C00A4F140 /* Entry.swift */,
-				D7913159221EB75500A4F140 /* Thought.swift */,
-				D7043F2722078270006EC7C6 /* Managed+Objects.swift */,
-				D7913154221EAA4200A4F140 /* MOCExtension.swift */,
-			);
-			path = "CoreData Helpers";
-			sourceTree = "<group>";
-		};
-		D7913156221EABA900A4F140 /* Entries */ = {
-			isa = PBXGroup;
-			children = (
-				D7913157221EABC900A4F140 /* EntryStruct.swift */,
-			);
-			path = Entries;
 			sourceTree = "<group>";
 		};
 		D7F967AE22000D5F00D10919 /* Thought */ = {
