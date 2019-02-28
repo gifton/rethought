@@ -118,7 +118,7 @@ extension DashboardHeader: UICollectionViewDataSource {
         for _ in 0...2 {
             inputs += randomTitles
         }
-        cell.title.addText(size: 9, font: .bodyLight, string: inputs[indexPath.row])
+//        cell.title.addText(size: 9, font: .bodyLight, string: inputs[indexPath.row])
         return cell
     }
     

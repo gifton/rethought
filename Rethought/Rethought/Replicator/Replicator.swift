@@ -21,11 +21,14 @@ class Replicator: ReplicatorProtocol {
     
     func createThoughts() {
         print("creating thoughts...")
-        for count in Range(0...3) {
-            let thought = Thought(moc: moc)
-            thought.createThought(title: titles[count], icon: icons[count])
-            print(thought.icon)
+        for _ in Range(0...2) {
+            for count in Range(0...3) {
+                let thought = Thought(moc: moc)
+                thought.createThought(title: titles[count], icon: icons[count])
+                print(thought.icon)
+            }
         }
+        
         saveReplicatorData()
     }
     

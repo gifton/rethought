@@ -27,10 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.makeKeyAndVisible()
             self.persistentContainer = container
             self.isUsersFirstTime()
-            let rootVC = DashboardController(withContext: self.persistentContainer.viewContext)
+            let rootVC = RootViewController()
     
             let nav = UINavigationController(rootViewController: rootVC)
-            nav.isNavigationBarHidden = true
             
             self.window?.rootViewController = nav
         }
