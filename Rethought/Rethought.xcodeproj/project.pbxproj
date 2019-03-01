@@ -88,6 +88,9 @@
 		D7B27CDD22053C0F00A09E0F /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B27CDC22053C0F00A09E0F /* PersistanceService.swift */; };
 		D7BEFC6F21F78E6800D55C8E /* DashboardHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEFC6E21F78E6800D55C8E /* DashboardHeader.swift */; };
 		D7BEFC7321F7F58A00D55C8E /* ReccomendedThought.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEFC7221F7F58A00D55C8E /* ReccomendedThought.swift */; };
+		D7E0D3C322287861007A3578 /* RootEntriesContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E0D3C222287861007A3578 /* RootEntriesContentCell.swift */; };
+		D7E0D3C6222878AF007A3578 /* RootThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E0D3C5222878AF007A3578 /* RootThoughtCell.swift */; };
+		D7E0D3C8222878C9007A3578 /* RootEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E0D3C7222878C9007A3578 /* RootEntryCell.swift */; };
 		D7F967AB2200066F00D10919 /* ThoughtDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F967AA2200066F00D10919 /* ThoughtDetailViewModel.swift */; };
 		D7F967AD2200069E00D10919 /* ThoughtDetailViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F967AC2200069E00D10919 /* ThoughtDetailViewModelDelegate.swift */; };
 		D7F9FD5421F9C8E000E73BFC /* linkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F9FD5321F9C8E000E73BFC /* linkCell.swift */; };
@@ -185,6 +188,9 @@
 		D7B27CDC22053C0F00A09E0F /* PersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
 		D7BEFC6E21F78E6800D55C8E /* DashboardHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHeader.swift; sourceTree = "<group>"; };
 		D7BEFC7221F7F58A00D55C8E /* ReccomendedThought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReccomendedThought.swift; sourceTree = "<group>"; };
+		D7E0D3C222287861007A3578 /* RootEntriesContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootEntriesContentCell.swift; sourceTree = "<group>"; };
+		D7E0D3C5222878AF007A3578 /* RootThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootThoughtCell.swift; sourceTree = "<group>"; };
+		D7E0D3C7222878C9007A3578 /* RootEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootEntryCell.swift; sourceTree = "<group>"; };
 		D7F967AA2200066F00D10919 /* ThoughtDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailViewModel.swift; sourceTree = "<group>"; };
 		D7F967AC2200069E00D10919 /* ThoughtDetailViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailViewModelDelegate.swift; sourceTree = "<group>"; };
 		D7F9FD5321F9C8E000E73BFC /* linkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = linkCell.swift; sourceTree = "<group>"; };
@@ -242,6 +248,7 @@
 				D701AAD52226230500AEB27F /* RootView.swift */,
 				D701AAD72226230E00AEB27F /* RootViewController.swift */,
 				D701AAD92226231800AEB27F /* RootDelegate.swift */,
+				D7E0D3C422287868007A3578 /* Cells */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -514,6 +521,16 @@
 			path = Entries;
 			sourceTree = "<group>";
 		};
+		D7E0D3C422287868007A3578 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D7E0D3C222287861007A3578 /* RootEntriesContentCell.swift */,
+				D7E0D3C5222878AF007A3578 /* RootThoughtCell.swift */,
+				D7E0D3C7222878C9007A3578 /* RootEntryCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		D7F967AE22000D5F00D10919 /* Thought */ = {
 			isa = PBXGroup;
 			children = (
@@ -696,8 +713,10 @@
 				D713102721F01631001D7584 /* NewTextEntry.swift in Sources */,
 				D702B21121DBFECA003DCA83 /* BackDelegate.swift in Sources */,
 				D701AAE122277EE200AEB27F /* RootViewModelDelegate.swift in Sources */,
+				D7E0D3C8222878C9007A3578 /* RootEntryCell.swift in Sources */,
 				D713101921EF0436001D7584 /* ThoughtCardController.swift in Sources */,
 				D71FA87821E1525B000706A5 /* ReTextView.swift in Sources */,
+				D7E0D3C322287861007A3578 /* RootEntriesContentCell.swift in Sources */,
 				D7F9FD5821FA58C300E73BFC /* GradientView.swift in Sources */,
 				D75B88D121BC507B0023784F /* Styling.swift in Sources */,
 				D7FFA1DD21D6F785001C3B72 /* ThoughtCell.swift in Sources */,
@@ -710,6 +729,7 @@
 				D701AAD02225FC2500AEB27F /* Replicator.swift in Sources */,
 				D71FA87621E038B5000706A5 /* ThoughtIcon.swift in Sources */,
 				D701AADA2226231800AEB27F /* RootDelegate.swift in Sources */,
+				D7E0D3C6222878AF007A3578 /* RootThoughtCell.swift in Sources */,
 				D711281221F30C4B006C732E /* DataController.swift in Sources */,
 				D76BB3F22213A4E200A6187C /* UIView.swift in Sources */,
 				D75B891021BE192E0023784F /* ProfileViewController.swift in Sources */,

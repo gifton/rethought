@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 
-protocol RootViewModelDelegate: UITableViewDelegate, UICollectionViewDelegate, UITableViewDataSource, UICollectionViewDataSource {
-    func getRecentEntries() -> [ReccomendedThought]
-    func getThoughts() -> [DashboardThought]
+protocol RootViewModelDelegate {
+    func getRecentEntries() -> [EntryPreview]
+    func getThoughts() -> [ThoughtPreview]
     func retrieve(thought id: String) -> Thought?
     func retrieve(entry id: String) -> Entry?
 }

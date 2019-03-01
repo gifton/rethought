@@ -45,4 +45,5 @@ public enum EntryType: String {
     case text = "TEXT"
     case link = "LINK"
     case recording = "RECORDING"
+    case all = "ALL"
 }

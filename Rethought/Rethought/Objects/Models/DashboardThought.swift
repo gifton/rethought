@@ -8,21 +8,24 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 //custom thought class
-class DashboardThought {
+struct ThoughtPreview {
     //minimum req's
-    let icon: String
+    let icon: ThoughtIcon
     let createdAt: Date
     let entryCount: EntryCount
     let thoughtID: String
     let title: String
+    let location: CLLocation
     
-    init(icon: String, createdAt: Date,  thoughtID: String, entryCount: EntryCount, title: String) {
-        self.icon = icon
-        self.createdAt = createdAt
-        self.thoughtID = thoughtID
-        self.entryCount = entryCount
-        self.title = title
+    init(thought: Thought) {
+        self.icon       = thought.icon
+        self.createdAt  = thought.date
+        self.entryCount = thought.entryCount
+        self.thoughtID  = thought.id
+        self.title      = thought.title
+        self.location   = thought.location ?? CLLocation()
     }
 }

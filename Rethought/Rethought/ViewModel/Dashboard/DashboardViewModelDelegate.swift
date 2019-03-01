@@ -11,7 +11,7 @@ import UIKit
 
 protocol DashboardViewModelDelegate {
     func getRecentEntries() -> [ReccomendedThought]
-    func getThoughts() -> [DashboardThought]
+    func getThoughts() -> [ThoughtPreview]
     func retrieve(thought id: String) -> Thought?
     func retrieve(entry id: String) -> Entry?
 }

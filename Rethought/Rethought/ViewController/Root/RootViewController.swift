@@ -11,23 +11,30 @@ import UIKit
 
 class RootViewController: UIViewController {
     
-    lazy var searchBar: UISearchBar = UISearchBar()
+    var searchBar: UISearchBar = UISearchBar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let rootView = RootView()
-        view = rootView
-        searchBar.placeholder = "Search!"
-        searchBar.sizeToFit()
-        let leftNavBarButton = UIBarButtonItem(customView:searchBar)
-        self.navigationItem.leftBarButtonItem = leftNavBarButton
         self.title = "Rethought"
-        
-        
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        let bounds = self.navigationController!.navigationBar.bounds
-        self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: 100)
+    var model: RootViewModel! {
+        didSet {
+            let rootView = RootView()
+            rootView.model = model
+            self.view = rootView
+        }
+    }
+    
+    init(with model: RootViewModel) {
+        super.init(nibName: nil, bundle: nil)
+        self.viewDidLoad()
+        let view = RootView(frame: .zero)
+        view.model = model
+        self.view = view
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

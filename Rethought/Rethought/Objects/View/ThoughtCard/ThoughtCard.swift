@@ -294,7 +294,7 @@ extension ThoughtCard {
             self.cameraBtn.addBorders(edges: [.bottom], color: UIColor(hex: "13ACBE"), thickness: 4)
         case .recording:
             self.micBtn.addBorders(edges: [.bottom], color: UIColor(hex: "13ACBE"), thickness: 4)
-        case .text:
+        default:
             self.noteBtn.addBorders(edges: [.bottom], color: UIColor(hex: "13ACBE"), thickness: 4)
         }
     }
