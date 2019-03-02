@@ -9,15 +9,24 @@
 import Foundation
 import UIKit
 import CoreData
+import CoreLocation
 
 @objc(Thought)
 public class Thought: NSManagedObject {
-    @NSManaged fileprivate(set) var date:    Date
-    @NSManaged fileprivate(set) var id:      String
-    @NSManaged fileprivate(set) var title:   String
-    @NSManaged fileprivate(set) var rawIcon: String
+    @NSManaged fileprivate(set) var date:      Date
+    @NSManaged fileprivate(set) var id:        String
+    @NSManaged fileprivate(set) var title:     String
+    @NSManaged fileprivate(set) var rawIcon:   String
+    @NSManaged fileprivate(set) var latitude:  NSNumber?
+    @NSManaged fileprivate(set) var longitude: NSNumber?
     
     @NSManaged fileprivate(set) var entries: Set<Entry>
+    
+    //return location as CLLocation
+    public var location: CLLocation? {
+        guard let lat = latitude, let lon = longitude else { return nil }
+        return CLLocation(latitude: lat.doubleValue, longitude: lon.doubleValue)
+    }
     
     var icon: ThoughtIcon {
         get {

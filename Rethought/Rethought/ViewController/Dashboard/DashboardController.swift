@@ -36,7 +36,7 @@ class DashboardController: UIViewController {
             self.thoughts = model.getThoughts()
         }
     }
-    var thoughts: [DashboardThought]?
+    var thoughts: [ThoughtPreview]?
 }
 
 extension DashboardController: DashboardDelegate {

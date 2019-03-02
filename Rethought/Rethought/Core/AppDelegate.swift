@@ -17,20 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-//        let rootVC = DashboardController(withContext: PersistanceService.context)
-//        let nav = UINavigationController(rootViewController: rootVC)
-//        nav.isNavigationBarHidden = true
-//        window?.rootViewController = nav
-        
         createThoughtContainer { (container) in
             self.window = UIWindow(frame: ViewSize.FRAME)
             self.window?.makeKeyAndVisible()
             self.persistentContainer = container
             self.isUsersFirstTime()
-            let rootVC = DashboardController(withContext: self.persistentContainer.viewContext)
-    
+            let rootModel = RootViewModel(with: container.viewContext)
+            let rootVC = RootViewController(with: rootModel)
+            
             let nav = UINavigationController(rootViewController: rootVC)
-            nav.isNavigationBarHidden = true
+            nav.navigationBar.prefersLargeTitles = true
+            
+            nav.navigationBar.barTintColor = UIColor(hex: "F7F5F0")
             
             self.window?.rootViewController = nav
         }

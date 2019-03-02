@@ -113,12 +113,12 @@ extension DashboardHeader: UICollectionViewDataSource {
     
     //set cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LinkCell.identifier, for: indexPath) as! LinkCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EntryCell.identifier, for: indexPath) as! EntryCell
         var inputs: [String] = []
         for _ in 0...2 {
             inputs += randomTitles
         }
-        cell.title.addText(size: 9, font: .bodyLight, string: inputs[indexPath.row])
+//        cell.title.addText(size: 9, font: .bodyLight, string: inputs[indexPath.row])
         return cell
     }
     

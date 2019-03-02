@@ -51,16 +51,6 @@ class ThoughtCell: UICollectionViewCell {
         recievedContext()
     }
     
-    public func giveContext(with dashboardThought: DashboardThought) {
-        self.icon       = dashboardThought.icon
-        self.title      = dashboardThought.title
-        self.entryCount = dashboardThought.entryCount.text
-        self.linkCount  = dashboardThought.entryCount.link
-        self.mediaCount = dashboardThought.entryCount.image
-        self.dayCount   = 232
-        recievedContext()
-    }
-    
     private func setupCell() {
         let lbls = [linkLabel, entryLabel, mediaLabel]
         let stack = UIStackView(arrangedSubviews: lbls)

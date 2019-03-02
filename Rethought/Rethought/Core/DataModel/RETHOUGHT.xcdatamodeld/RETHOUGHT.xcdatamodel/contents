@@ -15,12 +15,14 @@
     <entity name="Thought" representedClassName="Thought" syncable="YES">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="id" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="rawIcon" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="title" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
         <relationship name="entries" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Entry" inverseName="thought" inverseEntity="Entry" syncable="YES"/>
     </entity>
     <elements>
         <element name="Entry" positionX="-18" positionY="54" width="128" height="195"/>
-        <element name="Thought" positionX="-45" positionY="0" width="128" height="120"/>
+        <element name="Thought" positionX="-45" positionY="0" width="128" height="150"/>
     </elements>
 </model>

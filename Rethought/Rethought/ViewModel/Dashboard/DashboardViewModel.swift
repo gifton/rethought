@@ -14,12 +14,12 @@ import CoreData
 class DashboardViewModel: DashboardViewModelDelegate {
     
     //return list of ALL thoughts
-    func getThoughts() -> [DashboardThought] {
-        var thoughts = [DashboardThought]()
+    func getThoughts() -> [ThoughtPreview] {
+        var thoughts = [ThoughtPreview]()
         print("COUNT: \(self.thoughts.count)")
         print("====")
         for thought in self.thoughts {
-            let t = DashboardThought(icon: thought.icon.icon, createdAt: thought.date, thoughtID: thought.id, entryCount: thought.entryCount, title: thought.title)
+            let t = ThoughtPreview(thought: thought)
             thoughts.append(t)
         }
         return thoughts
