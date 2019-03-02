@@ -71,7 +71,7 @@ class RootEntriesContentCell: UITableViewCell {
         
         entryTitle.frame  = CGRect(x: 20, y: 5, width: 100, height: 30)
         allEntries.frame  = CGRect(x: ViewSize.SCREEN_WIDTH - (80 + 20), y: 17, width: 80, height: 16)
-        entryView.frame   = CGRect(x: 0, y: 50, width: ViewSize.SCREEN_WIDTH - 15, height: 129)
+        entryView.frame   = CGRect(x: 0, y: 35, width: ViewSize.SCREEN_WIDTH - 15, height: 129)
         randomEntry.frame = CGRect(x: 20, y: 195 + 10, width: 150, height: 35)
         newThought.frame  = CGRect(x: ViewSize.SCREEN_WIDTH - (150 + 20), y: 195 + 10, width: 150, height: 35)
     }

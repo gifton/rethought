@@ -39,12 +39,14 @@ class EntryTypeView: UIView {
         addSubview(stack)
     }
     
-    func buildLabel(type: EntryType) -> UILabel {
+    func buildLabel(type: EntryType) -> UIView {
+        
         let lbl = UILabel()
-        lbl.text = type.rawValue.lowercased()
+        lbl.text = "  \(type.rawValue.lowercased())"
         lbl.font = UIFont.reBody(ofSize: 16)
         lbl.textColor = UIColor(hex: "876CBF")
         lbl.addBorders(edges: [.bottom])
+        
         
         return lbl
     }

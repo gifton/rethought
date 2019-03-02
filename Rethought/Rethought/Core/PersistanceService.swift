@@ -18,5 +18,4 @@ func createThoughtContainer(completion: @escaping (NSPersistentContainer) -> ())
             completion(container)
         }
     }
-    print("four")
 }
