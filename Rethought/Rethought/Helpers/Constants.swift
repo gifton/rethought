@@ -47,3 +47,4 @@ public enum EntryType: String {
     case recording = "RECORDING"
     case all = "ALL"
 }
+

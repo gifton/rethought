@@ -95,7 +95,7 @@ extension RootViewModel: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
-            return 130
+            return 150
         case 1:
             return 250
         default:
@@ -114,11 +114,11 @@ extension RootViewModel: UITableViewDataSource {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: RootEntryViewCell.identifier, for: indexPath) as! RootEntryViewCell
             cell.setCollectionView(with: self)
-            cell.backgroundColor = UIColor(hex: "FAFAF6")
+            cell.backgroundColor = UIColor(hex: "F9F9F9")
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: RootEntriesContentCell.identifier, for: indexPath) as! RootEntriesContentCell
-            cell.backgroundColor = UIColor(hex: "FAFAF6")
+            cell.backgroundColor = UIColor(hex: "F9F9F9")
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: RootThoughtCell.identifier, for: indexPath) as! RootThoughtCell

@@ -40,13 +40,20 @@ class RootThoughtCell: UITableViewCell {
     
     // MARK: Objects
     let main = UIView()
+    let iconLabel           = UILabel()
+    let titleLabel          = UILabel()
+    let locationLabel       = UILabel()
+    let textEntryCount      = UILabel()
+    let imageEntryCount     = UILabel()
+    let linkEntryCount      = UILabel()
+    let recordingEntryLabel = UILabel()
+    let dateLabel           = UILabel()
     
     private func build() {
         main.frame = CGRect(x: 15, y: 7.5, width: ViewSize.SCREEN_WIDTH - 30, height: 183)
         addSubview(main)
-        main.backgroundColor = UIColor(hex: "F7F5F0")
+        main.backgroundColor = UIColor(hex: "F9F9F9")
         main.layer.cornerRadius = 8
-        print(frame)
     }
     
 }

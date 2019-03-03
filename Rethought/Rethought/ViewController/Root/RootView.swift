@@ -12,13 +12,14 @@ import UIKit
 class RootView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor(hex: "FAFAF6")
+        backgroundColor = .white
         
     }
     
     var model: RootViewModel! {
         didSet {
             setTableView()
+            print("model set")
         }
     }
     
@@ -28,9 +29,10 @@ class RootView: UIView {
     
     let recentThoughts: UITableView = {
         let tv = UITableView()
-        tv.frame = ViewSize.FRAME
-        tv.backgroundColor = UIColor(hex: "F7F5F0")
+        tv.frame = CGRect(x: 0, y: 110, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - 150)
+        tv.backgroundColor = .white
         tv.separatorStyle = .none
+        tv.showsVerticalScrollIndicator = false
         return tv
     }()
         
