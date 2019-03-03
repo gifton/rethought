@@ -29,10 +29,13 @@ class RootEntryViewCell: UITableViewCell {
     
     let quickThoughtView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 25
         layout.itemSize = CGSize(width: 74, height: 125)
         layout.scrollDirection = .horizontal
-        let cv = UICollectionView(frame: CGRect(x: 10, y: 0, width: ViewSize.SCREEN_WIDTH - 10, height: 125), collectionViewLayout: layout)
+        
+        let cv = UICollectionView(frame: CGRect(x: 10, y: 10, width: ViewSize.SCREEN_WIDTH - 10, height: 125), collectionViewLayout: layout)
         cv.backgroundColor = .clear
+        cv.showsHorizontalScrollIndicator = false
         
         return cv
     }()

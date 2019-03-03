@@ -86,6 +86,8 @@
 		D791315A221EB75500A4F140 /* Thought.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7913159221EB75500A4F140 /* Thought.swift */; };
 		D79B1EFA21CC6B0000E951D3 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B1EF921CC6B0000E951D3 /* UIFont.swift */; };
 		D7B27CDD22053C0F00A09E0F /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B27CDC22053C0F00A09E0F /* PersistanceService.swift */; };
+		D7BD1840222B37AC00423960 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD183F222B37AC00423960 /* UINavigationController.swift */; };
+		D7BD1842222B537100423960 /* MasterTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD1841222B537100423960 /* MasterTabController.swift */; };
 		D7BEFC6F21F78E6800D55C8E /* DashboardHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEFC6E21F78E6800D55C8E /* DashboardHeader.swift */; };
 		D7BEFC7321F7F58A00D55C8E /* ReccomendedThought.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEFC7221F7F58A00D55C8E /* ReccomendedThought.swift */; };
 		D7E0D3C322287861007A3578 /* RootEntriesContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E0D3C222287861007A3578 /* RootEntriesContentCell.swift */; };
@@ -186,6 +188,8 @@
 		D7913159221EB75500A4F140 /* Thought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thought.swift; sourceTree = "<group>"; };
 		D79B1EF921CC6B0000E951D3 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		D7B27CDC22053C0F00A09E0F /* PersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
+		D7BD183F222B37AC00423960 /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
+		D7BD1841222B537100423960 /* MasterTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterTabController.swift; sourceTree = "<group>"; };
 		D7BEFC6E21F78E6800D55C8E /* DashboardHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHeader.swift; sourceTree = "<group>"; };
 		D7BEFC7221F7F58A00D55C8E /* ReccomendedThought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReccomendedThought.swift; sourceTree = "<group>"; };
 		D7E0D3C222287861007A3578 /* RootEntriesContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootEntriesContentCell.swift; sourceTree = "<group>"; };
@@ -438,6 +442,7 @@
 		D75B88EA21BC92410023784F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D7BD1841222B537100423960 /* MasterTabController.swift */,
 				D701AAD4222622FA00AEB27F /* Root */,
 				D713102521F015D3001D7584 /* createEntry */,
 				D713101321EF0409001D7584 /* Dashboard */,
@@ -502,6 +507,7 @@
 				D76BB3E42213A4E200A6187C /* UITextView.swift */,
 				D76BB3E92213A4E200A6187C /* UIView.swift */,
 				D704ED482221D51F00F91A9A /* URL.swift */,
+				D7BD183F222B37AC00423960 /* UINavigationController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -774,12 +780,14 @@
 				D79B1EFA21CC6B0000E951D3 /* UIFont.swift in Sources */,
 				D75B88D021BC507B0023784F /* Constants.swift in Sources */,
 				D713101521EF0417001D7584 /* DashboardController.swift in Sources */,
+				D7BD1840222B37AC00423960 /* UINavigationController.swift in Sources */,
 				D713102921F068ED001D7584 /* NewImageEntry.swift in Sources */,
 				D739400421F88B8300D2B736 /* ReTextField.swift in Sources */,
 				D7F967AB2200066F00D10919 /* ThoughtDetailViewModel.swift in Sources */,
 				D76BB3F32213A4E200A6187C /* UIImage.swift in Sources */,
 				D77DC6C222016079007C165F /* EntryCountView.swift in Sources */,
 				D70EA8DE21E301240071E257 /* Sizes.swift in Sources */,
+				D7BD1842222B537100423960 /* MasterTabController.swift in Sources */,
 				D7913155221EAA4200A4F140 /* MOCExtension.swift in Sources */,
 				D76BB3F52213A4E200A6187C /* UIColor.swift in Sources */,
 				D75B891E21C07D910023784F /* ThoughtPreview.swift in Sources */,

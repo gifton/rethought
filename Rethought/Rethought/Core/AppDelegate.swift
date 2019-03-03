@@ -20,22 +20,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         createThoughtContainer { (container) in
             self.window = UIWindow(frame: ViewSize.FRAME)
             self.window?.makeKeyAndVisible()
+            
             self.persistentContainer = container
             self.isUsersFirstTime()
+            
             let rootModel = RootViewModel(with: container.viewContext)
-            let rootVC = RootViewController(with: rootModel)
+            let rootVC = MasterTabbar(model: rootModel)
             
             let nav = UINavigationController(rootViewController: rootVC)
-            nav.navigationBar.prefersLargeTitles = true
-            
-            nav.navigationBar.barTintColor = UIColor(hex: "F7F5F0")
-            
+            self.setNav(nav: nav)
             self.window?.rootViewController = nav
         }
         
-        
-        
         return true
+    }
+    
+    func setNav(nav: UINavigationController) {
+        
+        UINavigationBar.appearance().shadowImage = UIImage(color: .white)
+        nav.hidesBarsOnTap = false
+        nav.hidesBarsOnSwipe = false
+        
+        
+        setReNavbar(nav: nav.navigationBar)
+    }
+    
+    func setReNavbar(nav: UINavigationBar) {
+        nav.barTintColor = .white
+        let firstFrame = CGRect(x: 10, y: 0, width: nav.frame.width/2, height: nav.frame.height)
+        let secondFrame = CGRect(x: 10, y: 30, width: nav.frame.width/2, height: nav.frame.height)
+        
+        let firstLabel = UILabel(frame: firstFrame)
+        firstLabel.text = "Rethought"
+        firstLabel.textAlignment = .left
+        let font = firstLabel.font
+        let cfont = font?.fontName.components(separatedBy: "-").first
+        firstLabel.font = UIFont(name: "\(cfont!)-heavy", size: 35)
+        
+        let secondLabel = UILabel(frame: secondFrame)
+        secondLabel.text = "March 24th, 2019"
+        secondLabel.textColor = UIColor(hex: "868686")
+        secondLabel.font = .boldSystemFont(ofSize: 14)
+        secondLabel.textAlignment = .left
+        
+        firstLabel.clipsToBounds = true
+        secondLabel.clipsToBounds = true
+        
+        nav.addSubview(firstLabel)
+        nav.addSubview(secondLabel)
     }
 
     func applicationWillResignActive(_ application: UIApplication) { }
@@ -74,3 +106,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate: UINavigationBarDelegate {
+    
+}

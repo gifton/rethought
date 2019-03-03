@@ -15,7 +15,7 @@ class RootViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Rethought"
+        
     }
     
     var model: RootViewModel! {
@@ -38,3 +38,4 @@ class RootViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
