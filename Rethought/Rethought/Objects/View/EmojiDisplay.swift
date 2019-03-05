@@ -31,10 +31,10 @@ class EmojiDisplay: UITextView {
     var isCompleted: Bool = false
     
     public func styleCell() {
-        self.backgroundColor = .cardLabelBackgroundLight
+        self.backgroundColor = .cardLabelBackgroundDark
         self.layer.cornerRadius = 6
         self.textAlignment = .center
-        self.font = .reBody(ofSize: 45)
+        self.font = .reBody(ofSize: 30)
         self.isEditable = true
     }
 }

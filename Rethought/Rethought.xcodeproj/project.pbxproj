@@ -30,6 +30,7 @@
 		D7087E7E222E83390081967F /* createNewEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7087E7D222E83390081967F /* createNewEntryCell.swift */; };
 		D7087E81222E839B0081967F /* ThinkViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7087E80222E839B0081967F /* ThinkViewModelDelegate.swift */; };
 		D7087E83222E83A30081967F /* ThinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7087E82222E83A30081967F /* ThinkViewModel.swift */; };
+		D7087E86222E99CF0081967F /* NewThoughtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7087E85222E99CF0081967F /* NewThoughtView.swift */; };
 		D70EA8DE21E301240071E257 /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8DD21E301240071E257 /* Sizes.swift */; };
 		D711281021F2A76E006C732E /* NewAudioEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D711280F21F2A76E006C732E /* NewAudioEntry.swift */; };
 		D711281221F30C4B006C732E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D711281121F30C4B006C732E /* DataController.swift */; };
@@ -140,6 +141,7 @@
 		D7087E7D222E83390081967F /* createNewEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createNewEntryCell.swift; sourceTree = "<group>"; };
 		D7087E80222E839B0081967F /* ThinkViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThinkViewModelDelegate.swift; sourceTree = "<group>"; };
 		D7087E82222E83A30081967F /* ThinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThinkViewModel.swift; sourceTree = "<group>"; };
+		D7087E85222E99CF0081967F /* NewThoughtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewThoughtView.swift; sourceTree = "<group>"; };
 		D70EA8DD21E301240071E257 /* Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
 		D711280F21F2A76E006C732E /* NewAudioEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAudioEntry.swift; sourceTree = "<group>"; };
 		D711281121F30C4B006C732E /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
@@ -290,10 +292,11 @@
 		D701AAE222277F7E00AEB27F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D701AADB2226436E00AEB27F /* EntryTypeView.swift */,
+				D7087E85222E99CF0081967F /* NewThoughtView.swift */,
 				D704ED472221338D00F91A9A /* Profile */,
 				D713102021EFAC15001D7584 /* ThoughtCard */,
 				D76CBF912202F34D0087FC07 /* EntryBar */,
+				D701AADB2226436E00AEB27F /* EntryTypeView.swift */,
 				D71FA87521E038B5000706A5 /* ThoughtIcon.swift */,
 				D739400121F88AE100D2B736 /* EmojiDisplay.swift */,
 				D71FA87721E1525B000706A5 /* ReTextView.swift */,
@@ -822,6 +825,7 @@
 				D713101B21EF043F001D7584 /* ThoughtCard.swift in Sources */,
 				D713101D21EF0503001D7584 /* ThoughtCardDelegate.swift in Sources */,
 				D739400A21F88D4300D2B736 /* NewEntryButton.swift in Sources */,
+				D7087E86222E99CF0081967F /* NewThoughtView.swift in Sources */,
 				D7FFA1C921D4C050001C3B72 /* ThoughtDetailDelegate.swift in Sources */,
 				D711281021F2A76E006C732E /* NewAudioEntry.swift in Sources */,
 				D75B891821BF1F5A0023784F /* ThoughtDetailController.swift in Sources */,

@@ -12,6 +12,7 @@ import UIKit
 class ThinkViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
     }
     
     init(model: ThinkViewModel) {
@@ -19,7 +20,11 @@ class ThinkViewController: UIViewController {
         self.model = model
         
         thinkView = ThinkView(with: self)
-        self.view = thinkView
+        thinkView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(thinkView)
+        thinkView.setAnchor(top: view.safeTopAnchor, leading: view.leadingAnchor, bottom: view.safeBottomAnchor, trailing: view.trailingAnchor, paddingTop: 20, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -41,5 +46,14 @@ extension ThinkViewController: ThinkDelegate {
         print("creating entry for type: \(type)")
     }
     
-    
+    func showKeyboard() {
+        for view in thinkView.subviews {
+            view.frame.origin.y -= 250
+        }
+    }
+    func hideKeyboard() {
+        for view in thinkView.subviews {
+            view.frame.origin.y += 250
+        }
+    }
 }

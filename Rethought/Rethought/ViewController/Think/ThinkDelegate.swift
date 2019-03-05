@@ -12,4 +12,6 @@ import Foundation
 protocol ThinkDelegate {
     func thoughtComponentsCompleted()
     func createEntry(of type: EntryType)
+    func showKeyboard()
+    func hideKeyboard()
 }

@@ -9,65 +9,32 @@
 import Foundation
 import UIKit
 
-class ThinkView: UIView {
+class ThinkView: UIScrollView {
     init(with connector: ThinkDelegate) {
-        super.init(frame: .zero)
-        self.delegate = connector
-        backgroundColor = UIColor(hex: "f9f9f9")
-        setTableView()
+        super.init(frame: CGRect(x: 0, y: 10, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - 120))
+        print("set scrollview")
+        
+        
+        isScrollEnabled = true
+        contentSize.height = ViewSize.SCREEN_HEIGHT - (ViewSize.SCREEN_HEIGHT * 0.21)
+        showsVerticalScrollIndicator = false
+        
+        backgroundColor = UIColor(hex: "f7f7f7")
+        self.connector = connector
+        newThoughtView = NewThoughtView(frame: CGRect(x: 0, y: frame.height - 200, width: 0, height: 0), connector: connector)
+        buildView()
     }
     
-    var delegate: ThinkDelegate?
-    
-    let thinkTable: UITableView = {
-        let tv = UITableView()
-        tv.frame = CGRect(x: 0, y: ViewSize.SCREEN_HEIGHT - 236, width: ViewSize.SCREEN_WIDTH, height: 90)
-        
-        return tv
-    }()
-    
-    func setTableView() {
-        thinkTable.delegate = self
-        thinkTable.dataSource = self
-        thinkTable.register(CreateNewThoughtCell.self, forCellReuseIdentifier: CreateNewThoughtCell.identifier)
-        addSubview(thinkTable)
-        
-        print("tableview added!")
-    }
+    var connector: ThinkDelegate!
+    var newThoughtView: NewThoughtView!
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-}
-
-extension ThinkView: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CreateNewThoughtCell.identifier, for: indexPath)
-        cell.backgroundColor = .white
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+    func buildView() {
+        addSubview(newThoughtView)
     }
 }
 
-extension ThinkView: UITableViewDelegate {
-    
-}
 
-extension ThinkView: ThinkDelegate {
-    func thoughtComponentsCompleted() {
-        thinkTable.frame.origin.y -= 140
-    }
-    
-    func createEntry(of type: EntryType) {
-        print("created entry")
-    }
-}
