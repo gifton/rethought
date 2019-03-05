@@ -19,7 +19,6 @@ class RootView: UIView {
     var model: RootViewModel! {
         didSet {
             setTableView()
-            print("model set")
         }
     }
     

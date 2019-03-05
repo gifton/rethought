@@ -12,7 +12,8 @@ import UIKit
 class RootThoughtCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        build()
+        buildMain()
+        buildView(); styleView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -49,11 +50,32 @@ class RootThoughtCell: UITableViewCell {
     let recordingEntryLabel = UILabel()
     let dateLabel           = UILabel()
     
-    private func build() {
-        main.frame = CGRect(x: 15, y: 7.5, width: ViewSize.SCREEN_WIDTH - 30, height: 183)
+    private func buildMain() {
+        main.frame = CGRect(x: 15, y: 7.5, width: ViewSize.SCREEN_WIDTH - 30, height: 200)
         addSubview(main)
         main.backgroundColor = UIColor(hex: "F9F9F9")
         main.layer.cornerRadius = 8
+    }
+    
+    private func buildView() {
+        main.addSubview(iconLabel)
+        main.addSubview(titleLabel)
+        
+        iconLabel.frame = CGRect(x: 20, y: 20, width: 56, height: 56)
+        titleLabel.frame = CGRect(x: 90, y: 20, width: ViewSize.SCREEN_WIDTH - 110, height: heightForView(text: "Should all gang members bang heavy heavy? or nah?", font: UIFont.boldSystemFont(ofSize: 20), width: ViewSize.SCREEN_WIDTH - 110))
+        
+    }
+    
+    private func styleView() {
+        iconLabel.text = icon
+        iconLabel.backgroundColor = .white
+        iconLabel.textAlignment = .center
+        iconLabel.layer.cornerRadius = 11
+        iconLabel.layer.masksToBounds = true
+        
+        titleLabel.font = .boldSystemFont(ofSize: 20)
+        titleLabel.text = title
+        titleLabel.numberOfLines = 0
     }
     
 }

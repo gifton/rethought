@@ -42,8 +42,9 @@ class RootEntryViewCell: UITableViewCell {
     
     func setCollectionView(with model: RootViewModel) {
         quickThoughtView.register(EntryCell.self, forCellWithReuseIdentifier: EntryCell.identifier)
-        quickThoughtView.delegate = model
+        quickThoughtView.delegate   = model
         quickThoughtView.dataSource = model
+        
         addSubview(quickThoughtView)
     }
 
@@ -55,6 +56,15 @@ class RootEntryCell: UICollectionViewCell {
         self.layer.cornerRadius = 8
         self.frame.origin.y = 5
     }
+    
+    func set(with entry: EntryPreview) {
+        
+    }
+    
+    public var entryId:      String!
+    private var entryType:   EntryType?
+    private var timeSince:   String?
+    private var thoughtIcon: ThoughtIcon?
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

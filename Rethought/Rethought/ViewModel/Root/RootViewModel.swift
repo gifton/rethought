@@ -14,16 +14,21 @@ class RootViewModel: NSObject, RootViewModelDelegate {
     
     init(with moc: NSManagedObjectContext) {
         self.moc = moc
+        super.init()
+        print("RootViewModel set")
+        retrieveContent()
     }
     
-    func getRecentEntries() -> [EntryPreview] {
-        var ents = [EntryPreview]()
-        for entry in entries {
-            let e = EntryPreview(entry: entry)
-            ents.append(e)
+    var entryPreviews: [EntryPreview] {
+        get {
+            var output = [EntryPreview]()
+            for entry in entries {
+                let e = EntryPreview(entry: entry)
+                output.append(e)
+            }
+            
+            return output
         }
-        
-        return ents
     }
     
     func getThoughts() -> [ThoughtPreview] {
@@ -49,18 +54,14 @@ class RootViewModel: NSObject, RootViewModelDelegate {
     private var thoughts: [Thought] = [Thought]()
     private var entries: [Entry] = [Entry]()
     
-    private var moc: NSManagedObjectContext {
-        didSet {
-            retrieveContent()
-        }
-    }
+    private var moc: NSManagedObjectContext!
     
 }
 
 extension RootViewModel {
     private func retrieveContent() {
         let request = Thought.sortedFetchRequest
-        
+        print("recieving core data stack...")
         do {
             let result = try moc.fetch(request)
             self.thoughts = result
@@ -99,17 +100,17 @@ extension RootViewModel: UITableViewDelegate {
         case 1:
             return 250
         default:
-            return 198
+            return 205
         }
     }
 }
 extension RootViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 25
+        print(thoughts.count)
+        return thoughts.count + 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: RootEntryViewCell.identifier, for: indexPath) as! RootEntryViewCell
@@ -122,6 +123,11 @@ extension RootViewModel: UITableViewDataSource {
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: RootThoughtCell.identifier, for: indexPath) as! RootThoughtCell
+//            if let thought: Thought = thoughts[indexPath.row] {
+//                cell.set(with: ThoughtPreview(thought: thought))
+//            } else {
+//                cell.set(with: ThoughtPreview(thought: thoughts.first!))
+//            }
             
             return cell
         }

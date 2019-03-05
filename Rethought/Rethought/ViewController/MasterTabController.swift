@@ -35,9 +35,9 @@ class MasterTabbar: UITabBarController {
         for vc in withVcs {
             vcs.append(vc)
         }
-        let icons = [UIImage(named: "search")!, UIImage(named: "new")!]
+        let icons = [#imageLiteral(resourceName: "Search"), #imageLiteral(resourceName: "new")]
         
-        let iconsSelected = [UIImage(named: "search-selected")!, UIImage(named: "new-selected")!]
+        let iconsSelected = [#imageLiteral(resourceName: "search-selected"), #imageLiteral(resourceName: "new-selected")]
         
         for i in Range(0...1) {
             let vc = UIViewController()
@@ -52,6 +52,7 @@ class MasterTabbar: UITabBarController {
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage()
         UITabBar.appearance().backgroundColor = UIColor.white
+        UITabBar.appearance().tintColor = UIColor(hex: "51DF9F")
         
     }
     

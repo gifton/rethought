@@ -39,3 +39,22 @@ class RootViewController: UIViewController {
     }
 }
 
+extension RootViewController {
+    
+    //all externally connecting funcs
+    func showRandomThought() {
+        //show random thought
+    }
+    
+    func serveThought(_ id: String) {
+        //show random thought
+    }
+    
+    func serveEntry(_ id: String) {
+        //serve entry from horizontal colletion view
+    }
+    
+    func serveEntries(_ type: EntryType) {
+        //serve entrys of specific type
+    }
+}

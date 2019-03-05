@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let secondFrame = CGRect(x: 10, y: 30, width: nav.frame.width/2, height: nav.frame.height)
         
         let firstLabel = UILabel(frame: firstFrame)
-        firstLabel.text = "Rethought"
+        firstLabel.text = "Re:thought"
         firstLabel.textAlignment = .left
         let font = firstLabel.font
         let cfont = font?.fontName.components(separatedBy: "-").first
