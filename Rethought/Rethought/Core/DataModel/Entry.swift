@@ -15,16 +15,18 @@ import CoreLocation
 @objc(Entry)
 public class Entry: NSManagedObject {
     //core data attributes
-    @NSManaged fileprivate(set) var id:           String
-    @NSManaged fileprivate(set) var detail:       String?
-    @NSManaged fileprivate(set) var title:        String?
-    @NSManaged fileprivate(set) var rawLink:      String?
-    @NSManaged fileprivate(set) var date:         Date
-    @NSManaged fileprivate(set) var rawImage:     Data?
-    @NSManaged fileprivate(set) var rawRecording: Data?
+    @NSManaged fileprivate(set) var id:                 String
+    @NSManaged fileprivate(set) var detail:             String?
+    @NSManaged fileprivate(set) var title:              String?
+    @NSManaged fileprivate(set) var rawLink:            String?
+    @NSManaged fileprivate(set) var rawLinkDescription: String?
+    @NSManaged fileprivate(set) var rawLinkImage:       String?
+    @NSManaged fileprivate(set) var rawImage:           Data?
+    @NSManaged fileprivate(set) var rawRecording:       Data?
+    @NSManaged fileprivate(set) var date:               Date
     
-    @NSManaged fileprivate var latitude:          NSNumber?
-    @NSManaged fileprivate var longitude:         NSNumber?
+    @NSManaged fileprivate var latitude:  NSNumber?
+    @NSManaged fileprivate var longitude: NSNumber?
     
     // MARK: public facing varibales
     @NSManaged public fileprivate(set) var thought: Thought
@@ -47,38 +49,21 @@ public class Entry: NSManagedObject {
     var link: EntryLinkObject? {
         get {
             guard let rawLink: String = self.rawLink else { return nil}
+            guard let detail: String = self.detail else { return nil}
+            guard let rawLinkImage: String = self.rawLinkImage else { return nil}
             var linkEntry = EntryLinkObject()
-            let slp = SwiftLinkPreview(session: .shared, workQueue: SwiftLinkPreview.defaultWorkQueue, responseQueue: DispatchQueue.main, cache: DisabledCache.instance)
-            slp.preview(rawLink,
-                        onSuccess: { result in
-                            
-                            //image validation and setter
-                            if let imgUrl: URL = URL(string: result[SwiftLinkResponseKey.image] as! String) {
-                                linkEntry.image = imgUrl
-                            } else {
-                                self.image = UIImage()
-                            }
-                            
-                            //set link objects
-                            linkEntry.shorthand = result[SwiftLinkResponseKey.canonicalUrl] as? String ?? "Not available"
-                            linkEntry.description = result[SwiftLinkResponseKey.description] as? String ?? "Not available"
-                            guard let link: URL = URL(string: result[SwiftLinkResponseKey.finalUrl] as! String) else {
-                                return
-                            }
-                            linkEntry.link = link
-            },
-                        onError: { error in
-                            print("\(error)")
-            })
+            linkEntry.link = URL(string: rawLink)!
+            linkEntry.detail = detail
+            linkEntry.image = URL(string: rawLinkImage)!
+            linkEntry.shorthand = URL(string: rawLinkImage)!.host!
             
             return linkEntry
         }
         set {
-            guard let link: URL = newValue?.link else {
-                self.rawLink = "https://wesaturate.com"
-                return
-            }
-            self.rawLink = "\(link)"
+            guard let input: EntryLinkObject = newValue else { return }
+            self.rawLinkImage = String(describing: input.image)
+            self.rawLink = String(describing: input.link)
+            self.rawLinkDescription = String(describing: input.title)
         }
     }
     
@@ -127,6 +112,18 @@ public class Entry: NSManagedObject {
         return entry
     }
     
+    public func setNewImageEntry(image: UIImage, detail: String, thought: Thought) {
+        self.image = image
+        self.detail = detail
+        self.thought = thought
+        self.date = Date()
+        //get ID number count from defaults, and increment
+        let defaults = UserDefaults.standard
+        let entryNum: Int = defaults.integer(forKey: UserDefaults.Keys.entryID)
+        self.id = "E\(entryNum)"
+        defaults.set(entryNum + 1, forKey: UserDefaults.Keys.entryID)
+    }
+    
     //set new link entry
     static func insertNewLinkEntry(into context: NSManagedObjectContext,
                                           linkObject: EntryLinkObject,
@@ -167,6 +164,7 @@ public class Entry: NSManagedObject {
         entry.title   = title
         entry.detail  = detail
         entry.thought = thought
+        entry.date = Date()
         
         defaults.set(entryNum + 1, forKey: UserDefaults.Keys.entryID)
         return entry

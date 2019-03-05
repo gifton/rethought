@@ -19,7 +19,6 @@ class RootView: UIView {
     var model: RootViewModel! {
         didSet {
             setTableView()
-            print("model set")
         }
     }
     
@@ -33,6 +32,8 @@ class RootView: UIView {
         tv.backgroundColor = .white
         tv.separatorStyle = .none
         tv.showsVerticalScrollIndicator = false
+        tv.tintColor = .clear
+        
         return tv
     }()
         

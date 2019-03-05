@@ -9,21 +9,27 @@
 import Foundation
 import CoreData
 import UIKit
+import Kingfisher
 
 class RootViewModel: NSObject, RootViewModelDelegate {
     
     init(with moc: NSManagedObjectContext) {
         self.moc = moc
+        super.init()
+        print("RootViewModel set")
+        retrieveContent()
     }
     
-    func getRecentEntries() -> [EntryPreview] {
-        var ents = [EntryPreview]()
-        for entry in entries {
-            let e = EntryPreview(entry: entry)
-            ents.append(e)
+    var entryPreviews: [EntryPreview] {
+        get {
+            var output = [EntryPreview]()
+            for entry in entries {
+                let e = EntryPreview(entry: entry)
+                output.append(e)
+            }
+            
+            return output.shuffled()
         }
-        
-        return ents
     }
     
     func getThoughts() -> [ThoughtPreview] {
@@ -49,18 +55,14 @@ class RootViewModel: NSObject, RootViewModelDelegate {
     private var thoughts: [Thought] = [Thought]()
     private var entries: [Entry] = [Entry]()
     
-    private var moc: NSManagedObjectContext {
-        didSet {
-            retrieveContent()
-        }
-    }
+    private var moc: NSManagedObjectContext!
     
 }
 
 extension RootViewModel {
     private func retrieveContent() {
         let request = Thought.sortedFetchRequest
-        
+        print("recieving core data stack...")
         do {
             let result = try moc.fetch(request)
             self.thoughts = result
@@ -78,12 +80,13 @@ extension RootViewModel {
 extension RootViewModel: UICollectionViewDelegate { }
 extension RootViewModel: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 25
+        return entries.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EntryCell.identifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RootEntryCell.identifier, for: indexPath) as! RootEntryCell
         cell.backgroundColor = .white
+        cell.set(with: entryPreviews[indexPath.row])
         return cell
     }
 }
@@ -97,19 +100,23 @@ extension RootViewModel: UITableViewDelegate {
         case 0:
             return 150
         case 1:
-            return 250
+            return 275
         default:
-            return 198
+            return 205
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath)!
+        selectedCell.contentView.backgroundColor = .clear
     }
 }
 extension RootViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 25
+        return thoughts.count + 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: RootEntryViewCell.identifier, for: indexPath) as! RootEntryViewCell
@@ -122,10 +129,14 @@ extension RootViewModel: UITableViewDataSource {
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: RootThoughtCell.identifier, for: indexPath) as! RootThoughtCell
+            let row = indexPath.row - 2
+            let thoughtP = ThoughtPreview(thought: thoughts[row])
+            cell.set(with: thoughtP)
             
             return cell
         }
     }
+    
     
     
 }

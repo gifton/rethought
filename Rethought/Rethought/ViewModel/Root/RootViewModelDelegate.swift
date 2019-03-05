@@ -11,7 +11,7 @@ import UIKit
 
 
 protocol RootViewModelDelegate {
-    func getRecentEntries() -> [EntryPreview]
+    var entryPreviews: [EntryPreview] { get }
     func getThoughts() -> [ThoughtPreview]
     func retrieve(thought id: String) -> Thought?
     func retrieve(entry id: String) -> Entry?

@@ -12,7 +12,6 @@ import UIKit
 class RootThoughtCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        build()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -29,6 +28,7 @@ class RootThoughtCell: UITableViewCell {
         self.location   = String(describing: thought.location)
         self.date       = thought.createdAt
         self.title      = thought.title
+        buildMain(); buildView(); styleView()
     }
     
     // MARK: private variables
@@ -46,14 +46,77 @@ class RootThoughtCell: UITableViewCell {
     let textEntryCount      = UILabel()
     let imageEntryCount     = UILabel()
     let linkEntryCount      = UILabel()
-    let recordingEntryLabel = UILabel()
+    let recordingEntryCount = UILabel()
     let dateLabel           = UILabel()
     
-    private func build() {
-        main.frame = CGRect(x: 15, y: 7.5, width: ViewSize.SCREEN_WIDTH - 30, height: 183)
+    private func buildMain() {
+        main.frame = CGRect(x: 15, y: 7.5, width: ViewSize.SCREEN_WIDTH - 30, height: 200)
         addSubview(main)
         main.backgroundColor = UIColor(hex: "F9F9F9")
         main.layer.cornerRadius = 8
+    }
+    
+    private func buildView() {
+        
+        iconLabel.text = icon
+        titleLabel.text = title
+        textEntryCount.text = "\(entryCount.text) entries"
+        imageEntryCount.text = "\(entryCount.image) images"
+        linkEntryCount.text = "\(entryCount.link) links"
+        recordingEntryCount.text = "\(entryCount.recording) recordings"
+        locationLabel.text = "Seattle, washington"
+        dateLabel.getStringFromDate(date: date)
+        
+        main.addSubview(iconLabel)
+        main.addSubview(titleLabel)
+        main.addSubview(countStack())
+        main.addSubview(timeLocationStack())
+        
+        
+        iconLabel.frame = CGRect(x: 20, y: 20, width: 56, height: 56)
+        titleLabel.frame = CGRect(x: 90, y: 20, width: ViewSize.SCREEN_WIDTH - 125, height: heightForView(text: title, font: UIFont.boldSystemFont(ofSize: 20), width: ViewSize.SCREEN_WIDTH - 110))
+        
+    }
+    
+    func countStack() -> UIStackView {
+        let sv = UIStackView(arrangedSubviews: [textEntryCount, imageEntryCount, linkEntryCount, recordingEntryCount])
+        sv.axis = .vertical
+        sv.spacing = 10
+        sv.distribution = .fillEqually
+        sv.frame = CGRect(x: 30, y: 100, width: 200, height: 80)
+        
+        return sv
+    }
+    
+    func timeLocationStack() -> UIStackView {
+        let sv = UIStackView(arrangedSubviews: [locationLabel, dateLabel])
+        sv.frame = CGRect(x: 250, y: main.frame.height - 60, width: 150, height: 40)
+        sv.distribution = .fillEqually
+        sv.axis = .vertical
+        
+        return sv
+    }
+    
+    private func styleView() {
+        iconLabel.text = icon
+        iconLabel.font = .reBody(ofSize: 25)
+        iconLabel.backgroundColor = .white
+        iconLabel.textAlignment = .center
+        iconLabel.layer.cornerRadius = 11
+        iconLabel.layer.masksToBounds = true
+        
+        titleLabel.font = .reBody(ofSize: 20)
+        titleLabel.text = title
+        titleLabel.numberOfLines = 3
+        
+        let entryViews = [textEntryCount, imageEntryCount, linkEntryCount, recordingEntryCount]
+        entryViews.forEach { (lbl) in
+            lbl.font = UIFont.reBodyLight(ofSize: 12)
+        }        
+    
+        locationLabel.font = .boldSystemFont(ofSize: 12)
+        dateLabel.font = .reBody(ofSize: 12)
+        
     }
     
 }
