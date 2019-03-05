@@ -20,6 +20,7 @@
 		D702B21121DBFECA003DCA83 /* BackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D702B21021DBFECA003DCA83 /* BackDelegate.swift */; };
 		D7043F2822078270006EC7C6 /* Managed+Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7043F2722078270006EC7C6 /* Managed+Objects.swift */; };
 		D704ED492221D51F00F91A9A /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D704ED482221D51F00F91A9A /* URL.swift */; };
+		D7087E6F222E12D50081967F /* ReplicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7087E6E222E12D50081967F /* ReplicatorView.swift */; };
 		D70EA8DE21E301240071E257 /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8DD21E301240071E257 /* Sizes.swift */; };
 		D711281021F2A76E006C732E /* NewAudioEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D711280F21F2A76E006C732E /* NewAudioEntry.swift */; };
 		D711281221F30C4B006C732E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D711281121F30C4B006C732E /* DataController.swift */; };
@@ -120,6 +121,7 @@
 		D702B21021DBFECA003DCA83 /* BackDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackDelegate.swift; sourceTree = "<group>"; };
 		D7043F2722078270006EC7C6 /* Managed+Objects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Managed+Objects.swift"; sourceTree = "<group>"; };
 		D704ED482221D51F00F91A9A /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		D7087E6E222E12D50081967F /* ReplicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicatorView.swift; sourceTree = "<group>"; };
 		D70EA8DD21E301240071E257 /* Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
 		D711280F21F2A76E006C732E /* NewAudioEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAudioEntry.swift; sourceTree = "<group>"; };
 		D711281121F30C4B006C732E /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 			children = (
 				D701AACD2225FAFF00AEB27F /* ReplicatorDelegate.swift */,
 				D701AACF2225FC2500AEB27F /* Replicator.swift */,
+				D7087E6E222E12D50081967F /* ReplicatorView.swift */,
 			);
 			path = Replicator;
 			sourceTree = "<group>";
@@ -788,6 +791,7 @@
 				D713102D21F124ED001D7584 /* NewLinkEntry.swift in Sources */,
 				D7913158221EABC900A4F140 /* EntryStruct.swift in Sources */,
 				D76BB3EE2213A4E200A6187C /* UIButton.swift in Sources */,
+				D7087E6F222E12D50081967F /* ReplicatorView.swift in Sources */,
 				D7FFA1CB21D639A3001C3B72 /* EntryDetailController.swift in Sources */,
 				D704ED492221D51F00F91A9A /* URL.swift in Sources */,
 				D713102221EFB8D3001D7584 /* CardObject.swift in Sources */,

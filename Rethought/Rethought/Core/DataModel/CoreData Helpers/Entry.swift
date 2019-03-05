@@ -53,7 +53,7 @@ public class Entry: NSManagedObject {
                         onSuccess: { result in
                             
                             //image validation and setter
-                            if let imgUrl: URL = URL(string: result[SwiftLinkResponseKey.image] as! String) {
+                            if let imgUrl: URL = URL(string: result[SwiftLinkResponseKey.image] as? String ?? "not available") {
                                 linkEntry.image = imgUrl
                             } else {
                                 self.image = UIImage()
@@ -62,7 +62,7 @@ public class Entry: NSManagedObject {
                             //set link objects
                             linkEntry.shorthand = result[SwiftLinkResponseKey.canonicalUrl] as? String ?? "Not available"
                             linkEntry.description = result[SwiftLinkResponseKey.description] as? String ?? "Not available"
-                            guard let link: URL = URL(string: result[SwiftLinkResponseKey.finalUrl] as! String) else {
+                            guard let link: URL = URL(string: result[SwiftLinkResponseKey.finalUrl] as? String ?? "gifton.io") else {
                                 return
                             }
                             linkEntry.link = link
@@ -127,6 +127,18 @@ public class Entry: NSManagedObject {
         return entry
     }
     
+    public func setNewImageEntry(image: UIImage, detail: String, thought: Thought) {
+        self.image = image
+        self.detail = detail
+        self.thought = thought
+        self.date = Date()
+        //get ID number count from defaults, and increment
+        let defaults = UserDefaults.standard
+        let entryNum: Int = defaults.integer(forKey: UserDefaults.Keys.entryID)
+        self.id = "E\(entryNum)"
+        defaults.set(entryNum + 1, forKey: UserDefaults.Keys.entryID)
+    }
+    
     //set new link entry
     static func insertNewLinkEntry(into context: NSManagedObjectContext,
                                           linkObject: EntryLinkObject,
@@ -167,6 +179,7 @@ public class Entry: NSManagedObject {
         entry.title   = title
         entry.detail  = detail
         entry.thought = thought
+        entry.date = Date()
         
         defaults.set(entryNum + 1, forKey: UserDefaults.Keys.entryID)
         return entry

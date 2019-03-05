@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 import UIKit
+import Kingfisher
 
 class RootViewModel: NSObject, RootViewModelDelegate {
     
@@ -79,12 +80,13 @@ extension RootViewModel {
 extension RootViewModel: UICollectionViewDelegate { }
 extension RootViewModel: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 25
+        return entries.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EntryCell.identifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RootEntryCell.identifier, for: indexPath) as! RootEntryCell
         cell.backgroundColor = .white
+        cell.set(with: entryPreviews[indexPath.row])
         return cell
     }
 }
@@ -123,11 +125,10 @@ extension RootViewModel: UITableViewDataSource {
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: RootThoughtCell.identifier, for: indexPath) as! RootThoughtCell
-//            if let thought: Thought = thoughts[indexPath.row] {
-//                cell.set(with: ThoughtPreview(thought: thought))
-//            } else {
-//                cell.set(with: ThoughtPreview(thought: thoughts.first!))
-//            }
+            let row = indexPath.row - 2
+            let thoughtP = ThoughtPreview(thought: thoughts[row])
+            print("setting cell from rootViewModel")
+            cell.set(with: thoughtP)
             
             return cell
         }

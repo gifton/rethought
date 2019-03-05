@@ -41,7 +41,7 @@ class RootEntryViewCell: UITableViewCell {
     }()
     
     func setCollectionView(with model: RootViewModel) {
-        quickThoughtView.register(EntryCell.self, forCellWithReuseIdentifier: EntryCell.identifier)
+        quickThoughtView.register(RootEntryCell.self, forCellWithReuseIdentifier: RootEntryCell.identifier)
         quickThoughtView.delegate   = model
         quickThoughtView.dataSource = model
         
@@ -55,16 +55,67 @@ class RootEntryCell: UICollectionViewCell {
         super.init(frame: frame)
         self.layer.cornerRadius = 8
         self.frame.origin.y = 5
-    }
-    
-    func set(with entry: EntryPreview) {
         
     }
     
+    func set(with entry: EntryPreview) {
+        self.entryId = entry.id
+        self.entryType = entry.type
+        self.thoughtIcon = entry.thoughtIcon
+        timeSince = String(describing: Date.timeIntervalSince(entry.date))
+        buildView(); styleView()
+    }
+    
+    // MARK: Variables
     public var entryId:      String!
-    private var entryType:   EntryType?
-    private var timeSince:   String?
-    private var thoughtIcon: ThoughtIcon?
+    private var entryType:   EntryType!
+    private var timeSince:   String!
+    private var thoughtIcon: ThoughtIcon!
+    
+    // MARK: Objects
+    private var entryTypeIcon = UIImageView()
+    private var timeLabel = UILabel()
+    private let thoughtIconView  = UILabel()
+    
+    func buildView() {
+        
+        switch entryType! {
+        case .image:
+            entryTypeIcon.image = #imageLiteral(resourceName: "camera-dark")
+        case .text:
+            entryTypeIcon.image = #imageLiteral(resourceName: "pen-square-dark")
+        case .link:
+            entryTypeIcon.image = #imageLiteral(resourceName: "link-dark")
+        default:
+            entryTypeIcon.image = #imageLiteral(resourceName: "microphone-dark")
+        }
+        
+        timeLabel.text = timeSince
+        thoughtIconView.text = thoughtIcon.icon
+        
+        addSubview(entryTypeIcon)
+        addSubview(thoughtIconView)
+        addSubview(timeLabel)
+        
+        entryTypeIcon.frame.size = CGSize(width: 28, height: 28)
+        entryTypeIcon.frame.origin.y = 10
+        entryTypeIcon.center.x = center.x
+        
+        thoughtIconView.frame.size = CGSize(width: 28, height: 28)
+        thoughtIconView.center.x = center.x
+        thoughtIconView.frame.origin.y = frame.size.height - 53
+        
+        timeLabel.frame = CGRect(x: 10, y: frame.height - 21, width: frame.width - 20, height: 16)
+    }
+    
+    func styleView() {
+        entryTypeIcon.backgroundColor = UIColor(hex: "F9F9F9")
+        entryTypeIcon.layer.cornerRadius = 5
+        thoughtIconView.layer.masksToBounds = true
+        thoughtIconView.backgroundColor = UIColor(hex: "F9F9F9")
+        thoughtIconView.layer.cornerRadius = 5
+        entryTypeIcon.layer.masksToBounds = true
+    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -72,6 +123,12 @@ class RootEntryCell: UICollectionViewCell {
     
     public static var identifier: String {
         return "LinkCell"
+    }
+    
+    override func prepareForReuse() {
+        self.entryTypeIcon.image = nil
+        self.thoughtIconView.text = nil
+        self.timeLabel.text = nil
     }
     
 }
