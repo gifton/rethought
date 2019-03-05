@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class MasterTabbar: UITabBarController {
     override func viewDidLoad() {
@@ -15,37 +16,41 @@ class MasterTabbar: UITabBarController {
         
     }
     
-    init(model: RootViewModel) {
+    init(with moc: NSManagedObjectContext) {
         super.init(nibName: nil, bundle: nil)
-        let vc = RootViewController(with: model)
-        
-        vc.tabBarItem.image = #imageLiteral(resourceName: "Root")
-        vc.tabBarItem.selectedImage = #imageLiteral(resourceName: "Root-selected")
-        setView(withVcs: [vc]); alignBtns()
-        navigationController?.navigationBar.translatesAutoresizingMaskIntoConstraints = false
-        navigationController?.navigationBar.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        setView(with: moc)
+        alignBtns()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setView(withVcs: [UIViewController]) {
+    func setView(with moc: NSManagedObjectContext) {
         var vcs = [UIViewController]()
-        for vc in withVcs {
-            vcs.append(vc)
-        }
-        let icons = [#imageLiteral(resourceName: "Search"), #imageLiteral(resourceName: "new")]
         
-        let iconsSelected = [#imageLiteral(resourceName: "search-selected"), #imageLiteral(resourceName: "new-selected")]
+        let icon = #imageLiteral(resourceName: "Search")
+        let iconSelected = #imageLiteral(resourceName: "search-selected")
         
-        for i in Range(0...1) {
-            let vc = UIViewController()
-            vc.view.backgroundColor = .random
-            vc.tabBarItem.image = icons[i]
-            vc.tabBarItem.selectedImage = iconsSelected[i]
-            vcs.append(vc)
-        }
+        let searchVC = UIViewController()
+        searchVC.view.backgroundColor = .random
+        searchVC.tabBarItem.image = icon
+        searchVC.tabBarItem.selectedImage = iconSelected
+        
+        
+        let rootVC = RootViewController(with: RootViewModel(with: moc))
+        
+        rootVC.tabBarItem.image = #imageLiteral(resourceName: "Root")
+        rootVC.tabBarItem.selectedImage = #imageLiteral(resourceName: "Root-selected")
+        
+        
+        let thinkVC = ThinkViewController(model: ThinkViewModel(with: moc))
+        thinkVC.tabBarItem.image = #imageLiteral(resourceName: "cloud")
+        thinkVC.tabBarItem.selectedImage = #imageLiteral(resourceName: "cloud-selected")
+        
+        vcs.append(rootVC)
+        vcs.append(searchVC)
+        vcs.append(thinkVC)
         
         self.viewControllers = vcs
         self.tabBar.isOpaque = false

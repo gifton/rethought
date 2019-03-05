@@ -24,8 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.persistentContainer = container
             self.isUsersFirstTime()
             
-            let rootModel = RootViewModel(with: container.viewContext)
-            let rootVC = MasterTabbar(model: rootModel)
+            let rootVC = MasterTabbar(with: container.viewContext)
             
             let nav = UINavigationController(rootViewController: rootVC)
             self.setNav(nav: nav)
@@ -38,8 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setNav(nav: UINavigationController) {
         
         UINavigationBar.appearance().shadowImage = UIImage(color: .white)
-        nav.hidesBarsOnTap = false
-        nav.hidesBarsOnSwipe = false
         
         
         setReNavbar(nav: nav.navigationBar)
@@ -47,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setReNavbar(nav: UINavigationBar) {
         nav.barTintColor = .white
-        let firstFrame = CGRect(x: 10, y: 0, width: nav.frame.width/2, height: nav.frame.height)
+        let firstFrame = CGRect(x: 10, y: 0, width: nav.frame.width - 50, height: nav.frame.height)
         let secondFrame = CGRect(x: 10, y: 30, width: nav.frame.width/2, height: nav.frame.height)
         
         let firstLabel = UILabel(frame: firstFrame)

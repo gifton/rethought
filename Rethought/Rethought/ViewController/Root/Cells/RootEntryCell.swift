@@ -62,7 +62,9 @@ class RootEntryCell: UICollectionViewCell {
         self.entryId = entry.id
         self.entryType = entry.type
         self.thoughtIcon = entry.thoughtIcon
-        timeSince = String(describing: Date.timeIntervalSince(entry.date))
+        let time = DateFormatter()
+        timeSince = time.timeSince(from: entry.date as NSDate, numericDates: true)
+        
         buildView(); styleView()
     }
     
@@ -75,7 +77,7 @@ class RootEntryCell: UICollectionViewCell {
     // MARK: Objects
     private var entryTypeIcon = UIImageView()
     private var timeLabel = UILabel()
-    private let thoughtIconView  = UILabel()
+    private lazy var thoughtIconView  = UILabel()
     
     func buildView() {
         
@@ -96,14 +98,16 @@ class RootEntryCell: UICollectionViewCell {
         addSubview(entryTypeIcon)
         addSubview(thoughtIconView)
         addSubview(timeLabel)
-        
-        entryTypeIcon.frame.size = CGSize(width: 28, height: 28)
-        entryTypeIcon.frame.origin.y = 10
-        entryTypeIcon.center.x = center.x
-        
-        thoughtIconView.frame.size = CGSize(width: 28, height: 28)
-        thoughtIconView.center.x = center.x
-        thoughtIconView.frame.origin.y = frame.size.height - 53
+        entryTypeIcon.translatesAutoresizingMaskIntoConstraints = false
+        thoughtIconView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            entryTypeIcon.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            entryTypeIcon.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            entryTypeIcon.widthAnchor.constraint(greaterThanOrEqualToConstant: 20),
+            
+            thoughtIconView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -25),
+            thoughtIconView.centerXAnchor.constraint(equalTo: centerXAnchor),
+        ])
         
         timeLabel.frame = CGRect(x: 10, y: frame.height - 21, width: frame.width - 20, height: 16)
     }
@@ -111,10 +115,16 @@ class RootEntryCell: UICollectionViewCell {
     func styleView() {
         entryTypeIcon.backgroundColor = UIColor(hex: "F9F9F9")
         entryTypeIcon.layer.cornerRadius = 5
+        entryTypeIcon.layer.masksToBounds = true
+        
         thoughtIconView.layer.masksToBounds = true
         thoughtIconView.backgroundColor = UIColor(hex: "F9F9F9")
         thoughtIconView.layer.cornerRadius = 5
-        entryTypeIcon.layer.masksToBounds = true
+        
+        timeLabel.textAlignment = .center
+        
+        timeLabel.font = .reBodyLight(ofSize: 8)
+        thoughtIconView.font = .reBodyLight(ofSize: 25)
     }
     
     required init?(coder aDecoder: NSCoder) {

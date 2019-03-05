@@ -21,6 +21,15 @@
 		D7043F2822078270006EC7C6 /* Managed+Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7043F2722078270006EC7C6 /* Managed+Objects.swift */; };
 		D704ED492221D51F00F91A9A /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D704ED482221D51F00F91A9A /* URL.swift */; };
 		D7087E6F222E12D50081967F /* ReplicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7087E6E222E12D50081967F /* ReplicatorView.swift */; };
+		D7087E71222E597E0081967F /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7087E70222E597E0081967F /* DateFormatter.swift */; };
+		D7087E73222E654D0081967F /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7087E72222E654D0081967F /* Sequence.swift */; };
+		D7087E76222E82DE0081967F /* ThinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7087E75222E82DE0081967F /* ThinkViewController.swift */; };
+		D7087E78222E82E80081967F /* ThinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7087E77222E82E80081967F /* ThinkView.swift */; };
+		D7087E7A222E82F40081967F /* ThinkDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7087E79222E82F40081967F /* ThinkDelegate.swift */; };
+		D7087E7C222E83230081967F /* CreateNewThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7087E7B222E83230081967F /* CreateNewThoughtCell.swift */; };
+		D7087E7E222E83390081967F /* createNewEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7087E7D222E83390081967F /* createNewEntryCell.swift */; };
+		D7087E81222E839B0081967F /* ThinkViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7087E80222E839B0081967F /* ThinkViewModelDelegate.swift */; };
+		D7087E83222E83A30081967F /* ThinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7087E82222E83A30081967F /* ThinkViewModel.swift */; };
 		D70EA8DE21E301240071E257 /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70EA8DD21E301240071E257 /* Sizes.swift */; };
 		D711281021F2A76E006C732E /* NewAudioEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D711280F21F2A76E006C732E /* NewAudioEntry.swift */; };
 		D711281221F30C4B006C732E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D711281121F30C4B006C732E /* DataController.swift */; };
@@ -122,6 +131,15 @@
 		D7043F2722078270006EC7C6 /* Managed+Objects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Managed+Objects.swift"; sourceTree = "<group>"; };
 		D704ED482221D51F00F91A9A /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		D7087E6E222E12D50081967F /* ReplicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicatorView.swift; sourceTree = "<group>"; };
+		D7087E70222E597E0081967F /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		D7087E72222E654D0081967F /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
+		D7087E75222E82DE0081967F /* ThinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThinkViewController.swift; sourceTree = "<group>"; };
+		D7087E77222E82E80081967F /* ThinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThinkView.swift; sourceTree = "<group>"; };
+		D7087E79222E82F40081967F /* ThinkDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThinkDelegate.swift; sourceTree = "<group>"; };
+		D7087E7B222E83230081967F /* CreateNewThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewThoughtCell.swift; sourceTree = "<group>"; };
+		D7087E7D222E83390081967F /* createNewEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createNewEntryCell.swift; sourceTree = "<group>"; };
+		D7087E80222E839B0081967F /* ThinkViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThinkViewModelDelegate.swift; sourceTree = "<group>"; };
+		D7087E82222E83A30081967F /* ThinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThinkViewModel.swift; sourceTree = "<group>"; };
 		D70EA8DD21E301240071E257 /* Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
 		D711280F21F2A76E006C732E /* NewAudioEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAudioEntry.swift; sourceTree = "<group>"; };
 		D711281121F30C4B006C732E /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
@@ -316,6 +334,35 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		D7087E74222E82B90081967F /* Think */ = {
+			isa = PBXGroup;
+			children = (
+				D7087E75222E82DE0081967F /* ThinkViewController.swift */,
+				D7087E77222E82E80081967F /* ThinkView.swift */,
+				D7087E79222E82F40081967F /* ThinkDelegate.swift */,
+				D7087E84222E88D80081967F /* Cells */,
+			);
+			path = Think;
+			sourceTree = "<group>";
+		};
+		D7087E7F222E838C0081967F /* Think */ = {
+			isa = PBXGroup;
+			children = (
+				D7087E80222E839B0081967F /* ThinkViewModelDelegate.swift */,
+				D7087E82222E83A30081967F /* ThinkViewModel.swift */,
+			);
+			path = Think;
+			sourceTree = "<group>";
+		};
+		D7087E84222E88D80081967F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D7087E7B222E83230081967F /* CreateNewThoughtCell.swift */,
+				D7087E7D222E83390081967F /* createNewEntryCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		D70EA8DC21E301080071E257 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -430,6 +477,7 @@
 		D75B88E121BC566C0023784F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D7087E7F222E838C0081967F /* Think */,
 				D701AADD22277EB400AEB27F /* Root */,
 				D713100921EEE96A001D7584 /* Dashboard */,
 				D7F967AE22000D5F00D10919 /* Thought */,
@@ -441,6 +489,7 @@
 			isa = PBXGroup;
 			children = (
 				D7BD1841222B537100423960 /* MasterTabController.swift */,
+				D7087E74222E82B90081967F /* Think */,
 				D701AAD4222622FA00AEB27F /* Root */,
 				D713102521F015D3001D7584 /* createEntry */,
 				D713101321EF0409001D7584 /* Dashboard */,
@@ -506,6 +555,8 @@
 				D76BB3E92213A4E200A6187C /* UIView.swift */,
 				D704ED482221D51F00F91A9A /* URL.swift */,
 				D7BD183F222B37AC00423960 /* UINavigationController.swift */,
+				D7087E70222E597E0081967F /* DateFormatter.swift */,
+				D7087E72222E654D0081967F /* Sequence.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -718,6 +769,8 @@
 			files = (
 				D7BEFC7321F7F58A00D55C8E /* ReccomendedThought.swift in Sources */,
 				D701AADC2226436E00AEB27F /* EntryTypeView.swift in Sources */,
+				D7087E73222E654D0081967F /* Sequence.swift in Sources */,
+				D7087E71222E597E0081967F /* DateFormatter.swift in Sources */,
 				D791315A221EB75500A4F140 /* Thought.swift in Sources */,
 				D713102721F01631001D7584 /* NewTextEntry.swift in Sources */,
 				D702B21121DBFECA003DCA83 /* BackDelegate.swift in Sources */,
@@ -728,6 +781,7 @@
 				D7E0D3C322287861007A3578 /* RootEntriesContentCell.swift in Sources */,
 				D7F9FD5821FA58C300E73BFC /* GradientView.swift in Sources */,
 				D75B88D121BC507B0023784F /* Styling.swift in Sources */,
+				D7087E76222E82DE0081967F /* ThinkViewController.swift in Sources */,
 				D7FFA1DD21D6F785001C3B72 /* ThoughtCell.swift in Sources */,
 				D7FFA1C721D4703C001C3B72 /* ThoughtDetailView.swift in Sources */,
 				D739400621F88BF600D2B736 /* ConnectToView.swift in Sources */,
@@ -740,6 +794,7 @@
 				D701AADA2226231800AEB27F /* RootDelegate.swift in Sources */,
 				D7E0D3C6222878AF007A3578 /* RootThoughtCell.swift in Sources */,
 				D711281221F30C4B006C732E /* DataController.swift in Sources */,
+				D7087E7A222E82F40081967F /* ThinkDelegate.swift in Sources */,
 				D76BB3F22213A4E200A6187C /* UIView.swift in Sources */,
 				D75B891021BE192E0023784F /* ProfileViewController.swift in Sources */,
 				D7B27CDD22053C0F00A09E0F /* PersistanceService.swift in Sources */,
@@ -750,9 +805,11 @@
 				D7F9FD5421F9C8E000E73BFC /* linkCell.swift in Sources */,
 				D701AADF22277ECF00AEB27F /* RootViewModel.swift in Sources */,
 				D75B892221C2D7D70023784F /* EntryPreview.swift in Sources */,
+				D7087E7C222E83230081967F /* CreateNewThoughtCell.swift in Sources */,
 				D7FFA1E421D717AD001C3B72 /* EntryDetailView.swift in Sources */,
 				D701C0DB22129DDA001D8923 /* Defaults.swift in Sources */,
 				D76CBF972202F4E60087FC07 /* EntryBarView.swift in Sources */,
+				D7087E81222E839B0081967F /* ThinkViewModelDelegate.swift in Sources */,
 				D76BB3F42213A4E200A6187C /* UILabel.swift in Sources */,
 				D701AAD62226230500AEB27F /* RootView.swift in Sources */,
 				D76CBF952202F3A10087FC07 /* EntryBarDelegate.swift in Sources */,
@@ -768,6 +825,7 @@
 				D7FFA1C921D4C050001C3B72 /* ThoughtDetailDelegate.swift in Sources */,
 				D711281021F2A76E006C732E /* NewAudioEntry.swift in Sources */,
 				D75B891821BF1F5A0023784F /* ThoughtDetailController.swift in Sources */,
+				D7087E78222E82E80081967F /* ThinkView.swift in Sources */,
 				D76BB3ED2213A4E200A6187C /* UITextView.swift in Sources */,
 				D701AACE2225FAFF00AEB27F /* ReplicatorDelegate.swift in Sources */,
 				D7FFA1E221D716D7001C3B72 /* EntryDetailDelegate.swift in Sources */,
@@ -775,6 +833,7 @@
 				D79B1EFA21CC6B0000E951D3 /* UIFont.swift in Sources */,
 				D75B88D021BC507B0023784F /* Constants.swift in Sources */,
 				D713101521EF0417001D7584 /* DashboardController.swift in Sources */,
+				D7087E7E222E83390081967F /* createNewEntryCell.swift in Sources */,
 				D7BD1840222B37AC00423960 /* UINavigationController.swift in Sources */,
 				D713102921F068ED001D7584 /* NewImageEntry.swift in Sources */,
 				D739400421F88B8300D2B736 /* ReTextField.swift in Sources */,
@@ -797,6 +856,7 @@
 				D713102221EFB8D3001D7584 /* CardObject.swift in Sources */,
 				D713100B21EEE9C2001D7584 /* DashboardViewModel.swift in Sources */,
 				D7913152221EA73C00A4F140 /* Entry.swift in Sources */,
+				D7087E83222E83A30081967F /* ThinkViewModel.swift in Sources */,
 				D76BB3F12213A4E200A6187C /* ArrayExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

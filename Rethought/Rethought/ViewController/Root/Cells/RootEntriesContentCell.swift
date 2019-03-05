@@ -39,14 +39,12 @@ class RootEntriesContentCell: UITableViewCell {
     
     let textButton: UIButton = {
         let btn = UIButton()
-        btn.frame.size = CGSize(width: ViewSize.SCREEN_WIDTH - 30, height: 30)
-//        btn.translatesAutoresizingMaskIntoConstraints = false
-//        btn.heightAnchor.constraint(greaterThanOrEqualToConstant: 30).isActive = true
+        btn.frame.size = CGSize(width: ViewSize.SCREEN_WIDTH - 30, height: 50)
         btn.backgroundColor = UIColor(hex: "30B27E")
         btn.setTitle("text", for: .normal)
         btn.layer.cornerRadius = 5
         btn.contentHorizontalAlignment = .left
-        btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
+        btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         btn.setImage(#imageLiteral(resourceName: "arrow-alt-right"), for: .normal)
         btn.imageView?.translatesAutoresizingMaskIntoConstraints = false
         btn.imageView?.trailingAnchor.constraint(equalTo: btn.trailingAnchor, constant: -10).isActive = true
@@ -56,14 +54,12 @@ class RootEntriesContentCell: UITableViewCell {
     }()
     let imageButton: UIButton = {
         let btn = UIButton()
-        btn.frame.size = CGSize(width: ViewSize.SCREEN_WIDTH - 30, height: 30)
-//        btn.translatesAutoresizingMaskIntoConstraints = false
-//        btn.heightAnchor.constraint(greaterThanOrEqualToConstant: 30).isActive = true
-        btn.backgroundColor = UIColor(hex: "138FC9")
+        btn.frame.size = CGSize(width: ViewSize.SCREEN_WIDTH - 30, height: 50)
+        btn.backgroundColor = UIColor(hex: "FF8D77")
         btn.setTitle("image", for: .normal)
         btn.layer.cornerRadius = 5
         btn.contentHorizontalAlignment = .left
-        btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
+        btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         btn.setImage(#imageLiteral(resourceName: "arrow-alt-right"), for: .normal)
         btn.imageView?.translatesAutoresizingMaskIntoConstraints = false
         btn.imageView?.trailingAnchor.constraint(equalTo: btn.trailingAnchor, constant: -10).isActive = true
@@ -73,14 +69,12 @@ class RootEntriesContentCell: UITableViewCell {
     }()
     let linkButton: UIButton = {
         let btn = UIButton()
-        btn.frame.size = CGSize(width: ViewSize.SCREEN_WIDTH - 30, height: 30)
-//        btn.translatesAutoresizingMaskIntoConstraints = false
-//        btn.heightAnchor.constraint(greaterThanOrEqualToConstant: 30).isActive = true
+        btn.frame.size = CGSize(width: ViewSize.SCREEN_WIDTH - 30, height: 50)
         btn.backgroundColor = UIColor(hex: "994282")
         btn.setTitle("link", for: .normal)
         btn.layer.cornerRadius = 5
         btn.contentHorizontalAlignment = .left
-        btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
+        btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         btn.setImage(#imageLiteral(resourceName: "arrow-alt-right"), for: .normal)
         btn.imageView?.translatesAutoresizingMaskIntoConstraints = false
         btn.imageView?.trailingAnchor.constraint(equalTo: btn.trailingAnchor, constant: -10).isActive = true
@@ -90,32 +84,16 @@ class RootEntriesContentCell: UITableViewCell {
     }()
     let recordingButton: UIButton = {
         let btn = UIButton()
-        btn.frame.size = CGSize(width: ViewSize.SCREEN_WIDTH - 30, height: 30)
-//        btn.translatesAutoresizingMaskIntoConstraints = false
-//        btn.heightAnchor.constraint(greaterThanOrEqualToConstant: 30).isActive = true
-        btn.backgroundColor = UIColor(hex: "FF8D77")
+        btn.frame.size = CGSize(width: ViewSize.SCREEN_WIDTH - 30, height: 50)
+        btn.backgroundColor = UIColor(hex: "138FC9")
         btn.setTitle("recording", for: .normal)
         btn.layer.cornerRadius = 5
         btn.contentHorizontalAlignment = .left
-        btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
+        btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         btn.setImage(#imageLiteral(resourceName: "arrow-alt-right"), for: .normal)
         btn.imageView?.translatesAutoresizingMaskIntoConstraints = false
         btn.imageView?.trailingAnchor.constraint(equalTo: btn.trailingAnchor, constant: -10).isActive = true
         btn.imageView?.centerYAnchor.constraint(equalTo: btn.centerYAnchor, constant: 0.0).isActive = true
-        
-        return btn
-    }()
-    
-    let randomEntry: UIButton = {
-        let btn = UIButton()
-        
-        let buttonColor = UIColor(hex: "3D3D46")
-        
-        btn.backgroundColor = .clear
-        btn.layer.borderColor = buttonColor.cgColor
-        btn.layer.borderWidth = 1
-        btn.layer.cornerRadius = 8
-        btn.addAttText(color: buttonColor, size: 18, font: .body, string: "I'm feeling lucky...")
         
         return btn
     }()
@@ -129,12 +107,11 @@ class RootEntriesContentCell: UITableViewCell {
         addSubview(entryTitle)
         addSubview(allEntries)
         addSubview(entryView)
-        addSubview(randomEntry)
+        
         
         entryTitle.frame  = CGRect(x: 20, y: 5, width: 100, height: 30)
         allEntries.frame  = CGRect(x: ViewSize.SCREEN_WIDTH - (80 + 20), y: 17, width: 80, height: 16)
-        entryView.frame = CGRect(x: 14, y: 40, width: ViewSize.SCREEN_WIDTH - 30, height: 154)
-        randomEntry.frame = CGRect(x: 20, y: 195 + 10, width: 250, height: 35)
+        entryView.frame = CGRect(x: 14, y: 40, width: ViewSize.SCREEN_WIDTH - 30, height: 216)
         
         print("============================================")
     }

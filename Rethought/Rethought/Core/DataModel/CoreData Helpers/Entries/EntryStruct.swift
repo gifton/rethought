@@ -14,13 +14,13 @@ struct EntryLinkObject: EntryLinkObjectDelegate {
         self.init()
         self.link = link
         self.image = image
-        self.description = description
+        self.detail = description
         self.shorthand = shorthand
         self.title = title
     }
     
     var link: URL           = URL(string: "https://wesaturate.com")!
-    var description: String = ""
+    var detail: String = ""
     var image: URL          = URL(string: "https://wesaturate.com")!
     var shorthand: String   = ""
     var title: String       = ""

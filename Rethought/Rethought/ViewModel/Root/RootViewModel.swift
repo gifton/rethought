@@ -28,7 +28,7 @@ class RootViewModel: NSObject, RootViewModelDelegate {
                 output.append(e)
             }
             
-            return output
+            return output.shuffled()
         }
     }
     
@@ -100,15 +100,19 @@ extension RootViewModel: UITableViewDelegate {
         case 0:
             return 150
         case 1:
-            return 250
+            return 275
         default:
             return 205
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath)!
+        selectedCell.contentView.backgroundColor = .clear
+    }
 }
 extension RootViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(thoughts.count)
         return thoughts.count + 2
     }
     
@@ -127,12 +131,12 @@ extension RootViewModel: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: RootThoughtCell.identifier, for: indexPath) as! RootThoughtCell
             let row = indexPath.row - 2
             let thoughtP = ThoughtPreview(thought: thoughts[row])
-            print("setting cell from rootViewModel")
             cell.set(with: thoughtP)
             
             return cell
         }
     }
+    
     
     
 }

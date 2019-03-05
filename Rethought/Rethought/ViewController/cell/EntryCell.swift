@@ -148,8 +148,8 @@ class EntryLinkCell: UITableViewCell {
         didSet {
             guard let link = entry.link else { fatalError("unable to parse entry model to recieve links")}
             self.linkImage = link.image
-            self.linkTitle = link.description
-            self.detail = link.description
+            self.linkTitle = link.detail
+            self.detail = link.detail
             self.linkDate = entry.date
             buildCell()
         }

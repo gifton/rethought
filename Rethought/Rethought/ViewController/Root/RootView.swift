@@ -32,6 +32,8 @@ class RootView: UIView {
         tv.backgroundColor = .white
         tv.separatorStyle = .none
         tv.showsVerticalScrollIndicator = false
+        tv.tintColor = .clear
+        
         return tv
     }()
         

@@ -23,7 +23,6 @@ class RootThoughtCell: UITableViewCell {
     }
     
     public func set(with thought: ThoughtPreview) {
-        print("setting from Rooththoughcell")
         self.icon       = thought.icon.icon
         self.entryCount = thought.entryCount
         self.location   = String(describing: thought.location)
@@ -84,7 +83,7 @@ class RootThoughtCell: UITableViewCell {
         sv.axis = .vertical
         sv.spacing = 10
         sv.distribution = .fillEqually
-        sv.frame = CGRect(x: 30, y: 90, width: 200, height: 90)
+        sv.frame = CGRect(x: 30, y: 100, width: 200, height: 80)
         
         return sv
     }
@@ -106,14 +105,14 @@ class RootThoughtCell: UITableViewCell {
         iconLabel.layer.cornerRadius = 11
         iconLabel.layer.masksToBounds = true
         
-        titleLabel.font = .boldSystemFont(ofSize: 20)
+        titleLabel.font = .reBody(ofSize: 20)
         titleLabel.text = title
-        titleLabel.numberOfLines = 0
+        titleLabel.numberOfLines = 3
         
         let entryViews = [textEntryCount, imageEntryCount, linkEntryCount, recordingEntryCount]
         entryViews.forEach { (lbl) in
             lbl.font = UIFont.reBodyLight(ofSize: 12)
-        }
+        }        
     
         locationLabel.font = .boldSystemFont(ofSize: 12)
         dateLabel.font = .reBody(ofSize: 12)
