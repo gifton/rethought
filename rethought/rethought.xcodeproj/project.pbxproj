@@ -90,6 +90,8 @@
 		D76CBF952202F3A10087FC07 /* EntryBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76CBF942202F3A10087FC07 /* EntryBarDelegate.swift */; };
 		D76CBF972202F4E60087FC07 /* EntryBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76CBF962202F4E60087FC07 /* EntryBarView.swift */; };
 		D77DC6C222016079007C165F /* EntryCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DC6C122016079007C165F /* EntryCountView.swift */; };
+		D78E1A8D222F2C710044806B /* ConversationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78E1A8C222F2C710044806B /* ConversationDelegate.swift */; };
+		D78E1A8F222F31840044806B /* ConversationAreaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78E1A8E222F31840044806B /* ConversationAreaController.swift */; };
 		D7913150221EA53800A4F140 /* RETHOUGHT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D791314E221EA53800A4F140 /* RETHOUGHT.xcdatamodeld */; };
 		D7913152221EA73C00A4F140 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7913151221EA73C00A4F140 /* Entry.swift */; };
 		D7913155221EAA4200A4F140 /* MOCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7913154221EAA4200A4F140 /* MOCExtension.swift */; };
@@ -203,6 +205,8 @@
 		D76CBF942202F3A10087FC07 /* EntryBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryBarDelegate.swift; sourceTree = "<group>"; };
 		D76CBF962202F4E60087FC07 /* EntryBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryBarView.swift; sourceTree = "<group>"; };
 		D77DC6C122016079007C165F /* EntryCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryCountView.swift; sourceTree = "<group>"; };
+		D78E1A8C222F2C710044806B /* ConversationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationDelegate.swift; sourceTree = "<group>"; };
+		D78E1A8E222F31840044806B /* ConversationAreaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationAreaController.swift; sourceTree = "<group>"; };
 		D791314F221EA53800A4F140 /* RETHOUGHT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RETHOUGHT.xcdatamodel; sourceTree = "<group>"; };
 		D7913151221EA73C00A4F140 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		D7913154221EAA4200A4F140 /* MOCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOCExtension.swift; sourceTree = "<group>"; };
@@ -292,6 +296,7 @@
 		D701AAE222277F7E00AEB27F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D78E1A8B222F2BBC0044806B /* ConversationArea */,
 				D7087E85222E99CF0081967F /* NewThoughtView.swift */,
 				D704ED472221338D00F91A9A /* Profile */,
 				D713102021EFAC15001D7584 /* ThoughtCard */,
@@ -542,6 +547,15 @@
 				D76CBF962202F4E60087FC07 /* EntryBarView.swift */,
 			);
 			path = EntryBar;
+			sourceTree = "<group>";
+		};
+		D78E1A8B222F2BBC0044806B /* ConversationArea */ = {
+			isa = PBXGroup;
+			children = (
+				D78E1A8C222F2C710044806B /* ConversationDelegate.swift */,
+				D78E1A8E222F31840044806B /* ConversationAreaController.swift */,
+			);
+			path = ConversationArea;
 			sourceTree = "<group>";
 		};
 		D79131022213A9B200A4F140 /* Extensions */ = {
@@ -804,6 +818,7 @@
 				D76BB3F02213A4E200A6187C /* UITextField.swift in Sources */,
 				D76BB3EF2213A4E200A6187C /* UIImageView.swift in Sources */,
 				D75B890E21BE191C0023784F /* ProfileView.swift in Sources */,
+				D78E1A8D222F2C710044806B /* ConversationDelegate.swift in Sources */,
 				D75B88B921BB70C00023784F /* AppDelegate.swift in Sources */,
 				D7F9FD5421F9C8E000E73BFC /* linkCell.swift in Sources */,
 				D701AADF22277ECF00AEB27F /* RootViewModel.swift in Sources */,
@@ -833,6 +848,7 @@
 				D76BB3ED2213A4E200A6187C /* UITextView.swift in Sources */,
 				D701AACE2225FAFF00AEB27F /* ReplicatorDelegate.swift in Sources */,
 				D7FFA1E221D716D7001C3B72 /* EntryDetailDelegate.swift in Sources */,
+				D78E1A8F222F31840044806B /* ConversationAreaController.swift in Sources */,
 				D713100D21EEE9D4001D7584 /* DashboardViewModelDelegate.swift in Sources */,
 				D79B1EFA21CC6B0000E951D3 /* UIFont.swift in Sources */,
 				D75B88D021BC507B0023784F /* Constants.swift in Sources */,

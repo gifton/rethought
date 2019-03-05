@@ -11,9 +11,7 @@ import UIKit
 
 class ThinkView: UIScrollView {
     init(with connector: ThinkDelegate) {
-        super.init(frame: CGRect(x: 0, y: 10, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - 120))
-        print("set scrollview")
-        
+        super.init(frame: CGRect(x: 0, y: 10, width: ViewSize.SCREEN_WIDTH, height: ViewSize.SCREEN_HEIGHT - 120))        
         
         isScrollEnabled = true
         contentSize.height = ViewSize.SCREEN_HEIGHT - (ViewSize.SCREEN_HEIGHT * 0.21)
