@@ -14,10 +14,8 @@ protocol ConversationDelegate {
     func beginEditingThought()
     func checkForCompletion()
     func thoughtComponentsComplete()
+    func addEntry(pf type: EntryType)
     func save()
-    var imageViewController: UIViewController { get set }
-    var textViewController: UIViewController { get set }
-    var linkViewController: UIViewController { get set }
     var size: CGFloat { get set }
     var entrViewSize: CGSize { get }
     var bottomOfArea: CGFloat { get }

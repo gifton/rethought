@@ -11,8 +11,7 @@ import UIKit
 
 
 class NewThoughtView: UIView {
-    init(frame: CGRect, connector: ThinkDelegate) {
-        self.connector = connector
+    override init(frame: CGRect) {
         super.init(frame: CGRect(x: frame.origin.x, y: frame.origin.y, width: ViewSize.SCREEN_WIDTH, height: 90))
         
         buildLayout(); styleView()
@@ -22,12 +21,24 @@ class NewThoughtView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    public var thoughtTitle: String {
+        get {
+            return titleTextView.text
+        }
+    }
+    
+    public var thoughtIcon: ThoughtIcon {
+        get {
+            return iconTextView.emoji
+        }
+    }
+    
     // MARK: private vars
-    var connector: ThinkDelegate
+    var connector: ThinkDelegate?
     
     // MARK: private objects
-    let iconTextView = EmojiDisplay(frame: CGRect(x: 20, y: 15, width: 56, height: 56), emoji: ThoughtIcon("💡"))
-    let titleTextView = UITextView(frame: CGRect(x: 91, y: 15, width: ViewSize.SCREEN_WIDTH - 111, height: 70))
+    private let iconTextView = EmojiDisplay(frame: CGRect(x: 20, y: 15, width: 56, height: 56), emoji: ThoughtIcon("💡"))
+    private let titleTextView = UITextView(frame: CGRect(x: 91, y: 15, width: ViewSize.SCREEN_WIDTH - 111, height: 70))
     
     private func buildLayout() {
         

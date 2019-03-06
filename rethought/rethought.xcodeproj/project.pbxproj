@@ -91,7 +91,7 @@
 		D76CBF972202F4E60087FC07 /* EntryBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76CBF962202F4E60087FC07 /* EntryBarView.swift */; };
 		D77DC6C222016079007C165F /* EntryCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DC6C122016079007C165F /* EntryCountView.swift */; };
 		D78E1A8D222F2C710044806B /* ConversationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78E1A8C222F2C710044806B /* ConversationDelegate.swift */; };
-		D78E1A8F222F31840044806B /* ConversationAreaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78E1A8E222F31840044806B /* ConversationAreaController.swift */; };
+		D78E1A8F222F31840044806B /* ConversationArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78E1A8E222F31840044806B /* ConversationArea.swift */; };
 		D7913150221EA53800A4F140 /* RETHOUGHT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D791314E221EA53800A4F140 /* RETHOUGHT.xcdatamodeld */; };
 		D7913152221EA73C00A4F140 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7913151221EA73C00A4F140 /* Entry.swift */; };
 		D7913155221EAA4200A4F140 /* MOCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7913154221EAA4200A4F140 /* MOCExtension.swift */; };
@@ -206,7 +206,7 @@
 		D76CBF962202F4E60087FC07 /* EntryBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryBarView.swift; sourceTree = "<group>"; };
 		D77DC6C122016079007C165F /* EntryCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryCountView.swift; sourceTree = "<group>"; };
 		D78E1A8C222F2C710044806B /* ConversationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationDelegate.swift; sourceTree = "<group>"; };
-		D78E1A8E222F31840044806B /* ConversationAreaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationAreaController.swift; sourceTree = "<group>"; };
+		D78E1A8E222F31840044806B /* ConversationArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationArea.swift; sourceTree = "<group>"; };
 		D791314F221EA53800A4F140 /* RETHOUGHT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RETHOUGHT.xcdatamodel; sourceTree = "<group>"; };
 		D7913151221EA73C00A4F140 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		D7913154221EAA4200A4F140 /* MOCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOCExtension.swift; sourceTree = "<group>"; };
@@ -296,7 +296,6 @@
 		D701AAE222277F7E00AEB27F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D78E1A8B222F2BBC0044806B /* ConversationArea */,
 				D7087E85222E99CF0081967F /* NewThoughtView.swift */,
 				D704ED472221338D00F91A9A /* Profile */,
 				D713102021EFAC15001D7584 /* ThoughtCard */,
@@ -345,6 +344,7 @@
 		D7087E74222E82B90081967F /* Think */ = {
 			isa = PBXGroup;
 			children = (
+				D78E1A8B222F2BBC0044806B /* ConversationArea */,
 				D7087E75222E82DE0081967F /* ThinkViewController.swift */,
 				D7087E77222E82E80081967F /* ThinkView.swift */,
 				D7087E79222E82F40081967F /* ThinkDelegate.swift */,
@@ -553,7 +553,7 @@
 			isa = PBXGroup;
 			children = (
 				D78E1A8C222F2C710044806B /* ConversationDelegate.swift */,
-				D78E1A8E222F31840044806B /* ConversationAreaController.swift */,
+				D78E1A8E222F31840044806B /* ConversationArea.swift */,
 			);
 			path = ConversationArea;
 			sourceTree = "<group>";
@@ -848,7 +848,7 @@
 				D76BB3ED2213A4E200A6187C /* UITextView.swift in Sources */,
 				D701AACE2225FAFF00AEB27F /* ReplicatorDelegate.swift in Sources */,
 				D7FFA1E221D716D7001C3B72 /* EntryDetailDelegate.swift in Sources */,
-				D78E1A8F222F31840044806B /* ConversationAreaController.swift in Sources */,
+				D78E1A8F222F31840044806B /* ConversationArea.swift in Sources */,
 				D713100D21EEE9D4001D7584 /* DashboardViewModelDelegate.swift in Sources */,
 				D79B1EFA21CC6B0000E951D3 /* UIFont.swift in Sources */,
 				D75B88D021BC507B0023784F /* Constants.swift in Sources */,

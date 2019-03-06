@@ -19,7 +19,7 @@ class ThinkView: UIScrollView {
         
         backgroundColor = UIColor(hex: "f7f7f7")
         self.connector = connector
-        newThoughtView = NewThoughtView(frame: CGRect(x: 0, y: frame.height - 200, width: 0, height: 0), connector: connector)
+        newThoughtView = NewThoughtView(frame: CGRect(x: 0, y: frame.height - 200, width: 0, height: 0))
         buildView()
     }
     

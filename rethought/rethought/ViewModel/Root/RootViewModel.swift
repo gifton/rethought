@@ -62,7 +62,6 @@ class RootViewModel: NSObject, RootViewModelDelegate {
 extension RootViewModel {
     private func retrieveContent() {
         let request = Thought.sortedFetchRequest
-        print("recieving core data stack...")
         do {
             let result = try moc.fetch(request)
             self.thoughts = result

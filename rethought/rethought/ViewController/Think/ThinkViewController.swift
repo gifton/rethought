@@ -19,7 +19,7 @@ class ThinkViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         self.model = model
         
-        thinkView = ThinkView(with: self)
+        thinkView = ConversationArea(frame: .zero)
         thinkView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(thinkView)
@@ -32,7 +32,7 @@ class ThinkViewController: UIViewController {
     }
     
     // MARK: private variables
-    var thinkView: ThinkView!
+    var thinkView: ConversationArea!
     
     var model: ThinkViewModel!
 }
