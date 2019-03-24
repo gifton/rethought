@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+//holding all mutating variables in a struct: EntrylistHeader
 struct EntryListHeader {
     var type: EntryType
     var entryCount: Int
@@ -22,19 +23,23 @@ struct EntryListHeader {
 }
 
 class EntryListView: UIView {
+    //initiate with:
+    // - entryHeader Object
     init(header: EntryListHeader) {
         headerObject = header
         super.init(frame: Device.size.frame)
-        backgroundColor = .white
+        backgroundColor = Device.colors.mainGreen
         buildHeader(); buildTable()
+        print("entrylist header built")
     }
     
     private var headerObject: EntryListHeader
-    public var backBtn = UIButton()
     
     // MARK: public
     public var tableView: UITableView!
     public var searchBar: UISearchBar!
+    
+    public var backBtn = UIButton()
     
     
     
@@ -50,7 +55,7 @@ extension EntryListView {
     private func buildHeader() {
         let headerView = UIView()
         headerView.frame = CGRect(x: 20, y: 45, width: Device.size.width - 40, height: 260)
-        headerView.backgroundColor = .clear
+        headerView.backgroundColor = .red
         addSubview(headerView)
         
         //build header objects
@@ -119,12 +124,13 @@ extension EntryListView {
         tableView = {
             let tv = UITableView(frame: CGRect(x: 0, y: 260, width: Device.size.width, height: Device.size.height - 260))
 //            tv.separatorStyle = .none
-            tv.backgroundColor = Device.colors.accentGray
+            tv.backgroundColor = Device.colors.mainBlue
             
             return tv
         }()
         
         tableView.register(cellWithClass: EntryListTextCell.self)
         addSubview(tableView)
+        print("table bui;t @ buildTable()")
     }
 }

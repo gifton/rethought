@@ -1,10 +1,4 @@
-//
-//  EntryListController.swift
-//  Rethought-project
-//
-//  Created by Dev on 3/20/19.
-//  Copyright © 2019 Wesaturate. All rights reserved.
-//
+
 
 import Foundation
 import UIKit
@@ -21,12 +15,7 @@ class EntryListController: UIViewController {
     }
     
     // MARK: Private
-    private var model: EntryListViewModel {
-        didSet {
-            print("GOT MODEL")
-            connectView()
-        }
-    }
+    private var model: EntryListViewModel
     private var type: EntryType {
         get {
             return model.entryType
@@ -38,12 +27,11 @@ class EntryListController: UIViewController {
     
     //initiate with:
     // - type of entry
-    // - EntryListViewModel
+    // - EntryList ViewModel
     init(ofType type: EntryType, withModel model: EntryListViewModel) {
         self.model = model
         super.init(nibName: nil, bundle: nil)
-        
-        
+        connectView()
         
         let header = EntryListHeader(ofType: type, entryCount: 4, locationCount: 3)
         listView = EntryListView(header: header)
