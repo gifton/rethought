@@ -42,8 +42,8 @@ class Replicator: ReplicatorProtocol {
         let entry5: TextEntry = TextEntry.insert(in: moc, title: "Stratego teaches us to be gang members", detail: "Gang members have a really long history of producing the smartest and most gangy gang members...", thought: thought, location: CLLocation())
 
         //image obj's
-        let entry3: MediaEntry = MediaEntry.insert(in: moc, image: #imageLiteral(resourceName: "imageEntryImagePlaceholder-1"), detail: "This is an image designed for stratego", thought: thought, location: CLLocation())
-        let entry4: MediaEntry = MediaEntry.insert(in: moc, image: #imageLiteral(resourceName: "imageEntryImagePlaceholder-2"), detail: "This also has to do with stratego", thought: thought, location: CLLocation())
+        let entry3: MediaEntry = MediaEntry.insert(in: moc, image: #imageLiteral(resourceName: "IMG_4290"), detail: "This is an image designed for stratego", thought: thought, location: CLLocation())
+        let entry4: MediaEntry = MediaEntry.insert(in: moc, image: #imageLiteral(resourceName: "IMG_0483"), detail: "This also has to do with stratego", thought: thought, location: CLLocation())
         
         //execute to calculate any runtime functions like Date() in the static func
         entry1.willSave()

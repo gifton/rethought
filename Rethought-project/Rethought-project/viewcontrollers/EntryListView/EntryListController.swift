@@ -31,25 +31,30 @@ class EntryListController: UIViewController {
     init(ofType type: EntryType, withModel model: EntryListViewModel) {
         self.model = model
         super.init(nibName: nil, bundle: nil)
-        connectView()
         
         let header = EntryListHeader(ofType: type, entryCount: 4, locationCount: 3)
         listView = EntryListView(header: header)
         
         self.type = type
+        
+        connectView()
     }
     
     //inject required delegates and datasources
     private func connectView() {
-        guard let lv = listView else {
-            print("unable to verify listView initialization")
-            return
+        if (listView != nil) {
+            listView!.backBtn.addTarget(self, action: #selector(returnHome(_:)), for: .touchUpInside)
+            listView!.searchBar.delegate = self
+            listView!.tableView.dataSource = model
+            view = listView
+        } else {
+            print("listView not confirmed initialized")
+            let header = EntryListHeader(ofType: .all, entryCount: 0, locationCount: 0)
+            listView = EntryListView(header: header)
+            
+            view = listView!
         }
-        lv.backBtn.addTarget(lv, action: #selector(returnHome(_:)), for: .touchUpInside)
-        lv.searchBar.delegate = self
         
-        lv.tableView.dataSource = model
-        view = listView
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -78,18 +83,20 @@ extension EntryListController: EntryListDelegate {
 
 extension EntryListController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let current = model.entries[indexPath.row]
-        switch current.type {
-        case .text:
-            guard let ent: TextEntryPreview = current as? TextEntryPreview else { return 100 }
-            print(ent.height)
-            return ent.height
-        case .media:
-            guard let ent: MediaEntryPreview = current as? MediaEntryPreview else { return 100}
-            return ent.height
-        default:
-            return 120
-        }
+//        let current = model.entries[indexPath.row]
+//        switch current.type {
+//        case .text:
+//            guard let ent: TextEntryPreview = current as? TextEntryPreview else { return 100 }
+//            print(ent.height)
+//            return ent.height
+//        case .media:
+//            guard let ent: MediaEntryPreview = current as? MediaEntryPreview else { return 100}
+//            return ent.height
+//        default:
+//            return 120
+//        }
+        print("initiated height")
+        return 300
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

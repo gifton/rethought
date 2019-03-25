@@ -28,9 +28,8 @@ class EntryListView: UIView {
     init(header: EntryListHeader) {
         headerObject = header
         super.init(frame: Device.size.frame)
-        backgroundColor = Device.colors.mainGreen
+        backgroundColor = .white
         buildHeader(); buildTable()
-        print("entrylist header built")
     }
     
     private var headerObject: EntryListHeader
@@ -38,7 +37,6 @@ class EntryListView: UIView {
     // MARK: public
     public var tableView: UITableView!
     public var searchBar: UISearchBar!
-    
     public var backBtn = UIButton()
     
     
@@ -55,7 +53,7 @@ extension EntryListView {
     private func buildHeader() {
         let headerView = UIView()
         headerView.frame = CGRect(x: 20, y: 45, width: Device.size.width - 40, height: 260)
-        headerView.backgroundColor = .red
+        headerView.backgroundColor = .clear
         addSubview(headerView)
         
         //build header objects
@@ -124,13 +122,12 @@ extension EntryListView {
         tableView = {
             let tv = UITableView(frame: CGRect(x: 0, y: 260, width: Device.size.width, height: Device.size.height - 260))
 //            tv.separatorStyle = .none
-            tv.backgroundColor = Device.colors.mainBlue
+            tv.backgroundColor = Device.colors.accentGray
             
             return tv
         }()
         
         tableView.register(cellWithClass: EntryListTextCell.self)
         addSubview(tableView)
-        print("table bui;t @ buildTable()")
     }
 }
