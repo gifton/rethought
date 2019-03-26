@@ -136,7 +136,14 @@ class EntryDataManager: NSObject {
     }
     
     // MARK: private
-    private var entries: [Entry] = []
+    private var entries: [Entry] {
+        var out = [Entry]()
+        out.append(contentsOf: textEntries)
+        out.append(contentsOf: mediaEntries)
+        out.append(contentsOf: linkEntries)
+        
+        return out
+    }
     private var searchedEntries: [Entry] = []
     
     // MARK: public
@@ -144,58 +151,25 @@ class EntryDataManager: NSObject {
     public var entryType: EntryType?
     
     //text entries by filter
-    public var textEntries: [TextEntryPreview] {
-        get {
-            let texts = entries.filter { (entry) -> Bool in
-                entry.type == EntryType.text
-            }
-            var output = [TextEntryPreview]()
-            texts.forEach { (entry) in
-                output.append(TextEntryPreview(entry as! TextEntry))
-            }
-            return output
-        }
-        set {
+    public var textEntries: [TextEntryPreview] = [] {
+        didSet {
             entryType = .text
-            entries.append(contentsOf: newValue)
         }
     }
     //media entries by filter
-    public var mediaEntries: [MediaEntryPreview] {
-        get {
-            let entries = self.entries.filter { (entry) -> Bool in
-                entry.type == EntryType.media
-            }
-            var output = [MediaEntryPreview]()
-            entries.forEach { (entry) in
-                output.append(MediaEntryPreview(entry as! MediaEntry))
-            }
-            return output
-        }
-        set {
+    public var mediaEntries: [MediaEntryPreview] = [] {
+        didSet {
             entryType = .media
-            entries.append(contentsOf: newValue)
         }
     }
     //link entries by filter
-    public var linkEntries: [LinkEntryPreview] {
-        get {
-            let entries = self.entries.filter { (entry) -> Bool in
-                entry.type == EntryType.link
-            }
-            var output = [LinkEntryPreview]()
-            entries.forEach { (entry) in
-                output.append(LinkEntryPreview(entry as! LinkEntry))
-            }
-            return output
-        }
-        set {
+    public var linkEntries: [LinkEntryPreview] = [] {
+        didSet {
             entryType = .link
-            entries.append(contentsOf: newValue)
         }
     }
     private var recordingEntries: [LinkEntryPreview] {
-        
+        entryType = .recording
         return []
     }
     

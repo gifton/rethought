@@ -32,7 +32,7 @@ class EntryListTextCell: UITableViewCell {
     private var locationLabel = UILabel()
     
     func set(with context: TextEntryPreview) {
-        thoughtIcon = context.title
+        thoughtIcon = context.thoughtIcon
         body = context.detail
         date = "\(context.date)"
         location = "Seattle, washington"
@@ -52,6 +52,8 @@ class EntryListTextCell: UITableViewCell {
         dateLabel.font = Device.font.mediumTitle(ofSize: .large)
         thoughtIconLabel.font = Device.font.mediumTitle(ofSize: .large)
         locationLabel.font = Device.font.mediumTitle(ofSize: .large)
+        
+        bodyLabel.numberOfLines = 0
         buildView()
     }
     

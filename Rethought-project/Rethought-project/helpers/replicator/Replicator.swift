@@ -40,6 +40,7 @@ class Replicator: ReplicatorProtocol {
         let entry2: TextEntry = TextEntry.insert(in: moc, title: "Can stratego save the world?", detail: "Strategists around the wirld claim that the board game stratego is the cure the world needs", thought: thought, location: CLLocation())
 
         let entry5: TextEntry = TextEntry.insert(in: moc, title: "Stratego teaches us to be gang members", detail: "Gang members have a really long history of producing the smartest and most gangy gang members...", thought: thought, location: CLLocation())
+        let entry6: TextEntry = TextEntry.insert(in: moc, title: "Lipsum length test", detail: "r since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets co", thought: thought, location: CLLocation())
 
         //image obj's
         let entry3: MediaEntry = MediaEntry.insert(in: moc, image: #imageLiteral(resourceName: "IMG_4290"), detail: "This is an image designed for stratego", thought: thought, location: CLLocation())
@@ -51,6 +52,7 @@ class Replicator: ReplicatorProtocol {
         entry3.willSave()
         entry4.willSave()
         entry5.willSave()
+        entry6.willSave()
     }
     
     func saveReplicatorData() {

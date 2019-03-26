@@ -14,7 +14,6 @@ class EntryListViewModel: NSObject {
     init(with moc: NSManagedObjectContext) {
         self.moc = moc
         super.init()
-        
     }
     
     public var entryType: EntryType {
@@ -23,6 +22,7 @@ class EntryListViewModel: NSObject {
         }
         set {
             dataManager.entryType = newValue
+            fetchEntries()
         }
     }
     public var entries: [Entry] {
@@ -180,13 +180,13 @@ extension EntryListViewModel {
 extension EntryListViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("number of entries: \(dataManager.count)")
-        return 10
+        return dataManager.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: EntryListTextCell.self, for: indexPath)
-//        guard let currentEntry = dataManager.entryData[indexPath.row] as? TextEntryPreview else { return cell}
-//        cell.set(with: currentEntry)
+        guard let currentEntry = dataManager.data[indexPath.row] as? TextEntryPreview else { return cell}
+        cell.set(with: currentEntry)
         return cell
     }
     
@@ -194,19 +194,17 @@ extension EntryListViewModel: UITableViewDataSource {
 
 extension EntryListViewModel: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //        let current = model.entries[indexPath.row]
-        //        switch current.type {
-        //        case .text:
-        //            guard let ent: TextEntryPreview = current as? TextEntryPreview else { return 100 }
-        //            print(ent.height)
-        //            return ent.height
-        //        case .media:
-        //            guard let ent: MediaEntryPreview = current as? MediaEntryPreview else { return 100}
-        //            return ent.height
-        //        default:
-        //            return 120
-        //        }
-        return 300
+                let current = dataManager.data[indexPath.row]
+                switch current.type {
+                case .text:
+                    guard let ent: TextEntryPreview = current as? TextEntryPreview else { return 100 }
+                    return ent.height + 100
+                case .media:
+                    guard let ent: MediaEntryPreview = current as? MediaEntryPreview else { return 100}
+                    return ent.height
+                default:
+                    return 120
+                }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

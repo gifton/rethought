@@ -47,10 +47,6 @@ class EntryListController: UIViewController {
             listView!.searchBar.delegate = self
             listView!.tableView.dataSource = model
             listView!.tableView.delegate = model
-
-            listView!.tableView.reloadData {
-                print("data reloaded")
-            }
         } else {
             print("listView not confirmed initialized")
             let header = EntryListHeader(ofType: .all, entryCount: 0, locationCount: 0)
