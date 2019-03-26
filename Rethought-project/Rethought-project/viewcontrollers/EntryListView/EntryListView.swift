@@ -39,8 +39,6 @@ class EntryListView: UIView {
     public var searchBar: UISearchBar!
     public var backBtn = UIButton()
     
-    
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -113,7 +111,6 @@ extension EntryListView {
         stack.setCustomSpacing(2, after: entryCountLabel)
         stack.frame = CGRect(x: 0, y: 10, width: Device.size.width, height: heightCalculation)
         stack.alignment = .leading
-//        stack.distribution = .fillProportionally
         
         return stack
     }
@@ -121,8 +118,7 @@ extension EntryListView {
     func buildTable() {
         tableView = {
             let tv = UITableView(frame: CGRect(x: 0, y: 260, width: Device.size.width, height: Device.size.height - 260))
-//            tv.separatorStyle = .none
-            tv.backgroundColor = Device.colors.accentGray
+            tv.backgroundColor = Device.colors.offWhite
             
             return tv
         }()

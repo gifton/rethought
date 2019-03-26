@@ -19,7 +19,6 @@ class RootHeaderViewModel: NSObject {
         
         self.moc = moc
         fetchThoughts()
-        print("Root Header VM initialized")
     }
 }
 

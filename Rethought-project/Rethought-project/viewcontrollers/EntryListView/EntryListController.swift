@@ -46,6 +46,7 @@ class EntryListController: UIViewController {
             listView!.backBtn.addTarget(self, action: #selector(returnHome(_:)), for: .touchUpInside)
             listView!.searchBar.delegate = self
             listView!.tableView.dataSource = model
+            listView!.tableView.delegate = model
             view = listView
         } else {
             print("listView not confirmed initialized")
@@ -77,30 +78,6 @@ extension EntryListController: EntryListDelegate {
     //update tableview with searched entries from core data
     func search(with key: String) {
         print("showing search!")
-    }
-}
-
-
-extension EntryListController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        let current = model.entries[indexPath.row]
-//        switch current.type {
-//        case .text:
-//            guard let ent: TextEntryPreview = current as? TextEntryPreview else { return 100 }
-//            print(ent.height)
-//            return ent.height
-//        case .media:
-//            guard let ent: MediaEntryPreview = current as? MediaEntryPreview else { return 100}
-//            return ent.height
-//        default:
-//            return 120
-//        }
-        print("initiated height")
-        return 300
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        show(thoughtID: "dfkbvdfv")
     }
 }
 
