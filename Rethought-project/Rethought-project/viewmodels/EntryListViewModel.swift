@@ -27,28 +27,24 @@ class EntryListViewModel: NSObject {
     }
     public var entries: [Entry] {
         
-        return dataManager.entryData
+        return dataManager.data
     }
     
     private var moc: NSManagedObjectContext
-    private let dataManager = ModelDataManager()
+    private let dataManager = EntryDataManager()
     
     func search(with keyword: String, completion: () -> Void) {
         let predicate = NSPredicate(format: "title contains[c] '\(keyword)'")
         
         switch entryType {
         case .text:
-            dataManager.searchedEntries(searchForTextEntries(with: predicate))
-            dataManager.entryType = .text
+            dataManager.setSearchedEntries(searchForTextEntries(with: predicate), ofType: .link)
         case .link:
-            dataManager.searchedEntries(searchForLinkEntries(with: predicate))
-            dataManager.entryType = .link
-        case .all:
-            dataManager.searchedEntries(searchForAllEntries(with: predicate))
-            dataManager.entryType = .all
+            dataManager.setSearchedEntries(searchForLinkEntries(with: predicate), ofType: .link)
+        case .media:
+            dataManager.setSearchedEntries(searchForMediaEntries(with: predicate), ofType: .link)
         default:
-            dataManager.searchedEntries(searchForMediaEntries(with: predicate))
-            dataManager.entryType = .media
+            dataManager.setSearchedEntries(searchForAllEntries(with: predicate), ofType: .link)
         }
         completion()
     }
@@ -58,15 +54,13 @@ class EntryListViewModel: NSObject {
 //all searching funcs for EntryTypes
 extension EntryListViewModel {
     //text entries
-    private func searchForTextEntries(with predicate: NSPredicate) -> [Entry] {
+    private func searchForTextEntries(with predicate: NSPredicate) -> [TextEntryPreview] {
         let fr = TextEntry.sortedFetchRequest(with: predicate)
-        var ents = [Entry]()
+        var ents = [TextEntryPreview]()
         
         do {
             let output = try moc.fetch(fr)
-            output.forEach { (entry) in
-                ents.append(TextEntryPreview(entry))
-            }
+            ents = output.toPreview()
             
         } catch {
             print("unable to search with given criteria")
@@ -75,15 +69,13 @@ extension EntryListViewModel {
     }
     
     //link entries
-    private func searchForLinkEntries(with predicate: NSPredicate) -> [Entry] {
+    private func searchForLinkEntries(with predicate: NSPredicate) -> [LinkEntryPreview] {
         let fr = LinkEntry.sortedFetchRequest(with: predicate)
-        var ents = [Entry]()
+        var ents = [LinkEntryPreview]()
         
         do {
             let output = try moc.fetch(fr)
-            output.forEach { (entry) in
-                ents.append(LinkEntryPreview(entry))
-            }
+            ents = output.toPreview()
             
         } catch {
             print("unable to search with given criteria")
@@ -92,15 +84,13 @@ extension EntryListViewModel {
     }
     
     //text media
-    private func searchForMediaEntries(with predicate: NSPredicate) -> [Entry] {
+    private func searchForMediaEntries(with predicate: NSPredicate) -> [MediaEntryPreview] {
         let fr = MediaEntry.sortedFetchRequest(with: predicate)
-        var ents = [Entry]()
+        var ents = [MediaEntryPreview]()
         
         do {
             let output = try moc.fetch(fr)
-            output.forEach { (entry) in
-                ents.append(MediaEntryPreview(entry))
-            }
+            ents = output.toPreview()
             
         } catch {
             print("unable to search with given criteria")
@@ -123,6 +113,67 @@ extension EntryListViewModel {
     
     func doneWithSearch() {
         dataManager.isSearching = false
+    }
+    
+    private func fetchEntries() {
+        switch entryType {
+        case .text:
+            fetchTextEntries()
+        default:
+            fetchTextEntries()
+        }
+    }
+    
+    private func fetchTextEntries() {
+        let request = TextEntry.sortedFetchRequest
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let result = try moc.fetch(request)
+            dataManager.textEntries = result.toPreview()
+            print("entries found... \(result.count)")
+        } catch let err {
+            print("there was an error fetching: \(err)")
+        }
+    }
+    
+    private func fetchMediaEntries() {
+        let request = MediaEntry.sortedFetchRequest
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let result = try moc.fetch(request)
+            dataManager.mediaEntries = result.toPreview()
+            print("entries found... \(result.count)")
+        } catch let err {
+            print("there was an error fetching: \(err)")
+        }
+    }
+    
+    private func fetchLinkEntries() {
+        let request = LinkEntry.sortedFetchRequest
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let result = try moc.fetch(request)
+            dataManager.linkEntries = result.toPreview()
+            print("entries found... \(result.count)")
+        } catch let err {
+            print("there was an error fetching: \(err)")
+        }
+    }
+    
+    private func fetchRecordingEntries() {
+        let request = RecordingEntry.sortedFetchRequest
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let result = try moc.fetch(request)
+            
+            print("entries found... \(result.count)")
+        } catch let err {
+            print("there was an error fetching: \(err)")
+        }
     }
 }
 

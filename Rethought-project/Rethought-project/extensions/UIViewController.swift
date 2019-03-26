@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 public extension UIViewController {
-    @discardableResult public func showAlert(title: String?, message: String?, buttonTitles: [String]? = nil, highlightedButtonIndex: Int? = nil, completion: ((Int) -> Void)? = nil) -> UIAlertController {
+    @discardableResult func showAlert(title: String?, message: String?, buttonTitles: [String]? = nil, highlightedButtonIndex: Int? = nil, completion: ((Int) -> Void)? = nil) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         var allButtons = buttonTitles ?? [String]()
         if allButtons.count == 0 {
@@ -26,14 +26,14 @@ public extension UIViewController {
         return alertController
     }
     
-    public func addChildViewController(_ child: UIViewController, toContainerView containerView: UIView) {
+    func addChildViewController(_ child: UIViewController, toContainerView containerView: UIView) {
         addChild(child)
         containerView.addSubview(child.view)
         child.didMove(toParent: self)
     }
     
     // Helper method to remove a UIViewController from its parent.
-    public func removeViewAndControllerFromParentViewController() {
+    func removeViewAndControllerFromParentViewController() {
         guard parent != nil else { return }
         
         willMove(toParent: nil)
@@ -42,7 +42,7 @@ public extension UIViewController {
     }
     
     //display popover controller
-    public func presentPopover(_ popoverContent: UIViewController, sourcePoint: CGPoint, size: CGSize? = nil, delegate: UIPopoverPresentationControllerDelegate? = nil, animated: Bool = true, completion: (() -> Void)? = nil) {
+    func presentPopover(_ popoverContent: UIViewController, sourcePoint: CGPoint, size: CGSize? = nil, delegate: UIPopoverPresentationControllerDelegate? = nil, animated: Bool = true, completion: (() -> Void)? = nil) {
         popoverContent.modalPresentationStyle = .popover
         
         if let size = size {

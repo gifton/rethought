@@ -27,3 +27,16 @@ struct TextEntryPreview: Entry {
         type = .text
     }
 }
+
+struct EntryPreviews<T> {
+    var entries: [T]
+    
+    init(entries: [T]) {
+        self.entries = entries
+        
+    }
+//
+//    private func findEntryType() {
+//        print(T)
+//    }
+}

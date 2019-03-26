@@ -31,9 +31,3 @@ extension Dictionary where Key: ExpressibleByStringLiteral {
     }
 }
 
-extension Sequence where Iterator.Element: AnyObject {
-    func containsObjectIdentical(to object: AnyObject) -> Bool {
-        return contains { $0 === object }
-    }
-}
-

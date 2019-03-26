@@ -3,7 +3,7 @@ import UIKit
 
 public extension UICollectionView {
     // - Parameter completion: completion handler to run after reloadData finishes.
-    public func reloadData(_ completion: @escaping () -> Void) {
+    func reloadData(_ completion: @escaping () -> Void) {
         UIView.animate(withDuration: 0, animations: {
             self.reloadData()
         }, completion: { _ in
@@ -12,7 +12,7 @@ public extension UICollectionView {
     }
     
     // - Returns: UICollectionViewCell object with associated class name.
-    public func dequeueReusableCell<T: UICollectionViewCell>(withClass name: T.Type, for indexPath: IndexPath) -> T {
+    func dequeueReusableCell<T: UICollectionViewCell>(withClass name: T.Type, for indexPath: IndexPath) -> T {
         guard let cell = dequeueReusableCell(withReuseIdentifier: String(describing: name), for: indexPath) as? T else {
             fatalError("Couldn't find UICollectionViewCell for \(String(describing: name))")
         }
@@ -20,7 +20,7 @@ public extension UICollectionView {
     }
     
     // - Parameter name: UICollectionViewCell type.
-    public func register<T: UICollectionViewCell>(cellWithClass name: T.Type) {
+    func register<T: UICollectionViewCell>(cellWithClass name: T.Type) {
         register(T.self, forCellWithReuseIdentifier: String(describing: name))
     }
 }

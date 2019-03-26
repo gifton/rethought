@@ -4,7 +4,7 @@ import UIKit
 //allows input as hex valuse instead of standard UIcolo init
 public extension UIColor {
     
-    public convenience init(hex: Int, alpha: CGFloat = 1.0) {
+    convenience init(hex: Int, alpha: CGFloat = 1.0) {
         let red = CGFloat((hex & 0xFF0000) >> 16) / 255.0
         let green = CGFloat((hex & 0xFF00) >> 8) / 255.0
         let blue = CGFloat((hex & 0xFF)) / 255.0
@@ -12,7 +12,7 @@ public extension UIColor {
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
     
-    public convenience init(hex string: String, alpha: CGFloat = 1.0) {
+    convenience init(hex string: String, alpha: CGFloat = 1.0) {
         var hex = string.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
         if hex.hasPrefix("#") {
@@ -74,7 +74,7 @@ public extension UIColor {
         let c = color.cgColor.components!
         return String(format: "#%02X%02X%02X", Int(c[0]*255.0), Int(c[1]*255.0), Int(c[2]*255.0))
     }
-    public static var random: UIColor {
+    static var random: UIColor {
         let max = CGFloat(UInt32.max)
         let red = CGFloat(arc4random()) / max
         let green = CGFloat(arc4random()) / max

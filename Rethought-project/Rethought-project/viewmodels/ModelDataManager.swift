@@ -126,3 +126,102 @@ class ModelDataManager: NSObject {
         }
     }
 }
+
+
+
+// MARK: Entry manager
+class EntryDataManager: NSObject {
+    override init() {
+        super.init()
+    }
+    
+    // MARK: private
+    private var entries: [Entry] = []
+    private var searchedEntries: [Entry] = []
+    
+    // MARK: public
+    public var isSearching = false
+    public var entryType: EntryType?
+    
+    //text entries by filter
+    public var textEntries: [TextEntryPreview] {
+        get {
+            let texts = entries.filter { (entry) -> Bool in
+                entry.type == EntryType.text
+            }
+            var output = [TextEntryPreview]()
+            texts.forEach { (entry) in
+                output.append(TextEntryPreview(entry as! TextEntry))
+            }
+            return output
+        }
+        set {
+            entryType = .text
+            entries.append(contentsOf: newValue)
+        }
+    }
+    //media entries by filter
+    public var mediaEntries: [MediaEntryPreview] {
+        get {
+            let entries = self.entries.filter { (entry) -> Bool in
+                entry.type == EntryType.media
+            }
+            var output = [MediaEntryPreview]()
+            entries.forEach { (entry) in
+                output.append(MediaEntryPreview(entry as! MediaEntry))
+            }
+            return output
+        }
+        set {
+            entryType = .media
+            entries.append(contentsOf: newValue)
+        }
+    }
+    //link entries by filter
+    public var linkEntries: [LinkEntryPreview] {
+        get {
+            let entries = self.entries.filter { (entry) -> Bool in
+                entry.type == EntryType.link
+            }
+            var output = [LinkEntryPreview]()
+            entries.forEach { (entry) in
+                output.append(LinkEntryPreview(entry as! LinkEntry))
+            }
+            return output
+        }
+        set {
+            entryType = .link
+            entries.append(contentsOf: newValue)
+        }
+    }
+    private var recordingEntries: [LinkEntryPreview] {
+        
+        return []
+    }
+    
+    public func setSearchedEntries(_ entries: [Entry], ofType: EntryType) {
+        isSearching = true
+        searchedEntries = entries
+    }
+}
+
+extension EntryDataManager {
+    public var count: Int {
+        if isSearching {
+            return searchedEntries.count
+        }
+        return entries.count
+    }
+    public var data: [Entry] {
+        switch entryType! {
+        case .text:
+            return textEntries
+        case .link:
+            return linkEntries
+        case .media:
+            return mediaEntries
+        default:
+            return entries
+        }
+    }
+}

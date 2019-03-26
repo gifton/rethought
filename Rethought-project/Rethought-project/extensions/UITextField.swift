@@ -15,7 +15,7 @@ extension UITextField {
 // MARK: - Enums
 public extension UITextField {
     
-    public enum TextType {
+    enum TextType {
         /// UITextField is used to enter email addresses.
         case emailAddress
         
@@ -35,7 +35,7 @@ public extension UITextField {
 public extension UITextField {
     
     /// Set textField for common text types.
-    public var textType: TextType {
+    var textType: TextType {
         get {
             if keyboardType == .emailAddress {
                 return .emailAddress
@@ -72,11 +72,11 @@ public extension UITextField {
     }
     
     /// SwifterSwift: Check if text field is empty.
-    public var isEmpty: Bool {
+    var isEmpty: Bool {
         return text?.isEmpty == true
     }
     
-    public var hasValidEmail: Bool {
+    var hasValidEmail: Bool {
         // http://stackoverflow.com/questions/25471114/how-to-validate-an-e-mail-address-in-swift
         return text!.range(of: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}",
                            options: String.CompareOptions.regularExpression,

@@ -33,3 +33,42 @@ extension Sequence where Self.Element: Thought {
         return ents
     }
 }
+
+extension Sequence where Iterator.Element: AnyObject {
+    func containsObjectIdentical(to object: AnyObject) -> Bool {
+        return contains { $0 === object }
+    }
+}
+
+//return list of textEntry to [TextEntryPreview]
+extension Sequence where Iterator.Element: TextEntry {
+    func toPreview() -> [TextEntryPreview] {
+        var output = [TextEntryPreview]()
+        forEach { (input) in
+            output.append(TextEntryPreview(input as TextEntry))
+        }
+        return output
+    }
+}
+
+//return list of textEntry to [TextEntryPreview]
+extension Sequence where Iterator.Element: MediaEntry {
+    func toPreview() -> [MediaEntryPreview] {
+        var output = [MediaEntryPreview]()
+        forEach { (input) in
+            output.append(MediaEntryPreview(input as MediaEntry))
+        }
+        return output
+    }
+}
+
+//return list of textEntry to [TextEntryPreview]
+extension Sequence where Iterator.Element: LinkEntry {
+    func toPreview() -> [LinkEntryPreview] {
+        var output = [LinkEntryPreview]()
+        forEach { (input) in
+            output.append(LinkEntryPreview(input as LinkEntry))
+        }
+        return output
+    }
+}
