@@ -121,8 +121,6 @@ class ModelDataManager: NSObject {
             return linkEntries
         case .media:
             return mediaEntries
-        case .all:
-            return entries
         default:
             return entries
         }
