@@ -36,7 +36,7 @@ class EntryListController: UIViewController {
         listView = EntryListView(header: header)
         
         self.type = type
-        
+        view = listView
         connectView()
     }
     
@@ -47,7 +47,10 @@ class EntryListController: UIViewController {
             listView!.searchBar.delegate = self
             listView!.tableView.dataSource = model
             listView!.tableView.delegate = model
-            view = listView
+
+            listView!.tableView.reloadData {
+                print("data reloaded")
+            }
         } else {
             print("listView not confirmed initialized")
             let header = EntryListHeader(ofType: .all, entryCount: 0, locationCount: 0)

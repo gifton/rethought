@@ -128,13 +128,14 @@ extension EntryListViewModel {
 
 extension EntryListViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataManager.count
+        print("number of entries: \(dataManager.count)")
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: EntryListTextCell.self, for: indexPath)
-        guard let currentEntry = dataManager.entryData[indexPath.row] as? TextEntryPreview else { return cell}
-        cell.set(with: currentEntry)
+//        guard let currentEntry = dataManager.entryData[indexPath.row] as? TextEntryPreview else { return cell}
+//        cell.set(with: currentEntry)
         return cell
     }
     
@@ -154,7 +155,6 @@ extension EntryListViewModel: UITableViewDelegate {
         //        default:
         //            return 120
         //        }
-        print("initiated height")
         return 300
     }
     
