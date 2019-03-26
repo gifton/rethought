@@ -36,7 +36,6 @@
 		D7D6B43C2234BAC70091F522 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7D6B43B2234BAC70091F522 /* Assets.xcassets */; };
 		D7D6B43F2234BAC70091F522 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7D6B43D2234BAC70091F522 /* LaunchScreen.storyboard */; };
 		D7D6B44C2234BBC70091F522 /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6B44B2234BBC70091F522 /* Styling.swift */; };
-		D7D6B44E2234BBD90091F522 /* HeightForText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6B44D2234BBD90091F522 /* HeightForText.swift */; };
 		D7D6B4502234BBF40091F522 /* Development.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6B44F2234BBF40091F522 /* Development.swift */; };
 		D7D6B4522234BBFF0091F522 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6B4512234BBFF0091F522 /* Device.swift */; };
 		D7D6B4542234BC190091F522 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6B4532234BC190091F522 /* Defaults.swift */; };
@@ -61,6 +60,7 @@
 		D7D6B4842234C3CB0091F522 /* LinkEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6B47A2234C3CB0091F522 /* LinkEntry.swift */; };
 		D7D6B4862234C3CB0091F522 /* Thought.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6B47C2234C3CB0091F522 /* Thought.swift */; };
 		D7D6B48E2234C49B0091F522 /* LinkEntryPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6B48D2234C49B0091F522 /* LinkEntryPreview.swift */; };
+		D7FC0C2A224A85C60020AE21 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FC0C29224A85C60020AE21 /* String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,7 +95,6 @@
 		D7D6B43E2234BAC70091F522 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D7D6B4402234BAC70091F522 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7D6B44B2234BBC70091F522 /* Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styling.swift; sourceTree = "<group>"; };
-		D7D6B44D2234BBD90091F522 /* HeightForText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeightForText.swift; sourceTree = "<group>"; };
 		D7D6B44F2234BBF40091F522 /* Development.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Development.swift; sourceTree = "<group>"; };
 		D7D6B4512234BBFF0091F522 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		D7D6B4532234BC190091F522 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
@@ -120,6 +119,7 @@
 		D7D6B47A2234C3CB0091F522 /* LinkEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkEntry.swift; sourceTree = "<group>"; };
 		D7D6B47C2234C3CB0091F522 /* Thought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thought.swift; sourceTree = "<group>"; };
 		D7D6B48D2234C49B0091F522 /* LinkEntryPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkEntryPreview.swift; sourceTree = "<group>"; };
+		D7FC0C29224A85C60020AE21 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +279,7 @@
 				D7D6B4632234BCBD0091F522 /* UITextView.swift */,
 				D7D6B4552234BC450091F522 /* UIView.swift */,
 				D709F10B2240B5B000E4E769 /* UIViewController.swift */,
+				D7FC0C29224A85C60020AE21 /* String.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -288,7 +289,6 @@
 			children = (
 				D73040972235E85000C870FF /* replicator */,
 				D7D6B44B2234BBC70091F522 /* Styling.swift */,
-				D7D6B44D2234BBD90091F522 /* HeightForText.swift */,
 				D7D6B44F2234BBF40091F522 /* Development.swift */,
 				D7D6B4512234BBFF0091F522 /* Device.swift */,
 				D7D6B4532234BC190091F522 /* Defaults.swift */,
@@ -424,6 +424,7 @@
 				D709F1022240568700E4E769 /* TopRootThoughtCell.swift in Sources */,
 				D7D6B4732234BE560091F522 /* rt-pDB.xcdatamodeld in Sources */,
 				D709F100223FD86900E4E769 /* TopRootView.swift in Sources */,
+				D7FC0C2A224A85C60020AE21 /* String.swift in Sources */,
 				D734F3AE22429E3400B5C7AF /* ModelDataManager.swift in Sources */,
 				D730408D2235C10800C870FF /* RecordingEntryPreview.swift in Sources */,
 				D709F10C2240B5B000E4E769 /* UIViewController.swift in Sources */,
@@ -458,7 +459,6 @@
 				D7D6B4842234C3CB0091F522 /* LinkEntry.swift in Sources */,
 				D7D6B4522234BBFF0091F522 /* Device.swift in Sources */,
 				D709F0FE223FCFC100E4E769 /* RootHeaderController.swift in Sources */,
-				D7D6B44E2234BBD90091F522 /* HeightForText.swift in Sources */,
 				D7D6B4502234BBF40091F522 /* Development.swift in Sources */,
 				D709F1082240B0B300E4E769 /* UIStackView.swift in Sources */,
 			);

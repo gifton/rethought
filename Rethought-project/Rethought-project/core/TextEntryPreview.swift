@@ -12,9 +12,7 @@ struct TextEntryPreview: Entry {
     var id:          String
     var type:        EntryType
     var height: CGFloat {
-        let lbl = UILabel()
-        lbl.text = detail
-        return lbl.intrinsicContentSize.height
+        return detail.heightFor(font: Device.font.body(ofSize: .medium), width: Device.size.width - 50)
     }
     
     init(_ entry: TextEntry) {
@@ -25,9 +23,6 @@ struct TextEntryPreview: Entry {
         detail = entry.detail
         id = entry.id
         type = .text
-        
-        print("text entry preview initiated with height: \(height)")
-        print(detail.count)
     }
 }
 

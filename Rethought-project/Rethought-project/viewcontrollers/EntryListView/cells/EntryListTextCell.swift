@@ -52,6 +52,7 @@ class EntryListTextCell: UITableViewCell {
         dateLabel.font = Device.font.mediumTitle(ofSize: .large)
         thoughtIconLabel.font = Device.font.mediumTitle(ofSize: .large)
         locationLabel.font = Device.font.mediumTitle(ofSize: .large)
+        bodyLabel.font = Device.font.body(ofSize: .medium)
         
         bodyLabel.numberOfLines = 0
         buildView()
@@ -67,7 +68,7 @@ class EntryListTextCell: UITableViewCell {
         
         //place views
         thoughtIconLabel.frame = CGRect(x: 25, y: 10, width: 25, height: 25)
-        bodyLabel.frame = CGRect(x: 25, y: 50, width: frame.width - 50, height: frame.height - 70)
+        bodyLabel.frame = CGRect(x: 25, y: 35, width: frame.width - 50, height: frame.height - 50)
     }
     
     private func buildTopStack() -> UIStackView {
