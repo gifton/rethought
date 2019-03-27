@@ -22,8 +22,9 @@ class EntryListTextCell: UITableViewCell {
     //private variables
     private var thoughtIcon: String!
     private var body: String!
-    private var date: String!
+    private var date: Date!
     private var location: String!
+    private var bodyLabelSize: CGSize!
     
     //private objects
     private var thoughtIconLabel = UILabel()
@@ -34,16 +35,18 @@ class EntryListTextCell: UITableViewCell {
     func set(with context: TextEntryPreview) {
         thoughtIcon = context.thoughtIcon
         body = context.detail
-        date = "\(context.date)"
+        date = context.date
         location = "Seattle, washington"
+        bodyLabelSize = context.size
         addContext()
     }
     
     private func addContext() {
         thoughtIconLabel.text = thoughtIcon
         bodyLabel.text = body
-        dateLabel.text = date
+        dateLabel.getStringFromDate(date: date)
         locationLabel.text = location
+        
         style()
     }
     
@@ -59,16 +62,21 @@ class EntryListTextCell: UITableViewCell {
     }
     
     private func buildView() {
-        
+        let cell = UIView(frame: CGRect(x: 10, y: 5, width: frame.width - 20, height: frame.height - 10))
+        cell.backgroundColor = Device.colors.offWhite
+        cell.layer.cornerRadius = 5
         //add to superview
-        addSubview(thoughtIconLabel)
-        addSubview(bodyLabel)
-//        addSubview(dateLabel)
-//        addSubview(locationLabel)
+        addSubview(cell)
+        cell.addSubview(thoughtIconLabel)
+        cell.addSubview(bodyLabel)
+        addSubview(dateLabel)
+        addSubview(locationLabel)
         
         //place views
-        thoughtIconLabel.frame = CGRect(x: 25, y: 10, width: 25, height: 25)
-        bodyLabel.frame = CGRect(x: 25, y: 35, width: frame.width - 50, height: frame.height - 50)
+        thoughtIconLabel.frame = CGRect(x: 15, y: 10, width: 25, height: 25)
+        dateLabel.frame = CGRect(x: 50, y: 15, width: 150, height: 25)
+        locationLabel.frame = CGRect(x: 200, y: 15, width: 150, height: 25)
+        bodyLabel.frame = CGRect(x: 15, y: 45, width: bodyLabelSize.width, height: bodyLabelSize.height)
     }
     
     private func buildTopStack() -> UIStackView {

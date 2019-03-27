@@ -11,8 +11,8 @@ struct TextEntryPreview: Entry {
     var thoughtIcon: String
     var id:          String
     var type:        EntryType
-    var height: CGFloat {
-        return detail.heightFor(font: Device.font.body(ofSize: .medium), width: Device.size.width - 50)
+    var size: CGSize {
+        return detail.sizeFor(font: Device.font.body(ofSize: .medium), width: Device.size.width - 50)
     }
     
     init(_ entry: TextEntry) {

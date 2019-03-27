@@ -30,6 +30,13 @@ class EntryListViewModel: NSObject {
         return dataManager.data
     }
     
+    public var count: Int {
+        return dataManager.count
+    }
+    public var locationCount: Int {
+        return 8
+    }
+    
     private var moc: NSManagedObjectContext
     private let dataManager = EntryDataManager()
     
@@ -198,7 +205,7 @@ extension EntryListViewModel: UITableViewDelegate {
                 switch current.type {
                 case .text:
                     guard let ent: TextEntryPreview = current as? TextEntryPreview else { return 100 }
-                    return ent.height + 100
+                    return ent.size.height + 70
                 case .media:
                     guard let ent: MediaEntryPreview = current as? MediaEntryPreview else { return 100}
                     return ent.height

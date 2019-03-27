@@ -51,7 +51,8 @@ extension EntryListView {
     private func buildHeader() {
         let headerView = UIView()
         headerView.frame = CGRect(x: 20, y: 45, width: Device.size.width - 40, height: 260)
-        headerView.backgroundColor = .clear
+        headerView.backgroundColor = .white
+        
         addSubview(headerView)
         
         //build header objects
@@ -120,6 +121,7 @@ extension EntryListView {
             let tv = UITableView(frame: CGRect(x: 0, y: 260, width: Device.size.width, height: Device.size.height - 260))
             tv.backgroundColor = Device.colors.offWhite
             tv.separatorStyle = .none
+            
             return tv
         }()
         

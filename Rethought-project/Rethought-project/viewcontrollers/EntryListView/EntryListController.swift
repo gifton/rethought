@@ -31,11 +31,12 @@ class EntryListController: UIViewController {
     init(ofType type: EntryType, withModel model: EntryListViewModel) {
         self.model = model
         super.init(nibName: nil, bundle: nil)
+        self.type = type
         
-        let header = EntryListHeader(ofType: type, entryCount: 4, locationCount: 3)
+        let header = EntryListHeader(ofType: type, entryCount: model.count, locationCount: 3)
         listView = EntryListView(header: header)
         
-        self.type = type
+        
         view = listView
         connectView()
     }

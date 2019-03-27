@@ -11,7 +11,7 @@ import UIKit
 
 extension String {
     //calculate height of text word wrapped to device width
-    func heightFor(font: UIFont, width: CGFloat) -> CGFloat{
+    func sizeFor(font: UIFont, width: CGFloat) -> CGSize{
         let label: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
@@ -19,6 +19,6 @@ extension String {
         label.text = self
         label.sizeToFit()
         
-        return label.frame.height
+        return label.frame.size
     }
 }
