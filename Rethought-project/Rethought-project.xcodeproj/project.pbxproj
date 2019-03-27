@@ -27,6 +27,7 @@
 		D734F3AE22429E3400B5C7AF /* ModelDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D734F3AD22429E3400B5C7AF /* ModelDataManager.swift */; };
 		D734F3B12242BBC500B5C7AF /* EntryListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D734F3B02242BBC500B5C7AF /* EntryListController.swift */; };
 		D747CBE0224B49CF0008AAAE /* EntryImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D747CBDF224B49CF0008AAAE /* EntryImageCell.swift */; };
+		D747CBE2224BADBF0008AAAE /* EntryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D747CBE1224BADBF0008AAAE /* EntryDataManager.swift */; };
 		D766599322434D53006A1C14 /* EntryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D766599222434D53006A1C14 /* EntryListView.swift */; };
 		D766599622435161006A1C14 /* EntryListTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D766599522435161006A1C14 /* EntryListTextCell.swift */; };
 		D7665998224352DD006A1C14 /* EntryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7665997224352DD006A1C14 /* EntryListViewModel.swift */; };
@@ -85,6 +86,7 @@
 		D734F3AD22429E3400B5C7AF /* ModelDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDataManager.swift; sourceTree = "<group>"; };
 		D734F3B02242BBC500B5C7AF /* EntryListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListController.swift; sourceTree = "<group>"; };
 		D747CBDF224B49CF0008AAAE /* EntryImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryImageCell.swift; sourceTree = "<group>"; };
+		D747CBE1224BADBF0008AAAE /* EntryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDataManager.swift; sourceTree = "<group>"; };
 		D766599222434D53006A1C14 /* EntryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListView.swift; sourceTree = "<group>"; };
 		D766599522435161006A1C14 /* EntryListTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListTextCell.swift; sourceTree = "<group>"; };
 		D7665997224352DD006A1C14 /* EntryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListViewModel.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			children = (
 				D79A5DE022416F1400666D52 /* RootHeaderViewModel.swift */,
 				D734F3AD22429E3400B5C7AF /* ModelDataManager.swift */,
+				D747CBE1224BADBF0008AAAE /* EntryDataManager.swift */,
 				D7665997224352DD006A1C14 /* EntryListViewModel.swift */,
 			);
 			path = viewmodels;
@@ -430,6 +433,7 @@
 				D7FC0C2A224A85C60020AE21 /* String.swift in Sources */,
 				D734F3AE22429E3400B5C7AF /* ModelDataManager.swift in Sources */,
 				D730408D2235C10800C870FF /* RecordingEntryPreview.swift in Sources */,
+				D747CBE2224BADBF0008AAAE /* EntryDataManager.swift in Sources */,
 				D709F10C2240B5B000E4E769 /* UIViewController.swift in Sources */,
 				D73040992235E86800C870FF /* Replicator.swift in Sources */,
 				D7D6B4822234C3CB0091F522 /* TextEntry.swift in Sources */,

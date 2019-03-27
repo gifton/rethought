@@ -125,7 +125,7 @@ extension EntryListView {
             return tv
         }()
         
-        tableView.register(cellWithClass: EntryListTextCell.self)
+        tableView.register(cellWithClass: EntryTextCell.self)
         addSubview(tableView)
     }
 }

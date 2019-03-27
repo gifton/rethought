@@ -191,8 +191,16 @@ extension EntryListViewModel: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withClass: EntryListTextCell.self, for: indexPath)
-        guard let currentEntry = dataManager.data[indexPath.row] as? TextEntryPreview else { return cell}
+        let cell = tableView.dequeueReusableCell(withClass: EntryTextCell.self, for: indexPath)
+        guard let currentEntry = dataManager.data[indexPath.row] as? TextEntryPreview else { return cell }
+        
+        switch currentEntryd {
+        case <#pattern#>:
+            <#code#>
+        default:
+            <#code#>
+        }
+        
         cell.set(with: currentEntry)
         return cell
     }

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class EntryListTextCell: UITableViewCell {
+class EntryTextCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     
@@ -84,6 +84,6 @@ class EntryListTextCell: UITableViewCell {
     }
     
     public static var identifier: String {
-        return "EntryListTextCell"
+        return "EntryTextCell"
     }
 }
