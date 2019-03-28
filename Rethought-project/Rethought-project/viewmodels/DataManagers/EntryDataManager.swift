@@ -101,7 +101,11 @@ extension EntryDataManager {
     }
     
     public func cellHeightFor(indexPath: IndexPath) -> CGFloat? {
-        guard let currentEntry: Entry = data[indexPath.row] else { return nil }
+        if indexPath.row > count {
+            print("unable to return height, index out of range")
+            return nil
+        }
+        let currentEntry: Entry = data[indexPath.row]
         
         return currentEntry.height
     }
