@@ -11,20 +11,19 @@ import CoreData
 import UIKit
 
 class EntryListViewModel: NSObject {
-    init(with moc: NSManagedObjectContext) {
+    init(with moc: NSManagedObjectContext, type: EntryType) {
         self.moc = moc
+        entryType = type
         super.init()
     }
     
-    public var entryType: EntryType {
-        get {
-            return dataManager.entryType!
-        }
-        set {
-            dataManager.entryType = newValue
+    private var entryType: EntryType {
+        didSet {
+            dataManager.entryType = entryType
             fetchEntries()
         }
     }
+    
     public var entries: [Entry] {
         
         return dataManager.data
@@ -126,8 +125,14 @@ extension EntryListViewModel {
         switch entryType {
         case .text:
             fetchTextEntries()
+        case .link:
+            fetchLinkEntries()
+        case .media:
+            fetchMediaEntries()
         default:
             fetchTextEntries()
+            fetchLinkEntries()
+            fetchMediaEntries()
         }
     }
     
@@ -138,7 +143,7 @@ extension EntryListViewModel {
         do {
             let result = try moc.fetch(request)
             dataManager.textEntries = result.toPreview()
-            print("entries found... \(result.count)")
+            print("text entries found... \(result.count)")
         } catch let err {
             print("there was an error fetching: \(err)")
         }
@@ -151,7 +156,7 @@ extension EntryListViewModel {
         do {
             let result = try moc.fetch(request)
             dataManager.mediaEntries = result.toPreview()
-            print("entries found... \(result.count)")
+            print("media entries found... \(result.count)")
         } catch let err {
             print("there was an error fetching: \(err)")
         }
@@ -164,7 +169,7 @@ extension EntryListViewModel {
         do {
             let result = try moc.fetch(request)
             dataManager.linkEntries = result.toPreview()
-            print("entries found... \(result.count)")
+            print("link entries found... \(result.count)")
         } catch let err {
             print("there was an error fetching: \(err)")
         }
@@ -177,7 +182,7 @@ extension EntryListViewModel {
         do {
             let result = try moc.fetch(request)
             
-            print("entries found... \(result.count)")
+            print("recording entries found... \(result.count)")
         } catch let err {
             print("there was an error fetching: \(err)")
         }
@@ -193,13 +198,6 @@ extension EntryListViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: EntryTextCell.self, for: indexPath)
         guard let currentEntry = dataManager.data[indexPath.row] as? TextEntryPreview else { return cell }
-        
-        switch currentEntryd {
-        case <#pattern#>:
-            <#code#>
-        default:
-            <#code#>
-        }
         
         cell.set(with: currentEntry)
         return cell

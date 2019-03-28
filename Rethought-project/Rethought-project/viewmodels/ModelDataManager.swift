@@ -53,7 +53,11 @@ class ModelDataManager: NSObject {
     
     // MARK: public
     
-    public var isSearching = false
+    public var isSearching = false {
+        didSet {
+            print("search set to: \(isSearching) in entry data manager")
+        }
+    }
     public var dataType: String?
     public var entryType: EntryType?
     
@@ -126,5 +130,3 @@ class ModelDataManager: NSObject {
         }
     }
 }
-
-

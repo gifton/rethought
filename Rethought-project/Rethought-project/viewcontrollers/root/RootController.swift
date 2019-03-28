@@ -82,10 +82,9 @@ extension RootController: RootDelegate {
     }
     
     func showEntry(ofType entry: EntryType) {
-        let model = EntryListViewModel(with: moc)
-        model.entryType = entry
+        let model = EntryListViewModel(with: moc, type: entry)
         
-        let vc = EntryListController(ofType: entry, withModel: EntryListViewModel(with: moc))
+        let vc = EntryListController(ofType: entry, withModel: EntryListViewModel(with: moc, type: <#EntryType#>))
         
         navigationController?.pushViewController(vc, animated: true)
     }

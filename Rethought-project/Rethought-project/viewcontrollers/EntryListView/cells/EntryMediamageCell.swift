@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 //image cell
-class EntryImageCell: UITableViewCell {
+class EntryMediaCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }

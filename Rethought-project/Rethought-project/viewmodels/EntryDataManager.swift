@@ -22,13 +22,24 @@ class EntryDataManager: NSObject {
         out.append(contentsOf: mediaEntries)
         out.append(contentsOf: linkEntries)
         
+        out.sort { (ent, entry) -> Bool in
+            ent.date > entry.date
+        }
         return out
     }
     private var searchedEntries: [Entry] = []
     
     // MARK: public
-    public var isSearching = false
-    public var entryType: EntryType?
+    public var isSearching = false {
+        didSet {
+            print("search set to: \(isSearching) in entry data manager")
+        }
+    }
+    public var entryType: EntryType? {
+        didSet {
+            print("type set to: \(entryType ?? .all) in entry data manager")
+        }
+    }
     
     //text entries by filter
     public var textEntries: [TextEntryPreview] = [] {
@@ -77,6 +88,30 @@ extension EntryDataManager {
         default:
             return entries
         }
+    }
+    
+    func retrieveCell(with index: IndexPath, tableView: UITableView) -> UITableViewCell? {
+        if index.row > count {
+            print("index path is unreachable")
+            return nil
+        }
+        
+        let current = data[index.row]
+        var tableCell: UITableViewCell!
+        var identifier = String()
+        
+        switch current.type {
+        case .text:
+            tableCell = EntryTextCell(style: .default, reuseIdentifier: EntryTextCell.identifier)
+            identifier = EntryTextCell.identifier
+        default:
+            tableCell = EntryMediaCell(style: .default, reuseIdentifier: EntryMediaCell.identifier)
+            identifier = EntryMediaCell.identifier
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: index)
+        
+        return cell
     }
 }
 
