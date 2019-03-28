@@ -36,6 +36,7 @@ class Replicator: ReplicatorProtocol {
         
         //linkObj
         let entry1: LinkEntry = LinkEntry.insert(into: moc, link: "https://wesaturate.com", linkIcon: #imageLiteral(resourceName: "linkImagePlaceholder"), linkDescription: "wesaturate offers free high quality RAW and jpg photos", linkTitle: "Wesaturate", location: CLLocation(), detail: "i love wesat", thought: thought)
+        let entry7: LinkEntry = LinkEntry.insert(into: moc, link: "https://gifton.io", linkIcon: #imageLiteral(resourceName: "linkImagePlaceholder"), linkDescription: "giftons bangin portfolio", linkTitle: "Gifton Okoronkwo", location: CLLocation(), detail: "Gifton Okoronkwo describes himself as: a gang member", thought: thought)
         //textEntries
         let entry2: TextEntry = TextEntry.insert(in: moc, title: "Can stratego save the world?", detail: "Strategists around the wirld claim that the board game stratego is the cure the world needs", thought: thought, location: CLLocation())
 
@@ -53,6 +54,7 @@ class Replicator: ReplicatorProtocol {
         entry4.willSave()
         entry5.willSave()
         entry6.willSave()
+        entry7.willSave()
     }
     
     func saveReplicatorData() {

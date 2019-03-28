@@ -188,7 +188,6 @@ extension EntryListViewModel {
 
 extension EntryListViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("number of entries: \(dataManager.count)")
         return dataManager.count
     }
     
@@ -204,7 +203,7 @@ extension EntryListViewModel: UITableViewDataSource {
 extension EntryListViewModel: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let height = dataManager.cellHeightFor(indexPath: indexPath) else { return 100 }
-        return height + 70
+        return height
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

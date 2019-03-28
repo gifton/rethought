@@ -36,6 +36,7 @@ class EntryLinkCell: UITableViewCell {
         linkTitle = preview.title
         detail = preview.linkDescription
         linkDate = preview.date
+        buildCell()
     }
     
     func buildCell() {

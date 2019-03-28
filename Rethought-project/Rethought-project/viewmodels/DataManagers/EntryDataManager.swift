@@ -106,6 +106,11 @@ extension EntryDataManager {
             return nil
         }
         let currentEntry: Entry = data[indexPath.row]
+        if currentEntry.type == .text {
+            return currentEntry.height + 70
+        } else if currentEntry.type == .media{
+            return currentEntry.height + 40
+        }
         
         return currentEntry.height
     }
@@ -126,6 +131,10 @@ extension EntryDataManager {
         case .media:
             let cell = tableView.dequeueReusableCell(withClass: EntryMediaCell.self, for: index)
             cell.set(with: current as! MediaEntryPreview)
+            return cell
+        case .link:
+            let cell = tableView.dequeueReusableCell(withClass: EntryLinkCell.self, for: index)
+            cell.set(with: current as! LinkEntryPreview)
             return cell
         default:
             return nil

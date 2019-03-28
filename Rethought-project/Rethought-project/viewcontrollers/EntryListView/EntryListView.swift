@@ -127,6 +127,7 @@ extension EntryListView {
         
         tableView.register(cellWithClass: EntryTextCell.self)
         tableView.register(cellWithClass: EntryMediaCell.self)
+        tableView.register(cellWithClass: EntryLinkCell.self)
         addSubview(tableView)
     }
 }
