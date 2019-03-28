@@ -8,12 +8,14 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 protocol Entry {
     var id: String { get set }
     var date: Date { get set }
     var type: EntryType { get }
     var thoughtIcon: String { get }
+    var height: CGFloat { get }
 }
 
 enum EntryType {

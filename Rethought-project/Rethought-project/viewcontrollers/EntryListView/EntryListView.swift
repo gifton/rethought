@@ -120,12 +120,13 @@ extension EntryListView {
         tableView = {
             let tv = UITableView(frame: CGRect(x: 0, y: 260, width: Device.size.width, height: Device.size.height - 260))
             tv.backgroundColor = Device.colors.offWhite
-            tv.separatorStyle = .none
+//            tv.separatorStyle = .none
             
             return tv
         }()
         
         tableView.register(cellWithClass: EntryTextCell.self)
+        tableView.register(cellWithClass: EntryMediaCell.self)
         addSubview(tableView)
     }
 }

@@ -20,18 +20,14 @@ class EntryListController: UIViewController {
         get {
             return model.entryType
         }
-        set {
-            model.entryType = newValue
-        }
     }
     
     //initiate with:
     // - type of entry
     // - EntryList ViewModel
-    init(ofType type: EntryType, withModel model: EntryListViewModel) {
+    init(withModel model: EntryListViewModel) {
         self.model = model
         super.init(nibName: nil, bundle: nil)
-        self.type = type
         
         let header = EntryListHeader(ofType: type, entryCount: model.count, locationCount: 3)
         listView = EntryListView(header: header)

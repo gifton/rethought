@@ -75,7 +75,17 @@ extension EntryDataManager {
         if isSearching {
             return searchedEntries.count
         }
-        return entries.count
+        switch entryType! {
+        case .text:
+            return textEntries.count
+        case .media:
+            return mediaEntries.count
+        case .link:
+            return linkEntries.count
+        default:
+            return entries.count
+        }
+        
     }
     public var data: [Entry] {
         switch entryType! {
@@ -90,6 +100,12 @@ extension EntryDataManager {
         }
     }
     
+    public func cellHeightFor(indexPath: IndexPath) -> CGFloat? {
+        guard let currentEntry: Entry = data[indexPath.row] else { return nil }
+        
+        return currentEntry.height
+    }
+    
     func retrieveCell(with index: IndexPath, tableView: UITableView) -> UITableViewCell? {
         if index.row > count {
             print("index path is unreachable")
@@ -97,21 +113,19 @@ extension EntryDataManager {
         }
         
         let current = data[index.row]
-        var tableCell: UITableViewCell!
-        var identifier = String()
         
         switch current.type {
         case .text:
-            tableCell = EntryTextCell(style: .default, reuseIdentifier: EntryTextCell.identifier)
-            identifier = EntryTextCell.identifier
+            let cell = tableView.dequeueReusableCell(withClass: EntryTextCell.self, for: index)
+            cell.set(with: current as! TextEntryPreview)
+            return cell
+        case .media:
+            let cell = tableView.dequeueReusableCell(withClass: EntryMediaCell.self, for: index)
+            cell.set(with: current as! MediaEntryPreview)
+            return cell
         default:
-            tableCell = EntryMediaCell(style: .default, reuseIdentifier: EntryMediaCell.identifier)
-            identifier = EntryMediaCell.identifier
+            return nil
         }
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: index)
-        
-        return cell
     }
 }
 

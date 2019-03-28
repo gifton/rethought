@@ -14,41 +14,38 @@ class EntryListViewModel: NSObject {
     init(with moc: NSManagedObjectContext, type: EntryType) {
         self.moc = moc
         entryType = type
+        dataManager.entryType = entryType
         super.init()
+        fetchEntries()
+        print("of type: \(entryType)")
     }
     
-    private var entryType: EntryType {
-        didSet {
-            dataManager.entryType = entryType
-            fetchEntries()
-        }
-    }
+    public var entryType: EntryType
     
     public var entries: [Entry] {
-        
         return dataManager.data
     }
     
     public var count: Int {
         return dataManager.count
     }
-    public var locationCount: Int {
-        return 8
-    }
+    public var locationCount: Int { return 8 }
     
     private var moc: NSManagedObjectContext
     private let dataManager = EntryDataManager()
     
     func search(with keyword: String, completion: () -> Void) {
         let predicate = NSPredicate(format: "title contains[c] '\(keyword)'")
+        let predicate2 = NSPredicate(format: "detail contains[c] '\(keyword)'")
         
         switch entryType {
         case .text:
             dataManager.setSearchedEntries(searchForTextEntries(with: predicate), ofType: .link)
+            dataManager.setSearchedEntries(searchForTextEntries(with: predicate2), ofType: .link)
         case .link:
             dataManager.setSearchedEntries(searchForLinkEntries(with: predicate), ofType: .link)
         case .media:
-            dataManager.setSearchedEntries(searchForMediaEntries(with: predicate), ofType: .link)
+            dataManager.setSearchedEntries(searchForMediaEntries(with: predicate2), ofType: .link)
         default:
             dataManager.setSearchedEntries(searchForAllEntries(with: predicate), ofType: .link)
         }
@@ -67,7 +64,7 @@ extension EntryListViewModel {
         do {
             let output = try moc.fetch(fr)
             ents = output.toPreview()
-            
+            dataManager.setSearchedEntries(ents, ofType: .text)
         } catch {
             print("unable to search with given criteria")
         }
@@ -82,7 +79,7 @@ extension EntryListViewModel {
         do {
             let output = try moc.fetch(fr)
             ents = output.toPreview()
-            
+            dataManager.setSearchedEntries(ents, ofType: .link)
         } catch {
             print("unable to search with given criteria")
         }
@@ -97,7 +94,7 @@ extension EntryListViewModel {
         do {
             let output = try moc.fetch(fr)
             ents = output.toPreview()
-            
+            dataManager.setSearchedEntries(ents, ofType: .media)
         } catch {
             print("unable to search with given criteria")
         }
@@ -196,10 +193,9 @@ extension EntryListViewModel: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withClass: EntryTextCell.self, for: indexPath)
-        guard let currentEntry = dataManager.data[indexPath.row] as? TextEntryPreview else { return cell }
-        
-        cell.set(with: currentEntry)
+        guard let cell = dataManager.retrieveCell(with: indexPath, tableView: tableView) else {
+            fatalError()
+        }
         return cell
     }
     
@@ -207,17 +203,8 @@ extension EntryListViewModel: UITableViewDataSource {
 
 extension EntryListViewModel: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-                let current = dataManager.data[indexPath.row]
-                switch current.type {
-                case .text:
-                    guard let ent: TextEntryPreview = current as? TextEntryPreview else { return 100 }
-                    return ent.size.height + 70
-                case .media:
-                    guard let ent: MediaEntryPreview = current as? MediaEntryPreview else { return 100}
-                    return ent.height
-                default:
-                    return 120
-                }
+        guard let height = dataManager.cellHeightFor(indexPath: indexPath) else { return 100 }
+        return height + 70
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

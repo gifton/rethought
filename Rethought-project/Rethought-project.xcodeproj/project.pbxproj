@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D701E443224D0E5800584195 /* EntryLinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D701E442224D0E5800584195 /* EntryLinkCell.swift */; };
 		D709F0FC223FCE1D00E4E769 /* RootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D709F0FB223FCE1D00E4E769 /* RootController.swift */; };
 		D709F0FE223FCFC100E4E769 /* RootHeaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D709F0FD223FCFC100E4E769 /* RootHeaderController.swift */; };
 		D709F100223FD86900E4E769 /* TopRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D709F0FF223FD86900E4E769 /* TopRootView.swift */; };
@@ -26,10 +27,10 @@
 		D73040992235E86800C870FF /* Replicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73040982235E86800C870FF /* Replicator.swift */; };
 		D734F3AE22429E3400B5C7AF /* ModelDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D734F3AD22429E3400B5C7AF /* ModelDataManager.swift */; };
 		D734F3B12242BBC500B5C7AF /* EntryListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D734F3B02242BBC500B5C7AF /* EntryListController.swift */; };
-		D747CBE0224B49CF0008AAAE /* EntryMediamageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D747CBDF224B49CF0008AAAE /* EntryMediamageCell.swift */; };
+		D747CBE0224B49CF0008AAAE /* EntryMediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D747CBDF224B49CF0008AAAE /* EntryMediaCell.swift */; };
 		D747CBE2224BADBF0008AAAE /* EntryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D747CBE1224BADBF0008AAAE /* EntryDataManager.swift */; };
 		D766599322434D53006A1C14 /* EntryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D766599222434D53006A1C14 /* EntryListView.swift */; };
-		D766599622435161006A1C14 /* EntryListTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D766599522435161006A1C14 /* EntryListTextCell.swift */; };
+		D766599622435161006A1C14 /* EntryTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D766599522435161006A1C14 /* EntryTextCell.swift */; };
 		D7665998224352DD006A1C14 /* EntryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7665997224352DD006A1C14 /* EntryListViewModel.swift */; };
 		D79A5DDF2241244200666D52 /* EntryTypeCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79A5DDE2241244200666D52 /* EntryTypeCollection.swift */; };
 		D79A5DE122416F1400666D52 /* RootHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79A5DE022416F1400666D52 /* RootHeaderViewModel.swift */; };
@@ -66,6 +67,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D701E442224D0E5800584195 /* EntryLinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryLinkCell.swift; sourceTree = "<group>"; };
 		D709F0FB223FCE1D00E4E769 /* RootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootController.swift; sourceTree = "<group>"; };
 		D709F0FD223FCFC100E4E769 /* RootHeaderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootHeaderController.swift; sourceTree = "<group>"; };
 		D709F0FF223FD86900E4E769 /* TopRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRootView.swift; sourceTree = "<group>"; };
@@ -85,10 +87,10 @@
 		D73040982235E86800C870FF /* Replicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Replicator.swift; sourceTree = "<group>"; };
 		D734F3AD22429E3400B5C7AF /* ModelDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDataManager.swift; sourceTree = "<group>"; };
 		D734F3B02242BBC500B5C7AF /* EntryListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListController.swift; sourceTree = "<group>"; };
-		D747CBDF224B49CF0008AAAE /* EntryMediamageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryMediamageCell.swift; sourceTree = "<group>"; };
+		D747CBDF224B49CF0008AAAE /* EntryMediaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryMediaCell.swift; sourceTree = "<group>"; };
 		D747CBE1224BADBF0008AAAE /* EntryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDataManager.swift; sourceTree = "<group>"; };
 		D766599222434D53006A1C14 /* EntryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListView.swift; sourceTree = "<group>"; };
-		D766599522435161006A1C14 /* EntryListTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListTextCell.swift; sourceTree = "<group>"; };
+		D766599522435161006A1C14 /* EntryTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTextCell.swift; sourceTree = "<group>"; };
 		D7665997224352DD006A1C14 /* EntryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListViewModel.swift; sourceTree = "<group>"; };
 		D79A5DDE2241244200666D52 /* EntryTypeCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTypeCollection.swift; sourceTree = "<group>"; };
 		D79A5DE022416F1400666D52 /* RootHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootHeaderViewModel.swift; sourceTree = "<group>"; };
@@ -137,6 +139,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D701E441224CFC0900584195 /* DataManagers */ = {
+			isa = PBXGroup;
+			children = (
+				D734F3AD22429E3400B5C7AF /* ModelDataManager.swift */,
+				D747CBE1224BADBF0008AAAE /* EntryDataManager.swift */,
+			);
+			path = DataManagers;
+			sourceTree = "<group>";
+		};
 		D709F0FA223FCE0100E4E769 /* root */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,8 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				D79A5DE022416F1400666D52 /* RootHeaderViewModel.swift */,
-				D734F3AD22429E3400B5C7AF /* ModelDataManager.swift */,
-				D747CBE1224BADBF0008AAAE /* EntryDataManager.swift */,
+				D701E441224CFC0900584195 /* DataManagers */,
 				D7665997224352DD006A1C14 /* EntryListViewModel.swift */,
 			);
 			path = viewmodels;
@@ -199,8 +209,9 @@
 		D76659942243514F006A1C14 /* cells */ = {
 			isa = PBXGroup;
 			children = (
-				D766599522435161006A1C14 /* EntryListTextCell.swift */,
-				D747CBDF224B49CF0008AAAE /* EntryMediamageCell.swift */,
+				D766599522435161006A1C14 /* EntryTextCell.swift */,
+				D747CBDF224B49CF0008AAAE /* EntryMediaCell.swift */,
+				D701E442224D0E5800584195 /* EntryLinkCell.swift */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -418,6 +429,7 @@
 			files = (
 				D7D6B4662234BCCB0091F522 /* DateFormatter.swift in Sources */,
 				D73040842235AC4B00C870FF /* EntryCount.swift in Sources */,
+				D701E443224D0E5800584195 /* EntryLinkCell.swift in Sources */,
 				D7D6B4562234BC450091F522 /* UIView.swift in Sources */,
 				D7D6B47E2234C3CB0091F522 /* MediaEntry.swift in Sources */,
 				D79A5DE122416F1400666D52 /* RootHeaderViewModel.swift in Sources */,
@@ -454,7 +466,7 @@
 				D7D6B4542234BC190091F522 /* Defaults.swift in Sources */,
 				D7D6B46C2234BD240091F522 /* ThoughtPreview.swift in Sources */,
 				D709F1042240A7D000E4E769 /* UICollectionView.swift in Sources */,
-				D766599622435161006A1C14 /* EntryListTextCell.swift in Sources */,
+				D766599622435161006A1C14 /* EntryTextCell.swift in Sources */,
 				D7D6B4642234BCBD0091F522 /* UITextView.swift in Sources */,
 				D73040862235AEC400C870FF /* Manager.swift in Sources */,
 				D7D6B4582234BC520091F522 /* UIColor.swift in Sources */,
@@ -465,7 +477,7 @@
 				D7D6B46A2234BCE20091F522 /* MutableCollection.swift in Sources */,
 				D7D6B4842234C3CB0091F522 /* LinkEntry.swift in Sources */,
 				D7D6B4522234BBFF0091F522 /* Device.swift in Sources */,
-				D747CBE0224B49CF0008AAAE /* EntryMediamageCell.swift in Sources */,
+				D747CBE0224B49CF0008AAAE /* EntryMediaCell.swift in Sources */,
 				D709F0FE223FCFC100E4E769 /* RootHeaderController.swift in Sources */,
 				D7D6B4502234BBF40091F522 /* Development.swift in Sources */,
 				D709F1082240B0B300E4E769 /* UIStackView.swift in Sources */,

@@ -60,7 +60,7 @@ class RootHeaderView: UIView {
     
     func setViewStyle() {
         backgroundColor = Device.colors.lightClay
-        roundCorners([.bottomLeft, .bottomRight], radius: 30)
+//        roundCorners([.bottomLeft, .bottomRight], radius: 30)
         setSearch(); setThoughtCollection(); setContinueTheThoughtLabel(); setEntryCollection()
     }
     

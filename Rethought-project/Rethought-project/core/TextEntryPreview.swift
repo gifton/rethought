@@ -14,6 +14,9 @@ struct TextEntryPreview: Entry {
     var size: CGSize {
         return detail.sizeFor(font: Device.font.body(ofSize: .medium), width: Device.size.width - 50)
     }
+    var height: CGFloat {
+        return size.height
+    }
     
     init(_ entry: TextEntry) {
         title = entry.title

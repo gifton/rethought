@@ -70,7 +70,7 @@ class TopRootThoughtCell: UICollectionViewCell {
     
     private func styleComponents() {
         
-        mainImage.contentMode = .scaleAspectFit
+        mainImage.contentMode = .scaleAspectFill
         mainImage.layer.cornerRadius = 10
         mainImage.layer.masksToBounds = true
         

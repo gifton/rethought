@@ -13,6 +13,9 @@ struct LinkEntryPreview: Entry {
     var linkDescription:  String?
     var link:             String?
     var linkTitle:        String?
+    var height: CGFloat {
+        return 120
+    }
     
     init(_ entry: LinkEntry) {
         id = entry.id

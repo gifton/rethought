@@ -15,6 +15,14 @@ class EntryMediaCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
+    //give context to cell
+    func set(with preview: MediaEntryPreview) {
+        entryImg = preview.image
+        entryTitle = preview.detail
+        entryDate = preview.date
+        setView()
+    }
+    
     //objects
     private var mainImage  = UIImageView()
     private var titleLabel = UILabel()
@@ -24,14 +32,6 @@ class EntryMediaCell: UITableViewCell {
     private var entryImg   : UIImage = UIImage(color: Device.colors.mainBlue)!
     private var entryTitle : String = ""
     private var entryDate  : Date = Date()
-    
-    //send info to cell
-    func giveContext(with entry: MediaEntryPreview) {
-        self.entryImg   = entry.image
-        self.entryTitle = entry.detail
-        self.entryDate  = entry.date
-        setView()
-    }
     
     //buildCell
     func setView() {
@@ -46,8 +46,7 @@ class EntryMediaCell: UITableViewCell {
         
         titleLabel.frame = CGRect(x: 20, y: self.frame.size.height - 25, width: 250, height: 15)
         dateLabel.frame = CGRect(x: self.frame.size.width - 95, y: self.frame.size.height - 25, width: 120, height: 15)
-        
-        print(self.mainImage.frame)
+    
         addSubview(mainImage)
         addSubview(titleLabel)
         addSubview(dateLabel)
