@@ -20,6 +20,8 @@ class EntryListViewModel: NSObject {
         print("of type: \(entryType)")
     }
     
+    var delegate: EntryListDelegate?
+    
     public var entryType: EntryType
     
     public var entries: [Entry] {

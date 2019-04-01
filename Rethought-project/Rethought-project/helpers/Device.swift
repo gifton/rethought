@@ -51,5 +51,9 @@ struct Device {
         static func lightBody(ofSize: fontSize) -> UIFont {
             return UIFont.systemFont(ofSize: ofSize.rawValue, weight: .light)
         }
+        
+        static func formalBodyText(ofSize: fontSize) -> UIFont {
+            return UIFont.init(name: "Palatino-Roman", size: ofSize.rawValue)!
+        }
     }
 }

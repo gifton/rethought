@@ -6,6 +6,7 @@ import UIKit
 protocol EntryListDelegate {
     func show(thoughtID: String)
     func search(with key: String)
+    
 }
 class EntryListController: UIViewController {
     var listView: EntryListView?
@@ -29,9 +30,10 @@ class EntryListController: UIViewController {
         self.model = model
         super.init(nibName: nil, bundle: nil)
         
+        model.delegate = self
+        
         let header = EntryListHeader(ofType: type, entryCount: model.count, locationCount: 3)
         listView = EntryListView(header: header)
-        
         
         view = listView
         connectView()
@@ -75,6 +77,7 @@ extension EntryListController: EntryListDelegate {
     func search(with key: String) {
         print("showing search!")
     }
+    
 }
 
 extension EntryListController: UISearchBarDelegate {

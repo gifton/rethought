@@ -107,7 +107,7 @@ extension EntryDataManager {
         }
         let currentEntry: Entry = data[indexPath.row]
         if currentEntry.type == .text {
-            return currentEntry.height + 70
+            return currentEntry.height + 100
         } else if currentEntry.type == .media{
             return currentEntry.height + 40
         }

@@ -25,12 +25,14 @@ class EntryTextCell: UITableViewCell {
     private var date: Date!
     private var location: String!
     private var bodyLabelSize: CGSize!
+    private var title: String!
     
     //private objects
     private var thoughtIconLabel = UILabel()
     private var bodyLabel = UILabel()
     private var dateLabel = UILabel()
     private var locationLabel = UILabel()
+    private var titleLabel = UILabel()
     
     func set(with context: TextEntryPreview) {
         thoughtIcon = context.thoughtIcon
@@ -38,6 +40,7 @@ class EntryTextCell: UITableViewCell {
         date = context.date
         location = "Seattle, washington"
         bodyLabelSize = context.size
+        title = context.title
         addContext()
     }
     
@@ -46,6 +49,7 @@ class EntryTextCell: UITableViewCell {
         bodyLabel.text = body
         dateLabel.getStringFromDate(date: date)
         locationLabel.text = location
+        titleLabel.text = title
         
         style()
     }
@@ -55,9 +59,12 @@ class EntryTextCell: UITableViewCell {
         dateLabel.font = Device.font.mediumTitle(ofSize: .large)
         thoughtIconLabel.font = Device.font.mediumTitle(ofSize: .large)
         locationLabel.font = Device.font.mediumTitle(ofSize: .large)
-        bodyLabel.font = Device.font.body(ofSize: .medium)
+        bodyLabel.font = Device.font.formalBodyText(ofSize: .medium)
+        titleLabel.font = Device.font.title(ofSize: .xLarge)
         
         bodyLabel.numberOfLines = 0
+        locationLabel.padding = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        locationLabel.addBorders(edges: [.left], color: .lightGray, thickness: 2)
         buildView()
     }
     
@@ -69,14 +76,17 @@ class EntryTextCell: UITableViewCell {
         addSubview(cell)
         cell.addSubview(thoughtIconLabel)
         cell.addSubview(bodyLabel)
-        addSubview(dateLabel)
-        addSubview(locationLabel)
+        cell.addSubview(dateLabel)
+        cell.addSubview(locationLabel)
+        cell.addSubview(titleLabel)
         
         //place views
-        thoughtIconLabel.frame = CGRect(x: 15, y: 10, width: 25, height: 25)
-        dateLabel.frame = CGRect(x: 50, y: 15, width: 150, height: 25)
-        locationLabel.frame = CGRect(x: 200, y: 15, width: 150, height: 25)
-        bodyLabel.frame = CGRect(x: 15, y: 45, width: bodyLabelSize.width, height: bodyLabelSize.height)
+        thoughtIconLabel.frame = CGRect(x: 25, y: 10, width: 25, height: 25)
+        dateLabel.frame = CGRect(x: 65, y: 10, width: 200, height: 25)
+        locationLabel.frame = CGRect(x: 180, y: 10, width: 150, height: 25)
+        titleLabel.frame = CGRect(x: 25, y: 40, width: cell.frame.width - 50, height: 35)
+        bodyLabel.frame = CGRect(x: 25, y: (cell.frame.height - bodyLabelSize.height - 10), width: cell.frame.width - 50, height: bodyLabelSize.height)
+        
     }
     
     private func buildTopStack() -> UIStackView {

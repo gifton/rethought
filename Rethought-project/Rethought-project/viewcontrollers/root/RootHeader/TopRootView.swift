@@ -45,6 +45,7 @@ class RootHeaderView: UIView {
         searchBar.placeholder = "Search"
         searchBar.returnKeyType = .search
         searchBar.searchBarStyle = .minimal
+        searchBar.standardShadow()
         
     }
     
@@ -59,7 +60,7 @@ class RootHeaderView: UIView {
     }
     
     func setViewStyle() {
-        backgroundColor = Device.colors.lightClay
+        backgroundColor = UIColor(hex: "F3F4F9")
 //        roundCorners([.bottomLeft, .bottomRight], radius: 30)
         setSearch(); setThoughtCollection(); setContinueTheThoughtLabel(); setEntryCollection()
     }

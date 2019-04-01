@@ -12,7 +12,7 @@ struct TextEntryPreview: Entry {
     var id:          String
     var type:        EntryType
     var size: CGSize {
-        return detail.sizeFor(font: Device.font.body(ofSize: .medium), width: Device.size.width - 50)
+        return detail.sizeFor(font: Device.font.formalBodyText(ofSize: .medium), width: Device.size.width - 50)
     }
     var height: CGFloat {
         return size.height
@@ -27,17 +27,4 @@ struct TextEntryPreview: Entry {
         id = entry.id
         type = .text
     }
-}
-
-struct EntryPreviews<T> {
-    var entries: [T]
-    
-    init(entries: [T]) {
-        self.entries = entries
-        
-    }
-//
-//    private func findEntryType() {
-//        print(T)
-//    }
 }

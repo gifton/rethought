@@ -25,7 +25,7 @@ class TopRootThoughtCell: UICollectionViewCell {
     
     func setViewStyle() {
         layer.cornerRadius = 15
-        backgroundColor = .white
+        backgroundColor = UIColor.white.withAlphaComponent(0.6)
     }
     
     func addContext(with preview: ThoughtPreview) {
