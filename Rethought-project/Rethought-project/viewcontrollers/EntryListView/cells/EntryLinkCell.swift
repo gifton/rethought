@@ -42,7 +42,7 @@ class EntryLinkCell: UITableViewCell {
     func buildCell() {
         let cell = UIView()
         cell.frame = CGRect(x: 15, y: 0, width: Device.size.width - 30, height: 75)
-        cell.backgroundColor = UIColor(hex: "F5F5F9")
+        cell.backgroundColor = Device.colors.lightClay
         cell.layer.cornerRadius = 6
         addSubview(cell)
         

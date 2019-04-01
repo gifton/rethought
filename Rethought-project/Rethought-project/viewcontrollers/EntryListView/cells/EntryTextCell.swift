@@ -60,7 +60,8 @@ class EntryTextCell: UITableViewCell {
         thoughtIconLabel.font = Device.font.mediumTitle(ofSize: .large)
         locationLabel.font = Device.font.mediumTitle(ofSize: .large)
         bodyLabel.font = Device.font.formalBodyText(ofSize: .medium)
-        titleLabel.font = Device.font.title(ofSize: .xLarge)
+        titleLabel.font = Device.font.title(ofSize: .xXLarge)
+        titleLabel.textColor = Device.colors.darkText
         
         bodyLabel.numberOfLines = 0
         locationLabel.padding = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
@@ -83,10 +84,9 @@ class EntryTextCell: UITableViewCell {
         //place views
         thoughtIconLabel.frame = CGRect(x: 25, y: 10, width: 25, height: 25)
         dateLabel.frame = CGRect(x: 65, y: 10, width: 200, height: 25)
-        locationLabel.frame = CGRect(x: 180, y: 10, width: 150, height: 25)
+        locationLabel.frame = CGRect(x: 180, y: 10, width: 250, height: 25)
         titleLabel.frame = CGRect(x: 25, y: 40, width: cell.frame.width - 50, height: 35)
         bodyLabel.frame = CGRect(x: 25, y: (cell.frame.height - bodyLabelSize.height - 10), width: cell.frame.width - 50, height: bodyLabelSize.height)
-        
     }
     
     private func buildTopStack() -> UIStackView {
