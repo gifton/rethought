@@ -72,7 +72,7 @@ public class Entry: NSManagedObject {
         case .link:
             guard let linkBuilder: LinkBuilder = payload as? LinkBuilder else { return }
             let _ = LinkEntry.insert(into: context, builder: linkBuilder)
-        case .text:
+        case .note:
             guard let textBuilder: TextBuilder = payload as? TextBuilder else { return }
             let _ = TextEntry.insert(into: context, builder: textBuilder)
         case .recording:

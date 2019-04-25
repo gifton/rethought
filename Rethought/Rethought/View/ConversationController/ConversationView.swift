@@ -22,15 +22,9 @@ class ConversationView: UIView {
         }
     }
     private var tableEncapsulation = UIScrollView()
-    //public objects
-    public let conversationTable: UITableView = {
-        let tv = UITableView(frame: .zero, style: .plain)
-        
-        return tv
-    }()
     
+    //public objects
     public var messageCenter: MSGCenter!
-
     
     init(with connector: MSGConnector) {
         super.init(frame: Device.size.frame)
@@ -85,16 +79,12 @@ extension ConversationView {
         if self.frame.origin.y != 0 {
             self.frame.origin.y = 0
         }
+        messageCenter.didHideKeyboard()
     }
     
-}
-
-extension ConversationView: ConversationDelegate {
-    func updateViewTo(position: MSGContext.position) {
+    public func updateViewTo(position: MSGContext.position) {
         //move subviews up to
     }
-    
-    
 }
 
 extension ConversationView: UIScrollViewDelegate {

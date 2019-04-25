@@ -125,8 +125,8 @@ class AnimatedTabBarController: UITabBarController {
     override func viewWillLayoutSubviews() {
         var tabFrame = self.tabBar.frame
         // - 40 is editable , the default value is 49 px, below lowers the tabbar and above increases the tab bar size
-        tabFrame.size.height = 125
-        tabFrame.origin.y = self.view.frame.size.height - 125
+        tabFrame.size.height = 90
+        tabFrame.origin.y = self.view.frame.size.height - 90
         self.tabBar.frame = tabFrame
     }
     
@@ -140,6 +140,7 @@ class AnimatedTabBarController: UITabBarController {
         let newIndex = idx + 1
         let imageView = tabBar.subviews[newIndex]
         let image = imageView.subviews.compactMap { $0 as? UIImageView }.first
+        image?.setImageColor(color: .blue)
         
         if let image = image {
             image.layer.add(bounceAnimation, forKey: nil)

@@ -6,7 +6,7 @@ import UIKit
 /// after building new entry to attach too
 /// to capture link content to be attached to an entry
 struct TextBuilder: EntryBuilder {
-    var type: EntryType = .text
+    var type: EntryType = .note
     
     var detail: String
     var title: String

@@ -1,10 +1,3 @@
-//
-//  MSGCenter.swift
-//  Rethought
-//
-//  Created by Dev on 4/23/19.
-//  Copyright © 2019 Wesaturate. All rights reserved.
-//
 
 import Foundation
 import UIKit
@@ -25,26 +18,10 @@ class MSGCenter: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //make objects animateable(?)
-    //add variables and buttons with entryTypes and buttonTypes
+    // make objects animateable(?)
+    // add variables and buttons with entryTypes and buttonTypes
     
     public var msgHandler: MSGHandler
-    private var placeHolder: String {
-        if (msgHandler.currentNewEntryType == .none) {
-            return "Give your thought a short title"
-        }
-        
-        switch msgHandler.currentNewEntryType {
-        case .text:
-            return "Give your note a title"
-        case .image:
-            return "Give your image a title"
-        case .link:
-            return "Give your link a title"
-        default:
-            return "Give your recording a title"
-        }
-    }
     
     // MARK: private objects
     public var textView: UITextView = {
@@ -59,7 +36,7 @@ class MSGCenter: UIView {
         let btn = MessageButton()
         btn.setImage(#imageLiteral(resourceName: "note_clay"), for: .normal)
         btn.frame.size = CGSize(width: 20, height: 20)
-        btn.entryType = .text
+        btn.entryType = .note
         btn.messageButtonType = .entry
         
         return btn
@@ -119,36 +96,39 @@ class MSGCenter: UIView {
     private var newRecordingView: UIView = {
         let view = UIView()
         view.backgroundColor = Device.colors.recording
+        view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
     private var newImageView: UIView = {
         let view = UIView()
         view.backgroundColor = Device.colors.image
+        view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
     private var newLinkView: UIView = {
         let view = UIView()
         view.backgroundColor = Device.colors.link
+        view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
     private var newNoteView: UIView = {
         let view = UIView()
         view.backgroundColor = Device.colors.note
+        view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
 }
 
-//placing objects funcs
+// placing objects funcs
 extension MSGCenter {
     private func setViews() {
         
         // add all objects to view
         textView.delegate = self
-        textView.text = placeHolder
         sendButton.frame = CGRect(x: Device.size.width - 65, y: 10, width: 50, height: 30)
         sendButton.addTapGestureRecognizer { self.buttonTapped(sender: self.sendButton) }
         
@@ -166,23 +146,24 @@ extension MSGCenter {
         }
         
         
-        //check buttons
+        // check buttons and text
         checkButtons()
+        updateStaticText()
         
-        //updatePosition()
+        // updatePosition()
         updatePosition()
     }
     
     private func setRegularView() {
-        //check and resize view if necessary
+        // check and resize view if necessary
         
         if !(frame.height == msgHandler.currentSize.rawValue) {
-            //call delegate to change size
+            // call delegate to change size
         }
-        //remove all views that are not in view
-        if !(msgHandler.currentNewEntryType == .none) {
-            switch msgHandler.currentNewEntryType {
-            case .text: newNoteView.removeFromSuperview()
+        // remove all views that are not in view
+        if !(msgHandler.currentEntryType == .none) {
+            switch msgHandler.currentEntryType {
+            case .note: newNoteView.removeFromSuperview()
             case .link: newLinkView.removeFromSuperview()
             case .recording: newRecordingView.removeFromSuperview()
             default: newImageView.removeFromSuperview()
@@ -195,7 +176,7 @@ extension MSGCenter {
                 btn.removeFromSuperview()
             }
         }
-        //check if all views are in super view
+        // check if all views are in super view
         let regularSubviews = [textButton, linkButton, recordingButton, imageButton, sendButton, textView]
         // if not, add view and add frame
         for view in regularSubviews {
@@ -204,11 +185,12 @@ extension MSGCenter {
             }
         }
         
-        //set textView title
-        textView.text = placeHolder
+        // set textView title
+        textView.text = msgHandler.textViewPlaceHolder
         
-        //check for button availability
+        // check for buttons and text
         checkButtons()
+        updateStaticText()
     }
     
     private func setRegularAndKeybardView() {
@@ -231,25 +213,36 @@ extension MSGCenter {
             continue
         }
         
-        //set textView title
-        textView.text = placeHolder
-        //check for button availability
+        // set textView title
+        textView.text = msgHandler.textViewPlaceHolder
+        // check for buttons and text
         checkButtons()
+        updateStaticText()
     }
     
-    private func setEntryView() {
-        //get entry type from msgHandler
-        // get size of entryTypeView
-        // send size request to delegate
+    private func setEntryView() {        
+        // send willShow(ofType:) request to delegate
+        connector.entryWillShow(ofType: msgHandler.currentSize)
+        
         // switch entrytype and run specific type's show func
-        //update textView
-        //check for buttons
+        switch msgHandler.currentEntryType {
+        case .image: showImageEntry()
+        case .link: showLinkEntry()
+        case .recording: showRecordingEntry()
+        default: showNoteEntry()
+        }
+        
+        // update textView
+        textView.text = msgHandler.textViewPlaceHolder
+        // check for buttons and text
+        checkButtons()
+        updateStaticText()
     }
     
     private func setEntryAndKeyboardView() {
-        //add entryTypeView
-        //update textView
-        //check for buttons
+        // add entryTypeView
+        // update textView
+        // check for buttons
     }
 }
 
@@ -277,8 +270,9 @@ extension MSGCenter {
             linkButton.isDisabled()
             recordingButton.isDisabled()
             sendButton.isDisabled()
-        } else {
-            sendButton.isEnabled()
+        } else { sendButton.isEnabled() }
+        
+        if (msgHandler.didCompleteThought == true) {
             textButton.isEnabled()
             imageButton.isEnabled()
             linkButton.isEnabled()
@@ -286,67 +280,137 @@ extension MSGCenter {
             sendButton.isEnabled()
         }
         
-        
     }
     
     private func buttonTapped(sender: MessageButton) {
         switch sender.messageButtonType {
         case .cancel: cancel()
-        case .send: send()
-        case .entry: msgHandler.currentNewEntryType = sender.entryType; setEntryView()
+        case .send: if send() { return } else { handleFailedSend() }
+        case .entry: msgHandler.currentEntryType = sender.entryType; setEntryView()
         case .open: setEntryAndKeyboardView()
         case .close: setEntryView()
         }
     }
     
+    
+    private func handleFailedSend() {}
 }
 
-//action calls
+// action calls
 extension MSGCenter {
     private func cancel() {
-        //check what state msgCenter is in
-        //  close keyboard
-        //  close keyboard and new entry
-        //  close entry
+        // check what state msgCenter is in
+        switch msgHandler.currentPosition {
+        case .newEntry: updatePosition()
+        default: resignFirstResponder(); textView.resignFirstResponder(); updatePosition()
+        }
     }
     
-    private func send() {
-        //check title from msgHandler
-        //check icon from msgHandler
-        //check if location is available
-        // build thoughtPreview
-        // send thoughtpreview to controller
-        
+    private func send() -> Bool {
+        // check title from msgHandler
+        guard let title = msgHandler.thoughtTitle else { return false }
+        // check icon from msgHandler
+        guard let icon = msgHandler.thoughtIcon else { return false }
+        // send context to controller
+        connector.save(withTitle: title, withIcon: icon)
+        return true
     }
     
     private func updateIcon() {
-        //tell controller new icon from MSGHandler
+        // tell controller new icon from MSGHandler
     }
     private func updateTitle() {
-        //tell controller new title from MSGHandler
+        // tell controller new title from MSGHandler
+        guard let thoughtIcon = msgHandler.thoughtIcon else { return }
+        connector.updateIcon(newIcon: thoughtIcon)
     }
     
     private func showNoteEntry() {
-        //check if there is an entry currently open, close it
+        // check if there is an entry currently open, close it
+        if !(msgHandler.currentEntryType == .none) {
+            removeEntryView()
+        }
+        
         // add subview of note entry
-        //update msgHandler
+        addSubview(newNoteView)
+        newNoteView.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: safeBottomAnchor, trailing: trailingAnchor,
+                              paddingTop: 115, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
+        
+        // update msgHandler
+        msgHandler.currentEntryType = .note
+        //check buttons
+        checkButtons()
     }
     private func showRecordingEntry() {
-        //check if there is an entry currently open, close it
-        // add subview of recording entry
-        //update msgHandler
+        // check if there is an entry currently open, close it
+        if !(msgHandler.currentEntryType == .none) {
+            removeEntryView()
+        }
+        
+        // add subview of note entry
+        addSubview(newRecordingView)
+        newRecordingView.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: safeBottomAnchor, trailing: trailingAnchor,
+                                   paddingTop: 115, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
+        
+        // update msgHandler
+        msgHandler.currentEntryType = .recording
+        //check buttons
+        checkButtons()
     }
     private func showImageEntry() {
-        //check if there is an entry currently open, close it
-        // add subview of image entry
-        //update msgHandler
+        // check if there is an entry currently open, close it
+        if !(msgHandler.currentEntryType == .none) {
+            removeEntryView()
+        }
+        
+        // add subview of note entry
+        addSubview(newImageView)
+        newImageView.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: safeBottomAnchor, trailing: trailingAnchor,
+                               paddingTop: 115, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
+        
+        // update msgHandler
+        msgHandler.currentEntryType = .image
+        //check buttons
+        checkButtons()
     }
     private func showLinkEntry() {
-        //check if there is an entry currently open, close it
-        // add subview of link entry
-        //update msgHandler
+        // check if there is an entry currently open, close it
+        if !(msgHandler.currentEntryType == .none) {
+            removeEntryView()
+        }
+        
+        // add subview of note entry
+        addSubview(newLinkView)
+        newLinkView.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: safeBottomAnchor, trailing: trailingAnchor,
+                              paddingTop: 115, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
+        
+        // update msgHandler
+        msgHandler.currentEntryType = .link
+        //check buttons
+        checkButtons()
     }
     
+    func removeEntryView() {
+        // check which entry is currently in progressfrom msgHandler
+        // and remove it
+        switch msgHandler.currentEntryType {
+        case .image: newImageView.removeFromSuperview()
+        case .link: newLinkView.removeFromSuperview()
+        case .recording: newRecordingView.removeFromSuperview()
+        default: newNoteView.removeFromSuperview()
+        }
+        //check buttons
+        checkButtons()
+    }
+    
+    func updateStaticText() {
+        textView.text = msgHandler.textViewPlaceHolder
+        sendButton.setAttributedTitle(msgHandler.sendButtonTitle, for: .normal)
+    }
+    
+    public func didHideKeyboard() {
+        msgHandler.currentPosition = .regular
+    }
 }
 
 extension MSGCenter: UITextViewDelegate {
@@ -358,6 +422,7 @@ extension MSGCenter: UITextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        textView.text = placeHolder
+        updateStaticText()
+        checkButtons()
     }
 }

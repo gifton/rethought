@@ -67,16 +67,8 @@ extension ConversationController: MSGConnector {
         //alert view model of change
         //reload table data
     }
-    
-    func keyboardWillShow() {
-        //tell view to update size
-    }
-    
-    func keyboardWillHide() {
-        //tell view to update size
-    }
-    
-    func entryWillShow(ofType type: EntryType) {
+
+    func entryWillShow(ofType type: MSGContext.size) {
         //tell view to update size
     }
     

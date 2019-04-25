@@ -1,10 +1,3 @@
-//
-//  MSGHandler.swift
-//  Rethought
-//
-//  Created by Dev on 4/25/19.
-//  Copyright © 2019 Wesaturate. All rights reserved.
-//
 
 import UIKit
 
@@ -18,17 +11,30 @@ class MSGHandler: NSObject {
     var currentPosition: MSGContext.position = .regular
     var didStartNewEntry: Bool = false
     var didCompleteNewentry: Bool = false
-    var didCompleteThought: Bool = false
+    var didCompleteThought: Bool {
+        return (thoughtTitle != nil && thoughtIcon != nil)
+    }
     var didStartThought: Bool = false
     var thoughtTitle: String?
     var thoughtIcon: ThoughtIcon?
     var currentEntry: EntryContent?
     
-    var currentNewEntryType: MSGContext.type = .none {
+    var currentEntryType: MSGContext.type = .none {
         didSet {
-            if !(currentNewEntryType == .none) {
+            if !(currentEntryType == .none) {
                 self.didStartNewEntry = true
             }
+        }
+    }
+    
+    public var entryType: EntryType? {
+        switch currentEntryType {
+        case .image: return .image
+        case .link: return .link
+        case .recording: return .recording
+        case .note: return .note
+        default:
+            return nil
         }
     }
     
@@ -37,18 +43,44 @@ class MSGHandler: NSObject {
         if !(didStartNewEntry) {
             return .regular
         } else {
-            if currentNewEntryType != .none {
-                return getSizeFrom(entryType: currentNewEntryType)
+            if currentEntryType != .none {
+                return getSizeFrom(entryType: currentEntryType)
             }
             return .recording
         }
+    }
+    
+    //text view variable placeholder
+    public var textViewPlaceHolder: String {
+        if (currentEntryType == .none) {
+            return "Give your thought a short title"
+        }
+        
+        switch currentEntryType {
+        case .note:
+            return "Give your note a title"
+        case .image:
+            return "Give your image a title"
+        case .link:
+            return "Give your link a title"
+        default:
+            return "Give your recording a title"
+        }
+    }
+    
+    public var sendButtonTitle: NSAttributedString {
+        var title = "send"
+        
+        
+        return NSAttributedString(string: title, attributes: [NSAttributedString.Key.font : Device.font.mediumTitle(ofSize: .small),
+                                                               NSAttributedString.Key.foregroundColor : UIColor.white])
     }
     
     func getSizeFrom(entryType: MSGContext.type) -> MSGContext.size {
         switch entryType {
         case .image: return .image
         case .link: return .link
-        case .text: return .text
+        case .note: return .note
         case .recording: return .recording
         default: return .recording
         }

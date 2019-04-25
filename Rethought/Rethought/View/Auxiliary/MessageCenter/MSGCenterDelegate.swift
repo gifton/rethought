@@ -1,10 +1,3 @@
-//
-//  MessageCenterDelegate.swift
-//  Rethought
-//
-//  Created by Dev on 4/19/19.
-//  Copyright © 2019 Wesaturate. All rights reserved.
-//
 
 import UIKit
 
@@ -15,9 +8,7 @@ protocol MSGConnector {
     func insert(entry: EntryBuilder)
     func isDoneEditing()
     func updateIcon(newIcon: ThoughtIcon)
-    func keyboardWillShow()
-    func keyboardWillHide()
-    func entryWillShow(ofType type: EntryType)
+    func entryWillShow(ofType type: MSGContext.size)
 }
 
 // all types of buttons available
@@ -31,14 +22,14 @@ enum MSGContext {
         case regular, ragularAndKeyboard, newEntry, newEntryAndKeyboard
     }
     enum size: CGFloat {
-        case text      = 400.0
+        case note      = 400.0
         case image     = 386.00
         case link      = 260.0
         case recording = 265.0
         case regular   = 115.00
     }
     enum type {
-        case text, image, link, recording, none
+        case note, image, link, recording, none
     }
 }
 
