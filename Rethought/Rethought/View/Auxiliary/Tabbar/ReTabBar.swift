@@ -125,8 +125,8 @@ class AnimatedTabBarController: UITabBarController {
     override func viewWillLayoutSubviews() {
         var tabFrame = self.tabBar.frame
         // - 40 is editable , the default value is 49 px, below lowers the tabbar and above increases the tab bar size
-        tabFrame.size.height = 90
-        tabFrame.origin.y = self.view.frame.size.height - 90
+        tabFrame.size.height = Device.size.tabBarHeight
+        tabFrame.origin.y = self.view.frame.size.height - Device.size.tabBarHeight
         self.tabBar.frame = tabFrame
     }
     

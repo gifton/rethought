@@ -61,6 +61,7 @@ extension ConversationController: MSGConnector {
     
     func isDoneEditing() {
         //call update view to new size
+        tabBarController?.tabBar.isHidden = false
     }
     
     func updateIcon(newIcon: ThoughtIcon) {
@@ -70,7 +71,12 @@ extension ConversationController: MSGConnector {
 
     func entryWillShow(ofType type: MSGContext.size) {
         //tell view to update size
+        tabBarController?.tabBar.isHidden = true
+        conversation.updateViewTo(position: type)
     }
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(conversation)
+    }
 }

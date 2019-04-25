@@ -23,6 +23,9 @@ struct Device {
         static let profileIcon = CGSize(width: 25, height: 29)
         static let entryCardIconHeight: CGFloat = 30.0
         
+        //tabbar size
+        static let tabBarHeight: CGFloat = 90.0
+        static let tabBarIconHeight: CGFloat = 25.0
     }
     
     //retohught fontsizes

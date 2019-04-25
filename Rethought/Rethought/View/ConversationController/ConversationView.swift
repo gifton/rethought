@@ -11,7 +11,7 @@ import UIKit
 
 class ConversationView: UIView {
     
-    //private objects
+    // private objects
     private var msgFrame: CGRect {
         get {
           return CGRect(x: 0, y: frame.height - 215, width: Device.size.width, height: 115)
@@ -22,8 +22,8 @@ class ConversationView: UIView {
         }
     }
     private var tableEncapsulation = UIScrollView()
-    
-    //public objects
+    private var keyboardIsShowing = false
+    // public objects
     public var messageCenter: MSGCenter!
     
     init(with connector: MSGConnector) {
@@ -58,39 +58,63 @@ class ConversationView: UIView {
     }
 }
 
-//all functions that animate elements
+// all functions that animate elements
 extension ConversationView {
-    func animateTo(position: CGRect) {
-        UIView.animate(withDuration: 0.25, animations: {
+    private func animateTo(position: CGRect) {
+        
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 8.5, options: .curveEaseInOut, animations: {
             self.tableEncapsulation.frame.size.height = position.origin.y
             self.messageCenter.frame = position
-        })
+        }) { _ in
+            //
+        }
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.frame.origin.y == 0 {
+            if messageCenter.frame == msgFrame {
                 self.frame.origin.y -= (keyboardSize.height)
             }
         }
+        keyboardIsShowing = true
+        messageCenter.didShowKeyboard()
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
+        
         if self.frame.origin.y != 0 {
             self.frame.origin.y = 0
+            messageCenter.didHideKeyboard()
+            keyboardIsShowing = false
+            return
         }
-        messageCenter.didHideKeyboard()
+        keyboardIsShowing = false
     }
     
-    public func updateViewTo(position: MSGContext.position) {
-        //move subviews up to
+    public func updateViewTo(position: MSGContext.size) {
+        // get rawValue
+        let height = position.rawValue
+        // move subviews up to
+        if !(messageCenter.frame.height == height) {
+            msgFrame = CGRect(x: 0, y: frame.height - height, width: frame.width, height: height)
+        }
+        
     }
+    
 }
 
 extension ConversationView: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        resignFirstResponder()
-        messageCenter.resignFirstResponder()
-        messageCenter.textView.resignFirstResponder()
+        
+        if keyboardIsShowing {
+            resignFirstResponder()
+            messageCenter.resignFirstResponder()
+            messageCenter.textView.resignFirstResponder()
+        } else {
+            animateTo(position: msgFrame)
+            messageCenter.removeEntryView()
+        }
     }
+    
+    
 }

@@ -23,6 +23,7 @@ class MSGHandler: NSObject {
         didSet {
             if !(currentEntryType == .none) {
                 self.didStartNewEntry = true
+                
             }
         }
     }
@@ -69,7 +70,7 @@ class MSGHandler: NSObject {
     }
     
     public var sendButtonTitle: NSAttributedString {
-        var title = "send"
+        let title = "send"
         
         
         return NSAttributedString(string: title, attributes: [NSAttributedString.Key.font : Device.font.mediumTitle(ofSize: .small),

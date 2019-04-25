@@ -11,5 +11,4 @@ import UIKit
 
 protocol MSGSubView {
     var entryType: MSGContext.type { get }
-    var messageButtonType: MessageButtonType { get }
 }

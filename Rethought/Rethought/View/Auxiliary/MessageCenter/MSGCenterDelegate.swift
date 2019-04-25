@@ -19,13 +19,13 @@ enum MessageButtonType {
 
 enum MSGContext {
     enum position {
-        case regular, ragularAndKeyboard, newEntry, newEntryAndKeyboard
+        case regular, regularAndKeyboard, newEntry, newEntryAndKeyboard
     }
     enum size: CGFloat {
-        case note      = 400.0
-        case image     = 386.00
-        case link      = 260.0
-        case recording = 265.0
+        case note      = 600.0
+        case image     = 586.00
+        case link      = 360.0
+        case recording = 465.0
         case regular   = 115.00
     }
     enum type {
@@ -39,3 +39,7 @@ protocol MSGHandlerDelegate {
     var didStartNewEntry: Bool { get set }
 }
 
+class NewRecordingView: UIView, MSGSubView { var entryType: MSGContext.type = .recording }
+class NewImageView: UIView, MSGSubView { var entryType: MSGContext.type = .image }
+class NewLinkView: UIView, MSGSubView { var entryType: MSGContext.type = .link }
+class NewNoteView: UIView, MSGSubView { var entryType: MSGContext.type = .note }
