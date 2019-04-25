@@ -8,31 +8,20 @@
 
 import UIKit
 
-protocol MessageCenterConnector {
-    func tappedSave(withTitle title: String, withIcon: ThoughtIcon)
-    func tappedOn(entry type: EntryType, completion: () -> Void)
+// viewController is responsible for talking to model to create thoughts / entries
+// and tableview datasources and delegates
+protocol MSGConnector {
+    func save(withTitle title: String, withIcon: ThoughtIcon)
+    func insert(entry: EntryBuilder)
     func isDoneEditing()
+    func updateIcon(newIcon: ThoughtIcon)
+    func keyboardWillShow()
+    func keyboardWillHide()
+    func entryWillShow(ofType type: EntryType)
 }
 
-enum MessageCenterPosition {
-    
-}
-
-enum MessageCenterContext {
-    enum position {
-        case full, mini
-    }
-    enum size: CGFloat {
-        case text = 285.0
-        case image = 275.0
-        case link = 245.0
-        case recording = 250.0
-    }
-    enum type {
-        case text, image, link, recording, none
-    }
-}
-
+// all types of buttons available
+// used to find what items belong on the screen
 enum MessageButtonType {
     case send, cancel, entry, open, close
 }

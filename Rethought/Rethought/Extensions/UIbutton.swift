@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-class MessageButton: UIButton {
-    public var entryType: MSGContext.type = .none
-    public var messageButtonType: MessageButtonType = .entry
+class MessageButton: UIButton, MSGSubView {
+    var entryType: MSGContext.type = .none
+    var messageButtonType: MessageButtonType = .entry
 }
 
 extension UIButton {

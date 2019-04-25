@@ -11,10 +11,15 @@ import UIKit
 
 // view that user can add new thought and/or new entries
 class MSGCenter: UIView {
-    override init(frame: CGRect) {
+    init(frame: CGRect, connector: MSGConnector) {
         self.msgHandler = MSGHandler()
+        self.connector = connector
         super.init(frame: frame)
+        
+        setViews()
     }
+    
+    var connector: MSGConnector
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

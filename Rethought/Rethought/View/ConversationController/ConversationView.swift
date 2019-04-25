@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-class ThoughtBuilderView: UIView {
+class ConversationView: UIView {
     
     //private objects
-    var messageCenterFrame: CGRect {
+    private var msgFrame: CGRect {
         get {
           return CGRect(x: 0, y: frame.height - 200, width: Device.size.width, height: 115)
         }
@@ -28,16 +28,19 @@ class ThoughtBuilderView: UIView {
         
         return tv
     }()
-    public var messageCenter: MessageCenter?
     
-    init() {
+    public var messageCenter: MSGCenter!
+
+    
+    init(with connector: MSGConnector) {
         super.init(frame: Device.size.frame)
         backgroundColor = .white
-        setViews()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-
+        
+        messageCenter = MSGCenter(frame: msgFrame, connector: connector)
+        setViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -45,55 +48,24 @@ class ThoughtBuilderView: UIView {
     }
     
     func setViews() {
-        
-        // message center
-        messageCenter = MessageCenter(frame: messageCenterFrame, connector: self)
-        
 
         //add tableView
-        tableEncapsulation.frame = CGRect(x: 0, y: 0, width: Device.size.width, height: messageCenterFrame.origin.y)
+        tableEncapsulation.frame = CGRect(x: 0, y: 0, width: Device.size.width, height: msgFrame.origin.y)
         tableEncapsulation.backgroundColor = Device.colors.offWhite
         tableEncapsulation.roundCorners([.bottomLeft, .bottomRight], radius: 20)
         
         print("HEight is: \(tableEncapsulation.frame.height)")
-        addSubview(messageCenter!)
+        addSubview(messageCenter)
         addSubview(tableEncapsulation)
     }
 }
 
-
-extension ThoughtBuilderView: MessageCenterConnector {
-    func tappedOn(entry type: EntryType, completion: () -> Void) {
-        if self.frame.origin.y != 0 {
-            completion()
-            return
-        }
-        
-        messageCenterFrame = CGRect(x: messageCenterFrame.origin.x,
-                                    y: messageCenterFrame.origin.y - 200,
-                                    width: messageCenterFrame.width,
-                                    height: messageCenterFrame.height + 200)
-        completion()
-    }
-    
-    func tappedSave(withTitle title: String, withIcon: ThoughtIcon) {
-        print("saved!")
-    }
-    
-    func isDoneEditing() {
-        print("is done editing in view")
-        messageCenterFrame = CGRect(x: 0, y: frame.height - 200, width: Device.size.width, height: 115)
-        messageCenter?.isDisplayingInputView = false
-    }
-}
-
 //all functions that animate elements
-extension ThoughtBuilderView {
+extension ConversationView {
     func animateTo(position: CGRect) {
-        guard let msgCenter = self.messageCenter else { return }
         UIView.animate(withDuration: 0.25, animations: {
             self.tableEncapsulation.frame.size.height = position.origin.y
-            msgCenter.frame = position
+            self.messageCenter.frame = position
         })
     }
     
@@ -110,5 +82,13 @@ extension ThoughtBuilderView {
             self.frame.origin.y = 0
         }
     }
+    
+}
+
+extension ConversationView: ConversationDelegate {
+    func updateViewTo(position: MSGContext.position) {
+        //move subviews up to
+    }
+    
     
 }

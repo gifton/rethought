@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window = UIWindow(frame: Device.size.frame)
             self.window?.makeKeyAndVisible()
             
-            let rootVC = ViewController()
+            let rootVC = ViewController(model: container.viewContext)
             let nav = UINavigationController(rootViewController: rootVC)
             nav.isNavigationBarHidden = true
             
