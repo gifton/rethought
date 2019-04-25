@@ -73,10 +73,19 @@ struct Device {
             return UIFont.systemFont(ofSize: ofSize.rawValue, weight: .light)
         }
         
-        static func formalBodyText(ofSize: fontSize = fontSize.small) -> UIFont {
+        static func formalBodyText(ofSize: fontSize = fontSize.medium) -> UIFont {
             return UIFont(name: "Lato-Regular", size: ofSize.rawValue)!
         }
     }
     
     static var defaultEmoji = ThoughtIcon("💭")
+    
+    /// The user enabled Low Power mode
+    public var lowPowerMode: Bool {
+        if #available(iOS 9.0, *) {
+            return ProcessInfo.processInfo.isLowPowerModeEnabled
+        } else {
+            return false
+        }
+    }
 }

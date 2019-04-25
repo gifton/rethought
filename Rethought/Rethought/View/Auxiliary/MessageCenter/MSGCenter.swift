@@ -47,7 +47,7 @@ class MSGCenter: UIView {
     }
     
     // MARK: private objects
-    private var textView: UITextView = {
+    public var textView: UITextView = {
         let tv = UITextView()
         tv.font = Device.font.formalBodyText()
         tv.textColor = Device.colors.lightGray
@@ -94,7 +94,8 @@ class MSGCenter: UIView {
     }()
     private var sendButton: MessageButton = {
         let btn = MessageButton()
-        let attrString = NSAttributedString(string: "Send", attributes: [NSAttributedString.Key.font : Device.font.mediumTitle(ofSize: .small), NSAttributedString.Key.foregroundColor : UIColor.white])
+        let attrString = NSAttributedString(string: "Send", attributes: [NSAttributedString.Key.font : Device.font.mediumTitle(ofSize: .small),
+                                                                         NSAttributedString.Key.foregroundColor : UIColor.white])
         btn.setAttributedTitle(attrString, for: .normal)
         btn.backgroundColor = Device.colors.blue
         btn.layer.cornerRadius = 7
@@ -266,8 +267,25 @@ extension MSGCenter {
 
     
     private func checkButtons() {
-        //check msgHandler for what has and hasnt been complete
+        // check msgHandler for what has and hasnt been complete
         // update buttons opacity with .isEnabled() and .isDisabled()
+        if !(msgHandler.didStartThought) {
+            print("found thought to be started")
+            sendButton.isDisabled()
+            textButton.isDisabled()
+            imageButton.isDisabled()
+            linkButton.isDisabled()
+            recordingButton.isDisabled()
+            sendButton.isDisabled()
+        } else {
+            sendButton.isEnabled()
+            textButton.isEnabled()
+            imageButton.isEnabled()
+            linkButton.isEnabled()
+            recordingButton.isEnabled()
+            sendButton.isEnabled()
+        }
+        
         
     }
     
@@ -333,7 +351,10 @@ extension MSGCenter {
 
 extension MSGCenter: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
+        print("began typing new thought")
         textView.text = ""
+        msgHandler.didStartThought = true
+        checkButtons()
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {

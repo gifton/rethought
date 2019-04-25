@@ -14,14 +14,14 @@ class ConversationView: UIView {
     //private objects
     private var msgFrame: CGRect {
         get {
-          return CGRect(x: 0, y: frame.height - 200, width: Device.size.width, height: 115)
+          return CGRect(x: 0, y: frame.height - 215, width: Device.size.width, height: 115)
         }
         set {
             animateTo(position: newValue)
             tableEncapsulation.roundCorners([.bottomLeft, .bottomRight], radius: 20)
         }
     }
-    private var tableEncapsulation = UIView()
+    private var tableEncapsulation = UIScrollView()
     //public objects
     public let conversationTable: UITableView = {
         let tv = UITableView(frame: .zero, style: .plain)
@@ -41,6 +41,9 @@ class ConversationView: UIView {
         
         messageCenter = MSGCenter(frame: msgFrame, connector: connector)
         setViews()
+        
+        print("height o device: \(Device.size.height)")
+        print("height o view: \(frame.size.height)")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -51,10 +54,11 @@ class ConversationView: UIView {
 
         //add tableView
         tableEncapsulation.frame = CGRect(x: 0, y: 0, width: Device.size.width, height: msgFrame.origin.y)
+        tableEncapsulation.contentSize = CGSize(width: Device.size.width, height: msgFrame.origin.y + 1)
         tableEncapsulation.backgroundColor = Device.colors.offWhite
         tableEncapsulation.roundCorners([.bottomLeft, .bottomRight], radius: 20)
+        tableEncapsulation.delegate = self
         
-        print("HEight is: \(tableEncapsulation.frame.height)")
         addSubview(messageCenter)
         addSubview(tableEncapsulation)
     }
@@ -91,4 +95,12 @@ extension ConversationView: ConversationDelegate {
     }
     
     
+}
+
+extension ConversationView: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        resignFirstResponder()
+        messageCenter.resignFirstResponder()
+        messageCenter.textView.resignFirstResponder()
+    }
 }

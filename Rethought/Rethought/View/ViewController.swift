@@ -30,6 +30,8 @@ class ViewController: AnimatedTabBarController {
         
         UITabBar.appearance().layer.borderWidth = 0.0
         UITabBar.appearance().clipsToBounds = true
+        
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
