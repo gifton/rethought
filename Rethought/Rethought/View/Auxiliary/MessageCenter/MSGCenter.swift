@@ -351,6 +351,7 @@ extension MSGCenter {
         
         // update msgHandler
         msgHandler.currentEntryType = .note
+        msgHandler.currentPosition = .newEntry
         //check buttons
         checkButtons()
     }
@@ -362,6 +363,7 @@ extension MSGCenter {
         
         // update msgHandler
         msgHandler.currentEntryType = .recording
+        msgHandler.currentPosition = .newEntry
         //check buttons
         checkButtons()
     }
@@ -373,6 +375,7 @@ extension MSGCenter {
         
         // update msgHandler
         msgHandler.currentEntryType = .image
+        msgHandler.currentPosition = .newEntry
         //check buttons
         checkButtons()
     }
@@ -384,6 +387,7 @@ extension MSGCenter {
         
         // update msgHandler
         msgHandler.currentEntryType = .link
+        msgHandler.currentPosition = .newEntry
         //check buttons
         checkButtons()
     }
@@ -444,7 +448,6 @@ extension MSGCenter {
 
 extension MSGCenter: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        print("began typing new thought")
         textView.text = ""
         msgHandler.didStartThought = true
         checkButtons()

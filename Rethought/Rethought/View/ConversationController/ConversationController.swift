@@ -72,7 +72,7 @@ extension ConversationController: MSGConnector {
     func entryWillShow(ofType type: MSGContext.size) {
         //tell view to update size
         tabBarController?.tabBar.isHidden = true
-        conversation.updateViewTo(position: type)
+        conversation.conversationPresenter.didTapOn(entry: type)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -80,3 +80,4 @@ extension ConversationController: MSGConnector {
         NotificationCenter.default.removeObserver(conversation)
     }
 }
+

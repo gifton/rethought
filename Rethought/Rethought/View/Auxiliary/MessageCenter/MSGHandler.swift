@@ -19,7 +19,7 @@ class MSGHandler: NSObject {
     var thoughtIcon: ThoughtIcon?
     var currentEntry: EntryContent?
     
-    var currentEntryType: MSGContext.type = .none {
+    public var currentEntryType: MSGContext.type = .none {
         didSet {
             if !(currentEntryType == .none) {
                 self.didStartNewEntry = true

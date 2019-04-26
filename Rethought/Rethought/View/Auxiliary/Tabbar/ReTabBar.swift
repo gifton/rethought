@@ -131,7 +131,6 @@ class AnimatedTabBarController: UITabBarController {
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        print("OHUYP!")
         // find index if the selected tab bar item, then find the corresponding view and get its image, the view position is offset by 1 because the first item is the background (at least in this case)
         guard let idx = tabBar.items?.firstIndex(of: item) else {
             print ("tab bar index could not be established")
