@@ -21,15 +21,17 @@ class ConversationView: UIView {
         super.init(frame: CGRect(x: 0, y: 0, width: Device.size.width, height: Device.size.height - Device.size.tabBarHeight))
         backgroundColor = .white
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         messageCenter = MSGCenter(frame: CGRect(x: 0, y: frame.height - 215, width: Device.size.width, height: 115), connector: connector)
         conversationPresenter = ConversationPresenter(tableEncapsulation, messageCenter, parent: self)
         setViews()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        print("height o' device: \(Device.size.height)")
-        print("height o' view: \(frame.size.height)")
+        
+        print("height to' device: \(Device.size.height)")
+        print("height to' view: \(frame.size.height)")
     }
     
     required init?(coder aDecoder: NSCoder) {

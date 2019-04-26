@@ -93,6 +93,8 @@ extension ConversationPresenter {
     }
     
     public func keyboardWillShow(keyboardRect rect: CGRect) {
+            print("keyboard showing in presentation handler")
+        print(msgCenter.frame)
         if msgCenter.frame.height == regularMessageCenterHeight {
             print("animating to rect: \(rect.height)")
             animateForKeyboard(upwards: true, toHeight: rect.height)
@@ -101,6 +103,7 @@ extension ConversationPresenter {
             self.msgCenter.frame.origin.y -= 25
         }
         msgCenter.didShowKeyboard()
+        isKeyboardShowing = true
     }
     
     public func keyboardWillHide(keyboardRect size: CGRect) {
@@ -113,6 +116,7 @@ extension ConversationPresenter {
             }
         }
         msgCenter.didHideKeyboard()
+        isKeyboardShowing = false
     }
 }
 
@@ -123,6 +127,9 @@ extension ConversationPresenter: UIScrollViewDelegate {
             parent.resignFirstResponder()
             msgCenter.resignFirstResponder()
             msgCenter.textView.resignFirstResponder()
+            let msgFrame = CGRect(x: 0, y: parent.frame.height - regularMessageCenterHeight, width: parent.frame.width, height: regularMessageCenterHeight)
+            let viewFrame = CGRect(x: 0, y: 0, width: parent.frame.width, height: (parent.frame.height - msgFrame.height))
+            animateTo(position: ConversationPosition(msgFrame: msgFrame, viewFrame: viewFrame))
         } else {
             if !(msgCenter.frame.height == regularMessageCenterHeight) {
                 msgCenter.removeEntryView()
@@ -130,8 +137,6 @@ extension ConversationPresenter: UIScrollViewDelegate {
                 let viewFrame = CGRect(x: 0, y: 0, width: parent.frame.width, height: (parent.frame.height - msgCenter.frame.height))
                 animateTo(position: ConversationPosition(msgFrame: msgFrame, viewFrame: viewFrame))
             }
-            
-            
         }
     }
 }
