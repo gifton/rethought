@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		81554847878AAAEAE2A10C74 /* Pods_Rethought.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6ECAA6AF674B7CE872E912 /* Pods_Rethought.framework */; };
 		D7006EB922653D2D004E570F /* EntryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EB822653D2D004E570F /* EntryType.swift */; };
 		D7006EBB22653D59004E570F /* ThoughtPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EBA22653D59004E570F /* ThoughtPreview.swift */; };
 		D7006EBD22653DB1004E570F /* EntryCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EBC22653DB1004E570F /* EntryCount.swift */; };
@@ -74,6 +75,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		693ED15BF6C969B163F0A5A0 /* Pods-Rethought.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rethought.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rethought/Pods-Rethought.debug.xcconfig"; sourceTree = "<group>"; };
+		6B6ECAA6AF674B7CE872E912 /* Pods_Rethought.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rethought.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		94B8590A0D58AF87BE0C2985 /* Pods-Rethought.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rethought.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rethought/Pods-Rethought.release.xcconfig"; sourceTree = "<group>"; };
 		D7006EB822653D2D004E570F /* EntryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryType.swift; sourceTree = "<group>"; };
 		D7006EBA22653D59004E570F /* ThoughtPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtPreview.swift; sourceTree = "<group>"; };
 		D7006EBC22653DB1004E570F /* EntryCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryCount.swift; sourceTree = "<group>"; };
@@ -147,6 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81554847878AAAEAE2A10C74 /* Pods_Rethought.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +253,8 @@
 			children = (
 				D7536F902262C26F003F0920 /* Rethought */,
 				D7536F8F2262C26F003F0920 /* Products */,
+				EBCB35246A8B2AF684D59C3D /* Pods */,
+				EE7F88E29AB4B9CEA04E6960 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -393,6 +400,23 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		EBCB35246A8B2AF684D59C3D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				693ED15BF6C969B163F0A5A0 /* Pods-Rethought.debug.xcconfig */,
+				94B8590A0D58AF87BE0C2985 /* Pods-Rethought.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EE7F88E29AB4B9CEA04E6960 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6B6ECAA6AF674B7CE872E912 /* Pods_Rethought.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -400,9 +424,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D7536FA02262C272003F0920 /* Build configuration list for PBXNativeTarget "Rethought" */;
 			buildPhases = (
+				BD67ABE72C7DDB24FEE74DB9 /* [CP] Check Pods Manifest.lock */,
 				D7536F8A2262C26F003F0920 /* Sources */,
 				D7536F8B2262C26F003F0920 /* Frameworks */,
 				D7536F8C2262C26F003F0920 /* Resources */,
+				D3294ECD9E5151903522258A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -460,6 +486,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BD67ABE72C7DDB24FEE74DB9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Rethought-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D3294ECD9E5151903522258A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Rethought/Pods-Rethought-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rethought/Pods-Rethought-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D7536F8A2262C26F003F0920 /* Sources */ = {
@@ -668,6 +741,7 @@
 		};
 		D7536FA12262C272003F0920 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 693ED15BF6C969B163F0A5A0 /* Pods-Rethought.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -688,6 +762,7 @@
 		};
 		D7536FA22262C272003F0920 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94B8590A0D58AF87BE0C2985 /* Pods-Rethought.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

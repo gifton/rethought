@@ -1,0 +1,6 @@
+framework module Pods_Rethought {
+  umbrella header "Pods-Rethought-umbrella.h"
+
+  export *
+  module * { export * }
+}
