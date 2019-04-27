@@ -12,6 +12,7 @@ import UIKit
 open class ConversationPresenter: NSObject {
     let regularMessageCenterHeight: CGFloat = 115.0
     var isKeyboardShowing: Bool = false
+    var isShowingEntry: Bool = false
     private struct ConversationPosition{
         var msgFrame: CGRect
         var viewFrame: CGRect
@@ -22,6 +23,7 @@ open class ConversationPresenter: NSObject {
             
         }
     }
+    
     var parent: ConversationView
     var msgCenter: MSGCenter
     var view: UIScrollView
@@ -40,10 +42,9 @@ open class ConversationPresenter: NSObject {
         msgCenter.frame = CGRect(x: 0, y: parent.frame.height - regularMessageCenterHeight, width: parent.frame.width, height: regularMessageCenterHeight)
         view.frame = CGRect(x: 0, y: 0, width: parent.frame.width, height: (parent.frame.height - msgCenter.frame.height))
         
-        view.contentSize = CGSize(width: Device.size.width, height: view.frame.height + CGFloat(1.0))
+        view.contentSize = CGSize(width: Device.size.width, height: msgCenter.height + CGFloat(25.0))
         view.backgroundColor = Device.colors.offWhite
         view.roundCorners([.bottomLeft, .bottomRight], radius: 20)
-        view.delegate = self
         
         UIView.animate(withDuration: 0.25) {
             self.msgCenter.alpha = 1.0
@@ -62,6 +63,7 @@ extension ConversationPresenter {
         let viewFrame = CGRect(x: 0, y: 0, width: parent.frame.width, height: parent.frame.height - height)
         //animate to frame
         animateTo(position: ConversationPosition(msgFrame: msgCenterFrame, viewFrame: viewFrame))
+        isShowingEntry = true
     }
     
     private func animateTo(position: ConversationPosition) {
@@ -78,15 +80,15 @@ extension ConversationPresenter {
             UIView.animate(withDuration: 0.25) {
                 //move entire view
                 self.parent.frame.origin.y -= height
-                //change tableView to correct height
-                self.view.frame.size.height -= height
             }
         } else {
             UIView.animate(withDuration: 0.25) {
                 //move entire view
-                self.parent.frame.origin.y += height
-                //change tableView to correct height
-                self.view.frame.size.height += height
+                self.parent.frame.origin.y = 0
+                if self.isShowingEntry {
+                    self.msgCenter.frame = CGRect(x: 0, y: self.parent.frame.height - self.regularMessageCenterHeight, width: self.parent.frame.width, height: self.regularMessageCenterHeight)
+                    self.view.frame = CGRect(x: 0, y: 0, width: self.parent.frame.width, height: (self.parent.frame.height - self.msgCenter.frame.height))
+                }
             }
         }
         view.roundCorners([.bottomLeft, .bottomRight], radius: 20)
@@ -95,7 +97,7 @@ extension ConversationPresenter {
     public func keyboardWillShow(keyboardRect rect: CGRect) {
             print("keyboard showing in presentation handler")
         print(msgCenter.frame)
-        if msgCenter.frame.height == regularMessageCenterHeight {
+        if !isShowingEntry {
             print("animating to rect: \(rect.height)")
             animateForKeyboard(upwards: true, toHeight: rect.height)
         } else {
@@ -124,6 +126,7 @@ extension ConversationPresenter: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //
         if isKeyboardShowing {
+            print("keyboard is showing and scrollview scrolled")
             parent.resignFirstResponder()
             msgCenter.resignFirstResponder()
             msgCenter.textView.resignFirstResponder()
@@ -134,7 +137,7 @@ extension ConversationPresenter: UIScrollViewDelegate {
             if !(msgCenter.frame.height == regularMessageCenterHeight) {
                 msgCenter.removeEntryView()
                 let msgFrame = CGRect(x: 0, y: parent.frame.height - regularMessageCenterHeight, width: parent.frame.width, height: regularMessageCenterHeight)
-                let viewFrame = CGRect(x: 0, y: 0, width: parent.frame.width, height: (parent.frame.height - msgCenter.frame.height))
+                let viewFrame = CGRect(x: 0, y: 0, width: parent.frame.width, height: (parent.frame.height - regularMessageCenterHeight))
                 animateTo(position: ConversationPosition(msgFrame: msgFrame, viewFrame: viewFrame))
             }
         }

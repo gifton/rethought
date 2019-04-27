@@ -29,6 +29,7 @@ class MSGCenter: UIView {
         tv.font = Device.font.formalBodyText()
         tv.textColor = Device.colors.lightGray
         tv.frame = CGRect(x: 10, y: 50, width: Device.size.paddedMaxWidth, height: 40)
+        tv.addDoneButtonOnKeyboard()
         
         return tv
     }()
@@ -170,20 +171,14 @@ extension MSGCenter {
             }
         }
         
-        for view in subviews {
-            guard let btn: MessageButton = view as? MessageButton else { continue }
-            if !(msgHandler.isAvailable(btn: btn)) {
-                btn.removeFromSuperview()
-            }
-        }
-        // check if all views are in super view
-        let regularSubviews = [textButton, linkButton, recordingButton, imageButton, sendButton, textView]
-        // if not, add view and add frame
-        for view in regularSubviews {
-            if !(view.isDescendant(of: self)) {
-                addSubview(view)
-            }
-        }
+//        // check if all views are in super view
+//        let regularSubviews = [textButton, linkButton, recordingButton, imageButton, sendButton, textView]
+//        // if not, add view and add frame
+//        for view in regularSubviews {
+//            if !(view.isDescendant(of: self)) {
+//                addSubview(view)
+//            }
+//        }
         
         // set textView title
         textView.text = msgHandler.textViewPlaceHolder
@@ -264,14 +259,16 @@ extension MSGCenter {
     private func checkButtons() {
         // check msgHandler for what has and hasnt been complete
         // update buttons opacity with .isEnabled() and .isDisabled()
-        if !(msgHandler.didStartThought) {
+        if !(msgHandler.didCompleteThought) {
             sendButton.isDisabled()
             textButton.isDisabled()
             imageButton.isDisabled()
             linkButton.isDisabled()
             recordingButton.isDisabled()
             sendButton.isDisabled()
-        } else { sendButton.isEnabled() }
+        } else if msgHandler.didStartThought {
+            sendButton.isEnabled()
+        }
         
         if (msgHandler.didCompleteThought == true) {
             textButton.isEnabled()
@@ -421,6 +418,7 @@ extension MSGCenter {
         }
         //check buttons
         checkButtons()
+        connector.isDoneEditing()
     }
     
     func updateStaticText() {
@@ -433,6 +431,7 @@ extension MSGCenter {
             msgHandler.currentPosition = .newEntry
         } else if msgHandler.currentPosition == MSGContext.position.regularAndKeyboard {
             msgHandler.currentPosition = .regular
+            connector.isDoneEditing()
         }
         updatePosition()
     }
@@ -447,15 +446,15 @@ extension MSGCenter {
 }
 
 extension MSGCenter: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.text = ""
-        msgHandler.didStartThought = true
-        checkButtons()
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        updateStaticText()
-        checkButtons()
-        msgHandler.thoughtTitle = textView.text
-    }
+//    func textViewDidBeginEditing(_ textView: UITextView) {
+//        textView.text = ""
+//        msgHandler.didStartThought = true
+//        checkButtons()
+//    }
+//
+//    func textViewDidEndEditing(_ textView: UITextView) {
+//        updateStaticText()
+//        checkButtons()
+//        msgHandler.thoughtTitle = textView.text
+//    }
 }

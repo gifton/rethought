@@ -9,6 +9,7 @@ class MSGHandler: NSObject {
     
     //variables
     var currentPosition: MSGContext.position = .regular
+    
     var didStartNewEntry: Bool = false
     var didCompleteNewentry: Bool = false
     var didCompleteThought: Bool {
