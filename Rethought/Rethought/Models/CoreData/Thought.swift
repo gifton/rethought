@@ -36,10 +36,10 @@ public class Thought: NSManagedObject {
     
     var entryCount: EntryCount {
         guard let counts = entries else {
-            return EntryCount(text: 0, images: 0, recordings: 0, links: 0)
+            return EntryCount(text: 0, photos: 0, recordings: 0, links: 0)
         }
         var text = 0
-        var image = 0
+        var photo = 0
         var link = 0
         var recording = 0
         counts.forEach { (entry) in
@@ -51,18 +51,18 @@ public class Thought: NSManagedObject {
                     text += 1
                 case "RECORDING":
                     recording += 1
-                case "IMAGE":
-                    image += 1
+                case "PHOTO":
+                    photo += 1
                 default:
                     print("unknown entry type")
                 }
             }
         }
-        return EntryCount(text: text, images: image, recordings: recording, links: link)
+        return EntryCount(text: text, photos: photo, recordings: recording, links: link)
     }
     
     // search for most recent image entry image, convert to data and return
-    public var recentImage: UIImage? {
+    public var recentPhoto: UIImage? {
         guard let entries = self.entries else {
             return nil
         }
@@ -70,8 +70,8 @@ public class Thought: NSManagedObject {
         for ent in entries {
             
             if let entry = ent as? Entry {
-                guard let rawImage = entry.rawImg else { return nil }
-                return UIImage(data: rawImage)
+                guard let data = entry.rawPhoto else { return nil }
+                return UIImage(data: data)
             }
         }
         return nil

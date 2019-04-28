@@ -14,7 +14,7 @@
 		D7006EC02266F0F6004E570F /* EntryContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EBF2266F0F6004E570F /* EntryContent.swift */; };
 		D7006EC22266F35C004E570F /* ThoughtIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EC12266F35C004E570F /* ThoughtIcon.swift */; };
 		D7006EC42266FFD9004E570F /* LinkBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EC32266FFD9004E570F /* LinkBuilder.swift */; };
-		D7006EC622671C4C004E570F /* ImageBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EC522671C4C004E570F /* ImageBuilder.swift */; };
+		D7006EC622671C4C004E570F /* PhotoBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EC522671C4C004E570F /* PhotoBuilder.swift */; };
 		D7006EC822671C96004E570F /* TextBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EC722671C96004E570F /* TextBuilder.swift */; };
 		D7006ECA22671CF4004E570F /* RecordingBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EC922671CF4004E570F /* RecordingBuilder.swift */; };
 		D7006ED322672C7F004E570F /* ThoughtBuilderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006ED222672C7F004E570F /* ThoughtBuilderViewModel.swift */; };
@@ -56,7 +56,7 @@
 		D7536FCF2262D708003F0920 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536FCE2262D708003F0920 /* UIViewController.swift */; };
 		D7536FD12262D765003F0920 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536FD02262D765003F0920 /* String.swift */; };
 		D7536FD52262D8AA003F0920 /* rt-DB2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D7536FD32262D8AA003F0920 /* rt-DB2.xcdatamodeld */; };
-		D7536FE32262EB0A003F0920 /* ImageEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536FD72262EB0A003F0920 /* ImageEntry.swift */; };
+		D7536FE32262EB0A003F0920 /* PhotoEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536FD72262EB0A003F0920 /* PhotoEntry.swift */; };
 		D7536FE52262EB0A003F0920 /* TextEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536FD92262EB0A003F0920 /* TextEntry.swift */; };
 		D7536FE72262EB0A003F0920 /* LinkEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536FDB2262EB0A003F0920 /* LinkEntry.swift */; };
 		D7536FE92262EB0A003F0920 /* Thought.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536FDD2262EB0A003F0920 /* Thought.swift */; };
@@ -84,7 +84,7 @@
 		D7006EBF2266F0F6004E570F /* EntryContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryContent.swift; sourceTree = "<group>"; };
 		D7006EC12266F35C004E570F /* ThoughtIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtIcon.swift; sourceTree = "<group>"; };
 		D7006EC32266FFD9004E570F /* LinkBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkBuilder.swift; sourceTree = "<group>"; };
-		D7006EC522671C4C004E570F /* ImageBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBuilder.swift; sourceTree = "<group>"; };
+		D7006EC522671C4C004E570F /* PhotoBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoBuilder.swift; sourceTree = "<group>"; };
 		D7006EC722671C96004E570F /* TextBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBuilder.swift; sourceTree = "<group>"; };
 		D7006EC922671CF4004E570F /* RecordingBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingBuilder.swift; sourceTree = "<group>"; };
 		D7006ED222672C7F004E570F /* ThoughtBuilderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtBuilderViewModel.swift; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 		D7536FCE2262D708003F0920 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		D7536FD02262D765003F0920 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D7536FD42262D8AA003F0920 /* rt-DB2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "rt-DB2.xcdatamodel"; sourceTree = "<group>"; };
-		D7536FD72262EB0A003F0920 /* ImageEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEntry.swift; sourceTree = "<group>"; };
+		D7536FD72262EB0A003F0920 /* PhotoEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEntry.swift; sourceTree = "<group>"; };
 		D7536FD92262EB0A003F0920 /* TextEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEntry.swift; sourceTree = "<group>"; };
 		D7536FDB2262EB0A003F0920 /* LinkEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkEntry.swift; sourceTree = "<group>"; };
 		D7536FDD2262EB0A003F0920 /* Thought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thought.swift; sourceTree = "<group>"; };
@@ -173,7 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				D7006EC32266FFD9004E570F /* LinkBuilder.swift */,
-				D7006EC522671C4C004E570F /* ImageBuilder.swift */,
+				D7006EC522671C4C004E570F /* PhotoBuilder.swift */,
 				D7006EC722671C96004E570F /* TextBuilder.swift */,
 				D7006EC922671CF4004E570F /* RecordingBuilder.swift */,
 			);
@@ -364,7 +364,7 @@
 		D7536FEE2262EB23003F0920 /* entryContent */ = {
 			isa = PBXGroup;
 			children = (
-				D7536FD72262EB0A003F0920 /* ImageEntry.swift */,
+				D7536FD72262EB0A003F0920 /* PhotoEntry.swift */,
 				D7536FD92262EB0A003F0920 /* TextEntry.swift */,
 				D7536FDB2262EB0A003F0920 /* LinkEntry.swift */,
 				D7536FDF2262EB0A003F0920 /* RecordingEntry.swift */,
@@ -539,7 +539,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7536FE32262EB0A003F0920 /* ImageEntry.swift in Sources */,
+				D7536FE32262EB0A003F0920 /* PhotoEntry.swift in Sources */,
 				D7006EDF2268174F004E570F /* NewThoughtCell.swift in Sources */,
 				D7006EE92268CD5A004E570F /* ReTabBar.swift in Sources */,
 				D7C6542E226A850B008A66EF /* UIbutton.swift in Sources */,
@@ -559,7 +559,7 @@
 				D7006EE72268CB63004E570F /* ViewController.swift in Sources */,
 				D7006EE5226841D2004E570F /* ConversationView.swift in Sources */,
 				D7536FD52262D8AA003F0920 /* rt-DB2.xcdatamodeld in Sources */,
-				D7006EC622671C4C004E570F /* ImageBuilder.swift in Sources */,
+				D7006EC622671C4C004E570F /* PhotoBuilder.swift in Sources */,
 				D7006EED2268CDAE004E570F /* ReTabItem.swift in Sources */,
 				D7536FA52262C6DA003F0920 /* styling.swift in Sources */,
 				D7536FC92262D182003F0920 /* UIStackView.swift in Sources */,

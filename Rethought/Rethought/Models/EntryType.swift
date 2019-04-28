@@ -1,13 +1,13 @@
 
 enum EntryType: String, Codable {
     case note = "TEXT"
-    case image = "IMAGE"
+    case photo = "PHOTO"
     case link = "LINK"
     case recording = "RECORDING"
     case all = "ALL"
     
     static func exhaustiveList() -> [EntryType] {
-        return [note, image, link, recording, all]
+        return [note, note, link, recording, all]
     }
 }
 

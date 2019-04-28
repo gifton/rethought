@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 open class ConversationPresenter: NSObject {
+    
     let regularMessageCenterHeight: CGFloat = 115.0
-    var isKeyboardShowing: Bool = false
     var isShowingEntry: Bool = false
     private struct ConversationPosition{
         var msgFrame: CGRect
@@ -21,6 +21,29 @@ open class ConversationPresenter: NSObject {
             self.msgFrame = msgFrame
             self.viewFrame = viewFrame
             
+        }
+        static var barHeight = Device.size.tabBarHeight
+        static var max = Device.size.self
+        static var msg = MSGContext.size.self
+        static func standard() -> ConversationPosition {
+            return ConversationPosition(msgFrame: CGRect(x: 0, y: max.height - (barHeight + msg.regular.rawValue), width: max.width, height: msg.regular.rawValue),
+                                        viewFrame: CGRect(x: 0, y: 0, width: max.width, height: max.height - (barHeight + msg.regular.rawValue)))
+        }
+        static func link() -> ConversationPosition {
+            return ConversationPosition(msgFrame: CGRect(x: 0, y: max.height - (msg.link.rawValue), width: max.width, height: msg.link.rawValue),
+                                        viewFrame: CGRect(x: 0, y: 0, width: max.width, height: max.height - (msg.link.rawValue)))
+        }
+        static func recording() -> ConversationPosition {
+            return ConversationPosition(msgFrame: CGRect(x: 0, y: max.height - (msg.recording.rawValue), width: max.width, height: msg.recording.rawValue),
+                                        viewFrame: CGRect(x: 0, y: 0, width: max.width, height: max.height - (msg.recording.rawValue)))
+        }
+        static func note() -> ConversationPosition {
+            return ConversationPosition(msgFrame: CGRect(x: 0, y: max.height - (msg.note.rawValue), width: max.width, height: msg.note.rawValue),
+                                        viewFrame: CGRect(x: 0, y: 0, width: max.width, height: max.height - (msg.note.rawValue)))
+        }
+        static func photo() -> ConversationPosition {
+            return ConversationPosition(msgFrame: CGRect(x: 0, y: max.height - (msg.photo.rawValue), width: max.width, height: msg.photo.rawValue),
+                                        viewFrame: CGRect(x: 0, y: 0, width: max.width, height: max.height - (msg.photo.rawValue)))
         }
     }
     
@@ -38,11 +61,14 @@ open class ConversationPresenter: NSObject {
     
     
     private func setupInitialConversation() {
+        //sert delegates
+        msgCenter.delegate = self
+        view.delegate = self
         //layout newobjects, frame, color, rounded edges, etc
         msgCenter.frame = CGRect(x: 0, y: parent.frame.height - regularMessageCenterHeight, width: parent.frame.width, height: regularMessageCenterHeight)
         view.frame = CGRect(x: 0, y: 0, width: parent.frame.width, height: (parent.frame.height - msgCenter.frame.height))
         
-        view.contentSize = CGSize(width: Device.size.width, height: msgCenter.height + CGFloat(25.0))
+        view.contentSize = CGSize(width: Device.size.width, height: 1000)
         view.backgroundColor = Device.colors.offWhite
         view.roundCorners([.bottomLeft, .bottomRight], radius: 20)
         
@@ -55,91 +81,95 @@ open class ConversationPresenter: NSObject {
 }
 
 extension ConversationPresenter {
-    func didTapOn(entry type: MSGContext.size) {
-        //get height calculation
-        let height = type.rawValue
-        let msgCenterFrame = CGRect(x: 0, y: parent.frame.height - height, width: parent.frame.width, height: height)
-        //calculate frames for msgcenter and table
-        let viewFrame = CGRect(x: 0, y: 0, width: parent.frame.width, height: parent.frame.height - height)
-        //animate to frame
-        animateTo(position: ConversationPosition(msgFrame: msgCenterFrame, viewFrame: viewFrame))
-        isShowingEntry = true
-    }
-    
     private func animateTo(position: ConversationPosition) {
         //uiview animate to position
-        UIView.animate(withDuration: 0.25) {
+        UIView.animate(withDuration: 0.45) {
             self.msgCenter.frame = position.msgFrame
             self.view.frame = position.viewFrame
         }
         view.roundCorners([.bottomLeft, .bottomRight], radius: 20)
     }
-    
-    private func animateForKeyboard(upwards: Bool, toHeight height: CGFloat) {
-        if upwards {
-            UIView.animate(withDuration: 0.25) {
-                //move entire view
-                self.parent.frame.origin.y -= height
-            }
-        } else {
-            UIView.animate(withDuration: 0.25) {
-                //move entire view
-                self.parent.frame.origin.y = 0
-                if self.isShowingEntry {
-                    self.msgCenter.frame = CGRect(x: 0, y: self.parent.frame.height - self.regularMessageCenterHeight, width: self.parent.frame.width, height: self.regularMessageCenterHeight)
-                    self.view.frame = CGRect(x: 0, y: 0, width: self.parent.frame.width, height: (self.parent.frame.height - self.msgCenter.frame.height))
-                }
-            }
-        }
-        view.roundCorners([.bottomLeft, .bottomRight], radius: 20)
-    }
-    
-    public func keyboardWillShow(keyboardRect rect: CGRect) {
-            print("keyboard showing in presentation handler")
-        print(msgCenter.frame)
-        if !isShowingEntry {
-            print("animating to rect: \(rect.height)")
-            animateForKeyboard(upwards: true, toHeight: rect.height)
-        } else {
-            print("animating upwards a smidge")
-            self.msgCenter.frame.origin.y -= 25
-        }
-        msgCenter.didShowKeyboard()
-        isKeyboardShowing = true
-    }
-    
-    public func keyboardWillHide(keyboardRect size: CGRect) {
-        
-        if msgCenter.frame.height == regularMessageCenterHeight {
-            animateForKeyboard(upwards: false, toHeight: size.height)
-        } else {
-            UIView.animate(withDuration: 0.25) {
-                self.msgCenter.frame.origin.y += 25
-            }
-        }
-        msgCenter.didHideKeyboard()
-        isKeyboardShowing = false
-    }
 }
 
 extension ConversationPresenter: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //
-        if isKeyboardShowing {
-            print("keyboard is showing and scrollview scrolled")
-            parent.resignFirstResponder()
-            msgCenter.resignFirstResponder()
-            msgCenter.textView.resignFirstResponder()
-            let msgFrame = CGRect(x: 0, y: parent.frame.height - regularMessageCenterHeight, width: parent.frame.width, height: regularMessageCenterHeight)
-            let viewFrame = CGRect(x: 0, y: 0, width: parent.frame.width, height: (parent.frame.height - msgFrame.height))
-            animateTo(position: ConversationPosition(msgFrame: msgFrame, viewFrame: viewFrame))
-        } else {
-            if !(msgCenter.frame.height == regularMessageCenterHeight) {
-                msgCenter.removeEntryView()
-                let msgFrame = CGRect(x: 0, y: parent.frame.height - regularMessageCenterHeight, width: parent.frame.width, height: regularMessageCenterHeight)
-                let viewFrame = CGRect(x: 0, y: 0, width: parent.frame.width, height: (parent.frame.height - regularMessageCenterHeight))
-                animateTo(position: ConversationPosition(msgFrame: msgFrame, viewFrame: viewFrame))
+        msgCenter.textView.resignFirstResponder()
+        if msgCenter.isShowingEntry {
+            msgCenter.removeEntryView()
+            animateTo(position: .standard())
+        }
+        
+    }
+}
+
+extension ConversationPresenter: MSGDelegate {
+    func didTapEntry(ofType type: MSGContext.size, completion: ()) {
+        
+        // if entry view is currently not showing
+        // animate to correct entry view
+        if !(msgCenter.isShowingEntry) {
+            
+            switch type {
+            case .link: animateTo(position: .link())
+            case .photo: animateTo(position: .photo())
+            case .note: animateTo(position: .note())
+            case .recording: animateTo(position: .recording())
+            default: animateTo(position: .standard())
             }
+            
+            isShowingEntry = true
+            completion
+        
+        // if msgCenter view is equal to entry tapped
+        // assume entry is the same, and close the entry and set regular view
+        } else if msgCenter.frame.size.height == type.rawValue {
+            
+            
+            // hide entry
+            animateTo(position: .standard())
+            msgCenter.removeEntryView()
+            
+        // if entry view is currently showing
+        // animate to correct entry view
+        } else {
+            
+            switch type {
+            case .link: animateTo(position: .link())
+            case .photo: animateTo(position: .photo())
+            case .note: animateTo(position: .note())
+            case .recording: animateTo(position: .recording())
+            default: animateTo(position: .standard())
+            }
+            
+            isShowingEntry = true
+            completion
+        }
+    }
+    
+    func didSendMessage() {
+        //move to regular height again
+        animateTo(position: .standard())
+    }
+    
+    
+    private func getEntryFromSize(_ size: MSGContext.size = MSGContext.size.regular) -> MSGContext.type {
+        if size == .regular {
+            switch msgCenter.frame.height {
+            case MSGContext.size.link.rawValue: return .link
+            case MSGContext.size.recording.rawValue: return .recording
+            case MSGContext.size.photo.rawValue: return .photo
+            case MSGContext.size.note.rawValue: return .note
+            default: return .none
+            }
+        }
+        
+        switch size {
+        case MSGContext.size.link: return .link
+        case MSGContext.size.recording: return .recording
+        case MSGContext.size.photo: return .photo
+        case MSGContext.size.note: return .note
+        default: return .none
         }
     }
 }
+

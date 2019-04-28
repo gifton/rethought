@@ -16,7 +16,7 @@ struct ThoughtPreview {
     var location:    CLLocation?
     var icon:        String
     var entryCount:  EntryCount
-    var recentImage: UIImage?
+    var recentPhoto: UIImage?
     
     init(thought: Thought) {
         title = thought.title
@@ -24,7 +24,7 @@ struct ThoughtPreview {
         icon = thought.icon
         location = thought.location
         entryCount = thought.entryCount
-        recentImage = thought.recentImage
+        recentPhoto = thought.recentPhoto
     }
     
     init(title: String, icon: String, location: CLLocation?) {
@@ -32,7 +32,7 @@ struct ThoughtPreview {
         self.location = location
         self.icon = icon
         date = Date()
-        entryCount = EntryCount(text: 0, images: 0, recordings: 0, links: 0)
+        entryCount = EntryCount(text: 0, photos: 0, recordings: 0, links: 0)
     }
     
     init() {
@@ -40,6 +40,6 @@ struct ThoughtPreview {
         date = Date()
         location = CLLocation()
         icon = "🔫"
-        entryCount = EntryCount(text: 10, images: 12, recordings: 4, links: 25)
+        entryCount = EntryCount(text: 10, photos: 12, recordings: 4, links: 25)
     }
 }

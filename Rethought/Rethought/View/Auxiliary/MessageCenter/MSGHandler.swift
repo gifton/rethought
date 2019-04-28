@@ -10,7 +10,12 @@ class MSGHandler: NSObject {
     //variables
     var currentPosition: MSGContext.position = .regular
     
-    var didStartNewEntry: Bool = false
+    var didStartNewEntry: Bool {
+        if currentEntryType == .none {
+            return false
+        }
+        return true
+    }
     var didCompleteNewentry: Bool = false
     var didCompleteThought: Bool {
         return (thoughtTitle != nil && thoughtIcon != nil)
@@ -20,18 +25,12 @@ class MSGHandler: NSObject {
     var thoughtIcon: ThoughtIcon?
     var currentEntry: EntryContent?
     
-    public var currentEntryType: MSGContext.type = .none {
-        didSet {
-            if !(currentEntryType == .none) {
-                self.didStartNewEntry = true
-                
-            }
-        }
-    }
+    public var currentEntryType: MSGContext.type = .none
     
+    //return entrytype, just in a different enum type
     public var entryType: EntryType? {
         switch currentEntryType {
-        case .image: return .image
+        case .photo: return .photo
         case .link: return .link
         case .recording: return .recording
         case .note: return .note
@@ -61,8 +60,8 @@ class MSGHandler: NSObject {
         switch currentEntryType {
         case .note:
             return "Give your note a title"
-        case .image:
-            return "Give your image a title"
+        case .photo:
+            return "Give your photo a title"
         case .link:
             return "Give your link a title"
         default:
@@ -80,7 +79,7 @@ class MSGHandler: NSObject {
     
     func getSizeFrom(entryType: MSGContext.type) -> MSGContext.size {
         switch entryType {
-        case .image: return .image
+        case .photo: return .photo
         case .link: return .link
         case .note: return .note
         case .recording: return .recording

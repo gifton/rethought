@@ -12,7 +12,17 @@ class MSGCenter: UIView {
         setViews()
     }
     
+    public var isShowingEntry: Bool {
+        get {
+            return !(msgHandler.currentEntryType == .none)
+        }
+    }
+    public var currentEntryType: MSGContext.type {
+        return msgHandler.currentEntryType
+    }
+    
     var connector: MSGConnector
+    public var delegate: MSGDelegate!
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -65,7 +75,7 @@ class MSGCenter: UIView {
         btn.setImage(#imageLiteral(resourceName: "camera_clay"), for: .normal)
         btn.frame.size = CGSize(width: 24, height: 20)
         btn.imageView?.tintColor = .red
-        btn.entryType = .image
+        btn.entryType = .photo
         btn.messageButtonType = .entry
         
         return btn
@@ -171,60 +181,24 @@ extension MSGCenter {
             }
         }
         
-//        // check if all views are in super view
-//        let regularSubviews = [textButton, linkButton, recordingButton, imageButton, sendButton, textView]
-//        // if not, add view and add frame
-//        for view in regularSubviews {
-//            if !(view.isDescendant(of: self)) {
-//                addSubview(view)
-//            }
-//        }
-        
         // set textView title
         textView.text = msgHandler.textViewPlaceHolder
         
-        // check for buttons and text
-        checkButtons()
-        updateStaticText()
-    }
-    
-    private func setRegularAndKeybardView() {
-        // check and resize view if necessary
-        if !(frame.height == msgHandler.currentSize.rawValue) {
-            // call delegate to change size
-        }
-        
-        // have message handler return list of bools
-        // zip list of bools to views in super view
-        // remove form superview if false
-        // check if its in the view already if true, if not add it
-        let eligibility = msgHandler.checkForEligibility(in: self)
-        for (eligible, view) in zip(eligibility, subviews) {
-            if !(eligible) {
-                view.removeFromSuperview()
-            } else if eligible && !(view.isDescendant(of: self)) {
-                addSubview(view)
-            }
-            continue
-        }
-        
-        // set textView title
-        textView.text = msgHandler.textViewPlaceHolder
         // check for buttons and text
         checkButtons()
         updateStaticText()
     }
     
     private func setEntryView() {
+        
         //remove any previous entry view
         removeEntryView()
         // send willShow(ofType:) request to delegate
-        
         connector.entryWillShow(ofType: msgHandler.currentSize)
         
         // switch entrytype and run specific type's show func
         switch msgHandler.currentEntryType {
-        case .image: showImageEntry()
+        case .photo: showImageEntry()
         case .link: showLinkEntry()
         case .recording: showRecordingEntry()
         default: showNoteEntry()
@@ -235,12 +209,6 @@ extension MSGCenter {
         // check for buttons and text
         checkButtons()
         updateStaticText()
-    }
-    
-    private func setEntryAndKeyboardView() {
-        // add entryTypeView
-        // update textView
-        // check for buttons
     }
 }
 
@@ -254,7 +222,14 @@ extension MSGCenter {
         }
     }
     
-
+    private func activateEntryBtn(_ button: MessageButton) {
+        button.imageView!.image = button.imageView!.image!.withRenderingMode(.alwaysTemplate)
+        button.imageView!.tintColor = Device.colors.red
+    }
+    private func deactivateEntryBtn(_ button: MessageButton) {
+        button.imageView!.image = button.imageView!.image!.withRenderingMode(.alwaysTemplate)
+        button.imageView!.tintColor = .clear
+    }
     
     private func checkButtons() {
         // check msgHandler for what has and hasnt been complete
@@ -277,38 +252,27 @@ extension MSGCenter {
             recordingButton.isEnabled()
             sendButton.isEnabled()
         }
-        
-        switch msgHandler.currentEntryType {
-        case .link:
-            linkButton.imageView!.image = linkButton.imageView!.image!.withRenderingMode(.alwaysTemplate)
-            linkButton.imageView!.tintColor = UIColor.red
-        case .image:
-            imageButton.imageView!.image = imageButton.imageView!.image!.withRenderingMode(.alwaysTemplate)
-            imageButton.imageView!.tintColor = UIColor.red
-        case .note:
-            textButton.imageView!.image = textButton.imageView!.image!.withRenderingMode(.alwaysTemplate)
-            textButton.imageView!.tintColor = UIColor.red
-        case .recording:
-            recordingButton.imageView!.image = recordingButton.imageView!.image!.withRenderingMode(.alwaysTemplate)
-            recordingButton.imageView!.tintColor = UIColor.red
-        default:
-            break
-        }
     }
     
     private func buttonTapped(sender: MessageButton) {
         switch sender.messageButtonType {
-        case .cancel: cancel()
-        case .send: if send() { return } else { handleFailedSend() }
-        case .entry: msgHandler.currentEntryType = sender.entryType; setEntryView()
-        case .open: setEntryAndKeyboardView()
-        case .close: setEntryView()
+        case .cancel:
+            cancel()
+        case .send:
+            if send() {
+                delegate.didSendMessage()
+                return
+            } else { handleFailedSend() }
+        case .entry:
+            msgHandler.currentEntryType = sender.entryType
+            delegate.didTapEntry(ofType: msgHandler.currentSize, completion: setEntryView())
+        default: setEntryView()
         }
         checkButtons()
     }
     
     
-    private func handleFailedSend() {}
+    private func handleFailedSend() { print("failed to save, missing content") }
 }
 
 // action calls
@@ -371,7 +335,7 @@ extension MSGCenter {
                                paddingTop: 115, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
         
         // update msgHandler
-        msgHandler.currentEntryType = .image
+        msgHandler.currentEntryType = .photo
         msgHandler.currentPosition = .newEntry
         //check buttons
         checkButtons()
@@ -393,7 +357,7 @@ extension MSGCenter {
         // check which entry is currently in progressfrom msgHandler
         // and remove it
         switch msgHandler.currentEntryType {
-        case .image:
+        case .photo:
             newLinkView.removeFromSuperview()
             newNoteView.removeFromSuperview()
             newRecordingView.removeFromSuperview()

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            let moc = container.managedObjectModel
 //            print(moc.entitiesByName)
         }
-        
+        IQKeyboardManager.shared.enable = true
         return true
     }
 

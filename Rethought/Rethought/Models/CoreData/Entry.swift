@@ -29,13 +29,13 @@ public class Entry: NSManagedObject {
     // MARK: Relationships
     @NSManaged public var thought: Thought
     @NSManaged public var text: TextEntry?
-    @NSManaged public var image: ImageEntry?
+    @NSManaged public var photo: PhotoEntry?
     @NSManaged public var recording: RecordingEntry?
     @NSManaged public var link: LinkEntry?
     
     // MARK: Computed properties
-    public var rawImg: Data? {
-        if let rawimg = image?.rawImage {
+    public var rawPhoto: Data? {
+        if let rawimg = photo?.rawPhoto {
             return rawimg
         } else {
             return nil
@@ -66,9 +66,9 @@ public class Entry: NSManagedObject {
     
     private static func sort<T: EntryBuilder>(payload: T, for context: NSManagedObjectContext) {
         switch payload.type {
-        case .image:
-            guard let imageBuilder: ImageBuilder = payload as? ImageBuilder else { return }
-            let _ = ImageEntry.insert(into: context, builder: imageBuilder)
+        case .photo:
+            guard let photoBuilder: PhotoBuilder = payload as? PhotoBuilder else { return }
+            let _ = PhotoEntry.insert(into: context, builder: photoBuilder)
         case .link:
             guard let linkBuilder: LinkBuilder = payload as? LinkBuilder else { return }
             let _ = LinkEntry.insert(into: context, builder: linkBuilder)

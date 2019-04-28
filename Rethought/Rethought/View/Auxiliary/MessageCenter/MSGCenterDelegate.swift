@@ -23,13 +23,16 @@ enum MSGContext {
     }
     enum size: CGFloat {
         case note      = 600.0
-        case image     = 586.00
+        case photo     = 586.00
         case link      = 360.0
         case recording = 465.0
         case regular   = 115.00
     }
     enum type {
-        case note, image, link, recording, none
+        case note, photo, link, recording, none
+    }
+    enum entryType {
+        case note, photo, link, recording, none
     }
 }
 
@@ -40,6 +43,12 @@ protocol MSGHandlerDelegate {
 }
 
 class NewRecordingView: UIView, MSGSubView { var entryType: MSGContext.type = .recording }
-class NewImageView: UIView, MSGSubView { var entryType: MSGContext.type = .image }
+class NewImageView: UIView, MSGSubView { var entryType: MSGContext.type = .photo }
 class NewLinkView: UIView, MSGSubView { var entryType: MSGContext.type = .link }
 class NewNoteView: UIView, MSGSubView { var entryType: MSGContext.type = .note }
+
+
+protocol MSGDelegate {
+    func didTapEntry(ofType type: MSGContext.size, completion: ())
+    func didSendMessage()
+}
