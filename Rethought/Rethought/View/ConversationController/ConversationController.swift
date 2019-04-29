@@ -34,37 +34,29 @@ class ConversationController: UIViewController {
     }
 }
 
-extension ConversationController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 25
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell(frame: .zero)
-    }
-    
-    
-}
-
 extension ConversationController: MSGConnector {
-    func save(withTitle title: String, withIcon: ThoughtIcon) {
-        //call func from model to create thought, insert into context
-        //reload table data on completion
-        //tell view to return to regular size
-    }
-    
-    func insert(entry: EntryBuilder) {
+    func insert<T>(entry: T) where T : EntryBuilder {
+        // TODO:
         //switch type
         //guard to correct entryBuilder
         //call model func to insert intp context
     }
     
+    func save(withTitle title: String, withIcon: ThoughtIcon) {
+        // TODO:
+        //call func from model to create thought, insert into context
+        //reload table data on completion
+        //tell view to return to regular size
+    }
+    
     func isDoneEditing() {
         //call update view to new size
+        //alert tab bar to re appear
         tabBarController?.tabBar.isHidden = false
     }
     
     func updateIcon(newIcon: ThoughtIcon) {
+        // TODO:
         //alert view model of change
         //reload table data
     }
@@ -72,11 +64,6 @@ extension ConversationController: MSGConnector {
     func entryWillShow(ofType type: MSGContext.size) {
         //tell view to update size
         tabBarController?.tabBar.isHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(conversation)
     }
 }
 

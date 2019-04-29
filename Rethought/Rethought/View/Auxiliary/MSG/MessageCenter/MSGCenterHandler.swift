@@ -1,7 +1,7 @@
 
 import UIKit
 
-class MSGHandler: NSObject {
+class MSGCenterHandler: NSObject {
     override init() {
         super.init()
         
@@ -91,7 +91,7 @@ class MSGHandler: NSObject {
 }
 
 //calculating views that should be in each position
-extension MSGHandler {
+extension MSGCenterHandler {
     //check if button belongs on screen at any given position
     public func isAvailable(btn: MessageButton) -> Bool {
         switch currentPosition {

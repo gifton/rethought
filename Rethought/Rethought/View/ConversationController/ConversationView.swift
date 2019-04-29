@@ -9,24 +9,27 @@
 import Foundation
 import UIKit
 
+// Wrapper for MSGCenter and ConversationScrollView
 class ConversationView: UIView {
     
     private var tableEncapsulation = UIScrollView()
-    public var conversationPresenter: ConversationPresenter!
     
     // public objects
     public var messageCenter: MSGCenter!
+    public var conversationPresenter: ConversationPresenter!
     
     init(with connector: MSGConnector) {
         super.init(frame: CGRect(x: 0, y: 0, width: Device.size.width, height: Device.size.height - Device.size.tabBarHeight))
         backgroundColor = .white
         
+        // initiate message center with injected params
         messageCenter = MSGCenter(frame: CGRect(x: 0, y: frame.height - 215, width: Device.size.width, height: 115), connector: connector)
+        // initiate presenter with variables
         conversationPresenter = ConversationPresenter(tableEncapsulation, messageCenter, parent: self)
         setViews()
         
-        print("height to' device: \(Device.size.height)")
-        print("height to' view: \(frame.size.height)")
+        print("height o' device: \(Device.size.height)")
+        print("height o' view: \(frame.size.height)")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,7 +37,7 @@ class ConversationView: UIView {
     }
     
     func setViews() {
-        //add tableView
+        //add scroll view and msgcenter after theyve been connected to presenter
         addSubview(messageCenter)
         addSubview(tableEncapsulation)
     }

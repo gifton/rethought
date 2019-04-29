@@ -64,10 +64,15 @@
 		D7536FED2262EB0A003F0920 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536FE12262EB0A003F0920 /* Entry.swift */; };
 		D76895502271746F00DC059E /* MSGSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D768954F2271746F00DC059E /* MSGSubView.swift */; };
 		D76895522271ED7D00DC059E /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76895512271ED7D00DC059E /* Optional.swift */; };
-		D76895542271EF7F00DC059E /* MSGHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76895532271EF7F00DC059E /* MSGHandler.swift */; };
+		D76895542271EF7F00DC059E /* MSGCenterHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76895532271EF7F00DC059E /* MSGCenterHandler.swift */; };
 		D76DFA09226E803800CE2D59 /* Rects.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76DFA08226E803800CE2D59 /* Rects.swift */; };
 		D7810C20226F938F0038C1BA /* MSGCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7810C1F226F938F0038C1BA /* MSGCenter.swift */; };
 		D79E59A922723E7E00ABFD34 /* ConversationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79E59A822723E7E00ABFD34 /* ConversationHandler.swift */; };
+		D7BB182F227629970084963E /* MSGBoardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB182E227629970084963E /* MSGBoardDelegate.swift */; };
+		D7BB1831227629E30084963E /* MSGBoardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB1830227629E30084963E /* MSGBoardHandler.swift */; };
+		D7BB1833227629EE0084963E /* MSGBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB1832227629EE0084963E /* MSGBoard.swift */; };
+		D7BB1836227631920084963E /* MSGContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB1835227631920084963E /* MSGContext.swift */; };
+		D7BB1839227656AC0084963E /* MSGBoardViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB1838227656AC0084963E /* MSGBoardViews.swift */; };
 		D7C6541F226A3B45008A66EF /* MSGCenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C6541E226A3B45008A66EF /* MSGCenterDelegate.swift */; };
 		D7C65429226A75E1008A66EF /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7C65424226A75E1008A66EF /* Lato-Regular.ttf */; };
 		D7C6542B226A75E1008A66EF /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7C65426226A75E1008A66EF /* Lato-Bold.ttf */; };
@@ -136,10 +141,15 @@
 		D7536FE12262EB0A003F0920 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		D768954F2271746F00DC059E /* MSGSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGSubView.swift; sourceTree = "<group>"; };
 		D76895512271ED7D00DC059E /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
-		D76895532271EF7F00DC059E /* MSGHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGHandler.swift; sourceTree = "<group>"; };
+		D76895532271EF7F00DC059E /* MSGCenterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGCenterHandler.swift; sourceTree = "<group>"; };
 		D76DFA08226E803800CE2D59 /* Rects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rects.swift; sourceTree = "<group>"; };
 		D7810C1F226F938F0038C1BA /* MSGCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGCenter.swift; sourceTree = "<group>"; };
 		D79E59A822723E7E00ABFD34 /* ConversationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationHandler.swift; sourceTree = "<group>"; };
+		D7BB182E227629970084963E /* MSGBoardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardDelegate.swift; sourceTree = "<group>"; };
+		D7BB1830227629E30084963E /* MSGBoardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardHandler.swift; sourceTree = "<group>"; };
+		D7BB1832227629EE0084963E /* MSGBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoard.swift; sourceTree = "<group>"; };
+		D7BB1835227631920084963E /* MSGContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGContext.swift; sourceTree = "<group>"; };
+		D7BB1838227656AC0084963E /* MSGBoardViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardViews.swift; sourceTree = "<group>"; };
 		D7C6541E226A3B45008A66EF /* MSGCenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGCenterDelegate.swift; sourceTree = "<group>"; };
 		D7C65424226A75E1008A66EF /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		D7C65426226A75E1008A66EF /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
@@ -372,10 +382,39 @@
 			path = entryContent;
 			sourceTree = "<group>";
 		};
+		D7BB182D227629640084963E /* MessageBoard */ = {
+			isa = PBXGroup;
+			children = (
+				D7BB1837227656920084963E /* Views */,
+				D7BB182E227629970084963E /* MSGBoardDelegate.swift */,
+				D7BB1830227629E30084963E /* MSGBoardHandler.swift */,
+				D7BB1832227629EE0084963E /* MSGBoard.swift */,
+			);
+			path = MessageBoard;
+			sourceTree = "<group>";
+		};
+		D7BB1834227631830084963E /* MSG */ = {
+			isa = PBXGroup;
+			children = (
+				D7BB1835227631920084963E /* MSGContext.swift */,
+				D7BB182D227629640084963E /* MessageBoard */,
+				D7C6541D226A3B04008A66EF /* MessageCenter */,
+			);
+			path = MSG;
+			sourceTree = "<group>";
+		};
+		D7BB1837227656920084963E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D7BB1838227656AC0084963E /* MSGBoardViews.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		D7C6541C226A391A008A66EF /* Auxiliary */ = {
 			isa = PBXGroup;
 			children = (
-				D7C6541D226A3B04008A66EF /* MessageCenter */,
+				D7BB1834227631830084963E /* MSG */,
 				D7006ED622673586004E570F /* Tabbar */,
 			);
 			path = Auxiliary;
@@ -386,7 +425,7 @@
 			children = (
 				D7C6541E226A3B45008A66EF /* MSGCenterDelegate.swift */,
 				D7810C1F226F938F0038C1BA /* MSGCenter.swift */,
-				D76895532271EF7F00DC059E /* MSGHandler.swift */,
+				D76895532271EF7F00DC059E /* MSGCenterHandler.swift */,
 			);
 			path = MessageCenter;
 			sourceTree = "<group>";
@@ -543,7 +582,7 @@
 				D7006EDF2268174F004E570F /* NewThoughtCell.swift in Sources */,
 				D7006EE92268CD5A004E570F /* ReTabBar.swift in Sources */,
 				D7C6542E226A850B008A66EF /* UIbutton.swift in Sources */,
-				D76895542271EF7F00DC059E /* MSGHandler.swift in Sources */,
+				D76895542271EF7F00DC059E /* MSGCenterHandler.swift in Sources */,
 				D7006EBB22653D59004E570F /* ThoughtPreview.swift in Sources */,
 				D7006EC822671C96004E570F /* TextBuilder.swift in Sources */,
 				D7536FB52262C8ED003F0920 /* Array.swift in Sources */,
@@ -553,6 +592,8 @@
 				D7536FBF2262CB29003F0920 /* UILabel.swift in Sources */,
 				D79E59A922723E7E00ABFD34 /* ConversationHandler.swift in Sources */,
 				D7536FB92262C994003F0920 /* MutableCollection.swift in Sources */,
+				D7BB1836227631920084963E /* MSGContext.swift in Sources */,
+				D7BB1833227629EE0084963E /* MSGBoard.swift in Sources */,
 				D7006EBD22653DB1004E570F /* EntryCount.swift in Sources */,
 				D76DFA09226E803800CE2D59 /* Rects.swift in Sources */,
 				D7536FED2262EB0A003F0920 /* Entry.swift in Sources */,
@@ -566,6 +607,7 @@
 				D7536FC12262CCE4003F0920 /* UIImage.swift in Sources */,
 				D7536FC52262D12F003F0920 /* UISearchBar.swift in Sources */,
 				D7006EE3226825FE004E570F /* ConversationController.swift in Sources */,
+				D7BB182F227629970084963E /* MSGBoardDelegate.swift in Sources */,
 				D7006ECA22671CF4004E570F /* RecordingBuilder.swift in Sources */,
 				D721112E2272D19700131BEF /* ConversatinoTable.swift in Sources */,
 				D7536FAA2262C784003F0920 /* Defaults.swift in Sources */,
@@ -575,6 +617,7 @@
 				D76895522271ED7D00DC059E /* Optional.swift in Sources */,
 				D7536FBD2262CAE3003F0920 /* UICollectionView.swift in Sources */,
 				D7536FE92262EB0A003F0920 /* Thought.swift in Sources */,
+				D7BB1831227629E30084963E /* MSGBoardHandler.swift in Sources */,
 				D721112C2272D14D00131BEF /* SearchController.swift in Sources */,
 				D7810C20226F938F0038C1BA /* MSGCenter.swift in Sources */,
 				D76895502271746F00DC059E /* MSGSubView.swift in Sources */,
@@ -594,6 +637,7 @@
 				D7006EC22266F35C004E570F /* ThoughtIcon.swift in Sources */,
 				D7536FCB2262D1DD003F0920 /* UITextView.swift in Sources */,
 				D7536FB22262C895003F0920 /* ManagedObjectContext.swift in Sources */,
+				D7BB1839227656AC0084963E /* MSGBoardViews.swift in Sources */,
 				D7536FA72262C73E003F0920 /* Device.swift in Sources */,
 				D7006EDD2267EDC0004E570F /* RethoughtMessageCell.swift in Sources */,
 				D7536FE52262EB0A003F0920 /* TextEntry.swift in Sources */,

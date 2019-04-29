@@ -5,7 +5,7 @@ import UIKit
 // view that user can add new thought and/or new entries
 class MSGCenter: UIView {
     init(frame: CGRect, connector: MSGConnector) {
-        self.msgHandler = MSGHandler()
+        self.msgHandler = MSGCenterHandler()
         self.connector = connector
         super.init(frame: frame)
         
@@ -22,7 +22,7 @@ class MSGCenter: UIView {
     }
     
     var connector: MSGConnector
-    public var delegate: MSGDelegate!
+    public var delegate: MSGCenterDelegate!
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -31,7 +31,7 @@ class MSGCenter: UIView {
     // make objects animateable(?)
     // add variables and buttons with entryTypes and buttonTypes
     
-    public var msgHandler: MSGHandler
+    public var msgHandler: MSGCenterHandler
     
     // MARK: private objects
     public var textView: UITextView = {
@@ -222,15 +222,6 @@ extension MSGCenter {
         }
     }
     
-    private func activateEntryBtn(_ button: MessageButton) {
-        button.imageView!.image = button.imageView!.image!.withRenderingMode(.alwaysTemplate)
-        button.imageView!.tintColor = Device.colors.red
-    }
-    private func deactivateEntryBtn(_ button: MessageButton) {
-        button.imageView!.image = button.imageView!.image!.withRenderingMode(.alwaysTemplate)
-        button.imageView!.tintColor = .clear
-    }
-    
     private func checkButtons() {
         // check msgHandler for what has and hasnt been complete
         // update buttons opacity with .isEnabled() and .isDisabled()
@@ -353,6 +344,7 @@ extension MSGCenter {
         checkButtons()
     }
     
+    // if entry view is currently showing, remove it before adding new one
     public func removeEntryView() {
         // check which entry is currently in progressfrom msgHandler
         // and remove it
@@ -361,18 +353,22 @@ extension MSGCenter {
             newLinkView.removeFromSuperview()
             newNoteView.removeFromSuperview()
             newRecordingView.removeFromSuperview()
+            msgHandler.currentEntryType = .photo
         case .link:
             newImageView.removeFromSuperview()
             newRecordingView.removeFromSuperview()
             newNoteView.removeFromSuperview()
+            msgHandler.currentEntryType = .link
         case .recording:
             newImageView.removeFromSuperview()
             newLinkView.removeFromSuperview()
             newNoteView.removeFromSuperview()
+            msgHandler.currentEntryType = .recording
         case .note:
             newImageView.removeFromSuperview()
             newRecordingView.removeFromSuperview()
             newLinkView.removeFromSuperview()
+            msgHandler.currentEntryType = .note
         default:
             newImageView.removeFromSuperview()
             newRecordingView.removeFromSuperview()
@@ -385,40 +381,25 @@ extension MSGCenter {
         connector.isDoneEditing()
     }
     
+    // set text on send button and textView
     func updateStaticText() {
         textView.text = msgHandler.textViewPlaceHolder
         sendButton.setAttributedTitle(msgHandler.sendButtonTitle, for: .normal)
     }
-    
-    public func didHideKeyboard() {
-        if msgHandler.currentPosition == MSGContext.position.newEntryAndKeyboard {
-            msgHandler.currentPosition = .newEntry
-        } else if msgHandler.currentPosition == MSGContext.position.regularAndKeyboard {
-            msgHandler.currentPosition = .regular
-            connector.isDoneEditing()
-        }
-        updatePosition()
-    }
-    public func didShowKeyboard() {
-        if msgHandler.currentPosition == .newEntry {
-            msgHandler.currentPosition = .newEntryAndKeyboard
-        } else if msgHandler.currentPosition == .regular {
-            msgHandler.currentPosition = .regularAndKeyboard
-        }
-        updatePosition()
-    }
 }
 
 extension MSGCenter: UITextViewDelegate {
-//    func textViewDidBeginEditing(_ textView: UITextView) {
-//        textView.text = ""
-//        msgHandler.didStartThought = true
-//        checkButtons()
-//    }
-//
-//    func textViewDidEndEditing(_ textView: UITextView) {
-//        updateStaticText()
-//        checkButtons()
-//        msgHandler.thoughtTitle = textView.text
-//    }
+    //once editing begins on textView, set didStartThought: true
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.text = ""
+        msgHandler.didStartThought = true
+        checkButtons()
+    }
+
+    // once done editing, set title to textView
+    func textViewDidEndEditing(_ textView: UITextView) {
+        updateStaticText()
+        checkButtons()
+        msgHandler.thoughtTitle = textView.text
+    }
 }

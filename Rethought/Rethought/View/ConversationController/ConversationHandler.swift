@@ -1,18 +1,15 @@
-//
-//  ConversationHandler.swift
-//  Rethought
-//
-//  Created by Dev on 4/25/19.
-//  Copyright © 2019 Wesaturate. All rights reserved.
-//
 
 import Foundation
 import UIKit
 
+// size calculations and animaete(to:) funcs for msg center and conversationView
 open class ConversationPresenter: NSObject {
     
-    let regularMessageCenterHeight: CGFloat = 115.0
-    var isShowingEntry: Bool = false
+    private let regularMessageCenterHeight: CGFloat = 115.0
+    private var isShowingEntry: Bool = false
+    
+    //conversationPosition is an internal data type for setting up animating views to
+    // desired position
     private struct ConversationPosition{
         var msgFrame: CGRect
         var viewFrame: CGRect
@@ -47,9 +44,10 @@ open class ConversationPresenter: NSObject {
         }
     }
     
-    var parent: ConversationView
-    var msgCenter: MSGCenter
-    var view: UIScrollView
+    // MARK: Private vars
+    private var parent: ConversationView
+    private var msgCenter: MSGCenter
+    private var view: UIScrollView
     init(_ view: UIScrollView, _ msgCenter: MSGCenter, parent: ConversationView) {
         self.view = view
         self.msgCenter = msgCenter
@@ -61,9 +59,10 @@ open class ConversationPresenter: NSObject {
     
     
     private func setupInitialConversation() {
-        //sert delegates
+        //insert delegates
         msgCenter.delegate = self
         view.delegate = self
+        
         //layout newobjects, frame, color, rounded edges, etc
         msgCenter.frame = CGRect(x: 0, y: parent.frame.height - regularMessageCenterHeight, width: parent.frame.width, height: regularMessageCenterHeight)
         view.frame = CGRect(x: 0, y: 0, width: parent.frame.width, height: (parent.frame.height - msgCenter.frame.height))
@@ -72,12 +71,15 @@ open class ConversationPresenter: NSObject {
         view.backgroundColor = Device.colors.offWhite
         view.roundCorners([.bottomLeft, .bottomRight], radius: 20)
         
+        //set alphas to 0
+        self.msgCenter.alpha = 0.0
+        self.view.alpha = 0.0
+        
         UIView.animate(withDuration: 0.25) {
             self.msgCenter.alpha = 1.0
             self.view.alpha = 1.0
         }
     }
-    
 }
 
 extension ConversationPresenter {
@@ -87,11 +89,13 @@ extension ConversationPresenter {
             self.msgCenter.frame = position.msgFrame
             self.view.frame = position.viewFrame
         }
-        view.roundCorners([.bottomLeft, .bottomRight], radius: 20)
+//        view.roundCorners([.bottomLeft, .bottomRight], radius: 20)
     }
 }
 
 extension ConversationPresenter: UIScrollViewDelegate {
+    //when scroll view scrolls, if entry or keyboard are showing
+    // hide them
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         msgCenter.textView.resignFirstResponder()
         if msgCenter.isShowingEntry {
@@ -102,7 +106,7 @@ extension ConversationPresenter: UIScrollViewDelegate {
     }
 }
 
-extension ConversationPresenter: MSGDelegate {
+extension ConversationPresenter: MSGCenterDelegate {
     func didTapEntry(ofType type: MSGContext.size, completion: ()) {
         
         // if entry view is currently not showing
@@ -146,9 +150,11 @@ extension ConversationPresenter: MSGDelegate {
         }
     }
     
+    //after send is confirmed, hide errything
     func didSendMessage() {
         //move to regular height again
         animateTo(position: .standard())
+        msgCenter.removeEntryView()
     }
     
     

@@ -1,21 +1,13 @@
+//
+//  MSGContext.swift
+//  Rethought
+//
+//  Created by Dev on 4/28/19.
+//  Copyright © 2019 Wesaturate. All rights reserved.
+//
 
+import Foundation
 import UIKit
-
-// viewController is responsible for talking to model to create thoughts / entries
-// and tableview datasources and delegates
-protocol MSGConnector {
-    func save(withTitle title: String, withIcon: ThoughtIcon)
-    func insert(entry: EntryBuilder)
-    func isDoneEditing()
-    func updateIcon(newIcon: ThoughtIcon)
-    func entryWillShow(ofType type: MSGContext.size)
-}
-
-// all types of buttons available
-// used to find what items belong on the screen
-enum MessageButtonType {
-    case send, cancel, entry, open, close
-}
 
 enum MSGContext {
     enum position {
@@ -31,12 +23,23 @@ enum MSGContext {
     enum type {
         case note, photo, link, recording, none
     }
-    enum entryType {
-        case note, photo, link, recording, none
+    
+    enum board {
+        enum viewType {
+            case rethoughtIntro, newThought, newEntry, welcomeCard, rethoughtResponse
+        }
+        struct sizes {
+            var welcomeCard = CGSize(width: 320, height: 169)
+            var userResponsePaddingLeft: CGFloat = 65
+            var userResponsePaddingRight: CGFloat = 15
+            var rethoughtResponsePaddingRight: CGFloat = 65
+            var rethoughtResponsePaddingLeft: CGFloat = 15
+            var minimumConversationSize: CGSize = CGSize(width: Device.size.width, height: Device.size.height - Device.size.tabBarHeight - 115)
+        }
     }
 }
 
-protocol MSGHandlerDelegate {
+protocol MSGCenterHandlerDelegate {
     func updatePosition(to position: MSGContext.position)
     func updateSize(to size: MSGContext.size)
     var didStartNewEntry: Bool { get set }
@@ -48,7 +51,7 @@ class NewLinkView: UIView, MSGSubView { var entryType: MSGContext.type = .link }
 class NewNoteView: UIView, MSGSubView { var entryType: MSGContext.type = .note }
 
 
-protocol MSGDelegate {
+protocol MSGCenterDelegate {
     func didTapEntry(ofType type: MSGContext.size, completion: ())
     func didSendMessage()
 }
