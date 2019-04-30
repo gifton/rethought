@@ -36,6 +36,7 @@ class MSGBoard: UIScrollView {
         contentSize = CGSize(width: frame.width, height: safeOrigin.y + 100)
         resetView()
         addResponse(payload: "Whats on your mind?")
+        backgroundColor = Device.colors.offWhite
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -79,7 +80,7 @@ extension MSGBoard: MSGBoardDelegate {
     
     public func addThought(_ payload: ThoughtPreview, completino: () -> Void) {
         // calculate frame
-        let frame: CGRect = CGRect(x: safeOrigin.x, y: safeOrigin.y, width: Device.size.width - (userResponsePaddingLeft + userResponsePaddingLeft), height: 55)
+        let frame: CGRect = CGRect(x: userResponsePaddingLeft, y: safeOrigin.y, width: Device.size.width - (userResponsePaddingLeft + userResponsePaddingRight), height: 55)
         // instantiate thought card with payload
         let thought = MSGThoughtView(frame: frame, title: payload.title)
         // add subView
@@ -102,8 +103,12 @@ extension MSGBoard: MSGBoardDelegate {
     private func scrollToBottom() {}
     
     private func add(_ view: MSGBoardComponent) {
+        //add room for component and response!
+        self.contentSize.height += (view.frame.height * 1.45)
+        
         addSubview(view)
         msgSubViews.append(view)
+        
     }
     
     func getFrame() {

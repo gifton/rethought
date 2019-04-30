@@ -23,10 +23,10 @@ class MSGThoughtView: MSGBoardComponent {
     }
     
     var thoughtIconLabel: UILabel = {
-        let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: 55, height: 55))
+        let lbl = UILabel()
         lbl.text = "💭"
-        lbl.backgroundColor = .white
-        lbl.font = Device.font.body(ofSize: .emojiLG)
+        lbl.backgroundColor = .black
+        lbl.font = Device.font.mediumTitle(ofSize: .emojiLG)
         lbl.textAlignment = .center
         lbl.padding = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
         lbl.layer.cornerRadius = 10
@@ -34,26 +34,22 @@ class MSGThoughtView: MSGBoardComponent {
         
         return lbl
     }()
-    var userLbl: UILabel = {
-        let lbl = UILabel(frame: CGRect(x: 46, y: 2, width: 150, height: 18))
-        lbl.font = Device.font.mediumTitle(ofSize: .large)
-        lbl.text = "Rethought"
-        
-        return lbl
-    }()
     var contentLbl: UILabel = {
         let lbl = UILabel()
-        lbl.font = Device.font.body(ofSize: .large)
-        lbl.textColor = Device.colors.darkGray
-        lbl.frame = CGRect(x: 46, y: 22, width: 300, height: 18)
+        lbl.font = Device.font.mediumTitle(ofSize: .large)
+        lbl.textColor = Device.colors.lightGray
+        lbl.numberOfLines = 2
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.textAlignment = .right
         
         return lbl
     }()
     func setView() {
+        thoughtIconLabel.frame = CGRect(x: frame.width - 70, y: 0, width: 55, height: 55)
         contentLbl.text = thoughtTitle
         addSubview(thoughtIconLabel)
-        addSubview(userLbl)
         addSubview(contentLbl)
+        contentLbl.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: thoughtIconLabel.leadingAnchor, paddingTop: 0, paddingLeading: 15, paddingBottom: 0, paddingTrailing: 10)
         
     }
 }
