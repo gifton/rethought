@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum MSGContext {
+struct MSGContext {
     enum position {
         case regular, regularAndKeyboard, newEntry, newEntryAndKeyboard
     }
@@ -35,6 +35,12 @@ enum MSGContext {
             var rethoughtResponsePaddingRight: CGFloat = 65
             var rethoughtResponsePaddingLeft: CGFloat = 15
             var minimumConversationSize: CGSize = CGSize(width: Device.size.width, height: Device.size.height - Device.size.tabBarHeight - 115)
+        }
+        enum responseType: Int {
+            case welcome            = 0
+            case confirmThought     = 1
+            case confirmThoughtIcon = 2
+            case confirmEntry       = 3
         }
     }
 }

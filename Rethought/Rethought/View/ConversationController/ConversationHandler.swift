@@ -65,9 +65,7 @@ open class ConversationPresenter: NSObject {
         
         //layout newobjects, frame, color, rounded edges, etc
         msgCenter.frame = CGRect(x: 0, y: parent.frame.height - regularMessageCenterHeight, width: parent.frame.width, height: regularMessageCenterHeight)
-        view.frame = CGRect(x: 0, y: 0, width: parent.frame.width, height: (parent.frame.height - msgCenter.frame.height))
-        
-        view.contentSize = CGSize(width: Device.size.width, height: 1000)
+
         view.backgroundColor = Device.colors.offWhite
         view.roundCorners([.bottomLeft, .bottomRight], radius: 20)
         

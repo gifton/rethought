@@ -65,5 +65,12 @@ extension ConversationController: MSGConnector {
         //tell view to update size
         tabBarController?.tabBar.isHidden = true
     }
+    
+    func testConnection() {
+        let thoughtPreview = ThoughtPreview(title: "Whats the squar root of 69?", icon: "🚦", location: nil)
+        conversation.tableEncapsulation.addThought(thoughtPreview) {
+            print("Thought added")
+        }
+    }
 }
 

@@ -11,7 +11,13 @@ import UIKit
 
 protocol MSGBoardView {
     var size: MSGContext.board.sizes { get }
-    var type: MSGContext.board.viewType { get }
+    var type: MSGContext.board.viewType { get set }
+}
+class MSGBoardComponent: UIView {
+    var componentType: MSGContext.board.viewType = .welcomeCard
+    var cardSize: CGSize {
+        return frame.size
+    }
 }
 
 class WelcomeCard: UIView {
@@ -36,19 +42,9 @@ class welcomeMessage: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-class ResponseMessage: UIView {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.backgroundColor = Device.colors.lightGray
-        layer.cornerRadius = 10
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
 
-class NoteEntryView: UIView {
+
+class NoteEntryMessage: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
@@ -59,7 +55,7 @@ class NoteEntryView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-class LinkEntryView: UIView {
+class LinkEntryMessage: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
@@ -70,7 +66,7 @@ class LinkEntryView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-class RecordingEntryView: UIView {
+class RecordingEntryMessage: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
@@ -81,7 +77,7 @@ class RecordingEntryView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-class PhotoEntryView: UIView {
+class PhotoEntryMessage: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white

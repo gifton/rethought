@@ -225,24 +225,24 @@ extension MSGCenter {
     private func checkButtons() {
         // check msgHandler for what has and hasnt been complete
         // update buttons opacity with .isEnabled() and .isDisabled()
-        if !(msgHandler.didCompleteThought) {
-            sendButton.isDisabled()
-            textButton.isDisabled()
-            imageButton.isDisabled()
-            linkButton.isDisabled()
-            recordingButton.isDisabled()
-            sendButton.isDisabled()
-        } else if msgHandler.didStartThought {
-            sendButton.isEnabled()
-        }
-        
-        if (msgHandler.didCompleteThought == true) {
-            textButton.isEnabled()
-            imageButton.isEnabled()
-            linkButton.isEnabled()
-            recordingButton.isEnabled()
-            sendButton.isEnabled()
-        }
+//        if !(msgHandler.didCompleteThought) {
+//            sendButton.isDisabled()
+//            textButton.isDisabled()
+//            imageButton.isDisabled()
+//            linkButton.isDisabled()
+//            recordingButton.isDisabled()
+//            sendButton.isDisabled()
+//        } else if msgHandler.didStartThought {
+//            sendButton.isEnabled()
+//        }
+//
+//        if (msgHandler.didCompleteThought == true) {
+//            textButton.isEnabled()
+//            imageButton.isEnabled()
+//            linkButton.isEnabled()
+//            recordingButton.isEnabled()
+//            sendButton.isEnabled()
+//        }
     }
     
     private func buttonTapped(sender: MessageButton) {
@@ -251,9 +251,10 @@ extension MSGCenter {
             cancel()
         case .send:
             if send() {
-                delegate.didSendMessage()
+//                delegate.didSendMessage()
+                connector.testConnection()
                 return
-            } else { handleFailedSend() }
+            } else { handleFailedSend(); connector.testConnection() }
         case .entry:
             msgHandler.currentEntryType = sender.entryType
             delegate.didTapEntry(ofType: msgHandler.currentSize, completion: setEntryView())

@@ -12,7 +12,7 @@ import UIKit
 // Wrapper for MSGCenter and ConversationScrollView
 class ConversationView: UIView {
     
-    private var tableEncapsulation = UIScrollView()
+    public var tableEncapsulation: MSGBoard!
     
     // public objects
     public var messageCenter: MSGCenter!
@@ -24,6 +24,8 @@ class ConversationView: UIView {
         
         // initiate message center with injected params
         messageCenter = MSGCenter(frame: CGRect(x: 0, y: frame.height - 215, width: Device.size.width, height: 115), connector: connector)
+        tableEncapsulation = MSGBoard(frame: CGRect(x: 0, y: 0, width: frame.width, height: (frame.height - messageCenter.frame.height)))
+    
         // initiate presenter with variables
         conversationPresenter = ConversationPresenter(tableEncapsulation, messageCenter, parent: self)
         setViews()
