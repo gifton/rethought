@@ -28,7 +28,7 @@ public class Entry: NSManagedObject {
     
     // MARK: Relationships
     @NSManaged public var thought: Thought
-    @NSManaged public var text: TextEntry?
+    @NSManaged public var text: NoteEntry?
     @NSManaged public var photo: PhotoEntry?
     @NSManaged public var recording: RecordingEntry?
     @NSManaged public var link: LinkEntry?
@@ -73,8 +73,8 @@ public class Entry: NSManagedObject {
             guard let linkBuilder: LinkBuilder = payload as? LinkBuilder else { return }
             let _ = LinkEntry.insert(into: context, builder: linkBuilder)
         case .note:
-            guard let textBuilder: TextBuilder = payload as? TextBuilder else { return }
-            let _ = TextEntry.insert(into: context, builder: textBuilder)
+            guard let noteBuilder: NoteBuilder = payload as? NoteBuilder else { return }
+            let _ = NoteEntry.insert(into: context, builder: noteBuilder)
         case .recording:
             guard let linkBuilder: LinkBuilder = payload as? LinkBuilder else { return }
             let _ = LinkEntry.insert(into: context, builder: linkBuilder)

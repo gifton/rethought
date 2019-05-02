@@ -125,9 +125,8 @@ class MSGCenter: UIView {
         
         return view
     }()
-    public var newNoteView: NewNoteView = {
-        let view = NewNoteView()
-        view.backgroundColor = Device.colors.note
+    public var newNoteView: MSGNoteView = {
+        let view = MSGNoteView()
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view

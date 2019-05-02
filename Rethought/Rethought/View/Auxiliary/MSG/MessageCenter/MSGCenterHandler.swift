@@ -23,7 +23,7 @@ class MSGCenterHandler: NSObject {
     var didStartThought: Bool = false
     var thoughtTitle: String?
     var thoughtIcon: ThoughtIcon?
-    var currentEntry: EntryContent?
+    // var currentEntry: EntryContent?
     
     public var currentEntryType: MSGContext.type = .none
     

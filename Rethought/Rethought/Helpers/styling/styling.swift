@@ -102,6 +102,16 @@ extension UIView {
         return borders
     }
     
+    //set width and height of view using autolayout contstraints
+    func setHeightWidth(width: CGFloat?, height: CGFloat?) {
+        if let width = width {
+            self.widthAnchor.constraint(equalToConstant: width).isActive = true
+        }
+        if let height = height {
+            self.heightAnchor.constraint(equalToConstant: height).isActive = true
+        }
+    }
+    
     //func to set anchors, use 'nil' and for anchors and padding if you dont desire a constraint for that edge
     //translatesAutoresizingMaskIntoConstraints automatically set to false
     func setAnchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?,

@@ -36,9 +36,9 @@ public class Thought: NSManagedObject {
     
     var entryCount: EntryCount {
         guard let counts = entries else {
-            return EntryCount(text: 0, photos: 0, recordings: 0, links: 0)
+            return EntryCount(notes: 0, photos: 0, recordings: 0, links: 0)
         }
-        var text = 0
+        var notes = 0
         var photo = 0
         var link = 0
         var recording = 0
@@ -48,7 +48,7 @@ public class Thought: NSManagedObject {
                 case "LINK":
                     link += 1
                 case "NOTE":
-                    text += 1
+                    notes += 1
                 case "RECORDING":
                     recording += 1
                 case "PHOTO":
@@ -58,7 +58,7 @@ public class Thought: NSManagedObject {
                 }
             }
         }
-        return EntryCount(text: text, photos: photo, recordings: recording, links: link)
+        return EntryCount(notes: notes, photos: photo, recordings: recording, links: link)
     }
     
     // search for most recent image entry image, convert to data and return

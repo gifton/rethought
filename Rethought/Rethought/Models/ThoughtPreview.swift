@@ -32,7 +32,7 @@ struct ThoughtPreview {
         self.location = location
         self.icon = icon
         date = Date()
-        entryCount = EntryCount(text: 0, photos: 0, recordings: 0, links: 0)
+        entryCount = EntryCount(notes: 0, photos: 0, recordings: 0, links: 0)
     }
     
     init() {
@@ -40,6 +40,6 @@ struct ThoughtPreview {
         date = Date()
         location = CLLocation()
         icon = "🔫"
-        entryCount = EntryCount(text: 10, photos: 12, recordings: 4, links: 25)
+        entryCount = EntryCount(notes: 10, photos: 12, recordings: 4, links: 25)
     }
 }

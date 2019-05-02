@@ -7,7 +7,7 @@ enum EntryType: String, Codable {
     case all = "ALL"
     
     static func exhaustiveList() -> [EntryType] {
-        return [note, note, link, recording, all]
+        return [note, photo, link, recording, all]
     }
 }
 

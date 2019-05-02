@@ -5,7 +5,7 @@ import UIKit
 /// when saving a new link, initiate LinkBuilder
 /// after building new entry to attach too
 /// to capture link content to be attached to an entry
-struct TextBuilder: EntryBuilder {
+struct NoteBuilder: EntryBuilder {
     var type: EntryType = .note
     
     var detail: String

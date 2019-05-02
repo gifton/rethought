@@ -9,7 +9,7 @@
         <relationship name="link" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LinkEntry" inverseName="entry" inverseEntity="LinkEntry" syncable="YES"/>
         <relationship name="photo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PhotoEntry" inverseName="entry" inverseEntity="PhotoEntry" syncable="YES"/>
         <relationship name="recording" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecordingEntry" inverseName="entry" inverseEntity="RecordingEntry" syncable="YES"/>
-        <relationship name="text" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TextEntry" inverseName="entry" inverseEntity="TextEntry" syncable="YES"/>
+        <relationship name="text" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NoteEntry" inverseName="entry" inverseEntity="NoteEntry" syncable="YES"/>
         <relationship name="thought" maxCount="1" deletionRule="Cascade" destinationEntity="Thought" inverseName="entries" inverseEntity="Thought" syncable="YES"/>
     </entity>
     <entity name="LinkEntry" representedClassName="LinkEntry" syncable="YES">
@@ -18,6 +18,11 @@
         <attribute name="title" attributeType="String" syncable="YES"/>
         <attribute name="url" attributeType="String" syncable="YES"/>
         <relationship name="entry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Entry" inverseName="link" inverseEntity="Entry" syncable="YES"/>
+    </entity>
+    <entity name="NoteEntry" representedClassName="NoteEntry" syncable="YES">
+        <attribute name="detail" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="entry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Entry" inverseName="text" inverseEntity="Entry" syncable="YES"/>
     </entity>
     <entity name="PhotoEntry" representedClassName="PhotoEntry" syncable="YES">
         <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
@@ -28,11 +33,6 @@
         <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rawRecording" attributeType="Binary" syncable="YES"/>
         <relationship name="entry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Entry" inverseName="recording" inverseEntity="Entry" syncable="YES"/>
-    </entity>
-    <entity name="TextEntry" representedClassName="TextEntry" syncable="YES">
-        <attribute name="detail" attributeType="String" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="entry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Entry" inverseName="text" inverseEntity="Entry" syncable="YES"/>
     </entity>
     <entity name="Thought" representedClassName="Thought" syncable="YES">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -45,10 +45,10 @@
     </entity>
     <elements>
         <element name="Entry" positionX="-54" positionY="36" width="128" height="195"/>
-        <element name="PhotoEntry" positionX="-27" positionY="99" width="128" height="90"/>
         <element name="LinkEntry" positionX="0" positionY="126" width="128" height="120"/>
+        <element name="PhotoEntry" positionX="-27" positionY="99" width="128" height="90"/>
         <element name="RecordingEntry" positionX="-18" positionY="108" width="128" height="90"/>
-        <element name="TextEntry" positionX="-36" positionY="81" width="128" height="90"/>
+        <element name="NoteEntry" positionX="-36" positionY="81" width="128" height="90"/>
         <element name="Thought" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>

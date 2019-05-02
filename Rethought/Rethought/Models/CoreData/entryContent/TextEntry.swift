@@ -1,21 +1,13 @@
-//
-//  TextEntry+CoreDataProperties.swift
-//  Rethought
-//
-//  Created by Dev on 4/13/19.
-//  Copyright © 2019 Wesaturate. All rights reserved.
-//
-//
 
 import Foundation
 import CoreData
 
-@objc(TextEntry)
-public class TextEntry: NSManagedObject {
+@objc(NoteEntry)
+public class NoteEntry: NSManagedObject {
     
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<TextEntry> {
-        return NSFetchRequest<TextEntry>(entityName: "TextEntry")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<NoteEntry> {
+        return NSFetchRequest<NoteEntry>(entityName: "NoteEntry")
     }
     
     // MARK: Objects
@@ -26,19 +18,19 @@ public class TextEntry: NSManagedObject {
     @NSManaged public var entry: Entry
 
     // conveinance func for builders
-    static func insert(into context: NSManagedObjectContext, builder: TextBuilder) -> TextEntry {
+    static func insert(into context: NSManagedObjectContext, builder: NoteBuilder) -> NoteEntry {
         
         // set variables from builder
-        let text: TextEntry = context.insertObject()
-        text.detail = builder.detail
-        text.title = builder.title
-        text.entry = builder.entry
+        let note: NoteEntry = context.insertObject()
+        note.detail = builder.detail
+        note.title = builder.title
+        note.entry = builder.entry
         
-        return text
+        return note
     }
 }
 
-extension TextEntry: Managed {
+extension NoteEntry: Managed {
     static var defaultSortDescriptors: [NSSortDescriptor] {
         return [NSSortDescriptor(key: #keyPath(detail), ascending: false)]
     }
