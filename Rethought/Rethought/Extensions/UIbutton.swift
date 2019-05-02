@@ -17,9 +17,11 @@ class MessageButton: UIButton, MSGSubView {
 extension UIButton {
     public func isDisabled() {
         layer.opacity = 0.4
+        isUserInteractionEnabled = false
     }
-    public func isEnabled() {
+    public func doesEnable() {
         layer.opacity = 1.0
         self.showsTouchWhenHighlighted = true
+        isUserInteractionEnabled = true
     }
 }

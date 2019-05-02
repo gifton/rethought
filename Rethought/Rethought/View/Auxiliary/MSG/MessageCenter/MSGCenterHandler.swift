@@ -7,38 +7,35 @@ class MSGCenterHandler: NSObject {
         
     }
     
-    //variables
-    var currentPosition: MSGContext.position = .regular
+    // retrieve all buttons for disabling and enabling
+    // set to internal var
+    public func add(buttons: [MessageButton]) {
+        entryButtons.append(contentsOf: buttons)
+    }
     
+    // MARK: entry content
+    private var entryButtons = [MessageButton]()
+    // check if entry title has been added for button enabling
+    var didAddEntryTitle: Bool = false
+    var didAddEntryComponents: Bool = false
+    var didCompleteNewEntry: Bool = false
+    public var currentEntryType: EntryType = .none
     var didStartNewEntry: Bool {
         if currentEntryType == .none {
             return false
         }
         return true
     }
-    var didCompleteNewentry: Bool = false
-    var didCompleteThought: Bool {
-        return (thoughtTitle != nil && thoughtIcon != nil)
-    }
+    
+    // MARK: Thought content
     var didStartThought: Bool = false
     var thoughtTitle: String?
     var thoughtIcon: ThoughtIcon?
-    // var currentEntry: EntryContent?
-    
-    public var currentEntryType: EntryType = .none
-    
-    //return entrytype, just in a different enum type
-    public var entryType: EntryType? {
-        switch currentEntryType {
-        case .photo: return .photo
-        case .link: return .link
-        case .recording: return .recording
-        case .note: return .note
-        default:
-            return nil
-        }
+    var didCompleteThought: Bool {
+        return (thoughtTitle != nil && thoughtIcon != nil)
     }
-    
+    // MARK: Positional variables
+    var currentPosition: MSGContext.center.position = .regular
     //get currentSize of Message Center
     var currentSize: MSGContext.size {
         if !(didStartNewEntry) {
@@ -50,6 +47,21 @@ class MSGCenterHandler: NSObject {
             return .recording
         }
     }
+    func getSizeFrom(entryType: EntryType) -> MSGContext.size {
+        switch entryType {
+        case .photo: return .photo
+        case .link: return .link
+        case .note: return .note
+        case .recording: return .recording
+        default: return .recording
+        }
+    }
+    
+    
+    
+    
+    
+    
     
     //text view variable placeholder
     public var textViewPlaceHolder: String {
@@ -77,17 +89,45 @@ class MSGCenterHandler: NSObject {
                                                                NSAttributedString.Key.foregroundColor : UIColor.white])
     }
     
-    func getSizeFrom(entryType: EntryType) -> MSGContext.size {
-        switch entryType {
-        case .photo: return .photo
-        case .link: return .link
-        case .note: return .note
-        case .recording: return .recording
-        default: return .recording
+    //check state of buttons and dissable and enable as needed
+    public func checkButtons() {
+        // if thought is complete, enable all buttons except the send button
+        if didCompleteThought {
+            entryButtons.forEach { (msg) in
+                if !(msg.messageButtonType == MessageButtonType.send) {
+                    msg.doesEnable()
+                }
+            }
+        } else {
+            // if the user is still typing in there thought, or has added all the required parts of there thought, enable the send button
+            if (didStartThought || didAddEntryComponents) {
+                entryButtons.forEach { (msg) in
+                    if (msg.messageButtonType == MessageButtonType.send) {
+                        msg.doesEnable()
+                    }
+                }
+                // if the user has not made a thought, or started typing one, set send button to disabled
+            } else {
+                entryButtons.forEach { (msg) in
+                    if (msg.messageButtonType == MessageButtonType.send) {
+                        msg.isDisabled()
+                    }
+                }
+            }
+        }
+        //check if user has started typing there thought,
+        if didStartThought || didAddEntryComponents {
+            entryButtons.forEach{$0.doesEnable()}
+        } else if didCompleteThought {
+            entryButtons.forEach { (msg) in
+                if !(msg.messageButtonType == MessageButtonType.send) {
+                    msg.isDisabled()
+                }
+            }
+        } else {
+            entryButtons.forEach{$0.isDisabled()}
         }
     }
-    
-    
 }
 
 //calculating views that should be in each position

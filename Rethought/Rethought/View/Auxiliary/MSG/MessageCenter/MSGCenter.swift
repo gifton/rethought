@@ -146,6 +146,8 @@ extension MSGCenter {
         addSubview(sendButton)
         
         let entryButtons = [textButton, linkButton, recordingButton, imageButton]
+        msgHandler.add(buttons: entryButtons)
+        msgHandler.add(buttons: [sendButton])
         var startX: CGFloat = 15.0
         let startY: CGFloat = 10
         for btn in entryButtons {
@@ -222,26 +224,7 @@ extension MSGCenter {
     }
     
     private func checkButtons() {
-        // check msgHandler for what has and hasnt been complete
-        // update buttons opacity with .isEnabled() and .isDisabled()
-//        if !(msgHandler.didCompleteThought) {
-//            sendButton.isDisabled()
-//            textButton.isDisabled()
-//            imageButton.isDisabled()
-//            linkButton.isDisabled()
-//            recordingButton.isDisabled()
-//            sendButton.isDisabled()
-//        } else if msgHandler.didStartThought {
-//            sendButton.isEnabled()
-//        }
-//
-//        if (msgHandler.didCompleteThought == true) {
-//            textButton.isEnabled()
-//            imageButton.isEnabled()
-//            linkButton.isEnabled()
-//            recordingButton.isEnabled()
-//            sendButton.isEnabled()
-//        }
+        msgHandler.checkButtons()
     }
     
     private func buttonTapped(sender: MessageButton) {

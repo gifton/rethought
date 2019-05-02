@@ -10,8 +10,10 @@ import Foundation
 import UIKit
 
 struct MSGContext {
-    enum position {
-        case regular, regularAndKeyboard, newEntry, newEntryAndKeyboard
+    enum center {
+        enum position {
+            case regular, regularAndKeyboard, newEntry, newEntryAndKeyboard
+        }
     }
     enum size: CGFloat {
         case note      = 600.0
@@ -43,7 +45,7 @@ struct MSGContext {
 }
 
 protocol MSGCenterHandlerDelegate {
-    func updatePosition(to position: MSGContext.position)
+    func updatePosition(to position: MSGContext.center.position)
     func updateSize(to size: MSGContext.size)
     var didStartNewEntry: Bool { get set }
 }
