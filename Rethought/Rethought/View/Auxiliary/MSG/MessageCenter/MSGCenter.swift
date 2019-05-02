@@ -146,8 +146,12 @@ extension MSGCenter {
         addSubview(sendButton)
         
         let entryButtons = [textButton, linkButton, recordingButton, imageButton]
+        //add buttons to handler for manipulation
         msgHandler.add(buttons: entryButtons)
         msgHandler.add(buttons: [sendButton])
+        
+        // add buttons to func
+        // TODO: Make this a stack view
         var startX: CGFloat = 15.0
         let startY: CGFloat = 10
         for btn in entryButtons {
@@ -159,7 +163,6 @@ extension MSGCenter {
         
         
         // check buttons and text
-        checkButtons()
         updateStaticText()
         
         // updatePosition()
@@ -186,7 +189,6 @@ extension MSGCenter {
         textView.text = msgHandler.textViewPlaceHolder
         
         // check for buttons and text
-        checkButtons()
         updateStaticText()
     }
     
@@ -207,8 +209,7 @@ extension MSGCenter {
         
         // update textView
         textView.text = msgHandler.textViewPlaceHolder
-        // check for buttons and text
-        checkButtons()
+        // check for buttons and tex
         updateStaticText()
     }
 }
@@ -221,10 +222,6 @@ extension MSGCenter {
         case .regular: setRegularView()
         default: setEntryView()
         }
-    }
-    
-    private func checkButtons() {
-        msgHandler.checkButtons()
     }
     
     private func buttonTapped(sender: MessageButton) {
@@ -243,7 +240,6 @@ extension MSGCenter {
             delegate.didTapEntry(ofType: msgHandler.currentSize, completion: setEntryView())
         default: setEntryView()
         }
-        checkButtons()
     }
     
     
@@ -265,6 +261,7 @@ extension MSGCenter {
         guard let title = msgHandler.thoughtTitle else { return false }
         // send context to controller
         connector.save(withTitle: title, withIcon: msgHandler.thoughtIcon)
+        msgHandler.didCompleteThought = true
         
         return true
     }
@@ -286,8 +283,6 @@ extension MSGCenter {
         // update msgHandler
         msgHandler.currentEntryType = .note
         msgHandler.currentPosition = .newEntry
-        //check buttons
-        checkButtons()
     }
     private func showRecordingEntry() {
         // add subview of note entry
@@ -298,8 +293,6 @@ extension MSGCenter {
         // update msgHandler
         msgHandler.currentEntryType = .recording
         msgHandler.currentPosition = .newEntry
-        //check buttons
-        checkButtons()
     }
     private func showImageEntry() {
         // add subview of note entry
@@ -310,8 +303,6 @@ extension MSGCenter {
         // update msgHandler
         msgHandler.currentEntryType = .photo
         msgHandler.currentPosition = .newEntry
-        //check buttons
-        checkButtons()
     }
     private func showLinkEntry() {
         // add subview of note entry
@@ -322,8 +313,6 @@ extension MSGCenter {
         // update msgHandler
         msgHandler.currentEntryType = .link
         msgHandler.currentPosition = .newEntry
-        //check buttons
-        checkButtons()
     }
     
     // if entry view is currently showing, remove it before adding new one
@@ -358,8 +347,6 @@ extension MSGCenter {
             newNoteView.removeFromSuperview()
             msgHandler.currentEntryType = .none
         }
-        //check buttons
-        checkButtons()
         connector.isDoneEditing()
     }
     
@@ -375,14 +362,6 @@ extension MSGCenter: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         textView.text = ""
         msgHandler.didStartThought = true
-        checkButtons()
-    }
-
-    // once done editing, set title to textView
-    func textViewDidEndEditing(_ textView: UITextView) {
-        updateStaticText()
-        checkButtons()
-        msgHandler.thoughtTitle = textView.text
     }
     func textViewDidChange(_ textView: UITextView) {
         msgHandler.thoughtTitle = textView.attributedText.string

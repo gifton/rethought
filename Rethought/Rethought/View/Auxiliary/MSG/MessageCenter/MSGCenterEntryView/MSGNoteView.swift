@@ -35,9 +35,10 @@ class MSGNoteView: UIView {
         textCountLabel.setAnchor(top: topAnchor, leading: nil, bottom: noteTextView.topAnchor, trailing: trailingAnchor, paddingTop: 17.5, paddingLeading: 0, paddingBottom: 5, paddingTrailing: 35)
         
         //add sizes if necessary
-        cancelButton.setHeightWidth(width: 65, height: 30)
+        cancelButton.setHeightWidth(width: 72.5, height: 35)
         noteTitle.setHeightWidth(width: 200, height: 30)
-        //reset layout fi needed()
+        
+        //reset layout if needed
         updateConstraintsIfNeeded()
         styleViews()
     }

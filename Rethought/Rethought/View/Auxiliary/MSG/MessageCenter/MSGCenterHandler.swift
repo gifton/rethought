@@ -10,6 +10,7 @@ class MSGCenterHandler: NSObject {
     // retrieve all buttons for disabling and enabling
     // set to internal var
     public func add(buttons: [MessageButton]) {
+        entryButtons.forEach{ $0.isDisabled() }
         entryButtons.append(contentsOf: buttons)
     }
     
@@ -17,8 +18,25 @@ class MSGCenterHandler: NSObject {
     private var entryButtons = [MessageButton]()
     // check if entry title has been added for button enabling
     var didAddEntryTitle: Bool = false
-    var didAddEntryComponents: Bool = false
-    var didCompleteNewEntry: Bool = false
+    var didAddEntryComponents: Bool {
+        get {
+            return false
+        }
+        set {
+            if newValue == true && didAddEntryTitle == true {
+                entryButtons.forEach { (btn) in
+                    if (btn.messageButtonType == .send) { btn.doesEnable() }
+                }
+            }
+        }
+    }
+    var didCompleteNewEntry: Bool = false{
+        didSet {
+            entryButtons.forEach { (btn) in
+                if (btn.messageButtonType == .send) { btn.isDisabled() }
+            }
+        }
+    }
     public var currentEntryType: EntryType = .none
     var didStartNewEntry: Bool {
         if currentEntryType == .none {
@@ -28,10 +46,22 @@ class MSGCenterHandler: NSObject {
     }
     
     // MARK: Thought content
-    var didStartThought: Bool = false
+    var didStartThought: Bool = false{
+        didSet {
+            entryButtons.forEach { (btn) in
+                if (btn.messageButtonType == .send) { btn.doesEnable() }
+            }
+        }
+    }
     var thoughtTitle: String?
     var thoughtIcon: ThoughtIcon = ThoughtIcon("🚦")
-    var didCompleteThought: Bool = false
+    var didCompleteThought: Bool = false{
+        didSet {
+            entryButtons.forEach { (btn) in
+                if !(btn.messageButtonType == .send) { btn.doesEnable() } else { btn.isDisabled() }
+            }
+        }
+    }
     // MARK: Positional variables
     var currentPosition: MSGContext.center.position = .regular
     //get currentSize of Message Center
@@ -88,46 +118,6 @@ class MSGCenterHandler: NSObject {
         
         return NSAttributedString(string: title, attributes: [NSAttributedString.Key.font : Device.font.mediumTitle(ofSize: .small),
                                                                NSAttributedString.Key.foregroundColor : UIColor.white])
-    }
-    
-    //check state of buttons and dissable and enable as needed
-    public func checkButtons() {
-        // if thought is complete, enable all buttons except the send button
-        if didCompleteThought {
-            entryButtons.forEach { (msg) in
-                if !(msg.messageButtonType == MessageButtonType.send) {
-                    msg.doesEnable()
-                }
-            }
-        } else {
-            // if the user is still typing in there thought, or has added all the required parts of there thought, enable the send button
-            if (didStartThought || didAddEntryComponents) {
-                entryButtons.forEach { (msg) in
-                    if (msg.messageButtonType == MessageButtonType.send) {
-                        msg.doesEnable()
-                    }
-                }
-                // if the user has not made a thought, or started typing one, set send button to disabled
-            } else {
-                entryButtons.forEach { (msg) in
-                    if (msg.messageButtonType == MessageButtonType.send) {
-                        msg.isDisabled()
-                    }
-                }
-            }
-        }
-        //check if user has started typing there thought,
-        if didStartThought || didAddEntryComponents {
-            entryButtons.forEach{$0.doesEnable()}
-        } else if didCompleteThought {
-            entryButtons.forEach { (msg) in
-                if !(msg.messageButtonType == MessageButtonType.send) {
-                    msg.isDisabled()
-                }
-            }
-        } else {
-            entryButtons.forEach{$0.isDisabled()}
-        }
     }
 }
 

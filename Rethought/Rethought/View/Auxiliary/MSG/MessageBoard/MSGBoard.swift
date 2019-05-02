@@ -104,7 +104,7 @@ extension MSGBoard: MSGBoardDelegate {
     
     private func add(_ view: MSGBoardComponent) {
         //add room for component and response!
-        self.contentSize.height += (view.frame.height * 1.45)
+        self.contentSize.height += (view.frame.height * 1.25)
         
         addSubview(view)
         msgSubViews.append(view)
