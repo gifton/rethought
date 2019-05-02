@@ -14,6 +14,8 @@ class MSGThoughtView: MSGBoardComponent {
         thoughtTitle = title
         super.init(frame: frame)
         setView()
+        layer.cornerRadius = 20
+        layer.masksToBounds = true
     }
     
     var thoughtTitle: String
@@ -29,7 +31,7 @@ class MSGThoughtView: MSGBoardComponent {
         lbl.font = Device.font.mediumTitle(ofSize: .emojiLG)
         lbl.textAlignment = .center
         lbl.padding = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
-        lbl.layer.cornerRadius = 10
+        lbl.layer.cornerRadius = 19
         lbl.layer.masksToBounds = true
         
         return lbl

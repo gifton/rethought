@@ -31,17 +31,7 @@ class WelcomeCard: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-class welcomeMessage: UIView {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.backgroundColor = Device.colors.lightGray
-        layer.cornerRadius = 10
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
+
 
 
 class NoteEntryMessage: UIView {

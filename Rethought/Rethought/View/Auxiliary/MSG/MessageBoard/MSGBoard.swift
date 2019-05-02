@@ -11,7 +11,7 @@ import UIKit
 
 class MSGBoard: UIScrollView {
     
-//    var welcomeCard = CGSize(width: 320, height: 169)
+
     var userResponsePaddingLeft: CGFloat = 65
     var userResponsePaddingRight: CGFloat = 15
     var rethoughtResponsePaddingRight: CGFloat = 65
@@ -37,6 +37,7 @@ class MSGBoard: UIScrollView {
         resetView()
         addResponse(payload: "Whats on your mind?")
         backgroundColor = Device.colors.offWhite
+        showsVerticalScrollIndicator = false
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -50,10 +51,9 @@ class MSGBoard: UIScrollView {
         }
         //remove response cards
         // replace top welcome card (if removed)
-        let testView = MSGBoardComponent(frame: CGRect(x: safeOrigin.x, y: safeOrigin.y, width: Device.size.width - 50, height: 220))
-        testView.layer.cornerRadius = 12
-        testView.backgroundColor = Device.colors.blue
+        let testView = MSGWelcomeCard(frame: CGRect(x: safeOrigin.x, y: safeOrigin.y, width: Device.size.width - 50, height: 220))
         add(testView)
+        
     }
     
     public func addResponse(payload: String) {

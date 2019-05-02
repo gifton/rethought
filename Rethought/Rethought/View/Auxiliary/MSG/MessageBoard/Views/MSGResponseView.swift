@@ -14,7 +14,7 @@ class ResponseMessage: MSGBoardComponent {
     
     init(frame: CGRect, content: String) {
         self.content = content
-        super.init(frame: frame)
+        super.init(frame: CGRect(x: 15, y: frame.origin.y, width: frame.width, height: frame.height))
         self.componentType = .rethoughtResponse
         setView()
     }
@@ -30,7 +30,7 @@ class ResponseMessage: MSGBoardComponent {
         lbl.font = Device.font.body(ofSize: .emojiSM)
         lbl.textAlignment = .center
         lbl.padding = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
-        lbl.layer.cornerRadius = 10
+        lbl.layer.cornerRadius = 15
         lbl.layer.masksToBounds = true
         
         return lbl

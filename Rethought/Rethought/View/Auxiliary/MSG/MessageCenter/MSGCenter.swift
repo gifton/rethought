@@ -284,6 +284,7 @@ extension MSGCenter {
         guard let icon = msgHandler.thoughtIcon else { return false }
         // send context to controller
         connector.save(withTitle: title, withIcon: icon)
+        
         return true
     }
     

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 class ConversationController: UIViewController {
     
@@ -45,11 +46,14 @@ extension ConversationController: MSGConnector {
     func save(withTitle title: String, withIcon: ThoughtIcon) {
         // TODO:
         //call func from model to create thought, insert into context
+        conversation.conversationPresenter.didSendMessage()
+        model.buildThought(withTitle: title, withLocation: CLLocation(), withIcon: withIcon)
         //reload table data on completion
         //tell view to return to regular size
+        
     }
     
-    func isDoneEditing() {
+    public func isDoneEditing() {
         //call update view to new size
         //alert tab bar to re appear
         tabBarController?.tabBar.isHidden = false

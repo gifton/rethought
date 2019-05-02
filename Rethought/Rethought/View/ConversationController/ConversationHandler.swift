@@ -57,7 +57,7 @@ open class ConversationPresenter: NSObject {
         setupInitialConversation()
     }
     
-    
+    var msgDely: MSGConnector?
     private func setupInitialConversation() {
         //insert delegates
         msgCenter.delegate = self
@@ -97,7 +97,7 @@ extension ConversationPresenter: UIScrollViewDelegate {
             msgCenter.removeEntryView()
             animateTo(position: .standard())
         }
-        
+        msgDely?.isDoneEditing()
     }
 }
 
@@ -146,7 +146,7 @@ extension ConversationPresenter: MSGCenterDelegate {
     }
     
     //after send is confirmed, hide errything
-    func didSendMessage() {
+    public func didSendMessage() {
         //move to regular height again
         animateTo(position: .standard())
         msgCenter.removeEntryView()

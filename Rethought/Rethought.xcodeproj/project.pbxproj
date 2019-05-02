@@ -74,6 +74,7 @@
 		D7BB1839227656AC0084963E /* MSGBoardViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB1838227656AC0084963E /* MSGBoardViews.swift */; };
 		D7BB183B227886B80084963E /* MSGResponseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB183A227886B80084963E /* MSGResponseView.swift */; };
 		D7BB183D227892F40084963E /* MSGThoughtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB183C227892F40084963E /* MSGThoughtView.swift */; };
+		D7BE8F1C2278BAAD00B15F06 /* MSGWelcomeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BE8F1B2278BAAD00B15F06 /* MSGWelcomeCard.swift */; };
 		D7C6541F226A3B45008A66EF /* MSGCenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C6541E226A3B45008A66EF /* MSGCenterDelegate.swift */; };
 		D7C65429226A75E1008A66EF /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7C65424226A75E1008A66EF /* Lato-Regular.ttf */; };
 		D7C6542B226A75E1008A66EF /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7C65426226A75E1008A66EF /* Lato-Bold.ttf */; };
@@ -152,6 +153,7 @@
 		D7BB1838227656AC0084963E /* MSGBoardViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardViews.swift; sourceTree = "<group>"; };
 		D7BB183A227886B80084963E /* MSGResponseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGResponseView.swift; sourceTree = "<group>"; };
 		D7BB183C227892F40084963E /* MSGThoughtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGThoughtView.swift; sourceTree = "<group>"; };
+		D7BE8F1B2278BAAD00B15F06 /* MSGWelcomeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGWelcomeCard.swift; sourceTree = "<group>"; };
 		D7C6541E226A3B45008A66EF /* MSGCenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGCenterDelegate.swift; sourceTree = "<group>"; };
 		D7C65424226A75E1008A66EF /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		D7C65426226A75E1008A66EF /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 				D7BB1838227656AC0084963E /* MSGBoardViews.swift */,
 				D7BB183A227886B80084963E /* MSGResponseView.swift */,
 				D7BB183C227892F40084963E /* MSGThoughtView.swift */,
+				D7BE8F1B2278BAAD00B15F06 /* MSGWelcomeCard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 				D7536FC32262CD6C003F0920 /* UiimageView.swift in Sources */,
 				D7006ED322672C7F004E570F /* ThoughtBuilderViewModel.swift in Sources */,
 				D76895522271ED7D00DC059E /* Optional.swift in Sources */,
+				D7BE8F1C2278BAAD00B15F06 /* MSGWelcomeCard.swift in Sources */,
 				D7536FBD2262CAE3003F0920 /* UICollectionView.swift in Sources */,
 				D7536FE92262EB0A003F0920 /* Thought.swift in Sources */,
 				D721112C2272D14D00131BEF /* SearchController.swift in Sources */,
