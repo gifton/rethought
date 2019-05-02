@@ -153,7 +153,7 @@ extension ConversationPresenter: MSGCenterDelegate {
     }
     
     
-    private func getEntryFromSize(_ size: MSGContext.size = MSGContext.size.regular) -> MSGContext.type {
+    private func getEntryFromSize(_ size: MSGContext.size = MSGContext.size.regular) -> EntryType {
         if size == .regular {
             switch msgCenter.frame.height {
             case MSGContext.size.link.rawValue: return .link

@@ -17,7 +17,7 @@ class MSGCenter: UIView {
             return !(msgHandler.currentEntryType == .none)
         }
     }
-    public var currentEntryType: MSGContext.type {
+    public var currentEntryType: EntryType {
         return msgHandler.currentEntryType
     }
     

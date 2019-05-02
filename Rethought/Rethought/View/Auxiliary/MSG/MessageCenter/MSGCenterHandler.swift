@@ -25,7 +25,7 @@ class MSGCenterHandler: NSObject {
     var thoughtIcon: ThoughtIcon?
     // var currentEntry: EntryContent?
     
-    public var currentEntryType: MSGContext.type = .none
+    public var currentEntryType: EntryType = .none
     
     //return entrytype, just in a different enum type
     public var entryType: EntryType? {
@@ -77,7 +77,7 @@ class MSGCenterHandler: NSObject {
                                                                NSAttributedString.Key.foregroundColor : UIColor.white])
     }
     
-    func getSizeFrom(entryType: MSGContext.type) -> MSGContext.size {
+    func getSizeFrom(entryType: EntryType) -> MSGContext.size {
         switch entryType {
         case .photo: return .photo
         case .link: return .link

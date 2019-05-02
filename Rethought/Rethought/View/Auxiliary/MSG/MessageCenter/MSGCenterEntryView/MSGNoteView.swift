@@ -70,7 +70,8 @@ class MSGNoteView: UIView {
     }
 }
 
-extension MSGNoteView: MSGCenterEntryView {
+extension MSGNoteView: MSGCenterEntryView, MSGSubView {
+    
     var entryType: EntryType {
         return .note
     }

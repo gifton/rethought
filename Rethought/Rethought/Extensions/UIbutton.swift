@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class MessageButton: UIButton, MSGSubView {
-    var entryType: MSGContext.type = .none
+    var entryType: EntryType = .none
     var messageButtonType: MessageButtonType = .entry
 }
 

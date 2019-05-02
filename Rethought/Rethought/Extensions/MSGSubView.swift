@@ -10,5 +10,5 @@ import Foundation
 import UIKit
 
 protocol MSGSubView {
-    var entryType: MSGContext.type { get }
+    var entryType:EntryType { get }
 }

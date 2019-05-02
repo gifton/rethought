@@ -20,9 +20,6 @@ struct MSGContext {
         case recording = 465.0
         case regular   = 115.00
     }
-    enum type {
-        case note, photo, link, recording, none
-    }
     
     enum board {
         enum viewType {
@@ -51,10 +48,10 @@ protocol MSGCenterHandlerDelegate {
     var didStartNewEntry: Bool { get set }
 }
 
-class NewRecordingView: UIView, MSGSubView { var entryType: MSGContext.type = .recording }
-class NewImageView: UIView, MSGSubView { var entryType: MSGContext.type = .photo }
-class NewLinkView: UIView, MSGSubView { var entryType: MSGContext.type = .link }
-class NewNoteView: UIView, MSGSubView { var entryType: MSGContext.type = .note }
+class NewRecordingView: UIView, MSGSubView { var entryType: EntryType = .recording }
+class NewImageView: UIView, MSGSubView { var entryType: EntryType = .photo }
+class NewLinkView: UIView, MSGSubView { var entryType: EntryType = .link }
+class NewNoteView: UIView, MSGSubView { var entryType: EntryType = .note }
 
 
 protocol MSGCenterDelegate {
