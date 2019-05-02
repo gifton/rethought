@@ -30,10 +30,8 @@ class MSGCenterHandler: NSObject {
     // MARK: Thought content
     var didStartThought: Bool = false
     var thoughtTitle: String?
-    var thoughtIcon: ThoughtIcon?
-    var didCompleteThought: Bool {
-        return (thoughtTitle != nil && thoughtIcon != nil)
-    }
+    var thoughtIcon: ThoughtIcon = ThoughtIcon("🚦")
+    var didCompleteThought: Bool = false
     // MARK: Positional variables
     var currentPosition: MSGContext.center.position = .regular
     //get currentSize of Message Center
@@ -66,6 +64,9 @@ class MSGCenterHandler: NSObject {
     //text view variable placeholder
     public var textViewPlaceHolder: String {
         if (currentEntryType == .none) {
+            if didCompleteThought {
+                return "add an image or recording to your thought"
+            }
             return "Give your thought a short title"
         }
         

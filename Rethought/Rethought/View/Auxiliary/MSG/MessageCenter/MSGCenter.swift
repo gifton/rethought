@@ -233,10 +233,11 @@ extension MSGCenter {
             cancel()
         case .send:
             if send() {
-//                delegate.didSendMessage()
-                connector.testConnection()
+                msgHandler.didCompleteThought = true
+                msgHandler.didStartThought = false
+                updateStaticText()
                 return
-            } else { handleFailedSend(); connector.testConnection() }
+            } else { handleFailedSend();  }
         case .entry:
             msgHandler.currentEntryType = sender.entryType
             delegate.didTapEntry(ofType: msgHandler.currentSize, completion: setEntryView())
@@ -262,10 +263,8 @@ extension MSGCenter {
     private func send() -> Bool {
         // check title from msgHandler
         guard let title = msgHandler.thoughtTitle else { return false }
-        // check icon from msgHandler
-        guard let icon = msgHandler.thoughtIcon else { return false }
         // send context to controller
-        connector.save(withTitle: title, withIcon: icon)
+        connector.save(withTitle: title, withIcon: msgHandler.thoughtIcon)
         
         return true
     }
@@ -275,8 +274,7 @@ extension MSGCenter {
     }
     private func updateTitle() {
         // tell controller new title from MSGHandler
-        guard let thoughtIcon = msgHandler.thoughtIcon else { return }
-        connector.updateIcon(newIcon: thoughtIcon)
+        connector.updateIcon(newIcon: msgHandler.thoughtIcon)
     }
     
     private func showNoteEntry() {
@@ -385,5 +383,8 @@ extension MSGCenter: UITextViewDelegate {
         updateStaticText()
         checkButtons()
         msgHandler.thoughtTitle = textView.text
+    }
+    func textViewDidChange(_ textView: UITextView) {
+        msgHandler.thoughtTitle = textView.attributedText.string
     }
 }

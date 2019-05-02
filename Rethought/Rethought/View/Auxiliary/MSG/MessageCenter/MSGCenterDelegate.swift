@@ -9,7 +9,6 @@ protocol MSGConnector {
     func isDoneEditing()
     func updateIcon(newIcon: ThoughtIcon)
     func entryWillShow(ofType type: MSGContext.size)
-    func testConnection()
 }
 
 // all types of buttons available

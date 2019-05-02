@@ -46,9 +46,11 @@ extension ConversationController: MSGConnector {
     func save(withTitle title: String, withIcon: ThoughtIcon) {
         // TODO:
         //call func from model to create thought, insert into context
-        conversation.conversationPresenter.didSendMessage()
+        
         model.buildThought(withTitle: title, withLocation: CLLocation(), withIcon: withIcon)
         //reload table data on completion
+        let tp = ThoughtPreview(title: title, icon: withIcon.icon, location: CLLocation())
+        conversation.tableEncapsulation.addThought(tp, completino: conversation.conversationPresenter.didSendMessage)
         //tell view to return to regular size
         
     }
@@ -68,13 +70,6 @@ extension ConversationController: MSGConnector {
     func entryWillShow(ofType type: MSGContext.size) {
         //tell view to update size
         tabBarController?.tabBar.isHidden = true
-    }
-    
-    func testConnection() {
-        let thoughtPreview = ThoughtPreview(title: "Whats the squar root of 69?", icon: "🚦", location: nil)
-        conversation.tableEncapsulation.addThought(thoughtPreview) {
-            print("Thought added")
-        }
     }
 }
 
