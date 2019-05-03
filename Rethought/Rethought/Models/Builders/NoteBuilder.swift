@@ -10,9 +10,9 @@ struct NoteBuilder: EntryBuilder {
     
     var detail: String
     var title: String
-    var entry: Entry
+    var entry: Entry?
     
-    init(detail: String, title: String, forEntry entry: Entry) {
+    init(detail: String, title: String, forEntry entry: Entry?) {
         self.detail = detail
         self.title = title
         self.entry = entry

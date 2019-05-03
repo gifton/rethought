@@ -12,9 +12,9 @@ struct LinkBuilder: EntryBuilder {
     var rawIconUrl: String
     var userDetail: String
     var title: String
-    var entry: Entry
+    var entry: Entry?
     
-    init(link: String, rawIconUrl: URL, userDetail: String, title: String, forEntry entry: Entry) {
+    init(link: String, rawIconUrl: URL, userDetail: String, title: String, forEntry entry: Entry?) {
         self.link = link
         self.rawIconUrl = String(describing: rawIconUrl)
         self.userDetail = userDetail

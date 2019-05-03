@@ -204,13 +204,18 @@ extension MSGCenter {
 // button actions
 extension MSGCenter {
     private func buttonTapped(sender: MessageButton) {
+        let generator = UINotificationFeedbackGenerator()
         switch sender.messageButtonType {
         case .entry:
             connector.entryWillShow(ofType: getSizeFrom(entryType: sender.entryType))
             delegate.didTapEntry(ofType: getSizeFrom(entryType: sender.entryType), completion: showEntry(ofType: sender.entryType))
+            let g = UIImpactFeedbackGenerator(style: .medium)
+            g.impactOccurred()
         case .send:
             if send() {
                 delegate.didSendMessage()
+                
+                generator.notificationOccurred(.success)
             } else { handleFailedSave() }
         }
     }

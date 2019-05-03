@@ -43,6 +43,7 @@ class MSGNoteView: UIView {
         noteTitle.setHeightWidth(width: 200, height: 30)
         
         //reset layout if needed
+        noteTextView.delegate = self
         updateConstraintsIfNeeded()
         styleViews()
     }
@@ -79,10 +80,17 @@ class MSGNoteView: UIView {
         bus.entryDidRequestCancel()
     }
     
-    public func requestSave(completion: () -> Void) {
+    public func requestSave(completion: () -> String) {
         // check if all parts are added
+        guard let detail = newDetail else { return }
         // if they are, hit bus.save(payload:)
+        sendContent(with: completion(), and: detail)
         //then run completion, else dont do any of that haha
+    }
+    
+    private func sendContent(with title: String, and detail: String) {
+        let nb = NoteBuilder(detail: detail, title: title, forEntry: nil)
+        bus.save(withpayload: nb)
     }
 }
 

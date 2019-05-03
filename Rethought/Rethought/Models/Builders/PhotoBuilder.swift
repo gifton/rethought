@@ -10,12 +10,11 @@ struct PhotoBuilder: EntryBuilder {
     
     var photo: Data
     var userDetail: String
-    var entry: Entry
+    var entry: Entry?
     
-    init(link: String, photo: Data, userDetail: String, forEntry entry: Entry) {
+    init(link: String, photo: Data, userDetail: String, forEntry entry: Entry?) {
         self.photo = photo
         self.userDetail = userDetail
         self.entry = entry
     }
-    
 }

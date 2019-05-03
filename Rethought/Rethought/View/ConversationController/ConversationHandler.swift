@@ -7,7 +7,7 @@ open class ConversationPresenter: NSObject {
     
     private let regularMessageCenterHeight: CGFloat = 115.0
     private var isShowingEntry: Bool = false
-    
+    private var isShowingKeyboard: Bool = false
     //conversationPosition is an internal data type for setting up animating views to
     // desired position
     private struct ConversationPosition{
@@ -54,6 +54,9 @@ open class ConversationPresenter: NSObject {
         self.parent = parent
         super.init()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         setupInitialConversation()
     }
     
@@ -80,11 +83,19 @@ open class ConversationPresenter: NSObject {
 extension ConversationPresenter {
     private func animateTo(position: ConversationPosition) {
         //uiview animate to position
-        UIView.animate(withDuration: 0.45) {
-            self.msgCenter.frame = position.msgFrame
-            self.view.frame = position.viewFrame
+        if msgCenter.textView.isFirstResponder {
+            UIView.animate(withDuration: 0.45) {
+                self.msgCenter.frame = position.msgFrame
+                self.view.frame = position.viewFrame
+            }
+        } else {
+            UIView.animate(withDuration: 0.45) {
+                self.msgCenter.frame = position.msgFrame
+                self.view.frame = position.viewFrame
+            }
         }
-        view.roundCorners([.bottomLeft, .bottomRight], radius: 20)
+        
+//        view.roundCorners([.bottomLeft, .bottomRight], radius: 20)
     }
 }
 
@@ -109,12 +120,17 @@ extension ConversationPresenter: MSGCenterDelegate {
         if msgCenter.frame.size.height == type.rawValue {
             // hide entry, dont complete completion
             animateTo(position: .standard())
-            msgCenter.removeEntryView()
+            _ = msgCenter.removeEntryView()
             
             // if entry view is currently showing
             // or no entry is showing at all,
             // animate to correct entry view, run completion
         } else {
+            
+            // if the keyboard is showing, hide keyboard and go to new view
+            if isShowingKeyboard {
+                msgCenter.textView.resignFirstResponder()
+            }
             
             switch type {
             case .link: animateTo(position: .link())
@@ -157,5 +173,10 @@ extension ConversationPresenter: MSGCenterDelegate {
         default: return .none
         }
     }
+    
+    //keyboard funcs
+    @objc func keyboardWillShow(notification: Notification) { isShowingKeyboard = true }
+    
+    @objc func keyboardWillHide(notification: Notification) { isShowingKeyboard = false }
 }
 

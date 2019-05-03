@@ -20,11 +20,13 @@ public class LinkEntry: NSManagedObject {
 
     // conveinance func for builders
     static func insert(into context: NSManagedObjectContext, builder: LinkBuilder) -> LinkEntry {
-        
+        guard let entry = builder.entry else {
+            return LinkEntry(context: context)
+        }
         // set variables from builder
         let link: LinkEntry = context.insertObject()
         link.detail = builder.userDetail
-        link.entry = builder.entry
+        link.entry = entry
         link.rawIcon = builder.rawIconUrl
         
         return link

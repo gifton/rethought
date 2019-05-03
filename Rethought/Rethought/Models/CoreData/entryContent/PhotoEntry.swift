@@ -20,10 +20,12 @@ public class PhotoEntry: NSManagedObject {
     
     // conveinance func for builders
     static func insert(into context: NSManagedObjectContext, builder: PhotoBuilder) -> PhotoEntry {
-        
+        guard let entry = builder.entry else {
+            return PhotoEntry(context: context)
+        }
         let img: PhotoEntry = context.insertObject()
         img.detail = builder.userDetail
-        img.entry = builder.entry
+        img.entry = entry
         img.rawPhoto = builder.photo
         
         return img
