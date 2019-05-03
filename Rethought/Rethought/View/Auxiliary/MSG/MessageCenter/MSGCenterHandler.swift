@@ -158,13 +158,145 @@ extension MSGCenterHandler {
     
     private func shouldBeInRegular(_ buttonType: MessageButton) -> Bool {
         switch buttonType.messageButtonType {
-        case .cancel: return false
-        case .close: return false
         case.entry: return true
-        case .open: return false
         case .send: return true
         }
     }
     
     private func shouldBeInEntry(_ buttonType: MessageButton) -> Bool { return true }
+}
+
+// textView delegate
+extension MSGCenterHandler: UITextViewDelegate {
+    //once editing begins on textView, set didStartThought: true
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.text = ""
+        didStartThought = true
+    }
+    func textViewDidChange(_ textView: UITextView) {
+        thoughtTitle = textView.attributedText.string
+    }
+}
+
+
+class MSGCHandler: NSObject {
+    override init() {
+        super.init()
+    }
+    
+    // MARK: entry content
+    private var entryButtons = [MessageButton]()
+    private var sendButton: MessageButton?
+    private var entryView: MSGCenterEntryView?
+    private var entryBuilders = [EntryBuilder]()
+    
+    // retrieve all buttons for disabling and enabling
+    // set to internal var
+    public func add(buttons: [MessageButton]) {
+        
+        entryButtons.forEach { (btn) in
+            if btn.messageButtonType == MessageButtonType.send {
+                self.sendButton = btn
+            } else {
+                btn.isDisabled()
+            }
+        }
+        entryButtons.append(contentsOf: buttons)
+    }
+    
+    //set entryView to private var
+    public func add(entryView view: MSGCenterEntryView) {
+        entryView = view
+    }
+    
+    //when new entry is complete, send it hurr
+    public func add<K: EntryBuilder>(entryBuilder builder: K) {
+        retrieveBuilderType(entryBuilder: builder)
+    }
+    
+    
+    private func retrieveBuilderType<K: EntryBuilder>(entryBuilder builder: K) {
+        switch builder.type {
+        case .link:
+            guard let link: LinkBuilder = builder as? LinkBuilder else {
+                print("Unable to convert to link builder type")
+                return
+            }
+            entryBuilders.append(link)
+        case .photo:
+            guard let photo: PhotoBuilder = builder as? PhotoBuilder else {
+                print("Unable to convert to image builder type")
+                return
+            }
+            entryBuilders.append(photo)
+        case .note:
+            guard let note: NoteBuilder = builder as? NoteBuilder else {
+                print("Unable to convert to image builder type")
+                return
+            }
+            entryBuilders.append(note)
+       default:
+            guard let recording: RecordingBuilder = builder as? RecordingBuilder else {
+                print("Unable to convert to image builder type")
+                return
+            }
+            entryBuilders.append(recording)
+        }
+    }
+
+}
+
+extension MSGCHandler: MSGCenterState {
+    var isShowingEntry: Bool {
+        if entryView != nil {
+            return true
+        }
+        return false
+    }
+    
+    var didSaveEntry: Bool {
+        get {
+            if entryBuilders.count > 0 {
+                return true
+            }
+            return false
+        }
+    }
+    
+    var didStartEntry: Bool {
+        guard let entryView = entryView else { return false }
+        return entryView.minimumComponentsCompleted
+    }
+    
+    var isTypingThought: Bool {
+        return true
+    }
+    
+    var didSaveThought: Bool {
+        return true
+    }
+    
+    var buttonAvailability: MSGContext.center.buttonAvailability {
+        //if there is a thought saved, check if entry is being added
+        if didSaveThought {
+            // return all if entry is being added
+            if didStartEntry {
+                return .all
+            // return only the buttons if a thought has been added but no other action has been made
+            } else {
+               return .entryButtons
+            }
+        // if a thought hasnt been added yet, see if one is currently being typed
+        } else {
+            //if a thought is being typed, the send button should be available
+            if isTypingThought {
+                return .send
+            //if nothingis happening, our message center should have no available buttons
+            } else {
+                return .none
+            }
+        }
+    }
+    
+    
 }

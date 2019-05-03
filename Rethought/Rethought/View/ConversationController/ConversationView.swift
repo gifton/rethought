@@ -15,7 +15,7 @@ class ConversationView: UIView {
     public var tableEncapsulation: MSGBoard!
     
     // public objects
-    public var messageCenter: MSGCenter!
+    public var msgCenter: MSGCenter!
     public var conversationPresenter: ConversationPresenter!
     
     init(with connector: MSGConnector) {
@@ -23,11 +23,11 @@ class ConversationView: UIView {
         backgroundColor = .white
         
         // initiate message center with injected params
-        messageCenter = MSGCenter(frame: CGRect(x: 0, y: frame.height - 215, width: Device.size.width, height: 115), connector: connector)
-        tableEncapsulation = MSGBoard(frame: CGRect(x: 0, y: 0, width: frame.width, height: (frame.height - messageCenter.frame.height)))
+        msgCenter = MSGCenter(frame: CGRect(x: 0, y: frame.height - 215, width: Device.size.width, height: 115), connector: connector)
+        tableEncapsulation = MSGBoard(frame: CGRect(x: 0, y: 0, width: frame.width, height: (frame.height - msgCenter.frame.height)))
         
         // initiate presenter with variables
-        conversationPresenter = ConversationPresenter(tableEncapsulation, messageCenter, parent: self)
+        conversationPresenter = ConversationPresenter(tableEncapsulation, msgCenter, parent: self)
         conversationPresenter.msgDely = connector
         setViews()
         
@@ -41,7 +41,7 @@ class ConversationView: UIView {
     
     func setViews() {
         //add scroll view and msgcenter after theyve been connected to presenter
-        addSubview(messageCenter)
+        addSubview(msgCenter)
         addSubview(tableEncapsulation)
     }
 }

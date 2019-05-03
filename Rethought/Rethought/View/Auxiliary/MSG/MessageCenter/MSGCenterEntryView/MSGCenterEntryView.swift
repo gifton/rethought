@@ -3,6 +3,7 @@ import Foundation
 
 protocol MSGCenterEntryView {
     var entryType: EntryType { get }
+    var minimumComponentsCompleted: Bool { get }
 }
 
 protocol EntryComponentBus {

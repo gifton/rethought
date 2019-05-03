@@ -84,7 +84,7 @@ extension ConversationPresenter {
             self.msgCenter.frame = position.msgFrame
             self.view.frame = position.viewFrame
         }
-//        view.roundCorners([.bottomLeft, .bottomRight], radius: 20)
+        view.roundCorners([.bottomLeft, .bottomRight], radius: 20)
     }
 }
 
@@ -94,7 +94,7 @@ extension ConversationPresenter: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         msgCenter.textView.resignFirstResponder()
         if msgCenter.isShowingEntry {
-            msgCenter.removeEntryView()
+            print(self.msgCenter.removeEntryView())
             animateTo(position: .standard())
         }
         msgDely?.isDoneEditing()
@@ -104,32 +104,16 @@ extension ConversationPresenter: UIScrollViewDelegate {
 extension ConversationPresenter: MSGCenterDelegate {
     func didTapEntry(ofType type: MSGContext.size, completion: ()) {
         
-        // if entry view is currently not showing
-        // animate to correct entry view
-        if !(msgCenter.isShowingEntry) {
-            
-            switch type {
-            case .link: animateTo(position: .link())
-            case .photo: animateTo(position: .photo())
-            case .note: animateTo(position: .note())
-            case .recording: animateTo(position: .recording())
-            default: animateTo(position: .standard())
-            }
-            
-            isShowingEntry = true
-            completion
-        
         // if msgCenter view is equal to entry tapped
         // assume entry is the same, and close the entry and set regular view
-        } else if msgCenter.frame.size.height == type.rawValue {
-            
-            
-            // hide entry
+        if msgCenter.frame.size.height == type.rawValue {
+            // hide entry, dont complete completion
             animateTo(position: .standard())
             msgCenter.removeEntryView()
             
-        // if entry view is currently showing
-        // animate to correct entry view
+            // if entry view is currently showing
+            // or no entry is showing at all,
+            // animate to correct entry view, run completion
         } else {
             
             switch type {

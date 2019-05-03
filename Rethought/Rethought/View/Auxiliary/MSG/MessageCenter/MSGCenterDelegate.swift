@@ -14,5 +14,17 @@ protocol MSGConnector {
 // all types of buttons available
 // used to find what items belong on the screen
 enum MessageButtonType {
-    case send, cancel, entry, open, close
+    case send, entry
+}
+
+
+protocol MSGCenterState {
+    var isShowingEntry: Bool { get }
+    var didStartEntry: Bool { get }
+    var didSaveEntry: Bool { get }
+    
+    var isTypingThought: Bool { get }
+    var didSaveThought: Bool { get }
+    
+    var buttonAvailability: MSGContext.center.buttonAvailability { get }
 }

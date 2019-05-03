@@ -14,6 +14,9 @@ struct MSGContext {
         enum position {
             case regular, regularAndKeyboard, newEntry, newEntryAndKeyboard
         }
+        enum buttonAvailability {
+            case all, none, send, entryButtons
+        }
     }
     enum size: CGFloat {
         case note      = 600.0

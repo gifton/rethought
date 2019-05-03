@@ -72,6 +72,9 @@ class MSGNoteView: UIView {
 }
 
 extension MSGNoteView: MSGCenterEntryView, MSGSubView {
+    var minimumComponentsCompleted: Bool {
+        return false
+    }
     
     var entryType: EntryType {
         return .note
