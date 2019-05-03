@@ -124,17 +124,12 @@ class MSGCenter: UIView {
         
         return view
     }()
-    public var newNoteView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
-    }()
+    public var newNoteView: MSGNoteView!
 }
 
 // setting view methods
 extension MSGCenter {
-    func setInitialView(_ isFull: Bool = true) {
+    public func setInitialView(_ isFull: Bool = true) {
         
         // remove any remaining entry views
         _ = removeEntryView()
@@ -143,9 +138,10 @@ extension MSGCenter {
         var startX: CGFloat = 15.0
         let startY: CGFloat = 10
         for btn in [noteButton, linkButton, recordingButton, photoButton] {
-            btn.frame = CGRect(x: startX, y: startY, width: btn.frame.width, height: btn.frame.height)
-            btn.addTapGestureRecognizer { self.buttonTapped(sender: btn) }
+            
             if !(btn.isDescendant(of: self)) {
+                btn.frame = CGRect(x: startX, y: startY, width: btn.frame.width, height: btn.frame.height)
+                btn.addTapGestureRecognizer { self.buttonTapped(sender: btn) }
                 addSubview(btn)
                 startX += (btn.frame.width + 25)
             }
@@ -173,6 +169,8 @@ extension MSGCenter {
     
     // display specific entry, set anchors
     func showEntry(ofType type: EntryType) {
+        let ggenerator = UISelectionFeedbackGenerator()
+        ggenerator.selectionChanged()
         _ = removeEntryView()
         var view = UIView()
         switch type {
@@ -181,7 +179,8 @@ extension MSGCenter {
             currentEntryType = .link
             textView.text = "give your link a title"
         case .note:
-            view = MSGNoteView(frame: .zero, bus: self)
+            newNoteView = MSGNoteView(frame: .zero, bus: self)
+            view = newNoteView
             currentEntryType = .note
             textView.text = "give your note a title"
         case .recording:
@@ -192,7 +191,9 @@ extension MSGCenter {
             view = newPhotoView
             currentEntryType = .photo
             textView.text = "give your photo a title"
-        default: return
+        default:
+            textView.text = "Give your thought a short title"
+            return
         }
         addSubview(view)
         view.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor,
@@ -209,8 +210,6 @@ extension MSGCenter {
         case .entry:
             connector.entryWillShow(ofType: getSizeFrom(entryType: sender.entryType))
             delegate.didTapEntry(ofType: getSizeFrom(entryType: sender.entryType), completion: showEntry(ofType: sender.entryType))
-            let g = UIImpactFeedbackGenerator(style: .medium)
-            g.impactOccurred()
         case .send:
             if send() {
                 delegate.didSendMessage()
@@ -244,7 +243,7 @@ extension MSGCenter {
         }
     }
     public func removeEntryView() -> Bool {
-        currentEntryType = .none
+
         switch  currentEntryType{
         case .link: newLinkView.removeFromSuperview()
         case .photo: newPhotoView.removeFromSuperview()
@@ -252,8 +251,10 @@ extension MSGCenter {
         case .note: newNoteView.removeFromSuperview()
         default: return false
         }
+        currentEntryType = .none
         return true
     }
+    
 }
 
 // text view delegate

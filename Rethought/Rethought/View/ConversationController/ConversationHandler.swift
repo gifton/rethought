@@ -120,7 +120,7 @@ extension ConversationPresenter: MSGCenterDelegate {
         if msgCenter.frame.size.height == type.rawValue {
             // hide entry, dont complete completion
             animateTo(position: .standard())
-            _ = msgCenter.removeEntryView()
+            msgCenter.setInitialView()
             
             // if entry view is currently showing
             // or no entry is showing at all,
