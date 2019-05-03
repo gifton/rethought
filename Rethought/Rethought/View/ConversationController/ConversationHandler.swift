@@ -133,7 +133,8 @@ extension ConversationPresenter: MSGCenterDelegate {
     public func didSendMessage() {
         //move to regular height again
         animateTo(position: .standard())
-        msgCenter.removeEntryView()
+        _ = msgCenter.removeEntryView()
+        print("message cent from convo handler")
     }
     
     

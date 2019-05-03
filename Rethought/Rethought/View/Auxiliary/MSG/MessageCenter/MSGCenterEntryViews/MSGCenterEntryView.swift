@@ -8,4 +8,5 @@ protocol MSGCenterEntryView {
 
 protocol EntryComponentBus {
     func save<K: EntryBuilder>(withpayload payload: K)
+    func entryDidRequestCancel()
 }

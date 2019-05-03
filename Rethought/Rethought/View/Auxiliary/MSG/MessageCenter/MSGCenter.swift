@@ -39,6 +39,7 @@ class MSGCenter: UIView {
     private var currentEntryType: EntryType = .none
     private var title: String?
     private var thoughtIcon = ThoughtIcon("🚦")
+    private var entryBuilders = [EntryBuilder]()
     
     // make objects animateable(?)
     // add variables and buttons with entryTypes and buttonTypes
@@ -123,8 +124,8 @@ class MSGCenter: UIView {
         
         return view
     }()
-    public var newNoteView: MSGNoteView = {
-        let view = MSGNoteView()
+    public var newNoteView: UIView = {
+        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -180,7 +181,7 @@ extension MSGCenter {
             currentEntryType = .link
             textView.text = "give your link a title"
         case .note:
-            view = newNoteView
+            view = MSGNoteView(frame: .zero, bus: self)
             currentEntryType = .note
             textView.text = "give your note a title"
         case .recording:
@@ -216,7 +217,9 @@ extension MSGCenter {
     
     private func send() -> Bool {
         guard let title = title else { return false}
+        
         connector.save(withTitle: title, withIcon: thoughtIcon)
+        print("save was successful!")
         return true
     }
     
@@ -259,5 +262,15 @@ extension MSGCenter: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         hasStartedThought = true
         title = textView.text
+    }
+}
+
+extension MSGCenter: EntryComponentBus {
+    func save<K>(withpayload payload: K) where K : EntryBuilder {
+        print (payload.type)
+        entryBuilders.append(payload)
+    }
+    func entryDidRequestCancel() {
+        _ = removeEntryView()
     }
 }

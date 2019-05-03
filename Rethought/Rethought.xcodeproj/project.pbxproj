@@ -419,13 +419,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		D7BE8F21227AC06D00B15F06 /* MSGCenterEntryView */ = {
+		D7BE8F21227AC06D00B15F06 /* MSGCenterEntryViews */ = {
 			isa = PBXGroup;
 			children = (
 				D7BE8F1F227AB12300B15F06 /* MSGCenterEntryView.swift */,
 				D7BE8F1D227AB0F300B15F06 /* MSGNoteView.swift */,
 			);
-			path = MSGCenterEntryView;
+			path = MSGCenterEntryViews;
 			sourceTree = "<group>";
 		};
 		D7C6541C226A391A008A66EF /* Auxiliary */ = {
@@ -442,7 +442,7 @@
 			children = (
 				D7C6541E226A3B45008A66EF /* MSGCenterDelegate.swift */,
 				D7810C1F226F938F0038C1BA /* MSGCenter.swift */,
-				D7BE8F21227AC06D00B15F06 /* MSGCenterEntryView */,
+				D7BE8F21227AC06D00B15F06 /* MSGCenterEntryViews */,
 			);
 			path = MessageCenter;
 			sourceTree = "<group>";

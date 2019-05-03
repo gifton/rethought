@@ -3,10 +3,14 @@ import Foundation
 import UIKit
 
 class MSGNoteView: UIView {
-    override init(frame: CGRect) {
+    init(frame: CGRect, bus: EntryComponentBus) {
+        self.bus = bus
         super.init(frame: frame)
         setView()
     }
+      
+    var bus: EntryComponentBus
+    private var newDetail: String?
     
     private let noteTitle = UILabel()
     private let noteTextView = UITextView()
@@ -69,14 +73,39 @@ class MSGNoteView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func cancel() {
+        self.noteTextView.resignFirstResponder()
+        bus.entryDidRequestCancel()
+    }
+    
+    public func requestSave(completion: () -> Void) {
+        // check if all parts are added
+        // if they are, hit bus.save(payload:)
+        //then run completion, else dont do any of that haha
+    }
 }
 
 extension MSGNoteView: MSGCenterEntryView, MSGSubView {
     var minimumComponentsCompleted: Bool {
-        return false
+        return !(newDetail == nil)
     }
     
     var entryType: EntryType {
         return .note
     }
+}
+
+extension MSGNoteView: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        newDetail = textView.text
+        textCountLabel.text = "\(textView.text.count)"
+    }
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        textView.text = ""
+        
+        return true
+    }
+    
 }
