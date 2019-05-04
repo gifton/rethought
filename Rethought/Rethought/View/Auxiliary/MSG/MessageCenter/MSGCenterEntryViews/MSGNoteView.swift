@@ -80,11 +80,11 @@ class MSGNoteView: UIView {
         bus.entryDidRequestCancel()
     }
     
-    public func requestSave(completion: () -> String) {
+    public func requestSave(withTitile title: String) {
         // check if all parts are added
         guard let detail = newDetail else { return }
         // if they are, hit bus.save(payload:)
-        sendContent(with: completion(), and: detail)
+        sendContent(with: title, and: detail)
         //then run completion, else dont do any of that haha
     }
     

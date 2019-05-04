@@ -24,9 +24,14 @@ class MSGBoard: UIScrollView {
         return msgSubViews.count
     }
     
+    // get origin for new component adding in
     private var safeOrigin: CGPoint {
+        guard let lastView = msgSubViews.last?.componentType else { return CGPoint(x: rethoughtResponsePaddingLeft, y: 40) }
         guard let recentView = msgSubViews.last else { return CGPoint(x: rethoughtResponsePaddingLeft, y: 40)}
-        return CGPoint(x: recentView.frame.origin.x, y: (recentView.frame.origin.y + recentView.frame.height + ySpacing))
+        if lastView == .rethoughtResponse || lastView == .rethoughtIntro {
+             return CGPoint(x: Device.size.width * 0.14, y: (recentView.frame.origin.y + recentView.frame.height + ySpacing))
+        }
+        return CGPoint(x: rethoughtResponsePaddingLeft, y: (recentView.frame.origin.y + recentView.frame.height + ySpacing))
     }
     
     var msgSubViews = [MSGBoardComponent]()
@@ -70,15 +75,28 @@ class MSGBoard: UIScrollView {
 }
 
 extension MSGBoard: MSGBoardDelegate {
-    func addEntry<K>(_ payload: K, completion: () -> Void) where K : EntryBuilder {
+    func addEntry<K>(_ payload: K) where K : EntryBuilder {
         // detect currect entry type, instantiate corrosponding view
+        var view = MSGBoardComponent()
+        switch payload.type {
+        default:
+            guard let note: NoteBuilder = payload as? NoteBuilder else {
+                print ("unable to cast notebuilder from payload in msgBoard")
+                return
+            }
+            view = MSGBoardNoteView(frame: CGRect(x: safeOrigin.x, y: safeOrigin.y, width: Device.size.newNoteBoardView, height: 0), payload: note)
+        }
+        
+        add(view)
+        
+        addResponse(payload: "I've added your entry")
         // guard into proper payload based on type
         // calculate frame
         // add subView
         // update layout, content size etc...
     }
     
-    public func addThought(_ payload: ThoughtPreview, completino: () -> Void) {
+    public func addThought(_ payload: ThoughtPreview) {
         // calculate frame
         let frame: CGRect = CGRect(x: userResponsePaddingLeft, y: safeOrigin.y, width: Device.size.width - (userResponsePaddingLeft + userResponsePaddingRight), height: 55)
         // instantiate thought card with payload
@@ -87,7 +105,6 @@ extension MSGBoard: MSGBoardDelegate {
         add(thought)
         // update layout, content size etc...
         addResponse(payload: "I've added your thought")
-        completino()
     }
     
     var currentSize: CGSize {

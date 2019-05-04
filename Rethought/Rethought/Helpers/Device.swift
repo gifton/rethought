@@ -16,6 +16,7 @@ struct Device {
         static let largeCard = CGSize(width: 300, height: 165)
         static let smallCard = CGSize(width: UIScreen.main.bounds.size.width - 20, height: 80)
         static let newThoughtTile = CGSize(width: UIScreen.main.bounds.size.width, height: 115)
+        static let newNoteBoardView: CGFloat = Device.size.width * 0.8
         //initial heights
         static let drawerMaxHeight: CGFloat = UIScreen.main.bounds.size.height * 0.387
         static let thoughtDetailHeaderMaxHeight: CGFloat = UIScreen.main.bounds.size.height * 464

@@ -38,6 +38,13 @@ class ConversationController: UIViewController {
 extension ConversationController: MSGConnector {
     func insert<T>(entry: T) where T : EntryBuilder {
         // TODO:
+        guard let note: NoteBuilder = entry as? NoteBuilder else {
+            print ("unable to conform to note builder, breaking")
+            return
+        }
+        
+        conversation.tableEncapsulation.addEntry(note)
+        print(note.type)
         //switch type
         //guard to correct entryBuilder
         //call model func to insert intp context
@@ -50,7 +57,7 @@ extension ConversationController: MSGConnector {
         model.buildThought(withTitle: title, withLocation: CLLocation(), withIcon: withIcon)
         //reload table data on completion
         let tp = ThoughtPreview(title: title, icon: withIcon.icon, location: CLLocation())
-        conversation.tableEncapsulation.addThought(tp, completino: conversation.conversationPresenter.didSendMessage)
+        conversation.tableEncapsulation.addThought(tp)
         //tell view to return to regular size
         
     }

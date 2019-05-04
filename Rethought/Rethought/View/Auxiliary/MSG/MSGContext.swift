@@ -46,13 +46,6 @@ struct MSGContext {
         }
     }
 }
-
-protocol MSGCenterHandlerDelegate {
-    func updatePosition(to position: MSGContext.center.position)
-    func updateSize(to size: MSGContext.size)
-    var didStartNewEntry: Bool { get set }
-}
-
 class NewRecordingView: UIView, MSGSubView { var entryType: EntryType = .recording }
 class NewImageView: UIView, MSGSubView { var entryType: EntryType = .photo }
 class NewLinkView: UIView, MSGSubView { var entryType: EntryType = .link }

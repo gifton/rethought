@@ -28,6 +28,7 @@
 		D7006EEB2268CD6C004E570F /* ReTabBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EEA2268CD6C004E570F /* ReTabBarDelegate.swift */; };
 		D7006EED2268CDAE004E570F /* ReTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EEC2268CDAE004E570F /* ReTabItem.swift */; };
 		D7006EEF2268CDD8004E570F /* ReTabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EEE2268CDD8004E570F /* ReTabItemView.swift */; };
+		D7149384227CB830005B681D /* MSGBoardNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7149383227CB830005B681D /* MSGBoardNoteView.swift */; };
 		D721112C2272D14D00131BEF /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721112B2272D14D00131BEF /* SearchController.swift */; };
 		D721112E2272D19700131BEF /* ConversatinoTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721112D2272D19700131BEF /* ConversatinoTable.swift */; };
 		D7536F922262C26F003F0920 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536F912262C26F003F0920 /* AppDelegate.swift */; };
@@ -106,6 +107,7 @@
 		D7006EEA2268CD6C004E570F /* ReTabBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReTabBarDelegate.swift; sourceTree = "<group>"; };
 		D7006EEC2268CDAE004E570F /* ReTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReTabItem.swift; sourceTree = "<group>"; };
 		D7006EEE2268CDD8004E570F /* ReTabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReTabItemView.swift; sourceTree = "<group>"; };
+		D7149383227CB830005B681D /* MSGBoardNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardNoteView.swift; sourceTree = "<group>"; };
 		D721112B2272D14D00131BEF /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		D721112D2272D19700131BEF /* ConversatinoTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversatinoTable.swift; sourceTree = "<group>"; };
 		D7536F8E2262C26F003F0920 /* Rethought.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rethought.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -264,6 +266,15 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		D7149382227CB817005B681D /* User input */ = {
+			isa = PBXGroup;
+			children = (
+				D7BB183C227892F40084963E /* MSGThoughtView.swift */,
+				D7149383227CB830005B681D /* MSGBoardNoteView.swift */,
+			);
+			path = "User input";
+			sourceTree = "<group>";
+		};
 		D7536F852262C26F003F0920 = {
 			isa = PBXGroup;
 			children = (
@@ -413,7 +424,7 @@
 			children = (
 				D7BB1838227656AC0084963E /* MSGBoardViews.swift */,
 				D7BB183A227886B80084963E /* MSGResponseView.swift */,
-				D7BB183C227892F40084963E /* MSGThoughtView.swift */,
+				D7149382227CB817005B681D /* User input */,
 				D7BE8F1B2278BAAD00B15F06 /* MSGWelcomeCard.swift */,
 			);
 			path = Views;
@@ -600,6 +611,7 @@
 				D7006EE92268CD5A004E570F /* ReTabBar.swift in Sources */,
 				D7C6542E226A850B008A66EF /* UIbutton.swift in Sources */,
 				D7BB183D227892F40084963E /* MSGThoughtView.swift in Sources */,
+				D7149384227CB830005B681D /* MSGBoardNoteView.swift in Sources */,
 				D7006EBB22653D59004E570F /* ThoughtPreview.swift in Sources */,
 				D7006EC822671C96004E570F /* NoteBuilder.swift in Sources */,
 				D7536FB52262C8ED003F0920 /* Array.swift in Sources */,

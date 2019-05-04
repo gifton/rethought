@@ -149,6 +149,7 @@ extension ConversationPresenter: MSGCenterDelegate {
     public func didSendMessage() {
         //move to regular height again
         animateTo(position: .standard())
+        msgCenter.textView.resignFirstResponder()
         _ = msgCenter.removeEntryView()
         print("message cent from convo handler")
     }

@@ -11,8 +11,8 @@ import UIKit
 
 protocol MSGBoardDelegate {
     // TODO: add MSGBoard funcs and vars
-    func addEntry<K: EntryBuilder>(_ payload: K, completion: () -> Void)
-    func addThought(_ payload: ThoughtPreview, completino: () -> Void)
+    func addEntry<K: EntryBuilder>(_ payload: K)
+    func addThought(_ payload: ThoughtPreview)
     var currentSize: CGSize { get set }
 }
 

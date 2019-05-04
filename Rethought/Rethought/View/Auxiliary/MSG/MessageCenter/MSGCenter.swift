@@ -25,6 +25,7 @@ class MSGCenter: UIView {
     // delegate connects with conversatiuon handler
     public var delegate: MSGCenterDelegate!
     public var hasStartedThought: Bool = false
+    public var hasCompletedThought: Bool = false
     public var isShowingEntry: Bool {
         get {
             return !(currentEntryType == .none)
@@ -169,6 +170,7 @@ extension MSGCenter {
     
     // display specific entry, set anchors
     func showEntry(ofType type: EntryType) {
+        // put haptic response in showEntry(type:) for confirmation of entry appearance validation
         let ggenerator = UISelectionFeedbackGenerator()
         ggenerator.selectionChanged()
         _ = removeEntryView()
@@ -212,19 +214,34 @@ extension MSGCenter {
             delegate.didTapEntry(ofType: getSizeFrom(entryType: sender.entryType), completion: showEntry(ofType: sender.entryType))
         case .send:
             if send() {
+                hasCompletedThought = true
                 delegate.didSendMessage()
-                
                 generator.notificationOccurred(.success)
+                connector.isDoneEditing()
             } else { handleFailedSave() }
         }
     }
     
+    // send thought or entry after creation
     private func send() -> Bool {
-        guard let title = title else { return false}
         
-        connector.save(withTitle: title, withIcon: thoughtIcon)
-        print("save was successful!")
-        return true
+        guard let title = title else {
+            print("has not saved thought")
+            return false
+        }
+        
+        if !(hasCompletedThought) {
+            
+            connector.save(withTitle: title, withIcon: thoughtIcon)
+            print("save was successful!")
+            return true
+        }
+        return attemptSending(entryOfType: .note, with: title)
+    }
+    
+    private func attemptSending(entryOfType type: EntryType, with payload: String) -> Bool {
+        switch type { default: newNoteView.requestSave(withTitile: payload); return true }
+        return false
     }
     
     private func handleFailedSave() { print("unable to save thought, missing title component")}
@@ -275,6 +292,7 @@ extension MSGCenter: EntryComponentBus {
     func save<K>(withpayload payload: K) where K : EntryBuilder {
         print (payload.type)
         entryBuilders.append(payload)
+        connector.insert(entry: payload)
     }
     func entryDidRequestCancel() {
         _ = removeEntryView()
