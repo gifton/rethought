@@ -2,7 +2,7 @@
 import Foundation
 import UIKit
 
-class MSGWelcomeCard: MSGBoardComponent {
+class MSGBoardWelcomeCard: MSGBoardComponent {
     override init(frame: CGRect) {
         super.init(frame: CGRect(x: frame.origin.x, y: frame.origin.y, width: 320, height: 169))
         self.backgroundColor = .white

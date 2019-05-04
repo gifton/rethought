@@ -29,7 +29,7 @@ class MSGBoard: UIScrollView {
         guard let lastView = msgSubViews.last?.componentType else { return CGPoint(x: rethoughtResponsePaddingLeft, y: 40) }
         guard let recentView = msgSubViews.last else { return CGPoint(x: rethoughtResponsePaddingLeft, y: 40)}
         if lastView == .rethoughtResponse || lastView == .rethoughtIntro {
-             return CGPoint(x: Device.size.width * 0.14, y: (recentView.frame.origin.y + recentView.frame.height + ySpacing))
+             return CGPoint(x: Device.size.width * 0.14, y: (recentView.frame.origin.y + recentView.frame.height))
         }
         return CGPoint(x: rethoughtResponsePaddingLeft, y: (recentView.frame.origin.y + recentView.frame.height + ySpacing))
     }
@@ -56,8 +56,8 @@ class MSGBoard: UIScrollView {
         }
         //remove response cards
         // replace top welcome card (if removed)
-        let testView = MSGWelcomeCard(frame: CGRect(x: safeOrigin.x, y: safeOrigin.y, width: Device.size.width - 50, height: 220))
-        add(testView)
+        let welcomeView = MSGBoardWelcomeCard(frame: CGRect(x: safeOrigin.x, y: safeOrigin.y, width: Device.size.width - 50, height: 220))
+        add(welcomeView)
         
     }
     
@@ -78,22 +78,24 @@ extension MSGBoard: MSGBoardDelegate {
     func addEntry<K>(_ payload: K) where K : EntryBuilder {
         // detect currect entry type, instantiate corrosponding view
         var view = MSGBoardComponent()
+        // switch into proper payload based on type
         switch payload.type {
         default:
             guard let note: NoteBuilder = payload as? NoteBuilder else {
                 print ("unable to cast notebuilder from payload in msgBoard")
                 return
             }
+            // calculate frame
             view = MSGBoardNoteView(frame: CGRect(x: safeOrigin.x, y: safeOrigin.y, width: Device.size.newNoteBoardView, height: 0), payload: note)
         }
         
-        add(view)
-        
-        addResponse(payload: "I've added your entry")
-        // guard into proper payload based on type
-        // calculate frame
         // add subView
+        add(view)
+        // add response
+        addResponse(payload: "I've added your entry")
+        
         // update layout, content size etc...
+        updateConstraintsIfNeeded()
     }
     
     public func addThought(_ payload: ThoughtPreview) {
@@ -121,16 +123,10 @@ extension MSGBoard: MSGBoardDelegate {
     
     private func add(_ view: MSGBoardComponent) {
         //add room for component and response!
-        self.contentSize.height += (view.frame.height * 1.25)
+        self.contentSize.height += (view.frame.height * 1.15)
         
         addSubview(view)
         msgSubViews.append(view)
         
     }
-    
-    func getFrame() {
-        
-    }
-    
-    
 }

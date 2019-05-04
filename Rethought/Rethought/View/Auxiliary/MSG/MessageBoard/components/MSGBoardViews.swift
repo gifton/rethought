@@ -19,32 +19,6 @@ class MSGBoardComponent: UIView {
         return frame.size
     }
 }
-
-class WelcomeCard: UIView {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.backgroundColor = Device.colors.yellow
-        layer.cornerRadius = 10
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-
-
-class NoteEntryMessage: UIView {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.backgroundColor = .white
-        layer.cornerRadius = 10
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
 class LinkEntryMessage: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
