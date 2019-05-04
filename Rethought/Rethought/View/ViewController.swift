@@ -14,7 +14,8 @@ class ViewController: AnimatedTabBarController {
     
     init(model: NSManagedObjectContext) {
         super.init(nibName: nil, bundle: nil)
-        let vc1 = UIViewController()
+        let vc1 = HomeVC()
+        
         let vc2 = UIViewController()
         let vc3 = ConversationController(withModel: ThoughtBuilderViewModel(withContext: model))
         
@@ -39,4 +40,21 @@ class ViewController: AnimatedTabBarController {
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+class HomeVC: UIViewController {
+    override func viewDidLoad() {
+        setView()
+    }
+    
+    func setView() {
+        let lbl = UILabel()
+        lbl.text = "RE\nTHOUGHT"
+        lbl.numberOfLines = 5
+        lbl.font = Device.font.title(ofSize: .title)
+        lbl.textColor = Device.colors.offWhite
+        lbl.frame = CGRect(x: 5, y: 5, width: Device.size.width - 20, height: 600)
+        
+        view.addSubview(lbl)
+    }
 }

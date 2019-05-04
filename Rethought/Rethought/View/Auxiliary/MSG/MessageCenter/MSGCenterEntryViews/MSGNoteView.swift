@@ -2,10 +2,10 @@
 import Foundation
 import UIKit
 
-class MSGNoteView: UIView {
-    init(frame: CGRect, bus: EntryComponentBus) {
+class MSGCenterNoteView: UIView {
+    init(bus: EntryComponentBus) {
         self.bus = bus
-        super.init(frame: frame)
+        super.init(frame: .zero)
         setView()
     }
       
@@ -94,7 +94,7 @@ class MSGNoteView: UIView {
     }
 }
 
-extension MSGNoteView: MSGCenterEntryView, MSGSubView {
+extension MSGCenterNoteView: MSGCenterEntryView, MSGSubView {
     var minimumComponentsCompleted: Bool {
         return !(newDetail == nil)
     }
@@ -104,7 +104,7 @@ extension MSGNoteView: MSGCenterEntryView, MSGSubView {
     }
 }
 
-extension MSGNoteView: UITextViewDelegate {
+extension MSGCenterNoteView: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         newDetail = textView.text
         textCountLabel.text = "\(textView.text.count)"

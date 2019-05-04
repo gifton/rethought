@@ -68,8 +68,12 @@ class MSGBoard: UIScrollView {
         // calculate frame
         let response = ResponseMessage(frame: CGRect(x: safeOrigin.x, y: safeOrigin.y, width: width , height: frme.height + 60), content: payload)
         // add subView
-        add(response)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)) {
+            self.add(response)
+        }
+        
         // update layout, content size etc...
+        updateConstraintsIfNeeded()
     }
     
 }

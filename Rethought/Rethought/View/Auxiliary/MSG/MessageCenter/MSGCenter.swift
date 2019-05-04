@@ -111,13 +111,6 @@ class MSGCenter: UIView {
         
         return view
     }()
-    public var newPhotoView: NewImageView = {
-        let view = NewImageView()
-        view.backgroundColor = Device.colors.image
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
-    }()
     public var newLinkView: NewLinkView = {
         let view = NewLinkView()
         view.backgroundColor = Device.colors.link
@@ -125,7 +118,8 @@ class MSGCenter: UIView {
         
         return view
     }()
-    public var newNoteView: MSGNoteView!
+    public var newNoteView: MSGCenterNoteView!
+    public var newPhotoView: MSGCenterPhotoView!
 }
 
 // setting view methods
@@ -181,7 +175,7 @@ extension MSGCenter {
             currentEntryType = .link
             textView.text = "give your link a title"
         case .note:
-            newNoteView = MSGNoteView(frame: .zero, bus: self)
+            newNoteView = MSGCenterNoteView(bus: self)
             view = newNoteView
             currentEntryType = .note
             textView.text = "give your note a title"
@@ -190,6 +184,7 @@ extension MSGCenter {
             currentEntryType = .recording
             textView.text = "give your recording a description"
         case .photo:
+            newPhotoView = MSGCenterPhotoView(withBus: self)
             view = newPhotoView
             currentEntryType = .photo
             textView.text = "give your photo a title"

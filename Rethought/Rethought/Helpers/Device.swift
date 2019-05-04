@@ -39,6 +39,7 @@ struct Device {
         case xXLarge   = 20.0
         case xXXLarge  = 26.0
         case title     = 70
+        case xlTitle   = 100
         case emojiSM   = 25
         case emojiLG   = 37.5
     }
@@ -60,7 +61,7 @@ struct Device {
         static let note      = blue
         static let recording = yellow
         static let link      = green
-        static let image     = red
+        static let photo     = red
     }
     
     struct font {

@@ -16,7 +16,7 @@ extension UserDefaults {
         static let name          = "USERname"
         static let email         = "USERemail"
         static let authenticated = "USERauthenticate"
-        
+        static let cameraAuth    = "CAMERAAUTHORIZATION"
     }
     
 }
