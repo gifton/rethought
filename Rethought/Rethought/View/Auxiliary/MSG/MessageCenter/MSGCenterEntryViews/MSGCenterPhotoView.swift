@@ -22,17 +22,6 @@ class MSGCenterPhotoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func checkForCam() {
-        AVCaptureDevice.requestAccess(for: AVMediaType.video) { response in
-            if response {
-                DispatchQueue.main.async { self.setView()
-                }
-            } else {
-                fatalError()
-            }
-        }
-    }
-    
     private var photo: UIImage?
     private var bus: EntryComponentBus
     private var photoView: MSGCenterPreviewPhotoView!
@@ -109,5 +98,22 @@ extension MSGCenterPhotoView: MSGCenterEntryView, MSGCenterPhotoBus {
         }
         
         completion()
+    }
+    
+    // check if permissions have been granted, else request permision
+    func checkForCam() {
+        AVCaptureDevice.requestAccess(for: AVMediaType.video) { response in
+            if response {
+                DispatchQueue.main.async { self.setView()
+                }
+            } else {
+                fatalError()
+            }
+        }
+    }
+    
+    //end session from MSGCenter
+    public func endSession() {
+        photoView.endSession()
     }
 }
