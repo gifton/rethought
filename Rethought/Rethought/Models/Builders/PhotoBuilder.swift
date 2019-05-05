@@ -8,11 +8,11 @@ import UIKit
 struct PhotoBuilder: EntryBuilder {
     var type: EntryType = .photo
     
-    var photo: Data
+    var photo: UIImage
     var userDetail: String
     var entry: Entry?
     
-    init(link: String, photo: Data, userDetail: String, forEntry entry: Entry?) {
+    init(photo: UIImage, userDetail: String, forEntry entry: Entry?) {
         self.photo = photo
         self.userDetail = userDetail
         self.entry = entry

@@ -63,6 +63,16 @@ class MSGCenterPhotoView: UIView {
         removeSubviews()
         setView()
     }
+    
+    public func requestContent(with detail: String) -> Bool {
+        guard let photo = photo else { return false }
+        let pb = PhotoBuilder(photo: photo, userDetail: detail, forEntry: nil)
+        bus.save(withpayload: pb); return true
+    }
+    
+    private func requestCancel() {
+        bus.entryDidRequestCancel()
+    }
 }
 
 extension MSGCenterPhotoView: MSGCenterEntryView, MSGCenterPhotoBus {
@@ -93,9 +103,8 @@ extension MSGCenterPhotoView: MSGCenterEntryView, MSGCenterPhotoBus {
         addSubview(retakePhoto)
         
         // add targets
-        retakePhoto.addTapGestureRecognizer {
-            self.didTapRetake()
-        }
+        retakePhoto.addTapGestureRecognizer { self.didTapRetake() }
+        cancel.addTapGestureRecognizer{ self.requestCancel() }
         
         completion()
     }

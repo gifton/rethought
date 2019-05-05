@@ -82,14 +82,23 @@ extension MSGBoard: MSGBoardDelegate {
     func addEntry<K>(_ payload: K) where K : EntryBuilder {
         // detect currect entry type, instantiate corrosponding view
         var view = MSGBoardComponent()
+        
         // switch into proper payload based on type
         switch payload.type {
+        case .photo:
+            guard let photo: PhotoBuilder = payload as? PhotoBuilder else {
+                print ("unable to cast photoBuilder from payload in msgBoard")
+                return
+            }
+            
+            view = MSGBoardPhotoView(frame: CGRect(x: safeOrigin.x, y: safeOrigin.y, width: Device.size.newNoteBoardView, height: 0), payload: photo)
         default:
             guard let note: NoteBuilder = payload as? NoteBuilder else {
                 print ("unable to cast notebuilder from payload in msgBoard")
                 return
             }
             // calculate frame
+            // height is unnecessary as it is automaticcaly assigned
             view = MSGBoardNoteView(frame: CGRect(x: safeOrigin.x, y: safeOrigin.y, width: Device.size.newNoteBoardView, height: 0), payload: note)
         }
         

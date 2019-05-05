@@ -225,17 +225,22 @@ extension MSGCenter {
             return false
         }
         
+        // if there is not thought, save one first
         if !(hasCompletedThought) {
             
             connector.save(withTitle: title, withIcon: thoughtIcon)
             print("save was successful!")
             return true
         }
-        return attemptSending(entryOfType: .note, with: title)
+        
+        return attemptSending(entryOfType: currentEntryType, with: title)
     }
     
     private func attemptSending(entryOfType type: EntryType, with payload: String) -> Bool {
-        switch type { default: newNoteView.requestSave(withTitile: payload); return true }
+        switch type {
+        case .photo: return newPhotoView.requestContent(with: payload)
+        default: newNoteView.requestSave(withTitile: payload); return true
+        }
     }
     
     private func handleFailedSave() { print("unable to save thought, missing title component")}

@@ -64,6 +64,7 @@
 		D7536FEB2262EB0A003F0920 /* RecordingEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536FDF2262EB0A003F0920 /* RecordingEntry.swift */; };
 		D7536FED2262EB0A003F0920 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536FE12262EB0A003F0920 /* Entry.swift */; };
 		D760FED3227E544E00E4693D /* MSGCenterPhotoPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760FED2227E544E00E4693D /* MSGCenterPhotoPreview.swift */; };
+		D760FED5227E64E700E4693D /* MSGBoardPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760FED4227E64E700E4693D /* MSGBoardPhotoView.swift */; };
 		D76895502271746F00DC059E /* MSGSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D768954F2271746F00DC059E /* MSGSubView.swift */; };
 		D76895522271ED7D00DC059E /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76895512271ED7D00DC059E /* Optional.swift */; };
 		D76DFA09226E803800CE2D59 /* Rects.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76DFA08226E803800CE2D59 /* Rects.swift */; };
@@ -147,6 +148,7 @@
 		D7536FDF2262EB0A003F0920 /* RecordingEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingEntry.swift; sourceTree = "<group>"; };
 		D7536FE12262EB0A003F0920 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		D760FED2227E544E00E4693D /* MSGCenterPhotoPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGCenterPhotoPreview.swift; sourceTree = "<group>"; };
+		D760FED4227E64E700E4693D /* MSGBoardPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardPhotoView.swift; sourceTree = "<group>"; };
 		D768954F2271746F00DC059E /* MSGSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGSubView.swift; sourceTree = "<group>"; };
 		D76895512271ED7D00DC059E /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
 		D76DFA08226E803800CE2D59 /* Rects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rects.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 			children = (
 				D7BB183C227892F40084963E /* MSGThoughtView.swift */,
 				D7149383227CB830005B681D /* MSGBoardNoteView.swift */,
+				D760FED4227E64E700E4693D /* MSGBoardPhotoView.swift */,
 			);
 			path = "entry+thought";
 			sourceTree = "<group>";
@@ -659,6 +662,7 @@
 				D721112C2272D14D00131BEF /* SearchController.swift in Sources */,
 				D7810C20226F938F0038C1BA /* MSGCenter.swift in Sources */,
 				D76895502271746F00DC059E /* MSGSubView.swift in Sources */,
+				D760FED5227E64E700E4693D /* MSGBoardPhotoView.swift in Sources */,
 				D7536FEB2262EB0A003F0920 /* RecordingEntry.swift in Sources */,
 				D7536FC72262D167003F0920 /* UITextField.swift in Sources */,
 				D7536FCF2262D708003F0920 /* UIViewController.swift in Sources */,

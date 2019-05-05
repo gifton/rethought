@@ -56,7 +56,6 @@ class MSGCenterPreviewPhotoView: UIView {
     }
     
     func setupLivePreview() {
-        print("setting up live preview")
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         
         previewLayer.videoGravity = .resizeAspectFill
@@ -76,7 +75,6 @@ class MSGCenterPreviewPhotoView: UIView {
     private func didTakePhoto() {
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
         stillImageOutput.capturePhoto(with: settings, delegate: self)
-        print("we took an image!")
     }
     
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
@@ -90,11 +88,9 @@ class MSGCenterPreviewPhotoView: UIView {
         }
         
         bus.photoTaken(image, completion: endSession)
-        print("we sent the image!")
     }
     
     public func endSession() {
-        print("session ended")
         captureSession.stopRunning()
     }
 }

@@ -37,17 +37,25 @@ class ConversationController: UIViewController {
 
 extension ConversationController: MSGConnector {
     func insert<T>(entry: T) where T : EntryBuilder {
-        // TODO:
-        guard let note: NoteBuilder = entry as? NoteBuilder else {
-            print ("unable to conform to note builder, breaking")
-            return
+        // switch to correct type
+        switch entry.type {
+        case .note:
+            //guard to correct entryBuilder
+            guard let note: NoteBuilder = entry as? NoteBuilder else {
+                print ("unable to conform to note builder, breaking")
+                return
+            }
+            //call model func to insert intp context
+            conversation.tableEncapsulation.addEntry(note)
+        default:
+            //guard to correct entryBuilder
+            guard let photo: PhotoBuilder = entry as? PhotoBuilder else {
+                print ("unable to conform to note builder, breaking")
+                return
+            }
+            //call model func to insert intp context
+            conversation.tableEncapsulation.addEntry(photo)
         }
-        
-        conversation.tableEncapsulation.addEntry(note)
-        print(note.type)
-        //switch type
-        //guard to correct entryBuilder
-        //call model func to insert intp context
     }
     
     func save(withTitle title: String, withIcon: ThoughtIcon) {

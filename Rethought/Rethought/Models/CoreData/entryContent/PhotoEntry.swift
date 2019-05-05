@@ -26,7 +26,7 @@ public class PhotoEntry: NSManagedObject {
         let img: PhotoEntry = context.insertObject()
         img.detail = builder.userDetail
         img.entry = entry
-        img.rawPhoto = builder.photo
+        img.rawPhoto = builder.photo.pngData()!
         
         return img
     }
