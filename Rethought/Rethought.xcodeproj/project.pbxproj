@@ -65,6 +65,7 @@
 		D7536FED2262EB0A003F0920 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536FE12262EB0A003F0920 /* Entry.swift */; };
 		D760FED3227E544E00E4693D /* MSGCenterPhotoPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760FED2227E544E00E4693D /* MSGCenterPhotoPreview.swift */; };
 		D760FED5227E64E700E4693D /* MSGBoardPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760FED4227E64E700E4693D /* MSGBoardPhotoView.swift */; };
+		D760FED7227E785200E4693D /* UIBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760FED6227E785200E4693D /* UIBezierPath.swift */; };
 		D76895502271746F00DC059E /* MSGSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D768954F2271746F00DC059E /* MSGSubView.swift */; };
 		D76895522271ED7D00DC059E /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76895512271ED7D00DC059E /* Optional.swift */; };
 		D76DFA09226E803800CE2D59 /* Rects.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76DFA08226E803800CE2D59 /* Rects.swift */; };
@@ -149,6 +150,7 @@
 		D7536FE12262EB0A003F0920 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		D760FED2227E544E00E4693D /* MSGCenterPhotoPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGCenterPhotoPreview.swift; sourceTree = "<group>"; };
 		D760FED4227E64E700E4693D /* MSGBoardPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardPhotoView.swift; sourceTree = "<group>"; };
+		D760FED6227E785200E4693D /* UIBezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBezierPath.swift; sourceTree = "<group>"; };
 		D768954F2271746F00DC059E /* MSGSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGSubView.swift; sourceTree = "<group>"; };
 		D76895512271ED7D00DC059E /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
 		D76DFA08226E803800CE2D59 /* Rects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rects.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 				D7C6542D226A850B008A66EF /* UIbutton.swift */,
 				D768954F2271746F00DC059E /* MSGSubView.swift */,
 				D76895512271ED7D00DC059E /* Optional.swift */,
+				D760FED6227E785200E4693D /* UIBezierPath.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -672,6 +675,7 @@
 				D7BB183B227886B80084963E /* MSGResponseView.swift in Sources */,
 				D7006EC02266F0F6004E570F /* EntryContent.swift in Sources */,
 				D7C6541F226A3B45008A66EF /* MSGCenterDelegate.swift in Sources */,
+				D760FED7227E785200E4693D /* UIBezierPath.swift in Sources */,
 				D7536FAE2262C815003F0920 /* Manager.swift in Sources */,
 				D7536F922262C26F003F0920 /* AppDelegate.swift in Sources */,
 				D7BE8F1E227AB0F300B15F06 /* MSGNoteView.swift in Sources */,
@@ -844,7 +848,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -865,7 +869,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

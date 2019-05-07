@@ -6,9 +6,16 @@ class MSGBoardWelcomeCard: MSGBoardComponent {
     override init(frame: CGRect) {
         super.init(frame: CGRect(x: frame.origin.x, y: frame.origin.y, width: 320, height: 169))
         self.backgroundColor = .white
-        layer.cornerRadius = 20
         
         componentType = .welcomeCard
+        
+        layer.backgroundColor = UIColor.red.cgColor
+        
+        isOpaque = true
+        layer.shadowOffset = CGSize(width: 0, height: 8)
+        layer.shadowRadius = 8
+        layer.shadowOpacity = 0.2
+        
         setViews()
     }
     
@@ -33,6 +40,37 @@ class MSGBoardWelcomeCard: MSGBoardComponent {
         addSubview(backgroundImage)
         addSubview(titleLabel)
         addSubview(dateLabel)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        updatePath()
+    }
+    
+    //functions and variables for creating a true iphone x radius';;;'
+    var radius: CGFloat = 28.5
+    private var path: UIBezierPath?
+    
+    override func draw(_ rect: CGRect) {
+        guard let path = path,
+            let context = UIGraphicsGetCurrentContext() else {
+                print("returning")
+                return
+        }
+        
+        context.clear(rect)
+        UIColor.white.setFill()
+        path.fill()
+    }
+    
+    private func updatePath() {
+        let path = UIBezierPath.continuousRoundedRect(bounds, cornerRadius: (topLeft: radius, topRight: radius, bottomLeft: radius, bottomRight: radius))
+        
+        layer.shadowPath = path.cgPath
+        
+        self.path = path
+        setNeedsDisplay()
     }
     
     required init?(coder aDecoder: NSCoder) {

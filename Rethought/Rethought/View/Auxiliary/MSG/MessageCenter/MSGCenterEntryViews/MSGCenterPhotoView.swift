@@ -22,6 +22,12 @@ class MSGCenterPhotoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private var alertContent: String = "Tap to capture" {
+        didSet {
+            alertLabel.text = alertContent
+        }
+    }
+    
     private var photo: UIImage?
     private var bus: EntryComponentBus
     private var photoView: MSGCenterPreviewPhotoView!
@@ -51,11 +57,36 @@ class MSGCenterPhotoView: UIView {
         
         return btn
     }()
+    private let alertLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.font = Device.font.body(ofSize: .large)
+        lbl.textColor = .white
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.textAlignment = .center
+        
+        return lbl
+    }()
+    private let photoLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.font = Device.font.title(ofSize: .xXXLarge)
+        lbl.textColor = Device.colors.lightGray
+        lbl.text = "New Photo"
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        
+        return lbl
+    }()
     
     func setView() {
-        photoView = MSGCenterPreviewPhotoView(frame: CGRect(x: 0, y: 0, width: Device.size.width, height: MSGContext.size.photo.rawValue), bus: self)
+        photoView = MSGCenterPreviewPhotoView(frame: CGRect(x: 0, y: 0, width: Device.size.width, height: MSGContext.size.photo.rawValue),  bus: self)
         addSubview(photoView)
+        addSubview(photoLabel)
+        addSubview(alertLabel)
+        
+        alertLabel.text = alertContent
+        alertLabel.setAnchor(top: nil, leading: leadingAnchor, bottom: safeBottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 25, paddingBottom: 50, paddingTrailing: 25)
+        photoLabel.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 25, paddingLeading: 25, paddingBottom: 0, paddingTrailing: 0)
     }
+
     
     // set photo to nil and reset view on tap
     private func didTapRetake() {

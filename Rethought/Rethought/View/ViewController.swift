@@ -19,7 +19,6 @@ class ViewController: AnimatedTabBarController {
         let vc2 = UIViewController()
         let vc3 = ConversationController(withModel: ThoughtBuilderViewModel(withContext: model))
         
-        vc1.view.backgroundColor = Device.colors.blue
         vc2.view.backgroundColor = Device.colors.green
             
             vc1.tabBarItem = UITabBarItem(title: "Home", image: #imageLiteral(resourceName: "home_light"), selectedImage: #imageLiteral(resourceName: "home_dark"))
@@ -43,18 +42,91 @@ class ViewController: AnimatedTabBarController {
 }
 
 class HomeVC: UIViewController {
-    override func viewDidLoad() {
-        setView()
+    private let tabBar: RoundedTabBar
+    
+    init() {
+        tabBar = RoundedTabBar()
+        super.init(nibName: nil, bundle: nil)
     }
     
-    func setView() {
-        let lbl = UILabel()
-        lbl.text = "RE\nTHOUGHT"
-        lbl.numberOfLines = 5
-        lbl.font = Device.font.title(ofSize: .title)
-        lbl.textColor = Device.colors.offWhite
-        lbl.frame = CGRect(x: 5, y: 5, width: Device.size.width - 20, height: 600)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        view.addSubview(lbl)
+        let aView = UIView()
+        aView.layer.cornerRadius = 37.5
+        aView.backgroundColor = Device.colors.red
+        
+        aView.isOpaque = false
+        aView.layer.shadowOffset = CGSize(width: 0, height: 8)
+        aView.layer.shadowRadius = 8
+        aView.layer.shadowOpacity = 0.2
+        
+        view.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
+        view.addSubview(aView)
+        view.addSubview(tabBar)
+        
+        
+        aView.frame = CGRect(x: 90, y: 100, width: 250, height: 250)
+        tabBar.frame = CGRect(x: 90, y: 100, width: 250, height: 250)
+    }
+}
+
+
+final class RoundedTabBar: UIView {
+    var topRadius: CGFloat = 10 {
+        didSet {
+            updatePath()
+        }
+    }
+    
+    var bottomRadius: CGFloat = 38.5 {
+        didSet {
+            updatePath()
+        }
+    }
+    
+    private var path: UIBezierPath?
+    
+    init() {
+        super.init(frame: .zero)
+        
+        isOpaque = false
+        layer.shadowOffset = CGSize(width: 0, height: 8)
+        layer.shadowRadius = 8
+        layer.shadowOpacity = 0.2
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        updatePath()
+    }
+    
+    override func draw(_ rect: CGRect) {
+        guard let path = path,
+            let context = UIGraphicsGetCurrentContext() else {
+                return
+        }
+        
+        context.clear(rect)
+        UIColor.white.setFill()
+        path.fill()
+    }
+    
+    private func updatePath() {
+        let path = UIBezierPath.continuousRoundedRect(bounds, cornerRadius: (topLeft: bottomRadius, topRight: bottomRadius, bottomLeft: bottomRadius, bottomRight: bottomRadius))
+        
+        layer.shadowPath = path.cgPath
+        
+        self.path = path
+        setNeedsDisplay()
     }
 }

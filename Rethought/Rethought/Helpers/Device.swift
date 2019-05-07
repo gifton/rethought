@@ -47,7 +47,8 @@ struct Device {
     
     struct colors {
         // bg's
-        static let offWhite   = UIColor(hex: "F2F4F6")
+//        static let offWhite   = UIColor(hex: "F2F4F6")
+        static let offWhite = UIColor(white: 0.95, alpha: 1.0)
         static let gradientColors = [UIColor(hex: "14263F"), UIColor(hex: "122450"), UIColor(hex: "381055"), UIColor(hex: "1A2437")]
         //text
         static let lightGray = UIColor(hex: "9F9F9F")

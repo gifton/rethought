@@ -9,9 +9,11 @@ class MSGBoardPhotoView: MSGBoardComponent {
         // calculate height
         // 10pts for padding below image, 15 pts for bottom of label
         let lblSize = builder.userDetail.sizeFor(font: Device.font.body(ofSize: .small ), width: Device.size.newImageBoardView.width)
-        let height: CGFloat = Device.size.newImageBoardView.height + lblSize.height
+        let height: CGFloat = Device.size.newImageBoardView.height + lblSize.height + 25
         
         super.init(frame: CGRect(x: frame.origin.x, y: frame.origin.y, width: Device.size.newNoteBoardView, height: height))
+        backgroundColor = .white
+        self.roundCorners([.allCorners], radius: 14)
         setView()
     }
     
@@ -43,7 +45,7 @@ class MSGBoardPhotoView: MSGBoardComponent {
         imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         imageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
-        detailLbl.setAnchor(top: imageView.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 5, paddingBottom: 15, paddingTrailing: 5)
+        detailLbl.setAnchor(top: imageView.bottomAnchor, leading: imageView.leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 5, paddingBottom: 15, paddingTrailing: 5)
         
         styleView()
     }
@@ -52,8 +54,6 @@ class MSGBoardPhotoView: MSGBoardComponent {
         imageView.image = builder.photo
         detailLbl.text = builder.userDetail
         detailLbl.numberOfLines = 0
-        detailLbl.layer.borderColor = UIColor.black.cgColor
-        detailLbl.layer.borderWidth = 2
     }
     
     var builder: PhotoBuilder
