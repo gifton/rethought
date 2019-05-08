@@ -4,18 +4,20 @@ import UIKit
 
 class MSGBoardWelcomeCard: MSGBoardComponent {
     override init(frame: CGRect) {
-        super.init(frame: CGRect(x: frame.origin.x, y: frame.origin.y, width: 320, height: 169))
-        self.backgroundColor = .white
+        super.init(frame: .zero)
+        layer.backgroundColor = UIColor.clear.cgColor
+        backgroundColor = UIColor.clear
+        
+        self.frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: 320, height: 169)
         
         componentType = .welcomeCard
-        
-        layer.backgroundColor = UIColor.red.cgColor
         
         isOpaque = true
         layer.shadowOffset = CGSize(width: 0, height: 8)
         layer.shadowRadius = 8
         layer.shadowOpacity = 0.2
         
+        translatesAutoresizingMaskIntoConstraints = false
         setViews()
     }
     
@@ -26,20 +28,22 @@ class MSGBoardWelcomeCard: MSGBoardComponent {
     func setViews() {
         backgroundImage.image = #imageLiteral(resourceName: "welcomeCardGraphic")
         backgroundImage.contentMode = .scaleAspectFit
-        
+
         titleLabel.textAlignment = .left
         titleLabel.text = "Start a new thought"
         titleLabel.font = Device.font.title(ofSize: .xXLarge)
         titleLabel.textColor = Device.colors.green
-        
+
         dateLabel.textAlignment = .left
         dateLabel.font = Device.font.body(ofSize: .medium)
         dateLabel.textColor = Device.colors.darkGray
         dateLabel.getStringFromDate(date: Date(), withStyle: .medium)
-        
+
         addSubview(backgroundImage)
         addSubview(titleLabel)
         addSubview(dateLabel)
+        
+        layoutIfNeeded()
     }
     
     override func layoutSubviews() {

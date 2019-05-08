@@ -56,7 +56,7 @@ class MSGBoard: UIScrollView {
         }
         //remove response cards
         // replace top welcome card (if removed)
-        let welcomeView = MSGBoardWelcomeCard(frame: CGRect(x: safeOrigin.x, y: safeOrigin.y, width: Device.size.width - 50, height: 220))
+        let welcomeView = MSGBoardWelcomeCard(frame: CGRect(x: safeOrigin.x, y: safeOrigin.y, width: 0, height: 0))
         add(welcomeView)
         
     }
