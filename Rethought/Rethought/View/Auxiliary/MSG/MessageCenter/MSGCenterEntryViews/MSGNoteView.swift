@@ -50,6 +50,7 @@ class MSGCenterNoteView: UIView {
     
     func styleViews() {
         // set background
+        // gifton
         backgroundColor = Device.colors.offWhite
         noteTitle.textColor = Device.colors.lightGray
         cancelButton.backgroundColor = Device.colors.red
