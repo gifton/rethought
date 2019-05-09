@@ -111,13 +111,7 @@ class MSGCenter: UIView {
         
         return view
     }()
-    public var newLinkView: NewLinkView = {
-        let view = NewLinkView()
-        view.backgroundColor = Device.colors.link
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
-    }()
+    public var newLinkView: MSGCenterLinkView!
     public var newNoteView: MSGCenterNoteView!
     public var newPhotoView: MSGCenterPhotoView!
 }
@@ -171,6 +165,7 @@ extension MSGCenter {
         var view = UIView()
         switch type {
         case .link:
+            newLinkView = MSGCenterLinkView(withBus: self)
             view = newLinkView
             currentEntryType = .link
             textView.text = "give your link a title"

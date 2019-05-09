@@ -29,8 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             self.window?.rootViewController = nav
             
-//            let moc = container.managedObjectModel
-//            print(moc.entitiesByName)
         }
         IQKeyboardManager.shared.enable = true
         return true

@@ -30,7 +30,7 @@ class MSGCenterPhotoView: UIView {
     
     private var photo: UIImage?
     private var bus: EntryComponentBus
-    private var photoView: MSGCenterPreviewPhotoView!
+    private var photoView: MSGCenterPreviewPhotoView?
     private let newImage: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
@@ -78,6 +78,10 @@ class MSGCenterPhotoView: UIView {
     
     func setView() {
         photoView = MSGCenterPreviewPhotoView(frame: CGRect(x: 0, y: 0, width: Device.size.width, height: MSGContext.size.photo.rawValue),  bus: self)
+        guard let photoView = photoView else {
+            print("unable to instantiate photoview")
+            return
+        }
         addSubview(photoView)
         addSubview(photoLabel)
         addSubview(alertLabel)
@@ -121,6 +125,10 @@ extension MSGCenterPhotoView: MSGCenterEntryView, MSGCenterPhotoBus {
         
         newImage.image = photo
         // remove camera view
+        guard let photoView = photoView else {
+            print("unable to instantiate photoview")
+            return
+        }
         photoView.removeFromSuperview()
         
         // add and set views
@@ -154,6 +162,10 @@ extension MSGCenterPhotoView: MSGCenterEntryView, MSGCenterPhotoBus {
     
     //end session from MSGCenter
     public func endSession() {
+        guard let photoView = photoView else {
+            print("unable to instantiate photoview for session completion")
+            return
+        }
         photoView.endSession()
     }
 }

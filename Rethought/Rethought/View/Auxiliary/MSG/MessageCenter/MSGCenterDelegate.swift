@@ -16,15 +16,3 @@ protocol MSGConnector {
 enum MessageButtonType {
     case send, entry
 }
-
-
-protocol MSGCenterState {
-    var isShowingEntry: Bool { get }
-    var didStartEntry: Bool { get }
-    var didSaveEntry: Bool { get }
-    
-    var isTypingThought: Bool { get }
-    var didSaveThought: Bool { get }
-    
-    var buttonAvailability: MSGContext.center.buttonAvailability { get }
-}
