@@ -1,16 +1,24 @@
 PODS:
   - IQKeyboardManagerSwift (6.2.1)
+  - Kingfisher (4.10.1)
+  - SwiftLinkPreview (3.0.1)
 
 DEPENDENCIES:
   - IQKeyboardManagerSwift (= 6.2.1)
+  - Kingfisher (~> 4.0)
+  - SwiftLinkPreview
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - IQKeyboardManagerSwift
+    - Kingfisher
+    - SwiftLinkPreview
 
 SPEC CHECKSUMS:
   IQKeyboardManagerSwift: 0f0ae8935360b4003e6ea1ac7c19898f01e2f7c7
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  SwiftLinkPreview: 7524438c43bf63a5041615713777c3d8f19a9a31
 
-PODFILE CHECKSUM: d594143ca50454564cc7f1d3a3090831f746e70b
+PODFILE CHECKSUM: ef5f285abf361647b9fd4a05875b08caa12f2a6f
 
 COCOAPODS: 1.5.3
