@@ -151,7 +151,6 @@ extension ConversationPresenter: MSGCenterDelegate {
         animateTo(position: .standard())
         msgCenter.textView.resignFirstResponder()
         _ = msgCenter.removeEntryView()
-        print("message cent from convo handler")
     }
     
     

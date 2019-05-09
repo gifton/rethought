@@ -12,7 +12,6 @@ class MSGBoardPhotoView: MSGBoardComponent {
         let height: CGFloat = Device.size.newImageBoardView.height + lblSize.height + 25
         
         super.init(frame: CGRect(x: frame.origin.x, y: frame.origin.y, width: Device.size.newNoteBoardView, height: height))
-        backgroundColor = .white
         self.roundCorners([.allCorners], radius: 14)
         setView()
     }

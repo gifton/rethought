@@ -50,7 +50,6 @@ class MSGCenterNoteView: UIView {
     
     func styleViews() {
         // set background
-        // gifton
         backgroundColor = Device.colors.offWhite
         noteTitle.textColor = Device.colors.lightGray
         cancelButton.backgroundColor = Device.colors.red
@@ -70,6 +69,7 @@ class MSGCenterNoteView: UIView {
         cancelButton.layer.cornerRadius = 10
         cancelButton.layer.masksToBounds = true
         // add targets
+        cancelButton.addTapGestureRecognizer(action: cancel)
     }
     
     required init?(coder aDecoder: NSCoder) {

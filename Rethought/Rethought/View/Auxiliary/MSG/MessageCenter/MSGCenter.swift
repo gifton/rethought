@@ -297,5 +297,6 @@ extension MSGCenter: EntryComponentBus {
     }
     func entryDidRequestCancel() {
         _ = removeEntryView()
+        connector.isDoneEditing()
     }
 }
