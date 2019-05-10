@@ -146,5 +146,11 @@ extension UIView {
             self.frame = frame
         }
     }
+    
+    
+    //add continuos cornering like iphone X bezels
+    public func continuousCorner(withRadius radius: CGFloat) {
+        
+    }
 
 }

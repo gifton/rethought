@@ -47,6 +47,14 @@ extension ConversationController: MSGConnector {
             }
             //call model func to insert intp context
             conversation.tableEncapsulation.addEntry(note)
+        case .link:
+            //guard to correct entryBuilder
+            guard let link: LinkBuilder = entry as? LinkBuilder else {
+                print ("unable to conform to link builder, breaking")
+                return
+            }
+            //call model func to insert intp context
+            conversation.tableEncapsulation.addEntry(link)
         default:
             //guard to correct entryBuilder
             guard let photo: PhotoBuilder = entry as? PhotoBuilder else {

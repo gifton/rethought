@@ -7,6 +7,6 @@ target 'Rethought' do
 
   # Pods for Rethought
   pod 'SwiftLinkPreview'
-  pod 'Kingfisher', '~>4.0'
+  pod 'Kingfisher', '~>5.0'
   pod 'IQKeyboardManagerSwift','6.2.1'
 end

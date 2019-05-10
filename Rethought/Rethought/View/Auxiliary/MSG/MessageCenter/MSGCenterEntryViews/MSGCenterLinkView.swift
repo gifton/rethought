@@ -1,13 +1,8 @@
-//
-//  MSGCenterLinkView.swift
-//  Rethought
-//
-//  Created by Dev on 5/8/19.
-//  Copyright © 2019 Wesaturate. All rights reserved.
-//
 
 import Foundation
 import UIKit
+import SwiftLinkPreview
+
 
 class MSGCenterLinkView: UIView {
     init(withBus bus: EntryComponentBus) {
@@ -22,7 +17,8 @@ class MSGCenterLinkView: UIView {
     }
     
     var bus: EntryComponentBus
-    
+    var slp: SwiftLinkPreview?
+    var response: Response?
     
     // MARK: Objects
     private let linkLabel = UILabel()
@@ -42,8 +38,10 @@ class MSGCenterLinkView: UIView {
         addSubview(descriptionLabel)
         addSubview(cancelButton)
         
+        // methods set anchor, setHeightWidth, and setTopAndLeading all set translatesAutoresizingMaskIntoConstraints to false
         linkLabel.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, paddingTop: 10, paddingLeading: 25, paddingBottom: 0, paddingTrailing: 0)
         
+        userInputField.delegate = self
         userInputField.setHeightWidth(width: 250, height: 30)
         userInputField.setTopAndLeading(top: linkLabel.bottomAnchor, leading: leadingAnchor, paddingTop: 15, paddingLeading: 25)
         
@@ -52,7 +50,7 @@ class MSGCenterLinkView: UIView {
         
         titleLabel.setTopAndLeading(top: linkImageView.topAnchor, leading: linkImageView.trailingAnchor, paddingTop: 0, paddingLeading: 5)
         
-        descriptionLabel.setTopAndLeading(top: titleLabel.bottomAnchor, leading: linkImageView.trailingAnchor, paddingTop: 5, paddingLeading: 5)
+        descriptionLabel.setAnchor(top: titleLabel.bottomAnchor, leading: linkImageView.trailingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 5, paddingLeading: 5, paddingBottom: 0, paddingTrailing: 15)
         
         cancelButton.setHeightWidth(width: 55, height: 25)
         cancelButton.centerYAnchor.constraint(equalTo: linkLabel.centerYAnchor).isActive = true
@@ -68,11 +66,12 @@ class MSGCenterLinkView: UIView {
         linkImageView.backgroundColor = UIColor.black.withAlphaComponent(0.15)
         linkImageView.layer.masksToBounds = true
         
-        titleLabel.font = Device.font.mediumTitle(ofSize: .large)
+        titleLabel.font = Device.font.title(ofSize: .large)
         titleLabel.text = "Title"
         
         descriptionLabel.font = Device.font.body(ofSize: .large)
         descriptionLabel.text = "Description"
+        descriptionLabel.numberOfLines = 0
         
         userInputField.backgroundColor = UIColor.black.withAlphaComponent(0.15)
         userInputField.text = "https://wesaturate.com"
@@ -97,6 +96,50 @@ extension MSGCenterLinkView: MSGCenterEntryView, MSGSubView {
     }
     
     var minimumComponentsCompleted: Bool {
+        if response != nil {
+            return true
+        }
         return false
     }
 }
+
+// generate preview
+extension MSGCenterLinkView {
+    private func beginSearch(withURL string: String?, completion: @escaping () -> Void) {
+        guard let string: String = string else { print(" unable to get url"); return}
+        
+        // make http -> https for
+        _ = string.replacingOccurrences(of: "http:", with: "https:")
+        
+        slp?.preview(string, onSuccess: { (resp) in
+            self.titleLabel.text = resp.title ?? "There is no title!"
+            self.descriptionLabel.text = resp.description ?? "there is no description"
+            self.response = resp
+            completion()
+        }, onError: { (err) in
+            print(err)
+        })
+    }
+    
+    public func requestSave(withTitle string: String) {
+        guard let title = response?.title,
+            let link = response?.finalUrl,
+            let icon = response?.icon else { print (" unable to get title from SLP"); return }
+        
+        let lb = LinkBuilder(link: "\(link)", rawIconUrl: icon, userDetail: string, title: title, forEntry: nil)
+        bus.save(withpayload: lb)
+    }
+}
+
+extension MSGCenterLinkView: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = ""
+        slp = SwiftLinkPreview(session: .shared, workQueue: SwiftLinkPreview.defaultWorkQueue, responseQueue: DispatchQueue.main, cache: DisabledCache.instance)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        beginSearch(withURL: textField.text) { textField.resignFirstResponder() }
+        return false
+    }
+}
+

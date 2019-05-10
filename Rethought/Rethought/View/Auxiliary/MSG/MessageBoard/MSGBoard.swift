@@ -24,6 +24,37 @@ class MSGBoard: UIScrollView {
         return msgSubViews.count
     }
     
+    //functions and variables for creating a true iphone x bezel
+    var radius: CGFloat = 36.5
+    private var path: UIBezierPath?
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        updatePath()
+    }
+    
+    override func draw(_ rect: CGRect) {
+        guard let path = path,
+            let context = UIGraphicsGetCurrentContext() else {
+                print("returning")
+                return
+        }
+        
+        context.clear(rect)
+        Device.colors.offWhite.setFill()
+        path.fill()
+    }
+    
+    private func updatePath() {
+        let path = UIBezierPath.continuousRoundedRect(bounds, cornerRadius: (topLeft: radius, topRight: radius, bottomLeft: radius, bottomRight: radius))
+        
+        layer.shadowPath = path.cgPath
+        
+        self.path = path
+        setNeedsDisplay()
+    }
+    
     // get origin for new component adding in
     private var safeOrigin: CGPoint {
         guard let lastView = msgSubViews.last?.componentType else { return CGPoint(x: rethoughtResponsePaddingLeft, y: 40) }
@@ -38,11 +69,22 @@ class MSGBoard: UIScrollView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+//        let backView = UIView(frame: frame)
+//        backView
+//        backView.backgroundColor = .red
+//        addSubview(backView)
+        
         contentSize = CGSize(width: frame.width, height: safeOrigin.y + 100)
         resetView()
         addResponse(payload: "Whats on your mind?")
         backgroundColor = Device.colors.offWhite
+        layer.backgroundColor = UIColor.white.cgColor
         showsVerticalScrollIndicator = false
+        
+        // add corner radius beyond bezier path to properly display curve
+        // TODO: Make this smarter
+        layer.cornerRadius = 55
     }
     
     required init?(coder aDecoder: NSCoder) {

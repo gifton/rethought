@@ -19,7 +19,8 @@ class ConversationView: UIView {
     public var conversationPresenter: ConversationPresenter!
     
     init(with connector: MSGConnector) {
-        super.init(frame: CGRect(x: 0, y: 0, width: Device.size.width, height: Device.size.height - Device.size.tabBarHeight))
+        let frame = CGRect(x: 0, y: 0, width: Device.size.width, height: Device.size.height - Device.size.tabBarHeight)
+        super.init(frame: frame)
         backgroundColor = .white
         
         // initiate message center with injected params

@@ -91,7 +91,6 @@ class MSGCenterPhotoView: UIView {
         photoLabel.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 25, paddingLeading: 25, paddingBottom: 0, paddingTrailing: 0)
     }
 
-    
     // set photo to nil and reset view on tap
     private func didTapRetake() {
         photo = nil
@@ -130,6 +129,7 @@ extension MSGCenterPhotoView: MSGCenterEntryView, MSGCenterPhotoBus {
             return
         }
         photoView.removeFromSuperview()
+        alertLabel.removeFromSuperview()
         
         // add and set views
         addSubview(newImage)
