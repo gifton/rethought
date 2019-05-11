@@ -23,6 +23,7 @@ class MSGCenterLinkView: UIView {
     // MARK: Objects
     private let linkLabel = UILabel()
     private let linkImageView = UIImageView()
+    let imageWrapper = UIView()
     private let titleLabel = UILabel()
     private let descriptionLabel = UILabel()
     private let userInputField = UITextField()
@@ -33,10 +34,11 @@ class MSGCenterLinkView: UIView {
         
         addSubview(linkLabel)
         addSubview(userInputField)
-        addSubview(linkImageView)
+        addSubview(imageWrapper)
         addSubview(titleLabel)
         addSubview(descriptionLabel)
         addSubview(cancelButton)
+        imageWrapper.addSubview(linkImageView)
         
         // methods set anchor, setHeightWidth, and setTopAndLeading all set translatesAutoresizingMaskIntoConstraints to false
         linkLabel.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, paddingTop: 10, paddingLeading: 25, paddingBottom: 0, paddingTrailing: 0)
@@ -45,13 +47,15 @@ class MSGCenterLinkView: UIView {
         userInputField.setHeightWidth(width: 250, height: 30)
         userInputField.setTopAndLeading(top: linkLabel.bottomAnchor, leading: leadingAnchor, paddingTop: 15, paddingLeading: 25)
         
-        linkImageView.setHeightWidth(width: 65, height: 65)
-        linkImageView.setTopAndLeading(top: userInputField.bottomAnchor, leading: leadingAnchor, paddingTop: 20, paddingLeading: 25)
+        imageWrapper.setHeightWidth(width: 65, height: 65)
+        imageWrapper.setTopAndLeading(top: userInputField.bottomAnchor, leading: leadingAnchor, paddingTop: 20, paddingLeading: 25)
         
-        titleLabel.setTopAndLeading(top: linkImageView.topAnchor, leading: linkImageView.trailingAnchor, paddingTop: 0, paddingLeading: 5)
+        linkImageView.frame = CGRect(x: 20, y: 20, width: 25, height: 25)
+        
+        titleLabel.setTopAndLeading(top: imageWrapper.topAnchor, leading: imageWrapper.trailingAnchor, paddingTop: 0, paddingLeading: 5)
         titleLabel.trailingAnchor.constraint(equalTo: safeTrailingAnchor, constant: 5).isActive = true
         
-        descriptionLabel.setAnchor(top: titleLabel.bottomAnchor, leading: linkImageView.trailingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 5, paddingLeading: 5, paddingBottom: 0, paddingTrailing: 15)
+        descriptionLabel.setAnchor(top: titleLabel.bottomAnchor, leading: imageWrapper.trailingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 5, paddingLeading: 5, paddingBottom: 0, paddingTrailing: 15)
         
         cancelButton.setHeightWidth(width: 55, height: 25)
         cancelButton.centerYAnchor.constraint(equalTo: linkLabel.centerYAnchor).isActive = true
@@ -63,11 +67,10 @@ class MSGCenterLinkView: UIView {
         linkLabel.font = Device.font.title(ofSize: .xXXLarge)
         linkLabel.textColor = Device.colors.lightGray
         
-        linkImageView.layer.cornerRadius = 18
-        linkImageView.backgroundColor = UIColor.black.withAlphaComponent(0.15)
-        linkImageView.layer.masksToBounds = true
-        linkImageView.image = #imageLiteral(resourceName: "Link_light")
-        linkImageView.sizeThatFits(CGSize(width: 20, height: 20))
+        imageWrapper.layer.cornerRadius = 18
+        imageWrapper.backgroundColor = UIColor.black.withAlphaComponent(0.15)
+        imageWrapper.layer.masksToBounds = true
+        linkImageView.image = #imageLiteral(resourceName: "link_clay")
         
         titleLabel.font = Device.font.title(ofSize: .large)
         titleLabel.text = "Title"
@@ -146,20 +149,20 @@ extension MSGCenterLinkView {
         
         guard let icon = resp.icon else {
             print("unable to get icon")
+            
             return
         }
         
-        let imageLink = URL(string: icon)!
-        
-        linkImageView.download(from: imageLink)
+        if let imageLink = URL(string: icon) {
+            linkImageView.download(from: imageLink)
+        }
     }
     
     public func requestSave(withTitle string: String) {
         guard let title = response?.title,
-            let link = response?.finalUrl,
-            let icon = response?.icon else { print (" unable to get title from SLP"); return }
+            let link = response?.finalUrl else { print ("unable to get content from SLP"); return }
         
-        let lb = LinkBuilder(link: "\(link)", rawIconUrl: icon, userDetail: string, title: title, forEntry: nil)
+        let lb = LinkBuilder(link: "\(link)", rawIconUrl: response?.icon, userDetail: string, title: title, forEntry: nil)
         bus.save(withpayload: lb)
     }
 }

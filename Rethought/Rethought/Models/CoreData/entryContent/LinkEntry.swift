@@ -12,7 +12,7 @@ public class LinkEntry: NSManagedObject {
     // MARK: Objects
     @NSManaged public var title: String
     @NSManaged public var url: String
-    @NSManaged public var rawIcon: String
+    @NSManaged public var rawIcon: String?
     @NSManaged public var detail: String
     
     // MARK: Relationship

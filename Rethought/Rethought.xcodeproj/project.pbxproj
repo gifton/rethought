@@ -24,7 +24,7 @@
 		D7006EE3226825FE004E570F /* ConversationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EE2226825FE004E570F /* ConversationController.swift */; };
 		D7006EE5226841D2004E570F /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EE4226841D2004E570F /* ConversationView.swift */; };
 		D7006EE72268CB63004E570F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EE62268CB63004E570F /* ViewController.swift */; };
-		D7006EE92268CD5A004E570F /* ReTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EE82268CD5A004E570F /* ReTabBar.swift */; };
+		D7006EE92268CD5A004E570F /* AnimatedTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EE82268CD5A004E570F /* AnimatedTabBar.swift */; };
 		D7006EEB2268CD6C004E570F /* ReTabBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EEA2268CD6C004E570F /* ReTabBarDelegate.swift */; };
 		D7006EED2268CDAE004E570F /* ReTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EEC2268CDAE004E570F /* ReTabItem.swift */; };
 		D7006EEF2268CDD8004E570F /* ReTabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EEE2268CDD8004E570F /* ReTabItemView.swift */; };
@@ -109,7 +109,7 @@
 		D7006EE2226825FE004E570F /* ConversationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationController.swift; sourceTree = "<group>"; };
 		D7006EE4226841D2004E570F /* ConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
 		D7006EE62268CB63004E570F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D7006EE82268CD5A004E570F /* ReTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReTabBar.swift; sourceTree = "<group>"; };
+		D7006EE82268CD5A004E570F /* AnimatedTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTabBar.swift; sourceTree = "<group>"; };
 		D7006EEA2268CD6C004E570F /* ReTabBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReTabBarDelegate.swift; sourceTree = "<group>"; };
 		D7006EEC2268CDAE004E570F /* ReTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReTabItem.swift; sourceTree = "<group>"; };
 		D7006EEE2268CDD8004E570F /* ReTabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReTabItemView.swift; sourceTree = "<group>"; };
@@ -222,7 +222,7 @@
 		D7006ED622673586004E570F /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
-				D7006EE82268CD5A004E570F /* ReTabBar.swift */,
+				D7006EE82268CD5A004E570F /* AnimatedTabBar.swift */,
 				D7006EEA2268CD6C004E570F /* ReTabBarDelegate.swift */,
 				D7006EEC2268CDAE004E570F /* ReTabItem.swift */,
 				D7006EEE2268CDD8004E570F /* ReTabItemView.swift */,
@@ -630,7 +630,7 @@
 			files = (
 				D7536FE32262EB0A003F0920 /* PhotoEntry.swift in Sources */,
 				D7006EDF2268174F004E570F /* NewThoughtCell.swift in Sources */,
-				D7006EE92268CD5A004E570F /* ReTabBar.swift in Sources */,
+				D7006EE92268CD5A004E570F /* AnimatedTabBar.swift in Sources */,
 				D7C6542E226A850B008A66EF /* UIbutton.swift in Sources */,
 				D7BB183D227892F40084963E /* MSGThoughtView.swift in Sources */,
 				D7149384227CB830005B681D /* MSGBoardNoteView.swift in Sources */,

@@ -8,6 +8,8 @@ open class ConversationPresenter: NSObject {
     private let regularMessageCenterHeight: CGFloat = 115.0
     private var isShowingEntry: Bool = false
     private var isShowingKeyboard: Bool = false
+    // variable to save the last position visited, default to zero
+    private var lastContentOffset: CGFloat = 0
     //conversationPosition is an internal data type for setting up animating views to
     // desired position
     private struct ConversationPosition{
@@ -103,12 +105,17 @@ extension ConversationPresenter: UIScrollViewDelegate {
     //when scroll view scrolls, if entry or keyboard are showing
     // hide them
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        msgCenter.textView.resignFirstResponder()
-        if msgCenter.isShowingEntry {
-            print(self.msgCenter.removeEntryView())
-            animateTo(position: .standard())
+        if (self.lastContentOffset > scrollView.contentOffset.y) {
+            msgCenter.textView.resignFirstResponder()
+            if msgCenter.isShowingEntry {
+                print(self.msgCenter.removeEntryView())
+                animateTo(position: .standard())
+            }
+            msgDely?.isDoneEditing()
         }
-        msgDely?.isDoneEditing()
+        
+        //set content offset for later use
+        self.lastContentOffset = scrollView.contentOffset.y
     }
 }
 

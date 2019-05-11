@@ -16,7 +16,6 @@ class MSGBoard: UIScrollView {
     var userResponsePaddingRight: CGFloat = 15
     var rethoughtResponsePaddingRight: CGFloat = 65
     var rethoughtResponsePaddingLeft: CGFloat = 15
-    var minimumConversationSize: CGSize = CGSize(width: Device.size.width, height: Device.size.height - Device.size.tabBarHeight - 115)
     var ySpacing: CGFloat = 30.0
     
     // MARK: public vars
@@ -28,23 +27,23 @@ class MSGBoard: UIScrollView {
     var radius: CGFloat = 36.5
     private var path: UIBezierPath?
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        updatePath()
-    }
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//
+//        updatePath()
+//    }
     
-    override func draw(_ rect: CGRect) {
-        guard let path = path,
-            let context = UIGraphicsGetCurrentContext() else {
-                print("returning")
-                return
-        }
-        
-        context.clear(rect)
-        Device.colors.offWhite.setFill()
-        path.fill()
-    }
+//    override func draw(_ rect: CGRect) {
+//        guard let path = path,
+//            let context = UIGraphicsGetCurrentContext() else {
+//                print("returning")
+//                return
+//        }
+//
+//        context.clear(rect)
+//        Device.colors.offWhite.setFill()
+//        path.fill()
+//    }
     
     private func updatePath() {
         let path = UIBezierPath.continuousRoundedRect(bounds, cornerRadius: (topLeft: radius, topRight: radius, bottomLeft: radius, bottomRight: radius))
@@ -70,16 +69,10 @@ class MSGBoard: UIScrollView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-//        let backView = UIView(frame: frame)
-//        backView
-//        backView.backgroundColor = .red
-//        addSubview(backView)
-        
-        contentSize = CGSize(width: frame.width, height: safeOrigin.y + 100)
+        contentSize = CGSize(width: frame.width, height: safeOrigin.y)
         resetView()
         addResponse(payload: "Whats on your mind?")
         backgroundColor = Device.colors.offWhite
-        layer.backgroundColor = UIColor.white.cgColor
         showsVerticalScrollIndicator = false
         
         // add corner radius beyond bezier path to properly display curve
@@ -134,6 +127,13 @@ extension MSGBoard: MSGBoardDelegate {
             }
             
             view = MSGBoardPhotoView(frame: CGRect(x: safeOrigin.x, y: safeOrigin.y, width: Device.size.newNoteBoardView, height: 0), payload: photo)
+        case .link:
+            guard let link: LinkBuilder = payload as? LinkBuilder else {
+                print ("unable to cast linkBuilder from payload in msgBoard")
+                return
+            }
+            
+            view = MSGBoardLinkView(frame: CGRect(x: safeOrigin.x, y: safeOrigin.y, width: 0, height: 0), lb: link)
         default:
             guard let note: NoteBuilder = payload as? NoteBuilder else {
                 print ("unable to cast notebuilder from payload in msgBoard")
@@ -182,6 +182,7 @@ extension MSGBoard: MSGBoardDelegate {
         
         addSubview(view)
         msgSubViews.append(view)
-        
+        updatePath()
+        print (contentSize)
     }
 }

@@ -234,8 +234,10 @@ extension MSGCenter {
     private func attemptSending(entryOfType type: EntryType, with payload: String) -> Bool {
         switch type {
         case .photo: return newPhotoView.requestContent(with: payload)
+        case .link: newLinkView.requestSave(withTitle: payload); return true
         default: newNoteView.requestSave(withTitile: payload); return true
         }
+        return false
     }
     
     private func handleFailedSave() { print("unable to save thought, missing title component")}
