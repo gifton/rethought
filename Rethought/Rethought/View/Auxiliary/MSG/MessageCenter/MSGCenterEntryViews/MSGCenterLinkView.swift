@@ -49,6 +49,7 @@ class MSGCenterLinkView: UIView {
         linkImageView.setTopAndLeading(top: userInputField.bottomAnchor, leading: leadingAnchor, paddingTop: 20, paddingLeading: 25)
         
         titleLabel.setTopAndLeading(top: linkImageView.topAnchor, leading: linkImageView.trailingAnchor, paddingTop: 0, paddingLeading: 5)
+        titleLabel.trailingAnchor.constraint(equalTo: safeTrailingAnchor, constant: 5).isActive = true
         
         descriptionLabel.setAnchor(top: titleLabel.bottomAnchor, leading: linkImageView.trailingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 5, paddingLeading: 5, paddingBottom: 0, paddingTrailing: 15)
         
@@ -65,11 +66,13 @@ class MSGCenterLinkView: UIView {
         linkImageView.layer.cornerRadius = 18
         linkImageView.backgroundColor = UIColor.black.withAlphaComponent(0.15)
         linkImageView.layer.masksToBounds = true
+        linkImageView.image = #imageLiteral(resourceName: "Link_light")
+        linkImageView.sizeThatFits(CGSize(width: 20, height: 20))
         
         titleLabel.font = Device.font.title(ofSize: .large)
         titleLabel.text = "Title"
         
-        descriptionLabel.font = Device.font.body(ofSize: .large)
+        descriptionLabel.font = Device.font.body(ofSize: .medium)
         descriptionLabel.text = "Description"
         descriptionLabel.numberOfLines = 0
         
@@ -108,17 +111,47 @@ extension MSGCenterLinkView {
     private func beginSearch(withURL string: String?, completion: @escaping () -> Void) {
         guard let string: String = string else { print(" unable to get url"); return}
         
-        // make http -> https for
-        _ = string.replacingOccurrences(of: "http:", with: "https:")
+        // make http -> https
+        var secureString = String()
+        if string.contains("http://") {
+            secureString = string.replacingOccurrences(of: "http:", with: "https:")
+        } else if string.contains("https://") {
+            print("has correct SSL stamp")
+        } else {
+            secureString = "https://" + string
+        }
         
-        slp?.preview(string, onSuccess: { (resp) in
-            self.titleLabel.text = resp.title ?? "There is no title!"
-            self.descriptionLabel.text = resp.description ?? "there is no description"
+        slp?.preview(secureString, onSuccess: { (resp) in
             self.response = resp
             completion()
+            
         }, onError: { (err) in
             print(err)
+            self.slp?.session.reset(completionHandler: {
+                self.slp = SwiftLinkPreview(session: .shared,
+                                            workQueue: SwiftLinkPreview.defaultWorkQueue,
+                                            responseQueue: DispatchQueue.main,
+                                            cache: DisabledCache.instance)
+            })
+            print ("restartedSLP")
+            self.userInputField.text = "https://wesaturate.com"
         })
+    }
+    
+    private func setCrawledContent() {
+        guard let resp: Response = response else { return }
+    
+        titleLabel.text = resp.title ?? "No title available"
+        descriptionLabel.text = resp.description ?? "No description available"
+        
+        guard let icon = resp.icon else {
+            print("unable to get icon")
+            return
+        }
+        
+        let imageLink = URL(string: icon)!
+        
+        linkImageView.download(from: imageLink)
     }
     
     public func requestSave(withTitle string: String) {
@@ -138,7 +171,11 @@ extension MSGCenterLinkView: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        beginSearch(withURL: textField.text) { textField.resignFirstResponder() }
+        beginSearch(withURL: textField.text) {
+            print("completed crawl, setting content")
+            textField.resignFirstResponder()
+            self.setCrawledContent()
+        }
         return false
     }
 }
