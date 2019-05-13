@@ -257,12 +257,18 @@ extension MSGCenter {
     public func removeEntryView() -> Bool {
 
         switch  currentEntryType{
-        case .link: newLinkView.removeFromSuperview()
+        case .link:
+            newLinkView.unsetView()
+            newLinkView.removeFromSuperview()
         case .photo:
-            newPhotoView.endSession()
+            newPhotoView.unsetView()
             newPhotoView.removeFromSuperview()
-        case .recording: newRecordingView.removeFromSuperview()
-        case .note: newNoteView.removeFromSuperview()
+        case .recording:
+            
+            newRecordingView.removeFromSuperview()
+        case .note:
+            newNoteView.unsetView()
+            newNoteView.removeFromSuperview()
         default: return false
         }
         currentEntryType = .none
