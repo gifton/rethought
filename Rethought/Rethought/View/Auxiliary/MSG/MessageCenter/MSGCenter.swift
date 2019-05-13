@@ -170,7 +170,7 @@ extension MSGCenter {
             currentEntryType = .link
             textView.text = "give your link a title"
         case .note:
-            newNoteView = MSGCenterNoteView(bus: self)
+            newNoteView = MSGCenterNoteView(bus: self, thoughtIsCompleted: hasCompletedThought)
             view = newNoteView
             currentEntryType = .note
             textView.text = "give your note a title"
@@ -237,7 +237,6 @@ extension MSGCenter {
         case .link: newLinkView.requestSave(withTitle: payload); return true
         default: newNoteView.requestSave(withTitile: payload); return true
         }
-        return false
     }
     
     private func handleFailedSave() { print("unable to save thought, missing title component")}

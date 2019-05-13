@@ -3,10 +3,17 @@ import Foundation
 import UIKit
 
 class MSGCenterNoteView: UIView {
-    init(bus: EntryComponentBus) {
+    init(bus: EntryComponentBus, thoughtIsCompleted: Bool) {
         self.bus = bus
         super.init(frame: .zero)
+        
         setView()
+        
+        // if entry cannot be displayed yet, show warning message
+        if !thoughtIsCompleted {
+            setForIncompleteCredentials()
+        }
+        
     }
       
     var bus: EntryComponentBus
@@ -17,6 +24,33 @@ class MSGCenterNoteView: UIView {
     private let cancelButton = MessageButton()
     private let textCountLabel = UILabel()
     
+    
+    // set view if no thought is completed
+    private func setForIncompleteCredentials() {
+        let view = UIView(frame: frame)
+        view.blurBackground(type: .regular)
+        addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
+        
+        let warningLbl = UILabel()
+        warningLbl.font = Device.font.mediumTitle()
+        warningLbl.text = "Add a new thought before adding an entry!"
+        warningLbl.numberOfLines = 2
+        warningLbl.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        addSubview(warningLbl)
+        warningLbl.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        warningLbl.topAnchor.constraint(equalTo: topAnchor, constant: 50).isActive = true
+        warningLbl.widthAnchor.constraint(equalToConstant: 200).isActive = true
+    }
+    
+    // view will dissapear look-alike func
+    public func unsetView() {
+        removeSubviews()
+        newDetail = nil        
+    }
     
     func setView() {
         

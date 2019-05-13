@@ -68,7 +68,6 @@ class MSGBoardLinkView: MSGBoardComponent {
         linkImageView.layer.cornerRadius = 18
         linkImageView.backgroundColor = UIColor.black.withAlphaComponent(0.15)
         linkImageView.layer.masksToBounds = true
-        linkImageView.image?.scaled(toHeight: 20)
         
         titleLabel.font = Device.font.title(ofSize: .large)
         titleLabel.text = "No title available"
