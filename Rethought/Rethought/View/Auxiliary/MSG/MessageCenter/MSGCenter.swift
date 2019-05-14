@@ -104,13 +104,7 @@ class MSGCenter: UIView {
         return btn
     }()
     
-    public var newRecordingView: NewRecordingView = {
-        let view = NewRecordingView()
-        view.backgroundColor = Device.colors.recording
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
-    }()
+    public var newRecordingView: MSGCenterRecordingView!
     public var newLinkView: MSGCenterLinkView!
     public var newNoteView: MSGCenterNoteView!
     public var newPhotoView: MSGCenterPhotoView!
@@ -175,6 +169,7 @@ extension MSGCenter {
             currentEntryType = .note
             textView.text = "give your note a title"
         case .recording:
+            newRecordingView = MSGCenterRecordingView(bus: self)
             view = newRecordingView
             currentEntryType = .recording
             textView.text = "give your recording a description"
