@@ -28,6 +28,7 @@ class MSGCenterPhotoView: UIView {
         }
     }
     
+    // MARK: objects
     private var photo: UIImage?
     private var bus: EntryComponentBus
     private var photoView: MSGCenterPreviewPhotoView?
@@ -76,6 +77,7 @@ class MSGCenterPhotoView: UIView {
         return lbl
     }()
     
+    // set initial view
     func setView() {
         photoView = MSGCenterPreviewPhotoView(frame: CGRect(x: 0, y: 0, width: Device.size.width, height: MSGContext.size.photo.rawValue),  bus: self)
         guard let photoView = photoView else {

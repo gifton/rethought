@@ -16,9 +16,10 @@ class MSGCenterLinkView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var bus: EntryComponentBus
-    var slp: SwiftLinkPreview?
-    var response: Response?
+    // MARK: private variables
+    private var bus: EntryComponentBus
+    private var slp: SwiftLinkPreview?
+    private var response: Response?
     
     // MARK: Objects
     private let linkLabel = UILabel()
@@ -57,6 +58,7 @@ class MSGCenterLinkView: UIView {
         response = nil
     }
     
+    // initial view set
     private func setView() {
         backgroundColor = Device.colors.offWhite
         
@@ -90,6 +92,8 @@ class MSGCenterLinkView: UIView {
         cancelButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
     }
     
+    
+    // view property set
     private func styleView() {
         linkLabel.text = "New Link"
         linkLabel.font = Device.font.title(ofSize: .xXXLarge)

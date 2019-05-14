@@ -15,10 +15,12 @@ class MSGCenterNoteView: UIView {
         }
         
     }
-      
-    var bus: EntryComponentBus
+    
+    // MARK: Private vars
+    private var bus: EntryComponentBus
     private var newDetail: String?
     
+    // MARK: objects
     private let noteTitle = UILabel()
     private let noteTextView = UITextView()
     private let cancelButton = MessageButton()
@@ -52,6 +54,7 @@ class MSGCenterNoteView: UIView {
         newDetail = nil        
     }
     
+    // set initial view
     func setView() {
         
         // translate masks
@@ -82,6 +85,7 @@ class MSGCenterNoteView: UIView {
         styleViews()
     }
     
+    // view property set
     func styleViews() {
         // set background
         backgroundColor = Device.colors.offWhite

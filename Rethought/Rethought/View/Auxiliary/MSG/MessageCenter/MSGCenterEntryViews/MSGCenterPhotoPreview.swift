@@ -7,6 +7,8 @@ protocol MSGCenterPhotoBus {
     func photoTaken(_ photo: UIImage, completion: () -> Void)
 }
 
+// view that displays camera as input
+// handles image capture and AVsessions
 class MSGCenterPreviewPhotoView: UIView {
     
     init(frame: CGRect, bus: MSGCenterPhotoBus) {
@@ -90,6 +92,7 @@ class MSGCenterPreviewPhotoView: UIView {
         bus.photoTaken(image, completion: endSession)
     }
     
+    // end session public for call form MSGCenterPhotoView
     public func endSession() {
         captureSession.stopRunning()
     }

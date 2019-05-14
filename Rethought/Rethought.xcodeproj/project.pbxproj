@@ -33,6 +33,7 @@
 		D721112C2272D14D00131BEF /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721112B2272D14D00131BEF /* SearchController.swift */; };
 		D721112E2272D19700131BEF /* ConversatinoTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721112D2272D19700131BEF /* ConversatinoTable.swift */; };
 		D72F30F4228575450091DCB8 /* MSGBoardLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F30F3228575450091DCB8 /* MSGBoardLinkView.swift */; };
+		D72F30F622892EB90091DCB8 /* MSGCenterRecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F30F522892EB90091DCB8 /* MSGCenterRecordingView.swift */; };
 		D7536F922262C26F003F0920 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536F912262C26F003F0920 /* AppDelegate.swift */; };
 		D7536F972262C26F003F0920 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7536F952262C26F003F0920 /* Main.storyboard */; };
 		D7536F992262C272003F0920 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7536F982262C272003F0920 /* Assets.xcassets */; };
@@ -118,6 +119,7 @@
 		D721112B2272D14D00131BEF /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		D721112D2272D19700131BEF /* ConversatinoTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversatinoTable.swift; sourceTree = "<group>"; };
 		D72F30F3228575450091DCB8 /* MSGBoardLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardLinkView.swift; sourceTree = "<group>"; };
+		D72F30F522892EB90091DCB8 /* MSGCenterRecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGCenterRecordingView.swift; sourceTree = "<group>"; };
 		D7536F8E2262C26F003F0920 /* Rethought.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rethought.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7536F912262C26F003F0920 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7536F962262C26F003F0920 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 				D7BE8F1D227AB0F300B15F06 /* MSGCenterNoteView.swift */,
 				D7A2DF40227D6D9300D6CFF1 /* MSGCenterPhotoView.swift */,
 				D760FED2227E544E00E4693D /* MSGCenterPhotoPreview.swift */,
+				D72F30F522892EB90091DCB8 /* MSGCenterRecordingView.swift */,
 			);
 			path = MSGCenterEntryViews;
 			sourceTree = "<group>";
@@ -693,6 +696,7 @@
 				D7006ED522672C8B004E570F /* ThoughtBuilderViewModelDelegate.swift in Sources */,
 				D7006EB922653D2D004E570F /* EntryType.swift in Sources */,
 				D7536FB02262C870003F0920 /* PersistantService.swift in Sources */,
+				D72F30F622892EB90091DCB8 /* MSGCenterRecordingView.swift in Sources */,
 				D7006EC22266F35C004E570F /* ThoughtIcon.swift in Sources */,
 				D7536FCB2262D1DD003F0920 /* UITextView.swift in Sources */,
 				D7536FB22262C895003F0920 /* ManagedObjectContext.swift in Sources */,
