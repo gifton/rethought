@@ -14,8 +14,7 @@ class ViewController: AnimatedTabBarController {
     
     init(model: NSManagedObjectContext) {
         super.init(nibName: nil, bundle: nil)
-        let vc1 = UIViewController()
-        vc1.view.backgroundColor = Device.colors.blue
+        let vc1 = HomeController()
         
         let vc2 = UIViewController()
         let vc3 = ConversationController(withModel: ThoughtBuilderViewModel(withContext: model))
