@@ -36,6 +36,8 @@
 		D72F30F622892EB90091DCB8 /* MSGCenterRecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F30F522892EB90091DCB8 /* MSGCenterRecordingView.swift */; };
 		D7388A16228B894F00627E9E /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7388A15228B894F00627E9E /* HomeController.swift */; };
 		D7388A18228B8A2D00627E9E /* HomeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7388A17228B8A2D00627E9E /* HomeTable.swift */; };
+		D7388A1B228BB6F300627E9E /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7388A1A228BB6F300627E9E /* Animatable.swift */; };
+		D7388A1D228BBB9000627E9E /* RTTableLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7388A1C228BBB9000627E9E /* RTTableLayout.swift */; };
 		D7536F922262C26F003F0920 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536F912262C26F003F0920 /* AppDelegate.swift */; };
 		D7536F972262C26F003F0920 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7536F952262C26F003F0920 /* Main.storyboard */; };
 		D7536F992262C272003F0920 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7536F982262C272003F0920 /* Assets.xcassets */; };
@@ -124,6 +126,8 @@
 		D72F30F522892EB90091DCB8 /* MSGCenterRecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGCenterRecordingView.swift; sourceTree = "<group>"; };
 		D7388A15228B894F00627E9E /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		D7388A17228B8A2D00627E9E /* HomeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTable.swift; sourceTree = "<group>"; };
+		D7388A1A228BB6F300627E9E /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
+		D7388A1C228BBB9000627E9E /* RTTableLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTTableLayout.swift; sourceTree = "<group>"; };
 		D7536F8E2262C26F003F0920 /* Rethought.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rethought.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7536F912262C26F003F0920 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7536F962262C26F003F0920 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -295,6 +299,15 @@
 				D72F30F3228575450091DCB8 /* MSGBoardLinkView.swift */,
 			);
 			path = "entry+thought";
+			sourceTree = "<group>";
+		};
+		D7388A19228BB6E800627E9E /* Animatable */ = {
+			isa = PBXGroup;
+			children = (
+				D7388A1A228BB6F300627E9E /* Animatable.swift */,
+				D7388A1C228BBB9000627E9E /* RTTableLayout.swift */,
+			);
+			path = Animatable;
 			sourceTree = "<group>";
 		};
 		D7536F852262C26F003F0920 = {
@@ -469,6 +482,7 @@
 		D7C6541C226A391A008A66EF /* Auxiliary */ = {
 			isa = PBXGroup;
 			children = (
+				D7388A19228BB6E800627E9E /* Animatable */,
 				D7BB1834227631830084963E /* MSG */,
 				D7006ED622673586004E570F /* Tabbar */,
 			);
@@ -685,7 +699,9 @@
 				D7536FE92262EB0A003F0920 /* Thought.swift in Sources */,
 				D721112C2272D14D00131BEF /* SearchController.swift in Sources */,
 				D7810C20226F938F0038C1BA /* MSGCenter.swift in Sources */,
+				D7388A1D228BBB9000627E9E /* RTTableLayout.swift in Sources */,
 				D76895502271746F00DC059E /* MSGSubView.swift in Sources */,
+				D7388A1B228BB6F300627E9E /* Animatable.swift in Sources */,
 				D760FED5227E64E700E4693D /* MSGBoardPhotoView.swift in Sources */,
 				D7536FEB2262EB0A003F0920 /* RecordingEntry.swift in Sources */,
 				D7536FC72262D167003F0920 /* UITextField.swift in Sources */,
