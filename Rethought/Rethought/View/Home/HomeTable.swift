@@ -11,20 +11,19 @@ import UIKit
 
 class HomeTable: UIView {
     override init(frame: CGRect) {
-        beginingFrame = frame
         super.init(frame: frame)
         layer.borderWidth = 1
         layer.borderColor = Device.colors.lightGray.cgColor
         setView()
-        print("progress: \(animationProgress)")
     }
+    
+    public var animator: Animator?
     
     let tv: UITableView = {
         let tv = UITableView(frame: .zero, style: .plain)
         tv.allowsMultipleSelection = false
         tv.backgroundColor = .green
-        tv.alwaysBounceVertical = true
-        tv.bounces = true
+        tv.bounces = false
         tv.translatesAutoresizingMaskIntoConstraints = false
         
         return tv
@@ -35,22 +34,18 @@ class HomeTable: UIView {
         tv.dataSource = self
         addSubview(tv)
         tv.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 5, paddingLeading: 5, paddingBottom: 5, paddingTrailing: 5)
-        
-        print("----------")
+
         
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Variables for scrolling update calculations
     private var oldContentOffset = CGPoint.zero
-    private let beginingFrame: CGRect
     private let endFrame: CGFloat = 170
     private let startFrame: CGFloat = 400
-    private let maxHeight: CGFloat = Device.size.height - 170
-    private let minHeight: CGFloat = Device.size.height - 400
     public var animationScrollLength: CGFloat = 230.0
-    private var lastAnimationUpdate: CGFloat?
     public var animationProgress: CGFloat {
         let offset = tv.contentOffset.y
         let normalizedOffset = max(0.0, min(1.0, offset/animationScrollLength))
@@ -58,19 +53,16 @@ class HomeTable: UIView {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
         let delta = scrollView.contentOffset.y - oldContentOffset.y
         if (delta > 0) && (frame.origin.y > endFrame) {
             frame.origin.y -= delta
         } else if (delta < 0) && (frame.origin.y < startFrame) {
             frame.origin.y -= delta
         }
-        if frame.size.height > minHeight {
-            frame.size.height = animationProgress * maxHeight
-        }
+        frame.size.height = (Device.size.height - frame.origin.y)
         
-        
-        //TODO: add delegate that alerts controller of movement to animate individual views
+        //alert controller of movement to animate individual seperate views
+        animator?.didUpdate()
         
         oldContentOffset = scrollView.contentOffset
     }

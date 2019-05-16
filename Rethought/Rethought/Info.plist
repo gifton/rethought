@@ -46,6 +46,8 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSCameraUsageDescription</key>
-	<string>Capture photos that relate to your thoughts</string>
+	<string>Rethought lets you capture photo entries for your thoughts</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Rethought lets you record audio entries for your thoughts</string>
 </dict>
 </plist>

@@ -31,7 +31,6 @@
 		D70AD47C2283FB5200824DCB /* MSGCenterLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70AD47B2283FB5200824DCB /* MSGCenterLinkView.swift */; };
 		D7149384227CB830005B681D /* MSGBoardNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7149383227CB830005B681D /* MSGBoardNoteView.swift */; };
 		D721112C2272D14D00131BEF /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721112B2272D14D00131BEF /* SearchController.swift */; };
-		D721112E2272D19700131BEF /* ConversatinoTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721112D2272D19700131BEF /* ConversatinoTable.swift */; };
 		D72F30F4228575450091DCB8 /* MSGBoardLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F30F3228575450091DCB8 /* MSGBoardLinkView.swift */; };
 		D72F30F622892EB90091DCB8 /* MSGCenterRecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F30F522892EB90091DCB8 /* MSGCenterRecordingView.swift */; };
 		D7388A16228B894F00627E9E /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7388A15228B894F00627E9E /* HomeController.swift */; };
@@ -76,6 +75,7 @@
 		D76895502271746F00DC059E /* MSGSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D768954F2271746F00DC059E /* MSGSubView.swift */; };
 		D76895522271ED7D00DC059E /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76895512271ED7D00DC059E /* Optional.swift */; };
 		D76DFA09226E803800CE2D59 /* Rects.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76DFA08226E803800CE2D59 /* Rects.swift */; };
+		D774C483228DD05800721394 /* HomeHead.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774C482228DD05800721394 /* HomeHead.swift */; };
 		D7810C20226F938F0038C1BA /* MSGCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7810C1F226F938F0038C1BA /* MSGCenter.swift */; };
 		D79E59A922723E7E00ABFD34 /* ConversationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79E59A822723E7E00ABFD34 /* ConversationHandler.swift */; };
 		D7A2DF41227D6D9300D6CFF1 /* MSGCenterPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A2DF40227D6D9300D6CFF1 /* MSGCenterPhotoView.swift */; };
@@ -121,7 +121,6 @@
 		D70AD47B2283FB5200824DCB /* MSGCenterLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGCenterLinkView.swift; sourceTree = "<group>"; };
 		D7149383227CB830005B681D /* MSGBoardNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardNoteView.swift; sourceTree = "<group>"; };
 		D721112B2272D14D00131BEF /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
-		D721112D2272D19700131BEF /* ConversatinoTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversatinoTable.swift; sourceTree = "<group>"; };
 		D72F30F3228575450091DCB8 /* MSGBoardLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardLinkView.swift; sourceTree = "<group>"; };
 		D72F30F522892EB90091DCB8 /* MSGCenterRecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGCenterRecordingView.swift; sourceTree = "<group>"; };
 		D7388A15228B894F00627E9E /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -168,6 +167,7 @@
 		D768954F2271746F00DC059E /* MSGSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGSubView.swift; sourceTree = "<group>"; };
 		D76895512271ED7D00DC059E /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
 		D76DFA08226E803800CE2D59 /* Rects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rects.swift; sourceTree = "<group>"; };
+		D774C482228DD05800721394 /* HomeHead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHead.swift; sourceTree = "<group>"; };
 		D7810C1F226F938F0038C1BA /* MSGCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGCenter.swift; sourceTree = "<group>"; };
 		D79E59A822723E7E00ABFD34 /* ConversationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationHandler.swift; sourceTree = "<group>"; };
 		D7A2DF40227D6D9300D6CFF1 /* MSGCenterPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGCenterPhotoView.swift; sourceTree = "<group>"; };
@@ -268,6 +268,7 @@
 			children = (
 				D7388A15228B894F00627E9E /* HomeController.swift */,
 				D7388A17228B8A2D00627E9E /* HomeTable.swift */,
+				D774C482228DD05800721394 /* HomeHead.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -276,7 +277,6 @@
 			isa = PBXGroup;
 			children = (
 				D721112B2272D14D00131BEF /* SearchController.swift */,
-				D721112D2272D19700131BEF /* ConversatinoTable.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -686,7 +686,7 @@
 				D7006EE3226825FE004E570F /* ConversationController.swift in Sources */,
 				D7BB182F227629970084963E /* MSGBoardDelegate.swift in Sources */,
 				D7006ECA22671CF4004E570F /* RecordingBuilder.swift in Sources */,
-				D721112E2272D19700131BEF /* ConversatinoTable.swift in Sources */,
+				D774C483228DD05800721394 /* HomeHead.swift in Sources */,
 				D7388A16228B894F00627E9E /* HomeController.swift in Sources */,
 				D7536FAA2262C784003F0920 /* Defaults.swift in Sources */,
 				D7536FCD2262D680003F0920 /* UIView.swift in Sources */,

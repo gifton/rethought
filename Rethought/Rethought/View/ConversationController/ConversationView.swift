@@ -31,9 +31,6 @@ class ConversationView: UIView {
         conversationPresenter = ConversationPresenter(tableEncapsulation, msgCenter, parent: self)
         conversationPresenter.msgDely = connector
         setViews()
-        
-        print("height o' device: \(Device.size.height)")
-        print("height o' view: \(frame.size.height)")
     }
     
     required init?(coder aDecoder: NSCoder) {
