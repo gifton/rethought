@@ -12,7 +12,7 @@ import UIKit
 class HomeHead: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = Device.colors.green
+        setView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -20,12 +20,27 @@ class HomeHead: UIView {
     }
     let startHeight = CGFloat(390)
     let endHeight = CGFloat(170)
+    
+    let rethoughtLabel = UILabel()
+    
+    func setView() {
+        backgroundColor = Device.colors.green
+        rethoughtLabel.text = "Re:\nthought"
+        rethoughtLabel.font = Device.font.title(ofSize: .title)
+        rethoughtLabel.textColor = .white
+        rethoughtLabel.numberOfLines = 0
+        
+        addSubview(rethoughtLabel)
+        rethoughtLabel.setTopAndLeading(top: topAnchor, leading: leadingAnchor, paddingTop: 50, paddingLeading: 25)
+    }
 }
 
 extension HomeHead: Animatable {
     func update(toAnimationProgress progress: CGFloat) {
+        
         //calculate height delta from progress
         let newHeight: CGFloat = ((startHeight - endHeight) * progress)
+        self.alpha = 1 - progress
         if progress == 0.0 {
             frame.size.height = startHeight
         } else {
