@@ -12,8 +12,6 @@ import UIKit
 class HomeTable: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        layer.borderWidth = 1
-        layer.borderColor = Device.colors.lightGray.cgColor
         setView()
     }
     
@@ -22,9 +20,11 @@ class HomeTable: UIView {
     let tv: UITableView = {
         let tv = UITableView(frame: .zero, style: .plain)
         tv.allowsMultipleSelection = false
-        tv.backgroundColor = .green
+        tv.backgroundColor = Device.colors.lightGray
         tv.bounces = false
         tv.translatesAutoresizingMaskIntoConstraints = false
+        tv.showsVerticalScrollIndicator = false
+        tv.separatorStyle = .none
         
         return tv
     }()
@@ -32,8 +32,9 @@ class HomeTable: UIView {
     func setView() {
         tv.delegate = self
         tv.dataSource = self
+        tv.register(cellWithClass: HomeTableCell.self)
         addSubview(tv)
-        tv.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 5, paddingLeading: 5, paddingBottom: 5, paddingTrailing: 5)
+        tv.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 50, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
 
         
     }
@@ -44,8 +45,8 @@ class HomeTable: UIView {
     // MARK: Variables for scrolling update calculations
     private var oldContentOffset = CGPoint.zero
     private let endFrame: CGFloat = 170
-    private let startFrame: CGFloat = 400
-    public var animationScrollLength: CGFloat = 230.0
+    private let startFrame: CGFloat = 500
+    public var animationScrollLength: CGFloat = 330.0
     public var animationProgress: CGFloat {
         let offset = tv.contentOffset.y
         let normalizedOffset = max(0.0, min(1.0, offset/animationScrollLength))
@@ -70,13 +71,16 @@ class HomeTable: UIView {
 
 extension HomeTable: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        return 100
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 20
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        
+        let cell: HomeTableCell = tableView.dequeueReusableCell(withClass: HomeTableCell.self, for: indexPath)
+        
+        return cell
     }
 }

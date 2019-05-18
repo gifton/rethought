@@ -12,7 +12,7 @@ import UIKit
 class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
+        view.backgroundColor = .white
         
         setView()
     }
@@ -20,10 +20,10 @@ class HomeController: UIViewController {
     var tv: HomeTable?
     
     func setView() {
-        tv = HomeTable(frame: CGRect(x: 0, y: 400, width: Device.size.width, height: Device.size.height - 400))
+        tv = HomeTable(frame: CGRect(x: 0, y: 500, width: Device.size.width, height: Device.size.height - 500))
         tv?.animator = self
         
-        homeHead = HomeHead(frame: CGRect(x: 0, y: 0, width: Device.size.width, height: 390))
+        homeHead = HomeHead(frame: CGRect(x: 0, y: 0, width: Device.size.width, height: 500))
         view.addSubview(homeHead!)
         view.addSubview(tv!)
     }
