@@ -11,7 +11,7 @@ import UIKit
 import AVFoundation
 
 class MSGCenterPhotoView: UIView {
-    init(withBus bus: EntryComponentBus) {
+    init(withBus bus: EntryComponentBus, thoughtIsCompleted: Bool) {
         self.bus = bus
         super.init(frame: .zero)
         backgroundColor = Device.colors.offWhite

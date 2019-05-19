@@ -11,7 +11,7 @@ import UIKit
 import AVFoundation
 
 class MSGCenterRecordingView: UIView {
-    init(bus: EntryComponentBus) {
+    init(bus: EntryComponentBus, thoughtIsCompleted: Bool) {
         self.bus = bus
         super.init(frame: .zero)
         backgroundColor = Device.colors.recording

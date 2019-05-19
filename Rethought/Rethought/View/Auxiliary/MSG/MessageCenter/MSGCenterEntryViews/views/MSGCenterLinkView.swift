@@ -5,7 +5,7 @@ import SwiftLinkPreview
 
 
 class MSGCenterLinkView: UIView {
-    init(withBus bus: EntryComponentBus) {
+    init(withBus bus: EntryComponentBus, thoughtIsCompleted: Bool) {
         self.bus = bus
         super.init(frame: .zero)
         setView()

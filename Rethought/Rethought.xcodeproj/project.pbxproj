@@ -438,6 +438,17 @@
 			path = entryContent;
 			sourceTree = "<group>";
 		};
+		D75B8B2A229127CB00B38CC6 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				D70AD47B2283FB5200824DCB /* MSGCenterLinkView.swift */,
+				D7BE8F1D227AB0F300B15F06 /* MSGCenterNoteView.swift */,
+				D7A2DF40227D6D9300D6CFF1 /* MSGCenterPhotoView.swift */,
+				D72F30F522892EB90091DCB8 /* MSGCenterRecordingView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 		D7BB182D227629640084963E /* MessageBoard */ = {
 			isa = PBXGroup;
 			children = (
@@ -472,12 +483,9 @@
 		D7BE8F21227AC06D00B15F06 /* MSGCenterEntryViews */ = {
 			isa = PBXGroup;
 			children = (
+				D75B8B2A229127CB00B38CC6 /* views */,
 				D7BE8F1F227AB12300B15F06 /* MSGCenterEntryView.swift */,
-				D70AD47B2283FB5200824DCB /* MSGCenterLinkView.swift */,
-				D7BE8F1D227AB0F300B15F06 /* MSGCenterNoteView.swift */,
-				D7A2DF40227D6D9300D6CFF1 /* MSGCenterPhotoView.swift */,
 				D760FED2227E544E00E4693D /* MSGCenterPhotoPreview.swift */,
-				D72F30F522892EB90091DCB8 /* MSGCenterRecordingView.swift */,
 			);
 			path = MSGCenterEntryViews;
 			sourceTree = "<group>";

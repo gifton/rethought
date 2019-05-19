@@ -29,27 +29,25 @@ class HomeHead: UIView {
     let startHeight = CGFloat(500)
     let endHeight = CGFloat(170)
     //colors
-//    let startBGColor = UIColor(hex: "361054")
-//    let finishBGColor = UIColor(hex: "132544")
     let startBGColor = UIColor(hex: "#2C7699")
     let finishBGColor = UIColor(hex: "#4C3EC1")
     let dateTextColorStart = UIColor.white
     let dateTextColorFinish = UIColor.black
     var gradient: CAGradientLayer
     //frames
-    let dateStartFrame = CGRect(x: 25, y: 100, width: 200, height: 18)
+    let dateStartFrame = CGRect(x: 25, y: 90, width: 200, height: 18)
     let dateEndFrame = CGRect(x: 225, y: 65, width: 200, height: 18)
-    let collectionStartFrame = CGRect(x: 0, y: 165, width: Device.size.width, height: 185)
-    let collectionFinishFrame = CGRect(x: 0, y: -165, width: Device.size.width, height: 185)
+    let collectionStartFrame = CGRect(x: 0, y: 165, width: Device.size.width, height: 165)
+    let collectionFinishFrame = CGRect(x: 0, y: -165, width: Device.size.width, height: 165)
     
     let rethoughtLabel = UILabel()
     let dateLabel = UILabel()
     let thoughtCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 300, height: 185)
+        layout.itemSize = CGSize(width: 300, height: 165)
         layout.minimumLineSpacing = 5
-        let cv = UICollectionView(frame: CGRect(x: 0, y: 165, width: Device.size.width, height: 185), collectionViewLayout: layout)
+        let cv = UICollectionView(frame: CGRect(x:0, y: 165, width: Device.size.width, height: 165), collectionViewLayout: layout)
         cv.showsHorizontalScrollIndicator = false
         
         return cv
@@ -60,7 +58,8 @@ class HomeHead: UIView {
         
         thoughtCollection.delegate = self
         thoughtCollection.dataSource = self
-        thoughtCollection.register(cellWithClass: collectionCell.self)
+        thoughtCollection.register(cellWithClass: ThoughtCollectionCell.self)
+        thoughtCollection.setContentOffset(CGPoint(x: -25, y: -10), animated: true)
         
         addSubview(thoughtCollection)
         addSubview(rethoughtLabel)
@@ -112,7 +111,7 @@ extension HomeHead: Animatable {
             thoughtCollection.alpha = 1.0
             thoughtCollection.frame = collectionStartFrame
         default:
-            thoughtCollection.alpha = (1 - progress) * 1.25
+            thoughtCollection.alpha = (1 - progress) * 1.5
             // set all views with animations here
             dateLabel.frame = CGRect(x: dateStartFrame.origin.x + (dateEndFrame.origin.x - dateStartFrame.origin.x) * progress,
                                      y: dateStartFrame.origin.y + (dateEndFrame.origin.y - dateStartFrame.origin.y) * progress,
@@ -151,21 +150,18 @@ extension HomeHead: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withClass: collectionCell.self, for: indexPath)
+        return collectionView.dequeueReusableCell(withClass: ThoughtCollectionCell.self, for: indexPath)
     }
     
     
 }
 
-class collectionCell: UICollectionViewCell {
+class ThoughtCollectionCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .clear
         
-        isOpaque = false
-        layer.shadowOffset = CGSize(width: 0, height: 8)
-        layer.shadowRadius = 8
-        layer.shadowOpacity = 0.2
+        isOpaque = true
         
         layoutIfNeeded()
         layer.backgroundColor = UIColor.clear.cgColor
@@ -177,7 +173,7 @@ class collectionCell: UICollectionViewCell {
         updatePath()
     }
     
-    var radius: CGFloat = 28.5
+    var radius: CGFloat = 15
     private var path: UIBezierPath?
     
     override func draw(_ rect: CGRect) {
