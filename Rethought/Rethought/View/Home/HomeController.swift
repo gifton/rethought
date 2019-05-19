@@ -24,8 +24,8 @@ class HomeController: UIViewController {
         tv?.animator = self
         
         homeHead = HomeHead(frame: CGRect(x: 0, y: 0, width: Device.size.width, height: 500))
-        view.addSubview(homeHead!)
         view.addSubview(tv!)
+        view.addSubview(homeHead!)
     }
     
     

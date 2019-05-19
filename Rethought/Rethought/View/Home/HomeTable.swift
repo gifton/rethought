@@ -12,6 +12,7 @@ import UIKit
 class HomeTable: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = Device.colors.offWhite
         setView()
     }
     
@@ -47,6 +48,7 @@ class HomeTable: UIView {
     private let endFrame: CGFloat = 170
     private let startFrame: CGFloat = 500
     public var animationScrollLength: CGFloat = 330.0
+    private var lastOffset: CGFloat = 0.0
     public var animationProgress: CGFloat {
         let offset = tv.contentOffset.y
         let normalizedOffset = max(0.0, min(1.0, offset/animationScrollLength))
@@ -54,12 +56,7 @@ class HomeTable: UIView {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let delta = scrollView.contentOffset.y - oldContentOffset.y
-        if (delta > 0) && (frame.origin.y > endFrame) {
-            frame.origin.y -= delta
-        } else if (delta < 0) && (frame.origin.y < startFrame) {
-            frame.origin.y -= delta
-        }
+        frame.origin.y = startFrame + ((endFrame - startFrame) * animationProgress)
         frame.size.height = (Device.size.height - frame.origin.y)
         
         //alert controller of movement to animate individual seperate views
