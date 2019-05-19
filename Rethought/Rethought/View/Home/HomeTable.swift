@@ -21,8 +21,7 @@ class HomeTable: UIView {
     let tv: UITableView = {
         let tv = UITableView(frame: .zero, style: .plain)
         tv.allowsMultipleSelection = false
-        tv.backgroundColor = Device.colors.lightGray
-//        tv.bounces = false
+        tv.backgroundColor = Device.colors.offWhite
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.showsVerticalScrollIndicator = false
         tv.separatorStyle = .none

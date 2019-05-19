@@ -14,7 +14,7 @@ class AnimatedTabBarController: UITabBarController {
     }()
     
     override func viewDidLoad() {
-        tabBar.tintColor = Device.colors.darkGray
+        tabBar.tintColor = Device.colors.yellow
         tabBar.shadowImage = UIImage()
         tabBar.backgroundColor = .white
         tabBar.barTintColor = .white
@@ -38,7 +38,6 @@ class AnimatedTabBarController: UITabBarController {
         let newIndex = idx + 1
         let imageView = tabBar.subviews[newIndex]
         let image = imageView.subviews.compactMap { $0 as? UIImageView }.first
-        image?.setImageColor(color: .blue)
         
         if let image = image {
             image.layer.add(bounceAnimation, forKey: nil)
