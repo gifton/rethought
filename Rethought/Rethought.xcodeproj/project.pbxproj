@@ -71,6 +71,7 @@
 		D7536FEB2262EB0A003F0920 /* RecordingEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536FDF2262EB0A003F0920 /* RecordingEntry.swift */; };
 		D7536FED2262EB0A003F0920 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536FE12262EB0A003F0920 /* Entry.swift */; };
 		D75B8B2D22912A6600B38CC6 /* HomeViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B8B2C22912A6600B38CC6 /* HomeViewModelDelegate.swift */; };
+		D75B8B2F22912FD800B38CC6 /* HomeThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B8B2E22912FD800B38CC6 /* HomeThoughtCell.swift */; };
 		D760FED3227E544E00E4693D /* MSGCenterPhotoPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760FED2227E544E00E4693D /* MSGCenterPhotoPreview.swift */; };
 		D760FED5227E64E700E4693D /* MSGBoardPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760FED4227E64E700E4693D /* MSGBoardPhotoView.swift */; };
 		D760FED7227E785200E4693D /* UIBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760FED6227E785200E4693D /* UIBezierPath.swift */; };
@@ -165,6 +166,7 @@
 		D7536FDF2262EB0A003F0920 /* RecordingEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingEntry.swift; sourceTree = "<group>"; };
 		D7536FE12262EB0A003F0920 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		D75B8B2C22912A6600B38CC6 /* HomeViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelDelegate.swift; sourceTree = "<group>"; };
+		D75B8B2E22912FD800B38CC6 /* HomeThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeThoughtCell.swift; sourceTree = "<group>"; };
 		D760FED2227E544E00E4693D /* MSGCenterPhotoPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGCenterPhotoPreview.swift; sourceTree = "<group>"; };
 		D760FED4227E64E700E4693D /* MSGBoardPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardPhotoView.swift; sourceTree = "<group>"; };
 		D760FED6227E785200E4693D /* UIBezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBezierPath.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				D7433B48228F3C050001B371 /* HomeTableCell.swift */,
 				D7006EDC2267EDC0004E570F /* RethoughtMessageCell.swift */,
 				D7006EDE2268174F004E570F /* NewThoughtCell.swift */,
+				D75B8B2E22912FD800B38CC6 /* HomeThoughtCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -697,6 +700,7 @@
 				D7006EE72268CB63004E570F /* ViewController.swift in Sources */,
 				D7433B49228F3C050001B371 /* HomeTableCell.swift in Sources */,
 				D7A2DF41227D6D9300D6CFF1 /* MSGCenterPhotoView.swift in Sources */,
+				D75B8B2F22912FD800B38CC6 /* HomeThoughtCell.swift in Sources */,
 				D7006EE5226841D2004E570F /* ConversationView.swift in Sources */,
 				D7536FD52262D8AA003F0920 /* rt-DB2.xcdatamodeld in Sources */,
 				D7006EC622671C4C004E570F /* PhotoBuilder.swift in Sources */,

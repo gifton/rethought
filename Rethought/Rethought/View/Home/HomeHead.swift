@@ -37,8 +37,8 @@ class HomeHead: UIView {
     //frames
     let dateStartFrame = CGRect(x: 25, y: 90, width: 200, height: 18)
     let dateEndFrame = CGRect(x: 225, y: 65, width: 200, height: 18)
-    let collectionStartFrame = CGRect(x: 0, y: 165, width: Device.size.width, height: 165)
-    let collectionFinishFrame = CGRect(x: 0, y: -165, width: Device.size.width, height: 165)
+    let collectionStartFrame = CGRect(x: 5, y: 165, width: Device.size.width, height: 165)
+    let collectionFinishFrame = CGRect(x: 5, y: -165, width: Device.size.width, height: 165)
     
     let rethoughtLabel = UILabel()
     let dateLabel = UILabel()
@@ -47,7 +47,7 @@ class HomeHead: UIView {
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: 300, height: 165)
         layout.minimumLineSpacing = 5
-        let cv = UICollectionView(frame: CGRect(x:0, y: 165, width: Device.size.width, height: 165), collectionViewLayout: layout)
+        let cv = UICollectionView(frame: CGRect(x: 5, y: 165, width: Device.size.width, height: 165), collectionViewLayout: layout)
         cv.showsHorizontalScrollIndicator = false
         
         return cv
@@ -59,7 +59,6 @@ class HomeHead: UIView {
         thoughtCollection.delegate = self
         thoughtCollection.dataSource = self
         thoughtCollection.register(cellWithClass: ThoughtCollectionCell.self)
-        thoughtCollection.setContentOffset(CGPoint(x: -25, y: -10), animated: true)
         
         addSubview(thoughtCollection)
         addSubview(rethoughtLabel)
@@ -76,7 +75,6 @@ class HomeHead: UIView {
     }
     
     private func styleView() {
-//        backgroundColor = Device.colors.blue
         rethoughtLabel.text = "Rethought"
         rethoughtLabel.font = Device.font.title(ofSize: .emojiLG)
         rethoughtLabel.textColor = .white
@@ -154,50 +152,4 @@ extension HomeHead: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     
-}
-
-class ThoughtCollectionCell: UICollectionViewCell {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        backgroundColor = .clear
-        
-        isOpaque = true
-        
-        layoutIfNeeded()
-        layer.backgroundColor = UIColor.clear.cgColor
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        updatePath()
-    }
-    
-    var radius: CGFloat = 15
-    private var path: UIBezierPath?
-    
-    override func draw(_ rect: CGRect) {
-        guard let path = path,
-            let context = UIGraphicsGetCurrentContext() else {
-                print("returning")
-                return
-        }
-        
-        context.clear(rect)
-        UIColor.black.withAlphaComponent(0.34).setFill()
-        path.fill()
-    }
-    
-    private func updatePath() {
-        let path = UIBezierPath.continuousRoundedRect(bounds, cornerRadius: (topLeft: radius, topRight: radius, bottomLeft: radius, bottomRight: radius))
-        
-        layer.shadowPath = path.cgPath
-        
-        self.path = path
-        setNeedsDisplay()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }

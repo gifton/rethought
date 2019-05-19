@@ -22,22 +22,25 @@ class HomeTable: UIView {
         let tv = UITableView(frame: .zero, style: .plain)
         tv.allowsMultipleSelection = false
         tv.backgroundColor = Device.colors.lightGray
-        tv.bounces = false
+//        tv.bounces = false
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.showsVerticalScrollIndicator = false
         tv.separatorStyle = .none
         
         return tv
     }()
+    let filterButton = UIButton()
     
     func setView() {
         tv.delegate = self
         tv.dataSource = self
         tv.register(cellWithClass: HomeTableCell.self)
         addSubview(tv)
+        addSubview(filterButton)
         tv.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 50, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
 
-        
+        filterButton.setAnchor(top: topAnchor, leading: nil, bottom: tv.topAnchor, trailing: trailingAnchor, paddingTop: 15, paddingLeading: 0, paddingBottom: 10, paddingTrailing: 30)
+        filterButton.setImage(#imageLiteral(resourceName: "filter"), for: .normal)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
