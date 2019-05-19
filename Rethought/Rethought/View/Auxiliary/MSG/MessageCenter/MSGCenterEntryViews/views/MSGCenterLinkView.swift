@@ -10,6 +10,9 @@ class MSGCenterLinkView: UIView {
         super.init(frame: .zero)
         setView()
         styleView()
+        if !(thoughtIsCompleted) {
+            setForIncompleteCredentials()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

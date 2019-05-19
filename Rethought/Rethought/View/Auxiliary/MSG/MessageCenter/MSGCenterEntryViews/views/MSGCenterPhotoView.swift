@@ -15,7 +15,10 @@ class MSGCenterPhotoView: UIView {
         self.bus = bus
         super.init(frame: .zero)
         backgroundColor = Device.colors.offWhite
-        checkForCam()
+        if !(thoughtIsCompleted) {
+            setForIncompleteCredentials()
+        } else { checkForCam() }
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

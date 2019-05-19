@@ -159,7 +159,7 @@ extension MSGCenter {
         var view = UIView()
         switch type {
         case .link:
-            newLinkView = MSGCenterLinkView(withBus: self)
+            newLinkView = MSGCenterLinkView(withBus: self, thoughtIsCompleted: hasCompletedThought)
             view = newLinkView
             currentEntryType = .link
             textView.text = "give your link a title"
@@ -169,12 +169,12 @@ extension MSGCenter {
             currentEntryType = .note
             textView.text = "give your note a title"
         case .recording:
-            newRecordingView = MSGCenterRecordingView(bus: self)
+            newRecordingView = MSGCenterRecordingView(bus: self, thoughtIsCompleted: hasCompletedThought)
             view = newRecordingView
             currentEntryType = .recording
             textView.text = "give your recording a description"
         case .photo:
-            newPhotoView = MSGCenterPhotoView(withBus: self)
+            newPhotoView = MSGCenterPhotoView(withBus: self, thoughtIsCompleted: hasCompletedThought)
             view = newPhotoView
             currentEntryType = .photo
             textView.text = "give your photo a title"
@@ -293,7 +293,8 @@ extension MSGCenter: EntryComponentBus {
         connector.insert(entry: payload)
     }
     func entryDidRequestCancel() {
-        _ = removeEntryView()
-        connector.isDoneEditing()
+        if removeEntryView() {
+            connector.isDoneEditing()
+        }
     }
 }
