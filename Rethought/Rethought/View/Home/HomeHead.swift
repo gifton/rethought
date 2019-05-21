@@ -37,22 +37,23 @@ class HomeHead: UIView {
     //frames
     let dateStartFrame = CGRect(x: 25, y: 90, width: 200, height: 18)
     let dateEndFrame = CGRect(x: 225, y: 65, width: 200, height: 18)
-    let collectionStartFrame = CGRect(x: 5, y: 165, width: Device.size.width, height: 165)
-    let collectionFinishFrame = CGRect(x: 5, y: -165, width: Device.size.width, height: 165)
+    let collectionStartFrame = CGRect(x: 5, y: 200, width: Device.size.width, height: 170)
+    let collectionFinishFrame = CGRect(x: 5, y: -165, width: Device.size.width, height: 170)
     
     let rethoughtLabel = UILabel()
     let dateLabel = UILabel()
+    let entryLabel = UILabel()
     let thoughtCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: 300, height: 165)
         layout.minimumLineSpacing = 5
-        let cv = UICollectionView(frame: CGRect(x: 5, y: 165, width: Device.size.width, height: 165), collectionViewLayout: layout)
+        let cv = UICollectionView(frame: CGRect(x: 5, y: 200, width: Device.size.width, height: 170), collectionViewLayout: layout)
         cv.showsHorizontalScrollIndicator = false
         
         return cv
     }()
-    let entryPickerView = UIView()
+    let entryPickerView = EntryScrollView(frame: .zero)
     
     func setView() {
         
@@ -64,6 +65,7 @@ class HomeHead: UIView {
         addSubview(rethoughtLabel)
         addSubview(dateLabel)
         addSubview(entryPickerView)
+        addSubview(entryLabel)
         
         rethoughtLabel.frame = CGRect(x: 25, y: 50, width: 200, height: 42)
         dateLabel.frame = dateStartFrame
@@ -72,6 +74,8 @@ class HomeHead: UIView {
         entryPickerView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         entryPickerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         entryPickerView.setHeightWidth(width: frame.width, height: 80)
+        
+        entryLabel.frame = CGRect(x: 15, y: frame.height - 70, width: 250, height: 30)
     }
     
     private func styleView() {
@@ -84,7 +88,10 @@ class HomeHead: UIView {
         dateLabel.font = Device.font.body(ofSize: .medium)
         
         thoughtCollection.backgroundColor = .clear
-        entryPickerView.backgroundColor = UIColor.white.withAlphaComponent(0.05)
+        
+        entryLabel.text = "View your Entries"
+        entryLabel.font = Device.font.mediumTitle(ofSize: .xXXLarge)
+        entryLabel.textColor = .white
     }
 }
 
@@ -100,23 +107,23 @@ extension HomeHead: Animatable {
             gradient.colors = [finishBGColor.cgColor, startBGColor.cgColor]
             dateLabel.frame = dateEndFrame
             thoughtCollection.alpha = 0.0
-            thoughtCollection.frame = collectionFinishFrame
+//            thoughtCollection.frame = collectionFinishFrame
         case 0:
             frame.size.height = startHeight
             gradient.frame = frame
             gradient.colors = [startBGColor.cgColor, finishBGColor.cgColor]
             dateLabel.frame = dateStartFrame
             thoughtCollection.alpha = 1.0
-            thoughtCollection.frame = collectionStartFrame
+//            thoughtCollection.frame = collectionStartFrame
         default:
-            thoughtCollection.alpha = (1 - progress) * 1.5
+            thoughtCollection.alpha = (1 - progress * 2)
             // set all views with animations here
             dateLabel.frame = CGRect(x: dateStartFrame.origin.x + (dateEndFrame.origin.x - dateStartFrame.origin.x) * progress,
                                      y: dateStartFrame.origin.y + (dateEndFrame.origin.y - dateStartFrame.origin.y) * progress,
                                      width: dateEndFrame.width, height: dateEndFrame.height)
-            thoughtCollection.frame = CGRect(x: collectionStartFrame.origin.x + (collectionFinishFrame.origin.x - collectionStartFrame.origin.x) * progress,
-                                     y: collectionStartFrame.origin.y + (collectionFinishFrame.origin.y - collectionStartFrame.origin.y) * progress,
-                                     width: collectionFinishFrame.width, height: collectionFinishFrame.height)
+//            thoughtCollection.frame = CGRect(x: collectionStartFrame.origin.x + (collectionFinishFrame.origin.x - collectionStartFrame.origin.x) * progress,
+//                                     y: collectionStartFrame.origin.y + (collectionFinishFrame.origin.y - collectionStartFrame.origin.y) * progress,
+//                                     width: collectionFinishFrame.width, height: collectionFinishFrame.height)
             
             dateLabel.textColor = UIColor(red: dateTextColorStart.rgba.red + (dateTextColorFinish.rgba.red - dateTextColorStart.rgba.red) * progress,
                                           green: dateTextColorStart.rgba.green + (dateTextColorFinish.rgba.green - dateTextColorStart.rgba.green) * progress,

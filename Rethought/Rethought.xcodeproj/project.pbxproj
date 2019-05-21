@@ -72,6 +72,7 @@
 		D7536FED2262EB0A003F0920 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536FE12262EB0A003F0920 /* Entry.swift */; };
 		D75B8B2D22912A6600B38CC6 /* HomeViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B8B2C22912A6600B38CC6 /* HomeViewModelDelegate.swift */; };
 		D75B8B2F22912FD800B38CC6 /* HomeThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B8B2E22912FD800B38CC6 /* HomeThoughtCell.swift */; };
+		D75B8B31229210F000B38CC6 /* HomeEntryButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B8B30229210F000B38CC6 /* HomeEntryButtons.swift */; };
 		D760FED3227E544E00E4693D /* MSGCenterPhotoPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760FED2227E544E00E4693D /* MSGCenterPhotoPreview.swift */; };
 		D760FED5227E64E700E4693D /* MSGBoardPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760FED4227E64E700E4693D /* MSGBoardPhotoView.swift */; };
 		D760FED7227E785200E4693D /* UIBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760FED6227E785200E4693D /* UIBezierPath.swift */; };
@@ -167,6 +168,7 @@
 		D7536FE12262EB0A003F0920 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		D75B8B2C22912A6600B38CC6 /* HomeViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelDelegate.swift; sourceTree = "<group>"; };
 		D75B8B2E22912FD800B38CC6 /* HomeThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeThoughtCell.swift; sourceTree = "<group>"; };
+		D75B8B30229210F000B38CC6 /* HomeEntryButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntryButtons.swift; sourceTree = "<group>"; };
 		D760FED2227E544E00E4693D /* MSGCenterPhotoPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGCenterPhotoPreview.swift; sourceTree = "<group>"; };
 		D760FED4227E64E700E4693D /* MSGBoardPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardPhotoView.swift; sourceTree = "<group>"; };
 		D760FED6227E785200E4693D /* UIBezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBezierPath.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				D7388A15228B894F00627E9E /* HomeController.swift */,
 				D7388A17228B8A2D00627E9E /* HomeTable.swift */,
 				D774C482228DD05800721394 /* HomeHead.swift */,
+				D75B8B30229210F000B38CC6 /* HomeEntryButtons.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -724,6 +727,7 @@
 				D7BE8F1C2278BAAD00B15F06 /* MSGWelcomeCard.swift in Sources */,
 				D7433B4B228F50410001B371 /* UITableVIew.swift in Sources */,
 				D7536FBD2262CAE3003F0920 /* UICollectionView.swift in Sources */,
+				D75B8B31229210F000B38CC6 /* HomeEntryButtons.swift in Sources */,
 				D7536FE92262EB0A003F0920 /* Thought.swift in Sources */,
 				D721112C2272D14D00131BEF /* SearchController.swift in Sources */,
 				D7810C20226F938F0038C1BA /* MSGCenter.swift in Sources */,
