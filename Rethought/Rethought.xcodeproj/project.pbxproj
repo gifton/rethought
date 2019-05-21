@@ -97,6 +97,7 @@
 		D7C6542B226A75E1008A66EF /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7C65426226A75E1008A66EF /* Lato-Bold.ttf */; };
 		D7C6542E226A850B008A66EF /* UIbutton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C6542D226A850B008A66EF /* UIbutton.swift */; };
 		D7FEEBE722939F5500D6D1C8 /* ShowOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FEEBE622939F5500D6D1C8 /* ShowOptionsView.swift */; };
+		D7FEEBE92294645A00D6D1C8 /* Replicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FEEBE82294645A00D6D1C8 /* Replicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -194,6 +195,7 @@
 		D7C65426226A75E1008A66EF /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		D7C6542D226A850B008A66EF /* UIbutton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIbutton.swift; sourceTree = "<group>"; };
 		D7FEEBE622939F5500D6D1C8 /* ShowOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowOptionsView.swift; sourceTree = "<group>"; };
+		D7FEEBE82294645A00D6D1C8 /* Replicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Replicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -361,6 +363,7 @@
 				D7536FA82262C744003F0920 /* styling */,
 				D7536FA62262C73E003F0920 /* Device.swift */,
 				D7536FA92262C784003F0920 /* Defaults.swift */,
+				D7FEEBE82294645A00D6D1C8 /* Replicator.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -727,6 +730,7 @@
 				D760FED3227E544E00E4693D /* MSGCenterPhotoPreview.swift in Sources */,
 				D7006ED322672C7F004E570F /* ThoughtBuilderViewModel.swift in Sources */,
 				D76895522271ED7D00DC059E /* Optional.swift in Sources */,
+				D7FEEBE92294645A00D6D1C8 /* Replicator.swift in Sources */,
 				D7BE8F1C2278BAAD00B15F06 /* MSGWelcomeCard.swift in Sources */,
 				D7433B4B228F50410001B371 /* UITableVIew.swift in Sources */,
 				D7536FBD2262CAE3003F0920 /* UICollectionView.swift in Sources */,

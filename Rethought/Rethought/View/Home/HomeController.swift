@@ -36,6 +36,7 @@ extension HomeController: Animator {
         homeHead?.update(toAnimationProgress: progress)
     }
     
+    // option view is displayed for specific thoughts or entries
     func show(optionsFor entry: Entry) {
         
         tabBarController?.tabBar.isHidden = true
@@ -56,13 +57,10 @@ extension HomeController: Animator {
         newView.addTapGestureRecognizer { end() }
         optionView.cancelButton.addTapGestureRecognizer { end() }
         
-
-        UIView.animate(withDuration: 0.25, animations: {
+        // move newView, show blurr over rest of view
+        UIView.animate(withDuration: 0.3) {
             optionView.frame.origin.y -= 225 * 2
             newView.layer.opacity = 0.55
-        }) { (true) in
-            print("added optionView")
         }
-        
     }
 }
