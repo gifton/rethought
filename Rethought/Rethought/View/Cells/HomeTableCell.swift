@@ -11,7 +11,7 @@ class HomeTableCell: UITableViewCell {
     
     let cell = UIView()
     let moreBtn = UIButton()
-    var entry: Entry = Entry()
+//    var entry: Entry = Entry()
     
     func setCell() {
         addSubview(cell)
@@ -30,10 +30,10 @@ class HomeTableCell: UITableViewCell {
     }()
     
     public func setButtonTargets(_ action: @escaping (_ entry: Entry) -> Void) {
-        moreBtn.addTapGestureRecognizer {
-            action(self.entry)
-            self.moreBtn.imageView?.layer.add(self.bounceAnimation, forKey: nil)
-        }
+//        moreBtn.addTapGestureRecognizer {
+//            action(self.entry)
+//            self.moreBtn.imageView?.layer.add(self.bounceAnimation, forKey: nil)
+//        }
         moreBtn.doesEnable()
     }
     

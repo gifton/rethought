@@ -98,6 +98,7 @@
 		D7C6542E226A850B008A66EF /* UIbutton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C6542D226A850B008A66EF /* UIbutton.swift */; };
 		D7FEEBE722939F5500D6D1C8 /* ShowOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FEEBE622939F5500D6D1C8 /* ShowOptionsView.swift */; };
 		D7FEEBE92294645A00D6D1C8 /* Replicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FEEBE82294645A00D6D1C8 /* Replicator.swift */; };
+		D7FEEBEB22947E1800D6D1C8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FEEBEA22947E1800D6D1C8 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -196,6 +197,7 @@
 		D7C6542D226A850B008A66EF /* UIbutton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIbutton.swift; sourceTree = "<group>"; };
 		D7FEEBE622939F5500D6D1C8 /* ShowOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowOptionsView.swift; sourceTree = "<group>"; };
 		D7FEEBE82294645A00D6D1C8 /* Replicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Replicator.swift; sourceTree = "<group>"; };
+		D7FEEBEA22947E1800D6D1C8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +239,7 @@
 			children = (
 				D75B8B2B22912A5100B38CC6 /* ThoughtBuilder */,
 				D75B8B2C22912A6600B38CC6 /* HomeViewModelDelegate.swift */,
+				D7FEEBEA22947E1800D6D1C8 /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -688,6 +691,7 @@
 				D7536FE32262EB0A003F0920 /* PhotoEntry.swift in Sources */,
 				D7006EDF2268174F004E570F /* NewThoughtCell.swift in Sources */,
 				D7006EE92268CD5A004E570F /* AnimatedTabBar.swift in Sources */,
+				D7FEEBEB22947E1800D6D1C8 /* HomeViewModel.swift in Sources */,
 				D7C6542E226A850B008A66EF /* UIbutton.swift in Sources */,
 				D7BB183D227892F40084963E /* MSGThoughtView.swift in Sources */,
 				D7149384227CB830005B681D /* MSGBoardNoteView.swift in Sources */,
