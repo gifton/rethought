@@ -96,6 +96,7 @@
 		D7C65429226A75E1008A66EF /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7C65424226A75E1008A66EF /* Lato-Regular.ttf */; };
 		D7C6542B226A75E1008A66EF /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7C65426226A75E1008A66EF /* Lato-Bold.ttf */; };
 		D7C6542E226A850B008A66EF /* UIbutton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C6542D226A850B008A66EF /* UIbutton.swift */; };
+		D7FEEBE722939F5500D6D1C8 /* ShowOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FEEBE622939F5500D6D1C8 /* ShowOptionsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -192,6 +193,7 @@
 		D7C65424226A75E1008A66EF /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		D7C65426226A75E1008A66EF /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		D7C6542D226A850B008A66EF /* UIbutton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIbutton.swift; sourceTree = "<group>"; };
+		D7FEEBE622939F5500D6D1C8 /* ShowOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowOptionsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,10 +276,10 @@
 		D7006ED922673630004E570F /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				D75B8B30229210F000B38CC6 /* HomeEntryButtons.swift */,
 				D7388A15228B894F00627E9E /* HomeController.swift */,
 				D7388A17228B8A2D00627E9E /* HomeTable.swift */,
 				D774C482228DD05800721394 /* HomeHead.swift */,
-				D75B8B30229210F000B38CC6 /* HomeEntryButtons.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -510,6 +512,7 @@
 		D7C6541C226A391A008A66EF /* Auxiliary */ = {
 			isa = PBXGroup;
 			children = (
+				D7FEEBE622939F5500D6D1C8 /* ShowOptionsView.swift */,
 				D7388A19228BB6E800627E9E /* Animatable */,
 				D7BB1834227631830084963E /* MSG */,
 				D7006ED622673586004E570F /* Tabbar */,
@@ -739,6 +742,7 @@
 				D7536FCF2262D708003F0920 /* UIViewController.swift in Sources */,
 				D7536FE72262EB0A003F0920 /* LinkEntry.swift in Sources */,
 				D7536FB72262C965003F0920 /* DateFormatter.swift in Sources */,
+				D7FEEBE722939F5500D6D1C8 /* ShowOptionsView.swift in Sources */,
 				D7006EEF2268CDD8004E570F /* ReTabItemView.swift in Sources */,
 				D75B8B2D22912A6600B38CC6 /* HomeViewModelDelegate.swift in Sources */,
 				D7BB183B227886B80084963E /* MSGResponseView.swift in Sources */,

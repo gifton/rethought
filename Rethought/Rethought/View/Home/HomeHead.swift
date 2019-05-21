@@ -40,9 +40,12 @@ class HomeHead: UIView {
     let collectionStartFrame = CGRect(x: 5, y: 200, width: Device.size.width, height: 170)
     let collectionFinishFrame = CGRect(x: 5, y: -165, width: Device.size.width, height: 170)
     
+    // labels
     let rethoughtLabel = UILabel()
     let dateLabel = UILabel()
     let entryLabel = UILabel()
+    
+    // horizontally scrolling collectionView
     let thoughtCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -53,23 +56,29 @@ class HomeHead: UIView {
         
         return cv
     }()
+    
+    // select specific entry types here
     let entryPickerView = EntryScrollView(frame: .zero)
     
     func setView() {
         
+        // set collection
         thoughtCollection.delegate = self
         thoughtCollection.dataSource = self
         thoughtCollection.register(cellWithClass: ThoughtCollectionCell.self)
         
+        // add subviews
         addSubview(thoughtCollection)
         addSubview(rethoughtLabel)
         addSubview(dateLabel)
         addSubview(entryPickerView)
         addSubview(entryLabel)
         
+        // set frames
         rethoughtLabel.frame = CGRect(x: 25, y: 50, width: 200, height: 42)
         dateLabel.frame = dateStartFrame
         
+        // TODO: update to sue frame and animate instead of
         entryPickerView.translatesAutoresizingMaskIntoConstraints = false
         entryPickerView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         entryPickerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
@@ -107,23 +116,19 @@ extension HomeHead: Animatable {
             gradient.colors = [finishBGColor.cgColor, startBGColor.cgColor]
             dateLabel.frame = dateEndFrame
             thoughtCollection.alpha = 0.0
-//            thoughtCollection.frame = collectionFinishFrame
         case 0:
             frame.size.height = startHeight
             gradient.frame = frame
             gradient.colors = [startBGColor.cgColor, finishBGColor.cgColor]
             dateLabel.frame = dateStartFrame
             thoughtCollection.alpha = 1.0
-//            thoughtCollection.frame = collectionStartFrame
         default:
             thoughtCollection.alpha = (1 - progress * 2)
+            
             // set all views with animations here
             dateLabel.frame = CGRect(x: dateStartFrame.origin.x + (dateEndFrame.origin.x - dateStartFrame.origin.x) * progress,
                                      y: dateStartFrame.origin.y + (dateEndFrame.origin.y - dateStartFrame.origin.y) * progress,
                                      width: dateEndFrame.width, height: dateEndFrame.height)
-//            thoughtCollection.frame = CGRect(x: collectionStartFrame.origin.x + (collectionFinishFrame.origin.x - collectionStartFrame.origin.x) * progress,
-//                                     y: collectionStartFrame.origin.y + (collectionFinishFrame.origin.y - collectionStartFrame.origin.y) * progress,
-//                                     width: collectionFinishFrame.width, height: collectionFinishFrame.height)
             
             dateLabel.textColor = UIColor(red: dateTextColorStart.rgba.red + (dateTextColorFinish.rgba.red - dateTextColorStart.rgba.red) * progress,
                                           green: dateTextColorStart.rgba.green + (dateTextColorFinish.rgba.green - dateTextColorStart.rgba.green) * progress,
@@ -157,6 +162,4 @@ extension HomeHead: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return collectionView.dequeueReusableCell(withClass: ThoughtCollectionCell.self, for: indexPath)
     }
-    
-    
 }

@@ -11,6 +11,7 @@ class HomeTableCell: UITableViewCell {
     
     let cell = UIView()
     let moreBtn = UIButton()
+    var entry: Entry = Entry()
     
     func setCell() {
         addSubview(cell)
@@ -19,6 +20,21 @@ class HomeTableCell: UITableViewCell {
         cell.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 5, paddingLeading: 10, paddingBottom: 5, paddingTrailing: 10)
         
         setViews()
+    }
+    private var bounceAnimation: CAKeyframeAnimation = {
+        let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+        bounceAnimation.values = [1.0, 1.4, 0.9, 1.02, 1.0]
+        bounceAnimation.duration = TimeInterval(0.3)
+        bounceAnimation.calculationMode = CAAnimationCalculationMode.cubic
+        return bounceAnimation
+    }()
+    
+    public func setButtonTargets(_ action: @escaping (_ entry: Entry) -> Void) {
+        moreBtn.addTapGestureRecognizer {
+            action(self.entry)
+            self.moreBtn.imageView?.layer.add(self.bounceAnimation, forKey: nil)
+        }
+        moreBtn.doesEnable()
     }
     
     private func setViews() {
@@ -32,5 +48,9 @@ class HomeTableCell: UITableViewCell {
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func isTapped() {
+        
     }
 }

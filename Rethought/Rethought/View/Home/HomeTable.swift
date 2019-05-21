@@ -25,6 +25,7 @@ class HomeTable: UIView {
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.showsVerticalScrollIndicator = false
         tv.separatorStyle = .none
+        tv.allowsSelection = false
         
         return tv
     }()
@@ -66,6 +67,10 @@ class HomeTable: UIView {
         
         oldContentOffset = scrollView.contentOffset
     }
+    
+    private func requestMore(forEntry entry: Entry) {
+        animator?.show(optionsFor: entry)
+    }
 }
 
 extension HomeTable: UITableViewDelegate, UITableViewDataSource {
@@ -79,7 +84,9 @@ extension HomeTable: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell: HomeTableCell = tableView.dequeueReusableCell(withClass: HomeTableCell.self, for: indexPath)
-        
+        cell.setButtonTargets { (entry) in
+            self.requestMore(forEntry: entry)
+        }
         return cell
     }
 }

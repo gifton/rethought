@@ -18,6 +18,7 @@ class HomeController: UIViewController {
     }
     var homeHead: HomeHead?
     var tv: HomeTable?
+    lazy var tableButtonMoreView: UIView = UIView()
     
     func setView() {
         tv = HomeTable(frame: CGRect(x: 0, y: 500, width: Device.size.width, height: Device.size.height - 500))
@@ -28,7 +29,6 @@ class HomeController: UIViewController {
         view.addSubview(tv!)
     }
     
-    
 }
 extension HomeController: Animator {
     func didUpdate() {
@@ -36,5 +36,33 @@ extension HomeController: Animator {
         homeHead?.update(toAnimationProgress: progress)
     }
     
-    
+    func show(optionsFor entry: Entry) {
+        
+        tabBarController?.tabBar.isHidden = true
+        let optionView = ShowOptionsView(frame: CGRect(x: 0, y: Device.size.height + 225, width: Device.size.width, height: 225), options: [.delete, .toEntry, .toThought])
+        
+        let newView = UIView(frame: CGRect(x: 0, y: 0, width: Device.size.width, height: Device.size.height - optionView.height))
+        newView.blurBackground(type: .dark, cornerRadius: 0)
+        newView.layer.opacity = 0
+        view.addSubview(newView)
+        
+        self.view.addSubview(optionView)
+        let end = {
+            optionView.removeFromSuperview()
+            newView.removeFromSuperview()
+            self.tabBarController?.tabBar.isHidden = false
+        }
+        
+        newView.addTapGestureRecognizer { end() }
+        optionView.cancelButton.addTapGestureRecognizer { end() }
+        
+
+        UIView.animate(withDuration: 0.25, animations: {
+            optionView.frame.origin.y -= 225 * 2
+            newView.layer.opacity = 0.55
+        }) { (true) in
+            print("added optionView")
+        }
+        
+    }
 }
