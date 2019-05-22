@@ -28,7 +28,7 @@ public class PhotoEntry: NSManagedObject {
         img.detail = builder.userDetail
         img.entry = entry
         img.rawPhoto = builder.photo.pngData()!
-        entry = img.entry
+        img.entry = entry
         
         return img
     }

@@ -65,7 +65,7 @@
 		D7536FD12262D765003F0920 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536FD02262D765003F0920 /* String.swift */; };
 		D7536FD52262D8AA003F0920 /* rt-DB2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D7536FD32262D8AA003F0920 /* rt-DB2.xcdatamodeld */; };
 		D7536FE32262EB0A003F0920 /* PhotoEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536FD72262EB0A003F0920 /* PhotoEntry.swift */; };
-		D7536FE52262EB0A003F0920 /* TextEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536FD92262EB0A003F0920 /* TextEntry.swift */; };
+		D7536FE52262EB0A003F0920 /* NoteEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536FD92262EB0A003F0920 /* NoteEntry.swift */; };
 		D7536FE72262EB0A003F0920 /* LinkEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536FDB2262EB0A003F0920 /* LinkEntry.swift */; };
 		D7536FE92262EB0A003F0920 /* Thought.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536FDD2262EB0A003F0920 /* Thought.swift */; };
 		D7536FEB2262EB0A003F0920 /* RecordingEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536FDF2262EB0A003F0920 /* RecordingEntry.swift */; };
@@ -164,7 +164,7 @@
 		D7536FD02262D765003F0920 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D7536FD42262D8AA003F0920 /* rt-DB2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "rt-DB2.xcdatamodel"; sourceTree = "<group>"; };
 		D7536FD72262EB0A003F0920 /* PhotoEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEntry.swift; sourceTree = "<group>"; };
-		D7536FD92262EB0A003F0920 /* TextEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEntry.swift; sourceTree = "<group>"; };
+		D7536FD92262EB0A003F0920 /* NoteEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEntry.swift; sourceTree = "<group>"; };
 		D7536FDB2262EB0A003F0920 /* LinkEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkEntry.swift; sourceTree = "<group>"; };
 		D7536FDD2262EB0A003F0920 /* Thought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thought.swift; sourceTree = "<group>"; };
 		D7536FDF2262EB0A003F0920 /* RecordingEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingEntry.swift; sourceTree = "<group>"; };
@@ -447,7 +447,7 @@
 			isa = PBXGroup;
 			children = (
 				D7536FD72262EB0A003F0920 /* PhotoEntry.swift */,
-				D7536FD92262EB0A003F0920 /* TextEntry.swift */,
+				D7536FD92262EB0A003F0920 /* NoteEntry.swift */,
 				D7536FDB2262EB0A003F0920 /* LinkEntry.swift */,
 				D7536FDF2262EB0A003F0920 /* RecordingEntry.swift */,
 			);
@@ -772,7 +772,7 @@
 				D7388A18228B8A2D00627E9E /* HomeTable.swift in Sources */,
 				D7536FA72262C73E003F0920 /* Device.swift in Sources */,
 				D7006EDD2267EDC0004E570F /* RethoughtMessageCell.swift in Sources */,
-				D7536FE52262EB0A003F0920 /* TextEntry.swift in Sources */,
+				D7536FE52262EB0A003F0920 /* NoteEntry.swift in Sources */,
 				D7006EEB2268CD6C004E570F /* ReTabBarDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

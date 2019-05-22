@@ -12,6 +12,7 @@ import UIKit
 protocol HomeViewModelDelegate: NSObject {
     var entries: [Entry] { get }
     var reccomendedThoughts: [Thought] { get }
+    var count: Int { get }
     
     func requestDeletion(forthought thought: Thought)
     

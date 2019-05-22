@@ -29,6 +29,7 @@ public class LinkEntry: NSManagedObject {
         link.detail = builder.userDetail
         link.entry = entry
         link.rawIcon = builder.rawIconUrl
+        link.entry = entry
         
         return link
     }

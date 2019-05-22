@@ -36,7 +36,6 @@ public class Thought: NSManagedObject {
             }
             out.append(computedEntry)
         }
-        print ("entrycount: \(out.count)")
         return out
     }
     var thoughtIcon: ThoughtIcon {

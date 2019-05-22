@@ -20,15 +20,17 @@ class HomeViewModel: NSObject {
     }
     
     private var moc: NSManagedObjectContext
-    public var thoughts = [Thought]()
-    public var entries: [Entry] {
-        var ent = [Entry]()
-        for t in thoughts {
-            ent.append(contentsOf: t.allEntries)
+    public var thoughts = [Thought]() {
+        didSet {
+            var ent = [Entry]()
+            for t in thoughts {
+                ent.append(contentsOf: t.allEntries)
+            }
+            
+            entries = ent
         }
-        
-        return ent
     }
+    public var entries = [Entry]()
     public var count: Int {
         get {
             return self.thoughts.count

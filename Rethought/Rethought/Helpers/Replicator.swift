@@ -45,6 +45,7 @@ class Replicator: ReplicatorProtocol {
         
         // entry for tp1
         let e1 = Entry.insertEntry(into: moc, location: CLLocation(), payload: ep1)
+        
         e1.thought = thought1
         e1.willSave()
         let e2 = Entry.insertEntry(into: moc, location: CLLocation(), payload: ep2)
@@ -61,10 +62,10 @@ class Replicator: ReplicatorProtocol {
         
         // entry for tp3
         let e5 = Entry.insertEntry(into: moc, location: CLLocation(), payload: ep1)
-        e5.thought = thought1
+        e5.thought = thought3
         e5.willSave()
         let e6 = Entry.insertEntry(into: moc, location: CLLocation(), payload: ep2)
-        e6.thought = thought2
+        e6.thought = thought3
         e6.willSave()
         
         attemptSave()
