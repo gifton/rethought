@@ -21,6 +21,7 @@ public class LinkEntry: NSManagedObject {
     // conveinance func for builders
     static func insert(into context: NSManagedObjectContext, builder: LinkBuilder) -> LinkEntry {
         guard let entry = builder.entry else {
+            print("there was a problem verifying the entry identity")
             return LinkEntry(context: context)
         }
         // set variables from builder

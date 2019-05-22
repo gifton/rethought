@@ -15,4 +15,5 @@ enum EntryType: String, Codable {
 
 protocol EntryBuilder {
     var type: EntryType { get set }
+    var entry: Entry? { get set }
 }

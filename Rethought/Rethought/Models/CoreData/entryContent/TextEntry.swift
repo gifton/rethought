@@ -20,6 +20,7 @@ public class NoteEntry: NSManagedObject {
     // conveinance func for builders
     static func insert(into context: NSManagedObjectContext, builder: NoteBuilder) -> NoteEntry {
         guard let entry = builder.entry else {
+            print("there was a problem verifying the entry identity")
             return NoteEntry(context: context)
         }
         // set variables from builder
