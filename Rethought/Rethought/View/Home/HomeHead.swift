@@ -37,8 +37,6 @@ class HomeHead: UIView {
     //frames
     let dateStartFrame = CGRect(x: 25, y: 90, width: 200, height: 18)
     let dateEndFrame = CGRect(x: 225, y: 65, width: 200, height: 18)
-    let collectionStartFrame = CGRect(x: 5, y: 200, width: Device.size.width, height: 170)
-    let collectionFinishFrame = CGRect(x: 5, y: -165, width: Device.size.width, height: 170)
     
     // labels
     let rethoughtLabel = UILabel()
@@ -51,7 +49,7 @@ class HomeHead: UIView {
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: 300, height: 165)
         layout.minimumLineSpacing = 5
-        let cv = UICollectionView(frame: CGRect(x: 5, y: 200, width: Device.size.width, height: 170), collectionViewLayout: layout)
+        let cv = UICollectionView(frame: CGRect(x: 5, y: 200, width: Device.size.width - 10, height: 170), collectionViewLayout: layout)
         cv.showsHorizontalScrollIndicator = false
         
         return cv

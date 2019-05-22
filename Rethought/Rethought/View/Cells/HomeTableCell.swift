@@ -11,7 +11,8 @@ class HomeTableCell: UITableViewCell {
     
     let cell = UIView()
     let moreBtn = UIButton()
-//    var entry: Entry = Entry()
+    var entry: Entry?
+    let typelbl = UILabel()
     
     func setCell() {
         addSubview(cell)
@@ -21,6 +22,12 @@ class HomeTableCell: UITableViewCell {
         
         setViews()
     }
+    
+    public func insert(payload entry: Entry) {
+        self.entry = entry
+        typelbl.text = "\(entry.type)"
+    }
+    
     private var bounceAnimation: CAKeyframeAnimation = {
         let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
         bounceAnimation.values = [1.0, 1.4, 0.9, 1.02, 1.0]
@@ -30,17 +37,20 @@ class HomeTableCell: UITableViewCell {
     }()
     
     public func setButtonTargets(_ action: @escaping (_ entry: Entry) -> Void) {
-//        moreBtn.addTapGestureRecognizer {
-//            action(self.entry)
-//            self.moreBtn.imageView?.layer.add(self.bounceAnimation, forKey: nil)
-//        }
+        moreBtn.addTapGestureRecognizer {
+            action(self.entry!)
+            self.moreBtn.imageView?.layer.add(self.bounceAnimation, forKey: nil)
+        }
         moreBtn.doesEnable()
     }
     
     private func setViews() {
         cell.addSubview(moreBtn)
+        cell.addSubview(typelbl)
+        
         moreBtn.setImage(#imageLiteral(resourceName: "more"), for: .normal)
         moreBtn.frame = CGRect(x: frame.width + 25, y: 30, width: 10, height: 30)
+        typelbl.frame = CGRect(x: 50, y: 15, width: frame.width - 75, height: 30)
     }
     
     static var identifier: String {

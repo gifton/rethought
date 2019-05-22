@@ -18,7 +18,7 @@ class HomeTable: UIView {
     
     public var animator: Animator?
     
-    let tv: UITableView = {
+    public let tv: UITableView = {
         let tv = UITableView(frame: .zero, style: .plain)
         tv.allowsMultipleSelection = false
         tv.backgroundColor = Device.colors.offWhite
@@ -33,7 +33,6 @@ class HomeTable: UIView {
     
     func setView() {
         tv.delegate = self
-        tv.dataSource = self
         tv.register(cellWithClass: HomeTableCell.self)
         addSubview(tv)
         addSubview(filterButton)
@@ -73,20 +72,8 @@ class HomeTable: UIView {
     }
 }
 
-extension HomeTable: UITableViewDelegate, UITableViewDataSource {
+extension HomeTable: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell: HomeTableCell = tableView.dequeueReusableCell(withClass: HomeTableCell.self, for: indexPath)
-        cell.setButtonTargets { (entry) in
-            self.requestMore(forEntry: entry)
-        }
-        return cell
     }
 }

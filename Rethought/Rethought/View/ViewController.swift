@@ -14,7 +14,7 @@ class ViewController: AnimatedTabBarController {
     
     init(model: NSManagedObjectContext) {
         super.init(nibName: nil, bundle: nil)
-        let vc1 = HomeController()
+        let vc1 = HomeController(withModel: HomeViewModel(withmoc: model))
         
         let vc2 = UIViewController()
         let vc3 = ConversationController(withModel: ThoughtBuilderViewModel(withContext: model))
@@ -31,8 +31,6 @@ class ViewController: AnimatedTabBarController {
         
         UITabBar.appearance().layer.borderWidth = 0.0
         UITabBar.appearance().clipsToBounds = true
-        
-        
     }
     
     required init?(coder aDecoder: NSCoder) {

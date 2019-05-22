@@ -14,9 +14,6 @@ import CoreLocation
 
 @objc(Thought)
 public class Thought: NSManagedObject {
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Thought> {
-        return NSFetchRequest<Thought>(entityName: "Thought")
-    }
 
     // MARK: Core Data properties
     @NSManaged public var title: String
@@ -30,6 +27,18 @@ public class Thought: NSManagedObject {
     @NSManaged public var entries: NSSet?
 
     // MARK: Computed properties
+    var allEntries: [Entry] {
+        var out = [Entry]()
+        guard let entries = entries else { return out }
+        for entry in entries {
+            guard let computedEntry: Entry = entry as? Entry else {
+                return out
+            }
+            out.append(computedEntry)
+        }
+        print ("entrycount: \(out.count)")
+        return out
+    }
     var thoughtIcon: ThoughtIcon {
         return ThoughtIcon(icon)
     }

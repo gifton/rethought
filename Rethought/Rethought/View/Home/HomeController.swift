@@ -10,18 +10,27 @@ import Foundation
 import UIKit
 
 class HomeController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    init(withModel model: HomeViewModel) {
+        self.model = model
+        super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .white
         
         setView()
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private var model: HomeViewModel
     var homeHead: HomeHead?
     var tv: HomeTable?
     lazy var tableButtonMoreView: UIView = UIView()
     
     func setView() {
         tv = HomeTable(frame: CGRect(x: 0, y: 500, width: Device.size.width, height: Device.size.height - 500))
+        tv?.tv.dataSource = self
         tv?.animator = self
         
         homeHead = HomeHead(frame: CGRect(x: 0, y: 0, width: Device.size.width, height: 500))
@@ -62,5 +71,19 @@ extension HomeController: Animator {
             optionView.frame.origin.y -= 225 * 2
             newView.layer.opacity = 0.55
         }
+    }
+}
+
+extension HomeController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: HomeTableCell = tableView.dequeueReusableCell(withClass: HomeTableCell.self, for: indexPath)
+        cell.setButtonTargets { (entry) in
+            self.show(optionsFor: entry)
+        }
+        cell.insert(payload: model.entries[indexPath.row])
+        return cell
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return model.count
     }
 }

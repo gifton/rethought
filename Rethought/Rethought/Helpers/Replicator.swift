@@ -66,6 +66,8 @@ class Replicator: ReplicatorProtocol {
         let e6 = Entry.insertEntry(into: moc, location: CLLocation(), payload: ep2)
         e6.thought = thought2
         e6.willSave()
+        
+        attemptSave()
     }
     
     func attemptSave() {
