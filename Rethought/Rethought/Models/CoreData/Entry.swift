@@ -39,7 +39,7 @@ public class Entry: NSManagedObject {
     }
     
     // standard static func returns an entry
-    static func insert(into context: NSManagedObjectContext, withlocation location: CLLocation?, toThought thought: Thought) -> Entry {
+    static func insert(into context: NSManagedObjectContext, withlocation location: CLLocation?, for thought: Thought) -> Entry {
         let defaults = UserDefaults.standard
         let defaultCount = defaults.integer(forKey: UserDefaults.Keys.entryID)
         
@@ -59,12 +59,13 @@ public class Entry: NSManagedObject {
     }
     
     func addBuilder(_ payload: EntryBuilder, moc: NSManagedObjectContext) {
-        
+        // depending on payload type, save the proper builder
         switch payload.type {
-        case .photo:
-            addPhotoBuilder(payload as? PhotoBuilder, with: moc)
-        default:
-            break
+        case .photo: addPhotoBuilder(payload as? PhotoBuilder, with: moc)
+        case .note: addNoteBuilder(payload as? NoteBuilder, with: moc)
+        case .link: addLinkBuilder(payload as? LinkBuilder, with: moc)
+        case .recording: fatalError(("you havent added a method to save recordings yet"))
+        default: break
         }
     }
     
@@ -161,6 +162,15 @@ extension Entry {
         let ne: NoteEntry = NoteEntry.insert(into: moc, builder: nb)
         note = ne
     }
-    
+    // recordings
+    func addRecordingBuilder( _ builder: RecordingBuilder, with moc: NSManagedObjectContext) {
+//        guard var rb: RecordingBuilder = builder else {
+//            print("unable to cast builder as recording")
+//            return
+//        }
+//        rb.entry = self
+//        let re: RecordingEntry = RecordingEntry.insert(into: moc, builder: rb)
+//        recording = re
+    }
 }
 
