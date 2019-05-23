@@ -82,7 +82,7 @@ extension HomeController: UITableViewDataSource {
         cell.setButtonTargets { (entry) in
             self.show(optionsFor: entry)
         }
-//        cell.insert(payload: model.entries[indexPath.row])
+        cell.insert(payload: model.entries[indexPath.row])
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

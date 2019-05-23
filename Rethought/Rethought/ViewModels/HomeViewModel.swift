@@ -14,7 +14,9 @@ class HomeViewModel: NSObject {
     init(withmoc moc: NSManagedObjectContext) {
         self.moc = moc
         super.init()
-        thoughts = fetchThoughts()
+        DispatchQueue.main.async {
+            self.thoughts = self.fetchThoughts()
+        }
         print("thoughtCount: \(thoughts.count)")
         print("entrycount: \(entries.count)")
     }
@@ -24,6 +26,8 @@ class HomeViewModel: NSObject {
     public var count: Int { get { return self.thoughts.count } }
     public var thoughts = [Thought]() {
         didSet {
+            print("thoughts set")
+            for thought in thoughts {print(thought.allEntries)}
             var ent = [Entry]()
             thoughts.forEach { ent.append(contentsOf: $0.allEntries) }
             entries = ent

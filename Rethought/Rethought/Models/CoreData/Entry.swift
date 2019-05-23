@@ -38,6 +38,31 @@ public class Entry: NSManagedObject {
         }
     }
     
+    // standard static func returns an entry
+    static func insert(into context: NSManagedObjectContext, withlocation location: CLLocation?, toThought thought: Thought) -> Entry {
+        let defaults = UserDefaults.standard
+        let defaultCount = defaults.integer(forKey: UserDefaults.Keys.entryID)
+        
+        let entry: Entry = context.insertObject()
+        entry.date = Date()
+        entry.id   = "rt-pDB-E\(defaultCount)"
+        
+        // save location if available
+        if let loc: CLLocation = location {
+            entry.latitude  = loc.coordinate.latitude as NSNumber
+            entry.longitude = loc.coordinate.longitude as NSNumber
+        }
+        
+        defaults.set(defaultCount + 1, forKey: UserDefaults.Keys.entryID)
+        
+        return entry
+    }
+    
+    func addBuilder(_ payload: EntryBuilder) {
+        
+    }
+    
+    // static method to create thought with a entrybuilder
     static func insertEntry<K: EntryBuilder>(into context: NSManagedObjectContext, location: CLLocation?, payload: K) -> Entry {
         // init defaults
         let defaults = UserDefaults.standard

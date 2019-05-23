@@ -31,6 +31,7 @@ class Replicator: ReplicatorProtocol {
     
     let ep1 = NoteBuilder(detail: "Notes let you save what you're thinking about in text form", title: "This is a note entry", forEntry: nil)
     let ep2 = NoteBuilder(detail: "this is another note", title: "We have another note now!", forEntry: nil)
+    let ep3 = PhotoBuilder(photo: #imageLiteral(resourceName: "welcomeCardGraphic"), userDetail: "This is my photo!", forEntry: nil)
     
     func createThoughts() {
         print("creating thoughts...")
@@ -67,6 +68,10 @@ class Replicator: ReplicatorProtocol {
         let e6 = Entry.insertEntry(into: moc, location: CLLocation(), payload: ep2)
         e6.thought = thought3
         e6.willSave()
+        
+        let e7 = Entry.insertEntry(into: moc, location: CLLocation(), payload: ep3)
+        e7.thought = thought1
+        e7.willSave()
         
         attemptSave()
     }
