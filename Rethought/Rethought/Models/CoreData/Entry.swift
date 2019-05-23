@@ -58,9 +58,17 @@ public class Entry: NSManagedObject {
         return entry
     }
     
-    func addBuilder(_ payload: EntryBuilder) {
+    func addBuilder(_ payload: EntryBuilder, moc: NSManagedObjectContext) {
         
+        switch payload.type {
+        case .photo:
+            addPhotoBuilder(payload as? PhotoBuilder, with: moc)
+        default:
+            break
+        }
     }
+    
+    
     
     // static method to create thought with a entrybuilder
     static func insertEntry<K: EntryBuilder>(into context: NSManagedObjectContext, location: CLLocation?, payload: K) -> Entry {
@@ -119,5 +127,40 @@ extension Entry: Managed {
     static var defaultSortDescriptors: [NSSortDescriptor] {
         return [NSSortDescriptor(key: #keyPath(date), ascending: false)]
     }
+}
+
+// all link building and adding functions
+extension Entry {
+    // photos
+    func addPhotoBuilder(_ builder: PhotoBuilder?, with moc: NSManagedObjectContext) {
+        guard var pb: PhotoBuilder = builder else {
+            print ("unable to cast builder as photo")
+            return
+        }
+        pb.entry = self
+        let pe: PhotoEntry = PhotoEntry.insert(into: moc, builder: pb)
+        photo = pe
+    }
+    // links
+    func addLinkBuilder(_ builder: LinkBuilder?, with moc: NSManagedObjectContext) {
+        guard var lb: LinkBuilder = builder else {
+            print("unable to cast builder as photo")
+            return
+        }
+        lb.entry = self
+        let le: LinkEntry = LinkEntry.insert(into: moc, builder: lb)
+        link = le
+    }
+    //notes
+    func addNoteBuilder(_ builder: NoteBuilder?, with moc: NSManagedObjectContext) {
+        guard var nb: NoteBuilder = builder else {
+            print("unable to cast builder as note")
+            return
+        }
+        nb.entry = self
+        let ne: NoteEntry = NoteEntry.insert(into: moc, builder: nb)
+        note = ne
+    }
+    
 }
 

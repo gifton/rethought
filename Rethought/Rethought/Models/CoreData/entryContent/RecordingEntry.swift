@@ -27,13 +27,15 @@ public class RecordingEntry: NSManagedObject {
     
     // conveinance func for builders
     static func insert(into context: NSManagedObjectContext, builder: RecordingBuilder) -> RecordingEntry {
-        guard let entry = builder.entry else {
-            print("there was a problem verifying the entry identity")
-            return RecordingEntry(context: context)
-        }
+        
         // set variables from builder
         let rec: RecordingEntry = context.insertObject()
         rec.detail = builder.userDetail
+
+        guard let entry = builder.entry else {
+            print("there was a problem verifying the entry identity")
+            return rec
+        }
         rec.entry = entry
 //        rec.rawRecording = 
         
