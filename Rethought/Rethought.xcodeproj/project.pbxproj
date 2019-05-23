@@ -281,8 +281,8 @@
 		D7006ED922673630004E570F /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				D75B8B30229210F000B38CC6 /* HomeEntryButtons.swift */,
 				D7388A15228B894F00627E9E /* HomeController.swift */,
+				D75B8B30229210F000B38CC6 /* HomeEntryButtons.swift */,
 				D7388A17228B8A2D00627E9E /* HomeTable.swift */,
 				D774C482228DD05800721394 /* HomeHead.swift */,
 			);

@@ -11,19 +11,21 @@ import UIKit
 
 class HomeController: UIViewController {
     
-    init(withModel model: HomeViewModel) {
-        self.model = model
+    init() {
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .white
-        
-        setView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private var model: HomeViewModel
+    var model: HomeViewModel! {
+        didSet {
+            print("model set")
+            setView()
+        }
+    }
     var homeHead: HomeHead?
     var tv: HomeTable?
     lazy var tableButtonMoreView: UIView = UIView()
@@ -84,7 +86,6 @@ extension HomeController: UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print (model.count)
         return model.count
     }
 }

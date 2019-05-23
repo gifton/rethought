@@ -14,7 +14,9 @@ class ViewController: AnimatedTabBarController {
     
     init(model: NSManagedObjectContext) {
         super.init(nibName: nil, bundle: nil)
-        let vc1 = HomeController(withModel: HomeViewModel(withmoc: model))
+        let vc1 = HomeController()
+        vc1.model = HomeViewModel(withmoc: model)
+        
         
         let vc2 = UIViewController()
         let vc3 = ConversationController(withModel: ThoughtBuilderViewModel(withContext: model))
