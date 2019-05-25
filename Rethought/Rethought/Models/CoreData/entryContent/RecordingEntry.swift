@@ -36,6 +36,7 @@ public class RecordingEntry: NSManagedObject {
             print("there was a problem verifying the entry identity")
             return rec
         }
+        entry.type = EntryType.recording.rawValue
         rec.entry = entry
 //        rec.rawRecording = 
         

@@ -32,6 +32,7 @@ public class Thought: NSManagedObject {
         guard let entries = entries else { return out }
         for entry in entries {
             guard let computedEntry: Entry = entry as? Entry else {
+                print("computed entry is unreachable from thought object")
                 return out
             }
             out.append(computedEntry)
@@ -64,6 +65,8 @@ public class Thought: NSManagedObject {
                 default:
                     print("unknown entry type")
                 }
+            } else {
+                print("unable to cast entrys from thougth count")
             }
         }
         return EntryCount(notes: notes, photos: photo, recordings: recording, links: link)

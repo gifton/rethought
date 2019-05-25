@@ -25,11 +25,14 @@ public class LinkEntry: NSManagedObject {
         let link: LinkEntry = context.insertObject()
         link.detail = builder.userDetail
         link.rawIcon = builder.rawIconUrl
+        link.title = builder.title
+        link.url = builder.link
         
         guard let entry = builder.entry else {
             print("there was a problem verifying the entry identity")
             return link
         }
+        entry.type = EntryType.link.rawValue
         link.entry = entry
         
         return link

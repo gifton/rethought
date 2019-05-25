@@ -14,16 +14,17 @@ class HomeViewModel: NSObject {
     init(withmoc moc: NSManagedObjectContext) {
         self.moc = moc
         super.init()
-        DispatchQueue.main.async {
-            self.thoughts = self.fetchThoughts()
-        }
+        self.thoughts = self.fetchThoughts()
         print("thoughtCount: \(thoughts.count)")
+        thoughts.forEach { print("thought info for: \($0.id) => \($0.entryCount)") }
         print("entrycount: \(entries.count)")
     }
     
     private var moc: NSManagedObjectContext
     public var entries = [Entry]()
-    public var count: Int { get { return self.thoughts.count } }
+    public var thoughtCount: Int {
+        get { return self.thoughts.count }
+    }
     public var thoughts = [Thought]() {
         didSet {
             print("thoughts set")
@@ -33,7 +34,6 @@ class HomeViewModel: NSObject {
             entries = ent
         }
     }
-    
 }
 
 extension HomeViewModel {

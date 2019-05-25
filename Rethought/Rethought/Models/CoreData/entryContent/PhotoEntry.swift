@@ -21,17 +21,18 @@ public class PhotoEntry: NSManagedObject {
     // conveinance func for builders
     static func insert(into context: NSManagedObjectContext, builder: PhotoBuilder) -> PhotoEntry {
         
-        let img: PhotoEntry = context.insertObject()
-        img.detail = builder.userDetail
-        img.rawPhoto = builder.photo.pngData()!
+        let photo: PhotoEntry = context.insertObject()
+        photo.detail = builder.userDetail
+        photo.rawPhoto = builder.photo.pngData()!
         
         guard let entry = builder.entry else {
             print("there was a problem verifying the entry identity")
-            return img
+            return photo
         }
-        img.entry = entry
+        entry.type = EntryType.photo.rawValue
+        photo.entry = entry
         
-        return img
+        return photo
     }
 }
 

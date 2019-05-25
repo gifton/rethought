@@ -1,6 +1,6 @@
 
 enum EntryType: String, Codable {
-    case note = "TEXT"
+    case note = "NOTE"
     case photo = "PHOTO"
     case link = "LINK"
     case recording = "RECORDING"

@@ -23,7 +23,7 @@ class HomeController: UIViewController {
     var model: HomeViewModel! {
         didSet {
             print("model set")
-            setView()
+//            setView()
         }
     }
     var homeHead: HomeHead?

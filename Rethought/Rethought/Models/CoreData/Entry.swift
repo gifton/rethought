@@ -46,6 +46,7 @@ public class Entry: NSManagedObject {
         let entry: Entry = context.insertObject()
         entry.date = Date()
         entry.id   = "rt-pDB-E\(defaultCount)"
+        entry.thought = thought
         
         // save location if available
         if let loc: CLLocation = location {
@@ -77,13 +78,13 @@ public class Entry: NSManagedObject {
         let defaults = UserDefaults.standard
         let defaultCount = defaults.integer(forKey: UserDefaults.Keys.entryID)
         
-        var entry: Entry = context.insertObject()
+        let entry: Entry = context.insertObject()
         entry.date = Date()
         entry.id   = "rt-pDB-E\(defaultCount)"
         entry.type = payload.type.rawValue
         
         // set entry content
-        sort(payload: payload, for: context, inEntry: &entry)
+        entry.addBuilder(payload, moc: context)
         
         // save location if available
         if let loc: CLLocation = location {
@@ -94,33 +95,6 @@ public class Entry: NSManagedObject {
         defaults.set(defaultCount + 1, forKey: UserDefaults.Keys.entryID)
         
         return entry
-    }
-    
-    private static func sort<T: EntryBuilder>(payload: T, for context: NSManagedObjectContext, inEntry entry: inout Entry) {
-        switch payload.type {
-        case .photo:
-            guard var photoBuilder: PhotoBuilder = payload as? PhotoBuilder else { return }
-            photoBuilder.entry = entry
-            let photoEntry = PhotoEntry.insert(into: context, builder: photoBuilder)
-            entry.photo = photoEntry
-        case .link:
-            guard var linkBuilder: LinkBuilder = payload as? LinkBuilder else { return }
-            linkBuilder.entry = entry
-            let linkEntry = LinkEntry.insert(into: context, builder: linkBuilder)
-            entry.link = linkEntry
-        case .note:
-            guard var noteBuilder: NoteBuilder = payload as? NoteBuilder else { return }
-            noteBuilder.entry = entry
-            let noteEntry = NoteEntry.insert(into: context, builder: noteBuilder)
-            entry.note = noteEntry
-        case .recording:
-            guard var linkBuilder: LinkBuilder = payload as? LinkBuilder else { return }
-            linkBuilder.entry = entry
-            let linkEntry = LinkEntry.insert(into: context, builder: linkBuilder)
-            entry.link = linkEntry
-        default:
-            break
-        }
     }
 }
 
@@ -141,6 +115,7 @@ extension Entry {
         pb.entry = self
         let pe: PhotoEntry = PhotoEntry.insert(into: moc, builder: pb)
         photo = pe
+        type = "PHOTO"
     }
     // links
     func addLinkBuilder(_ builder: LinkBuilder?, with moc: NSManagedObjectContext) {
@@ -151,6 +126,7 @@ extension Entry {
         lb.entry = self
         let le: LinkEntry = LinkEntry.insert(into: moc, builder: lb)
         link = le
+        type = "LINK"
     }
     //notes
     func addNoteBuilder(_ builder: NoteBuilder?, with moc: NSManagedObjectContext) {
@@ -161,6 +137,7 @@ extension Entry {
         nb.entry = self
         let ne: NoteEntry = NoteEntry.insert(into: moc, builder: nb)
         note = ne
+        type = "NOTE"
     }
     // recordings
     func addRecordingBuilder( _ builder: RecordingBuilder, with moc: NSManagedObjectContext) {

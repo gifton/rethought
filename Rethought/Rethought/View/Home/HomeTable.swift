@@ -52,7 +52,7 @@ class HomeTable: UIView {
     public var animationScrollLength: CGFloat = 330.0
     private var lastOffset: CGFloat = 0.0
     public var animationProgress: CGFloat {
-        if tv.numberOfRows(inSection: 0) > 3 {
+        if tv.numberOfRows(inSection: 0) > 6 {
             let offset = tv.contentOffset.y
             let normalizedOffset = max(0.0, min(1.0, offset/animationScrollLength))
             return normalizedOffset

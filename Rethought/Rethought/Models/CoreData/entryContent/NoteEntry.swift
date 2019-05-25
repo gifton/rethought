@@ -28,6 +28,7 @@ public class NoteEntry: NSManagedObject {
             print("there was a problem verifying the entry identity")
             return note
         }
+        entry.type = EntryType.note.rawValue
         note.entry = entry
         
         return note

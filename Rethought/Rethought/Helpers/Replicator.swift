@@ -19,69 +19,67 @@ protocol ReplicatorProtocol {
 }
 
 class Replicator: ReplicatorProtocol {
-    init(withMoc moc: NSManagedObjectContext) {
-        self.moc = moc
+    // create the thoughts
+    let tp1 = ThoughtPreview(title: "Welcome to rethought", icon: "💭", location: CLLocation())
+    let tp2 = ThoughtPreview(title: "Feel blocked? keep track of it.", icon: "🚦", location: CLLocation())
+    let tp3 = ThoughtPreview(title: "Dont want to forget something your thinking about? put it in your thoughts", icon: "🎮", location: CLLocation())
+    let tp4 = ThoughtPreview(title: "Dont want to forget something your thinking about? put it in your thoughts", icon: "🎮", location: CLLocation())
+    var thoughts = [Thought]()
+    func createThoughts() {
+        print("creating thooughts from preview...")
+        [tp1, tp2, tp3, tp4].forEach { (preview) in
+            var thought = Thought.insert(in: moc, withPreview: preview)
+            print(thought.title)
+            setEntriesFor(&thought)
+            thoughts.append(thought)
+        }
     }
     
-    var moc: NSManagedObjectContext
-    var thoughts = [Thought]()
-    let tp1 = ThoughtPreview(title: "Welcome to rethought", icon: "💭", location: CLLocation())
-    let tp2 = ThoughtPreview(title: "This is a thought", icon: "🚦", location: CLLocation())
-    let tp3 = ThoughtPreview(title: "Here's what another thought looks like", icon: "🎮", location: CLLocation())
-    
-    let ep1 = NoteBuilder(detail: "Notes let you save what you're thinking about in text form", title: "This is a note entry", forEntry: nil)
-    let ep2 = NoteBuilder(detail: "this is another note", title: "We have another note now!", forEntry: nil)
-    let ep3 = PhotoBuilder(photo: #imageLiteral(resourceName: "welcomeCardGraphic"), userDetail: "This is my photo!", forEntry: nil)
-    
-    func createThoughts() {
-        print("creating thoughts...")
-        // thoughts
-        let thought1 = Thought.insert(in: moc, withPreview: tp1)
-        let thought2 = Thought.insert(in: moc, withPreview: tp2)
-        let thought3 = Thought.insert(in: moc, withPreview: tp3)
+    func setEntriesFor(_ thought: inout Thought) {
         
-        thought1.willSave()
-        thought2.willSave()
-        thought3.willSave()
+        print("setting entries for thought")
+        // create the entry objects with thought relationship
+        let entry1 = createEntry(forThought: thought)
+        let entry2 = createEntry(forThought: thought)
+        let entry3 = createEntry(forThought: thought)
+        let entry4 = createEntry(forThought: thought)
         
-        // entry for tp1
-        let e1 = Entry.insertEntry(into: moc, location: CLLocation(), payload: ep1)
+        // create the builder objects
+        let ep1 = NoteBuilder(detail: "Notes let you save what you're thinking about in text form", title: "This is a note entry", forEntry: entry1)
+        let ep2 = NoteBuilder(detail: "this is another note", title: "We have another note now!", forEntry: entry2)
+        let ep3 = PhotoBuilder(photo: #imageLiteral(resourceName: "welcomeCardGraphic"), userDetail: "This is my photo!", forEntry: entry3)
+        let ep4 = LinkBuilder(link: "https://wesaturate.com",
+                              rawIconUrl: "https://ws.imgix.net/photos/rgnk4m_zeppelin.jpg?w=1000&dpr=2&auto=compress&q=80&cs=tinysrgb&ixlib=js-1.0.6",
+                              userDetail: "This is my website!",
+                              title: "Free RAW and JPG images",
+                              forEntry: entry4)
         
-        e1.thought = thought1
-        e1.willSave()
-        let e2 = Entry.insertEntry(into: moc, location: CLLocation(), payload: ep2)
-        e2.thought = thought1
-        e2.willSave()
+        // set builder objects to respective entries
         
-        // entry for tp2
-        let e3 = Entry.insertEntry(into: moc, location: CLLocation(), payload: ep1)
-        e3.thought = thought2
-        e3.willSave()
-        let e4 = Entry.insertEntry(into: moc, location: CLLocation(), payload: ep2)
-        e4.thought = thought2
-        e4.willSave()
-        
-        // entry for tp3
-        let e5 = Entry.insertEntry(into: moc, location: CLLocation(), payload: ep1)
-        e5.thought = thought3
-        e5.willSave()
-        let e6 = Entry.insertEntry(into: moc, location: CLLocation(), payload: ep2)
-        e6.thought = thought3
-        e6.willSave()
-        
-        let e7 = Entry.insertEntry(into: moc, location: CLLocation(), payload: ep3)
-        e7.thought = thought1
-        e7.willSave()
+        let _ = NoteEntry.insert(into: moc, builder: ep1)
+        let _ = NoteEntry.insert(into: moc, builder: ep2)
+        let _ = PhotoEntry.insert(into: moc, builder: ep3)
+        let _ = LinkEntry.insert(into: moc, builder: ep4)
         
         attemptSave()
     }
     
+    func createEntry(forThought thought: Thought) -> Entry {
+        let entry: Entry = Entry.insert(into: moc, withlocation: CLLocation(), for: thought)
+        return entry
+    }
+    
+    init(withMoc moc: NSManagedObjectContext) {
+        self.moc = moc
+    }
+    
+    let moc: NSManagedObjectContext
     func attemptSave() {
         do {
             try moc.save()
             print("saved bruh!")
         } catch {
-            print("THERE WAS AN ERROR")
+            print("THERE WAS AN ERROR SAVING IN REPLICATOR")
             print(error)
         }
     }
