@@ -37,6 +37,7 @@ class HomeController: UIViewController {
         tv?.animator = self
         
         homeHead = HomeHead(frame: CGRect(x: 0, y: 0, width: Device.size.width, height: 500))
+        homeHead?.thoughtCollection.dataSource = self
         view.addSubview(homeHead!)
         view.addSubview(tv!)
     }
@@ -88,5 +89,15 @@ extension HomeController: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.entryCount
+    }
+}
+
+extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return model.thoughtCount
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return collectionView.dequeueReusableCell(withClass: ThoughtCollectionCell.self, for: indexPath)
     }
 }

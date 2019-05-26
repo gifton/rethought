@@ -36,10 +36,12 @@ class HomeTable: UIView {
     func setView() {
         tv.delegate = self
         tv.register(cellWithClass: HomeTableCell.self)
+        
         addSubview(tv)
         addSubview(filterButton)
         addSubview(entryLabel)
-        tv.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 50, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
+        
+        tv.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 50, paddingLeading: 0, paddingBottom: 5, paddingTrailing: 0)
 
         filterButton.setAnchor(top: topAnchor, leading: nil, bottom: tv.topAnchor, trailing: trailingAnchor, paddingTop: 15, paddingLeading: 0, paddingBottom: 10, paddingTrailing: 30)
         filterButton.setImage(#imageLiteral(resourceName: "filter"), for: .normal)
@@ -51,7 +53,7 @@ class HomeTable: UIView {
         
     }
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("init(coder:) has notbeen implemented")
     }
     
     // MARK: Variables for scrolling update calculations
@@ -77,10 +79,6 @@ class HomeTable: UIView {
         animator?.didUpdate()
         
         oldContentOffset = scrollView.contentOffset
-    }
-    
-    private func requestMore(forEntry entry: Entry) {
-        animator?.show(optionsFor: entry)
     }
 }
 

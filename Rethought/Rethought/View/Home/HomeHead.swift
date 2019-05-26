@@ -11,10 +11,10 @@ import UIKit
 
 class HomeHead: UIView {
     override init(frame: CGRect) {
+        gradient = RadialGradientView(frame: frame)
         super.init(frame: frame)
-        let gView = RadialGradientView(frame: frame)
-        gView.colors = [UIColor(hex: "1A2437"), UIColor(hex: "381055"), UIColor(hex: "14263F"), UIColor(hex: "122450")]
-        addSubview(gView)
+        gradient.colors = [UIColor(hex: "1A2437"), UIColor(hex: "381055"), UIColor(hex: "14263F"), UIColor(hex: "122450")]
+        addSubview(gradient)
         setView(); styleView()
     }
     
@@ -50,8 +50,10 @@ class HomeHead: UIView {
     let rethoughtLabel = UILabel()
     let dateLabel = UILabel()
     
+    var gradient: RadialGradientView
+    
     // horizontally scrolling collectionView
-    let thoughtCollection: UICollectionView = {
+    public let thoughtCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: 300, height: 165)
@@ -69,7 +71,6 @@ class HomeHead: UIView {
         
         // set collection
         thoughtCollection.delegate = self
-        thoughtCollection.dataSource = self
         thoughtCollection.register(cellWithClass: ThoughtCollectionCell.self)
         
         // add subviews
@@ -83,10 +84,7 @@ class HomeHead: UIView {
         dateLabel.frame = dateStartFrame
         
         // TODO: update to sue frame and animate instead of
-        entryPickerView.translatesAutoresizingMaskIntoConstraints = false
-        entryPickerView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        entryPickerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        entryPickerView.setHeightWidth(width: frame.width, height: 80)
+        entryPickerView.frame = CGRect(x: 0, y: frame.height - 80, width: frame.width, height: 80)
     }
     
     private func styleView() {
@@ -111,14 +109,19 @@ extension HomeHead: Animatable {
         // calculate background color
         switch progress {
         case 1:
+            frame.size.height = endHeight
             dateLabel.frame = dateEndFrame
             thoughtCollection.alpha = 0.0
+            entryPickerView.frame = CGRect(x: 0, y: frame.height - 80, width: frame.width, height: 80)
         case 0:
             frame.size.height = startHeight
             dateLabel.frame = dateStartFrame
             thoughtCollection.alpha = 1.0
+            entryPickerView.frame = CGRect(x: 0, y: frame.height - 80, width: frame.width, height: 80)
         default:
+            entryPickerView.frame = CGRect(x: 0, y: frame.height - 80, width: frame.width, height: 80)
             thoughtCollection.alpha = (1 - progress * 2)
+            frame.size.height = startHeight - newHeight
             
             // set all views with animations here
             dateLabel.frame = CGRect(x: dateStartFrame.origin.x + (dateEndFrame.origin.x - dateStartFrame.origin.x) * progress,
@@ -129,8 +132,6 @@ extension HomeHead: Animatable {
                                           green: dateTextColorStart.rgba.green + (dateTextColorFinish.rgba.green - dateTextColorStart.rgba.green) * progress,
                                           blue: dateTextColorStart.rgba.blue + (dateTextColorFinish.rgba.blue - dateTextColorStart.rgba.blue) * progress,
                                           alpha: dateTextColorStart.rgba.alpha + (dateTextColorFinish.rgba.alpha - dateTextColorStart.rgba.alpha) * progress)
-
-            frame.size.height = startHeight - newHeight
         }
         
     }
@@ -147,12 +148,8 @@ extension HomeHead: Animatable {
     }
 }
 
-extension HomeHead: UICollectionViewDelegate, UICollectionViewDataSource {
+extension HomeHead: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withClass: ThoughtCollectionCell.self, for: indexPath)
     }
 }

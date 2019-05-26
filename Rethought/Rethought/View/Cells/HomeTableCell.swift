@@ -13,6 +13,8 @@ class HomeTableCell: UITableViewCell {
     let moreBtn = UIButton()
     var entry: Entry?
     let typeImage = UIImageView()
+    let dateLabel = UILabel()
+    let titleLabel = UILabel()
     
     func setCell() {
         addSubview(cell)
@@ -24,31 +26,48 @@ class HomeTableCell: UITableViewCell {
     
     public func insert(payload entry: Entry) {
         self.entry = entry
+        dateLabel.getStringFromDate(date: entry.date, withStyle: .medium)
         switch entry.type {
         case EntryType.link.rawValue:
             typeImage.image = #imageLiteral(resourceName: "compass_gradient")
-            print("cell image set to: image")
+            titleLabel.text = entry.link?.title
         case EntryType.note.rawValue:
             typeImage.image = #imageLiteral(resourceName: "note_gradient")
-            print("cell image set to: note")
+            titleLabel.text = entry.note?.title
         case EntryType.photo.rawValue:
             typeImage.image = #imageLiteral(resourceName: "Image_gradient")
-            print("cell image set to: photo")
+            titleLabel.text = entry.photo?.detail
         case EntryType.recording.rawValue:
             typeImage.image = #imageLiteral(resourceName: "microphone_gradient")
-            print("cell image set recording: image")
+            titleLabel.text = entry.recording?.detail
         default:
             print("cell image set to: nil")
             return
         }
         
         cell.addSubview(typeImage)
+        cell.addSubview(titleLabel)
+        cell.addSubview(dateLabel)
+        
         typeImage.translatesAutoresizingMaskIntoConstraints = false
         typeImage.centerYAnchor.constraint(equalTo: cell.centerYAnchor).isActive = true
         typeImage.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 25).isActive = true
         
+        titleLabel.setAnchor(top: cell.topAnchor, leading: typeImage.trailingAnchor, bottom: nil, trailing: moreBtn.leadingAnchor, paddingTop: 25, paddingLeading: 10, paddingBottom: 0, paddingTrailing: 25)
+        
+        dateLabel.setAnchor(top: titleLabel.bottomAnchor, leading: typeImage.trailingAnchor, bottom: bottomAnchor, trailing: moreBtn.leadingAnchor, paddingTop: -10, paddingLeading: 10, paddingBottom: 20, paddingTrailing: 25)
+        
+        titleLabel.font = Device.font.body(ofSize: .large)
+        titleLabel.textColor = Device.colors.darkGray
+        titleLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        
+        dateLabel.font = Device.font.title(ofSize: .large)
+        dateLabel.textColor = Device.colors.darkGray
+        
         typeImage.setHeightWidth(width: 30, height: 30)
         typeImage.contentMode = .scaleAspectFit
+        
+        
     }
     
     private var bounceAnimation: CAKeyframeAnimation = {
