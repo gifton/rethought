@@ -6,61 +6,18 @@ class EntryScrollView: UIScrollView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = UIColor.white.withAlphaComponent(0.15)
         contentSize = CGSize(width: 525, height: 80)
         showsHorizontalScrollIndicator = false
         setView()
     }
     
-    let allButton: UIButton = {
-        let btn = UIButton()
-        let img = UIImage(named: "cloud_btn")!
-        btn.setTitle(" All", for: .normal)
-        btn.frame.size = CGSize(width: 50, height: 25)
-        btn.setImage(img, for: .normal)
-        return btn
-    }()
-    let linkButton: UIButton = {
-        let btn = UIButton()
-        btn.setTitle(" Links", for: .normal)
-        btn.frame.size = CGSize(width: 40, height: 25)
-        let img = UIImage(named: "link_btn")!
-        btn.setImage(img, for: .normal)
-        return btn
-    }()
-    let noteButton: UIButton = {
-        let btn = UIButton()
-        let img = UIImage(named: "note_btn")!
-        btn.setTitle(" Notes", for: .normal)
-        btn.frame.size = CGSize(width: 70, height: 25)
-        btn.setImage(img, for: .normal)
-        return btn
-    }()
-    let recordingButton: UIButton = {
-        let btn = UIButton()
-        let img = UIImage(named: "recording_btn")!
-        btn.setTitle(" Recordings", for: .normal)
-        btn.frame.size = CGSize(width: 100, height: 25)
-        btn.setImage(img, for: .normal)
-        return btn
-    }()
-    let photoButton: UIButton = {
-        let btn = UIButton()
-        let img = UIImage(named: "photo_btn")!
-        btn.frame.size = CGSize(width: 80, height: 25)
-        btn.setTitle(" Photos", for: .normal)
-        btn.setImage(img, for: .normal)
-        return btn
-    }()
-    
     private func setView() {
         var views = [UIView]()
-        for type in EntryType.exhaustiveList() {
+        for type in EntryType.exhaustiveList(){
             print("setting button of type: \(type)")
             let btn = EntryButton(type: type) {
                 print("selected: \(type)")
             }
-            
             views.append(btn)
         }
         let stack = UIStackView(arrangedSubviews: views,
@@ -104,6 +61,10 @@ class EntryButton: UIView {
         super.init(frame: frame)
         
         addTapGestureRecognizer(action: action)
+        addTapGestureRecognizer {
+            action()
+            self.image.layer.add(self.bounceAnimation, forKey: nil)
+        }
         setView()
     }
     
@@ -118,7 +79,7 @@ class EntryButton: UIView {
         addSubview(label)
         addSubview(image)
         
-        image.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32.5).isActive = true
+        image.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 27.5).isActive = true
         
         label.text = type.rawValue
         label.adjustsFontSizeToFitWidth = true
@@ -126,4 +87,12 @@ class EntryButton: UIView {
         label.textColor = .white
         label.setAnchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
     }
+    
+    private var bounceAnimation: CAKeyframeAnimation = {
+        let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+        bounceAnimation.values = [1.0, 1.4, 0.9, 1.02, 1.0]
+        bounceAnimation.duration = TimeInterval(0.3)
+        bounceAnimation.calculationMode = CAAnimationCalculationMode.cubic
+        return bounceAnimation
+    }()
 }

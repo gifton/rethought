@@ -12,7 +12,7 @@ class HomeTableCell: UITableViewCell {
     let cell = UIView()
     let moreBtn = UIButton()
     var entry: Entry?
-    let typelbl = UILabel()
+    let typeImage = UIImageView()
     
     func setCell() {
         addSubview(cell)
@@ -25,7 +25,6 @@ class HomeTableCell: UITableViewCell {
     
     public func insert(payload entry: Entry) {
         self.entry = entry
-        typelbl.text = "\(entry.type)"
     }
     
     private var bounceAnimation: CAKeyframeAnimation = {
@@ -46,11 +45,9 @@ class HomeTableCell: UITableViewCell {
     
     private func setViews() {
         cell.addSubview(moreBtn)
-        cell.addSubview(typelbl)
         
         moreBtn.setImage(#imageLiteral(resourceName: "more"), for: .normal)
         moreBtn.frame = CGRect(x: frame.width + 25, y: 30, width: 10, height: 30)
-        typelbl.frame = CGRect(x: 50, y: 15, width: frame.width - 75, height: 30)
     }
     
     static var identifier: String {
