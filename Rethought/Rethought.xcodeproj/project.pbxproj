@@ -25,9 +25,6 @@
 		D7006EE5226841D2004E570F /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EE4226841D2004E570F /* ConversationView.swift */; };
 		D7006EE72268CB63004E570F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EE62268CB63004E570F /* ViewController.swift */; };
 		D7006EE92268CD5A004E570F /* AnimatedTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EE82268CD5A004E570F /* AnimatedTabBar.swift */; };
-		D7006EEB2268CD6C004E570F /* ReTabBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EEA2268CD6C004E570F /* ReTabBarDelegate.swift */; };
-		D7006EED2268CDAE004E570F /* ReTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EEC2268CDAE004E570F /* ReTabItem.swift */; };
-		D7006EEF2268CDD8004E570F /* ReTabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EEE2268CDD8004E570F /* ReTabItemView.swift */; };
 		D70AD47C2283FB5200824DCB /* MSGCenterLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70AD47B2283FB5200824DCB /* MSGCenterLinkView.swift */; };
 		D7149384227CB830005B681D /* MSGBoardNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7149383227CB830005B681D /* MSGBoardNoteView.swift */; };
 		D721112C2272D14D00131BEF /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721112B2272D14D00131BEF /* SearchController.swift */; };
@@ -123,9 +120,6 @@
 		D7006EE4226841D2004E570F /* ConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
 		D7006EE62268CB63004E570F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D7006EE82268CD5A004E570F /* AnimatedTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTabBar.swift; sourceTree = "<group>"; };
-		D7006EEA2268CD6C004E570F /* ReTabBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReTabBarDelegate.swift; sourceTree = "<group>"; };
-		D7006EEC2268CDAE004E570F /* ReTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReTabItem.swift; sourceTree = "<group>"; };
-		D7006EEE2268CDD8004E570F /* ReTabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReTabItemView.swift; sourceTree = "<group>"; };
 		D70AD47B2283FB5200824DCB /* MSGCenterLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGCenterLinkView.swift; sourceTree = "<group>"; };
 		D7149383227CB830005B681D /* MSGBoardNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardNoteView.swift; sourceTree = "<group>"; };
 		D721112B2272D14D00131BEF /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
@@ -246,17 +240,6 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		D7006ED622673586004E570F /* Tabbar */ = {
-			isa = PBXGroup;
-			children = (
-				D7006EE82268CD5A004E570F /* AnimatedTabBar.swift */,
-				D7006EEA2268CD6C004E570F /* ReTabBarDelegate.swift */,
-				D7006EEC2268CDAE004E570F /* ReTabItem.swift */,
-				D7006EEE2268CDD8004E570F /* ReTabItemView.swift */,
-			);
-			path = Tabbar;
-			sourceTree = "<group>";
-		};
 		D7006ED7226735F9004E570F /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,14 +302,6 @@
 				D72F30F3228575450091DCB8 /* MSGBoardLinkView.swift */,
 			);
 			path = "entry+thought";
-			sourceTree = "<group>";
-		};
-		D7388A19228BB6E800627E9E /* Animatable */ = {
-			isa = PBXGroup;
-			children = (
-				D7388A1A228BB6F300627E9E /* Animatable.swift */,
-			);
-			path = Animatable;
 			sourceTree = "<group>";
 		};
 		D7536F852262C26F003F0920 = {
@@ -521,10 +496,10 @@
 		D7C6541C226A391A008A66EF /* Auxiliary */ = {
 			isa = PBXGroup;
 			children = (
-				D7FEEBE622939F5500D6D1C8 /* ShowOptionsView.swift */,
-				D7388A19228BB6E800627E9E /* Animatable */,
 				D7BB1834227631830084963E /* MSG */,
-				D7006ED622673586004E570F /* Tabbar */,
+				D7006EE82268CD5A004E570F /* AnimatedTabBar.swift */,
+				D7FEEBE622939F5500D6D1C8 /* ShowOptionsView.swift */,
+				D7388A1A228BB6F300627E9E /* Animatable.swift */,
 			);
 			path = Auxiliary;
 			sourceTree = "<group>";
@@ -721,7 +696,6 @@
 				D7536FD52262D8AA003F0920 /* rt-DB2.xcdatamodeld in Sources */,
 				D7006EC622671C4C004E570F /* PhotoBuilder.swift in Sources */,
 				D7BE8F20227AB12300B15F06 /* MSGCenterEntryView.swift in Sources */,
-				D7006EED2268CDAE004E570F /* ReTabItem.swift in Sources */,
 				D7536FA52262C6DA003F0920 /* styling.swift in Sources */,
 				D7536FC92262D182003F0920 /* UIStackView.swift in Sources */,
 				D7536FC12262CCE4003F0920 /* UIImage.swift in Sources */,
@@ -755,7 +729,6 @@
 				D7536FE72262EB0A003F0920 /* LinkEntry.swift in Sources */,
 				D7536FB72262C965003F0920 /* DateFormatter.swift in Sources */,
 				D7FEEBE722939F5500D6D1C8 /* ShowOptionsView.swift in Sources */,
-				D7006EEF2268CDD8004E570F /* ReTabItemView.swift in Sources */,
 				D75B8B2D22912A6600B38CC6 /* HomeViewModelDelegate.swift in Sources */,
 				D7BB183B227886B80084963E /* MSGResponseView.swift in Sources */,
 				D7006EC02266F0F6004E570F /* EntryContent.swift in Sources */,
@@ -777,7 +750,6 @@
 				D7536FA72262C73E003F0920 /* Device.swift in Sources */,
 				D7006EDD2267EDC0004E570F /* RethoughtMessageCell.swift in Sources */,
 				D7536FE52262EB0A003F0920 /* NoteEntry.swift in Sources */,
-				D7006EEB2268CD6C004E570F /* ReTabBarDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
