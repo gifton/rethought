@@ -14,11 +14,10 @@ class AnimatedTabBarController: UITabBarController {
     }()
     
     override func viewDidLoad() {
-        tabBar.tintColor = Device.colors.yellow
+        tabBar.tintColor = Device.colors.blue
         tabBar.shadowImage = UIImage()
         tabBar.backgroundColor = Device.colors.offWhite
         tabBar.barTintColor = Device.colors.offWhite
-        
     }
     
     override func viewWillLayoutSubviews() {

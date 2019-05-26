@@ -27,24 +27,6 @@ class MSGBoard: UIScrollView {
     var radius: CGFloat = 36.5
     private var path: UIBezierPath?
     
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//
-//        updatePath()
-//    }
-    
-//    override func draw(_ rect: CGRect) {
-//        guard let path = path,
-//            let context = UIGraphicsGetCurrentContext() else {
-//                print("returning")
-//                return
-//        }
-//
-//        context.clear(rect)
-//        Device.colors.offWhite.setFill()
-//        path.fill()
-//    }
-    
     private func updatePath() {
         let path = UIBezierPath.continuousRoundedRect(bounds, cornerRadius: (topLeft: radius, topRight: radius, bottomLeft: radius, bottomRight: radius))
         
@@ -69,7 +51,7 @@ class MSGBoard: UIScrollView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentSize = CGSize(width: frame.width, height: safeOrigin.y)
+        contentSize = CGSize(width: frame.width, height: safeOrigin.y + 10.0)
         resetView()
         addResponse(payload: "Whats on your mind?")
         backgroundColor = Device.colors.offWhite
