@@ -49,7 +49,6 @@ class HomeHead: UIView {
     // labels
     let rethoughtLabel = UILabel()
     let dateLabel = UILabel()
-    let entryLabel = UILabel()
     
     // horizontally scrolling collectionView
     let thoughtCollection: UICollectionView = {
@@ -78,7 +77,6 @@ class HomeHead: UIView {
         addSubview(rethoughtLabel)
         addSubview(dateLabel)
         addSubview(entryPickerView)
-        addSubview(entryLabel)
         
         // set frames
         rethoughtLabel.frame = CGRect(x: 25, y: 50, width: 200, height: 42)
@@ -89,8 +87,6 @@ class HomeHead: UIView {
         entryPickerView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         entryPickerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         entryPickerView.setHeightWidth(width: frame.width, height: 80)
-        
-        entryLabel.frame = CGRect(x: 15, y: frame.height - 70, width: 250, height: 30)
     }
     
     private func styleView() {
@@ -103,10 +99,6 @@ class HomeHead: UIView {
         dateLabel.font = Device.font.body(ofSize: .medium)
         
         thoughtCollection.backgroundColor = .clear
-        
-        entryLabel.text = "View your Entries"
-        entryLabel.font = Device.font.mediumTitle(ofSize: .xXXLarge)
-        entryLabel.textColor = .white
     }
 }
 

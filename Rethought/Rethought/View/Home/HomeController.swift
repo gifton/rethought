@@ -15,14 +15,15 @@ class HomeController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .white
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        print("view appeared!")
+    }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     var model: HomeViewModel! {
         didSet {
-            print("model set")
             setView()
         }
     }
