@@ -31,8 +31,9 @@ class Replicator: ReplicatorProtocol {
             var thought = Thought.insert(in: moc, withPreview: preview)
             print(thought.title)
             setEntriesFor(&thought)
-            thoughts.append(thought)
         }
+        
+        attemptSave()
     }
     
     func setEntriesFor(_ thought: inout Thought) {
@@ -60,8 +61,6 @@ class Replicator: ReplicatorProtocol {
         let _ = NoteEntry.insert(into: moc, builder: ep2)
         let _ = PhotoEntry.insert(into: moc, builder: ep3)
         let _ = LinkEntry.insert(into: moc, builder: ep4)
-        
-        attemptSave()
     }
     
     func createEntry(forThought thought: Thought) -> Entry {

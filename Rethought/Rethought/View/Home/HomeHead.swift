@@ -11,13 +11,22 @@ import UIKit
 
 class HomeHead: UIView {
     override init(frame: CGRect) {
-        gradient = CAGradientLayer()
         super.init(frame: frame)
-        gradient.frame = frame
-        gradient.colors = [startBGColor.cgColor, finishBGColor.cgColor]
-        layer.addSublayer(gradient)
-        
+        let gView = RadialGradientView(frame: frame)
+        gView.colors = [UIColor(hex: "1A2437"), UIColor(hex: "381055"), UIColor(hex: "14263F"), UIColor(hex: "122450")]
+        addSubview(gView)
         setView(); styleView()
+    }
+    
+    private func setGradientView() {
+        let path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 200, height: 200))
+        let gradient = CAGradientLayer()
+        gradient.frame = path.bounds
+        gradient.colors = [UIColor.magenta.cgColor, UIColor.cyan.cgColor]
+        let shapeMask = CAShapeLayer()
+        shapeMask.path = path.cgPath
+        gradient.mask = shapeMask
+        layer.addSublayer(gradient)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -32,8 +41,7 @@ class HomeHead: UIView {
     let startBGColor = UIColor(hex: "#2C7699")
     let finishBGColor = UIColor(hex: "#4C3EC1")
     let dateTextColorStart = UIColor.white
-    let dateTextColorFinish = UIColor.black
-    var gradient: CAGradientLayer
+    let dateTextColorFinish = Device.colors.green
     //frames
     let dateStartFrame = CGRect(x: 25, y: 90, width: 200, height: 18)
     let dateEndFrame = CGRect(x: 225, y: 65, width: 200, height: 18)
@@ -111,13 +119,10 @@ extension HomeHead: Animatable {
         // calculate background color
         switch progress {
         case 1:
-            gradient.colors = [finishBGColor.cgColor, startBGColor.cgColor]
             dateLabel.frame = dateEndFrame
             thoughtCollection.alpha = 0.0
         case 0:
             frame.size.height = startHeight
-            gradient.frame = frame
-            gradient.colors = [startBGColor.cgColor, finishBGColor.cgColor]
             dateLabel.frame = dateStartFrame
             thoughtCollection.alpha = 1.0
         default:
@@ -134,8 +139,6 @@ extension HomeHead: Animatable {
                                           alpha: dateTextColorStart.rgba.alpha + (dateTextColorFinish.rgba.alpha - dateTextColorStart.rgba.alpha) * progress)
 
             frame.size.height = startHeight - newHeight
-            gradient.frame = frame
-            gradient.colors = animatedColors(withProgress: progress)
         }
         
     }
@@ -160,4 +163,75 @@ extension HomeHead: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return collectionView.dequeueReusableCell(withClass: ThoughtCollectionCell.self, for: indexPath)
     }
+}
+
+
+
+
+class RadialGradientLayer: CALayer {
+    
+    var center: CGPoint {
+        return CGPoint(x: bounds.width/2, y: bounds.height/2)
+    }
+    
+    var radius: CGFloat {
+        return (bounds.width + bounds.height)/2
+    }
+    
+    var colors: [UIColor] = [UIColor.black, UIColor.lightGray] {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    
+    var cgColors: [CGColor] {
+        return colors.map({ (color) -> CGColor in
+            return color.cgColor
+        })
+    }
+    
+    override init() {
+        super.init()
+        needsDisplayOnBoundsChange = true
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init()
+    }
+    
+    override func draw(in ctx: CGContext) {
+        ctx.saveGState()
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let locations: [CGFloat] = [0.0, 0.33, 0.66, 1.0]
+        guard let gradient = CGGradient(colorsSpace: colorSpace, colors: cgColors as CFArray, locations: locations) else {
+            return
+        }
+        ctx.drawRadialGradient(gradient, startCenter: center, startRadius: 0.0, endCenter: center, endRadius: radius, options: CGGradientDrawingOptions(rawValue: 0))
+    }
+    
+}
+
+
+
+class RadialGradientView: UIView {
+    
+    private let gradientLayer = RadialGradientLayer()
+    
+    var colors: [UIColor] {
+        get {
+            return gradientLayer.colors
+        }
+        set {
+            gradientLayer.colors = newValue
+        }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if gradientLayer.superlayer == nil {
+            layer.insertSublayer(gradientLayer, at: 0)
+        }
+        gradientLayer.frame = bounds
+    }
+    
 }

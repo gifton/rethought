@@ -23,7 +23,7 @@ class HomeController: UIViewController {
     var model: HomeViewModel! {
         didSet {
             print("model set")
-//            setView()
+            setView()
         }
     }
     var homeHead: HomeHead?
@@ -86,6 +86,6 @@ extension HomeController: UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.count
+        return model.entryCount
     }
 }

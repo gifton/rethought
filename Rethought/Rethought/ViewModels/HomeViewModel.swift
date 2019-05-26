@@ -14,30 +14,36 @@ class HomeViewModel: NSObject {
     init(withmoc moc: NSManagedObjectContext) {
         self.moc = moc
         super.init()
-        self.thoughts = self.fetchThoughts()
-        print("thoughtCount: \(thoughts.count)")
-        thoughts.forEach { print("thought info for: \($0.id) => \($0.entryCount)") }
-        print("entrycount: \(entries.count)")
+        setup()
     }
     
     private var moc: NSManagedObjectContext
-    public var entries = [Entry]()
+    var entries = [Entry]() {
+        didSet {
+            print("did set entries")
+        }
+    }
     public var thoughtCount: Int {
         get { return self.thoughts.count }
     }
-    public var thoughts = [Thought]() {
+    public var entryCount: Int {
+        return thoughts.entries().count
+    }
+    public var thoughts: [Thought] = [] {
         didSet {
             print("thoughts set")
-            for thought in thoughts {print(thought.allEntries)}
-            var ent = [Entry]()
-            thoughts.forEach { ent.append(contentsOf: $0.allEntries) }
-            entries = ent
         }
+    }
+    
+    private func setup() {
+        thoughts = fetchThoughts()
+        entries = thoughts.entries()
     }
 }
 
 extension HomeViewModel {
     func fetchThoughts() -> [Thought] {
+        print("begining fetch request from HomeModel")
         let request = Thought.fetchRequest()
         do {
             let result = try moc.fetch(request)

@@ -30,16 +30,25 @@ class HomeTable: UIView {
         return tv
     }()
     let filterButton = UIButton()
+    let entryLabel = UILabel()
+    
     
     func setView() {
         tv.delegate = self
         tv.register(cellWithClass: HomeTableCell.self)
         addSubview(tv)
         addSubview(filterButton)
+        addSubview(entryLabel)
         tv.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 50, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
 
         filterButton.setAnchor(top: topAnchor, leading: nil, bottom: tv.topAnchor, trailing: trailingAnchor, paddingTop: 15, paddingLeading: 0, paddingBottom: 10, paddingTrailing: 30)
         filterButton.setImage(#imageLiteral(resourceName: "filter"), for: .normal)
+        
+        entryLabel.setTopAndLeading(top: topAnchor, leading: leadingAnchor, paddingTop: 15, paddingLeading: 20)
+        entryLabel.font = Device.font.mediumTitle(ofSize: .xLarge)
+        entryLabel.text = "Recent Entries"
+        entryLabel.textColor = Device.colors.red
+        
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

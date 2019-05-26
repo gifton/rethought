@@ -35,3 +35,12 @@ extension EntryCount {
         return EntryCount(notes: ec1.noteInt + ec2.noteInt, photos: ec1.photoInt + ec2.photoInt, recordings: ec1.recordingInt + ec2.recordingInt, links: ec1.linkInt + ec2.linkInt)
     }
 }
+
+// get all entries from an array of thoughts
+extension Sequence where Iterator.Element: Thought {
+    func entries() -> [Entry] {
+        var entries = [Entry]()
+        forEach {entries.append(contentsOf: $0.allEntries)}
+        return entries
+    }
+}

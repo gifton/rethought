@@ -68,7 +68,7 @@ class ThoughtCollectionCell: UICollectionViewCell {
         }
         
         context.clear(rect)
-        UIColor.black.withAlphaComponent(0.15).setFill()
+        UIColor.black.withAlphaComponent(0.25).setFill()
         path.fill()
     }
     

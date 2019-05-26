@@ -8,7 +8,7 @@ struct EntryCount {
     var total:     Int
     
     init(notes: Int, photos: Int, recordings: Int, links: Int) {
-        self.note = "\(notes) text"
+        self.note = "\(notes) notes"
         self.photo = "\(photos) photos"
         self.link = "\(links) images"
         self.recording = "\(recordings) recordings"
