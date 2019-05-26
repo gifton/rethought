@@ -43,7 +43,6 @@ class HomeViewModel: NSObject {
 
 extension HomeViewModel {
     func fetchThoughts() -> [Thought] {
-        print("begining fetch request from HomeModel")
         let request = Thought.fetchRequest()
         do {
             let result = try moc.fetch(request)

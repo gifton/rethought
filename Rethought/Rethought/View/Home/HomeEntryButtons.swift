@@ -13,8 +13,7 @@ class EntryScrollView: UIScrollView {
     
     private func setView() {
         var views = [UIView]()
-        for type in EntryType.exhaustiveList(){
-            print("setting button of type: \(type)")
+        for type in EntryType.exhaustiveList() {
             let btn = EntryButton(type: type) {
                 print("selected: \(type)")
             }
@@ -79,7 +78,7 @@ class EntryButton: UIView {
         addSubview(label)
         addSubview(image)
         
-        image.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 27.5).isActive = true
+        image.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25).isActive = true
         
         label.text = type.rawValue
         label.adjustsFontSizeToFitWidth = true

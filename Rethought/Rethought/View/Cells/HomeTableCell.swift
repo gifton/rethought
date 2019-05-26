@@ -19,12 +19,36 @@ class HomeTableCell: UITableViewCell {
         cell.layer.cornerRadius = 20
         cell.backgroundColor = .white
         cell.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 5, paddingLeading: 10, paddingBottom: 5, paddingTrailing: 10)
-        
         setViews()
     }
     
     public func insert(payload entry: Entry) {
         self.entry = entry
+        switch entry.type {
+        case EntryType.link.rawValue:
+            typeImage.image = #imageLiteral(resourceName: "compass_gradient")
+            print("cell image set to: image")
+        case EntryType.note.rawValue:
+            typeImage.image = #imageLiteral(resourceName: "note_gradient")
+            print("cell image set to: note")
+        case EntryType.photo.rawValue:
+            typeImage.image = #imageLiteral(resourceName: "Image_gradient")
+            print("cell image set to: photo")
+        case EntryType.recording.rawValue:
+            typeImage.image = #imageLiteral(resourceName: "microphone_gradient")
+            print("cell image set recording: image")
+        default:
+            print("cell image set to: nil")
+            return
+        }
+        
+        cell.addSubview(typeImage)
+        typeImage.translatesAutoresizingMaskIntoConstraints = false
+        typeImage.centerYAnchor.constraint(equalTo: cell.centerYAnchor).isActive = true
+        typeImage.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 25).isActive = true
+        
+        typeImage.setHeightWidth(width: 30, height: 30)
+        typeImage.contentMode = .scaleAspectFit
     }
     
     private var bounceAnimation: CAKeyframeAnimation = {
