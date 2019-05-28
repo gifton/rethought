@@ -48,7 +48,5 @@ class NewThoughtCell: UITableViewCell {
         
         icon.setAnchor(top: topAnchor, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 15)
         thoughtTitleLabel.setAnchor(top: topAnchor, leading: nil, bottom: bottomAnchor, trailing: icon.leadingAnchor, paddingTop: 8, paddingLeading: 0, paddingBottom: 5, paddingTrailing: 10)
-        
-        
     }
 }

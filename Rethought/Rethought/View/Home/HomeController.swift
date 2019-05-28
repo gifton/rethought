@@ -98,6 +98,11 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withClass: ThoughtCollectionCell.self, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withClass: ThoughtCollectionCell.self, for: indexPath)
+        let preview = model.thoughts[indexPath.row].preview
+        cell.addContext(preview)
+        
+        return cell
     }
+    
 }

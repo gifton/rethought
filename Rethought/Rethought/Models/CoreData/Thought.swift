@@ -43,6 +43,11 @@ public class Thought: NSManagedObject {
         return ThoughtIcon(icon)
     }
     
+    var preview: ThoughtPreview {
+        let preview = ThoughtPreview(thought: self)
+        return preview        
+    }
+    
     var entryCount: EntryCount {
         guard let counts = entries else {
             return EntryCount(notes: 0, photos: 0, recordings: 0, links: 0)

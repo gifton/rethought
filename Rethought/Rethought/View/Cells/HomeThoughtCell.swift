@@ -20,6 +20,7 @@ class ThoughtCollectionCell: UICollectionViewCell {
     let thoughtIcon = UILabel()
     let dateLabel = UILabel()
     let locationLabel = UILabel()
+    var count = EntryCount(notes: 0, photos: 0, recordings: 0, links: 0)
     
     
     func setViews() {
@@ -37,6 +38,7 @@ class ThoughtCollectionCell: UICollectionViewCell {
         titleLabel.text = "welcome to rethought! A safe place for you, and your thoughts"
         titleLabel.numberOfLines = 0
         titleLabel.font = Device.font.mediumTitle()
+        titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.textColor = Device.colors.offWhite
         
         thoughtIcon.text = "🚦"
@@ -49,6 +51,16 @@ class ThoughtCollectionCell: UICollectionViewCell {
         locationLabel.font = Device.font.mediumTitle(ofSize: .small)
         locationLabel.text = "Seattle, Washington"
         locationLabel.textColor = .white
+    }
+    
+    public func addContext(_ preview: ThoughtPreview) {
+        titleLabel.text = preview.title
+        thoughtIcon.text = preview.icon
+        dateLabel.getStringFromDate(date: preview.date, withStyle: .medium)
+        count = preview.entryCount
+        
+        let nView = EntryCountBlock(withCount: EntryCount(notes: 5, photos: 5, recordings: 10, links: 10), frame: CGRect(x: 165, y: 115, width: 120, height: 35))
+        addSubview(nView)
     }
     
     override func layoutSubviews() {
