@@ -56,9 +56,9 @@ class HomeHead: UIView {
     public let thoughtCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 300, height: 165)
+        layout.itemSize = CGSize(width: 300, height: 210)
         layout.minimumLineSpacing = 5
-        let cv = UICollectionView(frame: CGRect(x: 5, y: 200, width: Device.size.width - 10, height: 170), collectionViewLayout: layout)
+        let cv = UICollectionView(frame: CGRect(x: 5, y: 160, width: Device.size.width - 10, height: 210), collectionViewLayout: layout)
         cv.showsHorizontalScrollIndicator = false
         
         return cv

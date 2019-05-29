@@ -28,8 +28,7 @@ class ThoughtBuilderViewModel: NSObject {
 
 
 extension ThoughtBuilderViewModel: ThoughtBuilderViewModelDelegate {
-    
-    
+
     func save() {
         do {
             try moc.save()
@@ -47,7 +46,7 @@ extension ThoughtBuilderViewModel: ThoughtBuilderViewModelDelegate {
     func buildThought(withTitle title: String, withLocation location: CLLocation?, withIcon icon: ThoughtIcon) -> ThoughtPreview {
         print("building thoughtprview from thoughtBuilderViewModel")
         currentThoughtPreview = ThoughtPreview(title: title, icon: icon.icon, location: location)
-        setThoughtToDB()
+        _ = Thought.insert(in: moc, withPreview: currentThoughtPreview!)
         save()
         return currentThoughtPreview!
     }
@@ -69,15 +68,6 @@ extension ThoughtBuilderViewModel: ThoughtBuilderViewModelDelegate {
         guard let currentThought = currentThought else { return }
         
         currentThought.icon = icon.icon
-        save()
-    }
-    
-    private func setThoughtToDB() {
-        guard let currentThought = currentThoughtPreview else {
-            print("unable to verify thought preview when creating model object")
-            return
-        }
-        _ = Thought.insert(in: moc, withPreview: currentThought)
         save()
     }
 }

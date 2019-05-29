@@ -30,7 +30,7 @@ class HomeTableCell: UITableViewCell {
         switch entry.type {
         case EntryType.link.rawValue:
             typeImage.image = #imageLiteral(resourceName: "compass_gradient")
-            titleLabel.text = entry.link?.title
+            titleLabel.text = entry.link?.url
         case EntryType.note.rawValue:
             typeImage.image = #imageLiteral(resourceName: "note_gradient")
             titleLabel.text = entry.note?.title

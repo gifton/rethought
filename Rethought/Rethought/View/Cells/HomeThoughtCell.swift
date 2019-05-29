@@ -29,10 +29,10 @@ class ThoughtCollectionCell: UICollectionViewCell {
         addSubview(dateLabel)
         addSubview(locationLabel)
         
-        thoughtIcon.frame = CGRect(x: 15, y: 20, width: 35, height: 46)
-        titleLabel.frame = CGRect(x: 65 , y: 20, width: frame.width - 80, height: 72)
-        dateLabel.frame = CGRect(x: 15, y: frame.height - 55, width: 150, height: 15)
-        locationLabel.frame = CGRect(x: 15, y: frame.height - 30, width: 150, height: 15)
+        thoughtIcon.frame = CGRect(x: 25, y: 20, width: 35, height: 46)
+        titleLabel.frame = CGRect(x: 75 , y: 20, width: frame.width - 95, height: 100)
+        dateLabel.frame = CGRect(x: 25, y: frame.height - 55, width: 150, height: 15)
+        locationLabel.frame = CGRect(x: 25, y: frame.height - 30, width: 150, height: 15)
     }
     func styleViews() {
         titleLabel.text = "welcome to rethought! A safe place for you, and your thoughts"
@@ -59,7 +59,7 @@ class ThoughtCollectionCell: UICollectionViewCell {
         dateLabel.getStringFromDate(date: preview.date, withStyle: .medium)
         count = preview.entryCount
         
-        let nView = EntryCountBlock(withCount: EntryCount(notes: 5, photos: 5, recordings: 10, links: 10), frame: CGRect(x: 165, y: 115, width: 120, height: 35))
+        let nView = EntryCountBlock(withCount: preview.entryCount, frame: CGRect(x: 165, y: 160, width: 120, height: 35))
         addSubview(nView)
     }
     
@@ -69,7 +69,7 @@ class ThoughtCollectionCell: UICollectionViewCell {
         updatePath()
     }
     
-    var radius: CGFloat = 15
+    var radius: CGFloat = 25
     private var path: UIBezierPath?
     
     override func draw(_ rect: CGRect) {

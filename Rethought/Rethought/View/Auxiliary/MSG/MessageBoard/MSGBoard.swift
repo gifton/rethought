@@ -51,11 +51,11 @@ class MSGBoard: UIScrollView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentSize = CGSize(width: frame.width, height: safeOrigin.y + 10.0)
+        contentSize = CGSize(width: frame.width, height: frame.height - 150)
         resetView()
         addResponse(payload: "Whats on your mind?")
         backgroundColor = Device.colors.offWhite
-        showsVerticalScrollIndicator = false
+//        showsVerticalScrollIndicator = false
         
         // add corner radius beyond bezier path to properly display curve
         // TODO: Make this smarter
