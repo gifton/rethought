@@ -13,7 +13,11 @@ import CoreLocation
 class ConversationController: UIViewController {
     
     // Mark: Private vars
-    private var model: ThoughtBuilderViewModel
+    private var model: ThoughtBuilderViewModel {
+        didSet {
+            print("model set!")
+        }
+    }
     private var conversation: ConversationView!
     // Mark: public vars
     
@@ -38,41 +42,14 @@ class ConversationController: UIViewController {
 extension ConversationController: MSGConnector {
     func insert<T>(entry: T) where T : EntryBuilder {
         // switch to correct type
-        switch entry.type {
-        case .note:
-            //guard to correct entryBuilder
-            guard let note: NoteBuilder = entry as? NoteBuilder else {
-                print ("unable to conform to note builder, breaking")
-                return
-            }
-            //call model func to insert intp context
-            conversation.tableEncapsulation.addEntry(note)
-        case .link:
-            //guard to correct entryBuilder
-            guard let link: LinkBuilder = entry as? LinkBuilder else {
-                print ("unable to conform to link builder, breaking")
-                return
-            }
-            //call model func to insert intp context
-            conversation.tableEncapsulation.addEntry(link)
-        default:
-            //guard to correct entryBuilder
-            guard let photo: PhotoBuilder = entry as? PhotoBuilder else {
-                print ("unable to conform to note builder, breaking")
-                return
-            }
-            //call model func to insert intp context
-            conversation.tableEncapsulation.addEntry(photo)
-        }
+        model.buildEntry(payload: entry, withLocation: CLLocation())
+        conversation.tableEncapsulation.addEntry(entry)
     }
     
     func save(withTitle title: String, withIcon: ThoughtIcon) {
-        // TODO:
         //call func from model to create thought, insert into context
-        
-        model.buildThought(withTitle: title, withLocation: CLLocation(), withIcon: withIcon)
+        let tp = model.buildThought(withTitle: title, withLocation: CLLocation(), withIcon: withIcon)
         //reload table data on completion
-        let tp = ThoughtPreview(title: title, icon: withIcon.icon, location: CLLocation())
         conversation.tableEncapsulation.addThought(tp)
         //tell view to return to regular size
         

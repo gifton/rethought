@@ -46,6 +46,16 @@ class MSGThoughtView: MSGBoardComponent {
         
         return lbl
     }()
+    var nameLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.font = Device.font.mediumTitle(ofSize: .large)
+        lbl.textColor = Device.colors.lightGray
+        lbl.numberOfLines = 2
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.textAlignment = .right
+        
+        return lbl
+    }()
     func setView() {
         thoughtIconLabel.frame = CGRect(x: frame.width - 70, y: 0, width: 55, height: 55)
         contentLbl.text = thoughtTitle

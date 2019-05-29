@@ -24,7 +24,6 @@ class Replicator: ReplicatorProtocol {
     let tp2 = ThoughtPreview(title: "Feel blocked? keep track of it.", icon: "🚦", location: CLLocation())
     let tp3 = ThoughtPreview(title: "Dont want to forget something your thinking about? put it in your thoughts", icon: "🎮", location: CLLocation())
     let tp4 = ThoughtPreview(title: "Dont want to forget something your thinking about? put it in your thoughts", icon: "🎮", location: CLLocation())
-    var thoughts = [Thought]()
     func createThoughts() {
         print("creating thooughts from preview...")
         [tp1, tp2, tp3, tp4].forEach { (preview) in

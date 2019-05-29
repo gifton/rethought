@@ -219,7 +219,6 @@ extension MSGCenter {
         if !(hasCompletedThought) {
             
             connector.save(withTitle: title, withIcon: thoughtIcon)
-            print("save was successful!")
             return true
         }
         

@@ -18,10 +18,8 @@ class HomeViewModel: NSObject {
     }
     
     private var moc: NSManagedObjectContext
-    var entries = [Entry]() {
-        didSet {
-            print("did set entries")
-        }
+    var entries: [Entry] {
+        get { return thoughts.entries() }
     }
     public var thoughtCount: Int {
         get { return self.thoughts.count }
@@ -37,21 +35,31 @@ class HomeViewModel: NSObject {
     
     private func setup() {
         thoughts = fetchThoughts()
-        entries = thoughts.entries()
     }
 }
 
-extension HomeViewModel {
+extension HomeViewModel: HomeViewModelDelegate {
+    
+    func requestDeletion(forthought thought: Thought) {
+    print("thought deleted!")
+    }
+    
+    func retrieve(thought id: String) -> Thought? {
+        return thoughts.filter{ $0.id == id }.first ?? nil
+    }
+    
+    func retrieve(entry id: String) -> Entry? {
+        return entries.filter{ $0.id == id }.first ?? nil
+    }
+    
+    func refresh() {
+//        thoughts = []
+//        thoughts = fetchThoughts()
+    }
+    
     func fetchThoughts() -> [Thought] {
-        let request = Thought.fetchRequest()
-        do {
-            let result = try moc.fetch(request)
-            guard let castedThoughts: [Thought] = result as? [Thought] else {
-                print("unable to cast thoughts from result in fetchrequest")
-                return thoughts
-            }
-            return castedThoughts
-        } catch let err {
+        let request = Thought.sortedFetchRequest
+        do { return try moc.fetch(request) } catch let err {
             print("there was an error fetching: \(err)")
         }
         fatalError("fwk")

@@ -16,7 +16,11 @@ class HomeController: UIViewController {
         view.backgroundColor = .white
     }
     override func viewWillAppear(_ animated: Bool) {
-        print("view appeared!")
+        print("view appeared! thought count: \(model.thoughtCount)")
+        // test this
+        model.refresh()
+        homeHead?.thoughtCollection.reloadData()
+        tv?.tv.reloadData()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

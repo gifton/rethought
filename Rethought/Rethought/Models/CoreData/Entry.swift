@@ -73,7 +73,7 @@ public class Entry: NSManagedObject {
     
     
     // static method to create thought with a entrybuilder
-    static func insertEntry<K: EntryBuilder>(into context: NSManagedObjectContext, location: CLLocation?, payload: K) -> Entry {
+    static func insertEntry<K: EntryBuilder>(into context: NSManagedObjectContext, location: CLLocation?, payload: K, thought: Thought) -> Entry {
         // init defaults
         let defaults = UserDefaults.standard
         let defaultCount = defaults.integer(forKey: UserDefaults.Keys.entryID)
@@ -82,6 +82,7 @@ public class Entry: NSManagedObject {
         entry.date = Date()
         entry.id   = "rt-pDB-E\(defaultCount)"
         entry.type = payload.type.rawValue
+        entry.thought = thought
         
         // set entry content
         entry.addBuilder(payload, moc: context)
@@ -115,7 +116,7 @@ extension Entry {
         pb.entry = self
         let pe: PhotoEntry = PhotoEntry.insert(into: moc, builder: pb)
         photo = pe
-        type = "PHOTO"
+        type = EntryType.photo.rawValue
     }
     // links
     func addLinkBuilder(_ builder: LinkBuilder?, with moc: NSManagedObjectContext) {
@@ -126,7 +127,7 @@ extension Entry {
         lb.entry = self
         let le: LinkEntry = LinkEntry.insert(into: moc, builder: lb)
         link = le
-        type = "LINK"
+        type = EntryType.link.rawValue
     }
     //notes
     func addNoteBuilder(_ builder: NoteBuilder?, with moc: NSManagedObjectContext) {
@@ -137,7 +138,7 @@ extension Entry {
         nb.entry = self
         let ne: NoteEntry = NoteEntry.insert(into: moc, builder: nb)
         note = ne
-        type = "NOTE"
+        type = EntryType.note.rawValue
     }
     // recordings
     func addRecordingBuilder( _ builder: RecordingBuilder, with moc: NSManagedObjectContext) {
