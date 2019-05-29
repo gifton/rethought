@@ -79,6 +79,8 @@
 		D774C483228DD05800721394 /* HomeHead.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774C482228DD05800721394 /* HomeHead.swift */; };
 		D77A7D8D229A3D65009B1781 /* RadialGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77A7D8C229A3D65009B1781 /* RadialGradient.swift */; };
 		D77A7D8F229B3E0E009B1781 /* EntryCountBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77A7D8E229B3E0E009B1781 /* EntryCountBlock.swift */; };
+		D77A7D91229E498C009B1781 /* ThoughtDetailViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77A7D90229E498C009B1781 /* ThoughtDetailViewModelDelegate.swift */; };
+		D77A7D95229E5178009B1781 /* ThoughtDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77A7D94229E5178009B1781 /* ThoughtDetailViewModel.swift */; };
 		D7810C20226F938F0038C1BA /* MSGCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7810C1F226F938F0038C1BA /* MSGCenter.swift */; };
 		D79E59A922723E7E00ABFD34 /* ConversationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79E59A822723E7E00ABFD34 /* ConversationHandler.swift */; };
 		D7A2DF41227D6D9300D6CFF1 /* MSGCenterPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A2DF40227D6D9300D6CFF1 /* MSGCenterPhotoView.swift */; };
@@ -177,6 +179,8 @@
 		D774C482228DD05800721394 /* HomeHead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHead.swift; sourceTree = "<group>"; };
 		D77A7D8C229A3D65009B1781 /* RadialGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadialGradient.swift; sourceTree = "<group>"; };
 		D77A7D8E229B3E0E009B1781 /* EntryCountBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryCountBlock.swift; sourceTree = "<group>"; };
+		D77A7D90229E498C009B1781 /* ThoughtDetailViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailViewModelDelegate.swift; sourceTree = "<group>"; };
+		D77A7D94229E5178009B1781 /* ThoughtDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailViewModel.swift; sourceTree = "<group>"; };
 		D7810C1F226F938F0038C1BA /* MSGCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGCenter.swift; sourceTree = "<group>"; };
 		D79E59A822723E7E00ABFD34 /* ConversationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationHandler.swift; sourceTree = "<group>"; };
 		D7A2DF40227D6D9300D6CFF1 /* MSGCenterPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGCenterPhotoView.swift; sourceTree = "<group>"; };
@@ -236,8 +240,8 @@
 			isa = PBXGroup;
 			children = (
 				D75B8B2B22912A5100B38CC6 /* ThoughtBuilder */,
-				D75B8B2C22912A6600B38CC6 /* HomeViewModelDelegate.swift */,
-				D7FEEBEA22947E1800D6D1C8 /* HomeViewModel.swift */,
+				D77A7D92229E5157009B1781 /* Home */,
+				D77A7D93229E515E009B1781 /* ThoughtDetail */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -452,6 +456,24 @@
 				D7006ED422672C8B004E570F /* ThoughtBuilderViewModelDelegate.swift */,
 			);
 			path = ThoughtBuilder;
+			sourceTree = "<group>";
+		};
+		D77A7D92229E5157009B1781 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D75B8B2C22912A6600B38CC6 /* HomeViewModelDelegate.swift */,
+				D7FEEBEA22947E1800D6D1C8 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		D77A7D93229E515E009B1781 /* ThoughtDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D77A7D90229E498C009B1781 /* ThoughtDetailViewModelDelegate.swift */,
+				D77A7D94229E5178009B1781 /* ThoughtDetailViewModel.swift */,
+			);
+			path = ThoughtDetail;
 			sourceTree = "<group>";
 		};
 		D7BB182D227629640084963E /* MessageBoard */ = {
@@ -697,6 +719,7 @@
 				D7A2DF41227D6D9300D6CFF1 /* MSGCenterPhotoView.swift in Sources */,
 				D75B8B2F22912FD800B38CC6 /* HomeThoughtCell.swift in Sources */,
 				D7006EE5226841D2004E570F /* ConversationView.swift in Sources */,
+				D77A7D95229E5178009B1781 /* ThoughtDetailViewModel.swift in Sources */,
 				D7536FD52262D8AA003F0920 /* rt-DB2.xcdatamodeld in Sources */,
 				D7006EC622671C4C004E570F /* PhotoBuilder.swift in Sources */,
 				D7BE8F20227AB12300B15F06 /* MSGCenterEntryView.swift in Sources */,
@@ -731,6 +754,7 @@
 				D7536FC72262D167003F0920 /* UITextField.swift in Sources */,
 				D7536FCF2262D708003F0920 /* UIViewController.swift in Sources */,
 				D7536FE72262EB0A003F0920 /* LinkEntry.swift in Sources */,
+				D77A7D91229E498C009B1781 /* ThoughtDetailViewModelDelegate.swift in Sources */,
 				D7536FB72262C965003F0920 /* DateFormatter.swift in Sources */,
 				D7FEEBE722939F5500D6D1C8 /* ShowOptionsView.swift in Sources */,
 				D75B8B2D22912A6600B38CC6 /* HomeViewModelDelegate.swift in Sources */,

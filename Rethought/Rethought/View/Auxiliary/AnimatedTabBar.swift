@@ -41,7 +41,6 @@ class AnimatedTabBarController: UITabBarController {
             tabBar.barTintColor = .white
         }
         let newIndex = idx + 1
-        print("index: \(idx), new index: \(newIndex)")
         let imageView = tabBar.subviews[newIndex]
         let image = imageView.subviews.compactMap { $0 as? UIImageView }.first
         
