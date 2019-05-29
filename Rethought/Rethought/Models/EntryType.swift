@@ -1,4 +1,5 @@
 
+// all available entryTypes
 enum EntryType: String, Codable {
     case note = "NOTE"
     case photo = "PHOTO"
@@ -10,10 +11,4 @@ enum EntryType: String, Codable {
     static func exhaustiveList() -> [EntryType] {
         return [note, photo, link, recording, all]
     }
-}
-
-
-protocol EntryBuilder {
-    var type: EntryType { get set }
-    var entry: Entry? { get set }
 }

@@ -16,8 +16,8 @@ class HomeTable: UIView {
         setView()
     }
     
+    // MARK: public variables
     public var animator: Animator?
-    
     public let tv: UITableView = {
         let tv = UITableView(frame: .zero, style: .plain)
         tv.allowsMultipleSelection = false
@@ -29,11 +29,13 @@ class HomeTable: UIView {
         
         return tv
     }()
-    let filterButton = UIButton()
-    let entryLabel = UILabel()
+    
+    // MARK: private variables
+    private let filterButton = UIButton()
+    private let entryLabel = UILabel()
     
     
-    func setView() {
+    private func setView() {
         tv.delegate = self
         tv.register(cellWithClass: HomeTableCell.self)
         
@@ -57,7 +59,6 @@ class HomeTable: UIView {
     }
     
     // MARK: Variables for scrolling update calculations
-    private var oldContentOffset = CGPoint.zero
     private let endFrame: CGFloat = 170
     private let startFrame: CGFloat = 500
     public var animationScrollLength: CGFloat = 330.0
@@ -71,14 +72,13 @@ class HomeTable: UIView {
         return 0
     }
     
+    // update accordinf to animation progress
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         frame.origin.y = startFrame + ((endFrame - startFrame) * animationProgress)
         frame.size.height = (Device.size.height - frame.origin.y)
         
         //alert controller of movement to animate individual seperate views
         animator?.didUpdate()
-        
-        oldContentOffset = scrollView.contentOffset
     }
 }
 

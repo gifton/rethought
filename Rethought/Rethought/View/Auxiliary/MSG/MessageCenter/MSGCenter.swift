@@ -44,7 +44,6 @@ class MSGCenter: UIView {
     
     // make objects animateable(?)
     // add variables and buttons with entryTypes and buttonTypes
-    // MARK: private objects
     public var textView: UITextView = {
         let tv = UITextView()
         tv.font = Device.font.formalBodyText()
@@ -54,6 +53,8 @@ class MSGCenter: UIView {
         
         return tv
     }()
+    
+    // MARK: private objects
     private var noteButton: MessageButton = {
         let btn = MessageButton()
         btn.setImage(#imageLiteral(resourceName: "note_clay"), for: .normal)
@@ -104,6 +105,7 @@ class MSGCenter: UIView {
         return btn
     }()
     
+    // MARK: public objects
     public var newRecordingView: MSGCenterRecordingView!
     public var newLinkView: MSGCenterLinkView!
     public var newNoteView: MSGCenterNoteView!

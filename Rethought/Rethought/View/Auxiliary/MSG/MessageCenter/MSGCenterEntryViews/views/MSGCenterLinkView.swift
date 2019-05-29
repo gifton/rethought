@@ -202,6 +202,7 @@ extension MSGCenterLinkView {
     }
 }
 
+// swiftlinkpreview funcs
 extension MSGCenterLinkView: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""

@@ -17,7 +17,8 @@ class RethoughtMessageCell: UITableViewCell {
         return "RethoughtMessageCell"
     }
     
-    let icon: UILabel = {
+    // MARK: private objects
+    private let icon: UILabel = {
         let lbl = UILabel()
         lbl.padding = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         lbl.text = Device.defaultEmoji.icon
@@ -26,14 +27,14 @@ class RethoughtMessageCell: UITableViewCell {
         
         return lbl
     }()
-    let userLabel: UILabel = {
+    private let userLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "Rethought"
         lbl.font = Device.font.title(ofSize: .large)
         
         return lbl
     }()
-    let messageLabel: UILabel = {
+    private let messageLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "Whats on your mind?"
         lbl.font = Device.font.body(ofSize: .large)

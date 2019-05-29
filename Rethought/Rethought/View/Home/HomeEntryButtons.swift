@@ -32,6 +32,7 @@ class EntryScrollView: UIScrollView {
 
 
 class EntryButton: UIView {
+    // depending on entrytype, set image and framing
     init(type: EntryType, action: @escaping () -> ()) {
         var frame = CGRect(origin: .zero, size: .zero)
         switch type {
@@ -59,6 +60,7 @@ class EntryButton: UIView {
         self.type = type
         super.init(frame: frame)
         
+        // inject method into tap gaesture recognizer on view
         addTapGestureRecognizer(action: action)
         addTapGestureRecognizer {
             action()
@@ -71,6 +73,7 @@ class EntryButton: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: private variables
     private var type: EntryType
     private var label = UILabel()
     private var image = UIImageView()
@@ -87,6 +90,7 @@ class EntryButton: UIView {
         label.setAnchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
     }
     
+    // bounce for image on tap
     private var bounceAnimation: CAKeyframeAnimation = {
         let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
         bounceAnimation.values = [1.0, 1.4, 0.9, 1.02, 1.0]

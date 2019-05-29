@@ -20,7 +20,8 @@ class MSGBoardPhotoView: MSGBoardComponent {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var detailLbl = UILabel()
+    // MARK: private objects
+    private var detailLbl = UILabel()
     private var imageView: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false

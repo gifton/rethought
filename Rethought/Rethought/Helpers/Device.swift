@@ -18,9 +18,6 @@ struct Device {
         static let newThoughtTile = CGSize(width: UIScreen.main.bounds.size.width, height: 115)
         static let newNoteBoardView: CGFloat = Device.size.width * 0.8
         static let newImageBoardView: CGSize = CGSize(width: 175, height: 219)
-        //initial heights
-        static let drawerMaxHeight: CGFloat = UIScreen.main.bounds.size.height * 0.387
-        static let thoughtDetailHeaderMaxHeight: CGFloat = UIScreen.main.bounds.size.height * 464
         //icon sizes
         static let profileIcon = CGSize(width: 25, height: 29)
         static let entryCardIconHeight: CGFloat = 30.0
@@ -47,8 +44,8 @@ struct Device {
     
     struct colors {
         // bg's
-//        static let offWhite   = UIColor(hex: "F2F4F6")
-        static let offWhite = UIColor(white: 0.95, alpha: 1.0)
+        static let offWhite   = UIColor(hex: "F2F4F6")
+//        static let offWhite = UIColor(white: 0.95, alpha: 1.0)
         static let gradientColors = [UIColor(hex: "14263F"), UIColor(hex: "122450"), UIColor(hex: "381055"), UIColor(hex: "1A2437")]
         //text
         static let lightGray = UIColor(hex: "9F9F9F")

@@ -13,7 +13,6 @@ protocol MSGBoardDelegate {
     // TODO: add MSGBoard funcs and vars
     func addEntry<K: EntryBuilder>(_ payload: K)
     func addThought(_ payload: ThoughtPreview)
-    var currentSize: CGSize { get set }
 }
 
 protocol MSGBoardResponse {

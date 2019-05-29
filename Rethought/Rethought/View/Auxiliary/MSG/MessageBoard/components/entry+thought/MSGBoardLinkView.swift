@@ -40,7 +40,7 @@ class MSGBoardLinkView: MSGBoardComponent {
         titleLabel.text = lb.title
         descriptionLabel.text = lb.userDetail
     }
-    
+    // MARK: Private objects
     private let linkImageView = UIImageView()
     private let titleLabel = UILabel()
     private let descriptionLabel = UILabel()

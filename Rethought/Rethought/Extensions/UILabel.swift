@@ -26,7 +26,7 @@ extension UILabel {
         }
     }
     
-    //set text to date
+    // set text to date
     func getStringFromDate(date: Date, withStyle style: DateFormatter.Style) {
         let dateFormatter: DateFormatter = {
             let formatter = DateFormatter()
@@ -40,7 +40,7 @@ extension UILabel {
         self.text = output
     }
     
-    /// SwifterSwift: Required height for a label
+    // Required height for a label
     public var requiredHeight: CGFloat {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: Device.size.width, height: CGFloat.greatestFiniteMagnitude))
         label.numberOfLines = 0

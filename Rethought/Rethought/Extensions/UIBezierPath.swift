@@ -1,5 +1,7 @@
 import UIKit
 
+// create rounded corner using CGPath of an elipse
+// mimicks curve of iphone X++
 extension UIBezierPath {
     private static let ellipseCoefficient: CGFloat = 1.28195
     

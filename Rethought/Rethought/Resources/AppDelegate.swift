@@ -17,13 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var moc: NSManagedObjectContext?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // create core data container to launch application in
         createThoughtContainer { (container) in
             self.moc = container.viewContext
-            print("checking users first time")
+            // check users first time
             self.isUsersFirstTime()
+            
+            //set window
             self.window = UIWindow(frame: Device.size.frame)
             self.window?.makeKeyAndVisible()
+            IQKeyboardManager.shared.enable = true
             
             let rootVC = ViewController(model: container.viewContext)
             let nav = UINavigationController(rootViewController: rootVC)
@@ -32,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = nav
             
         }
-        IQKeyboardManager.shared.enable = true
+        
         return true
     }
 

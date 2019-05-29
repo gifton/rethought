@@ -15,7 +15,7 @@ class ThoughtCollectionCell: UICollectionViewCell {
         
         setViews(); styleViews()
     }
-    
+    // MARK: Private objects
     let titleLabel = UILabel()
     let thoughtIcon = UILabel()
     let dateLabel = UILabel()
@@ -23,18 +23,20 @@ class ThoughtCollectionCell: UICollectionViewCell {
     var count = EntryCount(notes: 0, photos: 0, recordings: 0, links: 0)
     
     
-    func setViews() {
+    private func setViews() {
+        //add views
         addSubview(titleLabel)
         addSubview(thoughtIcon)
         addSubview(dateLabel)
         addSubview(locationLabel)
         
+        // place views
         thoughtIcon.frame = CGRect(x: 25, y: 20, width: 35, height: 46)
         titleLabel.frame = CGRect(x: 75 , y: 20, width: frame.width - 95, height: 100)
         dateLabel.frame = CGRect(x: 25, y: frame.height - 55, width: 150, height: 15)
         locationLabel.frame = CGRect(x: 25, y: frame.height - 30, width: 150, height: 15)
     }
-    func styleViews() {
+    private func styleViews() {
         titleLabel.text = "welcome to rethought! A safe place for you, and your thoughts"
         titleLabel.numberOfLines = 0
         titleLabel.font = Device.font.mediumTitle()
@@ -63,6 +65,7 @@ class ThoughtCollectionCell: UICollectionViewCell {
         addSubview(nView)
     }
     
+    // funcs and variables for smooth cornering
     override func layoutSubviews() {
         super.layoutSubviews()
         

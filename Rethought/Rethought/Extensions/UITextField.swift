@@ -61,12 +61,8 @@ public extension UITextField {
                 isSecureTextEntry = true
                 placeholder = "Password"
                 
-            case .generic:
+            case .generic, .emoji:
                 isSecureTextEntry = false
-                
-            case .emoji:
-                isSecureTextEntry = false
-                
             }
             
         }
@@ -77,6 +73,7 @@ public extension UITextField {
         return text?.isEmpty == true
     }
     
+    // find if email is valid
     var hasValidEmail: Bool {
         // http://stackoverflow.com/questions/25471114/how-to-validate-an-e-mail-address-in-swift
         return text!.range(of: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}",

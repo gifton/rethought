@@ -2,6 +2,7 @@
 import Foundation
 import UIKit
 
+// view that appears at top of msgBoard
 class MSGBoardWelcomeCard: MSGBoardComponent {
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -21,11 +22,12 @@ class MSGBoardWelcomeCard: MSGBoardComponent {
         setViews()
     }
     
-    var backgroundImage = UIImageView(frame: CGRect(x: 30, y: 20, width: 175, height: 130))
-    var titleLabel = UILabel(frame: CGRect(x: 100, y: 100, width: 200, height: 24))
-    var dateLabel = UILabel(frame: CGRect(x: 100, y: 125, width: 200, height: 16))
+    // MARK: Private objects
+    private var backgroundImage = UIImageView(frame: CGRect(x: 30, y: 20, width: 175, height: 130))
+    private var titleLabel = UILabel(frame: CGRect(x: 100, y: 100, width: 200, height: 24))
+    private var dateLabel = UILabel(frame: CGRect(x: 100, y: 125, width: 200, height: 16))
     
-    func setViews() {
+    private func setViews() {
         backgroundImage.image = #imageLiteral(resourceName: "welcomeCardGraphic")
         backgroundImage.contentMode = .scaleAspectFit
 
@@ -53,7 +55,7 @@ class MSGBoardWelcomeCard: MSGBoardComponent {
     }
     
     //functions and variables for creating a true iphone x radius';;;'
-    var radius: CGFloat = 28.5
+    private var radius: CGFloat = 28.5
     private var path: UIBezierPath?
     
     override func draw(_ rect: CGRect) {

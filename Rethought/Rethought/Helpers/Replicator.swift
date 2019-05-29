@@ -1,10 +1,3 @@
-//
-//  Replicator.swift
-//  Rethought
-//
-//  Created by Dev on 5/21/19.
-//  Copyright © 2019 Wesaturate. All rights reserved.
-//
 
 import Foundation
 import UIKit
@@ -18,6 +11,7 @@ protocol ReplicatorProtocol {
     func createThoughts()
 }
 
+// when user opens app for first time, load example thoughts into DB for their conveniance
 class Replicator: ReplicatorProtocol {
     // create the thoughts
     let tp1 = ThoughtPreview(title: "Welcome to rethought", icon: "💭", location: CLLocation())

@@ -3,6 +3,7 @@ import Foundation
 import CoreData
 import CoreLocation
 
+// Thought Builder logc handler
 class ThoughtBuilderViewModel: NSObject {
     init(withContext context: NSManagedObjectContext) {
         self.moc = context
@@ -16,6 +17,7 @@ class ThoughtBuilderViewModel: NSObject {
         
     }
     
+    // MARK: pRivate vars
     private var moc: NSManagedObjectContext
     private var currentThoughtPreview: ThoughtPreview?
     private var currentThought: Thought? {
@@ -29,6 +31,7 @@ class ThoughtBuilderViewModel: NSObject {
 
 extension ThoughtBuilderViewModel: ThoughtBuilderViewModelDelegate {
 
+    // call context tot save data
     func save() {
         do {
             try moc.save()
@@ -43,6 +46,7 @@ extension ThoughtBuilderViewModel: ThoughtBuilderViewModelDelegate {
         }
     }
     
+    // save thoguht after user has inputed content, return preview for displaying in MSGBoard
     func buildThought(withTitle title: String, withLocation location: CLLocation?, withIcon icon: ThoughtIcon) -> ThoughtPreview {
         print("building thoughtprview from thoughtBuilderViewModel")
         currentThoughtPreview = ThoughtPreview(title: title, icon: icon.icon, location: location)
@@ -51,6 +55,7 @@ extension ThoughtBuilderViewModel: ThoughtBuilderViewModelDelegate {
         return currentThoughtPreview!
     }
     
+    // create new entry from builder
     func buildEntry<T>(payload: T, withLocation location: CLLocation?) where T : EntryBuilder {
         guard let thought = currentThought else {
             print("unable to verify current thought model, returning")
@@ -64,6 +69,7 @@ extension ThoughtBuilderViewModel: ThoughtBuilderViewModelDelegate {
         save()
     }
     
+    // allow user to change icon of thought
     func updateThoughtIcon(toIcon icon: ThoughtIcon) {
         guard let currentThought = currentThought else { return }
         

@@ -30,7 +30,6 @@ class MSGCenterRecordingView: UIView {
     
     // MARK: Objects
     private let recordButton = UIButton()
-
     private let playButton: UIButton = {
         let btn = UIButton()
         btn.layer.cornerRadius = 32.5

@@ -123,6 +123,7 @@ public class Thought: NSManagedObject {
         return thought
     }
     
+    //build thought components from thought preview
     static func insert(in context: NSManagedObjectContext, withPreview preview: ThoughtPreview) -> Thought {
         //access defaults
         let defaults = UserDefaults.standard
@@ -146,23 +147,6 @@ public class Thought: NSManagedObject {
         return thought
     }
     
-}
-
-// MARK: Generated accessors for entries
-extension Thought {
-
-    @objc(addEntriesObject:)
-    @NSManaged public func addToEntries(_ value: Entry)
-
-    @objc(removeEntriesObject:)
-    @NSManaged public func removeFromEntries(_ value: Entry)
-
-    @objc(addEntries:)
-    @NSManaged public func addToEntries(_ values: NSSet)
-
-    @objc(removeEntries:)
-    @NSManaged public func removeFromEntries(_ values: NSSet)
-
 }
 
 extension Thought: Managed {

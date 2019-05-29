@@ -1,14 +1,8 @@
-//
-//  MSGThoughtView.swift
-//  Rethought
-//
-//  Created by Dev on 4/30/19.
-//  Copyright © 2019 Wesaturate. All rights reserved.
-//
 
 import Foundation
 import UIKit
 
+// show thought added by user
 class MSGThoughtView: MSGBoardComponent {
     init(frame: CGRect, title: String) {
         thoughtTitle = title
@@ -18,13 +12,15 @@ class MSGThoughtView: MSGBoardComponent {
         layer.masksToBounds = true
     }
     
-    var thoughtTitle: String
+    // MARK: private vars
+    private var thoughtTitle: String
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var thoughtIconLabel: UILabel = {
+    // MARK: private objects
+    private var thoughtIconLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "💭"
         lbl.backgroundColor = .black
@@ -36,7 +32,7 @@ class MSGThoughtView: MSGBoardComponent {
         
         return lbl
     }()
-    var contentLbl: UILabel = {
+    private var contentLbl: UILabel = {
         let lbl = UILabel()
         lbl.font = Device.font.mediumTitle(ofSize: .large)
         lbl.textColor = Device.colors.lightGray
@@ -46,7 +42,7 @@ class MSGThoughtView: MSGBoardComponent {
         
         return lbl
     }()
-    var nameLabel: UILabel = {
+    private var nameLabel: UILabel = {
         let lbl = UILabel()
         lbl.font = Device.font.mediumTitle(ofSize: .large)
         lbl.textColor = Device.colors.lightGray
@@ -56,7 +52,9 @@ class MSGThoughtView: MSGBoardComponent {
         
         return lbl
     }()
-    func setView() {
+    
+    // add content
+    private func setView() {
         thoughtIconLabel.frame = CGRect(x: frame.width - 70, y: 0, width: 55, height: 55)
         contentLbl.text = thoughtTitle
         addSubview(thoughtIconLabel)

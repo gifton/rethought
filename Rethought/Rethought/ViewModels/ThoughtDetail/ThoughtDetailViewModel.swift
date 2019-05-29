@@ -1,27 +1,26 @@
-//
-//  ThoughtDetailViewModel.swift
-//  Rethought
-//
-//  Created by Dev on 5/28/19.
-//  Copyright © 2019 Wesaturate. All rights reserved.
-//
 
 import Foundation
 import UIKit
 import CoreData
 import CoreLocation
 
+// handle Thought Detail logic
 class ThoughtDetailViewModel: ThoughtDetailViewModelDelegate {
     required init(withThought thought: Thought, _ moc: NSManagedObjectContext) {
         self.moc = moc
         self.thought = thought
     }
     
+    // MARK: private vars
     private var moc: NSManagedObjectContext
-    private var thought: Thought
+    
+    // MARK: public vars
     public var thoughtPreview: ThoughtPreview { return thought.preview }
     public var entryCount: EntryCount { return thought.entryCount }
+    public var thought: Thought
+    public var entries: [Entry] {  return thought.allEntries }
     
+    // create new entry for thought
     func buildEntry<T>(payload: T, withLocation location: CLLocation?) where T : EntryBuilder {
         print("creating entry data model")
         _ = Entry.insertEntry(into: moc,
@@ -43,6 +42,7 @@ class ThoughtDetailViewModel: ThoughtDetailViewModelDelegate {
         print("deleting thought")
     }
     
+    // call context tot save data
     func save() {
         do {
             try moc.save()

@@ -11,30 +11,13 @@ import UIKit
 
 class MSGBoard: UIScrollView {
     
-
+    // MARK: vars
     var userResponsePaddingLeft: CGFloat = 65
     var userResponsePaddingRight: CGFloat = 15
     var rethoughtResponsePaddingRight: CGFloat = 65
     var rethoughtResponsePaddingLeft: CGFloat = 15
     var ySpacing: CGFloat = 30.0
-    
-    // MARK: public vars
-    var currentViewCount: Int {
-        return msgSubViews.count
-    }
-    
-    //functions and variables for creating a true iphone x bezel
-    var radius: CGFloat = 36.5
-    private var path: UIBezierPath?
-    
-    private func updatePath() {
-        let path = UIBezierPath.continuousRoundedRect(bounds, cornerRadius: (topLeft: radius, topRight: radius, bottomLeft: radius, bottomRight: radius))
-        
-        layer.shadowPath = path.cgPath
-        
-        self.path = path
-        setNeedsDisplay()
-    }
+    var msgSubViews = [MSGBoardComponent]()
     
     // get origin for new component adding in
     private var safeOrigin: CGPoint {
@@ -46,16 +29,14 @@ class MSGBoard: UIScrollView {
         return CGPoint(x: rethoughtResponsePaddingLeft, y: (recentView.frame.origin.y + recentView.frame.height + ySpacing))
     }
     
-    var msgSubViews = [MSGBoardComponent]()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentSize = CGSize(width: frame.width, height: frame.height - 150)
+        contentSize = CGSize(width: frame.width, height: frame.height - Device.size.tabBarHeight - 115)
         resetView()
         addResponse(payload: "Whats on your mind?")
         backgroundColor = Device.colors.offWhite
-//        showsVerticalScrollIndicator = false
+        showsVerticalScrollIndicator = false
         
         // add corner radius beyond bezier path to properly display curve
         // TODO: Make this smarter
@@ -95,6 +76,7 @@ class MSGBoard: UIScrollView {
     
 }
 
+// all delegat funcs
 extension MSGBoard: MSGBoardDelegate {
     func addEntry<K>(_ payload: K) where K : EntryBuilder {
         // detect currect entry type, instantiate corrosponding view
@@ -146,25 +128,12 @@ extension MSGBoard: MSGBoardDelegate {
         addResponse(payload: "I've added your thought")
     }
     
-    var currentSize: CGSize {
-        get {
-            return contentSize
-        }
-        set {
-            contentSize = newValue
-        }
-        
-    }
-    
-    private func scrollToBottom() {}
-    
     private func add(_ view: MSGBoardComponent) {
         //add room for component and response!
         self.contentSize.height += (view.frame.height * 1.15)
         
         addSubview(view)
         msgSubViews.append(view)
-        updatePath()
         print (contentSize)
     }
 }

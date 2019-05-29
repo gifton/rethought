@@ -20,7 +20,7 @@ class MSGCenterNoteView: UIView {
     private var bus: EntryComponentBus
     private var newDetail: String?
     
-    // MARK: objects
+    // MARK: Private objects
     private let noteTitle = UILabel()
     private let noteTextView = UITextView()
     private let cancelButton = MessageButton()

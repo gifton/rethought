@@ -2,6 +2,7 @@
 import Foundation
 import UIKit
 
+// show new note for user entered entry
 class MSGBoardNoteView: MSGBoardComponent {
     init(frame: CGRect, payload: NoteBuilder) {
         builder = payload
@@ -11,8 +12,11 @@ class MSGBoardNoteView: MSGBoardComponent {
         backgroundColor = .white
         setViews()
     }
-    var titleLbl = UILabel()
-    var detailLbl = UILabel()
+    
+    // MARK: Private vars/objs
+    private var titleLbl = UILabel()
+    private var detailLbl = UILabel()
+    private var builder: NoteBuilder
     
     private func setViews() {
         // deactivate translateAuto...
@@ -50,5 +54,4 @@ class MSGBoardNoteView: MSGBoardComponent {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var builder: NoteBuilder
 }

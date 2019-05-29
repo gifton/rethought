@@ -1,14 +1,8 @@
-//
-//  CircularGradient.swift
-//  Rethought
-//
-//  Created by Dev on 5/25/19.
-//  Copyright © 2019 Wesaturate. All rights reserved.
-//
 
 import Foundation
 import UIKit
 
+// radial gradient for UIView
 class RadialGradientLayer: CALayer {
     
     var center: CGPoint {

@@ -35,22 +35,22 @@ class HomeHead: UIView {
     
     // MARK animation variables
     //floats
-    let startHeight = CGFloat(500)
+    private let startHeight = CGFloat(500)
     let endHeight = CGFloat(170)
     //colors
-    let startBGColor = UIColor(hex: "#2C7699")
-    let finishBGColor = UIColor(hex: "#4C3EC1")
-    let dateTextColorStart = UIColor.white
-    let dateTextColorFinish = Device.colors.green
+    private let startBGColor = UIColor(hex: "#2C7699")
+    private let finishBGColor = UIColor(hex: "#4C3EC1")
+    private let dateTextColorStart = UIColor.white
+    private let dateTextColorFinish = Device.colors.green
     //frames
-    let dateStartFrame = CGRect(x: 25, y: 90, width: 200, height: 18)
-    let dateEndFrame = CGRect(x: 225, y: 65, width: 200, height: 18)
+    private let dateStartFrame = CGRect(x: 25, y: 90, width: 200, height: 18)
+    private let dateEndFrame = CGRect(x: 225, y: 65, width: 200, height: 18)
     
     // labels
-    let rethoughtLabel = UILabel()
-    let dateLabel = UILabel()
+    private let rethoughtLabel = UILabel()
+    private let dateLabel = UILabel()
     
-    var gradient: RadialGradientView
+    private var gradient: RadialGradientView
     
     // horizontally scrolling collectionView
     public let thoughtCollection: UICollectionView = {
@@ -65,9 +65,9 @@ class HomeHead: UIView {
     }()
     
     // select specific entry types here
-    let entryPickerView = EntryScrollView(frame: .zero)
+    private let entryPickerView = EntryScrollView(frame: .zero)
     
-    func setView() {
+    private func setView() {
         
         // set collection
         thoughtCollection.delegate = self

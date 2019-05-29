@@ -9,13 +9,15 @@ class HomeTableCell: UITableViewCell {
         setCell()
     }
     
-    let cell = UIView()
-    let moreBtn = UIButton()
-    var entry: Entry?
-    let typeImage = UIImageView()
-    let dateLabel = UILabel()
-    let titleLabel = UILabel()
+    // MARK: private objects
+    private let cell = UIView()
+    private let moreBtn = UIButton()
+    private var entry: Entry?
+    private let typeImage = UIImageView()
+    private let dateLabel = UILabel()
+    private let titleLabel = UILabel()
     
+    // set cell views
     func setCell() {
         addSubview(cell)
         cell.layer.cornerRadius = 20
@@ -24,9 +26,12 @@ class HomeTableCell: UITableViewCell {
         setViews()
     }
     
+    // add entry to cell
     public func insert(payload entry: Entry) {
         self.entry = entry
         dateLabel.getStringFromDate(date: entry.date, withStyle: .medium)
+        
+        // depending on entry type, set text label
         switch entry.type {
         case EntryType.link.rawValue:
             typeImage.image = #imageLiteral(resourceName: "compass_gradient")
@@ -45,10 +50,12 @@ class HomeTableCell: UITableViewCell {
             return
         }
         
+        // add views
         cell.addSubview(typeImage)
         cell.addSubview(titleLabel)
         cell.addSubview(dateLabel)
         
+        // place views
         typeImage.translatesAutoresizingMaskIntoConstraints = false
         typeImage.centerYAnchor.constraint(equalTo: cell.centerYAnchor).isActive = true
         typeImage.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 25).isActive = true
@@ -57,6 +64,7 @@ class HomeTableCell: UITableViewCell {
         
         dateLabel.setAnchor(top: titleLabel.bottomAnchor, leading: typeImage.trailingAnchor, bottom: bottomAnchor, trailing: moreBtn.leadingAnchor, paddingTop: -10, paddingLeading: 10, paddingBottom: 20, paddingTrailing: 25)
         
+        // style views
         titleLabel.font = Device.font.body(ofSize: .large)
         titleLabel.textColor = Device.colors.darkGray
         titleLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
@@ -70,6 +78,7 @@ class HomeTableCell: UITableViewCell {
         
     }
     
+    // bounce animation for "more" button
     private var bounceAnimation: CAKeyframeAnimation = {
         let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
         bounceAnimation.values = [1.0, 1.4, 0.9, 1.02, 1.0]
@@ -78,6 +87,7 @@ class HomeTableCell: UITableViewCell {
         return bounceAnimation
     }()
     
+    // external insertion of method to more btn
     public func setButtonTargets(_ action: @escaping (_ entry: Entry) -> Void) {
         moreBtn.addTapGestureRecognizer {
             action(self.entry!)

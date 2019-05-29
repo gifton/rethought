@@ -1,4 +1,3 @@
-import Foundation
 
 //thought icon only allows 1 char at a time
 final class ThoughtIcon {

@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-//allows input as hex valuse instead of standard UIcolor init
+//allows input as hex values instead of standard UIcolor init
 public extension UIColor {
     
     convenience init(hex: Int, alpha: CGFloat = 1.0) {

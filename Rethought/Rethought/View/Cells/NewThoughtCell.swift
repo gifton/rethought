@@ -15,8 +15,8 @@ class NewThoughtCell: UITableViewCell {
     public static var identifier: String {
         return "RethoughtMessageCell"
     }
-    
-    let icon: UILabel = {
+    // mARK: Private objects
+    private let icon: UILabel = {
         let lbl = UILabel()
         lbl.padding = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         lbl.text = Device.defaultEmoji.icon
@@ -26,7 +26,7 @@ class NewThoughtCell: UITableViewCell {
         return lbl
     }()
     
-    let thoughtTitleLabel: UILabel = {
+    private let thoughtTitleLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "Whats on your mind?"
         lbl.font = Device.font.body(ofSize: .large)
@@ -34,6 +34,7 @@ class NewThoughtCell: UITableViewCell {
         return lbl
     }()
     
+    // recieve context from controller
     public func addContext(withPreview preview: ThoughtPreview) {
         thoughtTitleLabel.text = preview.title
         icon.text = preview.icon

@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 
+// alert user that entries/thoughts have been added
 class ResponseMessage: MSGBoardComponent {
-    var content: String
+    private var content: String
     
     init(frame: CGRect, content: String) {
         self.content = content
@@ -23,7 +24,8 @@ class ResponseMessage: MSGBoardComponent {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var rtIcon: UILabel = {
+    // MARK: private objects
+    private var rtIcon: UILabel = {
         let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         lbl.text = "💭"
         lbl.backgroundColor = .white
@@ -35,14 +37,14 @@ class ResponseMessage: MSGBoardComponent {
         
         return lbl
     }()
-    var userLbl: UILabel = {
+    private var userLbl: UILabel = {
         let lbl = UILabel(frame: CGRect(x: 46, y: 2, width: 150, height: 18))
         lbl.font = Device.font.mediumTitle(ofSize: .large)
         lbl.text = "Rethought"
         
         return lbl
     }()
-    var contentLbl: UILabel = {
+    private var contentLbl: UILabel = {
         let lbl = UILabel()
         lbl.font = Device.font.body(ofSize: .large)
         lbl.textColor = Device.colors.darkGray
@@ -50,7 +52,7 @@ class ResponseMessage: MSGBoardComponent {
         
         return lbl
     }()
-    func setView() {
+    private func setView() {
         contentLbl.text = content
         addSubview(rtIcon)
         addSubview(userLbl)

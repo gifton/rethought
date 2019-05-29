@@ -1,15 +1,9 @@
-//
-//  EntryPreview.swift
-//  Rethought
-//
-//  Created by Dev on 4/15/19.
-//  Copyright © 2019 Wesaturate. All rights reserved.
-//
 
-import Foundation
 import UIKit
 import CoreLocation
 
+// displaying thoughts in scroll views doenst require all thought data,
+// this object makes passing data more concise
 struct ThoughtPreview {
     var title:       String
     var date:        Date

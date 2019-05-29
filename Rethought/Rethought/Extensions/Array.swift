@@ -29,7 +29,7 @@ func + <K, V> (left: [K: V], right: [K: V]) -> [K: V] {
     return merge
 }
 
-
+// add two EntryCount objects together
 extension EntryCount {
     static func + (_ ec1: EntryCount, _ ec2: EntryCount) -> EntryCount {
         return EntryCount(notes: ec1.noteInt + ec2.noteInt, photos: ec1.photoInt + ec2.photoInt, recordings: ec1.recordingInt + ec2.recordingInt, links: ec1.linkInt + ec2.linkInt)

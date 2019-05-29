@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// center info
 struct MSGContext {
     enum center {
         enum position {
@@ -26,6 +27,11 @@ struct MSGContext {
         case regular   = 115.00
     }
     
+    
+}
+
+// board info
+extension MSGContext {
     enum board {
         enum viewType {
             case rethoughtIntro, newThought, newEntry, welcomeCard, rethoughtResponse
@@ -46,10 +52,6 @@ struct MSGContext {
         }
     }
 }
-class NewRecordingView: UIView, MSGSubView { var entryType: EntryType = .recording }
-class NewImageView: UIView, MSGSubView { var entryType: EntryType = .photo }
-class NewLinkView: UIView, MSGSubView { var entryType: EntryType = .link }
-class NewNoteView: UIView, MSGSubView { var entryType: EntryType = .note }
 
 
 protocol MSGCenterDelegate {

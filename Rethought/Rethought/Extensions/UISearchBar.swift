@@ -5,5 +5,8 @@ public extension UISearchBar {
     func clear() {
         text = ""
     }
-    
+    // add placeholderText
+    func placeHolder(_ content: String) {
+        text = content
+    }
 }

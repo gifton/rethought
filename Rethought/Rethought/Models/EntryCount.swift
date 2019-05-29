@@ -1,11 +1,10 @@
-import Foundation
 
+// Thought entry amounts
 struct EntryCount {
     var note:      String
     var photo:     String
     var link:      String
     var recording: String
-    var total:     Int
     
     init(notes: Int, photos: Int, recordings: Int, links: Int) {
         self.note = "\(notes) notes"
@@ -20,8 +19,10 @@ struct EntryCount {
         linkInt =  links
     }
     
+    // display counts as an int instead of string
     var noteInt: Int
     var photoInt: Int
     var linkInt: Int
     var recordingInt: Int
+    var total:     Int
 }

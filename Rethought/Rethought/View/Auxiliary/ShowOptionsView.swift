@@ -2,6 +2,7 @@
 import Foundation
 import UIKit
 
+// selecting, deleting view pop up from bottom on selection
 class ShowOptionsView: UIView {
     init(frame: CGRect, options: [OptionViewActions]) {
         self.options = options
@@ -11,7 +12,8 @@ class ShowOptionsView: UIView {
         setViews()
         
     }
-    var options: [OptionViewActions]
+    // MARK: Private variables
+    private var options: [OptionViewActions]
     public let cancelButton: UIButton = {
         let btn = UIButton()
         btn.frame = CGRect(x: Device.size.width - 55, y: 25, width: 25, height: 25)
@@ -19,7 +21,16 @@ class ShowOptionsView: UIView {
         
         return btn
     }()
+    private var allViews: [UIView] {
+        var views = [UIView]()
+        for option in options {
+            views.append(createView(ofType: option))
+        }
+        
+        return views
+    }
     
+    // set initial views
     private func setViews() {
         var startPoint = CGPoint(x: 20, y: 20)
         let spacing: CGFloat = 10
@@ -33,15 +44,7 @@ class ShowOptionsView: UIView {
         addSubview(cancelButton)
     }
     
-    private var allViews: [UIView] {
-        var views = [UIView]()
-        for option in options {
-            views.append(createView(ofType: option))
-        }
-        
-        return views
-    }
-    
+    // produce single view for entry type
     private func createView(ofType type: OptionViewActions) -> UIView {
         switch type {
         case .toEntry:

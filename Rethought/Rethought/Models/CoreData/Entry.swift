@@ -38,7 +38,7 @@ public class Entry: NSManagedObject {
         }
     }
     
-    // standard static func returns an entry
+    // standard static func returns an entry(including thought relationship)
     static func insert(into context: NSManagedObjectContext, withlocation location: CLLocation?, for thought: Thought) -> Entry {
         let defaults = UserDefaults.standard
         let defaultCount = defaults.integer(forKey: UserDefaults.Keys.entryID)
@@ -59,6 +59,7 @@ public class Entry: NSManagedObject {
         return entry
     }
     
+    // add an entrybuilder-delegated object to entry
     func addBuilder(_ payload: EntryBuilder, moc: NSManagedObjectContext) {
         // depending on payload type, save the proper builder
         switch payload.type {
@@ -72,7 +73,7 @@ public class Entry: NSManagedObject {
     
     
     
-    // static method to create thought with a entrybuilder
+    // static method to create thought with an entrybuilder in its initialization
     static func insertEntry<K: EntryBuilder>(into context: NSManagedObjectContext, location: CLLocation?, payload: K, thought: Thought) -> Entry {
         // init defaults
         let defaults = UserDefaults.standard

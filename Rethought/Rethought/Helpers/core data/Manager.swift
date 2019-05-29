@@ -1,12 +1,12 @@
 import CoreData
 
-
+// managed protocol for sorting
 protocol Managed: class, NSFetchRequestResult {
     static var entityName: String { get }
     static var defaultSortDescriptors: [NSSortDescriptor] { get }
 }
 
-
+// Core data manager helpers
 extension Managed {
     static  var defaultSortDescriptors: [NSSortDescriptor] { return [] }
     

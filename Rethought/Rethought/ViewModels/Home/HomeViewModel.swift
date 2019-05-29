@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 import CoreLocation
 
+// handle all logic for showing the home screen
 class HomeViewModel: NSObject {
     init(withmoc moc: NSManagedObjectContext) {
         self.moc = moc
@@ -17,21 +18,22 @@ class HomeViewModel: NSObject {
         setup()
     }
     
+    // MARK: private vars
     private var moc: NSManagedObjectContext
-    var entries: [Entry] {
+    
+    // MARK: public vars
+    // entry is dependant on thoughts to traverse the relationship
+    // less read time to use relationship than make a seperate CD call
+    public var entries: [Entry] {
         get { return thoughts.entries() }
     }
     public var thoughtCount: Int {
         get { return self.thoughts.count }
     }
     public var entryCount: Int {
-        return thoughts.entries().count
+        return entries.count
     }
-    public var thoughts: [Thought] = [] {
-        didSet {
-            print("thoughts set")
-        }
-    }
+    public var thoughts: [Thought] = []
     
     private func setup() {
         thoughts = fetchThoughts()
