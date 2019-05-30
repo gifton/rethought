@@ -12,10 +12,6 @@ import UIKit
 class ThoughtDetailController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        view.addTapGestureRecognizer {
-//            self.navigationController?.popViewController(animated: true)
-//        }
     }
     
     lazy var headView = ThoughtDetailHead(startFrame: CGRect(x: 0, y: -100, width: Device.size.width, height: 100), endFrame: CGRect(x: 0, y: 0, width: Device.size.width, height: 100))
@@ -23,7 +19,10 @@ class ThoughtDetailController: UIViewController {
     var entryBar: ThoughtDetailEntryBar!
     let animationScrollLength: CGFloat = 55.0
     var progress: CGFloat = 0.0 {
-        didSet { headView.update(toAnimationProgress: progress) }
+        didSet {
+            print("progress: \(progress)")
+            headView.update(toAnimationProgress: progress)
+        }
     }
     
     public var model: ThoughtDetailViewModel! {
@@ -35,39 +34,27 @@ class ThoughtDetailController: UIViewController {
         // set table delegates and datasources
         table.tv.delegate = self
         table.tv.dataSource = self
+        table.tv.register(cellWithClass: ThoughtDetailTableHead.self)
+        table.tv.sectionHeaderHeight = 370
+        
+        headView.delegate = self
         
         view.addSubview(table)
-        view.addSubview(headView)
         entryBar = ThoughtDetailEntryBar(withDelegate: self)
         view.addSubview(entryBar)
+        view.addSubview(headView)
     }
-}
-
-extension ThoughtDetailController: MSGConnector {
-    func save(withTitle title: String, withIcon: ThoughtIcon) { }
-    
-    func insert<T>(entry: T) where T : EntryBuilder { }
-    
-    func isDoneEditing() { }
-    
-    func updateIcon(newIcon: ThoughtIcon) { }
-    
-    func entryWillShow(ofType type: MSGContext.size) { }
-    
-    
 }
 
 extension ThoughtDetailController: ThoughtDetailDelegate {
     func displayEntryType(_ type: EntryType) -> Bool {
+        
         let nView = UIView()
         nView.backgroundColor = .lightGray
         nView.addTapGestureRecognizer { nView.removeFromSuperview() }
         nView.layer.borderColor = UIColor.black.cgColor
         nView.layer.borderWidth = 1
-        
-        switch type {
-        default: nView.frame = CGRect(x: 25, y: 200, width: Device.size.width - 50, height: Device.size.width - 50)
-        }
+        nView.frame = CGRect(x: 25, y: 200, width: Device.size.width - 50, height: Device.size.width - 50)
         
         view.addSubview(nView)
         return true
@@ -93,12 +80,15 @@ extension ThoughtDetailController: ThoughtDetailDelegate {
 extension ThoughtDetailController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            return tableView.dequeueReusableCell(withClass: ThoughtDetailTableHead.self, for: indexPath)
+        }
         return UITableViewCell()
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if let scroll = scrollView as? UITableView {
-            if scroll.numberOfRows(inSection: 0) > 4 {
+            if scroll.numberOfRows(inSection: 0) >= 4 {
                 let offset = scroll.contentOffset.y
                 let normalizedOffset = max(0.0, min(1.0, offset/animationScrollLength))
                 self.progress = normalizedOffset
@@ -108,13 +98,12 @@ extension ThoughtDetailController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let floats = model.entryHeights
-        var newFloats = [CGFloat]()
-        floats.forEach { let i = $0 + 50; newFloats.append(i)}
-        newFloats.append(CGFloat(370))
-        
-        return newFloats.reversed()[indexPath.row]
+        var out = [CGFloat]()
+        floats.forEach { out.append($0 + 50) }
+        out.append(CGFloat(370))
+        return out.reversed()[indexPath.row]
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.entryCount.total + 1
+        return model.entryCount.total
     }
 }

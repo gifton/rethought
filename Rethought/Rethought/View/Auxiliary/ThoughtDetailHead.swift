@@ -14,9 +14,12 @@ class ThoughtDetailHead: AnimatableView {
         super.init(frame: startFrame)
         self.startFrame = startFrame
         self.endFrame = endFrame
-        
-        setView()
-        
+    }
+    
+    public var delegate: ThoughtDetailDelegate! {
+        didSet {
+            setView()
+        }
     }
     
     let tf: UITextField = {
@@ -35,6 +38,8 @@ class ThoughtDetailHead: AnimatableView {
         sb.placeholder = "Search"
         sb.barTintColor = .clear
         sb.backgroundImage = UIImage()
+        sb.showsCancelButton = true
+        sb.showsSearchResultsButton = true
         
         return sb
     }()
@@ -43,6 +48,8 @@ class ThoughtDetailHead: AnimatableView {
         
         backgroundColor = Device.colors.offWhite
         layer.cornerRadius = 27.5
+        
+        sb.delegate = self
         
         addSubview(tf)
         addSubview(sb)
@@ -57,3 +64,10 @@ class ThoughtDetailHead: AnimatableView {
 }
 
 
+extension ThoughtDetailHead: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        delegate.search(for: searchBar.text ?? "") {
+            print("completed Search")
+        }
+    }
+}

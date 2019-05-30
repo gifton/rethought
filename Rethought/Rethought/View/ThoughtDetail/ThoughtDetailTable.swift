@@ -21,6 +21,7 @@ class ThoughtDetailTable: UIView {
         tv.allowsSelection = true
         tv.rowHeight = UITableView.automaticDimension
         tv.separatorInset = .zero
+        tv.backgroundColor = Device.colors.red
         
         return tv
     }()
