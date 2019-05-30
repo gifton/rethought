@@ -11,8 +11,12 @@ import UIKit
 
 extension CGRect {
     func animateTo(_ endRect: CGRect, forProgress progress: CGFloat) -> CGRect {
+        if endRect.width == width {
+            return CGRect(origin: origin.animateTo(endRect.origin, forProgress: progress),
+                          size: size)
+        }
         return CGRect(origin: origin.animateTo(endRect.origin, forProgress: progress),
-                      size: size)
+                      size: size.animateTo(endRect.size, forProgress: progress))
     }
 }
 
