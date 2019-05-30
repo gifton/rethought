@@ -99,6 +99,16 @@ public class Thought: NSManagedObject {
         return CLLocation(latitude: lat.doubleValue, longitude: lon.doubleValue)
     }
     
+    // calculate all necessary heights
+    public func getHeights(withFont font: UIFont, andWidth width: CGFloat) -> [CGFloat] {
+        var floats = [CGFloat]()
+        for entry in allEntries {
+            floats.append(entry.heightForContent(font: font, width: width))
+        }
+        
+        return floats
+    }
+    
     //build thought components
     static func insert(in context: NSManagedObjectContext, title: String, icon: String, location: CLLocation?) -> Thought {
         //access defaults

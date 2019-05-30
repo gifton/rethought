@@ -22,20 +22,28 @@ public class PhotoEntry: NSManagedObject {
     // MARK: computed property
     public func minimumHeightForContent(width: CGFloat) -> CGFloat {
         var height: CGFloat = 0
+        
+        // get photo height
+        height += photoHeight(forWidth: width)
+        
+        // confirm text
         guard let detail = detail else {
             return height
         }
         
+        // add detail height for content
         height += detail.sizeFor(font: Device.font.mediumTitle(ofSize: .xXLarge), width: width).height
         
-        guard let photo = UIImage(data: rawPhoto),
-        let scaledPhoto = photo.scaled(toWidth: width) else {
-            return height
-        }
-        
-        height += scaledPhoto.size.height
-        
         return height
+    }
+    
+    // calculate height of photo after resize
+    private func photoHeight(forWidth width: CGFloat) -> CGFloat {
+        guard let photo = UIImage(data: rawPhoto),
+            let scaledPhoto = photo.scaled(toWidth: width) else {
+                return 0
+        }
+        return scaledPhoto.size.height
     }
     
     // conveinance func for builders

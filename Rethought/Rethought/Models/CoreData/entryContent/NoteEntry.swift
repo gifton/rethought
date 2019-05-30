@@ -19,12 +19,15 @@ public class NoteEntry: NSManagedObject {
     @NSManaged public var entry: Entry
     
     // MARK: computed property
-    public func minimumHeightForContent(font: UIFont, width: CGFloat) {
+    // get minimum height of string labels
+    public func minimumHeightForContent(font: UIFont, width: CGFloat) -> CGFloat {
         var height: CGFloat = 0.0
         if let title = title {
             height += title.sizeFor(font: Device.font.mediumTitle(ofSize: .xXLarge), width: width).height
         }
         height += detail.sizeFor(font: font, width: width).height
+        
+        return height
     }
 
     // conveinance func for builders

@@ -38,9 +38,16 @@ public class Entry: NSManagedObject {
         }
     }
     
-    public var heightForContent: CGFloat {
+    // return height for content,
+    // since notes are variable in size, as are photos, calculations are be made on the string itself
+    // links and recordings have fixed heights of 130px
+    public func heightForContent(font: UIFont, width: CGFloat) -> CGFloat {
         if let note = note {
-            
+            return note.minimumHeightForContent(font: font, width: width)
+        } else if let photo = photo {
+            return photo.minimumHeightForContent(width: width)
+        } else {
+            return 130
         }
     }
     
