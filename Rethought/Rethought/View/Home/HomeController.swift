@@ -26,6 +26,7 @@ class HomeController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    var animator = ViewAnimator()
     var model: HomeViewModel! {
         didSet {
             setView()
@@ -81,6 +82,9 @@ extension HomeController: Animator {
             newView.layer.opacity = 0.55
         }
     }
+    func register(_ view: Animatable) {
+        animator.register(animatableView: view)
+    }
 }
 
 extension HomeController: UITableViewDataSource {
@@ -109,6 +113,8 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         return cell
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("selected thought: \(model.thoughts[indexPath.row].title).")

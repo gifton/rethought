@@ -33,4 +33,5 @@ class ViewAnimator {
 protocol Animator {
     func didUpdate()
     func show(optionsFor entry: Entry)
+    func register(_ view: Animatable)
 }

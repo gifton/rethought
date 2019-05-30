@@ -14,7 +14,8 @@ class HomeHead: UIView {
         gradient = RadialGradientView(frame: frame)
         super.init(frame: frame)
         gradient.colors = [UIColor(hex: "1A2437"), UIColor(hex: "381055"), UIColor(hex: "14263F"), UIColor(hex: "122450")]
-        addSubview(gradient)
+//        addSubview(gradient)
+        backgroundColor = .black
         setView(); styleView()
     }
     
@@ -44,11 +45,11 @@ class HomeHead: UIView {
     private let dateTextColorFinish = Device.colors.green
     //frames
     private let dateStartFrame = CGRect(x: 25, y: 90, width: 200, height: 18)
-    private let dateEndFrame = CGRect(x: 225, y: 65, width: 200, height: 18)
+    private var dateEndFrame = CGRect(x: 225, y: 65, width: 200, height: 18)
     
     // labels
-    private let rethoughtLabel = UILabel()
-    private let dateLabel = UILabel()
+    private let rethoughtLabel = AnimatableLabel()
+    public let dateLabel = AnimatableLabel()
     
     private var gradient: RadialGradientView
     
@@ -57,7 +58,8 @@ class HomeHead: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: 300, height: 210)
-        layout.minimumLineSpacing = 5
+        layout.minimumLineSpacing = 25
+        
         let cv = UICollectionView(frame: CGRect(x: 5, y: 160, width: Device.size.width - 10, height: 210), collectionViewLayout: layout)
         cv.showsHorizontalScrollIndicator = false
         
@@ -70,7 +72,6 @@ class HomeHead: UIView {
     private func setView() {
         
         // set collection
-        thoughtCollection.delegate = self
         thoughtCollection.register(cellWithClass: ThoughtCollectionCell.self)
         
         // add subviews
@@ -92,6 +93,12 @@ class HomeHead: UIView {
         rethoughtLabel.font = Device.font.title(ofSize: .emojiLG)
         rethoughtLabel.textColor = .white
         
+        
+        dateLabel.startColor = dateTextColorStart
+        dateLabel.endColor = dateTextColorFinish
+        dateLabel.startFrame = dateStartFrame
+        dateLabel.endFrame = dateEndFrame
+        
         dateLabel.getStringFromDate(date: Date(), withStyle: .full)
         dateLabel.textColor = .white
         dateLabel.font = Device.font.body(ofSize: .medium)
@@ -110,30 +117,21 @@ extension HomeHead: Animatable {
         switch progress {
         case 1:
             frame.size.height = endHeight
-            dateLabel.frame = dateEndFrame
             thoughtCollection.alpha = 0.0
             entryPickerView.frame = CGRect(x: 0, y: frame.height - 80, width: frame.width, height: 80)
         case 0:
             frame.size.height = startHeight
-            dateLabel.frame = dateStartFrame
             thoughtCollection.alpha = 1.0
             entryPickerView.frame = CGRect(x: 0, y: frame.height - 80, width: frame.width, height: 80)
         default:
             entryPickerView.frame = CGRect(x: 0, y: frame.height - 80, width: frame.width, height: 80)
             thoughtCollection.alpha = (1 - progress * 2)
             frame.size.height = startHeight - newHeight
-            
-            // set all views with animations here
-            dateLabel.frame = CGRect(x: dateStartFrame.origin.x + (dateEndFrame.origin.x - dateStartFrame.origin.x) * progress,
-                                     y: dateStartFrame.origin.y + (dateEndFrame.origin.y - dateStartFrame.origin.y) * progress,
-                                     width: dateEndFrame.width, height: dateEndFrame.height)
-            
-            dateLabel.textColor = UIColor(red: dateTextColorStart.rgba.red + (dateTextColorFinish.rgba.red - dateTextColorStart.rgba.red) * progress,
-                                          green: dateTextColorStart.rgba.green + (dateTextColorFinish.rgba.green - dateTextColorStart.rgba.green) * progress,
-                                          blue: dateTextColorStart.rgba.blue + (dateTextColorFinish.rgba.blue - dateTextColorStart.rgba.blue) * progress,
-                                          alpha: dateTextColorStart.rgba.alpha + (dateTextColorFinish.rgba.alpha - dateTextColorStart.rgba.alpha) * progress)
         }
         
+        
+        print(frame.height)
+        dateLabel.update(toAnimationProgress: progress)
     }
     
     func animatedColors(withProgress progress: CGFloat) ->  [CGColor]{
@@ -145,11 +143,5 @@ extension HomeHead: Animatable {
                         green: finishBGColor.rgba.green + (startBGColor.rgba.green - finishBGColor.rgba.green) * progress,
                         blue: finishBGColor.rgba.blue + (startBGColor.rgba.blue - finishBGColor.rgba.blue) * progress,
                         alpha: startBGColor.rgba.alpha + (startBGColor.rgba.alpha - finishBGColor.rgba.alpha) * progress).cgColor]
-    }
-}
-
-extension HomeHead: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
     }
 }
