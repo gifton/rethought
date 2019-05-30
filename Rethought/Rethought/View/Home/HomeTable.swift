@@ -76,7 +76,7 @@ class HomeTable: UIView {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         frame.origin.y = startFrame + ((endFrame - startFrame) * animationProgress)
         frame.size.height = (Device.size.height - frame.origin.y)
-        
+        scrollView.contentOffset = .zero
         //alert controller of movement to animate individual seperate views
         animator?.didUpdate()
     }

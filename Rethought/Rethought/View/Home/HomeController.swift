@@ -42,6 +42,7 @@ class HomeController: UIViewController {
         
         homeHead = HomeHead(frame: CGRect(x: 0, y: 0, width: Device.size.width, height: 500))
         homeHead?.thoughtCollection.dataSource = self
+        homeHead?.thoughtCollection.delegate = self
         view.addSubview(homeHead!)
         view.addSubview(tv!)
     }
@@ -109,4 +110,21 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("selected thought: \(model.thoughts[indexPath.row].title).")
+        
+        let attrs = collectionView.layoutAttributesForItem(at: indexPath)
+        let cellFrameInSuperview = collectionView.convert(attrs?.frame ?? .zero, to: collectionView.superview)
+        
+        let newView = UIView(frame: cellFrameInSuperview)
+        newView.backgroundColor = .blue
+        view.addSubview(newView)
+        newView.addTapGestureRecognizer {
+            newView.removeFromSuperview()
+        }
+        
+        UIView.animate(withDuration: 0.5) {
+            newView.frame = self.view.frame
+        }
+    }
 }

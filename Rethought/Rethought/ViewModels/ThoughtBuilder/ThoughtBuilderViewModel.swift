@@ -20,12 +20,7 @@ class ThoughtBuilderViewModel: NSObject {
     // MARK: pRivate vars
     private var moc: NSManagedObjectContext
     private var currentThoughtPreview: ThoughtPreview?
-    private var currentThought: Thought? {
-        guard let tp: ThoughtPreview = currentThoughtPreview else {
-            return nil
-        }
-        return Thought.insert(in: moc, withPreview: tp)
-    }
+    private var currentThought: Thought?
 }
 
 
@@ -33,24 +28,14 @@ extension ThoughtBuilderViewModel: ThoughtBuilderViewModelDelegate {
 
     // call context tot save data
     func save() {
-        do {
-            try moc.save()
-            do {
-                let count = try self.moc.count(for: Thought.fetchRequest())
-                print("save complete, thoughtCount: \(count)")
-            } catch {
-                print(error)
-            }
-        } catch let err {
-            print(err)
-        }
+        do { try moc.save() } catch let err { print(err) }
     }
     
     // save thoguht after user has inputed content, return preview for displaying in MSGBoard
     func buildThought(withTitle title: String, withLocation location: CLLocation?, withIcon icon: ThoughtIcon) -> ThoughtPreview {
         print("building thoughtprview from thoughtBuilderViewModel")
         currentThoughtPreview = ThoughtPreview(title: title, icon: icon.icon, location: location)
-        _ = Thought.insert(in: moc, withPreview: currentThoughtPreview!)
+        currentThought = Thought.insert(in: moc, withPreview: currentThoughtPreview!)
         save()
         return currentThoughtPreview!
     }
