@@ -266,8 +266,8 @@
 			isa = PBXGroup;
 			children = (
 				D7006EE62268CB63004E570F /* ViewController.swift */,
-				D7C6541C226A391A008A66EF /* Auxiliary */,
 				D7006EDB2267364B004E570F /* Cells */,
+				D7C6541C226A391A008A66EF /* Auxiliary */,
 				D7006EDA22673639004E570F /* Search */,
 				D7006ED922673630004E570F /* Home */,
 				D7006ED822673614004E570F /* ConversationController */,
@@ -312,6 +312,7 @@
 				D7006EDC2267EDC0004E570F /* RethoughtMessageCell.swift */,
 				D7006EDE2268174F004E570F /* NewThoughtCell.swift */,
 				D75B8B2E22912FD800B38CC6 /* HomeThoughtCell.swift */,
+				D7AF976822A03B4500AA4A65 /* ThoughtDetailTableHead.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -350,7 +351,6 @@
 			children = (
 				D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */,
 				D7AF976622A0250F00AA4A65 /* ThoughtDetailDelegate.swift */,
-				D7AF976822A03B4500AA4A65 /* ThoughtDetailTableHead.swift */,
 				D74D1B2C22A00B8900FB7D95 /* ThoughtDetailEntryBar.swift */,
 				D74D1B2A22A0095C00FB7D95 /* ThoughtDetailTable.swift */,
 			);

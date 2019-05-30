@@ -12,22 +12,25 @@ import UIKit
 class ThoughtDetailController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
     }
     
     lazy var headView = ThoughtDetailHead(startFrame: CGRect(x: 0, y: -100, width: Device.size.width, height: 100), endFrame: CGRect(x: 0, y: 0, width: Device.size.width, height: 100))
     var table = ThoughtDetailTable(frame: CGRect(origin: .zero, size: CGSize(width: Device.size.width, height: Device.size.height - 100)))
     var entryBar: ThoughtDetailEntryBar!
-    let animationScrollLength: CGFloat = 55.0
+    let animationScrollLength: CGFloat = 100.0
     var progress: CGFloat = 0.0 {
         didSet {
-            print("progress: \(progress)")
-            headView.update(toAnimationProgress: progress)
+            print(progress)
+            animator.updateAnimation(toProgress: progress)
         }
     }
     
     public var model: ThoughtDetailViewModel! {
         didSet { setView() }
     }
+    
+    public var animator = ViewAnimator()
     
     private func setView() {
         
@@ -38,6 +41,7 @@ class ThoughtDetailController: UIViewController {
         table.tv.sectionHeaderHeight = 370
         
         headView.delegate = self
+        animator.register(animatableView: headView)
         
         view.addSubview(table)
         entryBar = ThoughtDetailEntryBar(withDelegate: self)
@@ -81,7 +85,9 @@ extension ThoughtDetailController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            return tableView.dequeueReusableCell(withClass: ThoughtDetailTableHead.self, for: indexPath)
+            let head = tableView.dequeueReusableCell(withClass: ThoughtDetailTableHead.self, for: indexPath)
+            animator.register(animatableView: head)
+            return head
         }
         return UITableViewCell()
     }

@@ -10,10 +10,11 @@ import Foundation
 import UIKit
 
 class ThoughtDetailHead: AnimatableView {
-    init(startFrame: CGRect, endFrame: CGRect) {
+    init(startFrame: CGRect, endFrame: CGRect, preview: ThoughtPreview) {
         super.init(frame: startFrame)
         self.startFrame = startFrame
         self.endFrame = endFrame
+        tf.text = preview.icon
     }
     
     public var delegate: ThoughtDetailDelegate! {
@@ -22,9 +23,9 @@ class ThoughtDetailHead: AnimatableView {
         }
     }
     
+    
     let tf: UITextField = {
         let tf = UITextField()
-        tf.text = "🚦"
         tf.font = Device.font.body(ofSize: .emojiSM)
         tf.backgroundColor = .white
         tf.textAlignment = .center
@@ -39,7 +40,6 @@ class ThoughtDetailHead: AnimatableView {
         sb.barTintColor = .clear
         sb.backgroundImage = UIImage()
         sb.showsCancelButton = true
-        sb.showsSearchResultsButton = true
         
         return sb
     }()
@@ -53,9 +53,12 @@ class ThoughtDetailHead: AnimatableView {
         
         addSubview(tf)
         addSubview(sb)
+        
         tf.setTopAndLeading(top: topAnchor, leading: leadingAnchor, paddingTop: 45, paddingLeading: 25)
         tf.setHeightWidth(width: 40, height: 40)
-        sb.setAnchor(top: topAnchor, leading: tf.trailingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 50, paddingLeading: 50, paddingBottom: 15, paddingTrailing: 25)
+        tf.delegate = self
+        
+        sb.setAnchor(top: topAnchor, leading: tf.trailingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 50, paddingLeading: 40, paddingBottom: 15, paddingTrailing: 25)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -69,5 +72,12 @@ extension ThoughtDetailHead: UISearchBarDelegate {
         delegate.search(for: searchBar.text ?? "") {
             print("completed Search")
         }
+    }
+}
+
+extension ThoughtDetailHead: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        delegate.updateIcon(to: textField.text)
+        return true
     }
 }

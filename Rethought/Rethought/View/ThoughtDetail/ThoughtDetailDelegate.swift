@@ -16,5 +16,6 @@ protocol ThoughtDetailDelegate {
     func delete(thought: Thought)
     func search(for payload: String, completion: () -> ())
     func updateIcon(to: String)
+    var thought: ThoughtPreview
     
 }
