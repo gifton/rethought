@@ -107,10 +107,12 @@ extension ThoughtDetailController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var floats = model.entryHeights
-        floats.append(CGFloat(370))
+        let floats = model.entryHeights
+        var newFloats = [CGFloat]()
+        floats.forEach { let i = $0 + 50; newFloats.append(i)}
+        newFloats.append(CGFloat(370))
         
-        return floats.reversed()[indexPath.row]
+        return newFloats.reversed()[indexPath.row]
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.entryCount.total + 1

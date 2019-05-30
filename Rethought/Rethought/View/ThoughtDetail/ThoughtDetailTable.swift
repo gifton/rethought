@@ -20,6 +20,7 @@ class ThoughtDetailTable: UIView {
         let tv = UITableView(frame: CGRect(x: 0, y: 0, width: Device.size.width, height: Device.size.height - 100))
         tv.allowsSelection = true
         tv.rowHeight = UITableView.automaticDimension
+        tv.separatorInset = .zero
         
         return tv
     }()

@@ -9,6 +9,8 @@ class ThoughtDetailViewModel: ThoughtDetailViewModelDelegate {
     required init(withThought thought: Thought, _ moc: NSManagedObjectContext) {
         self.moc = moc
         self.thought = thought
+        
+        print("heights: \(entryHeights)")
     }
     
     // MARK: private vars
