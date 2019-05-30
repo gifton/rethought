@@ -14,7 +14,7 @@ class ThoughtDetailHead: AnimatableView {
         super.init(frame: startFrame)
         self.startFrame = startFrame
         self.endFrame = endFrame
-        
+        print("initial detailHead frame: \(frame)")
         backgroundColor = .red
     }
     

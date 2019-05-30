@@ -38,6 +38,7 @@ class AnimatableView: UIView, Animatable {
     
     func update(toAnimationProgress progress: CGFloat) {
         if let start = startFrame, let end = endFrame {
+            print("updatingFrame: \(start.animateTo(end, forProgress: progress))")
             frame = start.animateTo(end, forProgress: progress)
         }
         

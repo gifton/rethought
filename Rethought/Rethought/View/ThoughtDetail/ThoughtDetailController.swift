@@ -21,6 +21,10 @@ class ThoughtDetailController: UIViewController {
     lazy var headView = ThoughtDetailHead(startFrame: CGRect(x: 0, y: -100, width: Device.size.width, height: 100), endFrame: CGRect(x: 0, y: 0, width: Device.size.width, height: 100))
     var table = ThoughtDetailTable(frame: CGRect(origin: .zero, size: CGSize(width: Device.size.width, height: Device.size.height - 100)))
     var entryBar: ThoughtDetailEntryBar!
+    let animationScrollLength: CGFloat = 55.0
+    var progress: CGFloat = 0.0 {
+        didSet { headView.update(toAnimationProgress: progress) }
+    }
     
     public var model: ThoughtDetailViewModel! {
         didSet { setView() }
@@ -32,8 +36,8 @@ class ThoughtDetailController: UIViewController {
         table.tv.delegate = self
         table.tv.dataSource = self
         
-        view.addSubview(headView)
         view.addSubview(table)
+        view.addSubview(headView)
         entryBar = ThoughtDetailEntryBar(withConnector: self)
         view.addSubview(entryBar)
     }
@@ -60,10 +64,23 @@ extension ThoughtDetailController: UITableViewDataSource, UITableViewDelegate {
         return UITableViewCell()
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if let scroll = scrollView as? UITableView {
+            if scroll.numberOfRows(inSection: 0) > 4 {
+                let offset = scroll.contentOffset.y
+                let normalizedOffset = max(0.0, min(1.0, offset/animationScrollLength))
+                self.progress = normalizedOffset
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return model.entryHeights[indexPath.row]
+        var floats = model.entryHeights
+        floats.append(CGFloat(370))
+        
+        return floats.reversed()[indexPath.row]
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.entryCount.total
+        return model.entryCount.total + 1
     }
 }
