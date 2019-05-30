@@ -1,6 +1,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 @objc(NoteEntry)
 public class NoteEntry: NSManagedObject {
@@ -16,6 +17,15 @@ public class NoteEntry: NSManagedObject {
     
     // MARK: Relationship
     @NSManaged public var entry: Entry
+    
+    // MARK: computed property
+    public func minimumHeightForContent(font: UIFont, width: CGFloat) {
+        var height: CGFloat = 0.0
+        if let title = title {
+            height += title.sizeFor(font: Device.font.mediumTitle(ofSize: .xXLarge), width: width).height
+        }
+        height += detail.sizeFor(font: font, width: width).height
+    }
 
     // conveinance func for builders
     static func insert(into context: NSManagedObjectContext, builder: NoteBuilder) -> NoteEntry {

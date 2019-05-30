@@ -1,6 +1,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 @objc(PhotoEntry)
 public class PhotoEntry: NSManagedObject {
@@ -17,6 +18,25 @@ public class PhotoEntry: NSManagedObject {
     
     // MARK: Relationship
     @NSManaged public var entry: Entry
+    
+    // MARK: computed property
+    public func minimumHeightForContent(width: CGFloat) -> CGFloat {
+        var height: CGFloat = 0
+        guard let detail = detail else {
+            return height
+        }
+        
+        height += detail.sizeFor(font: Device.font.mediumTitle(ofSize: .xXLarge), width: width).height
+        
+        guard let photo = UIImage(data: rawPhoto),
+        let scaledPhoto = photo.scaled(toWidth: width) else {
+            return height
+        }
+        
+        height += scaledPhoto.size.height
+        
+        return height
+    }
     
     // conveinance func for builders
     static func insert(into context: NSManagedObjectContext, builder: PhotoBuilder) -> PhotoEntry {

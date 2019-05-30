@@ -38,6 +38,12 @@ public class Entry: NSManagedObject {
         }
     }
     
+    public var heightForContent: CGFloat {
+        if let note = note {
+            
+        }
+    }
+    
     // standard static func returns an entry(including thought relationship)
     static func insert(into context: NSManagedObjectContext, withlocation location: CLLocation?, for thought: Thought) -> Entry {
         let defaults = UserDefaults.standard
