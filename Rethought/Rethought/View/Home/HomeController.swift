@@ -121,16 +121,19 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         let attrs = collectionView.layoutAttributesForItem(at: indexPath)
         let cellFrameInSuperview = collectionView.convert(attrs?.frame ?? .zero, to: collectionView.superview)
+        let outModel = model.displayDetail(forThought: model.thoughts[indexPath.row])
+        let detail = ThoughtDetailController()
+        detail.model = outModel
         
         let newView = UIView(frame: cellFrameInSuperview)
-        newView.backgroundColor = .blue
+        newView.backgroundColor = Device.colors.blue
         view.addSubview(newView)
-        newView.addTapGestureRecognizer {
-            newView.removeFromSuperview()
-        }
         
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.5, animations: {
             newView.frame = self.view.frame
+        }) { (true) in
+            self.navigationController?.pushViewController(detail, animated: false)
+            newView.removeFromSuperview()
         }
     }
 }

@@ -16,4 +16,5 @@ protocol HomeViewModelDelegate: NSObject {
     func refresh()
     func retrieve(thought id: String) -> Thought?
     func retrieve(entry id: String) -> Entry?
+    func displayDetail(forThought thought: Thought) -> ThoughtDetailViewModel
 }

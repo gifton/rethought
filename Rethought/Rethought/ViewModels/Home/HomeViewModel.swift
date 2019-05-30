@@ -66,4 +66,8 @@ extension HomeViewModel: HomeViewModelDelegate {
         }
         fatalError("fwk")
     }
+    
+    func displayDetail(forThought thought: Thought) -> ThoughtDetailViewModel {
+        return ThoughtDetailViewModel(withThought: thought, moc)
+    }
 }

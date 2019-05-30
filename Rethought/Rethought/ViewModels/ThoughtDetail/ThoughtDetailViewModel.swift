@@ -19,6 +19,10 @@ class ThoughtDetailViewModel: ThoughtDetailViewModelDelegate {
     public var entryCount: EntryCount { return thought.entryCount }
     public var thought: Thought
     public var entries: [Entry] {  return thought.allEntries }
+    public var entryHeights: [CGFloat] {
+        return thought.getHeights(withFont: Device.font.body(ofSize: .large),
+                                  andWidth: Device.size.width - 50)
+    }
     
     // create new entry for thought
     func buildEntry<T>(payload: T, withLocation location: CLLocation?) where T : EntryBuilder {
