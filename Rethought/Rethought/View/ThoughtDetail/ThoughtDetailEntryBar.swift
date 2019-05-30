@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 class ThoughtDetailEntryBar: UIView {
-    init(withConnector connector: MSGConnector) {
-        self.connector = connector
+    init(withDelegate delegate: ThoughtDetailDelegate) {
+        self.delegate = delegate
         super.init(frame: CGRect(x: 0, y: Device.size.height - 95, width: Device.size.width, height: 95))
         
         backgroundColor = .black
@@ -19,7 +19,7 @@ class ThoughtDetailEntryBar: UIView {
     }
     
     // MARK: public vars
-    public var connector: MSGConnector
+    public var delegate: ThoughtDetailDelegate
     
     // MARK: private objects
     // MARK: private objects
@@ -78,13 +78,16 @@ class ThoughtDetailEntryBar: UIView {
             if !(btn.isDescendant(of: self)) {
                 btn.frame = CGRect(x: startX, y: startY, width: btn.frame.width, height: btn.frame.height)
                 addSubview(btn)
+                btn.addTapGestureRecognizer { _ = self.delegate.displayEntryType(btn.entryType) }
                 startX += (btn.frame.width + 35)
             }
-            
         }
         
         addSubview(collapseButton)
         collapseButton.frame = CGRect(x: frame.width - 65, y: 10, width: 50, height: 50)
+        collapseButton.addTapGestureRecognizer {
+            self.delegate.requestClose()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -127,9 +127,10 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         let newView = UIView(frame: cellFrameInSuperview)
         newView.backgroundColor = Device.colors.blue
+        newView.layer.cornerRadius = 30
         view.addSubview(newView)
         
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.25, animations: {
             newView.frame = self.view.frame
         }) { (true) in
             self.navigationController?.pushViewController(detail, animated: false)

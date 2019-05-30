@@ -13,9 +13,9 @@ class ThoughtDetailController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addTapGestureRecognizer {
-            self.navigationController?.popViewController(animated: true)
-        }
+//        view.addTapGestureRecognizer {
+//            self.navigationController?.popViewController(animated: true)
+//        }
     }
     
     lazy var headView = ThoughtDetailHead(startFrame: CGRect(x: 0, y: -100, width: Device.size.width, height: 100), endFrame: CGRect(x: 0, y: 0, width: Device.size.width, height: 100))
@@ -38,7 +38,7 @@ class ThoughtDetailController: UIViewController {
         
         view.addSubview(table)
         view.addSubview(headView)
-        entryBar = ThoughtDetailEntryBar(withConnector: self)
+        entryBar = ThoughtDetailEntryBar(withDelegate: self)
         view.addSubview(entryBar)
     }
 }
@@ -54,6 +54,38 @@ extension ThoughtDetailController: MSGConnector {
     
     func entryWillShow(ofType type: MSGContext.size) { }
     
+    
+}
+
+extension ThoughtDetailController: ThoughtDetailDelegate {
+    func displayEntryType(_ type: EntryType) -> Bool {
+        let nView = UIView()
+        nView.backgroundColor = .lightGray
+        nView.addTapGestureRecognizer { nView.removeFromSuperview() }
+        nView.layer.borderColor = UIColor.black.cgColor
+        nView.layer.borderWidth = 1
+        
+        switch type {
+        default: nView.frame = CGRect(x: 25, y: 200, width: Device.size.width - 50, height: Device.size.width - 50)
+        }
+        
+        view.addSubview(nView)
+        return true
+    }
+    
+    func saveEntryWith(builder: EntryBuilder) -> Bool { return true }
+    
+    func requestClose() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func delete(entry: Entry) { }
+    
+    func delete(thought: Thought) { }
+    
+    func search(for payload: String, completion: () -> ()) { }
+    
+    func updateIcon(to: String) { }
     
 }
 
