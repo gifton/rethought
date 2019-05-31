@@ -77,7 +77,7 @@ extension ThoughtDetailHead: UISearchBarDelegate {
 
 extension ThoughtDetailHead: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        delegate.updateIcon(to: textField.text)
+        delegate.updateIcon(to: textField.text ?? "")
         return true
     }
 }

@@ -30,6 +30,10 @@ class ThoughtDetailTableHead: UITableViewCell, Animatable {
     var titleStartPoint = CGPoint(x: 15, y: 10)
     var titleSize = CGSize.zero
     
+    let thoughtContent = UIView()
+    let locationLabel = AnimatableLabel()
+    let dateLabel = AnimatableLabel()
+    
     func styleView() {
         titleLabel.text = "Whats the square root of 69? 8 something?"
         titleLabel.font = Device.font.mediumTitle(ofSize: .xXXLarge)

@@ -35,14 +35,24 @@ class AnimatableView: UIView, Animatable {
     var endFrame: CGRect?
     var startHeight: CGFloat?
     var endHeight: CGFloat?
+    var startAlpha: CGFloat = 1.0
+    var endAlpha: CGFloat = 1.0
     
     func update(toAnimationProgress progress: CGFloat) {
+        
+        // if frames have been set, animate it
         if let start = startFrame, let end = endFrame {
             frame = start.animateTo(end, forProgress: progress)
         }
         
+        
         if let startHeight = startHeight, let endHeight = endHeight {
             frame.size.height = ((startHeight - endHeight) * progress)
         }
+        
+        // check if alphas have been changed
+        // if start alpha is greater, subtract
+        if endAlpha > startAlpha { self.alpha = startAlpha + (endAlpha - startAlpha) * progress }
+        else { self.alpha = startAlpha - (endAlpha + startAlpha) * progress }
     }
 }
