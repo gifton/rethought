@@ -20,10 +20,7 @@ class ThoughtDetailController: UIViewController {
     var entryBar: ThoughtDetailEntryBar!
     let animationScrollLength: CGFloat = 100.0
     var progress: CGFloat = 0.0 {
-        didSet {
-            print(progress)
-            animator.updateAnimation(toProgress: progress)
-        }
+        didSet { animator.updateAnimation(toProgress: progress) }
     }
     
     public var model: ThoughtDetailViewModel! {
@@ -38,7 +35,7 @@ class ThoughtDetailController: UIViewController {
         table.tv.delegate = self
         table.tv.dataSource = self
         table.tv.register(cellWithClass: ThoughtDetailTableHead.self)
-        table.tv.sectionHeaderHeight = 370
+        table.tv.sectionHeaderHeight = 300
         
         headView.delegate = self
         animator.register(animatableView: headView)
@@ -91,6 +88,8 @@ extension ThoughtDetailController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.row == 0 {
             let head = tableView.dequeueReusableCell(withClass: ThoughtDetailTableHead.self, for: indexPath)
             animator.register(animatableView: head)
+//            head.separatorInset = UIEdgeInsetsMake(0.f, head.bounds.size.width, 0.f, 0.f);
+            head.separatorInset = UIEdgeInsets(top: 0, left: 100, bottom: 0, right: 100)
             return head
         }
         return UITableViewCell()
@@ -110,7 +109,7 @@ extension ThoughtDetailController: UITableViewDataSource, UITableViewDelegate {
         let floats = model.entryHeights
         var out = [CGFloat]()
         floats.forEach { out.append($0 + 50) }
-        out.append(CGFloat(370))
+        out.append(CGFloat(300))
         return out.reversed()[indexPath.row]
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

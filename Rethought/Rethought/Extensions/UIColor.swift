@@ -94,3 +94,12 @@ public extension UIColor {
     }
 }
 
+// display color between to preset colors for animation
+extension UIColor {
+    func animate(toColor color: UIColor, withProgress progress: CGFloat) -> UIColor {
+        return UIColor(red: rgba.red + (color.rgba.red - rgba.red) * progress,
+                       green: rgba.green + (color.rgba.green - rgba.green) * progress,
+                       blue: rgba.blue + (color.rgba.blue - rgba.blue) * progress, alpha: 1.0)
+    }
+}
+

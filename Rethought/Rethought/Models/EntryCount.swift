@@ -19,6 +19,10 @@ struct EntryCount {
         linkInt =  links
     }
     
+    static var zero: EntryCount {
+        return EntryCount(notes: 0, photos: 0, recordings: 0, links: 0)
+    }
+    
     // display counts as an int instead of string
     var noteInt: Int
     var photoInt: Int

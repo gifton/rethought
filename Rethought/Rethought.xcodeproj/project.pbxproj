@@ -36,7 +36,6 @@
 		D7433B49228F3C050001B371 /* HomeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7433B48228F3C050001B371 /* HomeTableCell.swift */; };
 		D7433B4B228F50410001B371 /* UITableVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7433B4A228F50410001B371 /* UITableVIew.swift */; };
 		D74D1B22229F787300FB7D95 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B21229F787300FB7D95 /* Animator.swift */; };
-		D74D1B25229F7C7D00FB7D95 /* AnimationMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B24229F7C7D00FB7D95 /* AnimationMethods.swift */; };
 		D74D1B2722A0087E00FB7D95 /* ThoughtDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */; };
 		D74D1B2922A0095200FB7D95 /* ThoughtDetailHead.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2822A0095200FB7D95 /* ThoughtDetailHead.swift */; };
 		D74D1B2B22A0095C00FB7D95 /* ThoughtDetailTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2A22A0095C00FB7D95 /* ThoughtDetailTable.swift */; };
@@ -93,6 +92,12 @@
 		D7AF976722A0250F00AA4A65 /* ThoughtDetailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF976622A0250F00AA4A65 /* ThoughtDetailDelegate.swift */; };
 		D7AF976922A03B4500AA4A65 /* ThoughtDetailTableHead.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF976822A03B4500AA4A65 /* ThoughtDetailTableHead.swift */; };
 		D7AF976B22A0F69700AA4A65 /* AnimatableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF976A22A0F69700AA4A65 /* AnimatableView.swift */; };
+		D7AF976D22A1095000AA4A65 /* AnimatableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF976C22A1095000AA4A65 /* AnimatableLabel.swift */; };
+		D7AF976F22A10A4600AA4A65 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF976E22A10A4600AA4A65 /* CGSize.swift */; };
+		D7AF977122A10A4D00AA4A65 /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF977022A10A4D00AA4A65 /* CGRect.swift */; };
+		D7AF977322A10A5300AA4A65 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF977222A10A5300AA4A65 /* CGPoint.swift */; };
+		D7AF977522A10BE900AA4A65 /* ThoughtDetailInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF977422A10BE900AA4A65 /* ThoughtDetailInfoBar.swift */; };
+		D7AF977722A1A2B800AA4A65 /* ViewOverride.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF977622A1A2B800AA4A65 /* ViewOverride.swift */; };
 		D7BB182F227629970084963E /* MSGBoardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB182E227629970084963E /* MSGBoardDelegate.swift */; };
 		D7BB1833227629EE0084963E /* MSGBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB1832227629EE0084963E /* MSGBoard.swift */; };
 		D7BB1836227631920084963E /* MSGContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB1835227631920084963E /* MSGContext.swift */; };
@@ -143,7 +148,6 @@
 		D7433B48228F3C050001B371 /* HomeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableCell.swift; sourceTree = "<group>"; };
 		D7433B4A228F50410001B371 /* UITableVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableVIew.swift; sourceTree = "<group>"; };
 		D74D1B21229F787300FB7D95 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
-		D74D1B24229F7C7D00FB7D95 /* AnimationMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationMethods.swift; sourceTree = "<group>"; };
 		D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailController.swift; sourceTree = "<group>"; };
 		D74D1B2822A0095200FB7D95 /* ThoughtDetailHead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailHead.swift; sourceTree = "<group>"; };
 		D74D1B2A22A0095C00FB7D95 /* ThoughtDetailTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailTable.swift; sourceTree = "<group>"; };
@@ -202,6 +206,12 @@
 		D7AF976622A0250F00AA4A65 /* ThoughtDetailDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailDelegate.swift; sourceTree = "<group>"; };
 		D7AF976822A03B4500AA4A65 /* ThoughtDetailTableHead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailTableHead.swift; sourceTree = "<group>"; };
 		D7AF976A22A0F69700AA4A65 /* AnimatableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableView.swift; sourceTree = "<group>"; };
+		D7AF976C22A1095000AA4A65 /* AnimatableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableLabel.swift; sourceTree = "<group>"; };
+		D7AF976E22A10A4600AA4A65 /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
+		D7AF977022A10A4D00AA4A65 /* CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
+		D7AF977222A10A5300AA4A65 /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
+		D7AF977422A10BE900AA4A65 /* ThoughtDetailInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailInfoBar.swift; sourceTree = "<group>"; };
+		D7AF977622A1A2B800AA4A65 /* ViewOverride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOverride.swift; sourceTree = "<group>"; };
 		D7BB182E227629970084963E /* MSGBoardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardDelegate.swift; sourceTree = "<group>"; };
 		D7BB1832227629EE0084963E /* MSGBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoard.swift; sourceTree = "<group>"; };
 		D7BB1835227631920084963E /* MSGContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGContext.swift; sourceTree = "<group>"; };
@@ -334,7 +344,6 @@
 			isa = PBXGroup;
 			children = (
 				D74D1B23229F79D400FB7D95 /* Animated Views */,
-				D74D1B24229F7C7D00FB7D95 /* AnimationMethods.swift */,
 				D7388A1A228BB6F300627E9E /* Animatable.swift */,
 				D74D1B21229F787300FB7D95 /* Animator.swift */,
 			);
@@ -345,6 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				D7AF976A22A0F69700AA4A65 /* AnimatableView.swift */,
+				D7AF976C22A1095000AA4A65 /* AnimatableLabel.swift */,
 			);
 			path = "Animated Views";
 			sourceTree = "<group>";
@@ -356,6 +366,7 @@
 				D7AF976622A0250F00AA4A65 /* ThoughtDetailDelegate.swift */,
 				D74D1B2C22A00B8900FB7D95 /* ThoughtDetailEntryBar.swift */,
 				D74D1B2A22A0095C00FB7D95 /* ThoughtDetailTable.swift */,
+				D7AF977422A10BE900AA4A65 /* ThoughtDetailInfoBar.swift */,
 			);
 			path = ThoughtDetail;
 			sourceTree = "<group>";
@@ -409,6 +420,7 @@
 			children = (
 				D7536FA42262C6DA003F0920 /* styling.swift */,
 				D77A7D8C229A3D65009B1781 /* RadialGradient.swift */,
+				D7AF977622A1A2B800AA4A65 /* ViewOverride.swift */,
 			);
 			path = styling;
 			sourceTree = "<group>";
@@ -459,6 +471,9 @@
 				D76895512271ED7D00DC059E /* Optional.swift */,
 				D760FED6227E785200E4693D /* UIBezierPath.swift */,
 				D7433B4A228F50410001B371 /* UITableVIew.swift */,
+				D7AF976E22A10A4600AA4A65 /* CGSize.swift */,
+				D7AF977022A10A4D00AA4A65 /* CGRect.swift */,
+				D7AF977222A10A5300AA4A65 /* CGPoint.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -749,7 +764,6 @@
 				D7FEEBEB22947E1800D6D1C8 /* HomeViewModel.swift in Sources */,
 				D7C6542E226A850B008A66EF /* UIbutton.swift in Sources */,
 				D7BB183D227892F40084963E /* MSGThoughtView.swift in Sources */,
-				D74D1B25229F7C7D00FB7D95 /* AnimationMethods.swift in Sources */,
 				D7149384227CB830005B681D /* MSGBoardNoteView.swift in Sources */,
 				D7006EBB22653D59004E570F /* ThoughtPreview.swift in Sources */,
 				D7006EC822671C96004E570F /* NoteBuilder.swift in Sources */,
@@ -768,6 +782,7 @@
 				D7BB1833227629EE0084963E /* MSGBoard.swift in Sources */,
 				D7AF976B22A0F69700AA4A65 /* AnimatableView.swift in Sources */,
 				D7006EBD22653DB1004E570F /* EntryCount.swift in Sources */,
+				D7AF977722A1A2B800AA4A65 /* ViewOverride.swift in Sources */,
 				D76DFA09226E803800CE2D59 /* Rects.swift in Sources */,
 				D7536FED2262EB0A003F0920 /* Entry.swift in Sources */,
 				D7006EE72268CB63004E570F /* ViewController.swift in Sources */,
@@ -776,6 +791,7 @@
 				D75B8B2F22912FD800B38CC6 /* HomeThoughtCell.swift in Sources */,
 				D7006EE5226841D2004E570F /* ConversationView.swift in Sources */,
 				D77A7D95229E5178009B1781 /* ThoughtDetailViewModel.swift in Sources */,
+				D7AF977122A10A4D00AA4A65 /* CGRect.swift in Sources */,
 				D7536FD52262D8AA003F0920 /* rt-DB2.xcdatamodeld in Sources */,
 				D74D1B2D22A00B8900FB7D95 /* ThoughtDetailEntryBar.swift in Sources */,
 				D7006EC622671C4C004E570F /* PhotoBuilder.swift in Sources */,
@@ -789,6 +805,8 @@
 				D7006ECA22671CF4004E570F /* RecordingBuilder.swift in Sources */,
 				D774C483228DD05800721394 /* HomeHead.swift in Sources */,
 				D7388A16228B894F00627E9E /* HomeController.swift in Sources */,
+				D7AF977322A10A5300AA4A65 /* CGPoint.swift in Sources */,
+				D7AF977522A10BE900AA4A65 /* ThoughtDetailInfoBar.swift in Sources */,
 				D7536FAA2262C784003F0920 /* Defaults.swift in Sources */,
 				D74D1B2722A0087E00FB7D95 /* ThoughtDetailController.swift in Sources */,
 				D74D1B2922A0095200FB7D95 /* ThoughtDetailHead.swift in Sources */,
@@ -802,11 +820,13 @@
 				D7433B4B228F50410001B371 /* UITableVIew.swift in Sources */,
 				D7536FBD2262CAE3003F0920 /* UICollectionView.swift in Sources */,
 				D75B8B31229210F000B38CC6 /* HomeEntryButtons.swift in Sources */,
+				D7AF976D22A1095000AA4A65 /* AnimatableLabel.swift in Sources */,
 				D7536FE92262EB0A003F0920 /* Thought.swift in Sources */,
 				D721112C2272D14D00131BEF /* SearchController.swift in Sources */,
 				D77A7D8D229A3D65009B1781 /* RadialGradient.swift in Sources */,
 				D7810C20226F938F0038C1BA /* MSGCenter.swift in Sources */,
 				D76895502271746F00DC059E /* MSGSubView.swift in Sources */,
+				D7AF976F22A10A4600AA4A65 /* CGSize.swift in Sources */,
 				D7388A1B228BB6F300627E9E /* Animatable.swift in Sources */,
 				D760FED5227E64E700E4693D /* MSGBoardPhotoView.swift in Sources */,
 				D7536FEB2262EB0A003F0920 /* RecordingEntry.swift in Sources */,
