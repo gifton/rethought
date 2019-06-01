@@ -61,8 +61,8 @@ class ThoughtCollectionCell: UICollectionViewCell {
         dateLabel.getStringFromDate(date: preview.date, withStyle: .medium)
         count = preview.entryCount
         
-        let nView = EntryCountBlock(withCount: preview.entryCount, frame: CGRect(x: 165, y: 160, width: 120, height: 35))
-        addSubview(nView)
+        let block = EntryCountBlock(withCount: preview.entryCount, frame: CGRect(x: 165, y: 160, width: 120, height: 35), lightIcon: false)
+        addSubview(block)
     }
     
     // funcs and variables for smooth cornering

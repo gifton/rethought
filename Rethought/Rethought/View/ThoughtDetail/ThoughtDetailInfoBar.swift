@@ -8,12 +8,14 @@ class ThoughtDetailInfoBar: AnimatableView {
         entryCount = count
         thoughtIcon = icon
         let size = CGSize(width: Device.size.width - 30, height: 69)
+        block = EntryCountBlock(withCount: count, frame: CGRect(x: 15, y: 15, width: 120, height: 35), lightIcon: true)
         super.init(frame: CGRect(origin: point, size: size))
         backgroundColor = .clear
         endAlpha = 0.0
         
         createLine(withY: 0)
-        createLine(withY: frame.height)
+        
+        addSubview(block)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -21,6 +23,7 @@ class ThoughtDetailInfoBar: AnimatableView {
     }
     
     var path: UIBezierPath!
+    var block: EntryCountBlock
     
     func createLine(withY y: CGFloat) {
         
@@ -34,8 +37,7 @@ class ThoughtDetailInfoBar: AnimatableView {
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = linePath.cgPath
         
-        shapeLayer.fillColor = UIColor.white.cgColor
-        shapeLayer.strokeColor = UIColor.black.cgColor
+        shapeLayer.strokeColor = Device.colors.lightGray.cgColor
         shapeLayer.lineWidth = 1
         
         layer.addSublayer(shapeLayer)
