@@ -59,7 +59,6 @@ class NoteEntryCell: UITableViewCell {
         dateLabel.textColor = .black
     }
     public func add(context preview: NoteBuilder) {
-        print("content set in cell")
         self.preview = preview
         setContext()
         setView()
