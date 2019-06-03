@@ -78,9 +78,9 @@ class EntryCountBlock: UIView {
         case .link:
             image.image = linkImage
             image.setHeightWidth(width: 14, height: 14)
-            outView.frame = CGRect(origin: CGPoint(x: frame.width - 43, y: 19), size: CGSize(width: 43, height: 14))
+            outView.frame = CGRect(origin: CGPoint(x: frame.width - 43, y: 19), size: CGSize(width: 50, height: 14))
             lbl.text = "\(count.linkInt)"
-            lbl.textColor = Device.colors.link
+            lbl.textColor = Device.colors.offWhite
             image.setTopAndLeading(top: outView.topAnchor, leading: outView.leadingAnchor, paddingTop: 0, paddingLeading: 0)
         case .note:
             image.image = noteImage
@@ -97,15 +97,16 @@ class EntryCountBlock: UIView {
             lbl.textColor = Device.colors.recording
             image.setTopAndLeading(top: outView.topAnchor, leading: outView.leadingAnchor, paddingTop: 0, paddingLeading: 2)
         default:
-           image.image = photoImage
+            image.image = photoImage
             image.setHeightWidth(width: 16, height: 14)
             outView.frame = CGRect(origin: CGPoint(x: 0, y: 19), size: CGSize(width: 42, height: 14))
             lbl.text = "\(count.photoInt)"
             lbl.textColor = Device.colors.photo
             image.setTopAndLeading(top: outView.topAnchor, leading: outView.leadingAnchor, paddingTop: 0, paddingLeading: 0)
         }
-        lbl.setAnchor(top: outView.topAnchor, leading: image.trailingAnchor, bottom: outView.bottomAnchor, trailing: outView.trailingAnchor, paddingTop: 0, paddingLeading: 8, paddingBottom: 0, paddingTrailing: 2)
+        lbl.setAnchor(top: outView.topAnchor, leading: image.trailingAnchor, bottom: outView.bottomAnchor, trailing: outView.trailingAnchor, paddingTop: 0, paddingLeading: 8, paddingBottom: 0, paddingTrailing: 0)
         
+        print(lbl.text)
         return outView
     }
 }
