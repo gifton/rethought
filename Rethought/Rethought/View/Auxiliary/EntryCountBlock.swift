@@ -80,7 +80,7 @@ class EntryCountBlock: UIView {
             image.setHeightWidth(width: 14, height: 14)
             outView.frame = CGRect(origin: CGPoint(x: frame.width - 43, y: 19), size: CGSize(width: 50, height: 14))
             lbl.text = "\(count.linkInt)"
-            lbl.textColor = Device.colors.offWhite
+            lbl.textColor = Device.colors.green
             image.setTopAndLeading(top: outView.topAnchor, leading: outView.leadingAnchor, paddingTop: 0, paddingLeading: 0)
         case .note:
             image.image = noteImage
@@ -106,7 +106,6 @@ class EntryCountBlock: UIView {
         }
         lbl.setAnchor(top: outView.topAnchor, leading: image.trailingAnchor, bottom: outView.bottomAnchor, trailing: outView.trailingAnchor, paddingTop: 0, paddingLeading: 8, paddingBottom: 0, paddingTrailing: 0)
         
-        print(lbl.text)
         return outView
     }
 }
