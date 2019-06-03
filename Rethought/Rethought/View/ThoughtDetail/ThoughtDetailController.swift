@@ -15,7 +15,7 @@ class ThoughtDetailController: UIViewController {
         view.backgroundColor = .white
     }
     
-    lazy var headView = ThoughtDetailHead(startFrame: CGRect(x: 0, y: -100, width: Device.size.width, height: 100), endFrame: CGRect(x: 0, y: 0, width: Device.size.width, height: 100), preview: thought)
+    lazy var headView = ThoughtDetailSearchBar(startFrame: CGRect(x: 0, y: -100, width: Device.size.width, height: 100), endFrame: CGRect(x: 0, y: 0, width: Device.size.width, height: 100), preview: thought)
     var table = ThoughtDetailTable(frame: CGRect(origin: .zero, size: CGSize(width: Device.size.width, height: Device.size.height - 100)))
     var entryBar: ThoughtDetailEntryBar!
     let animationScrollLength: CGFloat = 100.0

@@ -14,7 +14,7 @@ class ThoughtDetailEntryBar: UIView {
         self.delegate = delegate
         super.init(frame: CGRect(x: 0, y: Device.size.height - 95, width: Device.size.width, height: 95))
         
-        backgroundColor = Device.colors.red
+        backgroundColor = .black
         setView()
     }
     

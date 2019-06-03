@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ThoughtDetailHead: AnimatableView {
+class ThoughtDetailSearchBar: AnimatableView {
     init(startFrame: CGRect, endFrame: CGRect, preview: ThoughtPreview) {
         super.init(frame: startFrame)
         self.startFrame = startFrame
@@ -29,7 +29,7 @@ class ThoughtDetailHead: AnimatableView {
         tf.font = Device.font.body(ofSize: .emojiSM)
         tf.backgroundColor = .white
         tf.textAlignment = .center
-        tf.layer.cornerRadius = 8
+        tf.layer.cornerRadius = 3
         
         return tf
     }()
@@ -67,7 +67,7 @@ class ThoughtDetailHead: AnimatableView {
 }
 
 
-extension ThoughtDetailHead: UISearchBarDelegate {
+extension ThoughtDetailSearchBar: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         delegate.search(for: searchBar.text ?? "") {
             print("completed Search")
@@ -75,7 +75,7 @@ extension ThoughtDetailHead: UISearchBarDelegate {
     }
 }
 
-extension ThoughtDetailHead: UITextFieldDelegate {
+extension ThoughtDetailSearchBar: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         delegate.updateIcon(to: textField.text ?? "")
         return true

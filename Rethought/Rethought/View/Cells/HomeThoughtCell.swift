@@ -41,10 +41,7 @@ class ThoughtCollectionCell: UICollectionViewCell {
         titleLabel.text = "welcome to rethought! A safe place for you, and your thoughts"
         titleLabel.numberOfLines = 0
         titleLabel.font = Device.font.mediumTitle()
-//        titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.textColor = Device.colors.offWhite
-        titleLabel.layer.borderColor = UIColor.black.cgColor
-        titleLabel.layer.borderWidth = 1
         titleLabel.sizeToFit()
         
         thoughtIcon.text = "🚦"
