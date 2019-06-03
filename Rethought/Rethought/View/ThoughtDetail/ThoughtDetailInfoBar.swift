@@ -5,6 +5,15 @@ class ThoughtDetailInfoBar: AnimatableView {
     // MARK: Private objects
     private var block: EntryCountBlock
     private var entryCount: EntryCount
+    let tf: UITextField = {
+        let tf = UITextField()
+        tf.font = Device.font.body(ofSize: .emojiLG)
+        tf.backgroundColor = Device.colors.offWhite
+        tf.textAlignment = .center
+        tf.layer.cornerRadius = 5
+        
+        return tf
+    }()
     
     // MARK: Private variables
     private var thoughtIcon: String
@@ -20,7 +29,11 @@ class ThoughtDetailInfoBar: AnimatableView {
         backgroundColor = .clear
         endAlpha = 0.0
         
+        tf.frame = CGRect(x: frame.width - 50, y: 15, width: 45, height: 45)
+        tf.text = "💭"
+        
         addSubview(block)
+        addSubview(tf)
     }
     
     required init?(coder aDecoder: NSCoder) {

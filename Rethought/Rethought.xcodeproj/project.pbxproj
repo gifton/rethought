@@ -37,9 +37,9 @@
 		D7433B4B228F50410001B371 /* UITableVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7433B4A228F50410001B371 /* UITableVIew.swift */; };
 		D74D1B22229F787300FB7D95 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B21229F787300FB7D95 /* Animator.swift */; };
 		D74D1B2722A0087E00FB7D95 /* ThoughtDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */; };
-		D74D1B2922A0095200FB7D95 /* ThoughtDetailHead.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2822A0095200FB7D95 /* ThoughtDetailHead.swift */; };
+		D74D1B2922A0095200FB7D95 /* ThoughtDetailSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2822A0095200FB7D95 /* ThoughtDetailSearchBar.swift */; };
 		D74D1B2B22A0095C00FB7D95 /* ThoughtDetailTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2A22A0095C00FB7D95 /* ThoughtDetailTable.swift */; };
-		D74D1B2D22A00B8900FB7D95 /* ThoughtDetailSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2C22A00B8900FB7D95 /* ThoughtDetailSearchBar.swift */; };
+		D74D1B2D22A00B8900FB7D95 /* ThoughtDetailEntryBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2C22A00B8900FB7D95 /* ThoughtDetailEntryBar.swift */; };
 		D7536F922262C26F003F0920 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536F912262C26F003F0920 /* AppDelegate.swift */; };
 		D7536F972262C26F003F0920 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7536F952262C26F003F0920 /* Main.storyboard */; };
 		D7536F992262C272003F0920 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7536F982262C272003F0920 /* Assets.xcassets */; };
@@ -98,6 +98,7 @@
 		D7AF977322A10A5300AA4A65 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF977222A10A5300AA4A65 /* CGPoint.swift */; };
 		D7AF977522A10BE900AA4A65 /* ThoughtDetailInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF977422A10BE900AA4A65 /* ThoughtDetailInfoBar.swift */; };
 		D7AF977722A1A2B800AA4A65 /* ViewOverride.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF977622A1A2B800AA4A65 /* ViewOverride.swift */; };
+		D7AF977922A56C8700AA4A65 /* NoteEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF977822A56C8700AA4A65 /* NoteEntryCell.swift */; };
 		D7BB182F227629970084963E /* MSGBoardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB182E227629970084963E /* MSGBoardDelegate.swift */; };
 		D7BB1833227629EE0084963E /* MSGBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB1832227629EE0084963E /* MSGBoard.swift */; };
 		D7BB1836227631920084963E /* MSGContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB1835227631920084963E /* MSGContext.swift */; };
@@ -149,9 +150,9 @@
 		D7433B4A228F50410001B371 /* UITableVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableVIew.swift; sourceTree = "<group>"; };
 		D74D1B21229F787300FB7D95 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailController.swift; sourceTree = "<group>"; };
-		D74D1B2822A0095200FB7D95 /* ThoughtDetailHead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailHead.swift; sourceTree = "<group>"; };
+		D74D1B2822A0095200FB7D95 /* ThoughtDetailSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailSearchBar.swift; sourceTree = "<group>"; };
 		D74D1B2A22A0095C00FB7D95 /* ThoughtDetailTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailTable.swift; sourceTree = "<group>"; };
-		D74D1B2C22A00B8900FB7D95 /* ThoughtDetailSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailSearchBar.swift; sourceTree = "<group>"; };
+		D74D1B2C22A00B8900FB7D95 /* ThoughtDetailEntryBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailEntryBar.swift; sourceTree = "<group>"; };
 		D7536F8E2262C26F003F0920 /* Rethought.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rethought.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7536F912262C26F003F0920 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7536F962262C26F003F0920 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -212,6 +213,7 @@
 		D7AF977222A10A5300AA4A65 /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
 		D7AF977422A10BE900AA4A65 /* ThoughtDetailInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailInfoBar.swift; sourceTree = "<group>"; };
 		D7AF977622A1A2B800AA4A65 /* ViewOverride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOverride.swift; sourceTree = "<group>"; };
+		D7AF977822A56C8700AA4A65 /* NoteEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEntryCell.swift; sourceTree = "<group>"; };
 		D7BB182E227629970084963E /* MSGBoardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardDelegate.swift; sourceTree = "<group>"; };
 		D7BB1832227629EE0084963E /* MSGBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoard.swift; sourceTree = "<group>"; };
 		D7BB1835227631920084963E /* MSGContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGContext.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				D7006EDE2268174F004E570F /* NewThoughtCell.swift */,
 				D75B8B2E22912FD800B38CC6 /* HomeThoughtCell.swift */,
 				D7AF976822A03B4500AA4A65 /* ThoughtDetailTableHead.swift */,
+				D7AF977822A56C8700AA4A65 /* NoteEntryCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -364,7 +367,7 @@
 			children = (
 				D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */,
 				D7AF976622A0250F00AA4A65 /* ThoughtDetailDelegate.swift */,
-				D74D1B2C22A00B8900FB7D95 /* ThoughtDetailSearchBar.swift */,
+				D74D1B2C22A00B8900FB7D95 /* ThoughtDetailEntryBar.swift */,
 				D74D1B2A22A0095C00FB7D95 /* ThoughtDetailTable.swift */,
 				D7AF977422A10BE900AA4A65 /* ThoughtDetailInfoBar.swift */,
 			);
@@ -587,7 +590,7 @@
 			children = (
 				D74D1B20229F786700FB7D95 /* Animator */,
 				D7BB1834227631830084963E /* MSG */,
-				D74D1B2822A0095200FB7D95 /* ThoughtDetailHead.swift */,
+				D74D1B2822A0095200FB7D95 /* ThoughtDetailSearchBar.swift */,
 				D7006EE82268CD5A004E570F /* AnimatedTabBar.swift */,
 				D7FEEBE622939F5500D6D1C8 /* ShowOptionsView.swift */,
 				D77A7D8E229B3E0E009B1781 /* EntryCountBlock.swift */,
@@ -793,7 +796,7 @@
 				D77A7D95229E5178009B1781 /* ThoughtDetailViewModel.swift in Sources */,
 				D7AF977122A10A4D00AA4A65 /* CGRect.swift in Sources */,
 				D7536FD52262D8AA003F0920 /* rt-DB2.xcdatamodeld in Sources */,
-				D74D1B2D22A00B8900FB7D95 /* ThoughtDetailSearchBar.swift in Sources */,
+				D74D1B2D22A00B8900FB7D95 /* ThoughtDetailEntryBar.swift in Sources */,
 				D7006EC622671C4C004E570F /* PhotoBuilder.swift in Sources */,
 				D7BE8F20227AB12300B15F06 /* MSGCenterEntryView.swift in Sources */,
 				D7536FA52262C6DA003F0920 /* styling.swift in Sources */,
@@ -809,7 +812,7 @@
 				D7AF977522A10BE900AA4A65 /* ThoughtDetailInfoBar.swift in Sources */,
 				D7536FAA2262C784003F0920 /* Defaults.swift in Sources */,
 				D74D1B2722A0087E00FB7D95 /* ThoughtDetailController.swift in Sources */,
-				D74D1B2922A0095200FB7D95 /* ThoughtDetailHead.swift in Sources */,
+				D74D1B2922A0095200FB7D95 /* ThoughtDetailSearchBar.swift in Sources */,
 				D7536FCD2262D680003F0920 /* UIView.swift in Sources */,
 				D7536FC32262CD6C003F0920 /* UiimageView.swift in Sources */,
 				D760FED3227E544E00E4693D /* MSGCenterPhotoPreview.swift in Sources */,
@@ -839,6 +842,7 @@
 				D75B8B2D22912A6600B38CC6 /* HomeViewModelDelegate.swift in Sources */,
 				D7BB183B227886B80084963E /* MSGResponseView.swift in Sources */,
 				D7C6541F226A3B45008A66EF /* MSGCenterDelegate.swift in Sources */,
+				D7AF977922A56C8700AA4A65 /* NoteEntryCell.swift in Sources */,
 				D760FED7227E785200E4693D /* UIBezierPath.swift in Sources */,
 				D7536FAE2262C815003F0920 /* Manager.swift in Sources */,
 				D7536F922262C26F003F0920 /* AppDelegate.swift in Sources */,

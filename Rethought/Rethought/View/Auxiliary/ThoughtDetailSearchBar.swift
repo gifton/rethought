@@ -29,7 +29,7 @@ class ThoughtDetailSearchBar: AnimatableView {
         tf.font = Device.font.body(ofSize: .emojiSM)
         tf.backgroundColor = .white
         tf.textAlignment = .center
-        tf.layer.cornerRadius = 3
+        tf.layer.cornerRadius = 8
         
         return tf
     }()
@@ -47,7 +47,7 @@ class ThoughtDetailSearchBar: AnimatableView {
     private func setView() {
         
         backgroundColor = Device.colors.offWhite
-        layer.cornerRadius = 27.5
+        layer.cornerRadius = 5
         
         sb.delegate = self
         
