@@ -18,4 +18,10 @@ struct NoteBuilder: EntryBuilder {
         self.entry = entry
     }
     
+    init(withNote note: NoteEntry) {
+        self.detail = note.detail
+        self.title = note.title ?? "No title available"
+        self.entry = note.entry
+    }
+    
 }

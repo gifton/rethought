@@ -99,6 +99,7 @@
 		D7AF977522A10BE900AA4A65 /* ThoughtDetailInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF977422A10BE900AA4A65 /* ThoughtDetailInfoBar.swift */; };
 		D7AF977722A1A2B800AA4A65 /* ViewOverride.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF977622A1A2B800AA4A65 /* ViewOverride.swift */; };
 		D7AF977922A56C8700AA4A65 /* NoteEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF977822A56C8700AA4A65 /* NoteEntryCell.swift */; };
+		D7AF977B22A575B000AA4A65 /* AnimatableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF977A22A575B000AA4A65 /* AnimatableCell.swift */; };
 		D7BB182F227629970084963E /* MSGBoardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB182E227629970084963E /* MSGBoardDelegate.swift */; };
 		D7BB1833227629EE0084963E /* MSGBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB1832227629EE0084963E /* MSGBoard.swift */; };
 		D7BB1836227631920084963E /* MSGContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB1835227631920084963E /* MSGContext.swift */; };
@@ -214,6 +215,7 @@
 		D7AF977422A10BE900AA4A65 /* ThoughtDetailInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailInfoBar.swift; sourceTree = "<group>"; };
 		D7AF977622A1A2B800AA4A65 /* ViewOverride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOverride.swift; sourceTree = "<group>"; };
 		D7AF977822A56C8700AA4A65 /* NoteEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEntryCell.swift; sourceTree = "<group>"; };
+		D7AF977A22A575B000AA4A65 /* AnimatableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableCell.swift; sourceTree = "<group>"; };
 		D7BB182E227629970084963E /* MSGBoardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardDelegate.swift; sourceTree = "<group>"; };
 		D7BB1832227629EE0084963E /* MSGBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoard.swift; sourceTree = "<group>"; };
 		D7BB1835227631920084963E /* MSGContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGContext.swift; sourceTree = "<group>"; };
@@ -280,12 +282,12 @@
 			isa = PBXGroup;
 			children = (
 				D7006EE62268CB63004E570F /* ViewController.swift */,
+				D74D1B2E22A00C8100FB7D95 /* ThoughtDetail */,
 				D7006EDB2267364B004E570F /* Cells */,
 				D7C6541C226A391A008A66EF /* Auxiliary */,
 				D7006EDA22673639004E570F /* Search */,
 				D7006ED922673630004E570F /* Home */,
 				D7006ED822673614004E570F /* ConversationController */,
-				D74D1B2E22A00C8100FB7D95 /* ThoughtDetail */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -358,6 +360,7 @@
 			children = (
 				D7AF976A22A0F69700AA4A65 /* AnimatableView.swift */,
 				D7AF976C22A1095000AA4A65 /* AnimatableLabel.swift */,
+				D7AF977A22A575B000AA4A65 /* AnimatableCell.swift */,
 			);
 			path = "Animated Views";
 			sourceTree = "<group>";
@@ -777,6 +780,7 @@
 				D73AB565229EC30000CBF939 /* EntryBuilder.swift in Sources */,
 				D7536FBF2262CB29003F0920 /* UILabel.swift in Sources */,
 				D77A7D8F229B3E0E009B1781 /* EntryCountBlock.swift in Sources */,
+				D7AF977B22A575B000AA4A65 /* AnimatableCell.swift in Sources */,
 				D79E59A922723E7E00ABFD34 /* ConversationHandler.swift in Sources */,
 				D7AF976722A0250F00AA4A65 /* ThoughtDetailDelegate.swift in Sources */,
 				D70AD47C2283FB5200824DCB /* MSGCenterLinkView.swift in Sources */,

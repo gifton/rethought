@@ -35,6 +35,7 @@ class ThoughtDetailController: UIViewController {
         table.tv.delegate = self
         table.tv.dataSource = self
         table.tv.register(cellWithClass: ThoughtDetailTableHead.self)
+        table.tv.register(cellWithClass: NoteEntryCell.self)
         table.tv.sectionHeaderHeight = 300
         
         headView.delegate = self
@@ -85,14 +86,17 @@ extension ThoughtDetailController: ThoughtDetailDelegate {
 extension ThoughtDetailController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let head = tableView.dequeueReusableCell(withClass: ThoughtDetailTableHead.self, for: indexPath)
-            animator.register(animatableView: head)
-            head.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
-            
-            return head
+        guard let cell =  model.cellFor(index: indexPath, tableView: tableView) else {
+            print("unable to register cell from controller model method call")
+            return UITableViewCell()
         }
-        return UITableViewCell()
+        
+        // register cell as animateable only if it is
+        if let conformedCell = cell as? Animatable {
+            animator.register(animatableView: conformedCell)
+        }
+        
+        return cell
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

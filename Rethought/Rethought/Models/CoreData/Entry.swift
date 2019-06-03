@@ -38,6 +38,20 @@ public class Entry: NSManagedObject {
         }
     }
     
+    var computedEntryType: EntryType {
+        if note != nil {
+            return .note
+        } else if photo != nil {
+            return .photo
+        } else if recording != nil {
+            return .recording
+        } else if link != nil {
+            return .link
+        } else {
+            return .none
+        }
+    }
+    
     // return height for content,
     // since notes are variable in size, as are photos, calculations are be made on the string itself
     // links and recordings have fixed heights of 130px

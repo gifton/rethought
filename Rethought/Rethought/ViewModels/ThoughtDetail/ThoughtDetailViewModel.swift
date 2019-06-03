@@ -63,3 +63,29 @@ class ThoughtDetailViewModel: ThoughtDetailViewModelDelegate {
         print("im searching for something!")
     }
 }
+
+
+extension ThoughtDetailViewModel {
+    func cellFor(index: IndexPath, tableView: UITableView) -> UITableViewCell?  {
+        switch index.row {
+        case 0: return tableView.dequeueReusableCell(withClass: ThoughtDetailTableHead.self, for: index)
+        default:
+            let type = entries[index.row].computedEntryType
+            switch type {
+            case .link: return AnimatableCell()
+            case .note:
+                // create cell
+                let cell = tableView.dequeueReusableCell(withClass: NoteEntryCell.self, for: index)
+                // guard entry object
+                guard let note = entries[index.row].note else { return cell }
+                let builder = NoteBuilder(withNote: note)
+                // add builder into cell
+                cell.add(context: builder)
+                return cell
+            case .recording: return UITableViewCell()
+            case .photo: return UITableViewCell()
+            default: return UITableViewCell()
+            }
+        }
+    }
+}
