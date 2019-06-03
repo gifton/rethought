@@ -100,10 +100,10 @@ public class Thought: NSManagedObject {
     }
     
     // calculate all necessary heights
-    public func getHeights(withFont font: UIFont, andWidth width: CGFloat) -> [CGFloat] {
+    public func getHeights(andWidth width: CGFloat) -> [CGFloat] {
         var floats = [CGFloat]()
         for entry in allEntries {
-            floats.append(entry.heightForContent(font: font, width: width))
+            floats.append(entry.heightForContent(width: width))
         }
         
         return floats

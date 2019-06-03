@@ -283,11 +283,11 @@
 			children = (
 				D7006EE62268CB63004E570F /* ViewController.swift */,
 				D74D1B2E22A00C8100FB7D95 /* ThoughtDetail */,
-				D7006EDB2267364B004E570F /* Cells */,
 				D7C6541C226A391A008A66EF /* Auxiliary */,
 				D7006EDA22673639004E570F /* Search */,
 				D7006ED922673630004E570F /* Home */,
 				D7006ED822673614004E570F /* ConversationController */,
+				D7006EDB2267364B004E570F /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -370,8 +370,9 @@
 			children = (
 				D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */,
 				D7AF976622A0250F00AA4A65 /* ThoughtDetailDelegate.swift */,
-				D74D1B2C22A00B8900FB7D95 /* ThoughtDetailEntryBar.swift */,
 				D74D1B2A22A0095C00FB7D95 /* ThoughtDetailTable.swift */,
+				D74D1B2822A0095200FB7D95 /* ThoughtDetailSearchBar.swift */,
+				D74D1B2C22A00B8900FB7D95 /* ThoughtDetailEntryBar.swift */,
 				D7AF977422A10BE900AA4A65 /* ThoughtDetailInfoBar.swift */,
 			);
 			path = ThoughtDetail;
@@ -593,7 +594,6 @@
 			children = (
 				D74D1B20229F786700FB7D95 /* Animator */,
 				D7BB1834227631830084963E /* MSG */,
-				D74D1B2822A0095200FB7D95 /* ThoughtDetailSearchBar.swift */,
 				D7006EE82268CD5A004E570F /* AnimatedTabBar.swift */,
 				D7FEEBE622939F5500D6D1C8 /* ShowOptionsView.swift */,
 				D77A7D8E229B3E0E009B1781 /* EntryCountBlock.swift */,

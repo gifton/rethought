@@ -56,11 +56,11 @@ public class Entry: NSManagedObject {
     // since notes are variable in size, as are photos, calculations are be made on the string itself
     // links and recordings have fixed heights of 130px
     // max height we want is 250, so never exceed that
-    public func heightForContent(font: UIFont, width: CGFloat) -> CGFloat {
+    public func heightForContent(width: CGFloat) -> CGFloat {
         if let note = note {
-            return min(250, note.minimumHeightForContent(font: font, width: width))
+            return max(200, note.minimumHeightForContent(width: width))
         } else if let photo = photo {
-            return min(250, photo.minimumHeightForContent(width: width))
+            return max(250, photo.minimumHeightForContent(width: width))
         } else {
             return 130
         }

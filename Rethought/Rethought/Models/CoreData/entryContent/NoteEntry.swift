@@ -20,12 +20,12 @@ public class NoteEntry: NSManagedObject {
     
     // MARK: computed property
     // get minimum height of string labels
-    public func minimumHeightForContent(font: UIFont, width: CGFloat) -> CGFloat {
+    public func minimumHeightForContent(width: CGFloat) -> CGFloat {
         var height: CGFloat = 0.0
         if let title = title {
             height += title.sizeFor(font: Device.font.mediumTitle(ofSize: .xXLarge), width: width).height
         }
-        height += detail.sizeFor(font: font, width: width).height
+        height += detail.sizeFor(font: Device.font.formalBodyText(ofSize: .small), width: width).height
         
         return height
     }

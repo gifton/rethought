@@ -22,8 +22,7 @@ class ThoughtDetailViewModel: ThoughtDetailViewModelDelegate {
     public var thought: Thought
     public var entries: [Entry] {  return thought.allEntries }
     public var entryHeights: [CGFloat] {
-        return thought.getHeights(withFont: Device.font.body(ofSize: .large),
-                                  andWidth: Device.size.width - 50)
+        return thought.getHeights(andWidth: Device.size.width - 50).reversed()
     }
     
     // create new entry for thought
@@ -64,7 +63,7 @@ class ThoughtDetailViewModel: ThoughtDetailViewModelDelegate {
     }
 }
 
-
+// serving model data to tableView
 extension ThoughtDetailViewModel {
     func cellFor(index: IndexPath, tableView: UITableView) -> UITableViewCell?  {
         switch index.row {
@@ -87,5 +86,16 @@ extension ThoughtDetailViewModel {
             default: return UITableViewCell()
             }
         }
+    }
+    
+    func heightFor(row: Int) -> CGFloat {
+        if row == 0 {
+            return 300
+        }
+        
+        let currentEntry = entries[row]
+        let height = currentEntry.heightForContent(width: Device.size.width - 70)
+        print(currentEntry.type, ": \(height)")
+        return height
     }
 }
