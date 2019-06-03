@@ -14,14 +14,13 @@ class ThoughtDetailEntryBar: UIView {
         self.delegate = delegate
         super.init(frame: CGRect(x: 0, y: Device.size.height - 95, width: Device.size.width, height: 95))
         
-        backgroundColor = .black
+        backgroundColor = Device.colors.red
         setView()
     }
     
     // MARK: public vars
     public var delegate: ThoughtDetailDelegate
     
-    // MARK: private objects
     // MARK: private objects
     private var noteButton: MessageButton = {
         let btn = MessageButton()

@@ -97,6 +97,5 @@ class ThoughtDetailTableHead: UITableViewCell, Animatable {
         dateLabel.update(toAnimationProgress: progress)
         detailView.update(toAnimationProgress: progress * 2.5)
         updateConstraints()
-        updateFocusIfNeeded()
     }
 }

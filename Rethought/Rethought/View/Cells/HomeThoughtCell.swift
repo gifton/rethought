@@ -32,7 +32,8 @@ class ThoughtCollectionCell: UICollectionViewCell {
         
         // place views
         thoughtIcon.frame = CGRect(x: 25, y: 20, width: 35, height: 46)
-        titleLabel.frame = CGRect(x: 75 , y: 20, width: frame.width - 95, height: 100)
+        titleLabel.frame.origin = CGPoint(x: 75, y: 20)
+        titleLabel.frame.size.width = frame.width - 95
         dateLabel.frame = CGRect(x: 25, y: frame.height - 55, width: 150, height: 15)
         locationLabel.frame = CGRect(x: 25, y: frame.height - 30, width: 150, height: 15)
     }
@@ -40,8 +41,11 @@ class ThoughtCollectionCell: UICollectionViewCell {
         titleLabel.text = "welcome to rethought! A safe place for you, and your thoughts"
         titleLabel.numberOfLines = 0
         titleLabel.font = Device.font.mediumTitle()
-        titleLabel.adjustsFontSizeToFitWidth = true
+//        titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.textColor = Device.colors.offWhite
+        titleLabel.layer.borderColor = UIColor.black.cgColor
+        titleLabel.layer.borderWidth = 1
+        titleLabel.sizeToFit()
         
         thoughtIcon.text = "🚦"
         thoughtIcon.font = Device.font.title(ofSize: .emojiLG)
@@ -61,8 +65,9 @@ class ThoughtCollectionCell: UICollectionViewCell {
         dateLabel.getStringFromDate(date: preview.date, withStyle: .medium)
         count = preview.entryCount
         
-        let block = EntryCountBlock(withCount: preview.entryCount, frame: CGRect(x: 165, y: 160, width: 120, height: 35), lightIcon: false)
+        let block = EntryCountBlock(withCount: preview.entryCount, frame: CGRect(x: 165, y: frame.height - 50, width: 120, height: 35))
         addSubview(block)
+        
     }
     
     // funcs and variables for smooth cornering
@@ -72,7 +77,7 @@ class ThoughtCollectionCell: UICollectionViewCell {
         updatePath()
     }
     
-    var radius: CGFloat = 25
+    var radius: CGFloat = 20
     private var path: UIBezierPath?
     
     override func draw(_ rect: CGRect) {
@@ -83,7 +88,7 @@ class ThoughtCollectionCell: UICollectionViewCell {
         }
         
         context.clear(rect)
-        UIColor.white.withAlphaComponent(0.15).setFill()
+        UIColor.white.withAlphaComponent(0.25).setFill()
         path.fill()
     }
     

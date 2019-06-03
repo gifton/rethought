@@ -126,7 +126,7 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
         detail.model = outModel
         
         let newView = UIView(frame: cellFrameInSuperview)
-        newView.backgroundColor = Device.colors.blue
+        newView.backgroundColor = .white
         newView.layer.cornerRadius = 30
         view.addSubview(newView)
         

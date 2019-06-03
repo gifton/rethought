@@ -88,8 +88,8 @@ extension ThoughtDetailController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.row == 0 {
             let head = tableView.dequeueReusableCell(withClass: ThoughtDetailTableHead.self, for: indexPath)
             animator.register(animatableView: head)
-//            head.separatorInset = UIEdgeInsetsMake(0.f, head.bounds.size.width, 0.f, 0.f);
-            head.separatorInset = UIEdgeInsets(top: 0, left: 100, bottom: 0, right: 100)
+            head.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+            
             return head
         }
         return UITableViewCell()

@@ -5,7 +5,7 @@ import UIKit
 class HomeHead: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = Device.colors.darkGray
+        backgroundColor = startBGColor
         setView(); styleView()
     }
     
@@ -35,10 +35,10 @@ class HomeHead: UIView {
     public let thoughtCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 300, height: 210)
+        layout.itemSize = CGSize(width: 300, height: 170)
         layout.minimumLineSpacing = 15
         
-        let cv = UICollectionView(frame: CGRect(x: 5, y: 160, width: Device.size.width - 10, height: 210), collectionViewLayout: layout)
+        let cv = UICollectionView(frame: CGRect(x: 5, y: 190, width: Device.size.width - 10, height: 170), collectionViewLayout: layout)
         cv.showsHorizontalScrollIndicator = false
         
         return cv
@@ -94,5 +94,7 @@ extension HomeHead: Animatable {
         thoughtCollection.alpha = (1 - progress * 2)
         
         dateLabel.update(toAnimationProgress: progress)
+        
+        backgroundColor = startBGColor.animate(toColor: finishBGColor, withProgress: progress)
     }
 }
