@@ -33,12 +33,13 @@ public class PhotoEntry: NSManagedObject {
         
         // add detail height for content
         height += detail.sizeFor(font: Device.font.mediumTitle(ofSize: .xXLarge), width: width).height
-        
+        height += 150
+        print("photoEntryHeight: \(height)")
         return height
     }
     
     // calculate height of photo after resize
-    private func photoHeight(forWidth width: CGFloat) -> CGFloat {
+    public func photoHeight(forWidth width: CGFloat) -> CGFloat {
         guard let photo = UIImage(data: rawPhoto),
             let scaledPhoto = photo.scaled(toWidth: width) else {
                 return 0

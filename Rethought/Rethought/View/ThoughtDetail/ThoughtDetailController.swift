@@ -37,7 +37,7 @@ class ThoughtDetailController: UIViewController {
         table.tv.register(cellWithClass: ThoughtDetailTableHead.self)
         table.tv.register(cellWithClass: NoteEntryCell.self)
         table.tv.register(cellWithClass: LinkEntryCell.self)
-        table.tv.sectionHeaderHeight = 300
+        table.tv.register(cellWithClass: PhotoEntryCell.self)
         
         headView.delegate = self
         animator.register(animatableView: headView)
@@ -77,9 +77,17 @@ extension ThoughtDetailController: ThoughtDetailDelegate {
     
     func delete(thought: Thought) { }
     
-    func search(for payload: String, completion: () -> ()) { }
+    func search(for payload: String, completion: () -> ()) {
+        print("will search: \(payload)")
+    }
     
     func updateIcon(to: String) { }
+    
+    func endSearch() {
+        print("done editing")
+        resignFirstResponder()
+        
+    }
     
 }
 
@@ -114,6 +122,6 @@ extension ThoughtDetailController: UITableViewDataSource, UITableViewDelegate {
         return model.heightFor(row: indexPath.row)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.entryCount.total
+        return model.entryCount.total + 1
     }
 }

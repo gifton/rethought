@@ -11,6 +11,7 @@ struct PhotoBuilder: EntryBuilder {
     var photo: UIImage
     var userDetail: String
     var entry: Entry?
+    var photoHeight: CGFloat = 0
     
     init(photo: UIImage, userDetail: String, forEntry entry: Entry?) {
         self.photo = photo
@@ -22,5 +23,12 @@ struct PhotoBuilder: EntryBuilder {
         photo = UIImage(data: entry.rawPhoto) ?? #imageLiteral(resourceName: "camera_light")
         userDetail = entry.detail ?? ""
         self.entry = entry.entry
+    }
+    
+    init(withEntry entry: PhotoEntry, forWidth width: CGFloat) {
+        photo = UIImage(data: entry.rawPhoto) ?? #imageLiteral(resourceName: "camera_light")
+        userDetail = entry.detail ?? ""
+        self.entry = entry.entry
+        photoHeight = entry.photoHeight(forWidth: width)
     }
 }

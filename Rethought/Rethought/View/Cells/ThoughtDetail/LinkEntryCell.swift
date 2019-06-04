@@ -23,7 +23,6 @@ class LinkEntryCell: UITableViewCell {
     }
     
     public func add(content payload: LinkBuilder) {
-        print("recieved content from model in link cell")
         preview = payload
         setView()
         styleView()

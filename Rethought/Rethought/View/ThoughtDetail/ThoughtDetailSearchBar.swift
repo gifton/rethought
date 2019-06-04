@@ -73,6 +73,11 @@ extension ThoughtDetailSearchBar: UISearchBarDelegate {
             print("completed Search")
         }
     }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.text = ""
+        delegate?.endSearch()
+    }
 }
 
 extension ThoughtDetailSearchBar: UITextFieldDelegate {

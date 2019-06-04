@@ -84,7 +84,7 @@ open class ConversationPresenter: NSObject {
 
 extension ConversationPresenter {
     private func animateTo(position: ConversationPosition) {
-        //uiview animate to position
+        // animate to position
         if msgCenter.textView.isFirstResponder {
             UIView.animate(withDuration: 0.45) {
                 self.msgCenter.frame = position.msgFrame
@@ -96,8 +96,6 @@ extension ConversationPresenter {
                 self.view.frame = position.viewFrame
             }
         }
-        
-//        view.roundCorners([.bottomLeft, .bottomRight], radius: 20)
     }
 }
 

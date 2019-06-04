@@ -10,7 +10,9 @@ class ThoughtDetailViewModel: ThoughtDetailViewModelDelegate {
         self.moc = moc
         self.thought = thought
         
-        print("heights: \(entryHeights)")
+        for entry in entries {
+            print(entry.type)
+        }
     }
     
     // MARK: private vars
@@ -21,10 +23,6 @@ class ThoughtDetailViewModel: ThoughtDetailViewModelDelegate {
     public var entryCount: EntryCount { return thought.entryCount }
     public var thought: Thought
     public var entries: [Entry] {  return thought.allEntries }
-    public var entryHeights: [CGFloat] {
-        return thought.getHeights(andWidth: Device.size.width - 50).reversed()
-    }
-    
     // create new entry for thought
     func buildEntry<T>(payload: T, withLocation location: CLLocation?) where T : EntryBuilder {
         print("creating entry data model")
@@ -69,11 +67,12 @@ extension ThoughtDetailViewModel {
         switch index.row {
         case 0: return tableView.dequeueReusableCell(withClass: ThoughtDetailTableHead.self, for: index)
         default:
-            let type = entries[index.row].computedEntryType
+            let row = index.row - 1
+            let type = entries[row].computedEntryType
             switch type {
             case .link:
                 let cell = tableView.dequeueReusableCell(withClass: LinkEntryCell.self, for: index)
-                guard let link = entries[index.row].link else { return cell }
+                guard let link = entries[row].link else { return cell }
                 let builder = LinkBuilder(withEntry: link)
                 cell.add(content: builder)
                 return cell
@@ -81,13 +80,24 @@ extension ThoughtDetailViewModel {
                 // create cell
                 let cell = tableView.dequeueReusableCell(withClass: NoteEntryCell.self, for: index)
                 // guard entry object
-                guard let note = entries[index.row].note else { return cell }
+                guard let note = entries[row].note else { return cell }
                 let builder = NoteBuilder(withNote: note)
                 // add builder into cell
                 cell.add(context: builder)
                 return cell
             case .recording: return UITableViewCell()
-            case .photo: return UITableViewCell()
+            case .photo:
+                // create cell
+                let cell = tableView.dequeueReusableCell(withClass: PhotoEntryCell.self, for: index)
+                // guard entry object
+                guard let photo = entries[row].photo else {
+                    print("couldnt get photo")
+                    return cell
+                }
+                let builder = PhotoBuilder(withEntry: photo, forWidth: Device.size.width - 20)
+                // add builder into cell
+                cell.add(context: builder)
+                return cell
             default: return UITableViewCell()
             }
         }
@@ -98,9 +108,8 @@ extension ThoughtDetailViewModel {
             return 300
         }
         
-        let currentEntry = entries[row]
+        let currentEntry = entries[row - 1]
         let height = currentEntry.heightForContent(width: Device.size.width - 70)
-        print(currentEntry.type, ": \(height)")
         return height
     }
 }
