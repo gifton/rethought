@@ -16,7 +16,6 @@ class HomeController: UIViewController {
         view.backgroundColor = .white
     }
     override func viewWillAppear(_ animated: Bool) {
-        print("view appeared! thought count: \(model.thoughtCount)")
         // test this
         model.refresh()
         homeHead?.thoughtCollection.reloadData()

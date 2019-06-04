@@ -99,6 +99,7 @@
 		D7AF977922A56C8700AA4A65 /* NoteEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF977822A56C8700AA4A65 /* NoteEntryCell.swift */; };
 		D7AF977B22A575B000AA4A65 /* AnimatableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF977A22A575B000AA4A65 /* AnimatableCell.swift */; };
 		D7B0A6BE22A5B618004B549A /* LinkEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B0A6BD22A5B618004B549A /* LinkEntryCell.swift */; };
+		D7B0A6C022A604A7004B549A /* PhotoEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B0A6BF22A604A7004B549A /* PhotoEntryCell.swift */; };
 		D7BB182F227629970084963E /* MSGBoardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB182E227629970084963E /* MSGBoardDelegate.swift */; };
 		D7BB1833227629EE0084963E /* MSGBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB1832227629EE0084963E /* MSGBoard.swift */; };
 		D7BB1836227631920084963E /* MSGContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB1835227631920084963E /* MSGContext.swift */; };
@@ -214,6 +215,7 @@
 		D7AF977822A56C8700AA4A65 /* NoteEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEntryCell.swift; sourceTree = "<group>"; };
 		D7AF977A22A575B000AA4A65 /* AnimatableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableCell.swift; sourceTree = "<group>"; };
 		D7B0A6BD22A5B618004B549A /* LinkEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkEntryCell.swift; sourceTree = "<group>"; };
+		D7B0A6BF22A604A7004B549A /* PhotoEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEntryCell.swift; sourceTree = "<group>"; };
 		D7BB182E227629970084963E /* MSGBoardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardDelegate.swift; sourceTree = "<group>"; };
 		D7BB1832227629EE0084963E /* MSGBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoard.swift; sourceTree = "<group>"; };
 		D7BB1835227631920084963E /* MSGContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGContext.swift; sourceTree = "<group>"; };
@@ -557,6 +559,7 @@
 				D7AF976822A03B4500AA4A65 /* ThoughtDetailTableHead.swift */,
 				D7AF977822A56C8700AA4A65 /* NoteEntryCell.swift */,
 				D7B0A6BD22A5B618004B549A /* LinkEntryCell.swift */,
+				D7B0A6BF22A604A7004B549A /* PhotoEntryCell.swift */,
 			);
 			path = ThoughtDetail;
 			sourceTree = "<group>";
@@ -868,6 +871,7 @@
 				D7006EB922653D2D004E570F /* EntryType.swift in Sources */,
 				D7536FB02262C870003F0920 /* PersistantService.swift in Sources */,
 				D72F30F622892EB90091DCB8 /* MSGCenterRecordingView.swift in Sources */,
+				D7B0A6C022A604A7004B549A /* PhotoEntryCell.swift in Sources */,
 				D7006EC22266F35C004E570F /* ThoughtIcon.swift in Sources */,
 				D7536FCB2262D1DD003F0920 /* UITextView.swift in Sources */,
 				D7536FB22262C895003F0920 /* ManagedObjectContext.swift in Sources */,

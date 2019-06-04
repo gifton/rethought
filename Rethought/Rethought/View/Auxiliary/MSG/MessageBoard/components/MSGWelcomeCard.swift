@@ -34,7 +34,7 @@ class MSGBoardWelcomeCard: MSGBoardComponent {
         titleLabel.textAlignment = .left
         titleLabel.text = "Start a new thought"
         titleLabel.font = Device.font.title(ofSize: .xXLarge)
-        titleLabel.textColor = Device.colors.green
+        titleLabel.textColor = Device.colors.blue
 
         dateLabel.textAlignment = .left
         dateLabel.font = Device.font.body(ofSize: .medium)

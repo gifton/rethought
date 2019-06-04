@@ -53,7 +53,7 @@ struct Device {
         //secondary colors
         static let lightClay = UIColor(hex: "8A9699")
         static let green     = UIColor(hex: "579C87")
-        static let blue      = UIColor(hex: "2D4D70")
+        static let blue      = UIColor(hex: "5FA4EF")
         static let yellow    = UIColor(hex: "FCCA46")
         static let red       = UIColor(hex: "E54D5F")
         //for entry types

@@ -17,4 +17,10 @@ struct PhotoBuilder: EntryBuilder {
         self.userDetail = userDetail
         self.entry = entry
     }
+    
+    init(withEntry entry: PhotoEntry) {
+        photo = UIImage(data: entry.rawPhoto) ?? #imageLiteral(resourceName: "camera_light")
+        userDetail = entry.detail ?? ""
+        self.entry = entry.entry
+    }
 }

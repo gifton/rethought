@@ -98,7 +98,7 @@ class MSGCenter: UIView {
                                                                          NSAttributedString.Key.foregroundColor : UIColor.white])
         btn.setAttributedTitle(attrString, for: .normal)
         btn.backgroundColor = Device.colors.blue
-        btn.layer.cornerRadius = 7
+        btn.layer.cornerRadius = 12
         btn.entryType = .none
         btn.messageButtonType = .send
         
@@ -121,7 +121,7 @@ extension MSGCenter {
         // add buttons to view
         // TODO: Make this a stack view
         var startX: CGFloat = 15.0
-        let startY: CGFloat = 10
+        let startY: CGFloat = 20.0
         for btn in [noteButton, linkButton, recordingButton, photoButton] {
             
             if !(btn.isDescendant(of: self)) {
@@ -135,7 +135,7 @@ extension MSGCenter {
         
         // add all objects to view
         textView.delegate = self
-        sendButton.frame = CGRect(x: Device.size.width - 65, y: 10, width: 50, height: 30)
+        sendButton.frame = CGRect(x: Device.size.width - 85, y: 10, width: 70, height: 40)
         sendButton.addTapGestureRecognizer { self.buttonTapped(sender: self.sendButton) }
         
         //set text view
