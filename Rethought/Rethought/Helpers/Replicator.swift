@@ -43,10 +43,11 @@ class Replicator: ReplicatorProtocol {
         let ep2 = NoteBuilder(detail: "Cupcake ipsum dolor sit amet. Marzipan tart brownie soufflé candy lemon drops. Danish candy canes chocolate bar. Biscuit tart carrot cake. Candy gummi bears cheesecake sugar plum carrot cake oat cake chocolate cake lollipop. Cotton candy tart cotton candy jelly powder cheesecake.", title: "We have another note now!", forEntry: entry2)
         let ep3 = PhotoBuilder(photo: #imageLiteral(resourceName: "welcomeCardGraphic"), userDetail: "This is my photo!", forEntry: entry3)
         let ep4 = LinkBuilder(link: "https://wesaturate.com",
-                              rawIconUrl: "https://ws.imgix.net/photos/rgnk4m_zeppelin.jpg?w=1000&dpr=2&auto=compress&q=80&cs=tinysrgb&ixlib=js-1.0.6",
+                              rawIconUrl: "https://ws.imgix.net/photos/rgnk4m_zeppelin.jpg",
                               userDetail: "This is my website!",
                               title: "Free RAW and JPG images",
-                              forEntry: entry4)
+                              forEntry: entry4,
+                              websiteDescription: "Free RAW and JPG images")
         
         // set builder objects to respective entries
         

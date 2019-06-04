@@ -36,6 +36,7 @@ class ThoughtDetailController: UIViewController {
         table.tv.dataSource = self
         table.tv.register(cellWithClass: ThoughtDetailTableHead.self)
         table.tv.register(cellWithClass: NoteEntryCell.self)
+        table.tv.register(cellWithClass: LinkEntryCell.self)
         table.tv.sectionHeaderHeight = 300
         
         headView.delegate = self

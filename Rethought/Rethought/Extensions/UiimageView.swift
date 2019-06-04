@@ -8,7 +8,7 @@ extension UIImageView {
     public func download(
         from url: URL,
         contentMode: UIView.ContentMode = .scaleAspectFit,
-        placeholder: UIImage? = nil,
+        placeholder: UIImage? = #imageLiteral(resourceName: "link_clay"),
         completionHandler: ((UIImage?) -> Void)? = nil) {
         
         image = placeholder
@@ -20,11 +20,13 @@ extension UIImageView {
                 let data = data,
                 let image = UIImage(data: data)
                 else {
+                    print("counldt guard content in download")
                     completionHandler?(nil)
                     return
             }
             DispatchQueue.main.async {
                 self.image = image
+                print("image recieved, size: \(image.size)")
                 completionHandler?(image)
             }
             }.resume()

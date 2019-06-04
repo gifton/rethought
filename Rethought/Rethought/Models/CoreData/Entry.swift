@@ -61,8 +61,10 @@ public class Entry: NSManagedObject {
             return max(200, note.minimumHeightForContent(width: width))
         } else if let photo = photo {
             return max(250, photo.minimumHeightForContent(width: width))
+        } else if link != nil {
+            return 115
         } else {
-            return 130
+             return 130
         }
     }
     

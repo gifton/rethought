@@ -71,7 +71,12 @@ extension ThoughtDetailViewModel {
         default:
             let type = entries[index.row].computedEntryType
             switch type {
-            case .link: return AnimatableCell()
+            case .link:
+                let cell = tableView.dequeueReusableCell(withClass: LinkEntryCell.self, for: index)
+                guard let link = entries[index.row].link else { return cell }
+                let builder = LinkBuilder(withEntry: link)
+                cell.add(content: builder)
+                return cell
             case .note:
                 // create cell
                 let cell = tableView.dequeueReusableCell(withClass: NoteEntryCell.self, for: index)

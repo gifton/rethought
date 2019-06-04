@@ -197,7 +197,7 @@ extension MSGCenterLinkView {
         guard let title = response?.title,
             let link = response?.finalUrl else { print ("unable to get content from SLP"); return }
         
-        let lb = LinkBuilder(link: "\(link)", rawIconUrl: response?.icon, userDetail: string, title: title, forEntry: nil)
+        let lb = LinkBuilder(link: "\(link)", rawIconUrl: response?.icon, userDetail: string, title: title, forEntry: nil, websiteDescription: link.description)
         bus.save(withpayload: lb)
     }
 }

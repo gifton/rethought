@@ -13,14 +13,24 @@ struct LinkBuilder: EntryBuilder {
     var rawIconUrl: String?
     var userDetail: String
     var title: String
+    var websiteDescription: String
     var entry: Entry?
     
-    init(link: String, rawIconUrl: String?, userDetail: String, title: String, forEntry entry: Entry?) {
+    init(link: String, rawIconUrl: String?, userDetail: String, title: String, forEntry entry: Entry?, websiteDescription: String) {
         self.link = link
         self.rawIconUrl = rawIconUrl
         self.userDetail = userDetail
         self.title = title
         self.entry = entry
+        self.websiteDescription = websiteDescription
     }
     
+    init(withEntry link: LinkEntry) {
+        self.link = link.url
+        rawIconUrl = link.rawIcon
+        userDetail = link.detail
+        title = link.title
+        entry = link.entry
+        websiteDescription = link.description
+    }
 }
