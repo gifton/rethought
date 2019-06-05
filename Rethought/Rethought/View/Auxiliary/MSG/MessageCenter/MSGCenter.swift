@@ -148,7 +148,12 @@ extension MSGCenter {
                 addSubview(textView)
                 addSubview(sendButton)
             }
+    
+        } else {
+            hasCompletedThought = true
+            backgroundColor = Device.colors.darkBlue
         }
+        
         connector.isDoneEditing()
     }
     
@@ -203,7 +208,7 @@ extension MSGCenter {
             if send() {
                 hasCompletedThought = true
                 delegate.didSendMessage()
-                generator.notificationOccurred(.success)
+                generator.notificationOccurred(.warning)
                 connector.isDoneEditing()
             } else { handleFailedSave() }
         }
@@ -260,7 +265,7 @@ extension MSGCenter {
             newPhotoView.unsetView()
             newPhotoView.removeFromSuperview()
         case .recording:
-            
+//            newRecordingView.unsetView()
             newRecordingView.removeFromSuperview()
         case .note:
             newNoteView.unsetView()
