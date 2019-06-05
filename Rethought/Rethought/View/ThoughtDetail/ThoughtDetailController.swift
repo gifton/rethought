@@ -17,7 +17,7 @@ class ThoughtDetailController: UIViewController {
     
     // MARK: variables
     lazy var headView = ThoughtDetailSearchBar(startFrame: CGRect(x: 0, y: -100, width: Device.size.width, height: 100), endFrame: CGRect(x: 0, y: 0, width: Device.size.width, height: 100), preview: thought)
-    var table = ThoughtDetailTable(frame: CGRect(origin: .zero, size: CGSize(width: Device.size.width, height: Device.size.height - 100)))
+    var table = ThoughtDetailTable(frame: CGRect(origin: .zero, size: CGSize(width: Device.size.width, height: Device.size.height - 115)))
     var msgCenter: MSGCenter!
     
     // MARK: objects
@@ -50,8 +50,24 @@ class ThoughtDetailController: UIViewController {
         msgCenter = MSGCenter(frame: CGRect(x: 0, y: view.frame.height - 115, width: view.frame.width, height: 115), connector: self, isFull: false)
         msgCenter.delegate = self
         
+        // add shadow to msg center
+        msgCenter.hasShadow = true
+        
         view.addSubview(msgCenter)
         view.addSubview(headView)
+        
+        addCloseButton()
+    }
+    
+    private func addCloseButton() {
+        let btn = UIButton()
+        btn.setImage(#imageLiteral(resourceName: "collapse"), for: .normal)
+        btn.frame = CGRect(x: view.frame.width - 60, y: view.frame.height - 105, width: 45, height: 45)
+        btn.addTapGestureRecognizer {
+            self.requestClose()
+        }
+        view.addSubview(btn)
+        
     }
 }
 
@@ -118,6 +134,8 @@ extension ThoughtDetailController: UITableViewDataSource, UITableViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         headView.sb.resignFirstResponder()
+        msgCenter.entryDidRequestCancel()
+        updateMSGSize(size: .regular)
         _ = msgCenter.removeEntryView()
         if let scroll = scrollView as? UITableView {
             if scroll.numberOfRows(inSection: 0) >= 4 {
@@ -137,6 +155,7 @@ extension ThoughtDetailController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension ThoughtDetailController: MSGConnector, MSGCenterDelegate {
+    
     func didTapEntry(ofType type: MSGContext.size, completion: ()) {
         if type.rawValue != 115 {
             updateMSGSize(size: type)

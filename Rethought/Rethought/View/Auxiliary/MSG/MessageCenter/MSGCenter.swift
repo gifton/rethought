@@ -20,6 +20,16 @@ class MSGCenter: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     // public vars
+    public var hasShadow: Bool = false {
+        didSet {
+            if hasShadow  {
+                layer.shadowOffset = CGSize(width: 0, height: -4)
+                layer.shadowColor = UIColor.black.cgColor
+                layer.shadowRadius = 8
+                layer.shadowOpacity = 0.2
+            }
+        }
+    }
     // connector connects with controller
     var connector: MSGConnector
     // delegate connects with conversatiuon handler
@@ -37,6 +47,7 @@ class MSGCenter: UIView {
         }
     }
     
+    // MARK: privat vars
     private var currentEntryType: EntryType = .none
     private var title: String?
     private var thoughtIcon = ThoughtIcon("🚦")
@@ -125,6 +136,9 @@ extension MSGCenter {
         for btn in [noteButton, linkButton, recordingButton, photoButton] {
             
             if !(btn.isDescendant(of: self)) {
+                if !isFull {
+                    btn.frame.size = btn.frame.size.multiplier(1.25)
+                }
                 btn.frame = CGRect(x: startX, y: startY, width: btn.frame.width, height: btn.frame.height)
                 btn.addTapGestureRecognizer { self.buttonTapped(sender: btn) }
                 addSubview(btn)
@@ -151,7 +165,7 @@ extension MSGCenter {
     
         } else {
             hasCompletedThought = true
-            backgroundColor = Device.colors.darkBlue
+            backgroundColor = Device.colors.offWhite
         }
         
         connector.isDoneEditing()

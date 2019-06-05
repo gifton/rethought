@@ -37,7 +37,6 @@
 		D74D1B2722A0087E00FB7D95 /* ThoughtDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */; };
 		D74D1B2922A0095200FB7D95 /* ThoughtDetailSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2822A0095200FB7D95 /* ThoughtDetailSearchBar.swift */; };
 		D74D1B2B22A0095C00FB7D95 /* ThoughtDetailTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2A22A0095C00FB7D95 /* ThoughtDetailTable.swift */; };
-		D74D1B2D22A00B8900FB7D95 /* ThoughtDetailEntryBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2C22A00B8900FB7D95 /* ThoughtDetailEntryBar.swift */; };
 		D7536F922262C26F003F0920 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536F912262C26F003F0920 /* AppDelegate.swift */; };
 		D7536F972262C26F003F0920 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7536F952262C26F003F0920 /* Main.storyboard */; };
 		D7536F992262C272003F0920 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7536F982262C272003F0920 /* Assets.xcassets */; };
@@ -151,7 +150,6 @@
 		D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailController.swift; sourceTree = "<group>"; };
 		D74D1B2822A0095200FB7D95 /* ThoughtDetailSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailSearchBar.swift; sourceTree = "<group>"; };
 		D74D1B2A22A0095C00FB7D95 /* ThoughtDetailTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailTable.swift; sourceTree = "<group>"; };
-		D74D1B2C22A00B8900FB7D95 /* ThoughtDetailEntryBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailEntryBar.swift; sourceTree = "<group>"; };
 		D7536F8E2262C26F003F0920 /* Rethought.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rethought.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7536F912262C26F003F0920 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7536F962262C26F003F0920 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -368,7 +366,6 @@
 				D7AF976622A0250F00AA4A65 /* ThoughtDetailDelegate.swift */,
 				D74D1B2A22A0095C00FB7D95 /* ThoughtDetailTable.swift */,
 				D74D1B2822A0095200FB7D95 /* ThoughtDetailSearchBar.swift */,
-				D74D1B2C22A00B8900FB7D95 /* ThoughtDetailEntryBar.swift */,
 				D7AF977422A10BE900AA4A65 /* ThoughtDetailInfoBar.swift */,
 			);
 			path = ThoughtDetail;
@@ -816,7 +813,6 @@
 				D77A7D95229E5178009B1781 /* ThoughtDetailViewModel.swift in Sources */,
 				D7AF977122A10A4D00AA4A65 /* CGRect.swift in Sources */,
 				D7536FD52262D8AA003F0920 /* rt-DB2.xcdatamodeld in Sources */,
-				D74D1B2D22A00B8900FB7D95 /* ThoughtDetailEntryBar.swift in Sources */,
 				D7006EC622671C4C004E570F /* PhotoBuilder.swift in Sources */,
 				D7BE8F20227AB12300B15F06 /* MSGCenterEntryView.swift in Sources */,
 				D7536FA52262C6DA003F0920 /* styling.swift in Sources */,
