@@ -99,6 +99,10 @@
 		D7AF977B22A575B000AA4A65 /* AnimatableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF977A22A575B000AA4A65 /* AnimatableCell.swift */; };
 		D7B0A6BE22A5B618004B549A /* LinkEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B0A6BD22A5B618004B549A /* LinkEntryCell.swift */; };
 		D7B0A6C022A604A7004B549A /* PhotoEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B0A6BF22A604A7004B549A /* PhotoEntryCell.swift */; };
+		D7B0A6C322A81BAE004B549A /* EntryDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B0A6C222A81BAE004B549A /* EntryDetailController.swift */; };
+		D7B0A6C522A81BC0004B549A /* EntryDetailViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B0A6C422A81BC0004B549A /* EntryDetailViewModelDelegate.swift */; };
+		D7B0A6C722A81D7D004B549A /* EntryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B0A6C622A81D7D004B549A /* EntryDetailViewModel.swift */; };
+		D7B0A6CA22A8369B004B549A /* EntryDetalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B0A6C922A8369B004B549A /* EntryDetalScrollView.swift */; };
 		D7BB182F227629970084963E /* MSGBoardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB182E227629970084963E /* MSGBoardDelegate.swift */; };
 		D7BB1833227629EE0084963E /* MSGBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB1832227629EE0084963E /* MSGBoard.swift */; };
 		D7BB1836227631920084963E /* MSGContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB1835227631920084963E /* MSGContext.swift */; };
@@ -214,6 +218,10 @@
 		D7AF977A22A575B000AA4A65 /* AnimatableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableCell.swift; sourceTree = "<group>"; };
 		D7B0A6BD22A5B618004B549A /* LinkEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkEntryCell.swift; sourceTree = "<group>"; };
 		D7B0A6BF22A604A7004B549A /* PhotoEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEntryCell.swift; sourceTree = "<group>"; };
+		D7B0A6C222A81BAE004B549A /* EntryDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailController.swift; sourceTree = "<group>"; };
+		D7B0A6C422A81BC0004B549A /* EntryDetailViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailViewModelDelegate.swift; sourceTree = "<group>"; };
+		D7B0A6C622A81D7D004B549A /* EntryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailViewModel.swift; sourceTree = "<group>"; };
+		D7B0A6C922A8369B004B549A /* EntryDetalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetalScrollView.swift; sourceTree = "<group>"; };
 		D7BB182E227629970084963E /* MSGBoardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardDelegate.swift; sourceTree = "<group>"; };
 		D7BB1832227629EE0084963E /* MSGBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoard.swift; sourceTree = "<group>"; };
 		D7BB1835227631920084963E /* MSGContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGContext.swift; sourceTree = "<group>"; };
@@ -272,6 +280,7 @@
 				D75B8B2B22912A5100B38CC6 /* ThoughtBuilder */,
 				D77A7D92229E5157009B1781 /* Home */,
 				D77A7D93229E515E009B1781 /* ThoughtDetail */,
+				D7B0A6C822A81D81004B549A /* EntryDetail */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -279,6 +288,7 @@
 		D7006ED7226735F9004E570F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D7B0A6C122A81B9B004B549A /* EntryDetailView */,
 				D7006EE62268CB63004E570F /* ViewController.swift */,
 				D74D1B2E22A00C8100FB7D95 /* ThoughtDetail */,
 				D7C6541C226A391A008A66EF /* Auxiliary */,
@@ -561,6 +571,24 @@
 			path = ThoughtDetail;
 			sourceTree = "<group>";
 		};
+		D7B0A6C122A81B9B004B549A /* EntryDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				D7B0A6C222A81BAE004B549A /* EntryDetailController.swift */,
+				D7B0A6C922A8369B004B549A /* EntryDetalScrollView.swift */,
+			);
+			path = EntryDetailView;
+			sourceTree = "<group>";
+		};
+		D7B0A6C822A81D81004B549A /* EntryDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D7B0A6C422A81BC0004B549A /* EntryDetailViewModelDelegate.swift */,
+				D7B0A6C622A81D7D004B549A /* EntryDetailViewModel.swift */,
+			);
+			path = EntryDetail;
+			sourceTree = "<group>";
+		};
 		D7BB182D227629640084963E /* MessageBoard */ = {
 			isa = PBXGroup;
 			children = (
@@ -778,6 +806,7 @@
 			files = (
 				D7B0A6BE22A5B618004B549A /* LinkEntryCell.swift in Sources */,
 				D7536FE32262EB0A003F0920 /* PhotoEntry.swift in Sources */,
+				D7B0A6C722A81D7D004B549A /* EntryDetailViewModel.swift in Sources */,
 				D74D1B22229F787300FB7D95 /* Animator.swift in Sources */,
 				D7006EE92268CD5A004E570F /* AnimatedTabBar.swift in Sources */,
 				D7FEEBEB22947E1800D6D1C8 /* HomeViewModel.swift in Sources */,
@@ -789,6 +818,8 @@
 				D7536FB52262C8ED003F0920 /* Array.swift in Sources */,
 				D7536FBB2262C9C9003F0920 /* UIColor.swift in Sources */,
 				D7536FD12262D765003F0920 /* String.swift in Sources */,
+				D7B0A6CA22A8369B004B549A /* EntryDetalScrollView.swift in Sources */,
+				D7B0A6C522A81BC0004B549A /* EntryDetailViewModelDelegate.swift in Sources */,
 				D7006EC42266FFD9004E570F /* LinkBuilder.swift in Sources */,
 				D73AB565229EC30000CBF939 /* EntryBuilder.swift in Sources */,
 				D7536FBF2262CB29003F0920 /* UILabel.swift in Sources */,
@@ -837,6 +868,7 @@
 				D7FEEBE92294645A00D6D1C8 /* Replicator.swift in Sources */,
 				D7BE8F1C2278BAAD00B15F06 /* MSGWelcomeCard.swift in Sources */,
 				D7433B4B228F50410001B371 /* UITableVIew.swift in Sources */,
+				D7B0A6C322A81BAE004B549A /* EntryDetailController.swift in Sources */,
 				D7536FBD2262CAE3003F0920 /* UICollectionView.swift in Sources */,
 				D75B8B31229210F000B38CC6 /* HomeEntryButtons.swift in Sources */,
 				D7AF976D22A1095000AA4A65 /* AnimatableLabel.swift in Sources */,

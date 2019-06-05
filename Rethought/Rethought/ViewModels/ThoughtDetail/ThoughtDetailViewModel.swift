@@ -33,13 +33,14 @@ class ThoughtDetailViewModel: ThoughtDetailViewModelDelegate {
     }
     private var searchedEntries = [Entry]()
     // create new entry for thought
-    func buildEntry<T>(payload: T, withLocation location: CLLocation?) where T : EntryBuilder {
+    func buildEntry<T>(payload: T, withLocation location: CLLocation?, completion: () -> ()) where T : EntryBuilder {
         print("creating entry data model")
         _ = Entry.insertEntry(into: moc,
                               location: location,
                               payload: payload,
                               thought: thought)
         save()
+        completion()
     }
     
     func updateThoughtIcon(toIcon icon: ThoughtIcon) {

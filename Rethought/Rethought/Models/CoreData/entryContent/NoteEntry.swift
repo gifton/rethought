@@ -26,6 +26,7 @@ public class NoteEntry: NSManagedObject {
             height += title.sizeFor(font: Device.font.mediumTitle(ofSize: .xXLarge), width: width).height
         }
         height += detail.sizeFor(font: Device.font.formalBodyText(ofSize: .small), width: width).height
+        height += 30
         
         return height
     }

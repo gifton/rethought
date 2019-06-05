@@ -9,8 +9,6 @@
 import Foundation
 
 protocol ThoughtDetailDelegate {
-    func displayEntryType(_ type: EntryType) -> Bool
-    func saveEntryWith(builder: EntryBuilder) -> Bool
     func requestClose()
     func delete(entry: Entry)
     func delete(thought: Thought)

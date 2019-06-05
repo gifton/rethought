@@ -13,13 +13,20 @@ class MSGCenter: UIView {
     init(frame: CGRect, connector: MSGConnector, isFull: Bool = true) {
         self.connector = connector
         super.init(frame: frame)
-        setInitialView(isFull)
+        self.isFull = isFull
+        setInitialView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     // public vars
+    public var isFull: Bool = false {
+        didSet {
+            removeSubviews()
+            setInitialView()
+        }
+    }
     public var hasShadow: Bool = false {
         didSet {
             if hasShadow  {
@@ -61,6 +68,7 @@ class MSGCenter: UIView {
         tv.textColor = Device.colors.lightGray
         tv.frame = CGRect(x: 10, y: 50, width: Device.size.paddedMaxWidth, height: 40)
         tv.addDoneButtonOnKeyboard()
+        tv.backgroundColor = Device.colors.offWhite
         
         return tv
     }()
@@ -125,7 +133,7 @@ class MSGCenter: UIView {
 
 // setting view methods
 extension MSGCenter {
-    public func setInitialView(_ isFull: Bool = true) {
+    public func setInitialView() {
         
         // remove any remaining entry views
         _ = removeEntryView()
@@ -156,16 +164,17 @@ extension MSGCenter {
         textView.text = "give your thought a short title"
         
         // if the initializer called for a full view, add the text view and send button
-        // TODO: add else statement for minimize button
-        if isFull {
-            if !(textView.isDescendant(of: self)) {
-                addSubview(textView)
-                addSubview(sendButton)
-            }
-    
-        } else {
+        if !(textView.isDescendant(of: self)) {
+            addSubview(textView)
+            addSubview(sendButton)
+        }
+        
+        // hide textView and send Button
+        if !isFull {
             hasCompletedThought = true
             backgroundColor = Device.colors.offWhite
+            textView.alpha = 0.0
+            sendButton.alpha = 0.0
         }
         
         connector.isDoneEditing()
@@ -178,6 +187,8 @@ extension MSGCenter {
         ggenerator.selectionChanged()
         _ = removeEntryView()
         var view = UIView()
+        textView.alpha = 1.0
+        sendButton.alpha = 1.0
         switch type {
         case .link:
             newLinkView = MSGCenterLinkView(withBus: self, thoughtIsCompleted: hasCompletedThought)
@@ -206,6 +217,10 @@ extension MSGCenter {
         addSubview(view)
         view.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor,
                        paddingTop: 115, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
+        
+    }
+    
+    func setUpperView() {
         
     }
 }
@@ -270,7 +285,11 @@ extension MSGCenter {
         }
     }
     public func removeEntryView() -> Bool {
-
+        
+        if !isFull {
+            textView.alpha = 0.0
+            sendButton.alpha = 0.0
+        }
         switch  currentEntryType{
         case .link:
             newLinkView.unsetView()

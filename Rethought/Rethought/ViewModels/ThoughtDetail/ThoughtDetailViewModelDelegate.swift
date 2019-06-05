@@ -5,7 +5,7 @@ import CoreLocation
 
 protocol ThoughtDetailViewModelDelegate {
     init(withThought thought: Thought, _ moc: NSManagedObjectContext)
-    func buildEntry<T: EntryBuilder>(payload: T, withLocation location: CLLocation?)
+    func buildEntry<T: EntryBuilder>(payload: T, withLocation location: CLLocation?, completion: () -> ())
     func updateThoughtIcon(toIcon icon: ThoughtIcon)
     func delete(entryWithID id: String)
     func deleteThought()

@@ -43,7 +43,7 @@ class ThoughtDetailTableHead: UITableViewCell, Animatable {
     
     func styleView() {
         titleLabel.text = "Whats the square root of 69? 8 something?"
-        titleLabel.font = Device.font.mediumTitle(ofSize: .xXXLarge)
+        titleLabel.font = Device.font.title(ofSize: .xXXLarge)
         titleLabel.numberOfLines = 0
         
         locationLabel.text = "Seattle, Washington"

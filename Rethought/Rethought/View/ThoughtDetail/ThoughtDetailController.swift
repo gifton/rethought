@@ -1,13 +1,7 @@
-//
-//  ThoughtDetailController.swift
-//  Rethought
-//
-//  Created by Dev on 5/30/19.
-//  Copyright © 2019 Wesaturate. All rights reserved.
-//
 
 import Foundation
 import UIKit
+import CoreLocation
 
 class ThoughtDetailController: UIViewController {
     override func viewDidLoad() {
@@ -67,7 +61,6 @@ class ThoughtDetailController: UIViewController {
             self.requestClose()
         }
         view.addSubview(btn)
-        
     }
 }
 
@@ -75,21 +68,6 @@ extension ThoughtDetailController: ThoughtDetailDelegate {
     var thought: ThoughtPreview {
         return model.thought.preview
     }
-    
-    func displayEntryType(_ type: EntryType) -> Bool {
-        
-        let nView = UIView()
-        nView.backgroundColor = .lightGray
-        nView.addTapGestureRecognizer { nView.removeFromSuperview() }
-        nView.layer.borderColor = UIColor.black.cgColor
-        nView.layer.borderWidth = 1
-        nView.frame = CGRect(x: 25, y: 200, width: Device.size.width - 50, height: Device.size.width - 50)
-        
-        view.addSubview(nView)
-        return true
-    }
-    
-    func saveEntryWith(builder: EntryBuilder) -> Bool { return true }
     
     func requestClose() {
         navigationController?.popViewController(animated: true)
@@ -176,7 +154,11 @@ extension ThoughtDetailController: MSGConnector, MSGCenterDelegate {
     
     func save(withTitle title: String, withIcon: ThoughtIcon) { }
     
-    func insert<T>(entry: T) where T : EntryBuilder { }
+    func insert<T>(entry: T) where T : EntryBuilder {
+        model.buildEntry(payload: entry, withLocation: CLLocation(), completion: {
+            table.tv.reloadData()
+        })
+    }
     
     func isDoneEditing() { }
     
