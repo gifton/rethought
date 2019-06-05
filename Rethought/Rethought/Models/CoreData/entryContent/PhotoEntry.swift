@@ -34,7 +34,6 @@ public class PhotoEntry: NSManagedObject {
         // add detail height for content
         height += detail.sizeFor(font: Device.font.mediumTitle(ofSize: .xXLarge), width: width).height
         height += 150
-        print("photoEntryHeight: \(height)")
         return height
     }
     

@@ -56,6 +56,7 @@ struct Device {
         static let blue      = UIColor(hex: "5FA4EF")
         static let yellow    = UIColor(hex: "FCCA46")
         static let red       = UIColor(hex: "E54D5F")
+        static let darkBlue  = UIColor(hex: "132544")
         //for entry types
         static let note      = blue
         static let recording = yellow

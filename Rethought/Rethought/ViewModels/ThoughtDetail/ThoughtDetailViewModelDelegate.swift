@@ -10,5 +10,5 @@ protocol ThoughtDetailViewModelDelegate {
     func delete(entryWithID id: String)
     func deleteThought()
     func save()
-    func search(_ payload: String)
+    func search(_ payload: String, completion: () -> ())
 }

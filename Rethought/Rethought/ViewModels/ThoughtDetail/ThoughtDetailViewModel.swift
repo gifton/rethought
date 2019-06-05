@@ -17,12 +17,21 @@ class ThoughtDetailViewModel: ThoughtDetailViewModelDelegate {
     
     // MARK: private vars
     private var moc: NSManagedObjectContext
+    public var isSearching: Bool = false
     
     // MARK: public vars
     public var thoughtPreview: ThoughtPreview { return thought.preview }
     public var entryCount: EntryCount { return thought.entryCount }
+    public var tableCount: Int {
+        if isSearching { return searchedEntries.count}
+        return entries.count
+    }
     public var thought: Thought
-    public var entries: [Entry] {  return thought.allEntries }
+    public var entries: [Entry] {
+        if isSearching { return searchedEntries }
+        return thought.allEntries
+    }
+    private var searchedEntries = [Entry]()
     // create new entry for thought
     func buildEntry<T>(payload: T, withLocation location: CLLocation?) where T : EntryBuilder {
         print("creating entry data model")
@@ -56,8 +65,44 @@ class ThoughtDetailViewModel: ThoughtDetailViewModelDelegate {
         }
     }
     
-    func search(_ payload: String) {
-        print("im searching for something!")
+    func search(_ payload: String, completion: () -> ()) {
+        print("searching from model")
+        for ent in entries {
+            print("entry being searched: \(ent.id)")
+            if find(payload: payload, inEntry: ent) {
+                print("adding entry to model: \(ent.id)")
+                searchedEntries.append(ent)
+            }
+        }
+        print(searchedEntries.count)
+        isSearching = true
+        completion()
+    }
+    func doneSearching(completion: () -> ()) {
+        print("confirmed from model searching is complete")
+        isSearching = false
+        completion()
+    }
+    
+    private func find(payload: String, inEntry entry: Entry) -> Bool {
+        switch entry.computedEntryType {
+        case .photo:
+            guard let photo = entry.photo else { print("unable to verify photo in search"); return false }
+            guard let detail = photo.detail else { print("unable to verify detail pf photo in search"); return false }
+            if detail.contains(payload) { return true }
+        case .link:
+            guard let link = entry.link else { print("unable to verify link in search"); return false }
+            if link.title.contains(payload) { return true }
+            if link.detail.contains(payload) { return true }
+            if link.url.contains(payload) { return true }
+        default:
+            guard let note = entry.note else { print("unable to verify note in search"); return false }
+            if note.title!.contains(payload) { return true }
+            if note.detail.contains(payload) { return true }
+        }
+        
+        
+        return false
     }
 }
 
@@ -101,6 +146,10 @@ extension ThoughtDetailViewModel {
             default: return UITableViewCell()
             }
         }
+    }
+    
+    func searchEntriesFor(payload: String) {
+        
     }
     
     func heightFor(row: Int) -> CGFloat {

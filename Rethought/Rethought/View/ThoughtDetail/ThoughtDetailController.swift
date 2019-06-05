@@ -15,14 +15,18 @@ class ThoughtDetailController: UIViewController {
         view.backgroundColor = .white
     }
     
+    // MARK: variables
     lazy var headView = ThoughtDetailSearchBar(startFrame: CGRect(x: 0, y: -100, width: Device.size.width, height: 100), endFrame: CGRect(x: 0, y: 0, width: Device.size.width, height: 100), preview: thought)
     var table = ThoughtDetailTable(frame: CGRect(origin: .zero, size: CGSize(width: Device.size.width, height: Device.size.height - 100)))
-    var entryBar: ThoughtDetailEntryBar!
+    var msgCenter: MSGCenter!
+    
+    // MARK: objects
     let animationScrollLength: CGFloat = 100.0
     var progress: CGFloat = 0.0 {
         didSet { animator.updateAnimation(toProgress: progress) }
     }
     
+    // MARK: public objects
     public var model: ThoughtDetailViewModel! {
         didSet { setView() }
     }
@@ -43,8 +47,10 @@ class ThoughtDetailController: UIViewController {
         animator.register(animatableView: headView)
         
         view.addSubview(table)
-        entryBar = ThoughtDetailEntryBar(withDelegate: self)
-        view.addSubview(entryBar)
+        msgCenter = MSGCenter(frame: CGRect(x: 0, y: view.frame.height - 115, width: view.frame.width, height: 115), connector: self, isFull: false)
+        msgCenter.delegate = self
+        
+        view.addSubview(msgCenter)
         view.addSubview(headView)
     }
 }
@@ -77,18 +83,20 @@ extension ThoughtDetailController: ThoughtDetailDelegate {
     
     func delete(thought: Thought) { }
     
-    func search(for payload: String, completion: () -> ()) {
-        print("will search: \(payload)")
+    func search(for payload: String) {
+        print("begining model search from controller")
+        model.search(payload) {
+            self.table.tv.reloadData()
+        }
+        
     }
     
     func updateIcon(to: String) { }
     
     func endSearch() {
-        print("done editing")
         resignFirstResponder()
-        
+        model.doneSearching { self.table.tv.reloadData() }
     }
-    
 }
 
 
@@ -109,6 +117,8 @@ extension ThoughtDetailController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        headView.sb.resignFirstResponder()
+        _ = msgCenter.removeEntryView()
         if let scroll = scrollView as? UITableView {
             if scroll.numberOfRows(inSection: 0) >= 4 {
                 let offset = scroll.contentOffset.y
@@ -122,6 +132,40 @@ extension ThoughtDetailController: UITableViewDataSource, UITableViewDelegate {
         return model.heightFor(row: indexPath.row)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.entryCount.total + 1
+        return model.tableCount + 1
     }
+}
+
+extension ThoughtDetailController: MSGConnector, MSGCenterDelegate {
+    func didTapEntry(ofType type: MSGContext.size, completion: ()) {
+        if type.rawValue != 115 {
+            updateMSGSize(size: type)
+        } else {
+            updateMSGSize(size: .regular)
+        }
+        
+    }
+    
+    private func updateMSGSize(size: MSGContext.size) {
+        UIView.animate(withDuration: 0.3) {
+            self.msgCenter.frame.size.height = size.rawValue
+            self.msgCenter.frame.origin.y = self.view.frame.height - size.rawValue
+        }
+    }
+    
+    func didSendMessage() { }
+    
+    func save(withTitle title: String, withIcon: ThoughtIcon) { }
+    
+    func insert<T>(entry: T) where T : EntryBuilder { }
+    
+    func isDoneEditing() { }
+    
+    func updateIcon(newIcon: ThoughtIcon) { }
+    
+    func entryWillShow(ofType type: MSGContext.size) {
+        
+    }
+    
+    
 }

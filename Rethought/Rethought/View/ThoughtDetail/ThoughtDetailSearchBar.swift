@@ -69,9 +69,8 @@ class ThoughtDetailSearchBar: AnimatableView {
 
 extension ThoughtDetailSearchBar: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        delegate.search(for: searchBar.text ?? "") {
-            print("completed Search")
-        }
+        print("begin search from thoughtSearchBar")
+        delegate.search(for: searchBar.text ?? "")
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
