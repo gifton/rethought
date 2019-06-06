@@ -5,7 +5,7 @@ import AVKit
 
 struct RecordingBuilder: EntryBuilder {
     var type: EntryType = .recording
-    
+    var thoughtIcon: ThoughtIcon = ThoughtIcon("💭")
     var userDetail: String
     var recording: AudioFileID
     var entry: Entry?

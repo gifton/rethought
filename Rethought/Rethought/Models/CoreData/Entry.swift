@@ -52,6 +52,14 @@ public class Entry: NSManagedObject {
         }
     }
     
+    var computedBuilder: EntryBuilder {
+        switch computedEntryType {
+        case .note: return note!.
+        default:
+            <#code#>
+        }
+    }
+    
     // return height for content,
     // since notes are variable in size, as are photos, calculations are be made on the string itself
     // links and recordings have fixed heights of 130px

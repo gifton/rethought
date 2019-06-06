@@ -12,17 +12,11 @@ class EntryDetailViewModel: EntryDetailViewModelDelegate {
     
     
     var entry: Entry
-    var entryType: EntryType {
-        get {
-            return entry.computedEntryType
-        }
+    var entryType: EntryType { return entry.computedEntryType }
+    var heightForContent: CGFloat { return entry.heightForContent(width: Device.size.width - 60) }
+    var builder: EntryBuilder {
+//        return entry.
     }
-    var heightForContent: CGFloat {
-        get {
-            return entry.heightForContent(width: Device.size.width - 60)
-        }
-    }
-    
     
 }
 

@@ -37,6 +37,10 @@ public class PhotoEntry: NSManagedObject {
         return height
     }
     
+    var builder: PhotoBuilder {
+        return PhotoBuilder(withEntry: self)
+    }
+    
     // calculate height of photo after resize
     public func photoHeight(forWidth width: CGFloat) -> CGFloat {
         guard let photo = UIImage(data: rawPhoto),

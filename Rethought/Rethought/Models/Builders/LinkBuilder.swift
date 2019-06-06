@@ -7,8 +7,11 @@ import UIKit
 /// to capture link content to be attached to an entry
 /// all links stored as Strings, must be unwrapped
 struct LinkBuilder: EntryBuilder {
-    var type: EntryType = .link
     
+    
+    
+    var type: EntryType = .link
+    var thoughtIcon: ThoughtIcon = ThoughtIcon("💭")
     var link: String
     var rawIconUrl: String?
     var userDetail: String
@@ -32,5 +35,6 @@ struct LinkBuilder: EntryBuilder {
         title = link.title
         entry = link.entry
         websiteDescription = link.description
+        self.thoughtIcon = ThoughtIcon(link.entry.thought.icon)
     }
 }

@@ -19,6 +19,9 @@ public class NoteEntry: NSManagedObject {
     @NSManaged public var entry: Entry
     
     // MARK: computed property
+    var builder: NoteBuilder {
+        return NoteBuilder(withNote: self)
+    }
     // get minimum height of string labels
     public func minimumHeightForContent(width: CGFloat) -> CGFloat {
         var height: CGFloat = 0.0

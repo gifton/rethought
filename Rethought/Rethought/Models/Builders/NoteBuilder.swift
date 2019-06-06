@@ -6,8 +6,9 @@ import UIKit
 /// after building new entry to attach too
 /// to capture link content to be attached to an entry
 struct NoteBuilder: EntryBuilder {
-    var type: EntryType = .note
     
+    var thoughtIcon: ThoughtIcon = ThoughtIcon("💭")
+    var type: EntryType = .note
     var detail: String
     var title: String
     var entry: Entry?
@@ -22,6 +23,7 @@ struct NoteBuilder: EntryBuilder {
         self.detail = note.detail
         self.title = note.title ?? "No title available"
         self.entry = note.entry
+        self.thoughtIcon = ThoughtIcon(note.entry.thought.icon)
     }
     
 }
