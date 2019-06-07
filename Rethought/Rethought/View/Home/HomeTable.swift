@@ -18,6 +18,7 @@ class HomeTable: UIView {
     
     // MARK: public variables
     public var animator: Animator?
+    public var delegate: HomeDelegate?
     public let tv: UITableView = {
         let tv = UITableView(frame: .zero, style: .plain)
         tv.allowsMultipleSelection = false
@@ -25,7 +26,6 @@ class HomeTable: UIView {
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.showsVerticalScrollIndicator = false
         tv.separatorStyle = .none
-        tv.allowsSelection = false
         
         return tv
     }()
@@ -84,5 +84,9 @@ class HomeTable: UIView {
 extension HomeTable: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("tapped index: \(indexPath)")
+        delegate?.show(entryForIndex: indexPath.row)
     }
 }

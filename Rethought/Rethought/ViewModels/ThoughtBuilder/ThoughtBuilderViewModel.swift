@@ -7,14 +7,6 @@ import CoreLocation
 class ThoughtBuilderViewModel: NSObject {
     init(withContext context: NSManagedObjectContext) {
         self.moc = context
-        do {
-            let count = try context.count(for: Thought.fetchRequest())
-            print("builder initiated, thoughtCount: \(count)")
-        } catch {
-            print(error)
-        }
-        
-        
     }
     
     // MARK: pRivate vars

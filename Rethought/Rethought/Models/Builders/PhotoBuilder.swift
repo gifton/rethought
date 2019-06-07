@@ -6,12 +6,18 @@ import UIKit
 /// after building new entry to attach too
 /// to capture link content to be attached to an entry
 struct PhotoBuilder: EntryBuilder {
-    var thoughtIcon: ThoughtIcon = ThoughtIcon("💭")
+    
+    // MARK: required values
     var type: EntryType = .photo
     var photo: UIImage
     var userDetail: String
-    var entry: Entry?
     var photoHeight: CGFloat = 0
+    static var zero: EntryBuilder {
+        return PhotoBuilder(photo: UIImage(), userDetail: "", forEntry: nil)
+    }
+    // MARK: optional values
+    var entry: Entry?
+    var thoughtIcon: ThoughtIcon = ThoughtIcon("💭")
     
     init(photo: UIImage, userDetail: String, forEntry entry: Entry?) {
         self.photo = photo
@@ -30,14 +36,15 @@ struct PhotoBuilder: EntryBuilder {
         userDetail = entry.detail ?? ""
         self.entry = entry.entry
         photoHeight = entry.photoHeight(forWidth: width)
-        self.thoughtIcon = ThoughtIcon(photo.entry.thought.icon)
+        self.thoughtIcon = ThoughtIcon(entry.entry.thought.icon)
     }
     
-    public func setHeight(forPhotoWidth width: CGFloat) {
+    public mutating func setHeight(forPhotoWidth width: CGFloat) {
         guard let scaledPhoto = photo.scaled(toWidth: width) else {
-            return 0
+            print("unable to scale photo in PhotoBuilder setHeight(forPhotoWidth:) func")
+            return
         }
-        photoHeight = photo.
+        photoHeight = scaledPhoto.size.height
     }
 
 }

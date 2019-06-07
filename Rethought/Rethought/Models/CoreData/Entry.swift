@@ -52,11 +52,25 @@ public class Entry: NSManagedObject {
         }
     }
     
-    var computedBuilder: EntryBuilder {
+    var associatedBuilder: EntryBuilder {
         switch computedEntryType {
-        case .note: return note!.
+        case .note:
+            guard let note = self.note else {
+                return NoteBuilder.zero
+            }
+            return NoteBuilder(withNote: note)
+        case .link:
+            guard let link = self.link else {
+                return LinkBuilder.zero
+            }
+            return LinkBuilder(withEntry: link)
+        // TODO: make recording
         default:
-            <#code#>
+            guard let photo = self.photo else {
+                print("unable to process photo builder object in associatedBuilder func for entry CD model")
+                return PhotoBuilder.zero
+            }
+            return PhotoBuilder(withEntry: photo)
         }
     }
     

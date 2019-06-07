@@ -68,7 +68,7 @@ class MSGCenter: UIView {
         tv.textColor = Device.colors.lightGray
         tv.frame = CGRect(x: 10, y: 50, width: Device.size.paddedMaxWidth, height: 40)
         tv.addDoneButtonOnKeyboard()
-        tv.backgroundColor = Device.colors.offWhite
+        tv.backgroundColor = .clear
         
         return tv
     }()

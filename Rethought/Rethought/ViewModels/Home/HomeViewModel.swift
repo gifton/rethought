@@ -50,13 +50,9 @@ extension HomeViewModel: HomeViewModelDelegate {
         return thoughts.filter{ $0.id == id }.first ?? nil
     }
     
-    func retrieve(entry id: String) -> Entry? {
-        return entries.filter{ $0.id == id }.first ?? nil
-    }
-    
-    func refresh() {
-//        thoughts = []
-//        thoughts = fetchThoughts()
+    func retrieve(entry row: Int) -> EntryDetailViewModel {
+        let entry = self.entries[row]
+        return EntryDetailViewModel(withEntry: entry, moc)
     }
     
     func fetchThoughts() -> [Thought] {

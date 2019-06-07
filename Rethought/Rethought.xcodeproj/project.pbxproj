@@ -22,6 +22,7 @@
 		D7006EE5226841D2004E570F /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EE4226841D2004E570F /* ConversationView.swift */; };
 		D7006EE72268CB63004E570F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EE62268CB63004E570F /* ViewController.swift */; };
 		D7006EE92268CD5A004E570F /* AnimatedTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7006EE82268CD5A004E570F /* AnimatedTabBar.swift */; };
+		D707722D22A9731D00269804 /* EntryDetailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D707722C22A9731D00269804 /* EntryDetailDelegate.swift */; };
 		D70AD47C2283FB5200824DCB /* MSGCenterLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70AD47B2283FB5200824DCB /* MSGCenterLinkView.swift */; };
 		D7149384227CB830005B681D /* MSGBoardNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7149383227CB830005B681D /* MSGBoardNoteView.swift */; };
 		D721112C2272D14D00131BEF /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721112B2272D14D00131BEF /* SearchController.swift */; };
@@ -72,6 +73,7 @@
 		D75B8B2D22912A6600B38CC6 /* HomeViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B8B2C22912A6600B38CC6 /* HomeViewModelDelegate.swift */; };
 		D75B8B2F22912FD800B38CC6 /* HomeThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B8B2E22912FD800B38CC6 /* HomeThoughtCell.swift */; };
 		D75B8B31229210F000B38CC6 /* HomeEntryButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B8B30229210F000B38CC6 /* HomeEntryButtons.swift */; };
+		D75EE77F22AAFA26006D0971 /* EntryActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75EE77E22AAFA26006D0971 /* EntryActionBar.swift */; };
 		D760FED3227E544E00E4693D /* MSGCenterPhotoPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760FED2227E544E00E4693D /* MSGCenterPhotoPreview.swift */; };
 		D760FED5227E64E700E4693D /* MSGBoardPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760FED4227E64E700E4693D /* MSGBoardPhotoView.swift */; };
 		D760FED7227E785200E4693D /* UIBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760FED6227E785200E4693D /* UIBezierPath.swift */; };
@@ -139,6 +141,7 @@
 		D7006EE4226841D2004E570F /* ConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
 		D7006EE62268CB63004E570F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D7006EE82268CD5A004E570F /* AnimatedTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTabBar.swift; sourceTree = "<group>"; };
+		D707722C22A9731D00269804 /* EntryDetailDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailDelegate.swift; sourceTree = "<group>"; };
 		D70AD47B2283FB5200824DCB /* MSGCenterLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGCenterLinkView.swift; sourceTree = "<group>"; };
 		D7149383227CB830005B681D /* MSGBoardNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardNoteView.swift; sourceTree = "<group>"; };
 		D721112B2272D14D00131BEF /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
@@ -191,6 +194,7 @@
 		D75B8B2C22912A6600B38CC6 /* HomeViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelDelegate.swift; sourceTree = "<group>"; };
 		D75B8B2E22912FD800B38CC6 /* HomeThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeThoughtCell.swift; sourceTree = "<group>"; };
 		D75B8B30229210F000B38CC6 /* HomeEntryButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntryButtons.swift; sourceTree = "<group>"; };
+		D75EE77E22AAFA26006D0971 /* EntryActionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryActionBar.swift; sourceTree = "<group>"; };
 		D760FED2227E544E00E4693D /* MSGCenterPhotoPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGCenterPhotoPreview.swift; sourceTree = "<group>"; };
 		D760FED4227E64E700E4693D /* MSGBoardPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardPhotoView.swift; sourceTree = "<group>"; };
 		D760FED6227E785200E4693D /* UIBezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBezierPath.swift; sourceTree = "<group>"; };
@@ -576,6 +580,7 @@
 			children = (
 				D7B0A6C222A81BAE004B549A /* EntryDetailController.swift */,
 				D7B0A6C922A8369B004B549A /* EntryDetalScrollView.swift */,
+				D707722C22A9731D00269804 /* EntryDetailDelegate.swift */,
 			);
 			path = EntryDetailView;
 			sourceTree = "<group>";
@@ -636,6 +641,7 @@
 				D74D1B20229F786700FB7D95 /* Animator */,
 				D7BB1834227631830084963E /* MSG */,
 				D7006EE82268CD5A004E570F /* AnimatedTabBar.swift */,
+				D75EE77E22AAFA26006D0971 /* EntryActionBar.swift */,
 				D7FEEBE622939F5500D6D1C8 /* ShowOptionsView.swift */,
 				D77A7D8E229B3E0E009B1781 /* EntryCountBlock.swift */,
 			);
@@ -808,6 +814,7 @@
 				D7536FE32262EB0A003F0920 /* PhotoEntry.swift in Sources */,
 				D7B0A6C722A81D7D004B549A /* EntryDetailViewModel.swift in Sources */,
 				D74D1B22229F787300FB7D95 /* Animator.swift in Sources */,
+				D75EE77F22AAFA26006D0971 /* EntryActionBar.swift in Sources */,
 				D7006EE92268CD5A004E570F /* AnimatedTabBar.swift in Sources */,
 				D7FEEBEB22947E1800D6D1C8 /* HomeViewModel.swift in Sources */,
 				D7C6542E226A850B008A66EF /* UIbutton.swift in Sources */,
@@ -839,6 +846,7 @@
 				D7006EE72268CB63004E570F /* ViewController.swift in Sources */,
 				D7433B49228F3C050001B371 /* HomeTableCell.swift in Sources */,
 				D7A2DF41227D6D9300D6CFF1 /* MSGCenterPhotoView.swift in Sources */,
+				D707722D22A9731D00269804 /* EntryDetailDelegate.swift in Sources */,
 				D75B8B2F22912FD800B38CC6 /* HomeThoughtCell.swift in Sources */,
 				D7006EE5226841D2004E570F /* ConversationView.swift in Sources */,
 				D77A7D95229E5178009B1781 /* ThoughtDetailViewModel.swift in Sources */,

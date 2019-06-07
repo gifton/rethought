@@ -19,9 +19,9 @@ class HomeHead: UIView {
     let endHeight = CGFloat(170)
     //colors
     private let startBGColor = UIColor(hex: "#5FA4EF")
-    private let finishBGColor = UIColor(hex: "#4C3EC1")
+    private let finishBGColor = UIColor(hex: "#457EBA")
     private let dateTextColorStart = UIColor.white
-    private let dateTextColorFinish = Device.colors.yellow
+    private let dateTextColorFinish = UIColor.black
     
     //frames
     private let dateStartFrame = CGRect(x: 25, y: 90, width: 200, height: 18)

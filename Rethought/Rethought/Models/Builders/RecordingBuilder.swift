@@ -9,6 +9,10 @@ struct RecordingBuilder: EntryBuilder {
     var userDetail: String
     var recording: AudioFileID
     var entry: Entry?
+    // TODO: make this an recording builder
+    static var zero: EntryBuilder {
+        return LinkBuilder(link: "", rawIconUrl: "", userDetail: "", title: "", forEntry: nil, websiteDescription: "")
+    }
     
     init(userDetail: String, recording: AudioFileID, forEntry entry: Entry?) {
         self.userDetail = userDetail

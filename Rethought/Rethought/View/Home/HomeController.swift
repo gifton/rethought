@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+protocol HomeDelegate {
+    func show(entryForIndex row: Int)
+}
+
 class HomeController: UIViewController {
     
     init() {
@@ -17,7 +21,6 @@ class HomeController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         // test this
-        model.refresh()
         homeHead?.thoughtCollection.reloadData()
         tv?.tv.reloadData()
     }
@@ -37,6 +40,7 @@ class HomeController: UIViewController {
     
     func setView() {
         tv = HomeTable(frame: CGRect(x: 0, y: 500, width: Device.size.width, height: Device.size.height - 500))
+        tv?.delegate = self
         tv?.tv.dataSource = self
         tv?.animator = self
         
@@ -137,3 +141,12 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
         }
     }
 }
+
+extension HomeController: HomeDelegate {
+    func show(entryForIndex row: Int) {
+        let entryModel = model.retrieve(entry: row)
+        let controller = EntryDetailController(withModel: entryModel)
+        navigationController?.pushViewController(controller, animated: true)
+    }
+}
+

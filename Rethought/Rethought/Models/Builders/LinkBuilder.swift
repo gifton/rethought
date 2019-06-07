@@ -8,16 +8,19 @@ import UIKit
 /// all links stored as Strings, must be unwrapped
 struct LinkBuilder: EntryBuilder {
     
-    
-    
+    // MARK: required values
     var type: EntryType = .link
-    var thoughtIcon: ThoughtIcon = ThoughtIcon("💭")
     var link: String
-    var rawIconUrl: String?
     var userDetail: String
     var title: String
     var websiteDescription: String
+    static var zero: EntryBuilder {
+        return LinkBuilder(link: "", rawIconUrl: "", userDetail: "", title: "", forEntry: nil, websiteDescription: "")
+    }
+    // MARK: optional values
     var entry: Entry?
+    var rawIconUrl: String?
+    var thoughtIcon: ThoughtIcon = ThoughtIcon("💭")
     
     init(link: String, rawIconUrl: String?, userDetail: String, title: String, forEntry entry: Entry?, websiteDescription: String) {
         self.link = link

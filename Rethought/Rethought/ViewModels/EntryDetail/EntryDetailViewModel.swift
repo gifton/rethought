@@ -10,12 +10,12 @@ class EntryDetailViewModel: EntryDetailViewModelDelegate {
         self.entry = entry
     }
     
-    
-    var entry: Entry
-    var entryType: EntryType { return entry.computedEntryType }
-    var heightForContent: CGFloat { return entry.heightForContent(width: Device.size.width - 60) }
-    var builder: EntryBuilder {
-//        return entry.
+    // MARK: public objects
+    public var entry: Entry
+    public var entryType: EntryType { return entry.computedEntryType }
+    public var heightForContent: CGFloat { return entry.heightForContent(width: Device.size.width - 60) }
+    public var builder: EntryBuilder {
+        return entry.associatedBuilder
     }
     
 }

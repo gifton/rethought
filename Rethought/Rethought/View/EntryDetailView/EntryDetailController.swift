@@ -9,19 +9,22 @@
 import Foundation
 import UIKit
 
-protocol EntryDetailDelegate {
-    func updateEntry(withEntry: EntryBuilder)
-}
+
 
 class EntryDetailController: UIViewController {
-    var model: EntryDetailViewModel
     var entry: Entry { return model.entry }
+    var scrollView: EntryDetailScrollView!
     
     init(withModel model: EntryDetailViewModel) {
         self.model = model
         super.init(nibName: nil, bundle: nil)
-        view = EntryDetalScrollView(withBuilder: <#T##EntryBuilder#>)
+        scrollView = EntryDetailScrollView(withBuilder: model.builder)
+        scrollView.entryDelegate = self
+        view = scrollView
+        print("entryDetail controller initiated")
     }
+    
+    var model: EntryDetailViewModel
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -30,4 +33,7 @@ class EntryDetailController: UIViewController {
 
 extension EntryDetailController: EntryDetailDelegate {
     func updateEntry(withEntry: EntryBuilder) { }
+    func returnHome() {        
+        navigationController?.popViewController(animated: true)
+    }
 }

@@ -6,12 +6,16 @@ import UIKit
 /// after building new entry to attach too
 /// to capture link content to be attached to an entry
 struct NoteBuilder: EntryBuilder {
-    
-    var thoughtIcon: ThoughtIcon = ThoughtIcon("💭")
+    // MARK: required values
     var type: EntryType = .note
     var detail: String
     var title: String
+    static var zero: EntryBuilder {
+        return NoteBuilder(detail: "", title: "", forEntry: nil)
+    }
+    // MARK: required values
     var entry: Entry?
+    var thoughtIcon: ThoughtIcon = ThoughtIcon("💭")
     
     init(detail: String, title: String, forEntry entry: Entry?) {
         self.detail = detail

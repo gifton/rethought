@@ -13,8 +13,7 @@ protocol HomeViewModelDelegate: NSObject {
     var entries: [Entry] { get }
     
     func requestDeletion(forthought thought: Thought)
-    func refresh()
     func retrieve(thought id: String) -> Thought?
-    func retrieve(entry id: String) -> Entry?
+    func retrieve(entry row: Int) -> EntryDetailViewModel
     func displayDetail(forThought thought: Thought) -> ThoughtDetailViewModel
 }
