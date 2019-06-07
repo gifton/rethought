@@ -537,6 +537,13 @@
 			path = ThoughtBuilder;
 			sourceTree = "<group>";
 		};
+		D75EE78022AB09C1006D0971 /* EntryDetailViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EntryDetailViews;
+			sourceTree = "<group>";
+		};
 		D77A7D92229E5157009B1781 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -638,6 +645,7 @@
 		D7C6541C226A391A008A66EF /* Auxiliary */ = {
 			isa = PBXGroup;
 			children = (
+				D75EE78022AB09C1006D0971 /* EntryDetailViews */,
 				D74D1B20229F786700FB7D95 /* Animator */,
 				D7BB1834227631830084963E /* MSG */,
 				D7006EE82268CD5A004E570F /* AnimatedTabBar.swift */,

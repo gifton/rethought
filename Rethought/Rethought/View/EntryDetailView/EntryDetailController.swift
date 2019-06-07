@@ -21,7 +21,6 @@ class EntryDetailController: UIViewController {
         scrollView = EntryDetailScrollView(withBuilder: model.builder)
         scrollView.entryDelegate = self
         view = scrollView
-        print("entryDetail controller initiated")
     }
     
     var model: EntryDetailViewModel

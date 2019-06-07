@@ -156,7 +156,7 @@ extension ThoughtDetailController: MSGConnector, MSGCenterDelegate {
     
     func insert<T>(entry: T) where T : EntryBuilder {
         model.buildEntry(payload: entry, withLocation: CLLocation(), completion: {
-            table.tv.reloadData()
+            self.table.tv.reloadData()
         })
     }
     

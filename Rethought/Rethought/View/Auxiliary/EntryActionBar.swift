@@ -10,6 +10,9 @@ class EntryActionBar: UIView {
         self.icon = icon
         super.init(frame: CGRect(origin: origin, size: CGSize(width: Device.size.width - 30, height: 65)))
         setViews()
+        layer.shadowOffset = CGSize(width: 2, height: 4)
+        layer.shadowRadius = 8
+        layer.shadowOpacity = 0.2
     }
     
     required init?(coder aDecoder: NSCoder) {
