@@ -26,17 +26,7 @@ class EntryDetailScrollView: UIScrollView {
     private var titleFont = Device.font.mediumTitle(ofSize: .xXLarge)
     private let detailFont = Device.font.formalBodyText(ofSize: .small)
     private let auxilaryFont = Device.font.mediumTitle(ofSize: .medium)
-    private var closeButton: UIButton = {
-        let btn = UIButton()
-        btn.backgroundColor = Device.colors.darkGray
-        btn.layer.cornerRadius = 55.0 / 2
-        let img: UIImage = #imageLiteral(resourceName: "close")
-        btn.setImage(img, for: .normal)
-        return btn
-    }()
-    private var thoughtIcon = UILabel()
-    private let titleLabel  = UILabel()
-    private let detailLabel = UILabel()
+    private var entryActionBar: EntryActionBar!
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -46,23 +36,15 @@ class EntryDetailScrollView: UIScrollView {
 
 extension EntryDetailScrollView {
     private func setSuperView() {
-        // frames
-        closeButton.frame = CGRect(x: frame.width - 75, y: 55, width: 55, height: 55)
-        thoughtIcon.frame = CGRect(x: 25, y: 55, width: 55, height: 55)
-        
+        entryActionBar = EntryActionBar(withOrigin: CGPoint(x: 15, y: 200), thoughtIcon: builder.thoughtIcon)
         // styling
-        thoughtIcon.font = Device.font.title(ofSize: .emojiLG)
-        thoughtIcon.textAlignment = .center
-        thoughtIcon.text = builder.thoughtIcon.icon
         
         // add to subview
-        addSubview(closeButton)
-        addSubview(thoughtIcon)
-        
+        addSubview(entryActionBar)
         // set tap gesture actions
-        closeButton.addTapGestureRecognizer {
-            self.entryDelegate?.returnHome()
-        }
+//        closeButton.addTapGestureRecognizer {
+//            self.entryDelegate?.returnHome()
+//        }
     }
     func decideContent() {
         switch builder.type {
