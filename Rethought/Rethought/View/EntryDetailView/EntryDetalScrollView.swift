@@ -110,7 +110,19 @@ extension EntryDetailScrollView {
             detailField.widthAnchor.constraint(equalToConstant: frame.width - 90)
         ])
     }
-    private func buildPhoto() { print("building photo") }
+    private func buildPhoto() {
+        print("building photo")
+        guard var photoBuilder: PhotoBuilder = builder as? PhotoBuilder else { return }
+        photoBuilder.setHeight(forPhotoWidth: frame.width - 90)
+        let photoView = UIImageView()
+        photoView.image = photoBuilder.photo
+        photoView.contentMode = .scaleAspectFit
+        photoView.frame = CGRect(x: 45, y: 150, width: frame.width - 90, height: photoBuilder.photoHeight)
+        photoView.layer.cornerRadius = 10
+        photoView.layer.masksToBounds = true
+        
+        addSubview(photoView)
+    }
     private func buildLink() { print("building link") }
     private func buildRecording() { print("building note") }
 }
