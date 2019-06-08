@@ -47,7 +47,8 @@ extension EntryDetailScrollView {
         addSubview(entryActionBar)
         addSubview(dateLabel)
         addSubview(locationLabel)
-        addSubview(bar)
+        insertSubview(bar, at: 1000)
+        
         
         // styling
         locationLabel.font = auxilaryFont
@@ -96,7 +97,7 @@ extension EntryDetailScrollView {
         
         // add to view
         addSubview(titleField)
-        addSubview(detailField)
+        insertSubview(detailField, at: 1)
         
         // set anchors
         NSLayoutConstraint.activate( [
@@ -104,7 +105,7 @@ extension EntryDetailScrollView {
             titleField.leadingAnchor.constraint(equalTo: locationLabel.leadingAnchor),
             titleField.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 50),
             titleField.widthAnchor.constraint(equalToConstant: frame.width - 90),
-            detailField.heightAnchor.constraint(greaterThanOrEqualToConstant: 400),
+            detailField.heightAnchor.constraint(greaterThanOrEqualToConstant: 300),
             detailField.leadingAnchor.constraint(equalTo: locationLabel.leadingAnchor),
             detailField.topAnchor.constraint(equalTo: titleField.bottomAnchor, constant: 10),
             detailField.widthAnchor.constraint(equalToConstant: frame.width - 90)
@@ -121,7 +122,20 @@ extension EntryDetailScrollView {
         photoView.layer.cornerRadius = 10
         photoView.layer.masksToBounds = true
         
+        detailField.font = detailFont
+        detailField.text = photoBuilder.userDetail
+        detailField.translatesAutoresizingMaskIntoConstraints = false
+        detailField.delegate = self
+        
         addSubview(photoView)
+        insertSubview(detailField, at: 1)
+        
+        NSLayoutConstraint.activate([
+            detailField.heightAnchor.constraint(greaterThanOrEqualToConstant: 300),
+            detailField.leadingAnchor.constraint(equalTo: locationLabel.leadingAnchor),
+            detailField.topAnchor.constraint(equalTo: photoView.bottomAnchor, constant: 10),
+            detailField.widthAnchor.constraint(equalToConstant: frame.width - 90)
+        ])
     }
     private func buildLink() { print("building link") }
     private func buildRecording() { print("building note") }
