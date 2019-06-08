@@ -38,7 +38,7 @@ class MSGBoardLinkView: MSGBoardComponent {
         layer.masksToBounds = true
         
         titleLabel.text = lb.title
-        descriptionLabel.text = lb.userDetail
+        descriptionLabel.text = lb.detail
     }
     // MARK: Private objects
     private let linkImageView = UIImageView()

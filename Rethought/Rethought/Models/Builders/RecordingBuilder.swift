@@ -11,7 +11,7 @@ struct RecordingBuilder: EntryBuilder {
     var entry: Entry?
     // TODO: make this an recording builder
     static var zero: EntryBuilder {
-        return LinkBuilder(link: "", rawIconUrl: "", userDetail: "", title: "", forEntry: nil, websiteDescription: "")
+        return LinkBuilder(link: "", rawIconUrl: "", detail: "", title: "", forEntry: nil)
     }
     
     init(userDetail: String, recording: AudioFileID, forEntry entry: Entry?) {

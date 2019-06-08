@@ -56,7 +56,7 @@ class LinkEntryCell: UITableViewCell {
     private func setContext() {
         guard let preview = preview else { return }
         titleLabel.text = preview.title
-        detailLabel.text = preview.userDetail
+        detailLabel.text = preview.detail
         guard let rawURL = preview.rawIconUrl else {
             print("counldnt get icon url string")
             imageView?.image = #imageLiteral(resourceName: "link_clay")

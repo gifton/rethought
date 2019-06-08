@@ -11,33 +11,30 @@ struct LinkBuilder: EntryBuilder {
     // MARK: required values
     var type: EntryType = .link
     var link: String
-    var userDetail: String
+    var detail: String
     var title: String
-    var websiteDescription: String
     static var zero: EntryBuilder {
-        return LinkBuilder(link: "", rawIconUrl: "", userDetail: "", title: "", forEntry: nil, websiteDescription: "")
+        return LinkBuilder(link: "", rawIconUrl: "", detail: "", title: "", forEntry: nil)
     }
     // MARK: optional values
     var entry: Entry?
     var rawIconUrl: String?
     var thoughtIcon: ThoughtIcon = ThoughtIcon("💭")
     
-    init(link: String, rawIconUrl: String?, userDetail: String, title: String, forEntry entry: Entry?, websiteDescription: String) {
+    init(link: String, rawIconUrl: String?, detail: String, title: String, forEntry entry: Entry?) {
         self.link = link
         self.rawIconUrl = rawIconUrl
-        self.userDetail = userDetail
+        self.detail = detail
         self.title = title
         self.entry = entry
-        self.websiteDescription = websiteDescription
     }
     
     init(withEntry link: LinkEntry) {
         self.link = link.url
         rawIconUrl = link.rawIcon
-        userDetail = link.detail
+        detail = link.detail
         title = link.title
         entry = link.entry
-        websiteDescription = link.description
         self.thoughtIcon = ThoughtIcon(link.entry.thought.icon)
     }
 }

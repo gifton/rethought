@@ -23,7 +23,7 @@ public class LinkEntry: NSManagedObject {
         
         // set variables from builder
         let link: LinkEntry = context.insertObject()
-        link.detail = builder.userDetail
+        link.detail = builder.detail
         link.rawIcon = builder.rawIconUrl
         link.title = builder.title
         link.url = builder.link

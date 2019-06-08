@@ -44,10 +44,9 @@ class Replicator: ReplicatorProtocol {
         let ep3 = PhotoBuilder(photo: #imageLiteral(resourceName: "welcomeCardGraphic"), userDetail: "This is my photo!", forEntry: entry3)
         let ep4 = LinkBuilder(link: "https://wesaturate.com",
                               rawIconUrl: "https://ws.imgix.net/photos/rgnk4m_zeppelin.jpg",
-                              userDetail: "This is my website!",
+                              detail: "This is my website!",
                               title: "Free RAW and JPG images",
-                              forEntry: entry4,
-                              websiteDescription: "Free RAW and JPG images")
+                              forEntry: entry4)
         
         // set builder objects to respective entries
         
