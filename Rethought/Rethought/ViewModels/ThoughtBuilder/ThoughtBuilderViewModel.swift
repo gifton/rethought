@@ -25,7 +25,6 @@ extension ThoughtBuilderViewModel: ThoughtBuilderViewModelDelegate {
     
     // save thoguht after user has inputed content, return preview for displaying in MSGBoard
     func buildThought(withTitle title: String, withLocation location: CLLocation?, withIcon icon: ThoughtIcon) -> ThoughtPreview {
-        print("building thoughtprview from thoughtBuilderViewModel")
         currentThoughtPreview = ThoughtPreview(title: title, icon: icon.icon, location: location)
         currentThought = Thought.insert(in: moc, withPreview: currentThoughtPreview!)
         save()

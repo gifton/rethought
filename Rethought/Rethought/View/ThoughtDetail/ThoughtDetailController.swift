@@ -40,17 +40,21 @@ class ThoughtDetailController: UIViewController {
         headView.delegate = self
         animator.register(animatableView: headView)
         
+        createMSGCenter()
         view.addSubview(table)
+        view.addSubview(msgCenter)
+        view.addSubview(headView)
+        
+        addCloseButton()
+    }
+    
+    private func createMSGCenter() {
+        // set msgCenter
         msgCenter = MSGCenter(frame: CGRect(x: 0, y: view.frame.height - 115, width: view.frame.width, height: 115), connector: self, isFull: false)
         msgCenter.delegate = self
         
         // add shadow to msg center
         msgCenter.hasShadow = true
-        
-        view.addSubview(msgCenter)
-        view.addSubview(headView)
-        
-        addCloseButton()
     }
     
     private func addCloseButton() {
