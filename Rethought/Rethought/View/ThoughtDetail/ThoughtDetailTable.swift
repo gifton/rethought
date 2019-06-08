@@ -1,10 +1,3 @@
-//
-//  ThoughtDetailTable.swift
-//  Rethought
-//
-//  Created by Dev on 5/30/19.
-//  Copyright © 2019 Wesaturate. All rights reserved.
-//
 
 import Foundation
 import UIKit

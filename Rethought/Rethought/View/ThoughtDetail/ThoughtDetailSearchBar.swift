@@ -1,10 +1,3 @@
-//
-//  ThoughtDetailHead.swift
-//  Rethought
-//
-//  Created by Dev on 5/30/19.
-//  Copyright © 2019 Wesaturate. All rights reserved.
-//
 
 import Foundation
 import UIKit
@@ -27,7 +20,7 @@ class ThoughtDetailSearchBar: AnimatableView {
     let tf: UITextField = {
         let tf = UITextField()
         tf.font = Device.font.body(ofSize: .emojiSM)
-        tf.backgroundColor = .white
+        tf.backgroundColor = UIColor.white.withAlphaComponent(0.25)
         tf.textAlignment = .center
         tf.layer.cornerRadius = 8
         
@@ -46,8 +39,8 @@ class ThoughtDetailSearchBar: AnimatableView {
     
     private func setView() {
         
-        backgroundColor = Device.colors.offWhite
-        layer.cornerRadius = 5
+        backgroundColor = Device.colors.blue
+        layer.cornerRadius = 15
         
         sb.delegate = self
         

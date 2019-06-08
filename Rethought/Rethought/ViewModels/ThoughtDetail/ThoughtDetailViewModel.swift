@@ -111,7 +111,10 @@ class ThoughtDetailViewModel: ThoughtDetailViewModelDelegate {
 extension ThoughtDetailViewModel {
     func cellFor(index: IndexPath, tableView: UITableView) -> UITableViewCell?  {
         switch index.row {
-        case 0: return tableView.dequeueReusableCell(withClass: ThoughtDetailTableHead.self, for: index)
+        case 0:
+            let head = tableView.dequeueReusableCell(withClass: ThoughtDetailTableHead.self, for: index)
+            head.set(withPreview: thoughtPreview)
+            return head
         default:
             let row = index.row - 1
             let type = entries[row].computedEntryType

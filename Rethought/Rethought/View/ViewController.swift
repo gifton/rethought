@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  Rethought
-//
-//  Created by Dev on 4/13/19.
-//  Copyright © 2019 Wesaturate. All rights reserved.
-//
 
 import UIKit
 import CoreData

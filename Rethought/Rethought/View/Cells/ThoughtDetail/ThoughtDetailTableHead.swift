@@ -6,7 +6,7 @@ class ThoughtDetailTableHead: UITableViewCell, Animatable {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        styleView(); setView()
+        styleView()
         backgroundColor = .white
     }
     
@@ -42,20 +42,17 @@ class ThoughtDetailTableHead: UITableViewCell, Animatable {
     let detailPoint = CGPoint(x: 0, y: 220)
     
     func styleView() {
-        titleLabel.text = "Whats the square root of 69? 8 something?"
         titleLabel.font = Device.font.title(ofSize: .xXXLarge)
         titleLabel.numberOfLines = 0
         
         locationLabel.text = "Seattle, Washington"
         locationLabel.font = Device.font.mediumTitle(ofSize: .xLarge)
-        
-        dateLabel.text = "3-24-95"
         dateLabel.font = Device.font.body(ofSize: .xLarge)
     }
     
     func setView() {
         //get size from string
-        let titleLabelSize = titleLabel.text!.sizeFor(font: Device.font.mediumTitle(ofSize: .xXXLarge), width: Device.size.width - 50)
+        let titleLabelSize = titleLabel.text!.sizeFor(font: Device.font.title(ofSize: .xXXLarge), width: Device.size.width - 50)
         let locationLabelSize = locationLabel.text!.sizeFor(font: Device.font.mediumTitle(ofSize: .xLarge), width: Device.size.width - 50)
         
         // set sizes
@@ -89,6 +86,9 @@ class ThoughtDetailTableHead: UITableViewCell, Animatable {
     
     public func set(withPreview preview: ThoughtPreview) {
         self.preview = preview
+        titleLabel.text = preview.title
+        dateLabel.getStringFromDate(date: preview.date, withStyle: .short)
+        setView()
     }
     
     func update(toAnimationProgress progress: CGFloat) {
