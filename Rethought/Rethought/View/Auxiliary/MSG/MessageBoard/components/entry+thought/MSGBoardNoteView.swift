@@ -6,9 +6,9 @@ import UIKit
 class MSGBoardNoteView: MSGBoardComponent {
     init(frame: CGRect, payload: NoteBuilder) {
         builder = payload
-        let heights = (builder.title.sizeFor(font: Device.font.title(), width: Device.size.newNoteBoardView).height) + (builder.detail.sizeFor(font: Device.font.formalBodyText(), width: Device.size.newNoteBoardView).height) + 45.0
+        let height = (builder.title.sizeFor(font: Device.font.title(), width: Device.size.newNoteBoardView).height) + (builder.detail.sizeFor(font: Device.font.formalBodyText(), width: Device.size.newNoteBoardView).height) + 45.0
         
-        super.init(frame: CGRect(x: frame.origin.x, y: frame.origin.y, width: Device.size.newNoteBoardView, height: heights))
+        super.init(frame: CGRect(x: frame.origin.x, y: frame.origin.y, width: Device.size.newNoteBoardView, height: height))
         backgroundColor = .white
         setViews()
     }
@@ -37,7 +37,8 @@ class MSGBoardNoteView: MSGBoardComponent {
     
     // style views
     private func styleViews() {
-        // set font
+        // set styles
+        titleLbl.numberOfLines = 0
         titleLbl.font = Device.font.title()
         titleLbl.textColor = Device.colors.lightGray
         detailLbl.font = Device.font.body()
@@ -47,7 +48,7 @@ class MSGBoardNoteView: MSGBoardComponent {
         detailLbl.text = builder.detail
         detailLbl.numberOfLines = 0
         
-        //view stylw
+        //view style
         self.layer.cornerRadius = 10
     }
     required init?(coder aDecoder: NSCoder) {

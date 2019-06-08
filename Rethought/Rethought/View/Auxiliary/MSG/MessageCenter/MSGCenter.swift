@@ -252,7 +252,7 @@ extension MSGCenter {
         }
         
         // if there is not thought, save one first
-        if !(hasCompletedThought) {
+        if !isShowingEntry {
             
             connector.save(withTitle: title, withIcon: thoughtIcon)
             return true

@@ -45,8 +45,10 @@ class MSGThoughtView: MSGBoardComponent {
     private var nameLabel: UILabel = {
         let lbl = UILabel()
         lbl.font = Device.font.mediumTitle(ofSize: .large)
-        lbl.textColor = Device.colors.lightGray
-        lbl.numberOfLines = 2
+        lbl.sizeToFit()
+        lbl.textColor = .black
+        lbl.text = "Gifton"
+        lbl.numberOfLines = 1
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.textAlignment = .right
         
@@ -59,7 +61,8 @@ class MSGThoughtView: MSGBoardComponent {
         contentLbl.text = thoughtTitle
         addSubview(thoughtIconLabel)
         addSubview(contentLbl)
-        contentLbl.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: thoughtIconLabel.leadingAnchor, paddingTop: 0, paddingLeading: 15, paddingBottom: 0, paddingTrailing: 10)
-        
+        addSubview(nameLabel)
+        nameLabel.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: thoughtIconLabel.leadingAnchor, paddingTop: 0, paddingLeading: 15, paddingBottom: 0, paddingTrailing: 10)
+        contentLbl.setAnchor(top: nameLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: thoughtIconLabel.leadingAnchor, paddingTop: 0, paddingLeading: 15, paddingBottom: 0, paddingTrailing: 10)
     }
 }

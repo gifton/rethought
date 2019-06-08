@@ -24,12 +24,8 @@ class MSGBoardLinkView: MSGBoardComponent {
         
         // set linkBuilder content
         // if there is no rawURL set image to placeholder
-        if let rawURL = lb.rawIconUrl {
-            if let url = URL(string: rawURL) {
-                linkImageView.download(from: url)
-            } else {
-                linkImageView.image = #imageLiteral(resourceName: "Link_light")
-            }
+        if let rawURL = lb.rawIconUrl, let url = URL(string: rawURL) {
+            linkImageView.download(from: url)
         } else {
             linkImageView.image = #imageLiteral(resourceName: "Link_light")
         }

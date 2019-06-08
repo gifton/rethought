@@ -20,7 +20,7 @@ extension UIImageView {
                 let data = data,
                 let image = UIImage(data: data)
                 else {
-                    print("counldt guard content in download")
+                    print("couldnt guard content in download")
                     completionHandler?(nil)
                     return
             }
