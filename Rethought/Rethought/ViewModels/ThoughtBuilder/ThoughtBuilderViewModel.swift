@@ -39,9 +39,9 @@ extension ThoughtBuilderViewModel: ThoughtBuilderViewModelDelegate {
         }
         print("creating entry data model")
         _ = Entry.insertEntry(into: moc,
-                                         location: location,
-                                         payload: payload,
-                                         thought: thought)
+                             location: location,
+                             payload: payload,
+                             thought: thought)
         save()
     }
     

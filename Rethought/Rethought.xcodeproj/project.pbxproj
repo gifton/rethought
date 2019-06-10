@@ -108,7 +108,7 @@
 		D7BB182F227629970084963E /* MSGBoardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB182E227629970084963E /* MSGBoardDelegate.swift */; };
 		D7BB1833227629EE0084963E /* MSGBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB1832227629EE0084963E /* MSGBoard.swift */; };
 		D7BB1836227631920084963E /* MSGContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB1835227631920084963E /* MSGContext.swift */; };
-		D7BB1839227656AC0084963E /* MSGBoardViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB1838227656AC0084963E /* MSGBoardViews.swift */; };
+		D7BB1839227656AC0084963E /* MSGBoardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB1838227656AC0084963E /* MSGBoardComponent.swift */; };
 		D7BB183B227886B80084963E /* MSGResponseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB183A227886B80084963E /* MSGResponseView.swift */; };
 		D7BB183D227892F40084963E /* MSGThoughtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB183C227892F40084963E /* MSGThoughtView.swift */; };
 		D7BE8F1C2278BAAD00B15F06 /* MSGWelcomeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BE8F1B2278BAAD00B15F06 /* MSGWelcomeCard.swift */; };
@@ -229,7 +229,7 @@
 		D7BB182E227629970084963E /* MSGBoardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardDelegate.swift; sourceTree = "<group>"; };
 		D7BB1832227629EE0084963E /* MSGBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoard.swift; sourceTree = "<group>"; };
 		D7BB1835227631920084963E /* MSGContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGContext.swift; sourceTree = "<group>"; };
-		D7BB1838227656AC0084963E /* MSGBoardViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardViews.swift; sourceTree = "<group>"; };
+		D7BB1838227656AC0084963E /* MSGBoardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardComponent.swift; sourceTree = "<group>"; };
 		D7BB183A227886B80084963E /* MSGResponseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGResponseView.swift; sourceTree = "<group>"; };
 		D7BB183C227892F40084963E /* MSGThoughtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGThoughtView.swift; sourceTree = "<group>"; };
 		D7BE8F1B2278BAAD00B15F06 /* MSGWelcomeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGWelcomeCard.swift; sourceTree = "<group>"; };
@@ -619,7 +619,7 @@
 			children = (
 				D7149382227CB817005B681D /* entry+thought */,
 				D7BE8F1B2278BAAD00B15F06 /* MSGWelcomeCard.swift */,
-				D7BB1838227656AC0084963E /* MSGBoardViews.swift */,
+				D7BB1838227656AC0084963E /* MSGBoardComponent.swift */,
 				D7BB183A227886B80084963E /* MSGResponseView.swift */,
 			);
 			path = components;
@@ -911,7 +911,7 @@
 				D7006EC22266F35C004E570F /* ThoughtIcon.swift in Sources */,
 				D7536FCB2262D1DD003F0920 /* UITextView.swift in Sources */,
 				D7536FB22262C895003F0920 /* ManagedObjectContext.swift in Sources */,
-				D7BB1839227656AC0084963E /* MSGBoardViews.swift in Sources */,
+				D7BB1839227656AC0084963E /* MSGBoardComponent.swift in Sources */,
 				D72F30F4228575450091DCB8 /* MSGBoardLinkView.swift in Sources */,
 				D7AF976922A03B4500AA4A65 /* ThoughtDetailTableHead.swift in Sources */,
 				D7388A18228B8A2D00627E9E /* HomeTable.swift in Sources */,
