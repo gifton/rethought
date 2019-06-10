@@ -20,13 +20,12 @@ class MSGThoughtView: MSGBoardComponent {
     }
     
     // MARK: private objects
-    private var thoughtIconLabel: UILabel = {
-        let lbl = UILabel()
+    private var thoughtIconLabel: UITextField = {
+        let lbl = UITextField()
         lbl.text = "💭"
         lbl.backgroundColor = .black
         lbl.font = Device.font.mediumTitle(ofSize: .emojiLG)
         lbl.textAlignment = .center
-        lbl.padding = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
         lbl.layer.cornerRadius = 19
         lbl.layer.masksToBounds = true
         

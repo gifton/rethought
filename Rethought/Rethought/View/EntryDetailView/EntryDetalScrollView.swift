@@ -102,13 +102,13 @@ extension EntryDetailScrollView {
         
         // set anchors
         NSLayoutConstraint.activate( [
-            titleField.heightAnchor.constraint(greaterThanOrEqualToConstant: 45),
+            titleField.heightAnchor.constraint(greaterThanOrEqualToConstant: 95),
             titleField.leadingAnchor.constraint(equalTo: locationLabel.leadingAnchor),
-            titleField.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 50),
-            titleField.widthAnchor.constraint(equalToConstant: frame.width - 90),
+            titleField.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 30),
+            titleField.widthAnchor.constraint(equalToConstant: frame.width - 100),
             detailField.heightAnchor.constraint(greaterThanOrEqualToConstant: 300),
             detailField.leadingAnchor.constraint(equalTo: locationLabel.leadingAnchor),
-            detailField.topAnchor.constraint(equalTo: titleField.bottomAnchor, constant: 10),
+            detailField.topAnchor.constraint(equalTo: titleField.bottomAnchor, constant: 25),
             detailField.widthAnchor.constraint(equalToConstant: frame.width - 90)
         ])
     }
