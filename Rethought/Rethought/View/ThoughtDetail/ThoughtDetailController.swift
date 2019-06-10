@@ -134,6 +134,11 @@ extension ThoughtDetailController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.tableCount + 1
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let viewModel = model.tapped(row: indexPath.row)
+        let controller = EntryDetailController(withModel: viewModel)
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
 
 extension ThoughtDetailController: MSGConnector, MSGCenterDelegate {

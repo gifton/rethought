@@ -165,4 +165,8 @@ extension ThoughtDetailViewModel {
         let height = currentEntry.heightForContent(width: Device.size.width - 70)
         return height
     }
+    
+    func tapped(row indexPath: Int) -> EntryDetailViewModel {
+        return EntryDetailViewModel(withEntry: entries[indexPath - 1], moc)
+    }
 }
