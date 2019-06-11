@@ -34,6 +34,7 @@
 		D73AB565229EC30000CBF939 /* EntryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73AB564229EC30000CBF939 /* EntryBuilder.swift */; };
 		D7433B49228F3C050001B371 /* HomeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7433B48228F3C050001B371 /* HomeTableCell.swift */; };
 		D7433B4B228F50410001B371 /* UITableVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7433B4A228F50410001B371 /* UITableVIew.swift */; };
+		D743F39C22AF3F0A006763D1 /* MSGBoardActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F39B22AF3F0A006763D1 /* MSGBoardActions.swift */; };
 		D74D1B22229F787300FB7D95 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B21229F787300FB7D95 /* Animator.swift */; };
 		D74D1B2722A0087E00FB7D95 /* ThoughtDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */; };
 		D74D1B2922A0095200FB7D95 /* ThoughtDetailSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2822A0095200FB7D95 /* ThoughtDetailSearchBar.swift */; };
@@ -153,6 +154,7 @@
 		D73AB564229EC30000CBF939 /* EntryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryBuilder.swift; sourceTree = "<group>"; };
 		D7433B48228F3C050001B371 /* HomeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableCell.swift; sourceTree = "<group>"; };
 		D7433B4A228F50410001B371 /* UITableVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableVIew.swift; sourceTree = "<group>"; };
+		D743F39B22AF3F0A006763D1 /* MSGBoardActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardActions.swift; sourceTree = "<group>"; };
 		D74D1B21229F787300FB7D95 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailController.swift; sourceTree = "<group>"; };
 		D74D1B2822A0095200FB7D95 /* ThoughtDetailSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailSearchBar.swift; sourceTree = "<group>"; };
@@ -600,6 +602,7 @@
 				D7BB1837227656920084963E /* components */,
 				D7BB182E227629970084963E /* MSGBoardDelegate.swift */,
 				D7BB1832227629EE0084963E /* MSGBoard.swift */,
+				D743F39B22AF3F0A006763D1 /* MSGBoardActions.swift */,
 			);
 			path = MessageBoard;
 			sourceTree = "<group>";
@@ -820,6 +823,7 @@
 				D7C6542E226A850B008A66EF /* UIbutton.swift in Sources */,
 				D7BB183D227892F40084963E /* MSGThoughtView.swift in Sources */,
 				D7149384227CB830005B681D /* MSGBoardNoteView.swift in Sources */,
+				D743F39C22AF3F0A006763D1 /* MSGBoardActions.swift in Sources */,
 				D7006EBB22653D59004E570F /* ThoughtPreview.swift in Sources */,
 				D7006EC822671C96004E570F /* NoteBuilder.swift in Sources */,
 				D7536FB52262C8ED003F0920 /* Array.swift in Sources */,

@@ -14,8 +14,3 @@ protocol MSGBoardDelegate {
     func addEntry<K: EntryBuilder>(_ payload: K)
     func addThought(_ payload: ThoughtPreview)
 }
-
-protocol MSGBoardResponse {
-    var content: String { get }
-}
-

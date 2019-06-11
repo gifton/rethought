@@ -1,10 +1,3 @@
-//
-//  MSGBoard.swift
-//  Rethought
-//
-//  Created by Dev on 4/28/19.
-//  Copyright © 2019 Wesaturate. All rights reserved.
-//
 
 import Foundation
 import UIKit
@@ -66,7 +59,7 @@ class MSGBoard: UIScrollView {
         // calculate frame
         let response = ResponseMessage(frame: CGRect(x: safeOrigin.x, y: safeOrigin.y, width: width , height: frme.height + 60), content: payload)
         // add subView
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1250)) {
             self.add(response)
         }
         
@@ -122,6 +115,7 @@ extension MSGBoard: MSGBoardDelegate {
         let frame: CGRect = CGRect(x: userResponsePaddingLeft, y: safeOrigin.y, width: Device.size.width - (userResponsePaddingLeft + userResponsePaddingRight), height: 55)
         // instantiate thought card with payload
         let thought = MSGThoughtView(frame: frame, title: payload.title)
+        thought.actions = self
         // add subView
         add(thought)
         // update layout, content size etc...
@@ -130,10 +124,16 @@ extension MSGBoard: MSGBoardDelegate {
     
     private func add(_ view: MSGBoardComponent) {
         //add room for component and response!
-        self.contentSize.height += (view.frame.height * 1.15)
+        self.contentSize.height += (view.frame.height)
         
         addSubview(view)
         msgSubViews.append(view)
         print (contentSize)
     }
+}
+
+
+extension MSGBoard: ThoughtUpdater {
+    func updateIcon(withIcon Icon: ThoughtIcon) { }
+    func updateThoughtTitle(withTitle title: String) { }
 }

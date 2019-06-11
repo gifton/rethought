@@ -4,32 +4,33 @@ import UIKit
 
 // show thought added by user
 class MSGThoughtView: MSGBoardComponent {
+    
     init(frame: CGRect, title: String) {
         thoughtTitle = title
         super.init(frame: frame)
         setView()
-        layer.cornerRadius = 20
-        layer.masksToBounds = true
     }
     
     // MARK: private vars
     private var thoughtTitle: String
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    // MARK: public vars
+    public var actions: ThoughtUpdater?
+    
+    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     // MARK: private objects
-    private var thoughtIconLabel: UITextField = {
-        let lbl = UITextField()
-        lbl.text = "💭"
-        lbl.backgroundColor = .black
-        lbl.font = Device.font.mediumTitle(ofSize: .emojiLG)
-        lbl.textAlignment = .center
-        lbl.layer.cornerRadius = 19
-        lbl.layer.masksToBounds = true
+    private var thoughtIconField: UITextView = {
+        let tf = UITextView()
+        tf.text = "💭"
+        tf.backgroundColor = .white
+        tf.font = Device.font.mediumTitle(ofSize: .emojiLG)
+        tf.textAlignment = .center
+        tf.layer.cornerRadius = 19
+        tf.layer.masksToBounds = true
+        tf.isScrollEnabled = false
         
-        return lbl
+        return tf
     }()
     private var contentLbl: UILabel = {
         let lbl = UILabel()
@@ -37,7 +38,7 @@ class MSGThoughtView: MSGBoardComponent {
         lbl.textColor = Device.colors.lightGray
         lbl.numberOfLines = 2
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.textAlignment = .right
+        lbl.textAlignment = .left
         
         return lbl
     }()
@@ -49,19 +50,35 @@ class MSGThoughtView: MSGBoardComponent {
         lbl.text = "Gifton"
         lbl.numberOfLines = 1
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.textAlignment = .right
+        lbl.textAlignment = .left
         
         return lbl
     }()
     
     // add content
     private func setView() {
-        thoughtIconLabel.frame = CGRect(x: frame.width - 70, y: 0, width: 55, height: 55)
+        thoughtIconField.frame = CGRect(x: frame.width - 70, y: 0, width: 55, height: 55)
+        thoughtIconField.delegate = self
         contentLbl.text = thoughtTitle
-        addSubview(thoughtIconLabel)
+        addSubview(thoughtIconField)
         addSubview(contentLbl)
         addSubview(nameLabel)
-        nameLabel.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: thoughtIconLabel.leadingAnchor, paddingTop: 0, paddingLeading: 15, paddingBottom: 0, paddingTrailing: 10)
-        contentLbl.setAnchor(top: nameLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: thoughtIconLabel.leadingAnchor, paddingTop: 0, paddingLeading: 15, paddingBottom: 0, paddingTrailing: 10)
+        nameLabel.setAnchor(top: topAnchor, leading: nil, bottom: nil, trailing: thoughtIconField.leadingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 10)
+        contentLbl.setAnchor(top: nameLabel.bottomAnchor, leading: nil, bottom: nil, trailing: thoughtIconField.leadingAnchor, paddingTop: 0, paddingLeading: 15, paddingBottom: 0, paddingTrailing: 10)
+        contentLbl.preferredMaxLayoutWidth = Device.size.width - 205
     }
+}
+
+extension MSGThoughtView: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.text.count > 1 {
+            textView.text = "\(textView.text!.last!)"
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        let ti = ThoughtIcon(textView.text)
+        actions?.updateIcon(withIcon: ti)
+    }
+    
 }
