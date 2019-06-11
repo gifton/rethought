@@ -40,7 +40,6 @@ class ThoughtDetailSearchBar: AnimatableView {
     private func setView() {
         
         backgroundColor = Device.colors.blue
-        layer.cornerRadius = 15
         
         sb.delegate = self
         

@@ -47,8 +47,15 @@ class ThoughtDetailViewModel: ThoughtDetailViewModelDelegate {
         print("updating icon")
     }
     
-    func delete(entryWithID id: String) {
-        print("deleting entry for thought...")
+    func delete(entryAtIndex index: Int) {
+        let entry = entries[index - 1]
+        print("entrycount: \(entries.count)")
+        print("entry is prepping for deletion: \(entry.isDeleted)")
+        moc.delete(entry)
+        print("is entry de;leted: \(entry.isDeleted)")
+        
+        save()
+        print("entrycount: \(entries.count)")
     }
     
     func deleteThought() {

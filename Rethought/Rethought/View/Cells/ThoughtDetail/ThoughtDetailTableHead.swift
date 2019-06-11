@@ -32,11 +32,11 @@ class ThoughtDetailTableHead: UITableViewCell, Animatable {
     var titleSize = CGSize.zero
     
     var locationSize = CGSize.zero
-    let locationStartPoint = CGPoint(x: 15, y: 150)
+    let locationStartPoint = CGPoint(x: 15, y: 185)
     let locationEndPoint = CGPoint(x: -200, y: 250)
     
     let dateSize = CGSize(width: 75, height: 21)
-    let dateStartPoint = CGPoint(x: Device.size.width - 100, y: 150)
+    let dateStartPoint = CGPoint(x: Device.size.width - 90, y: 185)
     let dateEndPoint = CGPoint(x: Device.size.width + 75.0, y: 250)
     
     let detailPoint = CGPoint(x: 0, y: 220)

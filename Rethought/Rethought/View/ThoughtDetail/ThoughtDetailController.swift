@@ -139,6 +139,16 @@ extension ThoughtDetailController: UITableViewDataSource, UITableViewDelegate {
         let controller = EntryDetailController(withModel: viewModel)
         navigationController?.pushViewController(controller, animated: true)
     }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            model.delete(entryAtIndex: indexPath.row)
+            tableView.reloadData()
+        }
+    }
 }
 
 extension ThoughtDetailController: MSGConnector, MSGCenterDelegate {

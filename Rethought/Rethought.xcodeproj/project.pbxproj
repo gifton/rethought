@@ -294,8 +294,8 @@
 		D7006ED7226735F9004E570F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D7B0A6C122A81B9B004B549A /* EntryDetailView */,
 				D7006EE62268CB63004E570F /* ViewController.swift */,
+				D7B0A6C122A81B9B004B549A /* EntryDetailView */,
 				D74D1B2E22A00C8100FB7D95 /* ThoughtDetail */,
 				D7C6541C226A391A008A66EF /* Auxiliary */,
 				D7006EDA22673639004E570F /* Search */,
