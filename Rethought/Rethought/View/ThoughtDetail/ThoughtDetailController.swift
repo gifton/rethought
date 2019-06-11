@@ -135,7 +135,7 @@ extension ThoughtDetailController: UITableViewDataSource, UITableViewDelegate {
         return model.tableCount + 1
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewModel = model.tapped(row: indexPath.row)
+        guard let viewModel = model.tapped(row: indexPath.row) else { return }
         let controller = EntryDetailController(withModel: viewModel)
         navigationController?.pushViewController(controller, animated: true)
     }

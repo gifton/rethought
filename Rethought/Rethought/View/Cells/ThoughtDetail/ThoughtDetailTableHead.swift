@@ -20,10 +20,13 @@ class ThoughtDetailTableHead: UITableViewCell, Animatable {
     let thoughtContent = UIView()
     let locationLabel = AnimatableLabel()
     let dateLabel = AnimatableLabel()
+    let deleteLabel = AnimatableLabel()
     
     var preview: ThoughtPreview?
-    // sizes for animation
+    
+    let animator = ViewAnimator()
     /*
+     animation sizing:
      all animations for views to feel like they arent panning with
      table view need height delta == 100 (superView animation scroll length)
     */
@@ -39,6 +42,9 @@ class ThoughtDetailTableHead: UITableViewCell, Animatable {
     let dateStartPoint = CGPoint(x: Device.size.width - 90, y: 185)
     let dateEndPoint = CGPoint(x: Device.size.width + 75.0, y: 250)
     
+    let deleteStartPoint = CGPoint(x: 15, y: 145)
+    let deleteEndPoint = CGPoint(x: -100, y: 215)
+    
     let detailPoint = CGPoint(x: 0, y: 220)
     
     func styleView() {
@@ -48,11 +54,20 @@ class ThoughtDetailTableHead: UITableViewCell, Animatable {
         locationLabel.text = "Seattle, Washington"
         locationLabel.font = Device.font.mediumTitle(ofSize: .xLarge)
         dateLabel.font = Device.font.body(ofSize: .xLarge)
+        
+        deleteLabel.text = "Delete"
+        deleteLabel.textColor = Device.colors.red
+        deleteLabel.font = Device.font.mediumTitle()
+        deleteLabel.layer.cornerRadius = 10
+        deleteLabel.layer.borderColor = Device.colors.red.cgColor
+        deleteLabel.layer.borderWidth = 0.5
+        deleteLabel.textAlignment = .center
+        deleteLabel.addTapGestureRecognizer(action: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
     }
     
     func setView() {
         //get size from string
-        let titleLabelSize = titleLabel.text!.sizeFor(font: Device.font.title(ofSize: .xXXLarge), width: Device.size.width - 50)
+        let titleLabelSize = titleLabel.text!.sizeFor(font: Device.font.title(ofSize: .xXXLarge), width: Device.size.width - 100)
         let locationLabelSize = locationLabel.text!.sizeFor(font: Device.font.mediumTitle(ofSize: .xLarge), width: Device.size.width - 50)
         
         // set sizes
@@ -63,6 +78,7 @@ class ThoughtDetailTableHead: UITableViewCell, Animatable {
         titleLabel.frame = CGRect(origin: titleStartPoint, size: titleLabelSize)
         locationLabel.frame = CGRect(origin: locationStartPoint, size: locationLabelSize)
         dateLabel.frame = CGRect(origin: dateStartPoint, size: dateSize)
+        deleteLabel.frame = CGRect(origin: deleteStartPoint, size: CGSize(width: 45, height: 25))
         
         // set frames for animation
         titleLabel.endFrame = CGRect(origin: endTitlePoint, size: titleSize)
@@ -74,14 +90,26 @@ class ThoughtDetailTableHead: UITableViewCell, Animatable {
         dateLabel.startFrame = CGRect(origin: dateStartPoint, size: dateSize)
         dateLabel.endFrame = CGRect(origin: dateEndPoint, size: dateSize)
         
+        deleteLabel.startFrame = CGRect(origin: deleteStartPoint, size: CGSize(width: 100, height: 25))
+        deleteLabel.endFrame = CGRect(origin: deleteEndPoint, size: CGSize(width: 100, height: 25))
+        
         // info bar
         detailView = ThoughtDetailInfoBar(point: detailPoint, count: preview?.entryCount ?? EntryCount.zero, icon: preview?.icon ?? "🚦")
+        detailView
+        
+        // add views to animator
+        animator.register(animatableView: titleLabel)
+        animator.register(animatableView: deleteLabel)
+        animator.register(animatableView: locationLabel)
+        animator.register(animatableView: dateLabel)
+        animator.register(animatableView: detailView)
         
         // add subviews
         addSubview(titleLabel)
         addSubview(locationLabel)
         addSubview(dateLabel)
         addSubview(detailView)
+        addSubview(deleteLabel)
     }
     
     public func set(withPreview preview: ThoughtPreview) {
@@ -92,10 +120,7 @@ class ThoughtDetailTableHead: UITableViewCell, Animatable {
     }
     
     func update(toAnimationProgress progress: CGFloat) {
-        titleLabel.update(toAnimationProgress: progress)
-        locationLabel.update(toAnimationProgress: progress)
-        dateLabel.update(toAnimationProgress: progress)
-        detailView.update(toAnimationProgress: progress * 2.5)
+        animator.updateAnimation(toProgress: progress)
         updateConstraints()
     }
 }

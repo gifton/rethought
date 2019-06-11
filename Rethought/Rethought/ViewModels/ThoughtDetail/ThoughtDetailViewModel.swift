@@ -172,7 +172,10 @@ extension ThoughtDetailViewModel {
         return height
     }
     
-    func tapped(row indexPath: Int) -> EntryDetailViewModel {
-        return EntryDetailViewModel(withEntry: entries[indexPath - 1], moc)
+    func tapped(row indexPath: Int) -> EntryDetailViewModel? {
+        if indexPath != 0 {
+            return EntryDetailViewModel(withEntry: entries[indexPath - 1], moc)
+        }
+        return nil
     }
 }
