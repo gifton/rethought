@@ -120,25 +120,33 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("selected thought: \(model.thoughts[indexPath.row].title).")
         
+        // get current cell location and animate another view in its position
         let attrs = collectionView.layoutAttributesForItem(at: indexPath)
         let cellFrameInSuperview = collectionView.convert(attrs?.frame ?? .zero, to: collectionView.superview)
         let outModel = model.displayDetail(forThought: model.thoughts[indexPath.row])
         let detail = ThoughtDetailController()
         detail.model = outModel
         
+        // create new view and add to superview at cell location
         let newView = UIView(frame: cellFrameInSuperview)
         newView.backgroundColor = .white
         newView.layer.cornerRadius = 30
         view.addSubview(newView)
         
-        UIView.animate(withDuration: 0.25, animations: {
-            newView.frame = self.view.frame
+        // animate view down, up, and out
+        UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseIn, animations: {
+            newView.frame.origin.y += 25
         }) { (true) in
-            self.navigationController?.pushViewController(detail, animated: false)
-            newView.removeFromSuperview()
+            UIView.animate(withDuration: 0.25, animations: {
+                newView.frame.origin.y -= 35
+                newView.frame = self.view.frame
+            }, completion: { (true) in
+                self.navigationController?.pushViewController(detail, animated: false)
+                newView.removeFromSuperview()
+            })
         }
+        
     }
 }
 

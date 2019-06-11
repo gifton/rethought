@@ -157,6 +157,17 @@ public class Thought: NSManagedObject {
         return thought
     }
     
+    public func deleteEntry(withID id: String) {
+        _ = allEntries.filter {
+            if $0.id == id {
+                print("id of: \(id)has been deleted")
+                managedObjectContext?.delete($0)
+            }
+            return true
+        }
+        
+    }
+    
 }
 
 extension Thought: Managed {

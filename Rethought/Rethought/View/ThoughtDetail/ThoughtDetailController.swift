@@ -146,7 +146,9 @@ extension ThoughtDetailController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             model.delete(entryAtIndex: indexPath.row)
+            reloadInputViews()
             tableView.reloadData()
+            
         }
     }
 }

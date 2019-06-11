@@ -11,7 +11,7 @@ class ThoughtDetailViewModel: ThoughtDetailViewModelDelegate {
         self.thought = thought
         
         for entry in entries {
-            print(entry.type)
+            print(entry.type, entry.id)
         }
     }
     
@@ -48,11 +48,10 @@ class ThoughtDetailViewModel: ThoughtDetailViewModelDelegate {
     }
     
     func delete(entryAtIndex index: Int) {
-        let entry = entries[index - 1]
+        let entryID = entries[index - 1].id
         print("entrycount: \(entries.count)")
-        print("entry is prepping for deletion: \(entry.isDeleted)")
-        moc.delete(entry)
-        print("is entry de;leted: \(entry.isDeleted)")
+        
+        thought.deleteEntry(withID: entryID)
         
         save()
         print("entrycount: \(entries.count)")
