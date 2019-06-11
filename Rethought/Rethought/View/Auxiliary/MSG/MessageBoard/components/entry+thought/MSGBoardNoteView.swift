@@ -6,7 +6,7 @@ import UIKit
 class MSGBoardNoteView: MSGBoardComponent {
     init(frame: CGRect, payload: NoteBuilder) {
         builder = payload
-        let height = (builder.title.sizeFor(font: Device.font.title(), width: Device.size.newNoteBoardView).height) + (builder.detail.sizeFor(font: Device.font.formalBodyText(), width: Device.size.newNoteBoardView).height) + 45.0
+        let height = (builder.title.sizeFor(font: Device.font.title(), width: Device.size.newNoteBoardView).height) + (builder.detail.sizeFor(font: Device.font.formalBodyText(), width: Device.size.newNoteBoardView).height) + 100.0
         
         super.init(frame: CGRect(x: frame.origin.x, y: frame.origin.y, width: Device.size.newNoteBoardView, height: height))
         backgroundColor = .white
