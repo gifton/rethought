@@ -4,7 +4,7 @@ import Foundation
 protocol ThoughtDetailDelegate {
     func requestClose()
     func delete(entry: Entry)
-    func delete(thought: Thought)
+    func deleteThought()
     func search(for payload: String)
     func endSearch()
     func updateIcon(to: String)

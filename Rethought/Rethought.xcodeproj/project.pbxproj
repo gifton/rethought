@@ -35,6 +35,7 @@
 		D7433B49228F3C050001B371 /* HomeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7433B48228F3C050001B371 /* HomeTableCell.swift */; };
 		D7433B4B228F50410001B371 /* UITableVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7433B4A228F50410001B371 /* UITableVIew.swift */; };
 		D743F39C22AF3F0A006763D1 /* MSGBoardActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F39B22AF3F0A006763D1 /* MSGBoardActions.swift */; };
+		D743F39E22B06DD1006763D1 /* ConfirmDeletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F39D22B06DD1006763D1 /* ConfirmDeletionView.swift */; };
 		D74D1B22229F787300FB7D95 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B21229F787300FB7D95 /* Animator.swift */; };
 		D74D1B2722A0087E00FB7D95 /* ThoughtDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */; };
 		D74D1B2922A0095200FB7D95 /* ThoughtDetailSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2822A0095200FB7D95 /* ThoughtDetailSearchBar.swift */; };
@@ -155,6 +156,7 @@
 		D7433B48228F3C050001B371 /* HomeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableCell.swift; sourceTree = "<group>"; };
 		D7433B4A228F50410001B371 /* UITableVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableVIew.swift; sourceTree = "<group>"; };
 		D743F39B22AF3F0A006763D1 /* MSGBoardActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardActions.swift; sourceTree = "<group>"; };
+		D743F39D22B06DD1006763D1 /* ConfirmDeletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDeletionView.swift; sourceTree = "<group>"; };
 		D74D1B21229F787300FB7D95 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailController.swift; sourceTree = "<group>"; };
 		D74D1B2822A0095200FB7D95 /* ThoughtDetailSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailSearchBar.swift; sourceTree = "<group>"; };
@@ -647,6 +649,7 @@
 				D75EE77E22AAFA26006D0971 /* EntryActionBar.swift */,
 				D7FEEBE622939F5500D6D1C8 /* ShowOptionsView.swift */,
 				D77A7D8E229B3E0E009B1781 /* EntryCountBlock.swift */,
+				D743F39D22B06DD1006763D1 /* ConfirmDeletionView.swift */,
 			);
 			path = Auxiliary;
 			sourceTree = "<group>";
@@ -882,6 +885,7 @@
 				D7433B4B228F50410001B371 /* UITableVIew.swift in Sources */,
 				D7B0A6C322A81BAE004B549A /* EntryDetailController.swift in Sources */,
 				D7536FBD2262CAE3003F0920 /* UICollectionView.swift in Sources */,
+				D743F39E22B06DD1006763D1 /* ConfirmDeletionView.swift in Sources */,
 				D75B8B31229210F000B38CC6 /* HomeEntryButtons.swift in Sources */,
 				D7AF976D22A1095000AA4A65 /* AnimatableLabel.swift in Sources */,
 				D7536FE92262EB0A003F0920 /* Thought.swift in Sources */,

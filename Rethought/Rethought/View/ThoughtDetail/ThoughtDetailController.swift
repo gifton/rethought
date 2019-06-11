@@ -79,7 +79,20 @@ extension ThoughtDetailController: ThoughtDetailDelegate {
     
     func delete(entry: Entry) { }
     
-    func delete(thought: Thought) { }
+    func deleteThought() {
+        print("deleting thought")
+        let hideView = UIView(frame: view.frame)
+        hideView.alpha = 0.45
+        hideView.blurBackground(type: .dark, cornerRadius: 12)
+        let confirmeDeleteView = ConfirmDeletionView(thought: thought, point: CGPoint(x: 100, y: 250))
+        confirmeDeleteView.closeButton.addTapGestureRecognizer {
+            confirmeDeleteView.removeFromSuperview()
+            hideView.removeFromSuperview()
+        }
+        
+        view.addSubview(hideView)
+        view.addSubview(confirmeDeleteView)
+    }
     
     func search(for payload: String) {
         print("begining model search from controller")
@@ -105,7 +118,11 @@ extension ThoughtDetailController: UITableViewDataSource, UITableViewDelegate {
             print("unable to register cell from controller model method call")
             return UITableViewCell()
         }
-        
+        if let conformedcell = cell as? ThoughtDetailTableHead {
+            conformedcell.deleteLabel.addTapGestureRecognizer {
+                self.deleteThought()
+            }
+        }
         // register cell as animateable only if it is
         if let conformedCell = cell as? Animatable {
             animator.register(animatableView: conformedCell)

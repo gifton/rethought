@@ -20,7 +20,7 @@ class ThoughtDetailTableHead: UITableViewCell, Animatable {
     let thoughtContent = UIView()
     let locationLabel = AnimatableLabel()
     let dateLabel = AnimatableLabel()
-    let deleteLabel = AnimatableLabel()
+    public let deleteLabel = AnimatableLabel()
     
     var preview: ThoughtPreview?
     
@@ -62,7 +62,6 @@ class ThoughtDetailTableHead: UITableViewCell, Animatable {
         deleteLabel.layer.borderColor = Device.colors.red.cgColor
         deleteLabel.layer.borderWidth = 0.5
         deleteLabel.textAlignment = .center
-        deleteLabel.addTapGestureRecognizer(action: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
     }
     
     func setView() {
@@ -95,7 +94,6 @@ class ThoughtDetailTableHead: UITableViewCell, Animatable {
         
         // info bar
         detailView = ThoughtDetailInfoBar(point: detailPoint, count: preview?.entryCount ?? EntryCount.zero, icon: preview?.icon ?? "🚦")
-        detailView
         
         // add views to animator
         animator.register(animatableView: titleLabel)
