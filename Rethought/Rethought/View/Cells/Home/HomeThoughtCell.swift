@@ -21,6 +21,7 @@ class ThoughtCollectionCell: UICollectionViewCell {
     let dateLabel = UILabel()
     let locationLabel = UILabel()
     var count = EntryCount(notes: 0, photos: 0, recordings: 0, links: 0)
+    var block: EntryCountBlock?
     
     
     private func setViews() {
@@ -62,8 +63,8 @@ class ThoughtCollectionCell: UICollectionViewCell {
         dateLabel.getStringFromDate(date: preview.date, withStyle: .medium)
         count = preview.entryCount
         
-        let block = EntryCountBlock(withCount: preview.entryCount, frame: CGRect(x: 165, y: frame.height - 50, width: 120, height: 35))
-        addSubview(block)
+        block = EntryCountBlock(withCount: preview.entryCount, frame: CGRect(x: 165, y: frame.height - 50, width: 120, height: 35))
+        addSubview(block!)
         
     }
     
@@ -103,6 +104,6 @@ class ThoughtCollectionCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
-        <#code#>
+        block = nil
     }
 }

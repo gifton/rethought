@@ -14,7 +14,7 @@ class AnimatedTabBarController: UITabBarController {
     }()
     
     override func viewDidLoad() {
-        tabBar.tintColor = Device.colors.blue
+        tabBar.tintColor = Device.colors.darkBlue
         tabBar.shadowImage = UIImage()
         tabBar.backgroundColor = Device.colors.offWhite
         tabBar.barTintColor = Device.colors.offWhite

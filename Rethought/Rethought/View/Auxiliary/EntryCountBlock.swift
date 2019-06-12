@@ -108,4 +108,5 @@ class EntryCountBlock: UIView {
         
         return outView
     }
+    
 }
