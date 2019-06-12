@@ -80,16 +80,25 @@ extension ThoughtDetailController: ThoughtDetailDelegate {
     func delete(entry: Entry) { }
     
     func deleteThought() {
-        print("deleting thought")
+        
+        // set views
         let hideView = UIView(frame: view.frame)
         hideView.alpha = 0.45
         hideView.blurBackground(type: .dark, cornerRadius: 12)
+        
+        // add tapGestures
         let confirmeDeleteView = ConfirmDeletionView(thought: thought, point: CGPoint(x: 100, y: 250))
         confirmeDeleteView.closeButton.addTapGestureRecognizer {
             confirmeDeleteView.removeFromSuperview()
             hideView.removeFromSuperview()
         }
         
+        confirmeDeleteView.deleteButton.addTapGestureRecognizer {
+            self.model.deleteThought()
+            self.requestClose()
+        }
+        
+        // add to subview
         view.addSubview(hideView)
         view.addSubview(confirmeDeleteView)
     }
@@ -102,7 +111,9 @@ extension ThoughtDetailController: ThoughtDetailDelegate {
         
     }
     
-    func updateIcon(to: String) { }
+    func updateIcon(to: String) {
+        model.updateThoughtIcon(toIcon: ThoughtIcon(to))
+    }
     
     func endSearch() {
         resignFirstResponder()

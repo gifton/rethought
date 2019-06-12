@@ -5,7 +5,7 @@ import UIKit
 class ConfirmDeletionView: UIView {
     init(thought: ThoughtPreview, point: CGPoint) {
         icon = thought.icon
-        super.init(frame: CGRect(origin: point, size: CGSize(width: 200, height: 300)))
+        super.init(frame: CGRect(origin: point, size: CGSize(width: 200, height: 150)))
         backgroundColor = Device.colors.offWhite
         layer.masksToBounds = true
         layer.cornerRadius = 12
@@ -24,8 +24,8 @@ class ConfirmDeletionView: UIView {
     func setView() {
         let confirmLabel = UILabel()
         confirmLabel.text = "Are you sure you want to delete this thought?"
-        confirmLabel.font = Device.font.body(ofSize: .large)
-        confirmLabel.frame = CGRect(x: 10, y: 40, width: frame.width - 20, height: 65)
+        confirmLabel.font = Device.font.mediumTitle(ofSize: .large)
+        confirmLabel.frame = CGRect(x: 10, y: 30, width: frame.width - 20, height: 65)
         confirmLabel.numberOfLines = 0
         addSubview(confirmLabel)
         
