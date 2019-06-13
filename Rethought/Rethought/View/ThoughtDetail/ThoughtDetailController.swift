@@ -70,7 +70,7 @@ class ThoughtDetailController: UIViewController {
 
 extension ThoughtDetailController: ThoughtDetailDelegate {
     var thought: ThoughtPreview {
-        return model.thought.preview
+        return model.thought.preview ?? .zero
     }
     
     func requestClose() {
@@ -94,8 +94,7 @@ extension ThoughtDetailController: ThoughtDetailDelegate {
         }
         
         confirmeDeleteView.deleteButton.addTapGestureRecognizer {
-            self.model.deleteThought()
-            self.requestClose()
+            self.model.deleteThought { self.requestClose() }
         }
         
         // add to subview
@@ -173,10 +172,10 @@ extension ThoughtDetailController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            model.delete(entryAtIndex: indexPath.row)
-            reloadInputViews()
-            tableView.reloadData()
-            
+            model.delete(entryAtIndex: indexPath.row) {
+                self.reloadInputViews()
+                tableView.reloadData()
+            }
         }
     }
 }

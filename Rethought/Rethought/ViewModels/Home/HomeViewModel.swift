@@ -46,6 +46,11 @@ extension HomeViewModel: HomeViewModelDelegate {
     print("thought deleted!")
     }
     
+    func refresh() {
+        thoughts = []
+        thoughts = fetchThoughts()
+    }
+    
     func retrieve(thought id: String) -> Thought? {
         return thoughts.filter{ $0.id == id }.first ?? nil
     }
@@ -57,6 +62,9 @@ extension HomeViewModel: HomeViewModelDelegate {
     
     func fetchThoughts() -> [Thought] {
         let request = Thought.sortedFetchRequest
+        request.fetchBatchSize = 20
+        request.shouldRefreshRefetchedObjects = true
+        
         do { return try moc.fetch(request) } catch let err {
             print("there was an error fetching: \(err)")
         }

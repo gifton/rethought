@@ -8,8 +8,10 @@ import UIKit
 class EntryDetailViewModel: EntryDetailViewModelDelegate {
     required init(withEntry entry: Entry, _ moc: NSManagedObjectContext) {
         self.entry = entry
+        self.moc = moc
     }
-    
+    // MARK: private vars
+    var moc: NSManagedObjectContext
     // MARK: public objects
     public var entry: Entry
     public var entryType: EntryType { return entry.computedEntryType }

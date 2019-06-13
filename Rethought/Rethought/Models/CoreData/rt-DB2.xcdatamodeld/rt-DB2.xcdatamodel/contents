@@ -6,10 +6,10 @@
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="type" attributeType="String" syncable="YES"/>
-        <relationship name="link" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LinkEntry" inverseName="entry" inverseEntity="LinkEntry" syncable="YES"/>
-        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NoteEntry" inverseName="entry" inverseEntity="NoteEntry" syncable="YES"/>
-        <relationship name="photo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PhotoEntry" inverseName="entry" inverseEntity="PhotoEntry" syncable="YES"/>
-        <relationship name="recording" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecordingEntry" inverseName="entry" inverseEntity="RecordingEntry" syncable="YES"/>
+        <relationship name="link" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="LinkEntry" inverseName="entry" inverseEntity="LinkEntry" syncable="YES"/>
+        <relationship name="note" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="NoteEntry" inverseName="entry" inverseEntity="NoteEntry" syncable="YES"/>
+        <relationship name="photo" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PhotoEntry" inverseName="entry" inverseEntity="PhotoEntry" syncable="YES"/>
+        <relationship name="recording" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="RecordingEntry" inverseName="entry" inverseEntity="RecordingEntry" syncable="YES"/>
         <relationship name="thought" maxCount="1" deletionRule="Cascade" destinationEntity="Thought" inverseName="entries" inverseEntity="Thought" syncable="YES"/>
     </entity>
     <entity name="LinkEntry" representedClassName="LinkEntry" syncable="YES">

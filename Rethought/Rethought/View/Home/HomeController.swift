@@ -1,10 +1,3 @@
-//
-//  HomeController.swift
-//  Rethought
-//
-//  Created by Dev on 5/14/19.
-//  Copyright © 2019 Wesaturate. All rights reserved.
-//
 
 import Foundation
 import UIKit
@@ -21,6 +14,7 @@ class HomeController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         // test this
+        model.refresh()
         homeHead?.thoughtCollection.reloadData()
         tv?.tv.reloadData()
     }
@@ -112,7 +106,7 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withClass: ThoughtCollectionCell.self, for: indexPath)
         let preview = model.thoughts[indexPath.row].preview
-        cell.addContext(preview)
+        cell.addContext(preview ?? .zero)
         
         return cell
     }

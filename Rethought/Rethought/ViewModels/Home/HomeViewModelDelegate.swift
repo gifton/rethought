@@ -11,7 +11,7 @@ import UIKit
 
 protocol HomeViewModelDelegate: NSObject {
     var entries: [Entry] { get }
-    
+    func refresh()
     func requestDeletion(forthought thought: Thought)
     func retrieve(thought id: String) -> Thought?
     func retrieve(entry row: Int) -> EntryDetailViewModel

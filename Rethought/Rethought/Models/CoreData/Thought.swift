@@ -35,7 +35,13 @@ public class Thought: NSManagedObject {
         return ThoughtIcon(icon)
     }
     
-    var preview: ThoughtPreview {
+    var preview: ThoughtPreview? {
+        if isDeleted {
+            return nil
+        }
+        print(title)
+        print(self)
+        date = Date()
         let preview = ThoughtPreview(thought: self)
         return preview        
     }
@@ -51,19 +57,12 @@ public class Thought: NSManagedObject {
         counts.forEach { (entry) in
             if let ent = entry as? Entry {
                 switch ent.type {
-                case "LINK":
-                    link += 1
-                case "NOTE":
-                    notes += 1
-                case "RECORDING":
-                    recording += 1
-                case "PHOTO":
-                    photo += 1
-                default:
-                    print("unknown entry type")
+                case "LINK": link += 1
+                case "NOTE": notes += 1
+                case "RECORDING": recording += 1
+                case "PHOTO": photo += 1
+                default: print("unknown entry type")
                 }
-            } else {
-                print("unable to cast entrys from thougth count")
             }
         }
         return EntryCount(notes: notes, photos: photo, recordings: recording, links: link)
@@ -158,9 +157,9 @@ public class Thought: NSManagedObject {
             return false
         }
         for ent in out {
-            print (ent)
             managedObjectContext?.delete(ent)
         }
+        print(date)
     }
     
     public func removeSelf() {

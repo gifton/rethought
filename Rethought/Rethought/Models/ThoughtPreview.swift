@@ -6,7 +6,7 @@ import CoreLocation
 // this object makes passing data more concise
 struct ThoughtPreview {
     var title:       String
-    var date:        Date
+    var date:        Date = Date()
     var location:    CLLocation?
     var icon:        String
     var entryCount:  EntryCount
@@ -29,11 +29,7 @@ struct ThoughtPreview {
         entryCount = EntryCount(notes: 0, photos: 0, recordings: 0, links: 0)
     }
     
-    init() {
-        title = "Awesome Photos on wesat"
-        date = Date()
-        location = CLLocation()
-        icon = "🔫"
-        entryCount = EntryCount(notes: 10, photos: 12, recordings: 4, links: 25)
+    static var zero: ThoughtPreview {
+        return ThoughtPreview(title: "Awesome Photos on wesat", icon: "🔫", location: CLLocation())
     }
 }

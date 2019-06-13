@@ -123,6 +123,7 @@ public class Entry: NSManagedObject {
         }
     }
     
+    // prep for deletion by deleting entryContent
     
     
     // static method to create thought with an entrybuilder in its initialization

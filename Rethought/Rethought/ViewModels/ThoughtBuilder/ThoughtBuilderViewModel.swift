@@ -37,7 +37,6 @@ extension ThoughtBuilderViewModel: ThoughtBuilderViewModelDelegate {
             print("unable to verify current thought model, returning")
             return
         }
-        print("creating entry data model")
         _ = Entry.insertEntry(into: moc,
                              location: location,
                              payload: payload,

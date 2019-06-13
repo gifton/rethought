@@ -20,7 +20,9 @@ class ThoughtDetailViewModel: ThoughtDetailViewModelDelegate {
     public var isSearching: Bool = false
     
     // MARK: public vars
-    public var thoughtPreview: ThoughtPreview { return thought.preview }
+    public var thoughtPreview: ThoughtPreview {
+        return thought.preview ?? ThoughtPreview.zero
+    }
     public var entryCount: EntryCount { return thought.entryCount }
     public var tableCount: Int {
         if isSearching { return searchedEntries.count}
@@ -34,7 +36,6 @@ class ThoughtDetailViewModel: ThoughtDetailViewModelDelegate {
     private var searchedEntries = [Entry]()
     // create new entry for thought
     func buildEntry<T>(payload: T, withLocation location: CLLocation?, completion: () -> ()) where T : EntryBuilder {
-        print("creating entry data model")
         _ = Entry.insertEntry(into: moc,
                               location: location,
                               payload: payload,
@@ -47,7 +48,7 @@ class ThoughtDetailViewModel: ThoughtDetailViewModelDelegate {
         print("updating icon")
     }
     
-    func delete(entryAtIndex index: Int) {
+    func delete(entryAtIndex index: Int, completion: () -> ()) {
         let entryID = entries[index - 1].id
         print("entrycount: \(entries.count)")
         
@@ -55,10 +56,14 @@ class ThoughtDetailViewModel: ThoughtDetailViewModelDelegate {
         
         save()
         print("entrycount: \(entries.count)")
+        
+        completion()
     }
-    
-    func deleteThought() {
+    func deleteThought(completion: () -> ()) {
         print("deleting thought")
+        thought.removeSelf()
+        save()
+        completion()
     }
     
     // call context tot save data
@@ -177,9 +182,5 @@ extension ThoughtDetailViewModel {
             return EntryDetailViewModel(withEntry: entries[indexPath - 1], moc)
         }
         return nil
-    }
-    
-    public func delete() {
-        NSManagedObjectContext.delete(self)
     }
 }
