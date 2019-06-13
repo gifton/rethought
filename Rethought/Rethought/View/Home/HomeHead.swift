@@ -18,27 +18,30 @@ class HomeHead: UIView {
     private let startHeight = CGFloat(500)
     let endHeight = CGFloat(170)
     //colors
-    private let startBGColor = UIColor(hex: "#F97757")
-    private let finishBGColor = UIColor(hex: "#457EBA")
+    private let startBGColor = UIColor(hex: "#6A46C7")
+    private let finishBGColor = UIColor(hex: "#FAC63E")
     private let dateTextColorStart = UIColor.white
     private let dateTextColorFinish = UIColor.black
     
     //frames
     private let dateStartFrame = CGRect(x: 25, y: 90, width: 200, height: 18)
     private var dateEndFrame = CGRect(x: 225, y: 65, width: 200, height: 18)
+    private let iconStartFrame = CGRect(x: Device.size.width - 65, y: 60, width: 40, height: 46)
     
     // labels
     private let rethoughtLabel = AnimatableLabel()
     public let dateLabel = AnimatableLabel()
+    // button
+    private let profileButton = UIButton()
     
     // horizontally scrolling collectionView
     public let thoughtCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 300, height: 170)
+        layout.itemSize = Device.size.largeCard
         layout.minimumLineSpacing = 15
         
-        let cv = UICollectionView(frame: CGRect(x: 5, y: 190, width: Device.size.width - 10, height: 170), collectionViewLayout: layout)
+        let cv = UICollectionView(frame: CGRect(x: 5, y: 190, width: Device.size.width - 10, height: Device.size.largeCard.height), collectionViewLayout: layout)
         cv.showsHorizontalScrollIndicator = false
         
         return cv
@@ -57,14 +60,17 @@ class HomeHead: UIView {
         addSubview(rethoughtLabel)
         addSubview(dateLabel)
         addSubview(entryPickerView)
+        addSubview(profileButton)
         
         // set frames
+        profileButton.frame = iconStartFrame
         rethoughtLabel.frame = CGRect(x: 25, y: 50, width: 200, height: 42)
         dateLabel.frame = dateStartFrame
         entryPickerView.frame = CGRect(x: 0, y: frame.height - 80, width: frame.width, height: 80)
     }
     
     private func styleView() {
+        profileButton.setImage(#imageLiteral(resourceName: "user-astronaut"), for: .normal)
         rethoughtLabel.text = "Rethought"
         rethoughtLabel.font = Device.font.title(ofSize: .emojiLG)
         rethoughtLabel.textColor = .white
@@ -96,5 +102,7 @@ extension HomeHead: Animatable {
         dateLabel.update(toAnimationProgress: progress)
         
         backgroundColor = startBGColor.animate(toColor: finishBGColor, withProgress: progress)
+        
+        profileButton.alpha = (1 - progress * 2.5)
     }
 }

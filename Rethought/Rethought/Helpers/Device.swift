@@ -13,7 +13,7 @@ struct Device {
         static let paddedMaxWidth = UIScreen.main.bounds.size.width - 20
         
         // card sizes
-        static let largeCard = CGSize(width: 300, height: 165)
+        static let largeCard = CGSize(width: 300, height: 200)
         static let smallCard = CGSize(width: UIScreen.main.bounds.size.width - 20, height: 80)
         static let newThoughtTile = CGSize(width: UIScreen.main.bounds.size.width, height: 115)
         static let newNoteBoardView: CGFloat = Device.size.width * 0.8
@@ -54,7 +54,7 @@ struct Device {
         static let lightClay = UIColor(hex: "8A9699")
         static let green     = UIColor(hex: "579C87")
         static let blue      = UIColor(hex: "5FA4EF")
-        static let yellow    = UIColor(hex: "FCCA46")
+        static let yellow    = UIColor(hex: "FAC63E")
         static let red       = UIColor(hex: "E54D5F")
         static let darkBlue  = UIColor(hex: "132544")
         //for entry types
