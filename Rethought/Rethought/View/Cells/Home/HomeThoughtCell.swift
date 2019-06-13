@@ -64,6 +64,8 @@ class ThoughtCollectionCell: UICollectionViewCell {
         count = preview.entryCount
         
         block = EntryCountBlock(withCount: preview.entryCount, frame: CGRect(x: 165, y: frame.height - 50, width: 120, height: 35))
+        block?.clearsContextBeforeDrawing = false
+        block?.isOpaque = false
         addSubview(block!)
         
     }
@@ -104,6 +106,7 @@ class ThoughtCollectionCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
+        block?.reset()
         block = nil
     }
 }
