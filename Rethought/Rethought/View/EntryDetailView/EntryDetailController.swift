@@ -28,4 +28,8 @@ extension EntryDetailController: EntryDetailDelegate {
     func returnHome() {        
         navigationController?.popViewController(animated: true)
     }
+    func deleteEntry() {
+        model.deleteEntry()
+        navigationController?.popViewController(animated: true)
+    }
 }

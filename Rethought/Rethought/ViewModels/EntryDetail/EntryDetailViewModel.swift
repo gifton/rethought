@@ -24,7 +24,9 @@ class EntryDetailViewModel: EntryDetailViewModelDelegate {
 
 
 extension EntryDetailViewModel {
-    func deleteEntry() { }
+    func deleteEntry() {
+        moc.delete(entry)
+    }
     
     func save() { }
 }

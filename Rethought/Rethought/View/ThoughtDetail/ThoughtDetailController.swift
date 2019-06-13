@@ -9,6 +9,11 @@ class ThoughtDetailController: UIViewController {
         view.backgroundColor = .white
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        reloadInputViews()
+        table.tv.reloadData()
+    }
+    
     // MARK: variables
     lazy var headView = ThoughtDetailSearchBar(startFrame: CGRect(x: 0, y: -100, width: Device.size.width, height: 100), endFrame: CGRect(x: 0, y: 0, width: Device.size.width, height: 100), preview: thought)
     var table = ThoughtDetailTable(frame: CGRect(origin: .zero, size: CGSize(width: Device.size.width, height: Device.size.height - 115)))

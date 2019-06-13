@@ -60,9 +60,8 @@ extension EntryDetailScrollView {
         dateLabel.setTopAndLeading(top: topAnchor, leading: locationLabel.trailingAnchor, paddingTop: 80, paddingLeading: 100)
         
         // set tap gesture actions
-        entryActionBar.closeButton.addTapGestureRecognizer {
-            self.entryDelegate?.returnHome()
-        }
+        entryActionBar.closeButton.addTapGestureRecognizer { self.entryDelegate?.returnHome() }
+        entryActionBar.deleteButton.addTapGestureRecognizer { self.entryDelegate?.deleteEntry() }
     }
     func decideContent() {
         // tell text views to clear content before redisplaying
