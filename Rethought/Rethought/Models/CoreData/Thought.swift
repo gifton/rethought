@@ -1,11 +1,3 @@
-//
-//  Thought+CoreDataProperties.swift
-//  Rethought
-//
-//  Created by Dev on 4/13/19.
-//  Copyright © 2019 Wesaturate. All rights reserved.
-//
-//
 
 import Foundation
 import CoreData
@@ -158,14 +150,22 @@ public class Thought: NSManagedObject {
     }
     
     public func deleteEntry(withID id: String) {
-        _ = allEntries.filter {
-            if $0.id == id {
-                print("id of: \(id)has been deleted")
-                managedObjectContext?.delete($0)
-            }
-            return true
-        }
         
+        let out = allEntries.filter {
+            if $0.id == id {
+                return true
+            }
+            return false
+        }
+        for ent in out {
+            print (ent)
+            managedObjectContext?.delete(ent)
+        }
+    }
+    
+    public func removeSelf() {
+        managedObjectContext?.delete(self)
+        print(self.isDeleted)
     }
     
 }

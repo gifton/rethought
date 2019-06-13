@@ -178,4 +178,8 @@ extension ThoughtDetailViewModel {
         }
         return nil
     }
+    
+    public func delete() {
+        NSManagedObjectContext.delete(self)
+    }
 }
