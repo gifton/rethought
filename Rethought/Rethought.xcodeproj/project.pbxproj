@@ -36,6 +36,7 @@
 		D7433B4B228F50410001B371 /* UITableVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7433B4A228F50410001B371 /* UITableVIew.swift */; };
 		D743F39C22AF3F0A006763D1 /* MSGBoardActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F39B22AF3F0A006763D1 /* MSGBoardActions.swift */; };
 		D743F39E22B06DD1006763D1 /* ConfirmDeletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F39D22B06DD1006763D1 /* ConfirmDeletionView.swift */; };
+		D743F3A022B1D7B6006763D1 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F39F22B1D7B6006763D1 /* IconView.swift */; };
 		D74D1B22229F787300FB7D95 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B21229F787300FB7D95 /* Animator.swift */; };
 		D74D1B2722A0087E00FB7D95 /* ThoughtDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */; };
 		D74D1B2922A0095200FB7D95 /* ThoughtDetailSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2822A0095200FB7D95 /* ThoughtDetailSearchBar.swift */; };
@@ -157,6 +158,7 @@
 		D7433B4A228F50410001B371 /* UITableVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableVIew.swift; sourceTree = "<group>"; };
 		D743F39B22AF3F0A006763D1 /* MSGBoardActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardActions.swift; sourceTree = "<group>"; };
 		D743F39D22B06DD1006763D1 /* ConfirmDeletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDeletionView.swift; sourceTree = "<group>"; };
+		D743F39F22B1D7B6006763D1 /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		D74D1B21229F787300FB7D95 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailController.swift; sourceTree = "<group>"; };
 		D74D1B2822A0095200FB7D95 /* ThoughtDetailSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailSearchBar.swift; sourceTree = "<group>"; };
@@ -650,6 +652,7 @@
 				D7FEEBE622939F5500D6D1C8 /* ShowOptionsView.swift */,
 				D77A7D8E229B3E0E009B1781 /* EntryCountBlock.swift */,
 				D743F39D22B06DD1006763D1 /* ConfirmDeletionView.swift */,
+				D743F39F22B1D7B6006763D1 /* IconView.swift */,
 			);
 			path = Auxiliary;
 			sourceTree = "<group>";
@@ -856,6 +859,7 @@
 				D707722D22A9731D00269804 /* EntryDetailDelegate.swift in Sources */,
 				D75B8B2F22912FD800B38CC6 /* HomeThoughtCell.swift in Sources */,
 				D7006EE5226841D2004E570F /* ConversationView.swift in Sources */,
+				D743F3A022B1D7B6006763D1 /* IconView.swift in Sources */,
 				D77A7D95229E5178009B1781 /* ThoughtDetailViewModel.swift in Sources */,
 				D7AF977122A10A4D00AA4A65 /* CGRect.swift in Sources */,
 				D7536FD52262D8AA003F0920 /* rt-DB2.xcdatamodeld in Sources */,

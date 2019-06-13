@@ -20,18 +20,19 @@ class MSGThoughtView: MSGBoardComponent {
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     // MARK: private objects
-    private var thoughtIconField: UITextView = {
-        let tf = UITextView()
-        tf.text = "💭"
-        tf.backgroundColor = .white
-        tf.font = Device.font.mediumTitle(ofSize: .emojiLG)
-        tf.textAlignment = .center
-        tf.layer.cornerRadius = 19
-        tf.layer.masksToBounds = true
-        tf.isScrollEnabled = false
-        
-        return tf
-    }()
+    let thoughtIconField: IconView!
+//    private var thoughtIconField: UITextView = {
+//        let tf = UITextView()
+//        tf.text = "💭"
+//        tf.backgroundColor = .white
+//        tf.font = Device.font.mediumTitle(ofSize: .emojiLG)
+//        tf.textAlignment = .center
+//        tf.layer.cornerRadius = 19
+//        tf.layer.masksToBounds = true
+//        tf.isScrollEnabled = false
+//        
+//        return tf
+//    }()
     private var contentLbl: UILabel = {
         let lbl = UILabel()
         lbl.font = Device.font.mediumTitle(ofSize: .large)
@@ -57,7 +58,8 @@ class MSGThoughtView: MSGBoardComponent {
     
     // add content
     private func setView() {
-        thoughtIconField.frame = CGRect(x: frame.width - 70, y: 0, width: 55, height: 55)
+        thoughtIconField = IconView(frame: CGRect(x: frame.width - 70, y: 0, width: 55, height: 55), emoji: <#T##ThoughtIcon#>)
+        thoughtIconField.frame =
         thoughtIconField.delegate = self
         contentLbl.text = thoughtTitle
         addSubview(thoughtIconField)
