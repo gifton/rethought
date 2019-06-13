@@ -20,19 +20,7 @@ class MSGThoughtView: MSGBoardComponent {
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     // MARK: private objects
-    let thoughtIconField: IconView!
-//    private var thoughtIconField: UITextView = {
-//        let tf = UITextView()
-//        tf.text = "💭"
-//        tf.backgroundColor = .white
-//        tf.font = Device.font.mediumTitle(ofSize: .emojiLG)
-//        tf.textAlignment = .center
-//        tf.layer.cornerRadius = 19
-//        tf.layer.masksToBounds = true
-//        tf.isScrollEnabled = false
-//        
-//        return tf
-//    }()
+    var thoughtIconField: IconView!
     private var contentLbl: UILabel = {
         let lbl = UILabel()
         lbl.font = Device.font.mediumTitle(ofSize: .large)
@@ -58,9 +46,9 @@ class MSGThoughtView: MSGBoardComponent {
     
     // add content
     private func setView() {
-        thoughtIconField = IconView(frame: CGRect(x: frame.width - 70, y: 0, width: 55, height: 55), emoji: <#T##ThoughtIcon#>)
-        thoughtIconField.frame =
-        thoughtIconField.delegate = self
+        
+        thoughtIconField = IconView(frame: CGRect(x: frame.width - 70, y: 0, width: 55, height: 55), emoji: ThoughtIcon("💭"))
+        thoughtIconField.iconDelegate = self
         contentLbl.text = thoughtTitle
         addSubview(thoughtIconField)
         addSubview(contentLbl)
@@ -71,16 +59,14 @@ class MSGThoughtView: MSGBoardComponent {
     }
 }
 
-extension MSGThoughtView: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView) {
-        if textView.text.count > 1 {
-            textView.text = "\(textView.text!.last!)"
-        }
+
+protocol IconViewDelegate {
+    func updateIcon(to icon: ThoughtIcon)
+}
+
+extension MSGThoughtView: IconViewDelegate {
+    func updateIcon(to icon: ThoughtIcon) {
+        print("updatingicon to: \(icon.icon)")
+        actions?.updateIcon(withIcon: icon)
     }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        let ti = ThoughtIcon(textView.text)
-        actions?.updateIcon(withIcon: ti)
-    }
-    
 }

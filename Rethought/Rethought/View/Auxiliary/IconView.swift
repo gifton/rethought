@@ -16,6 +16,8 @@ class IconView: UITextView {
         self.text = emoji.icon
     }
     
+    var iconDelegate: IconViewDelegate?
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -42,6 +44,7 @@ extension IconView: UITextViewDelegate {
     //set completion to yes
     func textViewDidEndEditing(_ textView: UITextView) {
         self.isCompleted = true
+        iconDelegate?.updateIcon(to: emoji)
     }
 }
 
