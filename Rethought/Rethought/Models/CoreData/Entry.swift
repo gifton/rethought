@@ -204,5 +204,9 @@ extension Entry {
 //        let re: RecordingEntry = RecordingEntry.insert(into: moc, builder: rb)
 //        recording = re
     }
+    
+    public func removeSelf() {
+        managedObjectContext?.delete(self)
+    }
 }
 

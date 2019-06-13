@@ -31,17 +31,11 @@ public class Thought: NSManagedObject {
         }
         return out
     }
-    var thoughtIcon: ThoughtIcon {
-        return ThoughtIcon(icon)
-    }
+    var thoughtIcon: ThoughtIcon { return ThoughtIcon(icon) }
     
     var preview: ThoughtPreview? {
-        if isDeleted {
-            return nil
-        }
-        print(title)
-        print(self)
-        date = Date()
+        if isDeleted { return nil }
+//        date = Date()
         let preview = ThoughtPreview(thought: self)
         return preview        
     }
@@ -159,12 +153,10 @@ public class Thought: NSManagedObject {
         for ent in out {
             managedObjectContext?.delete(ent)
         }
-        print(date)
     }
     
     public func removeSelf() {
         managedObjectContext?.delete(self)
-        print(self.isDeleted)
     }
     
 }

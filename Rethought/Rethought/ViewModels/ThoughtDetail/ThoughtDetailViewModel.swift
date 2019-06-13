@@ -49,10 +49,12 @@ class ThoughtDetailViewModel: ThoughtDetailViewModelDelegate {
     }
     
     func delete(entryAtIndex index: Int, completion: () -> ()) {
-        let entryID = entries[index - 1].id
-        print("entrycount: \(entries.count)")
-        
-        thought.deleteEntry(withID: entryID)
+//        let entryID = entries[index - 1].id
+//        print("entrycount: \(entries.count)")
+//
+//        thought.deleteEntry(withID: entryID)
+        let entry = entries[index - 1]
+        moc.delete(entry)
         
         save()
         print("entrycount: \(entries.count)")

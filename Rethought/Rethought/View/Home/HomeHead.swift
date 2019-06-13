@@ -39,7 +39,7 @@ class HomeHead: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = Device.size.largeCard
-        layout.minimumLineSpacing = 15
+        layout.minimumLineSpacing = 10
         
         let cv = UICollectionView(frame: CGRect(x: 5, y: 190, width: Device.size.width - 10, height: Device.size.largeCard.height), collectionViewLayout: layout)
         cv.showsHorizontalScrollIndicator = false

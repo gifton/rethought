@@ -10,7 +10,7 @@
         <relationship name="note" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="NoteEntry" inverseName="entry" inverseEntity="NoteEntry" syncable="YES"/>
         <relationship name="photo" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PhotoEntry" inverseName="entry" inverseEntity="PhotoEntry" syncable="YES"/>
         <relationship name="recording" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="RecordingEntry" inverseName="entry" inverseEntity="RecordingEntry" syncable="YES"/>
-        <relationship name="thought" maxCount="1" deletionRule="Cascade" destinationEntity="Thought" inverseName="entries" inverseEntity="Thought" syncable="YES"/>
+        <relationship name="thought" maxCount="1" deletionRule="Nullify" destinationEntity="Thought" inverseName="entries" inverseEntity="Thought" syncable="YES"/>
     </entity>
     <entity name="LinkEntry" representedClassName="LinkEntry" syncable="YES">
         <attribute name="detail" attributeType="String" syncable="YES"/>
@@ -44,11 +44,11 @@
         <relationship name="entries" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Entry" inverseName="thought" inverseEntity="Entry" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Entry" positionX="-54" positionY="36" width="128" height="195"/>
-        <element name="LinkEntry" positionX="0" positionY="126" width="128" height="120"/>
-        <element name="NoteEntry" positionX="-36" positionY="81" width="128" height="90"/>
-        <element name="PhotoEntry" positionX="-27" positionY="99" width="128" height="90"/>
-        <element name="RecordingEntry" positionX="-18" positionY="108" width="128" height="90"/>
-        <element name="Thought" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="Entry" positionX="-402.98046875" positionY="-108.875" width="128" height="193"/>
+        <element name="LinkEntry" positionX="-8.96875" positionY="-203.8984375" width="128" height="120"/>
+        <element name="NoteEntry" positionX="-3.390625" positionY="-48.86328125" width="128" height="90"/>
+        <element name="PhotoEntry" positionX="12.53515625" positionY="63.9765625" width="128" height="90"/>
+        <element name="RecordingEntry" positionX="-5.58203125" positionY="160.74609375" width="128" height="90"/>
+        <element name="Thought" positionX="-677.15234375" positionY="-105.37109375" width="128" height="150"/>
     </elements>
 </model>
