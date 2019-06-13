@@ -35,7 +35,7 @@ class ThoughtCollectionCell: UICollectionViewCell {
         thoughtIcon.frame = CGRect(x: 25, y: 20, width: 35, height: 46)
         titleLabel.frame.origin = CGPoint(x: 75, y: 20)
         titleLabel.frame.size.width = frame.width - 95
-        dateLabel.frame = CGRect(x: 25, y: frame.height - 55, width: 150, height: 15)
+        dateLabel.frame = CGRect(x: 25, y: frame.height - 50, width: 150, height: 15)
         locationLabel.frame = CGRect(x: 25, y: frame.height - 30, width: 150, height: 15)
     }
     private func styleViews() {
@@ -88,7 +88,7 @@ class ThoughtCollectionCell: UICollectionViewCell {
         }
         
         context.clear(rect)
-        UIColor.white.withAlphaComponent(0.25).setFill()
+        UIColor.white.withAlphaComponent(0.185).setFill()
         path.fill()
     }
     

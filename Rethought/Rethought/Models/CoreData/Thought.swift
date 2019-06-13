@@ -29,6 +29,10 @@ public class Thought: NSManagedObject {
             }
             out.append(computedEntry)
         }
+        
+        out.sort { (ent1, ent2) -> Bool in
+            ent1.date > ent2.date
+        }
         return out
     }
     var thoughtIcon: ThoughtIcon { return ThoughtIcon(icon) }

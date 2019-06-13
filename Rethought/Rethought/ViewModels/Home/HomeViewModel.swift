@@ -64,6 +64,9 @@ extension HomeViewModel: HomeViewModelDelegate {
         let request = Thought.sortedFetchRequest
         request.fetchBatchSize = 20
         request.shouldRefreshRefetchedObjects = true
+        request.returnsObjectsAsFaults = false
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+        request.sortDescriptors = [sortDescriptor]
         
         do { return try moc.fetch(request) } catch let err {
             print("there was an error fetching: \(err)")
