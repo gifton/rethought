@@ -40,6 +40,7 @@ class EntryScrollView: UIScrollView {
             }
             views.append(btn)
         }
+        allView.isSelected()
         let stack = UIStackView(arrangedSubviews: views,
                                 axis: .horizontal,
                                 spacing: 25, alignment: .fill, distribution: .fillEqually)
@@ -148,7 +149,7 @@ class EntryButton: UIView {
     // borders to be added and removed
     var borders = [UIView]()
     public func isSelected() {
-        borders = addBorders(edges: [.bottom], color: .white, thickness: 0.5)
+        borders = addBorders(edges: [.bottom], color: .white, thickness: 1.5)
     }
     
     public func isDeselected() {
