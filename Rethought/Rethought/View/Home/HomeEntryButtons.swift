@@ -13,14 +13,15 @@ class EntryScrollView: UIScrollView {
     }
     
     // MARK: private objects
-    private var linkView: UIView!
-    private var photoView: UIView!
-    private var noteView: UIView!
-    private var recordingView: UIView!
-    private var allView: UIView!
+    private var linkView: EntryButton!
+    private var photoView: EntryButton!
+    private var noteView: EntryButton!
+    private var recordingView: EntryButton!
+    private var allView: EntryButton!
     
     // MARK: public variables
     public var homeDelegate: HomeDelegate?
+    public var currentType: EntryType = .all
     
     private func setView() {
         var views = [UIView]()
@@ -28,6 +29,14 @@ class EntryScrollView: UIScrollView {
             let btn = EntryButton(type: type) {
                 print("selected: \(type)")
                 self.homeDelegate?.didSelectEntryType(ofType: type)
+            }
+            switch type {
+            case .link: linkView = btn
+            case .photo: photoView = btn
+            case .note: noteView = btn
+            case .recording: recordingView = btn
+            case .all: allView = btn
+            default: ()
             }
             views.append(btn)
         }
@@ -40,6 +49,35 @@ class EntryScrollView: UIScrollView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // call from controller
+    public func setSelectedEntry(ofType type: EntryType) {
+        // check if type is same, if so return
+        if type == currentType {
+            return
+        }
+        
+        // remove current border
+        switch currentType {
+        case .link: linkView.isDeselected()
+        case .photo: photoView.isDeselected()
+        case .recording: recordingView.isDeselected()
+        case .note: noteView.isDeselected()
+        case .all: allView.isDeselected()
+        default: return
+        }
+        // add new border
+        switch type {
+        case .link: linkView.isSelected()
+        case .photo: photoView.isSelected()
+        case .recording: recordingView.isSelected()
+        case .note: noteView.isSelected()
+        case .all: allView.isSelected()
+        default: return
+        }
+        // set new entry type
+        currentType = type
+    }
 }
 
 
@@ -49,23 +87,23 @@ class EntryButton: UIView {
         var frame = CGRect(origin: .zero, size: .zero)
         switch type {
         case .note:
-            frame = CGRect(origin: .zero, size: CGSize(width: 53, height: 40))
+            frame = CGRect(origin: .zero, size: CGSize(width: 53, height: 42.5))
             image.image = #imageLiteral(resourceName: "newNote")
             image.setHeightWidth(width: 25, height: 25)
         case .link:
-            frame = CGRect(origin: .zero, size: CGSize(width: 32, height: 53))
+            frame = CGRect(origin: .zero, size: CGSize(width: 32, height: 55.5))
             image.image = #imageLiteral(resourceName: "link_btn")
             image.setHeightWidth(width: 25, height: 25)
         case .recording:
-            frame = CGRect(origin: .zero, size: CGSize(width: 75, height: 51))
+            frame = CGRect(origin: .zero, size: CGSize(width: 75, height: 53.5))
             image.image = #imageLiteral(resourceName: "recordings button")
             image.setHeightWidth(width: 17, height: 25)
         case .all:
-            frame = CGRect(origin: .zero, size: CGSize(width: 75, height: 51))
+            frame = CGRect(origin: .zero, size: CGSize(width: 75, height: 53.5))
             image.image = #imageLiteral(resourceName: "cloud_white")
             image.setHeightWidth(width: 25, height: 17)
         default:
-            frame = CGRect(origin: .zero, size: CGSize(width: 51, height: 53))
+            frame = CGRect(origin: .zero, size: CGSize(width: 51, height: 55.5))
             image.image = #imageLiteral(resourceName: "photo_btn")
             image.setHeightWidth(width: 29.5, height: 25)
         }
@@ -93,12 +131,27 @@ class EntryButton: UIView {
         addSubview(label)
         addSubview(image)
         
-        image.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25).isActive = true
+        if type == .recording {
+            image.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30).isActive = true
+            image.topAnchor.constraint(equalTo: topAnchor, constant: 2.5).isActive = true
+        } else {
+            image.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25).isActive = true
+            image.topAnchor.constraint(equalTo: topAnchor, constant: 2.5).isActive = true
+        }
         
         label.text = type.rawValue
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center
         label.textColor = .white
         label.setAnchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
+    }
+    // borders to be added and removed
+    var borders = [UIView]()
+    public func isSelected() {
+        borders = addBorders(edges: [.bottom], color: .white, thickness: 0.5)
+    }
+    
+    public func isDeselected() {
+        borders.forEach { $0.removeFromSuperview() }
     }
 }

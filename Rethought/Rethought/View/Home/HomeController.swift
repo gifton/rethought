@@ -38,6 +38,7 @@ class HomeController: UIViewController {
         homeHead?.thoughtCollection.dataSource = self
         homeHead?.thoughtCollection.delegate = self
         homeHead?.entryPickerView.homeDelegate = self
+        
         view.addSubview(homeHead!)
         view.addSubview(tv!)
     }
@@ -156,6 +157,7 @@ extension HomeController: HomeDelegate {
     func didSelectEntryType(ofType type: EntryType) {
         model.didSelectEntry(ofType: type) {
             self.tv?.updatepackage(withContent: model.homeContentPackage)
+            self.homeHead?.entryPickerView.setSelectedEntry(ofType: type)
         }
     }
     

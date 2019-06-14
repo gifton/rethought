@@ -52,6 +52,9 @@ class HomeHead: UIView {
     
     private func setView() {
         
+        // set entry picker
+        
+        
         // set collection
         thoughtCollection.register(cellWithClass: ThoughtCollectionCell.self)
         
