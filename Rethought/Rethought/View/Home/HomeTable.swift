@@ -92,3 +92,14 @@ extension HomeTable: UITableViewDelegate {
         delegate?.show(entryForIndex: indexPath.row)
     }
 }
+
+// handle when new content for table is requested
+extension HomeTable: HomeContentPackageReciever {
+    func updatepackage(withContent content: HomeContentPackage) {
+        updateTitle(withContent: content.title)
+    }
+    
+    private func updateTitle(withContent string: String) {
+        self.entryLabel.text = string
+    }
+}

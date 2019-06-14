@@ -2,10 +2,6 @@
 import Foundation
 import UIKit
 
-protocol HomeDelegate {
-    func show(entryForIndex row: Int)
-}
-
 class HomeController: UIViewController {
     
     init() {
@@ -22,17 +18,16 @@ class HomeController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var animator = ViewAnimator()
-    var model: HomeViewModel! {
-        didSet {
-            setView()
-        }
+    // MARK: public vars
+    public var animator = ViewAnimator()
+    public var model: HomeViewModel! {
+        didSet { setView() }
     }
-    var homeHead: HomeHead?
-    var tv: HomeTable?
+    public var homeHead: HomeHead?
+    public var tv: HomeTable?
     lazy var tableButtonMoreView: UIView = UIView()
     
-    func setView() {
+    private func setView() {
         tv = HomeTable(frame: CGRect(x: 0, y: 500, width: Device.size.width, height: Device.size.height - 500))
         tv?.delegate = self
         tv?.tv.dataSource = self
@@ -46,7 +41,11 @@ class HomeController: UIViewController {
     }
     
 }
+
+// updating views in controller
 extension HomeController: Animator {
+    
+    // updating head view with progress float for calculating animation
     func didUpdate() {
         let progress = tv?.animationProgress ?? 1
         homeHead?.update(toAnimationProgress: progress)
@@ -79,6 +78,8 @@ extension HomeController: Animator {
             newView.layer.opacity = 0.55
         }
     }
+    
+    // method for registering a view to animnating controller
     func register(_ view: Animatable) {
         animator.register(animatableView: view)
     }
@@ -140,7 +141,6 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
                 newView.removeFromSuperview()
             })
         }
-        
     }
 }
 
@@ -150,5 +150,13 @@ extension HomeController: HomeDelegate {
         let controller = EntryDetailController(withModel: entryModel)
         navigationController?.pushViewController(controller, animated: true)
     }
+    
+    func didSelectEntryType(ofType type: EntryType) {
+        model.didSelectEntry(ofType: type) {
+            self.tv?.updatepackage(withContent: model.homeContentPackage)
+        }
+    }
+    
+    
 }
 

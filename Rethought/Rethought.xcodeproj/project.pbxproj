@@ -37,6 +37,7 @@
 		D743F39C22AF3F0A006763D1 /* MSGBoardActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F39B22AF3F0A006763D1 /* MSGBoardActions.swift */; };
 		D743F39E22B06DD1006763D1 /* ConfirmDeletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F39D22B06DD1006763D1 /* ConfirmDeletionView.swift */; };
 		D743F3A022B1D7B6006763D1 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F39F22B1D7B6006763D1 /* IconView.swift */; };
+		D743F3A222B4113C006763D1 /* HomeDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F3A122B4113C006763D1 /* HomeDelegates.swift */; };
 		D74D1B22229F787300FB7D95 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B21229F787300FB7D95 /* Animator.swift */; };
 		D74D1B2722A0087E00FB7D95 /* ThoughtDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */; };
 		D74D1B2922A0095200FB7D95 /* ThoughtDetailSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2822A0095200FB7D95 /* ThoughtDetailSearchBar.swift */; };
@@ -159,6 +160,7 @@
 		D743F39B22AF3F0A006763D1 /* MSGBoardActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSGBoardActions.swift; sourceTree = "<group>"; };
 		D743F39D22B06DD1006763D1 /* ConfirmDeletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDeletionView.swift; sourceTree = "<group>"; };
 		D743F39F22B1D7B6006763D1 /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
+		D743F3A122B4113C006763D1 /* HomeDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDelegates.swift; sourceTree = "<group>"; };
 		D74D1B21229F787300FB7D95 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailController.swift; sourceTree = "<group>"; };
 		D74D1B2822A0095200FB7D95 /* ThoughtDetailSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailSearchBar.swift; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 				D75B8B30229210F000B38CC6 /* HomeEntryButtons.swift */,
 				D7388A17228B8A2D00627E9E /* HomeTable.swift */,
 				D774C482228DD05800721394 /* HomeHead.swift */,
+				D743F3A122B4113C006763D1 /* HomeDelegates.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -856,6 +859,7 @@
 				D7006EE72268CB63004E570F /* ViewController.swift in Sources */,
 				D7433B49228F3C050001B371 /* HomeTableCell.swift in Sources */,
 				D7A2DF41227D6D9300D6CFF1 /* MSGCenterPhotoView.swift in Sources */,
+				D743F3A222B4113C006763D1 /* HomeDelegates.swift in Sources */,
 				D707722D22A9731D00269804 /* EntryDetailDelegate.swift in Sources */,
 				D75B8B2F22912FD800B38CC6 /* HomeThoughtCell.swift in Sources */,
 				D7006EE5226841D2004E570F /* ConversationView.swift in Sources */,

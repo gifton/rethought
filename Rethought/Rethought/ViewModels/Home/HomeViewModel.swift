@@ -13,6 +13,21 @@ class HomeViewModel: NSObject {
     
     // MARK: private vars
     private var moc: NSManagedObjectContext
+    private var currentEntryType: EntryType = .all
+    private var filterDirection: FilterDirection = .descending
+    // MARK: private mutable string for tableView header
+    private var tableTitle: String {
+        return ""
+        
+        switch currentEntryType {
+        case .all: return "All entries \(String(describing: FilterDirection.getString(filterDirection)))"
+        case .photo: return "photos \(String(describing: FilterDirection.getString(filterDirection)))"
+        case .recording: return "recordings \(String(describing: FilterDirection.getString(filterDirection)))"
+        case .note: return "notes \(String(describing: FilterDirection.getString(filterDirection)))"
+        case .link: return "links \(String(describing: FilterDirection.getString(filterDirection)))"
+        default: return "Entries"
+        }
+    }
     
     // MARK: public vars
     // entry is dependant on thoughts to traverse the relationship
@@ -27,6 +42,9 @@ class HomeViewModel: NSObject {
         return entries.count
     }
     public var thoughts: [Thought] = []
+    public var homeContentPackage: HomeContentPackage {
+        return HomeContentPackage(title: tableTitle, entryType: currentEntryType, filterDirection: filterDirection)
+    }
     
     private func setup() {
         thoughts = fetchThoughts()
@@ -69,5 +87,12 @@ extension HomeViewModel: HomeViewModelDelegate {
     
     func displayDetail(forThought thought: Thought) -> ThoughtDetailViewModel {
         return ThoughtDetailViewModel(withThought: thought, moc)
+    }
+}
+
+extension HomeViewModel {
+    func didSelectEntry(ofType type: EntryType, completion: () -> ()) {
+        currentEntryType = type
+        completion()
     }
 }

@@ -16,4 +16,17 @@ protocol HomeViewModelDelegate: NSObject {
     func retrieve(thought id: String) -> Thought?
     func retrieve(entry row: Int) -> EntryDetailViewModel
     func displayDetail(forThought thought: Thought) -> ThoughtDetailViewModel
+    func didSelectEntry(ofType type: EntryType, completion: () -> ())
+}
+
+enum FilterDirection {
+    case ascending
+    case descending
+    
+    func getString(_ input: FilterDirection) -> String {
+        switch input {
+        case .ascending: return "from oldest to newest"
+        case .descending: return "from newest to  oldest"
+        }
+    }
 }
