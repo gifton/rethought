@@ -96,6 +96,7 @@ extension HomeTable: UITableViewDelegate {
 // handle when new content for table is requested
 extension HomeTable: HomeContentPackageReciever {
     func updatepackage(withContent content: HomeContentPackage) {
+        print(content.title)
         updateTitle(withContent: content.title)
     }
     

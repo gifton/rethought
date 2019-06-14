@@ -12,17 +12,22 @@ class EntryScrollView: UIScrollView {
         setView()
     }
     
+    // MARK: private objects
     private var linkView: UIView!
     private var photoView: UIView!
     private var noteView: UIView!
     private var recordingView: UIView!
     private var allView: UIView!
     
+    // MARK: public variables
+    public var homeDelegate: HomeDelegate?
+    
     private func setView() {
         var views = [UIView]()
-        for type in EntryType.exhaustiveList() {
+        for type in EntryType.exhaustiveList().reversed() {
             let btn = EntryButton(type: type) {
                 print("selected: \(type)")
+                self.homeDelegate?.didSelectEntryType(ofType: type)
             }
             views.append(btn)
         }

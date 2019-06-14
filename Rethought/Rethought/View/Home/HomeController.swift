@@ -32,10 +32,12 @@ class HomeController: UIViewController {
         tv?.delegate = self
         tv?.tv.dataSource = self
         tv?.animator = self
+        tv?.updatepackage(withContent: model.homeContentPackage)
         
         homeHead = HomeHead(frame: CGRect(x: 0, y: 0, width: Device.size.width, height: 500))
         homeHead?.thoughtCollection.dataSource = self
         homeHead?.thoughtCollection.delegate = self
+        homeHead?.entryPickerView.homeDelegate = self
         view.addSubview(homeHead!)
         view.addSubview(tv!)
     }
@@ -157,6 +159,10 @@ extension HomeController: HomeDelegate {
         }
     }
     
-    
+    func didChangeFilterDirection(toDirecton direction: FilterDirection) {
+        model.didUpdateFilterDirection(toDirection: direction) {
+            self.tv?.updatepackage(withContent: model.homeContentPackage)
+        }
+    }
 }
 

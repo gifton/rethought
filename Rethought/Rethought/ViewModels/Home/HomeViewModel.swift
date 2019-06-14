@@ -17,14 +17,13 @@ class HomeViewModel: NSObject {
     private var filterDirection: FilterDirection = .descending
     // MARK: private mutable string for tableView header
     private var tableTitle: String {
-        return ""
         
         switch currentEntryType {
-        case .all: return "All entries \(String(describing: FilterDirection.getString(filterDirection)))"
-        case .photo: return "photos \(String(describing: FilterDirection.getString(filterDirection)))"
-        case .recording: return "recordings \(String(describing: FilterDirection.getString(filterDirection)))"
-        case .note: return "notes \(String(describing: FilterDirection.getString(filterDirection)))"
-        case .link: return "links \(String(describing: FilterDirection.getString(filterDirection)))"
+        case .all: return "All entries \(filterDirection.getString(filterDirection))"
+        case .photo: return "Photos \(filterDirection.getString(filterDirection))"
+        case .recording: return "Recordings \(filterDirection.getString(filterDirection))"
+        case .note: return "Notes \(filterDirection.getString(filterDirection))"
+        case .link: return "Links \(filterDirection.getString(filterDirection))"
         default: return "Entries"
         }
     }
@@ -93,6 +92,11 @@ extension HomeViewModel: HomeViewModelDelegate {
 extension HomeViewModel {
     func didSelectEntry(ofType type: EntryType, completion: () -> ()) {
         currentEntryType = type
+        completion()
+    }
+    
+    func didUpdateFilterDirection(toDirection direction: FilterDirection, completion: () -> ()) {
+        filterDirection = direction
         completion()
     }
 }

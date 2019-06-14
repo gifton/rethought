@@ -17,6 +17,7 @@ protocol HomeViewModelDelegate: NSObject {
     func retrieve(entry row: Int) -> EntryDetailViewModel
     func displayDetail(forThought thought: Thought) -> ThoughtDetailViewModel
     func didSelectEntry(ofType type: EntryType, completion: () -> ())
+    func didUpdateFilterDirection(toDirection direction: FilterDirection, completion: () -> ())
 }
 
 enum FilterDirection {
@@ -26,7 +27,7 @@ enum FilterDirection {
     func getString(_ input: FilterDirection) -> String {
         switch input {
         case .ascending: return "from oldest to newest"
-        case .descending: return "from newest to  oldest"
+        case .descending: return "from newest to oldest"
         }
     }
 }

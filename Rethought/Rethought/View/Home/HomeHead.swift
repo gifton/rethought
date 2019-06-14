@@ -48,7 +48,7 @@ class HomeHead: UIView {
     }()
     
     // select specific entry types here
-    private let entryPickerView = EntryScrollView(frame: .zero)
+    public let entryPickerView = EntryScrollView(frame: .zero)
     
     private func setView() {
         
