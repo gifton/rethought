@@ -2,6 +2,7 @@
 import Foundation
 import CoreData
 import CoreLocation
+import UIKit
 
 // handle all logic for showing the home screen
 class HomeViewModel: NSObject {
@@ -26,6 +27,9 @@ class HomeViewModel: NSObject {
         case .link: return "Links \(filterDirection.getString(filterDirection))"
         default: return "Entries"
         }
+    }
+    private var links: [Entry] {
+        return entries.filter {$0.computedEntryType == .link}
     }
     
     // MARK: public vars
@@ -98,5 +102,10 @@ extension HomeViewModel {
     func didUpdateFilterDirection(toDirection direction: FilterDirection, completion: () -> ()) {
         filterDirection = direction
         completion()
+    }
+    
+    func cellFor(row: Int) -> UICollectionViewCell {
+        
+        return UICollectionViewCell()
     }
 }
