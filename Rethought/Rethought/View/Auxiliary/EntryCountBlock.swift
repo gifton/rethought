@@ -71,6 +71,7 @@ class EntryCountBlock: UIView {
         outView.addSubview(image)
         outView.addSubview(lbl)
         
+        lbl.font = Device.font.mediumTitle()
         lbl.adjustsFontSizeToFitWidth = true
         
         // set icons dark or light depending on request
@@ -78,14 +79,14 @@ class EntryCountBlock: UIView {
         case .link:
             image.image = linkImage
             image.setHeightWidth(width: 14, height: 14)
-            outView.frame = CGRect(origin: CGPoint(x: frame.width - 43, y: 19), size: CGSize(width: 50, height: 14))
-            lbl.text = " \(count.linkInt)"
-            lbl.textColor = Device.colors.green
+            outView.frame = CGRect(origin: CGPoint(x: frame.width - 42, y: 19), size: CGSize(width: 50, height: 14))
+            lbl.text = "\(count.linkInt)"
+//            lbl.textColor = Device.colors.green
             image.setTopAndLeading(top: outView.topAnchor, leading: outView.leadingAnchor, paddingTop: 0, paddingLeading: 0)
         case .note:
             image.image = noteImage
             lbl.text = "\(count.noteInt)"
-            lbl.textColor = Device.colors.note
+//            lbl.textColor = Device.colors.note
             image.setHeightWidth(width: 14, height: 14)
             outView.frame = CGRect(origin: CGPoint(x: frame.width - 42, y: 0), size: CGSize(width: 42, height: 14))
             image.setTopAndLeading(top: outView.topAnchor, leading: outView.leadingAnchor, paddingTop: 0, paddingLeading: 0)
@@ -94,14 +95,14 @@ class EntryCountBlock: UIView {
             image.setHeightWidth(width: 10, height: 14)
             outView.frame = CGRect(origin: .zero, size: CGSize(width: 38, height: 14))
             lbl.text = " \(count.recordingInt)"
-            lbl.textColor = Device.colors.recording
+//            lbl.textColor = Device.colors.recording
             image.setTopAndLeading(top: outView.topAnchor, leading: outView.leadingAnchor, paddingTop: 0, paddingLeading: 2)
         default:
             image.image = photoImage
             image.setHeightWidth(width: 16, height: 14)
             outView.frame = CGRect(origin: CGPoint(x: 0, y: 19), size: CGSize(width: 42, height: 14))
             lbl.text = "\(count.photoInt)"
-            lbl.textColor = Device.colors.photo
+//            lbl.textColor = Device.colors.photo
             image.setTopAndLeading(top: outView.topAnchor, leading: outView.leadingAnchor, paddingTop: 0, paddingLeading: 0)
         }
         lbl.setAnchor(top: outView.topAnchor, leading: image.trailingAnchor, bottom: outView.bottomAnchor, trailing: outView.trailingAnchor, paddingTop: 0, paddingLeading: 8, paddingBottom: 0, paddingTrailing: 0)

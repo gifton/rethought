@@ -36,6 +36,8 @@ class HomeTable: UIView {
     
     
     private func setView() {
+        // delegate must stay with scrll view to calculate
+        // proper height of view as it resizes on scroll
         tv.delegate = self
         tv.register(cellWithClass: HomeTableCell.self)
         
