@@ -5,14 +5,6 @@ import UIKit
 
 class AnimatedTabBarController: UITabBarController {
     
-    private var bounceAnimation: CAKeyframeAnimation = {
-        let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
-        bounceAnimation.values = [1.0, 1.4, 0.9, 1.02, 1.0]
-        bounceAnimation.duration = TimeInterval(0.3)
-        bounceAnimation.calculationMode = CAAnimationCalculationMode.cubic
-        return bounceAnimation
-    }()
-    
     override func viewDidLoad() {
         tabBar.tintColor = Device.colors.darkBlue
         tabBar.shadowImage = UIImage()
@@ -45,7 +37,7 @@ class AnimatedTabBarController: UITabBarController {
         let image = imageView.subviews.compactMap { $0 as? UIImageView }.first
         
         if let image = image {
-            image.layer.add(bounceAnimation, forKey: nil)
+            image.addBounceAnimation()
             
         } else {
             print("image for index: \(newIndex) could not be found")

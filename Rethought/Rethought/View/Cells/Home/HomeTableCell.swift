@@ -78,20 +78,11 @@ class HomeTableCell: UITableViewCell {
         
     }
     
-    // bounce animation for "more" button
-    private var bounceAnimation: CAKeyframeAnimation = {
-        let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
-        bounceAnimation.values = [1.0, 1.4, 0.9, 1.02, 1.0]
-        bounceAnimation.duration = TimeInterval(0.3)
-        bounceAnimation.calculationMode = CAAnimationCalculationMode.cubic
-        return bounceAnimation
-    }()
-    
     // external insertion of method to more btn
     public func setButtonTargets(_ action: @escaping (_ entry: Entry) -> Void) {
         moreBtn.addTapGestureRecognizer {
             action(self.entry!)
-            self.moreBtn.imageView?.layer.add(self.bounceAnimation, forKey: nil)
+            self.moreBtn.addBounceAnimation()
         }
         moreBtn.doesEnable()
     }

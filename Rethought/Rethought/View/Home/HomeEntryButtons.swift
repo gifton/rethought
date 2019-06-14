@@ -2,6 +2,7 @@
 import Foundation
 import UIKit
 
+// horizontal scroll view that creates a new view for each button
 class EntryScrollView: UIScrollView {
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -10,6 +11,12 @@ class EntryScrollView: UIScrollView {
         showsHorizontalScrollIndicator = false
         setView()
     }
+    
+    private var linkView: UIView!
+    private var photoView: UIView!
+    private var noteView: UIView!
+    private var recordingView: UIView!
+    private var allView: UIView!
     
     private func setView() {
         var views = [UIView]()
@@ -64,7 +71,7 @@ class EntryButton: UIView {
         addTapGestureRecognizer(action: action)
         addTapGestureRecognizer {
             action()
-            self.image.layer.add(self.bounceAnimation, forKey: nil)
+            self.addBounceAnimation()
         }
         setView()
     }
@@ -89,13 +96,4 @@ class EntryButton: UIView {
         label.textColor = .white
         label.setAnchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
     }
-    
-    // bounce for image on tap
-    private var bounceAnimation: CAKeyframeAnimation = {
-        let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
-        bounceAnimation.values = [1.0, 1.4, 0.9, 1.02, 1.0]
-        bounceAnimation.duration = TimeInterval(0.3)
-        bounceAnimation.calculationMode = CAAnimationCalculationMode.cubic
-        return bounceAnimation
-    }()
 }
