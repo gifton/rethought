@@ -109,3 +109,18 @@ extension HomeViewModel {
         return UICollectionViewCell()
     }
 }
+
+
+extension HomeViewModel: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withClass: HomeEntryCell.self, for: indexPath)
+        
+        cell.insert(payload: entries[indexPath.row])
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return entryCount
+    }
+}

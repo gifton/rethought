@@ -38,6 +38,7 @@
 		D743F39E22B06DD1006763D1 /* ConfirmDeletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F39D22B06DD1006763D1 /* ConfirmDeletionView.swift */; };
 		D743F3A022B1D7B6006763D1 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F39F22B1D7B6006763D1 /* IconView.swift */; };
 		D743F3A222B4113C006763D1 /* HomeDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F3A122B4113C006763D1 /* HomeDelegates.swift */; };
+		D743F3A422B4362C006763D1 /* HomeEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F3A322B4362C006763D1 /* HomeEntryCell.swift */; };
 		D74D1B22229F787300FB7D95 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B21229F787300FB7D95 /* Animator.swift */; };
 		D74D1B2722A0087E00FB7D95 /* ThoughtDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */; };
 		D74D1B2922A0095200FB7D95 /* ThoughtDetailSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2822A0095200FB7D95 /* ThoughtDetailSearchBar.swift */; };
@@ -161,6 +162,7 @@
 		D743F39D22B06DD1006763D1 /* ConfirmDeletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDeletionView.swift; sourceTree = "<group>"; };
 		D743F39F22B1D7B6006763D1 /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		D743F3A122B4113C006763D1 /* HomeDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDelegates.swift; sourceTree = "<group>"; };
+		D743F3A322B4362C006763D1 /* HomeEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntryCell.swift; sourceTree = "<group>"; };
 		D74D1B21229F787300FB7D95 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailController.swift; sourceTree = "<group>"; };
 		D74D1B2822A0095200FB7D95 /* ThoughtDetailSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailSearchBar.swift; sourceTree = "<group>"; };
@@ -569,6 +571,7 @@
 			children = (
 				D7433B48228F3C050001B371 /* HomeTableCell.swift */,
 				D75B8B2E22912FD800B38CC6 /* HomeThoughtCell.swift */,
+				D743F3A322B4362C006763D1 /* HomeEntryCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -876,6 +879,7 @@
 				D7006EE3226825FE004E570F /* ConversationController.swift in Sources */,
 				D7BB182F227629970084963E /* MSGBoardDelegate.swift in Sources */,
 				D7006ECA22671CF4004E570F /* RecordingBuilder.swift in Sources */,
+				D743F3A422B4362C006763D1 /* HomeEntryCell.swift in Sources */,
 				D774C483228DD05800721394 /* HomeHead.swift in Sources */,
 				D7388A16228B894F00627E9E /* HomeController.swift in Sources */,
 				D7AF977322A10A5300AA4A65 /* CGPoint.swift in Sources */,

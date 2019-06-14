@@ -1,10 +1,3 @@
-//
-//  HomeTable.swift
-//  Rethought
-//
-//  Created by Dev on 5/14/19.
-//  Copyright © 2019 Wesaturate. All rights reserved.
-//
 
 import Foundation
 import UIKit
@@ -19,35 +12,37 @@ class HomeTable: UIView {
     // MARK: public variables
     public var animator: Animator?
     public var delegate: HomeDelegate?
-    public let tv: UITableView = {
-        let tv = UITableView(frame: .zero, style: .plain)
-        tv.allowsMultipleSelection = false
-        tv.backgroundColor = Device.colors.offWhite
-        tv.translatesAutoresizingMaskIntoConstraints = false
-        tv.showsVerticalScrollIndicator = false
-        tv.separatorStyle = .none
+    public let cv: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: Device.size.width - 20, height: 90)
+        layout.minimumLineSpacing = 0
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.allowsMultipleSelection = false
+        cv.backgroundColor = Device.colors.offWhite
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.showsVerticalScrollIndicator = false
         
-        return tv
+        return cv
     }()
     
     // MARK: private variables
     private let filterButton = UIButton()
     private let entryLabel = UILabel()
-    
+    private var collectionLayout: UICollectionViewFlowLayout!
     
     private func setView() {
         // delegate must stay with scrll view to calculate
         // proper height of view as it resizes on scroll
-        tv.delegate = self
-        tv.register(cellWithClass: HomeTableCell.self)
+        cv.delegate = self
+        cv.register(cellWithClass: HomeEntryCell.self)
         
-        addSubview(tv)
+        addSubview(cv)
         addSubview(filterButton)
         addSubview(entryLabel)
         
-        tv.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 50, paddingLeading: 0, paddingBottom: 5, paddingTrailing: 0)
+        cv.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 50, paddingLeading: 0, paddingBottom: 5, paddingTrailing: 0)
 
-        filterButton.setAnchor(top: topAnchor, leading: nil, bottom: tv.topAnchor, trailing: trailingAnchor, paddingTop: 15, paddingLeading: 0, paddingBottom: 10, paddingTrailing: 30)
+        filterButton.setAnchor(top: topAnchor, leading: nil, bottom: cv.topAnchor, trailing: trailingAnchor, paddingTop: 15, paddingLeading: 0, paddingBottom: 10, paddingTrailing: 30)
         filterButton.setImage(#imageLiteral(resourceName: "filter"), for: .normal)
         
         entryLabel.setTopAndLeading(top: topAnchor, leading: leadingAnchor, paddingTop: 15, paddingLeading: 20)
@@ -66,8 +61,8 @@ class HomeTable: UIView {
     public var animationScrollLength: CGFloat = 330.0
     private var lastOffset: CGFloat = 0.0
     public var animationProgress: CGFloat {
-        if tv.numberOfRows(inSection: 0) > 6 {
-            let offset = tv.contentOffset.y
+        if cv.numberOfItems(inSection: 0) > 6 {
+            let offset = cv.contentOffset.y
             let normalizedOffset = max(0.0, min(1.0, offset/animationScrollLength))
             return normalizedOffset
         }
@@ -83,16 +78,6 @@ class HomeTable: UIView {
     }
 }
 
-extension HomeTable: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("tapped index: \(indexPath)")
-        delegate?.show(entryForIndex: indexPath.row)
-    }
-}
-
 // handle when new content for table is requested
 extension HomeTable: HomeContentPackageReciever {
     func updatepackage(withContent content: HomeContentPackage) {
@@ -102,5 +87,17 @@ extension HomeTable: HomeContentPackageReciever {
     
     private func updateTitle(withContent string: String) {
         self.entryLabel.text = string
+    }
+}
+
+extension HomeTable: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.show(entryForIndex: indexPath.row)
+    }
+}
+
+extension HomeTable: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: Device.size.width - 20, height: 100)
     }
 }

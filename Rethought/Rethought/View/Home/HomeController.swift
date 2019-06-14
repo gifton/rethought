@@ -12,7 +12,7 @@ class HomeController: UIViewController {
         // test this
         model.refresh()
         homeHead?.thoughtCollection.reloadData()
-        tv?.tv.reloadData()
+        tv?.cv.reloadData()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -30,7 +30,7 @@ class HomeController: UIViewController {
     private func setView() {
         tv = HomeTable(frame: CGRect(x: 0, y: 500, width: Device.size.width, height: Device.size.height - 500))
         tv?.delegate = self
-        tv?.tv.dataSource = self
+        tv?.cv.dataSource = model
         tv?.animator = self
         tv?.updatepackage(withContent: model.homeContentPackage)
         
@@ -85,20 +85,6 @@ extension HomeController: Animator {
     // method for registering a view to animnating controller
     func register(_ view: Animatable) {
         animator.register(animatableView: view)
-    }
-}
-
-extension HomeController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: HomeTableCell = tableView.dequeueReusableCell(withClass: HomeTableCell.self, for: indexPath)
-        cell.setButtonTargets { (entry) in
-            self.show(optionsFor: entry)
-        }
-        cell.insert(payload: model.entries[indexPath.row])
-        return cell
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.entryCount
     }
 }
 
