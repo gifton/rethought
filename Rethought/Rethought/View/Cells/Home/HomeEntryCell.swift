@@ -86,9 +86,9 @@ class HomeEntryCell: UICollectionViewCell {
     }
     
     // external insertion of method to more btn
-    public func setButtonTargets(_ action: @escaping (_ entry: Entry) -> Void) {
+    public func setButtonTargets(_ action: @escaping () -> Void) {
         moreBtn.addTapGestureRecognizer {
-            action(self.entry!)
+            action()
             self.moreBtn.addBounceAnimation()
         }
         moreBtn.doesEnable()

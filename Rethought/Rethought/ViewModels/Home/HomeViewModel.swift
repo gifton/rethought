@@ -79,6 +79,7 @@ class HomeViewModel: NSObject {
     private func setup() {
         thoughts = fetchThoughts()
     }
+    public var homeDelegate: HomeDelegate?
 }
 
 extension HomeViewModel: HomeViewModelDelegate {
@@ -134,6 +135,10 @@ extension HomeViewModel {
         if !expanded {
             let cell = collectionView.dequeueReusableCell(withClass: HomeEntryCell.self, for: indexPath)
             cell.insert(payload: currentEntry)
+            guard let homeDelegate = homeDelegate else { return cell }
+            cell.setButtonTargets {
+                homeDelegate.show(entryForIndex: indexPath.row)
+            }
             return cell
         }
         
