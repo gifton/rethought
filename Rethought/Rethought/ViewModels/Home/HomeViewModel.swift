@@ -15,18 +15,18 @@ class HomeViewModel: NSObject {
     // MARK: private vars
     private var moc: NSManagedObjectContext
     private var currentEntryType: EntryType = .all
-    private var filterDirection: FilterDirection = .descending
     // MARK: private mutable string for tableView header
     private var tableTitle: String {
         
         switch currentEntryType {
-        case .all: return "All entries \(filterDirection.getString(filterDirection))"
-        case .photo: return "Photos \(filterDirection.getString(filterDirection))"
-        case .recording: return "Recordings \(filterDirection.getString(filterDirection))"
-        case .note: return "Notes \(filterDirection.getString(filterDirection))"
-        case .link: return "Links \(filterDirection.getString(filterDirection))"
+        case .all: return "All entries"
+        case .photo: return "Photos"
+        case .recording: return "Recordings"
+        case .note: return "Notes"
+        case .link: return "Links"
         default: return "Entries"
         }
+        
     }
     private var links: [Entry] {
         return entries.filter {$0.computedEntryType == .link}
@@ -52,20 +52,21 @@ class HomeViewModel: NSObject {
         }
     }
     public var homeContentPackage: HomeContentPackage {
-        return HomeContentPackage(title: tableTitle, entryType: currentEntryType, filterDirection: filterDirection)
+        return HomeContentPackage(title: tableTitle, entryType: currentEntryType)
     }
     public var entryCellHeights: [CGSize] {
         var heights = [CGSize]()
         
-        for (index, entry) in entries.enumerated() {
+        for entry in entries {
             switch entry.computedEntryType {
+            case .link, .photo: heights.append(CGSize(width: Device.size.width - 20, height: 188))
             default: heights.append(CGSize(width: Device.size.width - 20, height: 100))
             }
         }
         
         return heights
     }
-    
+    public var expanded: Bool = false
     private func setup() {
         thoughts = fetchThoughts()
     }
@@ -113,11 +114,6 @@ extension HomeViewModel: HomeViewModelDelegate {
 extension HomeViewModel {
     func didSelectEntry(ofType type: EntryType, completion: () -> ()) {
         currentEntryType = type
-        completion()
-    }
-    
-    func didUpdateFilterDirection(toDirection direction: FilterDirection, completion: () -> ()) {
-        filterDirection = direction
         completion()
     }
     

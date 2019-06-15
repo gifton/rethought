@@ -12,7 +12,7 @@ class HomeTable: UIView {
     // MARK: public variables
     public var animator: Animator?
     public var delegate: HomeDelegate?
-    public var collectionViewCellHeights: [CGSize] = Array(repeating: CGSize(width: Device.size.width - 20, height: 100), count: 55)
+    public var collectionViewCellHeights: [CGSize] = Array(repeating: CGSize(width: Device.size.width - 20, height: 100), count: 20)
     public let cv: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: Device.size.width - 20, height: 90)
@@ -27,7 +27,7 @@ class HomeTable: UIView {
     }()
     
     // MARK: private variables
-    private let filterButton = UIButton()
+    private let expandButton = UIButton()
     private let entryLabel = UILabel()
     
     private func setView() {
@@ -37,18 +37,19 @@ class HomeTable: UIView {
         cv.register(cellWithClass: HomeEntryCell.self)
         
         addSubview(cv)
-        addSubview(filterButton)
+        addSubview(expandButton)
         addSubview(entryLabel)
         
         cv.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 50, paddingLeading: 0, paddingBottom: 5, paddingTrailing: 0)
 
-        filterButton.setAnchor(top: topAnchor, leading: nil, bottom: cv.topAnchor, trailing: trailingAnchor, paddingTop: 15, paddingLeading: 0, paddingBottom: 10, paddingTrailing: 30)
-        filterButton.setImage(#imageLiteral(resourceName: "filter"), for: .normal)
+        expandButton.setAnchor(top: topAnchor, leading: nil, bottom: cv.topAnchor, trailing: trailingAnchor, paddingTop: 15, paddingLeading: 0, paddingBottom: 10, paddingTrailing: 30)
         
+        expandButton.setTitle("Expand", for: .normal)
+        expandButton.setTitleColor(Device.colors.red, for: .normal)
         entryLabel.setTopAndLeading(top: topAnchor, leading: leadingAnchor, paddingTop: 15, paddingLeading: 20)
         entryLabel.font = Device.font.mediumTitle(ofSize: .xLarge)
         entryLabel.text = "Recent Entries"
-        entryLabel.textColor = Device.colors.red
+        entryLabel.textColor = Device.colors.lightGray
         
     }
     required init?(coder aDecoder: NSCoder) {
@@ -98,9 +99,6 @@ extension HomeTable: UICollectionViewDelegate {
 
 extension HomeTable: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        switch indexPath.row {
-        case 0, 1, 4, 5: return CGSize(width: (collectionView.frame.width - 20) / 2, height: 190)
-        default: return CGSize(width: collectionView.frame.width, height: 180)
-        }
+        return collectionViewCellHeights[indexPath.row]
     }
 }
