@@ -45,8 +45,25 @@ class HomeViewModel: NSObject {
         return entries.count
     }
     public var thoughts: [Thought] = []
+    public var entryCellWidth: CGFloat {
+        switch currentEntryType {
+        case .photo: return (Device.size.width - 40) / 2
+        default: return Device.size.width - 20
+        }
+    }
     public var homeContentPackage: HomeContentPackage {
         return HomeContentPackage(title: tableTitle, entryType: currentEntryType, filterDirection: filterDirection)
+    }
+    public var entryCellHeights: [CGSize] {
+        var heights = [CGSize]()
+        
+        for (index, entry) in entries.enumerated() {
+            switch entry.computedEntryType {
+            default: heights.append(CGSize(width: Device.size.width - 20, height: 100))
+            }
+        }
+        
+        return heights
     }
     
     private func setup() {
