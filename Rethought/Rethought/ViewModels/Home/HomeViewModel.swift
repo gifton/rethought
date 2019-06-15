@@ -130,7 +130,6 @@ extension HomeViewModel {
     func cellFor(indexPath: IndexPath, withCollectionView collectionView: UICollectionView) -> UICollectionViewCell? {
         // get current entry
         let currentEntry = entries[indexPath.row]
-//        print("captured current entry of type: \(currentEntry.type) in view model cellFor() method")
         // check if !isExpanded
         if !expanded {
             let cell = collectionView.dequeueReusableCell(withClass: HomeEntryCell.self, for: indexPath)
@@ -145,7 +144,12 @@ extension HomeViewModel {
         // dequeue proper cell
         switch currentEntry.computedEntryType {
         case .link: return collectionView.dequeueReusableCell(withClass: HomeLinkTile.self, for: indexPath)
-        case .photo: return collectionView.dequeueReusableCell(withClass: HomePhotoTile.self, for: indexPath)
+        case .photo:
+            let cell = collectionView.dequeueReusableCell(withClass: HomePhotoTile.self, for: indexPath)
+            guard let builder: PhotoBuilder = currentEntry.associatedBuilder as? PhotoBuilder else { return cell }
+            cell.addContext(context: builder)
+            
+            return cell
         case .recording: return collectionView.dequeueReusableCell(withClass: HomeRecordingTile.self, for: indexPath)
         case .note: return collectionView.dequeueReusableCell(withClass: HomeNoteTile.self, for: indexPath)
         default:  return nil
