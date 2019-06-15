@@ -31,10 +31,16 @@ class HomeTable: UIView {
     private let entryLabel = UILabel()
     
     private func setView() {
-        // delegate must stay with scrll view to calculate
+        // delegate must stay within superview to calculate
         // proper height of view as it resizes on scroll
+        
+        // register all possible classes in advanced
         cv.delegate = self
         cv.register(cellWithClass: HomeEntryCell.self)
+        cv.register(cellWithClass: HomeLinkTile.self)
+        cv.register(cellWithClass: HomePhotoTile.self)
+        cv.register(cellWithClass: HomeRecordingTile.self)
+        cv.register(cellWithClass: HomeNoteTile.self)
         
         addSubview(cv)
         addSubview(expandButton)
@@ -81,9 +87,8 @@ class HomeTable: UIView {
 
 // handle when new content for table is requested
 extension HomeTable: HomeContentPackageReciever {
-    func updatepackage(withContent content: HomeContentPackage) {
-        print(content.title)
-        updateTitle(withContent: content.title)
+    func updatepackage(withContent title: String) {
+        updateTitle(withContent: title)
     }
     
     private func updateTitle(withContent string: String) {

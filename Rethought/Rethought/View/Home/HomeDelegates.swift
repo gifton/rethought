@@ -10,7 +10,7 @@ protocol HomeDelegate {
 
 // passing homeContentPackage data between head and table views and controller
 protocol HomeContentPackageReciever {
-    func updatepackage(withContent content: HomeContentPackage)
+    func updatepackage(withContent title: String)
 }
 
 // updating home head and table from model

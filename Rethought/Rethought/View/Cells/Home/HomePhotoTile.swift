@@ -12,11 +12,9 @@ class HomePhotoTile: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    
-    
     private func setView() {
         backgroundColor = .white
         layer.cornerRadius = 10
     }
 }
+

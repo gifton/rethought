@@ -60,6 +60,9 @@ class HomeViewModel: NSObject {
         for entry in entries {
             switch entry.computedEntryType {
             case .link, .photo: heights.append(CGSize(width: Device.size.width - 20, height: 188))
+            case .note:
+                let newHeight = entry.heightForContent(width: Device.size.width - 40)
+                heights.append(CGSize(width: Device.size.width - 40, height: newHeight))
             default: heights.append(CGSize(width: Device.size.width - 20, height: 100))
             }
         }
@@ -117,18 +120,35 @@ extension HomeViewModel {
         completion()
     }
     
-    func cellFor(row: Int) -> UICollectionViewCell {
+    func cellFor(indexPath: IndexPath, withCollectionView collectionView: UICollectionView) -> UICollectionViewCell? {
+        // get current entry
+        let currentEntry = entries[indexPath.row]
+        print("captured current entry of type: \(currentEntry.type) in view model cellFor() method")
+        // check if !isExpanded
+        if !expanded {
+            let cell = collectionView.dequeueReusableCell(withClass: HomeEntryCell.self, for: indexPath)
+            cell.insert(payload: currentEntry)
+            return cell
+        }
         
-        return UICollectionViewCell()
+        // dequeue proper cell
+        switch currentEntry.computedEntryType {
+        case .link: return collectionView.dequeueReusableCell(withClass: HomeLinkTile.self, for: indexPath)
+        case .photo: return collectionView.dequeueReusableCell(withClass: HomePhotoTile.self, for: indexPath)
+        case .recording: return collectionView.dequeueReusableCell(withClass: HomeRecordingTile.self, for: indexPath)
+        case .note: return collectionView.dequeueReusableCell(withClass: HomeNoteTile.self, for: indexPath)
+        default:  return nil
+        }
+        
     }
 }
 
 
 extension HomeViewModel: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withClass: HomeEntryCell.self, for: indexPath)
-        
-        cell.insert(payload: entries[indexPath.row])
+        guard let cell = cellFor(indexPath: indexPath, withCollectionView: collectionView) else {
+            return UICollectionViewCell()
+        }
         
         return cell
     }

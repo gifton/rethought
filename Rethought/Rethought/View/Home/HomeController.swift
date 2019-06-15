@@ -142,10 +142,9 @@ extension HomeController: HomeDelegate {
     
     func didSelectEntryType(ofType type: EntryType) {
         model.didSelectEntry(ofType: type) {
-            self.tv?.updatepackage(withContent: model.homeContentPackage)
+            self.tv?.updatepackage(withContent: model.homeContentPackage.title)
             self.tv?.collectionViewCellHeights = model.entryCellHeights
             self.homeHead?.entryPickerView.setSelectedEntry(ofType: type)
-            self.tv?.collectionViewCellHeights = model.entryCellHeights
             self.tv?.cv.reloadData()
         }
     }
