@@ -61,7 +61,7 @@ class HomeViewModel: NSObject {
             
             for entry in entries {
                 switch entry.computedEntryType {
-                case .link, .photo: heights.append(CGSize(width: (Device.size.width - 80) / 2, height: 188))
+                case .link, .photo: heights.append(CGSize(width: (Device.size.width - 50) / 2, height: 188))
                 case .note:
                     let newHeight = entry.heightForContent(width: Device.size.width - 40)
                     heights.append(CGSize(width: Device.size.width - 40, height: newHeight))
