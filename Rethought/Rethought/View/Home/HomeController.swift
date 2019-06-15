@@ -151,12 +151,14 @@ extension HomeController: HomeDelegate {
     
     func requestExpansion() {
         model.expanded = true
-        self.tv?.cv.reloadData()
+        tv?.collectionViewCellHeights = model.entryCellHeights
+        tv?.cv.reloadData()
         
     }
     func requestCollapse() {
         model.expanded = false
-        self.tv?.cv.reloadData()
+        tv?.collectionViewCellHeights = model.entryCellHeights
+        tv?.cv.reloadData()
     }
 }
 

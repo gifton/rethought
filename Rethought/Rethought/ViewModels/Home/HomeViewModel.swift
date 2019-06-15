@@ -47,7 +47,7 @@ class HomeViewModel: NSObject {
     public var thoughts: [Thought] = []
     public var entryCellWidth: CGFloat {
         switch currentEntryType {
-        case .photo: return (Device.size.width - 40) / 2
+        case .photo: return (Device.size.width - 20) / 2
         default: return Device.size.width - 20
         }
     }
@@ -57,14 +57,20 @@ class HomeViewModel: NSObject {
     public var entryCellHeights: [CGSize] {
         var heights = [CGSize]()
         
-        for entry in entries {
-            switch entry.computedEntryType {
-            case .link, .photo: heights.append(CGSize(width: Device.size.width - 20, height: 188))
-            case .note:
-                let newHeight = entry.heightForContent(width: Device.size.width - 40)
-                heights.append(CGSize(width: Device.size.width - 40, height: newHeight))
-            default: heights.append(CGSize(width: Device.size.width - 20, height: 100))
+        if expanded {
+            
+            for entry in entries {
+                switch entry.computedEntryType {
+                case .link, .photo: heights.append(CGSize(width: (Device.size.width - 80) / 2, height: 188))
+                case .note:
+                    let newHeight = entry.heightForContent(width: Device.size.width - 40)
+                    heights.append(CGSize(width: Device.size.width - 40, height: newHeight))
+                default: heights.append(CGSize(width: Device.size.width - 20, height: 100))
+                }
             }
+            
+        } else {
+            heights = Array(repeating: CGSize(width: Device.size.width - 20, height: 100), count: entryCount)
         }
         
         return heights
@@ -123,7 +129,7 @@ extension HomeViewModel {
     func cellFor(indexPath: IndexPath, withCollectionView collectionView: UICollectionView) -> UICollectionViewCell? {
         // get current entry
         let currentEntry = entries[indexPath.row]
-        print("captured current entry of type: \(currentEntry.type) in view model cellFor() method")
+//        print("captured current entry of type: \(currentEntry.type) in view model cellFor() method")
         // check if !isExpanded
         if !expanded {
             let cell = collectionView.dequeueReusableCell(withClass: HomeEntryCell.self, for: indexPath)

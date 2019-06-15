@@ -17,6 +17,7 @@ class HomeTable: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: Device.size.width - 20, height: 90)
         layout.minimumLineSpacing = 10
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.allowsMultipleSelection = false
         cv.backgroundColor = Device.colors.offWhite
@@ -27,6 +28,7 @@ class HomeTable: UIView {
     }()
     public var expanded: Bool = false {
         didSet {
+            print("expanded set")
             if expanded { expandButton.setTitle("collapse", for: .normal) }
             else { expandButton.setTitle("expand", for: .normal) }
         }
@@ -124,4 +126,6 @@ extension HomeTable: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return collectionViewCellHeights[indexPath.row]
     }
+    
+    
 }
