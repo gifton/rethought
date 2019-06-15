@@ -13,22 +13,10 @@ class HomeTable: UIView {
     public var animator: Animator?
     public var delegate: HomeDelegate?
     public var collectionViewCellHeights: [CGSize] = Array(repeating: CGSize(width: Device.size.width - 20, height: 100), count: 20)
-    public let cv: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: Device.size.width - 20, height: 90)
-        layout.minimumLineSpacing = 10
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.allowsMultipleSelection = false
-        cv.backgroundColor = Device.colors.offWhite
-        cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.showsVerticalScrollIndicator = false
-        
-        return cv
-    }()
+    public var cv: UICollectionView!
+    public var cvLayout: UICollectionViewFlowLayout!
     public var expanded: Bool = false {
         didSet {
-            print("expanded set")
             if expanded { expandButton.setTitle("collapse", for: .normal) }
             else { expandButton.setTitle("expand", for: .normal) }
         }
@@ -41,6 +29,16 @@ class HomeTable: UIView {
     private func setView() {
         // delegate must stay within superview to calculate
         // proper height of view as it resizes on scroll
+        // create vc
+        cvLayout = UICollectionViewFlowLayout()
+        cvLayout.itemSize = CGSize(width: Device.size.width - 20, height: 90)
+        cvLayout.minimumLineSpacing = 10
+        
+        cv = UICollectionView(frame: .zero, collectionViewLayout: cvLayout)
+        cv.allowsMultipleSelection = false
+        cv.backgroundColor = Device.colors.offWhite
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.showsVerticalScrollIndicator = false
         
         // register all possible classes in advanced
         cv.delegate = self
@@ -107,11 +105,11 @@ extension HomeTable: HomeContentPackageReciever {
     
     private func expandButtonClicked() {
         if expanded {
-            delegate?.requestCollapse()
             expanded = false
+            delegate?.requestCollapse()
         } else {
-            delegate?.requestExpansion()
             expanded = true
+            delegate?.requestExpansion()
         }
     }
 }
@@ -127,5 +125,10 @@ extension HomeTable: UICollectionViewDelegateFlowLayout {
         return collectionViewCellHeights[indexPath.row]
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        switch expanded {
+        case true: return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        case false: return .zero
+        }
+    }
 }

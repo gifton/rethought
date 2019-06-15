@@ -29,7 +29,7 @@ class HomeEntryCell: UICollectionViewCell {
         addSubview(cell)
         cell.layer.cornerRadius = 20
         cell.backgroundColor = .white
-        cell.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 5, paddingLeading: 10, paddingBottom: 5, paddingTrailing: 10)
+        cell.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 2.5, paddingLeading: 10, paddingBottom: 2.5, paddingTrailing: 10)
         setViews()
     }
     
