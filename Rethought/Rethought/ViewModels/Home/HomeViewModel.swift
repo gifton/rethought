@@ -38,11 +38,29 @@ class HomeViewModel: NSObject {
     public var entries: [Entry] {
         get { return thoughts.entries() }
     }
+    public var linkEntries: [Entry] {
+        get { return entries.filter {$0.computedEntryType == .link} }
+    }
+    public var photoEntries: [Entry] {
+        get { return entries.filter {$0.computedEntryType == .photo} }
+    }
+    public var noteEntries: [Entry] {
+        get { return entries.filter {$0.computedEntryType == .note} }
+    }
+    public var recordingEntries: [Entry] {
+        get { return entries.filter {$0.computedEntryType == .recording} }
+    }
     public var thoughtCount: Int {
         get { return self.thoughts.count }
     }
     public var entryCount: Int {
-        return entries.count
+        switch currentEntryType {
+        case .link: return linkEntries.count
+        case .photo: return photoEntries.count
+        case .note: return noteEntries.count
+        case .recording: return recordingEntries.count
+        default: return entries.count
+        }
     }
     public var thoughts: [Thought] = []
     public var entryCellWidth: CGFloat {
@@ -129,8 +147,17 @@ extension HomeViewModel {
     
     func cellFor(indexPath: IndexPath, withCollectionView collectionView: UICollectionView) -> UICollectionViewCell? {
         // get current entry
-        let currentEntry = entries[indexPath.row]
+        var currentEntry: Entry!
+        switch currentEntryType {
+        case .link: currentEntry = linkEntries[indexPath.row]
+        case .photo: currentEntry = photoEntries[indexPath.row]
+        case .note: currentEntry = noteEntries[indexPath.row]
+        case .recording: currentEntry = recordingEntries[indexPath.row]
+        default: currentEntry = entries[indexPath.row]
+        }
+        
         // check if !isExpanded
+        // return collapsed cell
         if !expanded {
             let cell = collectionView.dequeueReusableCell(withClass: HomeEntryCell.self, for: indexPath)
             cell.insert(payload: currentEntry)
@@ -141,7 +168,7 @@ extension HomeViewModel {
             return cell
         }
         
-        // dequeue proper cell
+        // dequeue proper cell if expanded view
         switch currentEntry.computedEntryType {
         case .link: return collectionView.dequeueReusableCell(withClass: HomeLinkTile.self, for: indexPath)
         case .photo:

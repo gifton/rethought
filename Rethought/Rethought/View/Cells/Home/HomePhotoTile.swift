@@ -13,7 +13,7 @@ class HomePhotoTile: UICollectionViewCell {
     }
     
     private func setView() {
-        backgroundColor = Device.colors.offWhite
+        backgroundColor = .white
         layer.cornerRadius = 10
         layer.masksToBounds = true
     }
@@ -62,7 +62,7 @@ class HomePhotoTile: UICollectionViewCell {
         dateLabel.textColor = .white
         dateLabel.textAlignment = .center
         dateLabel.addShadow(offset: CGSize(width: 2, height: 2))
-        dateLabel.topAnchor.constraint(equalTo: topAnchor, constant: 12).isActive = true
+        dateLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
         dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8).isActive = true
     }
 }
