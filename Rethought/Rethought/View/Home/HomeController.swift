@@ -12,6 +12,8 @@ class HomeController: UIViewController {
         // test this
         model.refresh()
         homeHead?.thoughtCollection.reloadData()
+        tv?.collectionViewCellHeights = model.entryCellHeights
+        tv?.updatepackage(withContent: model.homeContentPackage.title)
         tv?.cv.reloadData()
     }
     required init?(coder aDecoder: NSCoder) {

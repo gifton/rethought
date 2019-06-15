@@ -13,13 +13,12 @@ class HomePhotoTile: UICollectionViewCell {
     }
     
     private func setView() {
-        backgroundColor = .green
+        backgroundColor = Device.colors.offWhite
         layer.cornerRadius = 10
         layer.masksToBounds = true
     }
     
     public func addContext(context: PhotoBuilder) {
-        print(context)
         photo.image = context.photo
         dateLabel.getStringFromDate(date: context.entry?.date ?? Date(), withStyle: .short)
         thoughtIcon.text = context.thoughtIcon.icon
@@ -33,13 +32,38 @@ class HomePhotoTile: UICollectionViewCell {
     private var iconFrame = UIView()
     
     private func addContext() {
-        photo.contentMode = .scaleToFill
+        //mask translation set to false
         photo.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(photo)
+        iconFrame.translatesAutoresizingMaskIntoConstraints = false
+        thoughtIcon.translatesAutoresizingMaskIntoConstraints = false
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
         
+        
+        addSubview(photo)
+        addSubview(dateLabel)
+        addSubview(iconFrame)
+        iconFrame.addSubview(thoughtIcon)
+        
+        photo.contentMode = .scaleToFill
+        photo.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2))
         photo.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
         
-        print("added photo to cell")
+        iconFrame.backgroundColor = .white
+        iconFrame.addShadow(offset: CGSize(width: 4, height: 4))
+        iconFrame.setHeightWidth(width: 40, height: 40)
+        iconFrame.layer.cornerRadius = 20
+        iconFrame.setTopAndLeading(top: topAnchor, leading: leadingAnchor, paddingTop: 8, paddingLeading: 8)
+        
+        thoughtIcon.font = Device.font.body(ofSize: .large)
+        thoughtIcon.textAlignment = .center
+        thoughtIcon.setAnchor(top: iconFrame.topAnchor, leading: iconFrame.leadingAnchor, bottom: iconFrame.bottomAnchor, trailing: iconFrame.trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
+        
+        dateLabel.font = Device.font.title(ofSize: .large)
+        dateLabel.textColor = .white
+        dateLabel.textAlignment = .center
+        dateLabel.addShadow(offset: CGSize(width: 2, height: 2))
+        dateLabel.topAnchor.constraint(equalTo: topAnchor, constant: 12).isActive = true
+        dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8).isActive = true
     }
 }
 
