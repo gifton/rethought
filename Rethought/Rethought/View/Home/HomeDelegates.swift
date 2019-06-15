@@ -6,6 +6,8 @@ import UIKit
 protocol HomeDelegate {
     func show(entryForIndex row: Int)
     func didSelectEntryType(ofType type: EntryType)
+    func requestExpansion()
+    func requestCollapse()
 }
 
 // passing homeContentPackage data between head and table views and controller

@@ -16,7 +16,7 @@ class HomeRecordingTile: UICollectionViewCell {
     
     
     private func setView() {
-        backgroundColor = .white
+        backgroundColor = .yellow
         layer.cornerRadius = 10
     }
 }

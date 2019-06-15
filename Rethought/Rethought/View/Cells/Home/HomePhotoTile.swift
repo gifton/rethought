@@ -13,7 +13,7 @@ class HomePhotoTile: UICollectionViewCell {
     }
     
     private func setView() {
-        backgroundColor = .white
+        backgroundColor = .lightGray
         layer.cornerRadius = 10
     }
 }

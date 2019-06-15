@@ -32,7 +32,7 @@ class HomeController: UIViewController {
         tv?.delegate = self
         tv?.cv.dataSource = model
         tv?.animator = self
-        tv?.updatepackage(withContent: model.homeContentPackage)
+        tv?.updatepackage(withContent: model.homeContentPackage.title)
         
         homeHead = HomeHead(frame: CGRect(x: 0, y: 0, width: Device.size.width, height: 500))
         homeHead?.thoughtCollection.dataSource = self
@@ -147,6 +147,16 @@ extension HomeController: HomeDelegate {
             self.homeHead?.entryPickerView.setSelectedEntry(ofType: type)
             self.tv?.cv.reloadData()
         }
+    }
+    
+    func requestExpansion() {
+        model.expanded = true
+        self.tv?.cv.reloadData()
+        
+    }
+    func requestCollapse() {
+        model.expanded = false
+        self.tv?.cv.reloadData()
     }
 }
 

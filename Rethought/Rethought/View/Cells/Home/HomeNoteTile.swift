@@ -16,7 +16,7 @@ class HomeNoteTile: UICollectionViewCell {
     
     
     private func setView() {
-        backgroundColor = .white
+        backgroundColor = .darkGray
         layer.cornerRadius = 10
     }
 }

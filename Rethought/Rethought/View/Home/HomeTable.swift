@@ -16,7 +16,7 @@ class HomeTable: UIView {
     public let cv: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: Device.size.width - 20, height: 90)
-        layout.minimumLineSpacing = 0
+        layout.minimumLineSpacing = 10
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.allowsMultipleSelection = false
         cv.backgroundColor = Device.colors.offWhite
@@ -25,6 +25,12 @@ class HomeTable: UIView {
         
         return cv
     }()
+    public var expanded: Bool = false {
+        didSet {
+            if expanded { expandButton.setTitle("collapse", for: .normal) }
+            else { expandButton.setTitle("expand", for: .normal) }
+        }
+    }
     
     // MARK: private variables
     private let expandButton = UIButton()
@@ -52,6 +58,8 @@ class HomeTable: UIView {
         
         expandButton.setTitle("Expand", for: .normal)
         expandButton.setTitleColor(Device.colors.red, for: .normal)
+        expandButton.doesEnable()
+        expandButton.addTapGestureRecognizer { self.expandButtonClicked() }
         entryLabel.setTopAndLeading(top: topAnchor, leading: leadingAnchor, paddingTop: 15, paddingLeading: 20)
         entryLabel.font = Device.font.mediumTitle(ofSize: .xLarge)
         entryLabel.text = "Recent Entries"
@@ -93,6 +101,16 @@ extension HomeTable: HomeContentPackageReciever {
     
     private func updateTitle(withContent string: String) {
         self.entryLabel.text = string
+    }
+    
+    private func expandButtonClicked() {
+        if expanded {
+            delegate?.requestCollapse()
+            expanded = false
+        } else {
+            delegate?.requestExpansion()
+            expanded = true
+        }
     }
 }
 

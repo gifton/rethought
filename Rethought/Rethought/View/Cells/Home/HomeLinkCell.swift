@@ -16,7 +16,7 @@ class HomeLinkTile: UICollectionViewCell {
     
     
     private func setView() {
-        backgroundColor = .white
+        backgroundColor = .blue
         layer.cornerRadius = 10
     }
 }
