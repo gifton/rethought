@@ -27,7 +27,6 @@ class EntryScrollView: UIScrollView {
         var views = [UIView]()
         for type in EntryType.exhaustiveList().reversed() {
             let btn = EntryButton(type: type) {
-                print("selected: \(type)")
                 self.homeDelegate?.didSelectEntryType(ofType: type)
             }
             switch type {
@@ -149,10 +148,24 @@ class EntryButton: UIView {
     // borders to be added and removed
     var borders = [UIView]()
     public func isSelected() {
-        borders = addBorders(edges: [.bottom], color: .white, thickness: 1.5)
+        label.textColor = .black
+        switch type {
+        case .link: image.image = #imageLiteral(resourceName: "compass_gradient")
+        case .photo: image.image = #imageLiteral(resourceName: "Image_gradient")
+        case .note: image.image = #imageLiteral(resourceName: "note_gradient")
+        case .recording: image.image = #imageLiteral(resourceName: "microphone_gradient")
+        default: image.image = #imageLiteral(resourceName: "cloud_gradient")
+        }
     }
     
     public func isDeselected() {
-        borders.forEach { $0.removeFromSuperview() }
+        label.textColor = .white
+        switch type {
+        case .note: image.image = #imageLiteral(resourceName: "newNote")
+        case .link: image.image = #imageLiteral(resourceName: "link_btn")
+        case .recording: image.image = #imageLiteral(resourceName: "recordings button")
+        case .all: image.image = #imageLiteral(resourceName: "cloud_white")
+        default: image.image = #imageLiteral(resourceName: "photo_btn")
+        }
     }
 }

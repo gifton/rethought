@@ -181,6 +181,13 @@ extension UIView {
         self.layer.shadowRadius = radius
     }
     
+    func removeShadow() {
+        self.layer.shadowColor = nil
+        self.layer.shadowOffset = .zero
+        self.layer.shadowOpacity = 0.0
+        self.layer.shadowRadius = 0.0
+    }
+    
     // bounce for image on tap
     static var bounceAnimation: CAKeyframeAnimation = {
         let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
