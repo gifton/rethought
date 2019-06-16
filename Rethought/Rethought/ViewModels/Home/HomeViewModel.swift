@@ -73,25 +73,37 @@ class HomeViewModel: NSObject {
         return HomeContentPackage(title: tableTitle, entryType: currentEntryType)
     }
     public var entryCellHeights: [CGSize] {
-        var heights = [CGSize]()
+        var sizes = [CGSize]()
         
-        if expanded {
-            
-            for entry in entries {
-                switch entry.computedEntryType {
-                case .link, .photo: heights.append(CGSize(width: (Device.size.width - 50) / 2, height: 188))
-                case .note:
-                    let newHeight = entry.heightForContent(width: Device.size.width - 40)
-                    heights.append(CGSize(width: Device.size.width - 40, height: newHeight))
-                default: heights.append(CGSize(width: Device.size.width - 20, height: 100))
-                }
-            }
+        if !expanded {
+            sizes = Array(repeating: CGSize(width: Device.size.width - 20, height: 100), count: entryCount)
             
         } else {
-            heights = Array(repeating: CGSize(width: Device.size.width - 20, height: 100), count: entryCount)
+            
+            // get proper entries
+            var currentEntries = [Entry]()
+            switch currentEntryType {
+            case .note: currentEntries = noteEntries
+            case .link: currentEntries = linkEntries
+            case .photo: currentEntries = photoEntries
+            case .recording: currentEntries = recordingEntries
+            default: currentEntries = entries
+            }
+            
+            // loop through each one to calculate size
+            for entry in currentEntries {
+                switch entry.computedEntryType {
+                case .link, .photo: sizes.append(CGSize(width: (Device.size.width - 50) / 2, height: 188))
+                case .note:
+                    let newHeight = entry.heightForContent(width: Device.size.width - 40)
+                    sizes.append(CGSize(width: Device.size.width - 40, height: newHeight))
+                default: sizes.append(CGSize(width: Device.size.width - 20, height: 100))
+                }
+            }
         }
         
-        return heights
+        // return sizes
+        return sizes
     }
     public var expanded: Bool = false
     private func setup() {
