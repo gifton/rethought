@@ -2,7 +2,7 @@
 import Foundation
 import UIKit
 
-class HomePhotoTile: UICollectionViewCell {
+class HomePhotoTile: UICollectionViewCell, BuilderContext {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setView()
@@ -18,7 +18,8 @@ class HomePhotoTile: UICollectionViewCell {
         layer.masksToBounds = true
     }
     
-    public func addContext(context: PhotoBuilder) {
+    func addContext(_ builder: EntryBuilder) {
+        guard let context: PhotoBuilder = builder as? PhotoBuilder else { return }
         photo.image = context.photo
         dateLabel.getStringFromDate(date: context.entry?.date ?? Date(), withStyle: .short)
         thoughtIcon.text = context.thoughtIcon.icon

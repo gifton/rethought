@@ -182,9 +182,11 @@ extension HomeViewModel {
         case .photo:
             let cell = collectionView.dequeueReusableCell(withClass: HomePhotoTile.self, for: indexPath)
             guard let builder: PhotoBuilder = currentEntry.associatedBuilder as? PhotoBuilder else { return cell }
-            cell.addContext(context: builder); return cell
+            cell.addContext(builder); return cell
         case .recording: return collectionView.dequeueReusableCell(withClass: HomeRecordingTile.self, for: indexPath)
-        case .note: return collectionView.dequeueReusableCell(withClass: HomeNoteTile.self, for: indexPath)
+        case .note:
+            let cell = collectionView.dequeueReusableCell(withClass: HomeNoteTile.self, for: indexPath)
+            cell.addContext(currentEntry.associatedBuilder); return cell
         default:  return nil
         }
         
