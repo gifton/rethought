@@ -111,6 +111,7 @@ class HomeViewModel: NSObject {
         thoughts = fetchThoughts()
     }
     public var homeDelegate: HomeDelegate?
+    public var animator: Animator?
 }
 
 extension HomeViewModel: HomeViewModelDelegate {
@@ -166,22 +167,22 @@ extension HomeViewModel {
         if !expanded {
             let cell = collectionView.dequeueReusableCell(withClass: HomeEntryCell.self, for: indexPath)
             cell.insert(payload: currentEntry)
-            guard let homeDelegate = homeDelegate else { return cell }
+            guard let animator = animator else { return cell }
             cell.setButtonTargets {
-                homeDelegate.show(entryForIndex: indexPath.row)
+                animator.show(optionsFor: currentEntry)
             }
             return cell
         }
         
         // dequeue proper cell if expanded view
         switch currentEntry.computedEntryType {
-        case .link: return collectionView.dequeueReusableCell(withClass: HomeLinkTile.self, for: indexPath)
+        case .link:
+            let cell = collectionView.dequeueReusableCell(withClass: HomeLinkTile.self, for: indexPath)
+            cell.addContext(currentEntry.associatedBuilder); return cell
         case .photo:
             let cell = collectionView.dequeueReusableCell(withClass: HomePhotoTile.self, for: indexPath)
             guard let builder: PhotoBuilder = currentEntry.associatedBuilder as? PhotoBuilder else { return cell }
-            cell.addContext(context: builder)
-            
-            return cell
+            cell.addContext(context: builder); return cell
         case .recording: return collectionView.dequeueReusableCell(withClass: HomeRecordingTile.self, for: indexPath)
         case .note: return collectionView.dequeueReusableCell(withClass: HomeNoteTile.self, for: indexPath)
         default:  return nil

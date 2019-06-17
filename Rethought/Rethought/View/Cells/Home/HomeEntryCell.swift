@@ -88,6 +88,7 @@ class HomeEntryCell: UICollectionViewCell {
     // external insertion of method to more btn
     public func setButtonTargets(_ action: @escaping () -> Void) {
         moreBtn.addTapGestureRecognizer {
+            print("esketii")
             action()
             self.moreBtn.addBounceAnimation()
         }
@@ -97,8 +98,11 @@ class HomeEntryCell: UICollectionViewCell {
     private func setViews() {
         cell.addSubview(moreBtn)
         
+        moreBtn.layer.borderColor = UIColor.black.cgColor
+        moreBtn.layer.borderWidth = 0.5
         moreBtn.setImage(#imageLiteral(resourceName: "more"), for: .normal)
-        moreBtn.frame = CGRect(x: frame.width + 25, y: 30, width: 10, height: 30)
+        moreBtn.frame = CGRect(x: frame.width - 55, y: 30, width: 20, height: 30)
+        moreBtn.imageView?.contentMode = .scaleAspectFit
     }
     
     static var identifier: String {

@@ -30,6 +30,9 @@ class HomeController: UIViewController {
     lazy var tableButtonMoreView: UIView = UIView()
     
     private func setView() {
+        model.homeDelegate = self
+        model.animator = self
+        
         tv = HomeTable(frame: CGRect(x: 0, y: 500, width: Device.size.width, height: Device.size.height - 500))
         tv?.delegate = self
         tv?.cv.dataSource = model
@@ -62,7 +65,7 @@ extension HomeController: Animator {
         tabBarController?.tabBar.isHidden = true
         let optionView = ShowOptionsView(frame: CGRect(x: 0, y: Device.size.height + 225, width: Device.size.width, height: 225), options: [.delete, .toEntry, .toThought])
         
-        let newView = UIView(frame: CGRect(x: 0, y: 0, width: Device.size.width, height: Device.size.height - optionView.height))
+        let newView = UIView(frame: CGRect(x: 0, y: 0, width: Device.size.width, height: Device.size.height))
         newView.blurBackground(type: .dark, cornerRadius: 0)
         newView.layer.opacity = 0
         view.addSubview(newView)

@@ -152,10 +152,7 @@ extension ThoughtDetailViewModel {
                 // create cell
                 let cell = tableView.dequeueReusableCell(withClass: PhotoEntryCell.self, for: index)
                 // guard entry object
-                guard let photo = entries[row].photo else {
-                    print("couldnt get photo")
-                    return cell
-                }
+                guard let photo = entries[row].photo else { return cell }
                 let builder = PhotoBuilder(withEntry: photo, forWidth: Device.size.width - 20)
                 // add builder into cell
                 cell.add(context: builder)

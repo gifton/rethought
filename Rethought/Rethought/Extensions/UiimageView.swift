@@ -19,11 +19,7 @@ extension UIImageView {
                 let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
                 let data = data,
                 let image = UIImage(data: data)
-                else {
-                    print("couldnt guard content in download")
-                    completionHandler?(nil)
-                    return
-            }
+                else { completionHandler?(nil); return }
             DispatchQueue.main.async {
                 self.image = image
                 print("image recieved, size: \(image.size)")
