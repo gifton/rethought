@@ -29,10 +29,10 @@ class NoteEntryCell: UITableViewCell {
         let titleHeight = preview.title.sizeFor(font: titleFont, width: frame.width - 70).height
         let detailHeight = preview.detail.sizeFor(font: detailFont, width: frame.width - 70).height
         
-        titleLabel.frame = CGRect(x: 35, y: 20, width: frame.width - 70, height: titleHeight)
-        detailLabel.frame = CGRect(x: 35, y: titleHeight + 20 + 10, width: frame.width - 70, height: detailHeight)
-        locationLabel.frame = CGRect(x: 35, y: frame.height - 35, width: frame.width / 3, height: 15)
-        dateLabel.frame = CGRect(x: frame.width - 100, y: frame.height - 35, width: 100, height: 15)
+        titleLabel.frame = CGRect(x: 20, y: 20, width: frame.width - 40, height: titleHeight)
+        detailLabel.frame = CGRect(x: 20, y: titleHeight + 20 + 10, width: frame.width - 40, height: detailHeight)
+        locationLabel.frame = CGRect(x: 20, y: frame.height - 35, width: frame.width / 3, height: 15)
+        dateLabel.frame = CGRect(x: frame.width - 100, y: frame.height - 25, width: 100, height: 15)
         // addSubviews
         addSubview(titleLabel)
         addSubview(detailLabel)
