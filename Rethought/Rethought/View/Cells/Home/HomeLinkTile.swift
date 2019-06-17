@@ -29,6 +29,8 @@ class HomeLinkTile: UICollectionViewCell {
         backgroundColor = .white
         layer.cornerRadius = 10
         layer.masksToBounds = true
+        layer.borderColor = UIColor.white.cgColor
+        layer.borderWidth = 4
         
         // set frames
         bottomView.frame = CGRect(x: 0, y: frame.height - 50, width: frame.width, height: 50)
@@ -37,7 +39,7 @@ class HomeLinkTile: UICollectionViewCell {
         linkIconBackDrop.frame = CGRect(x: (frame.width - 70) / 2, y: 10, width: 70, height: 70)
         linkIcon.frame = CGRect(x: 20, y: 20, width: 30, height: 30)
         titleLabel.frame = CGRect(x: 10, y: 85, width: frame.width - 20, height: 16)
-        detailLabel.frame = CGRect(x: 10, y: 101, width: frame.width - 20, height: 16)
+        detailLabel.frame = CGRect(x: 10, y: 101, width: frame.width - 20, height: 35)
         
         // add to subview
         addSubview(bottomView)
@@ -57,15 +59,16 @@ class HomeLinkTile: UICollectionViewCell {
         titleLabel.font = Device.font.body(ofSize: .large)
         detailLabel.font = Device.font.title(ofSize: .small)
         // color
-        bottomView.backgroundColor = UIColor(hex: "E6E8FF")
+        bottomView.backgroundColor = Device.colors.offWhite
         dateLabel.textColor = UIColor(hex: "929292")
-        linkIconBackDrop.backgroundColor = UIColor(hex: "E6E8FF")
+        linkIconBackDrop.backgroundColor = Device.colors.offWhite
         titleLabel.textColor = UIColor(hex: "8A9699")
         // misc
         thoughtIconLabel.textAlignment = .center
         linkIconBackDrop.layer.cornerRadius = 35
         linkIcon.image = #imageLiteral(resourceName: "link_clay")
         detailLabel.textAlignment = .center
+        detailLabel.numberOfLines = 2
     }
 }
 

@@ -39,7 +39,7 @@ class ThoughtDetailSearchBar: AnimatableView {
     
     private func setView() {
         
-        backgroundColor = Device.colors.blue
+        backgroundColor = Device.colors.offWhite
         
         sb.delegate = self
         
