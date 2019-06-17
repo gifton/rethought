@@ -80,7 +80,7 @@ public class Entry: NSManagedObject {
     // max height we want is 250, so never exceed that
     public func heightForContent(width: CGFloat) -> CGFloat {
         if let note = note {
-            return max(200, note.minimumHeightForContent(width: width))
+            return max(140, note.minimumHeightForContent(width: width))
         } else if let photo = photo {
             return max(250, photo.minimumHeightForContent(width: width))
         } else if link != nil {

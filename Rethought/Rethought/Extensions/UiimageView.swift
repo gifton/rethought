@@ -20,18 +20,7 @@ extension UIImageView {
                 let data = data,
                 let image = UIImage(data: data)
                 else { completionHandler?(nil); return }
-            DispatchQueue.main.async {
-                self.image = image
-                print("image recieved, size: \(image.size)")
-                completionHandler?(image)
-            }
+            DispatchQueue.main.async { self.image = image; completionHandler?(image) }
             }.resume()
-    }    
-    
-    //change tint color of image
-    func setImageColor(color: UIColor) {
-        let templateImage = self.image?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
-        self.image = templateImage
-        self.tintColor = color
     }
 }

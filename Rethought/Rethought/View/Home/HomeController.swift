@@ -33,7 +33,7 @@ class HomeController: UIViewController {
         model.homeDelegate = self
         model.animator = self
         
-        tv = HomeTable(frame: CGRect(x: 0, y: 500, width: Device.size.width, height: Device.size.height - 500))
+        tv = HomeTable(frame: CGRect(x: 0, y: 500, width: Device.size.width, height: Device.size.height - 500 - Device.size.tabBarHeight))
         tv?.delegate = self
         tv?.cv.dataSource = model
         tv?.animator = self
@@ -143,6 +143,12 @@ extension HomeController: HomeDelegate {
         let entryModel = model.retrieve(entry: row)
         let controller = EntryDetailController(withModel: entryModel)
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func sizeFor(row: Int) -> CGSize {
+        
+        
+        return .zero
     }
     
     func didSelectEntryType(ofType type: EntryType) {

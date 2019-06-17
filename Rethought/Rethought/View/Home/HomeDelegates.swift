@@ -8,6 +8,7 @@ protocol HomeDelegate {
     func didSelectEntryType(ofType type: EntryType)
     func requestExpansion()
     func requestCollapse()
+    func sizeFor(row: Int) -> CGSize
 }
 
 // passing homeContentPackage data between head and table views and controller

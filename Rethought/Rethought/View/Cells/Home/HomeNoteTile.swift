@@ -70,6 +70,8 @@ class HomeNoteTile: UICollectionViewCell, BuilderContext {
         
         titleLabel.font = titleFont
         titleLabel.textColor = Device.colors.darkGray
+        titleLabel.numberOfLines = 0
+        detailLabel.numberOfLines = 0
         detailLabel.font = detailFont
     }
 }

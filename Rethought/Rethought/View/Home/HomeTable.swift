@@ -122,7 +122,7 @@ extension HomeTable: UICollectionViewDelegate {
 
 extension HomeTable: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return collectionViewCellHeights[indexPath.row]
+        return delegate?.sizeFor(row: indexPath.row) ?? .zero
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
