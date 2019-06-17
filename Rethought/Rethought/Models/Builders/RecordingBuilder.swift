@@ -9,6 +9,7 @@ struct RecordingBuilder: EntryBuilder {
     var userDetail: String
     var recording: AudioFileID
     var entry: Entry?
+    var date: Date = Date()
     // TODO: make this an recording builder
     static var zero: EntryBuilder {
         return LinkBuilder(link: "", rawIconUrl: "", detail: "", title: "", forEntry: nil)

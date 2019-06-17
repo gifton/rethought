@@ -10,6 +10,7 @@ struct NoteBuilder: EntryBuilder {
     var type: EntryType = .note
     var detail: String
     var title: String
+    var date: Date = Date()
     static var zero: EntryBuilder {
         return NoteBuilder(detail: "", title: "", forEntry: nil)
     }
@@ -21,6 +22,7 @@ struct NoteBuilder: EntryBuilder {
         self.detail = detail
         self.title = title
         self.entry = entry
+        date = entry?.date ?? Date()
     }
     
     init(withNote note: NoteEntry) {
@@ -28,6 +30,7 @@ struct NoteBuilder: EntryBuilder {
         self.title = note.title ?? "No title available"
         self.entry = note.entry
         self.thoughtIcon = ThoughtIcon(note.entry.thought.icon)
+        date = note.entry.date
     }
     
 }

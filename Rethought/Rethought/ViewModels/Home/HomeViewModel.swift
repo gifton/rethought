@@ -76,6 +76,7 @@ class HomeViewModel: NSObject {
         var sizes = [CGSize]()
         
         if !expanded {
+            
             sizes = Array(repeating: CGSize(width: Device.size.width - 20, height: 100), count: entryCount)
             
         } else {
@@ -159,15 +160,7 @@ extension HomeViewModel {
     
     func cellFor(indexPath: IndexPath, withCollectionView collectionView: UICollectionView) -> UICollectionViewCell? {
         // get current entry
-        var currentEntry: Entry!
-        switch currentEntryType {
-        case .link: currentEntry = linkEntries[indexPath.row]
-        case .photo: currentEntry = photoEntries[indexPath.row]
-        case .note: currentEntry = noteEntries[indexPath.row]
-        case .recording: currentEntry = recordingEntries[indexPath.row]
-        default: currentEntry = entries[indexPath.row]
-        }
-        
+        let currentEntry: Entry = getEntryFor(row: indexPath.row)
         // check if !isExpanded
         // return collapsed cell
         if !expanded {
@@ -194,6 +187,16 @@ extension HomeViewModel {
         default:  return nil
         }
         
+    }
+    
+    private func getEntryFor(row: Int) -> Entry {
+        switch currentEntryType {
+        case .link: return linkEntries[row]
+        case .photo: return photoEntries[row]
+        case .note: return noteEntries[row]
+        case .recording: return recordingEntries[row]
+        default: return entries[row]
+        }
     }
 }
 

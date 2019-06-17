@@ -12,6 +12,7 @@ struct PhotoBuilder: EntryBuilder {
     var photo: UIImage
     var userDetail: String
     var photoHeight: CGFloat = 0
+    var date: Date = Date()
     static var zero: EntryBuilder {
         return PhotoBuilder(photo: UIImage(), userDetail: "", forEntry: nil)
     }
@@ -23,12 +24,14 @@ struct PhotoBuilder: EntryBuilder {
         self.photo = photo
         self.userDetail = userDetail
         self.entry = entry
+        date = entry?.date ?? Date()
     }
     
     init(withEntry entry: PhotoEntry) {
         photo = UIImage(data: entry.rawPhoto) ?? #imageLiteral(resourceName: "camera_light")
         userDetail = entry.detail ?? ""
         self.entry = entry.entry
+        date = entry.entry.date
     }
     
     init(withEntry entry: PhotoEntry, forWidth width: CGFloat) {
@@ -36,7 +39,8 @@ struct PhotoBuilder: EntryBuilder {
         userDetail = entry.detail ?? ""
         self.entry = entry.entry
         photoHeight = entry.photoHeight(forWidth: width)
-        self.thoughtIcon = ThoughtIcon(entry.entry.thought.icon)
+        thoughtIcon = ThoughtIcon(entry.entry.thought.icon)
+        date = entry.entry.date
     }
     
     public mutating func setHeight(forPhotoWidth width: CGFloat) {

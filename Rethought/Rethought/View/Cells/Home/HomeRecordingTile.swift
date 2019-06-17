@@ -2,6 +2,8 @@
 import Foundation
 import UIKit
 
+// size = 
+
 class HomeRecordingTile: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)

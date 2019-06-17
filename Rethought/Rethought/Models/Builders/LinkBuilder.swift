@@ -13,6 +13,7 @@ struct LinkBuilder: EntryBuilder {
     var link: String
     var detail: String
     var title: String
+    var date: Date = Date()
     static var zero: EntryBuilder {
         return LinkBuilder(link: "", rawIconUrl: "", detail: "", title: "", forEntry: nil)
     }
@@ -27,6 +28,7 @@ struct LinkBuilder: EntryBuilder {
         self.detail = detail
         self.title = title
         self.entry = entry
+        date = entry?.date ?? Date()
     }
     
     init(withEntry link: LinkEntry) {
@@ -35,6 +37,7 @@ struct LinkBuilder: EntryBuilder {
         detail = link.detail
         title = link.title
         entry = link.entry
-        self.thoughtIcon = ThoughtIcon(link.entry.thought.icon)
+        thoughtIcon = ThoughtIcon(link.entry.thought.icon)
+        date = link.entry.date
     }
 }

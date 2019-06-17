@@ -41,7 +41,8 @@
 		D743F3A822B4A05B006763D1 /* HomeNoteTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F3A722B4A05B006763D1 /* HomeNoteTile.swift */; };
 		D743F3AA22B4A06C006763D1 /* HomePhotoTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F3A922B4A06C006763D1 /* HomePhotoTile.swift */; };
 		D743F3AC22B4A074006763D1 /* HomeRecordingTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F3AB22B4A074006763D1 /* HomeRecordingTile.swift */; };
-		D743F3AE22B4A122006763D1 /* HomeLinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F3AD22B4A122006763D1 /* HomeLinkCell.swift */; };
+		D743F3AE22B4A122006763D1 /* HomeLinkTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F3AD22B4A122006763D1 /* HomeLinkTile.swift */; };
+		D743F3B022B7CEC2006763D1 /* BuilderContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F3AF22B7CEC2006763D1 /* BuilderContext.swift */; };
 		D74D1B22229F787300FB7D95 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B21229F787300FB7D95 /* Animator.swift */; };
 		D74D1B2722A0087E00FB7D95 /* ThoughtDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */; };
 		D74D1B2922A0095200FB7D95 /* ThoughtDetailSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2822A0095200FB7D95 /* ThoughtDetailSearchBar.swift */; };
@@ -168,7 +169,8 @@
 		D743F3A722B4A05B006763D1 /* HomeNoteTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNoteTile.swift; sourceTree = "<group>"; };
 		D743F3A922B4A06C006763D1 /* HomePhotoTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePhotoTile.swift; sourceTree = "<group>"; };
 		D743F3AB22B4A074006763D1 /* HomeRecordingTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecordingTile.swift; sourceTree = "<group>"; };
-		D743F3AD22B4A122006763D1 /* HomeLinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLinkCell.swift; sourceTree = "<group>"; };
+		D743F3AD22B4A122006763D1 /* HomeLinkTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLinkTile.swift; sourceTree = "<group>"; };
+		D743F3AF22B7CEC2006763D1 /* BuilderContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderContext.swift; sourceTree = "<group>"; };
 		D74D1B21229F787300FB7D95 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailController.swift; sourceTree = "<group>"; };
 		D74D1B2822A0095200FB7D95 /* ThoughtDetailSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailSearchBar.swift; sourceTree = "<group>"; };
@@ -580,7 +582,7 @@
 				D743F3A722B4A05B006763D1 /* HomeNoteTile.swift */,
 				D743F3A922B4A06C006763D1 /* HomePhotoTile.swift */,
 				D743F3AB22B4A074006763D1 /* HomeRecordingTile.swift */,
-				D743F3AD22B4A122006763D1 /* HomeLinkCell.swift */,
+				D743F3AD22B4A122006763D1 /* HomeLinkTile.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -663,6 +665,7 @@
 				D74D1B20229F786700FB7D95 /* Animator */,
 				D7BB1834227631830084963E /* MSG */,
 				D7006EE82268CD5A004E570F /* AnimatedTabBar.swift */,
+				D743F3AF22B7CEC2006763D1 /* BuilderContext.swift */,
 				D75EE77E22AAFA26006D0971 /* EntryActionBar.swift */,
 				D7FEEBE622939F5500D6D1C8 /* ShowOptionsView.swift */,
 				D77A7D8E229B3E0E009B1781 /* EntryCountBlock.swift */,
@@ -866,8 +869,9 @@
 				D7BB1833227629EE0084963E /* MSGBoard.swift in Sources */,
 				D7AF976B22A0F69700AA4A65 /* AnimatableView.swift in Sources */,
 				D7006EBD22653DB1004E570F /* EntryCount.swift in Sources */,
+				D743F3B022B7CEC2006763D1 /* BuilderContext.swift in Sources */,
 				D7AF977722A1A2B800AA4A65 /* ViewOverride.swift in Sources */,
-				D743F3AE22B4A122006763D1 /* HomeLinkCell.swift in Sources */,
+				D743F3AE22B4A122006763D1 /* HomeLinkTile.swift in Sources */,
 				D76DFA09226E803800CE2D59 /* Rects.swift in Sources */,
 				D7536FED2262EB0A003F0920 /* Entry.swift in Sources */,
 				D7006EE72268CB63004E570F /* ViewController.swift in Sources */,
