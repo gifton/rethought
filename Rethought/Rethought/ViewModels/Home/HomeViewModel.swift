@@ -72,46 +72,35 @@ class HomeViewModel: NSObject {
     public var homeContentPackage: HomeContentPackage {
         return HomeContentPackage(title: tableTitle, entryType: currentEntryType)
     }
-    public var entryCellHeights: [CGSize] {
-        var sizes = [CGSize]()
+    
+    public func sizeFor(row: Int) -> CGSize {
         
-        if !expanded {
-            
-            sizes = Array(repeating: CGSize(width: Device.size.width - 20, height: 100), count: entryCount)
-            
-        } else {
-            
-            // get proper entries
-            var currentEntries = [Entry]()
-            switch currentEntryType {
-            case .note: currentEntries = noteEntries
-            case .link: currentEntries = linkEntries
-            case .photo: currentEntries = photoEntries
-            case .recording: currentEntries = recordingEntries
-            default: currentEntries = entries
-            }
-            
-            // loop through each one to calculate size
-            for entry in currentEntries {
-                switch entry.computedEntryType {
-                case .link, .photo: sizes.append(CGSize(width: (Device.size.width - 50) / 2, height: 188))
-                case .note:
-                    let newHeight = entry.heightForContent(width: Device.size.width - 40)
-                    sizes.append(CGSize(width: Device.size.width - 40, height: newHeight))
-                default: sizes.append(CGSize(width: Device.size.width - 20, height: 100))
-                }
-            }
+        if !expanded { return CGSize(width: Device.size.width - 20, height: 100) }
+        
+        let tileSmWidth = (Device.size.width - 50) / 2
+        let tileLgWidth = (Device.size.width - 40)
+        
+        let entry = currentEntry(forRow: row)
+        switch entry.computedEntryType {
+        case .link, .photo: return CGSize(width: tileSmWidth, height: 188)
+        default: return CGSize(width: tileLgWidth, height: entry.heightForContent(width: tileSmWidth))
         }
-        
-        // return sizes
-        return sizes
     }
+    
     public var expanded: Bool = false
-    private func setup() {
-        thoughts = fetchThoughts()
-    }
+    private func setup() { thoughts = fetchThoughts() }
     public var homeDelegate: HomeDelegate?
     public var animator: Animator?
+    
+    private func currentEntry(forRow row: Int) -> Entry {
+        switch currentEntryType {
+        case .note: return noteEntries[row]
+        case .link: return linkEntries[row]
+        case .photo: return photoEntries[row]
+        case .recording: return recordingEntries[row]
+        default: return entries[row]
+        }
+    }
 }
 
 extension HomeViewModel: HomeViewModelDelegate {

@@ -30,7 +30,6 @@ class PhotoEntryCell: UITableViewCell {
         guard let preview = preview else { return }
         let detailHeight = preview.userDetail.sizeFor(font: detailFont, width: frame.width - 20).height
         print("height from cell:", preview.photoHeight)
-        print(frame)
         photoView.frame = CGRect(x: 10, y: 20, width: frame.width - 20, height: preview.photoHeight)
         locationLabel.frame = CGRect(x: 10, y: frame.height - 35, width: frame.width / 3, height: 15)
         dateLabel.frame = CGRect(x: frame.width - 75, y: frame.height - 35, width: 100, height: 15)

@@ -5,7 +5,7 @@ import UIKit
 class HomeNoteTile: UICollectionViewCell, BuilderContext {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setView(); styleView()
+        styleView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,10 +37,11 @@ class HomeNoteTile: UICollectionViewCell, BuilderContext {
         let detailHeight: CGFloat = context.detail.sizeFor(font: detailFont, width: frame.width - 40).height
         
         titleLabel.frame = CGRect(x: 20, y: 15, width: frame.width - 40, height: titleHeight)
-        detailLabel.frame = CGRect(x: 20, y: 20 + titleHeight, width: frame.width - 40, height: detailHeight)
+        detailLabel.frame = CGRect(x: 20, y: 40 + titleHeight, width: frame.width - 40, height: detailHeight)
         
         addSubview(titleLabel)
         addSubview(detailLabel)
+        setView()
         
     }
     
@@ -50,8 +51,8 @@ class HomeNoteTile: UICollectionViewCell, BuilderContext {
         layer.cornerRadius = 10
         
         // frames
-        dateLabel.frame = CGRect(x: frame.width - 90, y: frame.height - 30, width: 70, height: 16)
-        locationLabel.frame = CGRect(x: 20, y: frame.height - 30, width: 150, height: 16)
+        dateLabel.frame = CGRect(x: frame.width - 90, y: detailLabel.frame.origin.y + detailLabel.frame.height + 35, width: 70, height: 16)
+        locationLabel.frame = CGRect(x: 20, y: detailLabel.frame.origin.y + detailLabel.frame.height + 35, width: 150, height: 16)
         noteIcon.frame = CGRect(x: frame.width - 60, y: 10, width: 30, height: 30)
         // add to subview
         

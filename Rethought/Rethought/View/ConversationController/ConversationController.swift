@@ -13,11 +13,7 @@ import CoreLocation
 class ConversationController: UIViewController {
     
     // Mark: Private vars
-    private var model: ThoughtBuilderViewModel {
-        didSet {
-            print("model set!")
-        }
-    }
+    private var model: ThoughtBuilderViewModel
     private var conversation: ConversationView!
     // Mark: public vars
     

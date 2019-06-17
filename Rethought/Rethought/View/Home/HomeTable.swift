@@ -12,7 +12,6 @@ class HomeTable: UIView {
     // MARK: public variables
     public var animator: Animator?
     public var delegate: HomeDelegate?
-    public var collectionViewCellHeights: [CGSize] = Array(repeating: CGSize(width: Device.size.width - 20, height: 100), count: 20)
     public var cv: UICollectionView!
     public var cvLayout: UICollectionViewFlowLayout!
     public var expanded: Bool = false {

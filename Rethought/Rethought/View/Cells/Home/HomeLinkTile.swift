@@ -65,7 +65,7 @@ class HomeLinkTile: UICollectionViewCell {
         thoughtIconLabel.textAlignment = .center
         linkIconBackDrop.layer.cornerRadius = 35
         linkIcon.image = #imageLiteral(resourceName: "link_clay")
-        
+        detailLabel.textAlignment = .center
     }
 }
 

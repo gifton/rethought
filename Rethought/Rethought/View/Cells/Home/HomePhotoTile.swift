@@ -45,14 +45,13 @@ class HomePhotoTile: UICollectionViewCell, BuilderContext {
         addSubview(iconFrame)
         iconFrame.addSubview(thoughtIcon)
         
-        photo.contentMode = .scaleToFill
+        photo.contentMode = .scaleAspectFill
         photo.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2))
         photo.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0)
         
-        iconFrame.backgroundColor = .white
-        iconFrame.addShadow(offset: CGSize(width: 4, height: 4))
+        iconFrame.blurBackground(type: .extraLight, cornerRadius: 8)
         iconFrame.setHeightWidth(width: 40, height: 40)
-        iconFrame.layer.cornerRadius = 20
+        iconFrame.layer.cornerRadius = 8
         iconFrame.setTopAndLeading(top: topAnchor, leading: leadingAnchor, paddingTop: 8, paddingLeading: 8)
         
         thoughtIcon.font = Device.font.body(ofSize: .large)

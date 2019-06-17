@@ -12,7 +12,6 @@ class HomeController: UIViewController {
         // test this
         model.refresh()
         homeHead?.thoughtCollection.reloadData()
-        tv?.collectionViewCellHeights = model.entryCellHeights
         tv?.updatepackage(withContent: model.homeContentPackage.title)
         tv?.cv.reloadData()
     }
@@ -146,15 +145,12 @@ extension HomeController: HomeDelegate {
     }
     
     func sizeFor(row: Int) -> CGSize {
-        
-        
-        return .zero
+        return model.sizeFor(row: row)
     }
     
     func didSelectEntryType(ofType type: EntryType) {
         model.didSelectEntry(ofType: type) {
             self.tv?.updatepackage(withContent: model.homeContentPackage.title)
-            self.tv?.collectionViewCellHeights = model.entryCellHeights
             self.homeHead?.entryPickerView.setSelectedEntry(ofType: type)
             self.tv?.cv.reloadData()
         }
@@ -162,13 +158,11 @@ extension HomeController: HomeDelegate {
     
     func requestExpansion() {
         model.expanded = true
-        tv?.collectionViewCellHeights = model.entryCellHeights
         tv?.cv.reloadData()
         
     }
     func requestCollapse() {
         model.expanded = false
-        tv?.collectionViewCellHeights = model.entryCellHeights
         tv?.cv.reloadData()
     }
 }
