@@ -43,6 +43,8 @@
 		D743F3AC22B4A074006763D1 /* HomeRecordingTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F3AB22B4A074006763D1 /* HomeRecordingTile.swift */; };
 		D743F3AE22B4A122006763D1 /* HomeLinkTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F3AD22B4A122006763D1 /* HomeLinkTile.swift */; };
 		D743F3B022B7CEC2006763D1 /* BuilderContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F3AF22B7CEC2006763D1 /* BuilderContext.swift */; };
+		D743F3B322B9419C006763D1 /* SearchViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F3B222B9419C006763D1 /* SearchViewModelDelegate.swift */; };
+		D743F3B522B94376006763D1 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F3B422B94376006763D1 /* SearchViewModel.swift */; };
 		D74D1B22229F787300FB7D95 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B21229F787300FB7D95 /* Animator.swift */; };
 		D74D1B2722A0087E00FB7D95 /* ThoughtDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */; };
 		D74D1B2922A0095200FB7D95 /* ThoughtDetailSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2822A0095200FB7D95 /* ThoughtDetailSearchBar.swift */; };
@@ -171,6 +173,8 @@
 		D743F3AB22B4A074006763D1 /* HomeRecordingTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecordingTile.swift; sourceTree = "<group>"; };
 		D743F3AD22B4A122006763D1 /* HomeLinkTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLinkTile.swift; sourceTree = "<group>"; };
 		D743F3AF22B7CEC2006763D1 /* BuilderContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderContext.swift; sourceTree = "<group>"; };
+		D743F3B222B9419C006763D1 /* SearchViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelDelegate.swift; sourceTree = "<group>"; };
+		D743F3B422B94376006763D1 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		D74D1B21229F787300FB7D95 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailController.swift; sourceTree = "<group>"; };
 		D74D1B2822A0095200FB7D95 /* ThoughtDetailSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailSearchBar.swift; sourceTree = "<group>"; };
@@ -299,6 +303,7 @@
 		D7006ED122672BB8004E570F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				D743F3B122B94129006763D1 /* Search */,
 				D75B8B2B22912A5100B38CC6 /* ThoughtBuilder */,
 				D77A7D92229E5157009B1781 /* Home */,
 				D77A7D93229E515E009B1781 /* ThoughtDetail */,
@@ -370,6 +375,15 @@
 				D72F30F3228575450091DCB8 /* MSGBoardLinkView.swift */,
 			);
 			path = "entry+thought";
+			sourceTree = "<group>";
+		};
+		D743F3B122B94129006763D1 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				D743F3B222B9419C006763D1 /* SearchViewModelDelegate.swift */,
+				D743F3B422B94376006763D1 /* SearchViewModel.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		D74D1B20229F786700FB7D95 /* Animator */ = {
@@ -918,6 +932,7 @@
 				D7AF976D22A1095000AA4A65 /* AnimatableLabel.swift in Sources */,
 				D7536FE92262EB0A003F0920 /* Thought.swift in Sources */,
 				D721112C2272D14D00131BEF /* SearchController.swift in Sources */,
+				D743F3B322B9419C006763D1 /* SearchViewModelDelegate.swift in Sources */,
 				D77A7D8D229A3D65009B1781 /* RadialGradient.swift in Sources */,
 				D7810C20226F938F0038C1BA /* MSGCenter.swift in Sources */,
 				D76895502271746F00DC059E /* MSGSubView.swift in Sources */,
@@ -935,6 +950,7 @@
 				D7BB183B227886B80084963E /* MSGResponseView.swift in Sources */,
 				D7C6541F226A3B45008A66EF /* MSGCenterDelegate.swift in Sources */,
 				D7AF977922A56C8700AA4A65 /* NoteEntryCell.swift in Sources */,
+				D743F3B522B94376006763D1 /* SearchViewModel.swift in Sources */,
 				D760FED7227E785200E4693D /* UIBezierPath.swift in Sources */,
 				D7536FAE2262C815003F0920 /* Manager.swift in Sources */,
 				D7536F922262C26F003F0920 /* AppDelegate.swift in Sources */,
