@@ -46,6 +46,9 @@
 		D743F3B522B94376006763D1 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F3B422B94376006763D1 /* SearchViewModel.swift */; };
 		D743F3B722B94CA7006763D1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F3B622B94CA7006763D1 /* SearchViewController.swift */; };
 		D743F3B922B94CAE006763D1 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F3B822B94CAE006763D1 /* SearchView.swift */; };
+		D743F3BD22B95D38006763D1 /* SearchHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F3BC22B95D38006763D1 /* SearchHeadView.swift */; };
+		D743F3BF22B95D3F006763D1 /* SearchThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F3BE22B95D3F006763D1 /* SearchThoughtCell.swift */; };
+		D743F3C122B95D47006763D1 /* SearchEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743F3C022B95D47006763D1 /* SearchEntryCell.swift */; };
 		D74D1B22229F787300FB7D95 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B21229F787300FB7D95 /* Animator.swift */; };
 		D74D1B2722A0087E00FB7D95 /* ThoughtDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */; };
 		D74D1B2922A0095200FB7D95 /* ThoughtDetailSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D1B2822A0095200FB7D95 /* ThoughtDetailSearchBar.swift */; };
@@ -177,6 +180,9 @@
 		D743F3B422B94376006763D1 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		D743F3B622B94CA7006763D1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		D743F3B822B94CAE006763D1 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		D743F3BC22B95D38006763D1 /* SearchHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeadView.swift; sourceTree = "<group>"; };
+		D743F3BE22B95D3F006763D1 /* SearchThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchThoughtCell.swift; sourceTree = "<group>"; };
+		D743F3C022B95D47006763D1 /* SearchEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEntryCell.swift; sourceTree = "<group>"; };
 		D74D1B21229F787300FB7D95 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		D74D1B2622A0087E00FB7D95 /* ThoughtDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailController.swift; sourceTree = "<group>"; };
 		D74D1B2822A0095200FB7D95 /* ThoughtDetailSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailSearchBar.swift; sourceTree = "<group>"; };
@@ -363,6 +369,7 @@
 		D7006EDB2267364B004E570F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D743F3BB22B95D19006763D1 /* Search */,
 				D7B0A6BB22A5B5ED004B549A /* Home */,
 				D7B0A6BC22A5B608004B549A /* ThoughtDetail */,
 			);
@@ -385,6 +392,16 @@
 			children = (
 				D743F3B222B9419C006763D1 /* SearchViewModelDelegate.swift */,
 				D743F3B422B94376006763D1 /* SearchViewModel.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		D743F3BB22B95D19006763D1 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				D743F3BC22B95D38006763D1 /* SearchHeadView.swift */,
+				D743F3BE22B95D3F006763D1 /* SearchThoughtCell.swift */,
+				D743F3C022B95D47006763D1 /* SearchEntryCell.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -856,6 +873,7 @@
 			files = (
 				D7B0A6BE22A5B618004B549A /* LinkEntryCell.swift in Sources */,
 				D7536FE32262EB0A003F0920 /* PhotoEntry.swift in Sources */,
+				D743F3BD22B95D38006763D1 /* SearchHeadView.swift in Sources */,
 				D7B0A6C722A81D7D004B549A /* EntryDetailViewModel.swift in Sources */,
 				D74D1B22229F787300FB7D95 /* Animator.swift in Sources */,
 				D75EE77F22AAFA26006D0971 /* EntryActionBar.swift in Sources */,
@@ -904,6 +922,7 @@
 				D7536FD52262D8AA003F0920 /* rt-DB2.xcdatamodeld in Sources */,
 				D7006EC622671C4C004E570F /* PhotoBuilder.swift in Sources */,
 				D7BE8F20227AB12300B15F06 /* MSGCenterEntryView.swift in Sources */,
+				D743F3BF22B95D3F006763D1 /* SearchThoughtCell.swift in Sources */,
 				D7536FA52262C6DA003F0920 /* styling.swift in Sources */,
 				D7536FC92262D182003F0920 /* UIStackView.swift in Sources */,
 				D7536FC12262CCE4003F0920 /* UIImage.swift in Sources */,
@@ -959,6 +978,7 @@
 				D7536FAE2262C815003F0920 /* Manager.swift in Sources */,
 				D7536F922262C26F003F0920 /* AppDelegate.swift in Sources */,
 				D7BE8F1E227AB0F300B15F06 /* MSGCenterNoteView.swift in Sources */,
+				D743F3C122B95D47006763D1 /* SearchEntryCell.swift in Sources */,
 				D7006ED522672C8B004E570F /* ThoughtBuilderViewModelDelegate.swift in Sources */,
 				D7006EB922653D2D004E570F /* EntryType.swift in Sources */,
 				D7536FB02262C870003F0920 /* PersistantService.swift in Sources */,
