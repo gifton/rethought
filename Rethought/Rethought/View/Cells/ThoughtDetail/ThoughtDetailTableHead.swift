@@ -7,7 +7,7 @@ class ThoughtDetailTableHead: UITableViewCell, Animatable {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         styleView()
-        backgroundColor = .white
+        backgroundColor = Device.colors.offWhite
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -31,7 +31,7 @@ class ThoughtDetailTableHead: UITableViewCell, Animatable {
      table view need height delta == 100 (superView animation scroll length)
     */
     var titleStartPoint = CGPoint(x: 15, y: 10)
-    let endTitlePoint = CGPoint(x: 15, y: 175)
+    let endTitlePoint = CGPoint(x: 15, y: 165)
     var titleSize = CGSize.zero
     
     var locationSize = CGSize.zero
