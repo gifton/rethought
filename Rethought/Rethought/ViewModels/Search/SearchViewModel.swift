@@ -3,6 +3,11 @@ import Foundation
 import UIKit
 import CoreData
 
+enum SearchType: Int {
+    case entry = 0
+    case thought = 1
+}
+
 class SearchViewModel: NSObject {
     init(withMoc moc: NSManagedObjectContext) {
         self.moc = moc

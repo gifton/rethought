@@ -21,4 +21,7 @@ extension UITableView {
         }
         return cell
     }
+    func registerHeaderFooter<T: UITableViewHeaderFooterView>(cellWithClass name: T.Type) {
+        register(T.self, forHeaderFooterViewReuseIdentifier: String(describing: name))
+    }
 }

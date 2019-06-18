@@ -17,21 +17,36 @@ class SearchViewController: UIViewController {
     
     func setView() {
         view.addSubview(tv)
-        tv.frame = view.frame
+        
+        tv.frame = Device.size.frame
         tv.delegate = self
         tv.dataSource = self
-        
+        tv.registerHeaderFooter(cellWithClass: SearchHeadView.self)
+        tv.separatorStyle = .none
     }
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            return SearchHeadView()
+        } else {
+            return nil
+        }
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 300.0
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 25
+        return 0
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 125
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("selected: \(indexPath.row)")
     }
 }
