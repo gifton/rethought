@@ -106,7 +106,18 @@ class HomeViewModel: NSObject {
 extension HomeViewModel: HomeViewModelDelegate {
     
     func requestDeletion(forthought thought: Thought) {
-    print("thought deleted!")
+        thought.removeSelf()
+        save()
+    }
+    
+    func delete(_ thought: Thought) {
+        thought.removeSelf()
+        save()
+    }
+    
+    func delete(_ entry: Entry) {
+        entry.removeSelf()
+        save()
     }
     
     func refresh() {
@@ -120,6 +131,10 @@ extension HomeViewModel: HomeViewModelDelegate {
     
     func retrieve(entry row: Int) -> EntryDetailViewModel {
         let entry = self.entries[row]
+        return EntryDetailViewModel(withEntry: entry, moc)
+    }
+    
+    func retrieve(withEntry entry: Entry) -> EntryDetailViewModel {
         return EntryDetailViewModel(withEntry: entry, moc)
     }
     
@@ -139,6 +154,20 @@ extension HomeViewModel: HomeViewModelDelegate {
     
     func displayDetail(forThought thought: Thought) -> ThoughtDetailViewModel {
         return ThoughtDetailViewModel(withThought: thought, moc)
+    }
+    
+    func retrieveModelFor(row: Int) -> ThoughtDetailViewModel {
+        return ThoughtDetailViewModel(withThought: thoughts[row], moc)
+    }
+    
+    func retrieveModel(forEntry entry: Entry) -> EntryDetailViewModel {
+        return EntryDetailViewModel(withEntry: entry, moc)
+    }
+    
+    // call context tot save data
+    func save() {
+        do { try moc.save() }
+        catch { print(error) }
     }
 }
 

@@ -4,8 +4,9 @@ import UIKit
 
 // selecting, deleting view pop up from bottom on selection
 class ShowOptionsView: UIView {
-    init(frame: CGRect, options: [OptionViewActions]) {
+    init(frame: CGRect, options: [OptionViewActions], delegate: HomeDelegate) {
         self.options = options
+        self.delegate = delegate
         super.init(frame: frame)
         
         backgroundColor = Device.colors.offWhite
@@ -13,14 +14,8 @@ class ShowOptionsView: UIView {
         
     }
     // MARK: Private variables
+    private var delegate: HomeDelegate
     private var options: [OptionViewActions]
-    public let cancelButton: UIButton = {
-        let btn = UIButton()
-        btn.frame = CGRect(x: Device.size.width - 55, y: 25, width: 25, height: 25)
-        btn.setImage(#imageLiteral(resourceName: "close"), for: .normal)
-        
-        return btn
-    }()
     private var allViews: [UIView] {
         var views = [UIView]()
         for option in options {
@@ -29,6 +24,19 @@ class ShowOptionsView: UIView {
         
         return views
     }
+    
+    // MARK: public objects
+    public let cancelButton: UIButton = {
+        let btn = UIButton()
+        btn.frame = CGRect(x: Device.size.width - 55, y: 25, width: 25, height: 25)
+        btn.setImage(#imageLiteral(resourceName: "close"), for: .normal)
+        
+        return btn
+    }()
+    
+    public var toEntryLabel: UILabel!
+    public var toThoughtLabel: UILabel!
+    public var deleteButton: UIButton!
     
     // set initial views
     private func setViews() {
@@ -49,30 +57,30 @@ class ShowOptionsView: UIView {
         switch type {
         case .toEntry:
             // to entry
-            let lbl = UILabel(frame: CGRect(origin: CGPoint(x: 25, y: 0), size: CGSize(width: frame.width - 50, height: 31)))
-            lbl.text = "Go to Entry"
-            lbl.font = Device.font.mediumTitle(ofSize: .large)
-            lbl.addBorders(edges: [.bottom], color: UIColor(hex: "D8D8D8"), thickness: 0.5)
-            lbl.textColor = Device.colors.darkGray
+            toEntryLabel = UILabel(frame: CGRect(origin: CGPoint(x: 25, y: 0), size: CGSize(width: frame.width - 50, height: 31)))
+            toEntryLabel.text = "Go to Entry"
+            toEntryLabel.font = Device.font.mediumTitle(ofSize: .large)
+            toEntryLabel.addBorders(edges: [.bottom], color: UIColor(hex: "D8D8D8"), thickness: 0.5)
+            toEntryLabel.textColor = Device.colors.darkGray
             
-            return lbl
+            return toEntryLabel
         case .toThought:
             // to thought
-            let lbl = UILabel(frame: CGRect(origin: CGPoint(x: 25, y: 0), size: CGSize(width: frame.width - 50, height: 31)))
-            lbl.text = "Go to Thought"
-            lbl.font = Device.font.mediumTitle(ofSize: .large)
-            lbl.addBorders(edges: [.bottom], color: UIColor(hex: "D8D8D8"), thickness: 0.5)
-            lbl.textColor = Device.colors.darkGray
+            toThoughtLabel = UILabel(frame: CGRect(origin: CGPoint(x: 25, y: 0), size: CGSize(width: frame.width - 50, height: 31)))
+            toThoughtLabel.text = "Go to Thought"
+            toThoughtLabel.font = Device.font.mediumTitle(ofSize: .large)
+            toThoughtLabel.addBorders(edges: [.bottom], color: UIColor(hex: "D8D8D8"), thickness: 0.5)
+            toThoughtLabel.textColor = Device.colors.darkGray
             
-            return lbl
+            return toThoughtLabel
         default:
             //delete
-            let view = UIButton(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 35)))
-            view.layer.cornerRadius = 8
-            view.setTitle("delete", for: .normal)
-            view.backgroundColor = Device.colors.red
+            deleteButton = UIButton(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 35)))
+            deleteButton.layer.cornerRadius = 8
+            deleteButton.setTitle("delete", for: .normal)
+            deleteButton.backgroundColor = Device.colors.red
             
-            return view
+            return deleteButton
         }
     }
     
