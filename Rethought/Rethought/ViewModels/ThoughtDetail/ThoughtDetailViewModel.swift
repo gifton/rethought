@@ -103,16 +103,16 @@ class ThoughtDetailViewModel: ThoughtDetailViewModelDelegate {
         case .photo:
             guard let photo = entry.photo else { print("unable to verify photo in search"); return false }
             guard let detail = photo.detail else { print("unable to verify detail pf photo in search"); return false }
-            if detail.contains(payload) { return true }
+            if detail.lowercased().contains(payload.lowercased()) { return true }
         case .link:
             guard let link = entry.link else { print("unable to verify link in search"); return false }
-            if link.title.contains(payload) { return true }
-            if link.detail.contains(payload) { return true }
-            if link.url.contains(payload) { return true }
+            if link.title.lowercased().contains(payload.lowercased()) { return true }
+            if link.detail.lowercased().contains(payload.lowercased()) { return true }
+            if link.url.lowercased().contains(payload.lowercased()) { return true }
         default:
             guard let note = entry.note else { print("unable to verify note in search"); return false }
-            if note.title!.contains(payload) { return true }
-            if note.detail.contains(payload) { return true }
+            if note.title!.lowercased().contains(payload.lowercased()) { return true }
+            if note.detail.lowercased().contains(payload.lowercased()) { return true }
         }
         
         

@@ -9,12 +9,11 @@ class ViewController: AnimatedTabBarController {
     // create models and pass them to their controllers
     init(model: NSManagedObjectContext) {
         super.init(nibName: nil, bundle: nil)
+        
         let vc1 = HomeController()
         vc1.model = HomeViewModel(withmoc: model)
         
-        // TODO: Create Search Controller
-        let vc2 = UIViewController()
-        vc2.view.backgroundColor = Device.colors.green
+        let vc2 = SearchViewController()
         
         let vc3 = ConversationController(withModel: ThoughtBuilderViewModel(withContext: model))
         

@@ -17,17 +17,18 @@ class SearchViewModel: NSObject {
     var searchingForEntries: Bool = true
 }
 
-extension SearchViewModel: SearchViewModelDelegate {
-    func search(_ payload: String, completion: () -> ()) {
-        <#code#>
-    }
-    
-    func cell(forRow row: Int, collectionView: UICollectionView) -> UICollectionViewCell? {
-        <#code#>
-    }
-    
-    func size(forRow: Int, collectionView: UICollectionView) -> CGSize? {
-        <#code#>
-    }    
-    
-}
+//extension SearchViewModel: SearchViewModelDelegate {
+//    func search(_ payload: String, completion: () -> ()) {
+//        let myRequest = NSFetchRequest(entityName: "entity")
+//        myRequest.predicate = NSPredicate(format: "name = %@", "David")
+//    }
+//
+//    func cell(forRow row: Int, collectionView: UICollectionView) -> UICollectionViewCell? {
+//        <#code#>
+//    }
+//
+//    func size(forRow: Int, collectionView: UICollectionView) -> CGSize? {
+//        <#code#>
+//    }
+//
+//}
