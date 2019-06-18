@@ -28,21 +28,27 @@ class HomeController: UIViewController {
     public var tv: HomeTable?
     lazy var tableButtonMoreView: UIView = UIView()
     
+    
+    // set initial view
     private func setView() {
+        // set delegates
         model.homeDelegate = self
         model.animator = self
         
+        // set lower bound view
         tv = HomeTable(frame: CGRect(x: 0, y: 500, width: Device.size.width, height: Device.size.height - 500 - Device.size.tabBarHeight))
         tv?.delegate = self
         tv?.cv.dataSource = model
         tv?.animator = self
         tv?.updatepackage(withContent: model.homeContentPackage.title)
         
+        // set head bound view
         homeHead = HomeHead(frame: CGRect(x: 0, y: 0, width: Device.size.width, height: 500))
         homeHead?.thoughtCollection.dataSource = self
         homeHead?.thoughtCollection.delegate = self
         homeHead?.entryPickerView.homeDelegate = self
         
+        // add to super
         view.addSubview(homeHead!)
         view.addSubview(tv!)
     }
@@ -56,34 +62,6 @@ extension HomeController: Animator {
     func didUpdate() {
         let progress = tv?.animationProgress ?? 1
         homeHead?.update(toAnimationProgress: progress)
-    }
-    
-    // option view is displayed for specific thoughts or entries
-    func show(optionsFor entry: Entry) {
-        
-        tabBarController?.tabBar.isHidden = true
-        let optionView = ShowOptionsView(frame: CGRect(x: 0, y: Device.size.height + 225, width: Device.size.width, height: 225), options: [.delete, .toEntry, .toThought])
-        
-        let newView = UIView(frame: CGRect(x: 0, y: 0, width: Device.size.width, height: Device.size.height))
-        newView.blurBackground(type: .dark, cornerRadius: 0)
-        newView.layer.opacity = 0
-        view.addSubview(newView)
-        
-        self.view.addSubview(optionView)
-        let end = {
-            optionView.removeFromSuperview()
-            newView.removeFromSuperview()
-            self.tabBarController?.tabBar.isHidden = false
-        }
-        
-        newView.addTapGestureRecognizer { end() }
-        optionView.cancelButton.addTapGestureRecognizer { end() }
-        
-        // move newView, show blurr over rest of view
-        UIView.animate(withDuration: 0.3) {
-            optionView.frame.origin.y -= 225 * 2
-            newView.layer.opacity = 0.55
-        }
     }
     
     // method for registering a view to animnating controller
@@ -112,9 +90,7 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
         // get current cell location and animate another view in its position
         let attrs = collectionView.layoutAttributesForItem(at: indexPath)
         let cellFrameInSuperview = collectionView.convert(attrs?.frame ?? .zero, to: collectionView.superview)
-        let outModel = model.displayDetail(forThought: model.thoughts[indexPath.row])
-        let detail = ThoughtDetailController()
-        detail.model = outModel
+        let outModel = model.retrieveModelFor(row: indexPath.row)
         
         // create new view and add to superview at cell location
         let newView = UIView(frame: cellFrameInSuperview)
@@ -130,7 +106,7 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
                 newView.frame.origin.y -= 35
                 newView.frame = self.view.frame
             }, completion: { (true) in
-                self.navigationController?.pushViewController(detail, animated: false)
+                self.showThought(withModel: outModel)
                 newView.removeFromSuperview()
             })
         }
@@ -138,11 +114,6 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
 }
 
 extension HomeController: HomeDelegate {
-    func show(entryForIndex row: Int) {
-        let entryModel = model.retrieve(entry: row)
-        let controller = EntryDetailController(withModel: entryModel)
-        navigationController?.pushViewController(controller, animated: true)
-    }
     
     func sizeFor(row: Int) -> CGSize {
         return model.sizeFor(row: row)
@@ -167,3 +138,68 @@ extension HomeController: HomeDelegate {
     }
 }
 
+
+// show functions
+// show entryDetail
+    // by entry
+    // by row
+// show thoughtDetail
+    // by thought
+    // by entry
+    // by row
+// show options
+    // by entry
+extension HomeController {
+    
+    // option view is displayed for specific thoughts or entries
+    func show(optionsFor entry: Entry) {
+        
+        // update tabbar
+        tabBarController?.tabBar.isHidden = true
+        // init optionView
+        let optionView = ShowOptionsView(frame: CGRect(x: 0, y: Device.size.height + 225, width: Device.size.width, height: 225),  options: [.delete, .toEntry, .toThought], delegate: self)
+        // set models
+        let thoughtModel = model.displayDetail(forThought: entry.thought)
+        let entryModel = model.retrieveModel(forEntry: entry)
+        //create end action
+        let end = {
+            optionView.removeFromSuperview()
+            self.tabBarController?.tabBar.isHidden = false
+        }
+        //add tap gestures
+        optionView.deleteButton.addTapGestureRecognizer { self.model.delete(entry) }
+        optionView.toThoughtLabel.addTapGestureRecognizer { self.showThought(withModel: thoughtModel, animated: true)}
+        optionView.toEntryLabel.addTapGestureRecognizer { self.show(entry: entry, withModel: entryModel) }
+        optionView.cancelButton.addTapGestureRecognizer { end() }
+        
+        // darken background
+        view.darkenBackground { end() }
+        
+        // add to subview
+        self.view.addSubview(optionView)
+        // move newView, show blurr over rest of view
+        UIView.animate(withDuration: 0.3) {
+            optionView.frame.origin.y -= 225 * 2
+        }
+    }
+    
+    // entry with index
+    func show(entryForIndex row: Int) {
+        let entryModel = model.retrieve(entry: row)
+        let controller = EntryDetailController(withModel: entryModel)
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    // entry from object
+    func show(entry: Entry, withModel model: EntryDetailViewModel) {
+        let controller = EntryDetailController(withModel: model)
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    //thought from object
+    private func showThought(withModel model: ThoughtDetailViewModel, animated: Bool = false) {
+        let detail = ThoughtDetailController()
+        detail.model = model
+        navigationController?.pushViewController(detail, animated: animated)
+    }
+}

@@ -200,4 +200,21 @@ extension UIView {
     public func addBounceAnimation() {
         layer.add(UIView.bounceAnimation, forKey: nil)
     }
+    
+    // darken background, add tap gesture to hide
+    func darkenBackground(withCompletion completion: (() -> ())? ) {
+        let newView = UIView(frame: CGRect(x: 0, y: 0, width: Device.size.width, height: Device.size.height))
+        newView.blurBackground(type: .dark, cornerRadius: 0)
+        newView.layer.opacity = 0
+        addSubview(newView)
+        
+        UIView.animate(withDuration: 0.25) {
+            newView.layer.opacity = 0.5
+        }
+        newView.addTapGestureRecognizer {
+            newView.removeFromSuperview()
+            guard let completion: () -> () = completion else { return }
+            completion()
+        }
+    }
 }

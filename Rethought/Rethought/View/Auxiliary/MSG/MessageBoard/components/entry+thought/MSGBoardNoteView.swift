@@ -40,7 +40,7 @@ class MSGBoardNoteView: MSGBoardComponent {
         // set styles
         titleLbl.numberOfLines = 0
         titleLbl.font = Device.font.title()
-        titleLbl.textColor = Device.colors.lightGray
+        titleLbl.textColor = Device.colors.darkGray
         detailLbl.font = Device.font.body()
         
         // set content

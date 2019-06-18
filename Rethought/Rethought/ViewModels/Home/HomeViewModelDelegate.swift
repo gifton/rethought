@@ -15,6 +15,8 @@ protocol HomeViewModelDelegate: NSObject {
     func requestDeletion(forthought thought: Thought)
     func retrieve(thought id: String) -> Thought?
     func retrieve(entry row: Int) -> EntryDetailViewModel
-    func displayDetail(forThought thought: Thought) -> ThoughtDetailViewModel
+    func retrieveModelFor(row: Int) -> ThoughtDetailViewModel
     func didSelectEntry(ofType type: EntryType, completion: () -> ())
+    func delete(_ Thought: Thought)
+    func delete(_ entry: Entry)
 }
