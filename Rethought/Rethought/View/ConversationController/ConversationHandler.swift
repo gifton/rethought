@@ -86,14 +86,18 @@ extension ConversationPresenter {
     private func animateTo(position: ConversationPosition) {
         // animate to position
         if msgCenter.textView.isFirstResponder {
-            UIView.animate(withDuration: 0.45) {
+            UIView.animate(withDuration: 0.45, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 3.2, options: .curveEaseInOut, animations: {
                 self.msgCenter.frame = position.msgFrame
                 self.view.frame = position.viewFrame
+            }) { (true) in
+                print("")
             }
         } else {
-            UIView.animate(withDuration: 0.45) {
+            UIView.animate(withDuration: 0.45, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 3.2, options: .curveEaseInOut, animations: {
                 self.msgCenter.frame = position.msgFrame
                 self.view.frame = position.viewFrame
+            }) { (true) in
+                print("")
             }
         }
     }

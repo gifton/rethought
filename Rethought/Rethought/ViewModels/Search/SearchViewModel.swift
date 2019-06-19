@@ -16,7 +16,7 @@ class SearchViewModel: NSObject {
     
     // MARK: private vars
     private var moc: NSManagedObjectContext
-    private var entrySearchResultss = [Entry](){
+    private var entrySearchResults = [Entry](){
         didSet {
             collectionView.reloadData()
         }
@@ -30,7 +30,10 @@ class SearchViewModel: NSObject {
     // MARK: public vars
     var searchingForEntries: SearchType = .thought {
         didSet {
-            collectionView.reloadData()
+            // waity half second to reload to let animations run
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.collectionView.reloadData()
+            }
         }
     }
     var collectionView: UICollectionView! {
@@ -87,7 +90,21 @@ extension SearchViewModel: SearchViewModelDelegate {
         
     }
     
-    func search(_ payload: String, completion: () -> ()) {
+    func search(_ payload: String) {
+        print("recieived pay;oad initiating search")
+        let predicate = NSPredicate(format: "%K CONTAINS %@", #keyPath(Thought.title.localizedLowercase), payload.lowercased())
+        let predicateLink = NSPredicate(format: "%K LIKE[n] %@", #keyPath(Thought.title), payload)
+        
+        let fetchReq = NSFetchRequest<Thought>(entityName: "Thought")
+        fetchReq.predicate = predicate
+        
+        do {
+            try thoughtSearchResults = moc.fetch(fetchReq)
+            print("search results recieved: count: \(thoughtSearchResults.count)")
+            self.collectionView.reloadData()
+        } catch {
+            print(error)
+        }
         
     }
 

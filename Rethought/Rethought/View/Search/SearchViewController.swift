@@ -33,7 +33,9 @@ class SearchViewController: UIViewController {
     }
 }
 
-extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
+extension SearchViewController: UICollectionViewDataSource,
+                                UICollectionViewDelegateFlowLayout,
+                                UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return model.searchCount
     }

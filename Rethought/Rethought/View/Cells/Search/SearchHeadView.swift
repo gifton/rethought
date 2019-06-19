@@ -14,14 +14,13 @@ class SearchHeadView: UICollectionViewCell {
     }
     // MARK: public objects
     public var delegate: SearchViewModelDelegate?
-    public let searchField: UITextView = {
-        let tv = UITextView()
-        tv.addDoneButtonOnKeyboard()
+    public let searchField: UITextField = {
+        let tv = UITextField()
         tv.font = Device.font.title(ofSize: .emojiLG)
         tv.textColor = Device.colors.lightGray
-        tv.isEditable = true
         tv.text = "Search"
         tv.backgroundColor = Device.colors.offWhite
+        tv.returnKeyType = UIReturnKeyType.search
         
         return tv
     }()
@@ -30,11 +29,7 @@ class SearchHeadView: UICollectionViewCell {
     private let entryLabelFrame = CGRect(x: 145, y: 210, width: 65, height: 50)
     private let thoughtLabelFrame = CGRect(x: 25, y: 210, width: 85, height: 50)
     private let searchTypeIndicatorSize = CGSize(width: 8, height: 8)
-    private var currentSearchType: SearchType = .thought {
-        didSet {
-            didChangeSearchType(toType: currentSearchType)
-        }
-    }
+    private var currentSearchType: SearchType = .thought
     
     // MARK: private objects
     private let searchTypeIndicator = UIView()
@@ -84,10 +79,11 @@ class SearchHeadView: UICollectionViewCell {
                                                y: entryLabelFrame.bottom - 5))
         }
         currentSearchType = type
+        self.didChangeSearchType(toType: self.currentSearchType)
     }
     
     private func animateIndicatorTo(origin: CGPoint) {
-        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 1.25, initialSpringVelocity: 2.2, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 3.2, options: .curveEaseInOut, animations: {
             self.searchTypeIndicator.frame.origin = origin
         }) { (true) in
             print("moved thought to: \(self.currentSearchType)")
@@ -102,16 +98,21 @@ class SearchHeadView: UICollectionViewCell {
     
 }
 
-extension SearchHeadView: UITextViewDelegate {
+extension SearchHeadView: UITextFieldDelegate {
     
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.text = ""
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = ""
     }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text == "" {
-            textView.text = "Search"
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let delegate = delegate else { return false }
+        if textField.text == "" {
+            textField.text = "Search"
+        } else if let text = textField.text {
+            print("initiaiting search from cell with payload: \(text)")
+            delegate.search(text)
         }
+        
+        return true
     }
     
 }
