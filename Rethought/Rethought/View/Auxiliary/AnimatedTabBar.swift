@@ -25,7 +25,7 @@ class AnimatedTabBarController: UITabBarController {
             print ("tab bar index could not be established")
             return
         }
-        if idx == 0 {
+        if idx == 0, idx == 1 {
             tabBar.backgroundColor = Device.colors.offWhite
             tabBar.barTintColor = Device.colors.offWhite
         } else {
