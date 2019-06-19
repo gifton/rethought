@@ -13,8 +13,7 @@ class SearchViewController: UIViewController {
     
     let tv: UITableView = {
         let tv = UITableView()
-        tv.layer.borderColor = UIColor.black.cgColor
-        tv.layer.borderWidth = 0.5
+        tv.backgroundColor = Device.colors.offWhite
         
         return tv
     }()

@@ -25,7 +25,7 @@ class SearchThoughtCell: UITableViewCell {
     private func setViews() {
         
         // super cell
-        cell.backgroundColor = Device.colors.offWhite
+        cell.backgroundColor = UIColor.white.withAlphaComponent(0.65)
         cell.layer.cornerRadius = 15
         cell.frame = CGRect(x: 25, y: 5, width: frame.width, height: 90)
         addSubview(cell)
@@ -37,17 +37,17 @@ class SearchThoughtCell: UITableViewCell {
         cell.addSubview(locationLabel)
         
         // place views
-        thoughtIcon.frame = CGRect(x: 10, y: 15, width: 35, height: 46)
-        titleLabel.frame.origin = CGPoint(x: 65, y: 15)
-        titleLabel.frame.size = CGSize(width: frame.width - 80, height: 50)
+        thoughtIcon.frame = CGRect(x: 20, y: 15, width: 35, height: 46)
+        titleLabel.frame.origin = CGPoint(x: 55, y: 15)
+        titleLabel.frame.size = CGSize(width: frame.width - 90, height: 50)
 
-        dateLabel.frame = CGRect(x: frame.width - 125, y: titleLabel.bottom, width: 100, height: 15)
-        locationLabel.frame = CGRect(x: 15, y: titleLabel.bottom, width: 150, height: 15)
+        dateLabel.frame = CGRect(x: frame.width - 105, y: titleLabel.bottom, width: 100, height: 15)
+        locationLabel.frame = CGRect(x: 20, y: titleLabel.bottom, width: 150, height: 15)
     }
     private func styleViews() {
         titleLabel.text = "welcome to rethought! A safe place for you, and your thoughts"
         titleLabel.numberOfLines = 2
-        titleLabel.font = Device.font.mediumTitle()
+        titleLabel.font = Device.font.title(ofSize: .medium)
         titleLabel.textColor = Device.colors.darkGray
         titleLabel.sizeToFit()
         
@@ -56,9 +56,11 @@ class SearchThoughtCell: UITableViewCell {
         
         dateLabel.getStringFromDate(date: Date(), withStyle: .medium)
         dateLabel.font = Device.font.body(ofSize: .small)
+        dateLabel.textColor = Device.colors.lightGray
         
         locationLabel.font = Device.font.mediumTitle(ofSize: .small)
         locationLabel.text = "Seattle, Washington"
+        locationLabel.textColor = Device.colors.lightGray
 
     }
     

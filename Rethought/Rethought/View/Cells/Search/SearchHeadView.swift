@@ -21,6 +21,7 @@ class SearchHeadView: UITableViewHeaderFooterView {
         tv.textColor = Device.colors.lightGray
         tv.isEditable = true
         tv.text = "Search"
+        tv.backgroundColor = Device.colors.offWhite
         
         return tv
     }()
@@ -37,8 +38,6 @@ class SearchHeadView: UITableViewHeaderFooterView {
     private let thoughtLabel = UILabel()
     
     private func setView() {
-        
-        addBorders(edges: [.bottom], color: Device.colors.lightGray, thickness: 0.5)
         
         searchField.frame = CGRect(x: 25, y: 100, width: 250, height: 50)
         searchField.delegate = self
@@ -58,7 +57,7 @@ class SearchHeadView: UITableViewHeaderFooterView {
     }
     
     private func styleView() {
-        layer.backgroundColor = UIColor.white.cgColor
+        layer.backgroundColor = Device.colors.offWhite.cgColor
         entryLabel.text = "entries"
         entryLabel.font = Device.font.body()
         
