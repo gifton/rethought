@@ -9,6 +9,8 @@ class SearchViewController: UIViewController {
         setView()
     }
     
+    public var model: SearchViewModel?
+    
     let tv: UITableView = {
         let tv = UITableView()
         
@@ -22,6 +24,7 @@ class SearchViewController: UIViewController {
         tv.delegate = self
         tv.dataSource = self
         tv.registerHeaderFooter(cellWithClass: SearchHeadView.self)
+        tv.register(cellWithClass: SearchThoughtCell.self)
         tv.separatorStyle = .none
     }
 }
@@ -38,13 +41,14 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         return 300.0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let model = model else { return UITableViewCell() }
+        return model.cell(forIndex: indexPath, tableView: tableView)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 125
+        return 100
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected: \(indexPath.row)")

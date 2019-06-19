@@ -22,18 +22,18 @@ class SearchViewModel: NSObject {
     var searchingForEntries: Bool = true
 }
 
-//extension SearchViewModel: SearchViewModelDelegate {
-//    func search(_ payload: String, completion: () -> ()) {
-//        let myRequest = NSFetchRequest(entityName: "entity")
-//        myRequest.predicate = NSPredicate(format: "name = %@", "David")
-//    }
-//
-//    func cell(forRow row: Int, collectionView: UICollectionView) -> UICollectionViewCell? {
-//        <#code#>
-//    }
-//
-//    func size(forRow: Int, collectionView: UICollectionView) -> CGSize? {
-//        <#code#>
-//    }
-//
-//}
+extension SearchViewModel: SearchViewModelDelegate {
+    
+    func search(_ payload: String, completion: () -> ()) {
+        
+    }
+
+    func cell(forIndex indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
+        return tableView.dequeueReusableCell(withClass: SearchThoughtCell.self, for: indexPath)
+    }
+
+    func size(forRow: Int, tableView: UITableView) -> CGFloat {
+        return 100
+    }
+
+}

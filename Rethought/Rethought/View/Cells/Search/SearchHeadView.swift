@@ -26,8 +26,8 @@ class SearchHeadView: UITableViewHeaderFooterView {
     }()
     
     // MARK: private variables
-    private let entryLabelFrame = CGRect(x: 145, y: 250, width: 65, height: 50)
-    private let thoughtLabelFrame = CGRect(x: 25, y: 250, width: 85, height: 50)
+    private let entryLabelFrame = CGRect(x: 145, y: 210, width: 65, height: 50)
+    private let thoughtLabelFrame = CGRect(x: 25, y: 210, width: 85, height: 50)
     private let searchTypeIndicatorSize = CGSize(width: 8, height: 8)
     private var currentSearchType: SearchType = .thought
     
@@ -43,7 +43,7 @@ class SearchHeadView: UITableViewHeaderFooterView {
         entryLabel.frame = entryLabelFrame
         thoughtLabel.frame = thoughtLabelFrame
         
-        searchTypeIndicator.frame = CGRect(origin: CGPoint(x: thoughtLabelFrame.origin.x, y: thoughtLabelFrame.bottom + 5), size: searchTypeIndicatorSize)
+        searchTypeIndicator.frame = CGRect(origin: CGPoint(x: thoughtLabelFrame.origin.x, y: thoughtLabelFrame.bottom - 5), size: searchTypeIndicatorSize)
         
         entryLabel.addTapGestureRecognizer { self.selectedSearchType(type: .entry) }
         thoughtLabel.addTapGestureRecognizer { self.selectedSearchType(type: .thought) }
@@ -72,10 +72,10 @@ class SearchHeadView: UITableViewHeaderFooterView {
         switch type {
         case .thought:
             animateIndicatorTo(origin: CGPoint(x: thoughtLabelFrame.origin.x,
-                                               y: thoughtLabelFrame.bottom + 5))
+                                               y: thoughtLabelFrame.bottom - 5))
         case .entry:
             animateIndicatorTo(origin: CGPoint(x: entryLabelFrame.origin.x,
-                                               y: entryLabelFrame.bottom + 5))
+                                               y: entryLabelFrame.bottom - 5))
         }
         currentSearchType = type
     }

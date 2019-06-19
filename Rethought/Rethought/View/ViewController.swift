@@ -14,6 +14,7 @@ class ViewController: AnimatedTabBarController {
         vc1.model = HomeViewModel(withmoc: model)
         
         let vc2 = SearchViewController()
+        vc2.model = SearchViewModel(withMoc: model)
         
         let vc3 = ConversationController(withModel: ThoughtBuilderViewModel(withContext: model))
         

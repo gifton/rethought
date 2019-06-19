@@ -116,7 +116,7 @@ class MSGCenter: UIView {
         let attrString = NSAttributedString(string: "Send", attributes: [NSAttributedString.Key.font : Device.font.mediumTitle(ofSize: .small),
                                                                          NSAttributedString.Key.foregroundColor : UIColor.white])
         btn.setAttributedTitle(attrString, for: .normal)
-        btn.backgroundColor = Device.colors.yellow
+        btn.backgroundColor = Device.colors.blue
         btn.layer.borderWidth = 0.5
         btn.layer.borderColor = UIColor.white.cgColor
         btn.layer.cornerRadius = 12
