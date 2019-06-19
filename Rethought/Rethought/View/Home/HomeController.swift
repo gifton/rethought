@@ -9,7 +9,7 @@ class HomeController: UIViewController {
         view.backgroundColor = .white
     }
     override func viewWillAppear(_ animated: Bool) {
-        // test this
+        // reload all input views
         model.refresh()
         homeHead?.thoughtCollection.reloadData()
         tv?.updatepackage(withContent: model.homeContentPackage.title)

@@ -23,4 +23,16 @@ public extension UICollectionView {
     func register<T: UICollectionViewCell>(cellWithClass name: T.Type) {
         register(T.self, forCellWithReuseIdentifier: String(describing: name))
     }
+    
+    func registerHeaderFooter<T: UICollectionReusableView>(cellWithClass name: T.Type) {
+        // UICollectionView.elementKindSectionHeader
+        register(T.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: name))
+    }
+    
+    func dequeueReusableHeader<T: UICollectionReusableView>(cellWithClass name: T.Type, for indexPath: IndexPath) -> T {
+        guard let cell = dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: name), for: indexPath) as? T else {
+            fatalError("Couldn't find UICollectionViewCell for \(String(describing: name))")
+        }
+        return cell
+    }
 }

@@ -3,9 +3,9 @@ import Foundation
 import UIKit
 
 
-class SearchHeadView: UITableViewHeaderFooterView {
-    override init(reuseIdentifier: String?) {
-        super.init(reuseIdentifier: reuseIdentifier)
+class SearchHeadView: UICollectionViewCell {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setView(); styleView()
     }
     
@@ -30,7 +30,11 @@ class SearchHeadView: UITableViewHeaderFooterView {
     private let entryLabelFrame = CGRect(x: 145, y: 210, width: 65, height: 50)
     private let thoughtLabelFrame = CGRect(x: 25, y: 210, width: 85, height: 50)
     private let searchTypeIndicatorSize = CGSize(width: 8, height: 8)
-    private var currentSearchType: SearchType = .thought
+    private var currentSearchType: SearchType = .thought {
+        didSet {
+            didChangeSearchType(toType: currentSearchType)
+        }
+    }
     
     // MARK: private objects
     private let searchTypeIndicator = UIView()
@@ -88,6 +92,12 @@ class SearchHeadView: UITableViewHeaderFooterView {
         }) { (true) in
             print("moved thought to: \(self.currentSearchType)")
         }
+    }
+    
+    private func didChangeSearchType(toType type: SearchType) {
+        guard let delegate = delegate else { return }
+        if type == delegate.searchingForEntries { return }
+        else { delegate.setSearchEntryType(type) }
     }
     
 }

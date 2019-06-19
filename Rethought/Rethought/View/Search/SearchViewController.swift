@@ -5,53 +5,60 @@ import UIKit
 class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Device.colors.offWhite
+        view.backgroundColor = Device.colors.red
         setView()
     }
     
-    public var model: SearchViewModel?
+    public var model: SearchViewModel!
     
-    let tv: UITableView = {
-        let tv = UITableView()
-        tv.backgroundColor = Device.colors.offWhite
+    let cv: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 0
+        layout.itemSize = CGSize(width: Device.size.width - 20, height: 100)
+        let cv = UICollectionView(frame: CGRect(x: 0, y: 0, width: Device.size.width, height: Device.size.height - Device.size.tabBarHeight), collectionViewLayout: layout)
+        cv.backgroundColor = Device.colors.offWhite
         
-        return tv
+        return cv
     }()
     
     func setView() {
-        view.addSubview(tv)
+        model.collectionView = cv
+        view.addSubview(cv)
         
-        tv.frame = Device.size.frame
-        tv.delegate = self
-        tv.dataSource = self
-        tv.registerHeaderFooter(cellWithClass: SearchHeadView.self)
-        tv.register(cellWithClass: SearchThoughtCell.self)
-        tv.separatorStyle = .none
+        cv.delegate = self
+        cv.dataSource = self
+        cv.register(cellWithClass: SearchThoughtCell.self)
+        cv.register(cellWithClass: SearchEntryCell.self)
+        cv.registerHeaderFooter(cellWithClass: SearchHeadView.self)
     }
 }
 
-extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            return SearchHeadView()
-        } else {
-            return nil
-        }
+extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return model.searchCount
     }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 300.0
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return model.cell(forIndex: indexPath)
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let model = model else { return UITableViewCell() }
-        return model.cell(forIndex: indexPath, tableView: tableView)
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return model.size(forRow: indexPath.row)
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: Device.size.width, height: 300)
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let head = collectionView.dequeueReusableHeader(cellWithClass: SearchHeadView.self, for: indexPath)
+        head.delegate = model
+        
+        return head
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected: \(indexPath.row)")
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return model.spacing
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return model.inset
     }
 }

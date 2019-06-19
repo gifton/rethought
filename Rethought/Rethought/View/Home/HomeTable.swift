@@ -36,7 +36,6 @@ class HomeTable: UIView {
         cv = UICollectionView(frame: .zero, collectionViewLayout: cvLayout)
         cv.allowsMultipleSelection = false
         cv.backgroundColor = Device.colors.offWhite
-        cv.translatesAutoresizingMaskIntoConstraints = false
         cv.showsVerticalScrollIndicator = false
         
         // register all possible classes in advanced
@@ -51,7 +50,10 @@ class HomeTable: UIView {
         addSubview(expandButton)
         addSubview(entryLabel)
         
-        cv.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 50, paddingLeading: 0, paddingBottom: 5, paddingTrailing: 0)
+        // set colleciton frames
+        collectionStartFrame = CGRect(x: 0, y: 50, width: frame.width, height: frame.height - 50)
+        collectionEndFrame = CGRect(x: 0, y: 50, width: frame.width, height: frame.height - 50)
+        cv.frame = collectionStartFrame
 
         expandButton.setAnchor(top: topAnchor, leading: nil, bottom: cv.topAnchor, trailing: trailingAnchor, paddingTop: 15, paddingLeading: 0, paddingBottom: 10, paddingTrailing: 30)
         
@@ -72,6 +74,9 @@ class HomeTable: UIView {
     // MARK: Variables for scrolling update calculations
     private let endFrame: CGFloat = 170
     private let startFrame: CGFloat = 500
+    // collection frames are mutable because theyre calcuated at initialization time in setView() method
+    private var collectionStartFrame: CGRect = .zero
+    private var collectionEndFrame: CGRect = .zero
     public var animationScrollLength: CGFloat = 330.0
     private var lastOffset: CGFloat = 0.0
     public var animationProgress: CGFloat {
@@ -87,8 +92,13 @@ class HomeTable: UIView {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         frame.origin.y = startFrame + ((endFrame - startFrame) * animationProgress)
         frame.size.height = (Device.size.height - frame.origin.y)
+        cv.frame.size.height = cv.frame.height
         //alert controller of movement to animate individual seperate views
         animator?.didUpdate()
+    }
+    
+    private func update(contentToProgress progress: CGFloat) {
+        
     }
 }
 

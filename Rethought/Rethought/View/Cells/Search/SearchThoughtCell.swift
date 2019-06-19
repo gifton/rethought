@@ -3,9 +3,10 @@ import Foundation
 import UIKit
 
 
-class SearchThoughtCell: UITableViewCell {
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+class SearchThoughtCell: UICollectionViewCell {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
         backgroundColor = .blue
         
@@ -27,7 +28,7 @@ class SearchThoughtCell: UITableViewCell {
         // super cell
         cell.backgroundColor = UIColor.white.withAlphaComponent(0.65)
         cell.layer.cornerRadius = 15
-        cell.frame = CGRect(x: 25, y: 5, width: frame.width, height: 90)
+        cell.frame = CGRect(x: 25, y: 5, width: frame.width - 50, height: 90)
         addSubview(cell)
         
         //add views
@@ -39,9 +40,9 @@ class SearchThoughtCell: UITableViewCell {
         // place views
         thoughtIcon.frame = CGRect(x: 20, y: 15, width: 35, height: 46)
         titleLabel.frame.origin = CGPoint(x: 55, y: 15)
-        titleLabel.frame.size = CGSize(width: frame.width - 90, height: 50)
+        titleLabel.frame.size = CGSize(width: cell.frame.width - 90, height: 50)
 
-        dateLabel.frame = CGRect(x: frame.width - 105, y: titleLabel.bottom, width: 100, height: 15)
+        dateLabel.frame = CGRect(x: cell.frame.width - 105, y: titleLabel.bottom, width: 100, height: 15)
         locationLabel.frame = CGRect(x: 20, y: titleLabel.bottom, width: 150, height: 15)
     }
     private func styleViews() {

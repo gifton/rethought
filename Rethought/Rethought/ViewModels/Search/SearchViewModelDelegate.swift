@@ -5,7 +5,8 @@ import UIKit
 
 protocol SearchViewModelDelegate {
     func search(_ payload: String, completion: () -> ())
-    func cell(forIndex indexPath: IndexPath, tableView: UITableView) -> UITableViewCell
-    func size(forRow: Int, tableView: UITableView) -> CGFloat 
-    var searchingForEntries: Bool { get set }
+    func cell(forIndex indexPath: IndexPath) -> UICollectionViewCell
+    func size(forRow: Int) -> CGSize
+    func setSearchEntryType(_ type: SearchType)
+    var searchingForEntries: SearchType { get set }
 }
