@@ -23,11 +23,13 @@ class SearchThoughtCell: UITableViewCell {
     
     
     private func setViews() {
+        
         // super cell
-        cell.backgroundColor = UIColor(hex: "F2F4F6")
+        cell.backgroundColor = Device.colors.offWhite
         cell.layer.cornerRadius = 15
-        cell.frame = CGRect(x: 25, y: 5, width: frame.width - 50, height: 90)
+        cell.frame = CGRect(x: 25, y: 5, width: frame.width, height: 90)
         addSubview(cell)
+        
         //add views
         cell.addSubview(titleLabel)
         cell.addSubview(thoughtIcon)
@@ -36,10 +38,11 @@ class SearchThoughtCell: UITableViewCell {
         
         // place views
         thoughtIcon.frame = CGRect(x: 10, y: 15, width: 35, height: 46)
-        titleLabel.frame.origin = CGPoint(x: 10, y: 65)
-        titleLabel.frame.size.width = frame.width - 80
-        dateLabel.frame = CGRect(x: 130, y: frame.height - 30, width: 150, height: 15)
-        locationLabel.frame = CGRect(x: 25, y: frame.height - 30, width: 105, height: 15)
+        titleLabel.frame.origin = CGPoint(x: 65, y: 15)
+        titleLabel.frame.size = CGSize(width: frame.width - 80, height: 50)
+
+        dateLabel.frame = CGRect(x: frame.width - 125, y: titleLabel.bottom, width: 100, height: 15)
+        locationLabel.frame = CGRect(x: 15, y: titleLabel.bottom, width: 150, height: 15)
     }
     private func styleViews() {
         titleLabel.text = "welcome to rethought! A safe place for you, and your thoughts"

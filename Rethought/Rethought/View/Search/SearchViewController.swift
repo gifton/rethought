@@ -13,6 +13,8 @@ class SearchViewController: UIViewController {
     
     let tv: UITableView = {
         let tv = UITableView()
+        tv.layer.borderColor = UIColor.black.cgColor
+        tv.layer.borderWidth = 0.5
         
         return tv
     }()
@@ -45,7 +47,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         return model.cell(forIndex: indexPath, tableView: tableView)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 10
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100

@@ -37,6 +37,9 @@ class SearchHeadView: UITableViewHeaderFooterView {
     private let thoughtLabel = UILabel()
     
     private func setView() {
+        
+        addBorders(edges: [.bottom], color: Device.colors.lightGray, thickness: 0.5)
+        
         searchField.frame = CGRect(x: 25, y: 100, width: 250, height: 50)
         searchField.delegate = self
         
