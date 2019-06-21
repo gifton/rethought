@@ -91,10 +91,8 @@ extension SearchViewModel: SearchViewModelDelegate {
     }
     
     func search(_ payload: String) {
-        print("recieived pay;oad initiating search")
-        let predicate = NSPredicate(format: "%K CONTAINS %@", #keyPath(Thought.title.localizedLowercase), payload.lowercased())
-        let predicateLink = NSPredicate(format: "%K LIKE[n] %@", #keyPath(Thought.title), payload)
         
+        let predicate = NSPredicate(format: "%K CONTAINS %@", #keyPath(Thought.title.localizedLowercase), payload.lowercased())
         let fetchReq = NSFetchRequest<Thought>(entityName: "Thought")
         fetchReq.predicate = predicate
         
@@ -106,6 +104,27 @@ extension SearchViewModel: SearchViewModelDelegate {
             print(error)
         }
         
+    }
+    
+    private func find(payload: String, inEntry entry: Entry) -> Bool {
+        switch entry.computedEntryType {
+        case .photo:
+            guard let photo = entry.photo else { print("unable to verify photo in search"); return false }
+            guard let detail = photo.detail else { print("unable to verify detail pf photo in search"); return false }
+            if detail.lowercased().contains(payload.lowercased()) { return true }
+        case .link:
+            guard let link = entry.link else { print("unable to verify link in search"); return false }
+            if link.title.lowercased().contains(payload.lowercased()) { return true }
+            if link.detail.lowercased().contains(payload.lowercased()) { return true }
+            if link.url.lowercased().contains(payload.lowercased()) { return true }
+        default:
+            guard let note = entry.note else { print("unable to verify note in search"); return false }
+            if note.title!.lowercased().contains(payload.lowercased()) { return true }
+            if note.detail.lowercased().contains(payload.lowercased()) { return true }
+        }
+        
+        
+        return false
     }
 
 }
