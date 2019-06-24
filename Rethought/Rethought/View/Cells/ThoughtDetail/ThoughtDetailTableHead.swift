@@ -58,9 +58,7 @@ class ThoughtDetailTableHead: UITableViewCell, Animatable {
         deleteLabel.text = "Delete"
         deleteLabel.textColor = Device.colors.red
         deleteLabel.font = Device.font.mediumTitle()
-        deleteLabel.layer.cornerRadius = 10
-        deleteLabel.layer.borderColor = Device.colors.red.cgColor
-        deleteLabel.layer.borderWidth = 0.5
+        deleteLabel.textAlignment = .left
         deleteLabel.textAlignment = .center
     }
     

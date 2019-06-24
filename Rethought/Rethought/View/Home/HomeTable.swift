@@ -92,14 +92,12 @@ class HomeTable: UIView {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         frame.origin.y = startFrame + ((endFrame - startFrame) * animationProgress)
         frame.size.height = (Device.size.height - frame.origin.y)
-        cv.frame.size.height = cv.frame.height
+        cv.frame.size.height = (Device.size.height - frame.origin.y) - 50
         //alert controller of movement to animate individual seperate views
         animator?.didUpdate()
     }
     
-    private func update(contentToProgress progress: CGFloat) {
-        
-    }
+    private func update(contentToProgress progress: CGFloat) { }
 }
 
 // handle when new content for table is requested
