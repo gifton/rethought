@@ -96,8 +96,6 @@ class HomeTable: UIView {
         //alert controller of movement to animate individual seperate views
         animator?.didUpdate()
     }
-    
-    private func update(contentToProgress progress: CGFloat) { }
 }
 
 // handle when new content for table is requested

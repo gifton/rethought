@@ -458,7 +458,6 @@
 			children = (
 				D7536F9D2262C272003F0920 /* Info.plist */,
 				D7536FD22262D882003F0920 /* Models */,
-				D7536FB32262C8DE003F0920 /* Extensions */,
 				D7536FAB2262C7D6003F0920 /* Resources */,
 				D7536FA32262C6C4003F0920 /* Helpers */,
 				D7006ED122672BB8004E570F /* ViewModels */,
@@ -470,6 +469,7 @@
 		D7536FA32262C6C4003F0920 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D7536FB32262C8DE003F0920 /* Extensions */,
 				D7536FAC2262C7FA003F0920 /* core data */,
 				D7536FA82262C744003F0920 /* styling */,
 				D7536FA62262C73E003F0920 /* Device.swift */,

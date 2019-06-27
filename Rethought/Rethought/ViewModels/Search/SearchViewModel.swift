@@ -100,6 +100,7 @@ extension SearchViewModel: SearchViewModelDelegate {
             try thoughtSearchResults = moc.fetch(fetchReq)
             print("search results recieved: count: \(thoughtSearchResults.count)")
             self.collectionView.reloadData()
+            
         } catch {
             print(error)
         }
