@@ -73,7 +73,10 @@ extension SearchViewModel: SearchViewModelDelegate {
         if searchingForEntries == .entry {
             return collectionView.dequeueReusableCell(withClass: SearchEntryCell.self, for: indexPath)
         }
-        return collectionView.dequeueReusableCell(withClass: SearchThoughtCell.self, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withClass: SearchThoughtCell.self, for: indexPath)
+        cell.addContext(thoughtPreview(forRow: indexPath.row))
+        
+        return cell
     }
     
     func size(forRow: Int) -> CGSize {
@@ -84,6 +87,11 @@ extension SearchViewModel: SearchViewModelDelegate {
         }
     }
     
+    func thoughtPreview(forRow row: Int) -> ThoughtPreview {
+        let thought = thoughtSearchResults[row]
+        return ThoughtPreview(thought: thought)
+    }
+    
     func setSearchEntryType(_ type: SearchType) {
         if type == searchingForEntries { return }
         else { searchingForEntries = type }
@@ -91,14 +99,24 @@ extension SearchViewModel: SearchViewModelDelegate {
     }
     
     func search(_ payload: String) {
+        // set string to seperated value for looping
+        let words = payload.lowercased().components(separatedBy: " ")
+        let sorter = NSSortDescriptor(key: "date", ascending: false)
+        // get predicates
+        let thoughtPredicates = createThoughtPredicate(forPayload: words)
+//        var entryPredicates = [NSPredicate]()
         
-        let predicate = NSPredicate(format: "%K CONTAINS %@", #keyPath(Thought.title.localizedLowercase), payload.lowercased())
-        let fetchReq = NSFetchRequest<Thought>(entityName: "Thought")
-        fetchReq.predicate = predicate
         
+        // create fetch request
+        let thoughtFetchReq = NSFetchRequest<Thought>(entityName: "Thought")
+        thoughtFetchReq.predicate = NSCompoundPredicate(orPredicateWithSubpredicates: thoughtPredicates)
+        thoughtFetchReq.sortDescriptors = [sorter]
         do {
-            try thoughtSearchResults = moc.fetch(fetchReq)
+            try thoughtSearchResults = moc.fetch(thoughtFetchReq)
             print("search results recieved: count: \(thoughtSearchResults.count)")
+            for thought in thoughtSearchResults {
+                print(thought.title)
+            }
             self.collectionView.reloadData()
             
         } catch {
@@ -107,25 +125,16 @@ extension SearchViewModel: SearchViewModelDelegate {
         
     }
     
-    private func find(payload: String, inEntry entry: Entry) -> Bool {
-        switch entry.computedEntryType {
-        case .photo:
-            guard let photo = entry.photo else { print("unable to verify photo in search"); return false }
-            guard let detail = photo.detail else { print("unable to verify detail pf photo in search"); return false }
-            if detail.lowercased().contains(payload.lowercased()) { return true }
-        case .link:
-            guard let link = entry.link else { print("unable to verify link in search"); return false }
-            if link.title.lowercased().contains(payload.lowercased()) { return true }
-            if link.detail.lowercased().contains(payload.lowercased()) { return true }
-            if link.url.lowercased().contains(payload.lowercased()) { return true }
-        default:
-            guard let note = entry.note else { print("unable to verify note in search"); return false }
-            if note.title!.lowercased().contains(payload.lowercased()) { return true }
-            if note.detail.lowercased().contains(payload.lowercased()) { return true }
+    private func createThoughtPredicate(forPayload payload: [String]) -> [NSPredicate] {
+        var predicates = [NSPredicate]()
+        for word in payload {
+            print("looking for word: \(word)")
+            let thoughtTitlePredicate = NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Thought.title), word)
+            let thoughtDatePredicate = NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Thought.date), word)
+            predicates.append(contentsOf: [thoughtTitlePredicate, thoughtDatePredicate])
         }
-        
-        
-        return false
+        print("compiled predicates")
+        return predicates
     }
 
 }
