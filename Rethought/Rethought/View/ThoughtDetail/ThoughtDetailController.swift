@@ -183,6 +183,13 @@ extension ThoughtDetailController: UITableViewDataSource, UITableViewDelegate {
             }
         }
     }
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            tableView.allowsSelection = false
+        } else {
+            tableView.allowsSelection = true
+        }
+    }
 }
 
 extension ThoughtDetailController: MSGConnector, MSGCenterDelegate {
