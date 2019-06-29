@@ -58,7 +58,7 @@ class PhotoEntryCell: UITableViewCell {
     private func addContext() {
         photoView.image = photo
         detailLabel.text = preview?.userDetail
-        dateLabel.getStringFromDate(date: Date(), withStyle: .short)
+        dateLabel.getStringFromDate(date: preview?.date ?? Date(), withStyle: .short)
         locationLabel.text = "Seattle, Washington"
     }
 }

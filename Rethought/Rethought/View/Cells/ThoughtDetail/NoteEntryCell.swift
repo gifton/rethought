@@ -35,8 +35,8 @@ class NoteEntryCell: UITableViewCell {
         
         titleLabel.frame = CGRect(x: 20, y: 20, width: frame.width - 40, height: titleHeight)
         detailLabel.frame = CGRect(x: 20, y: titleHeight + 20 + 10, width: frame.width - 40, height: detailHeight)
-        locationLabel.frame = CGRect(x: 20, y: frame.height - 35, width: frame.width / 3, height: 15)
-        dateLabel.frame = CGRect(x: frame.width - 100, y: frame.height - 25, width: 100, height: 15)
+        locationLabel.frame = CGRect(x: 20, y: frame.height - 25, width: frame.width / 3, height: 17)
+        dateLabel.frame = CGRect(x: frame.width - 100, y: frame.height - 25, width: 100, height: 17)
         
         // addSubviews
         addSubview(titleLabel)
@@ -73,7 +73,7 @@ class NoteEntryCell: UITableViewCell {
         guard let preview = preview else { return }
         titleLabel.text = preview.title
         detailLabel.text = preview.detail
-        dateLabel.getStringFromDate(date: Date(), withStyle: .short)
+        dateLabel.getStringFromDate(date: preview.date, withStyle: .short)
         locationLabel.text = "Seattle, Washington"
     }
 }
