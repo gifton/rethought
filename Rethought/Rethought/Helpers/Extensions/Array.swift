@@ -44,3 +44,5 @@ extension Sequence where Iterator.Element: Thought {
         return entries
     }
 }
+
+// return array of entries from sequences of 

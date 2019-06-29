@@ -69,6 +69,7 @@ class SearchViewModel: NSObject {
 
 extension SearchViewModel: SearchViewModelDelegate {
     
+    // content for index
     func cell(forIndex indexPath: IndexPath) -> UICollectionViewCell {
         if searchingForEntries == .entry {
             return collectionView.dequeueReusableCell(withClass: SearchEntryCell.self, for: indexPath)
@@ -99,42 +100,103 @@ extension SearchViewModel: SearchViewModelDelegate {
     }
     
     func search(_ payload: String) {
+        // clear searched entries and thoughts
+        entrySearchResults = []
+        thoughtSearchResults = []
         // set string to seperated value for looping
         let words = payload.lowercased().components(separatedBy: " ")
         let sorter = NSSortDescriptor(key: "date", ascending: false)
         // get predicates
         let thoughtPredicates = createThoughtPredicate(forPayload: words)
-//        var entryPredicates = [NSPredicate]()
-        
+        let photoPredicates = createPredicateForPhoto(withPayload: words)
+        let notePredicates = createPredicateForNote(withPayload: words)
+        let recordingPredicates = createPredicateForRecording(withPayload: words)
+        let linkPredicates = createPredicateForLink(withPayload: words)
         
         // create fetch request
+        // thought
         let thoughtFetchReq = NSFetchRequest<Thought>(entityName: "Thought")
         thoughtFetchReq.predicate = NSCompoundPredicate(orPredicateWithSubpredicates: thoughtPredicates)
         thoughtFetchReq.sortDescriptors = [sorter]
+        // note
+        let noteFetchReq = NSFetchRequest<NoteEntry>(entityName: "NoteEntry")
+        noteFetchReq.predicate = NSCompoundPredicate(orPredicateWithSubpredicates: notePredicates)
+        // link
+        let linkFetchReq = NSFetchRequest<LinkEntry>(entityName: "LinkEntry")
+        linkFetchReq.predicate = NSCompoundPredicate(orPredicateWithSubpredicates: linkPredicates)
+        //photo
+        let photoFetchReq = NSFetchRequest<PhotoEntry>(entityName: "PhotoEntry")
+        photoFetchReq.predicate = NSCompoundPredicate(orPredicateWithSubpredicates: photoPredicates)
+        // recording
+        let recordingFetchReq = NSFetchRequest<NoteEntry>(entityName: "NoteEntry")
+        recordingFetchReq.predicate = NSCompoundPredicate(orPredicateWithSubpredicates: recordingPredicates)
+        
+        // perform fetch
+        searchThought(withRequest: thoughtFetchReq)
+        searchEntries(withLinkRequest: linkFetchReq)
+        searchEntries(withNoteRequest: noteFetchReq)
+        searchEntries(withPhotoRequest: photoFetchReq)
+        
+        print("entries found: \(entrySearchResults.count)")
+    }
+    
+    // fetch thoughts with predicate
+    private func searchThought(withRequest req: NSFetchRequest<Thought>) {
         do {
-            try thoughtSearchResults = moc.fetch(thoughtFetchReq)
+            // preform fetch and set to thought results
+            try thoughtSearchResults = moc.fetch(req)
+            
             print("search results recieved: count: \(thoughtSearchResults.count)")
             for thought in thoughtSearchResults {
                 print(thought.title)
             }
-            self.collectionView.reloadData()
             
         } catch {
             print(error)
         }
-        
     }
     
-    private func createThoughtPredicate(forPayload payload: [String]) -> [NSPredicate] {
-        var predicates = [NSPredicate]()
-        for word in payload {
-            print("looking for word: \(word)")
-            let thoughtTitlePredicate = NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Thought.title), word)
-            let thoughtDatePredicate = NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Thought.date), word)
-            predicates.append(contentsOf: [thoughtTitlePredicate, thoughtDatePredicate])
+    private func searchEntries(withLinkRequest req: NSFetchRequest<LinkEntry>) {
+        do {
+            // get entry content
+            let rawEntries = try moc.fetch(req)
+            var computedEntries = [Entry]()
+            // append entryContents parent entry
+            rawEntries.forEach {computedEntries.append($0.entry)}
+            // add searched entries to global object holding all searched entries
+            self.entrySearchResults.append(contentsOf: computedEntries)
+        } catch {
+            print(error)
         }
-        print("compiled predicates")
-        return predicates
     }
-
+    
+    private func searchEntries(withPhotoRequest req: NSFetchRequest<PhotoEntry>) {
+        do {
+            // get entry content
+            let rawEntries = try moc.fetch(req)
+            var computedEntries = [Entry]()
+            // append entryContents parent entry
+            rawEntries.forEach {computedEntries.append($0.entry)}
+            // add searched entries to global object holding all searched entries
+            self.entrySearchResults.append(contentsOf: computedEntries)
+        } catch {
+            print(error)
+        }
+    }
+    
+    private func searchEntries(withNoteRequest req: NSFetchRequest<NoteEntry>) {
+        do {
+            // get entry content
+            let rawEntries = try moc.fetch(req)
+            var computedEntries = [Entry]()
+            // append entryContents parent entry
+            rawEntries.forEach {computedEntries.append($0.entry)}
+            // add searched entries to global object holding all searched entries
+            self.entrySearchResults.append(contentsOf: computedEntries)
+        } catch {
+            print(error)
+        }
+    }
+    
+    private func searchEntries(withRecordingRequest req: NSFetchRequest<LinkEntry>) { }
 }

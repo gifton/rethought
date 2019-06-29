@@ -84,6 +84,7 @@
 		D7536FE92262EB0A003F0920 /* Thought.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536FDD2262EB0A003F0920 /* Thought.swift */; };
 		D7536FEB2262EB0A003F0920 /* RecordingEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536FDF2262EB0A003F0920 /* RecordingEntry.swift */; };
 		D7536FED2262EB0A003F0920 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7536FE12262EB0A003F0920 /* Entry.swift */; };
+		D758C2B822C71B230039190A /* SearchViewModelPredicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D758C2B722C71B230039190A /* SearchViewModelPredicates.swift */; };
 		D75B8B2D22912A6600B38CC6 /* HomeViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B8B2C22912A6600B38CC6 /* HomeViewModelDelegate.swift */; };
 		D75B8B2F22912FD800B38CC6 /* HomeThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B8B2E22912FD800B38CC6 /* HomeThoughtCell.swift */; };
 		D75B8B31229210F000B38CC6 /* HomeEntryButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B8B30229210F000B38CC6 /* HomeEntryButtons.swift */; };
@@ -219,6 +220,7 @@
 		D7536FDD2262EB0A003F0920 /* Thought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thought.swift; sourceTree = "<group>"; };
 		D7536FDF2262EB0A003F0920 /* RecordingEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingEntry.swift; sourceTree = "<group>"; };
 		D7536FE12262EB0A003F0920 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		D758C2B722C71B230039190A /* SearchViewModelPredicates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelPredicates.swift; sourceTree = "<group>"; };
 		D75B8B2C22912A6600B38CC6 /* HomeViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelDelegate.swift; sourceTree = "<group>"; };
 		D75B8B2E22912FD800B38CC6 /* HomeThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeThoughtCell.swift; sourceTree = "<group>"; };
 		D75B8B30229210F000B38CC6 /* HomeEntryButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntryButtons.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 			children = (
 				D743F3B222B9419C006763D1 /* SearchViewModelDelegate.swift */,
 				D743F3B422B94376006763D1 /* SearchViewModel.swift */,
+				D758C2B722C71B230039190A /* SearchViewModelPredicates.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -943,6 +946,7 @@
 				D76895522271ED7D00DC059E /* Optional.swift in Sources */,
 				D7FEEBE92294645A00D6D1C8 /* Replicator.swift in Sources */,
 				D7BE8F1C2278BAAD00B15F06 /* MSGWelcomeCard.swift in Sources */,
+				D758C2B822C71B230039190A /* SearchViewModelPredicates.swift in Sources */,
 				D7433B4B228F50410001B371 /* UITableVIew.swift in Sources */,
 				D7B0A6C322A81BAE004B549A /* EntryDetailController.swift in Sources */,
 				D7536FBD2262CAE3003F0920 /* UICollectionView.swift in Sources */,
