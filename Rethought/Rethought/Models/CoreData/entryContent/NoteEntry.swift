@@ -31,6 +31,7 @@ public class NoteEntry: NSManagedObject {
         height += detail.sizeFor(font: Device.font.formalBodyText(ofSize: .small), width: width).height
         height += 45
         
+        print("minimum heioght for content on note MO: \(height)")
         return height
     }
 

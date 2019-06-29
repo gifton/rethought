@@ -56,10 +56,15 @@ class ThoughtDetailTableHead: UITableViewCell, Animatable {
         dateLabel.font = Device.font.body(ofSize: .xLarge)
         
         deleteLabel.text = "Delete"
-        deleteLabel.textColor = Device.colors.red
+        deleteLabel.textColor = .white
         deleteLabel.font = Device.font.mediumTitle()
         deleteLabel.textAlignment = .left
         deleteLabel.textAlignment = .center
+        deleteLabel.layer.cornerRadius = 5.5
+        deleteLabel.layer.borderColor = Device.colors.red.cgColor
+        deleteLabel.layer.borderWidth = 0.5
+        deleteLabel.backgroundColor = Device.colors.red
+        deleteLabel.layer.masksToBounds = true
     }
     
     func setView() {

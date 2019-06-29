@@ -162,17 +162,16 @@ extension ThoughtDetailViewModel {
         }
     }
     
-    func searchEntriesFor(payload: String) {
-        
-    }
-    
     func heightFor(row: Int) -> CGFloat {
         if row == 0 {
             return 300
         }
         
         let currentEntry = entries[row - 1]
-        let height = currentEntry.heightForContent(width: Device.size.width - 70)
+        var height = currentEntry.heightForContent(width: Device.size.width - 40)
+        if currentEntry.computedEntryType == .note {
+            height += 50
+        }
         return height
     }
     

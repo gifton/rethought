@@ -27,8 +27,11 @@ class NoteEntryCell: UITableViewCell {
         guard let preview = preview else { return }
         
         // set frames
-        let titleHeight = preview.title.sizeFor(font: titleFont, width: frame.width - 70).height
-        let detailHeight = preview.detail.sizeFor(font: detailFont, width: frame.width - 70).height
+        
+        let titleHeight = preview.title.sizeFor(font: titleFont, width: frame.width - 40).height
+        let detailHeight = preview.detail.sizeFor(font: detailFont, width: frame.width - 40).height
+        
+        print("self frame: \(frame), titleHeight: \(titleHeight), detailHeight: \(detailHeight)")
         
         titleLabel.frame = CGRect(x: 20, y: 20, width: frame.width - 40, height: titleHeight)
         detailLabel.frame = CGRect(x: 20, y: titleHeight + 20 + 10, width: frame.width - 40, height: detailHeight)
