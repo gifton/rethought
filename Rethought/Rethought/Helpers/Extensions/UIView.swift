@@ -158,7 +158,7 @@ extension UIView {
 
 }
 
-enum VerticalLocation: String {
+enum VerticalLocation {
     case bottom
     case top
 }

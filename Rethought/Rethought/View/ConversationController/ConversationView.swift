@@ -23,7 +23,7 @@ class ConversationView: UIView {
         super.init(frame: frame)
         backgroundColor = .white
         
-        // initiate message center with injected params
+        // initiate messagege center with injected params
         msgCenter = MSGCenter(frame: CGRect(x: 0, y: frame.height - 215, width: Device.size.width, height: 115), connector: connector)
         tableEncapsulation = MSGBoard(frame: CGRect(x: 0, y: 0, width: frame.width, height: (frame.height - msgCenter.frame.height)))
         

@@ -106,10 +106,10 @@ public class Thought: NSManagedObject {
         
         let thought: Thought = context.insertObject()
         
-        thought.date       = Date()
-        thought.icon       = icon
-        thought.title      = title
-        thought.id         = "rt-pDB-T\(defaultCount)"
+        thought.date  = Date()
+        thought.icon  = icon
+        thought.title = title
+        thought.id    = "rt-pDB-T\(defaultCount)"
         
         //save location if available
         if let loc: CLLocation = location {
